@@ -107,6 +107,19 @@ weak support topology, failed calibration, neutral superiority, and predictive
 inconclusiveness are all completed scientific outcomes rather than reasons to
 retune the accepted process.
 
+## Goal 005
+
+Goal 005 tests whether one-rate recovery is robust across slow, central, and
+fast generating rates (`rho = 0.5, 1, 2`). Local calibration is performed
+separately at each truth, while the accepted `rho = 1` cutoff is transported
+to flank validation sets as a distinct diagnostic. The frozen calendar is
+intentionally retained: sparse or saturated flank information and cutoff
+nontransportability are scientific results, not reasons to retune. The
+completed class is `one_rate_recovery_robust_cutoff_nontransportable`: local
+stochastic recovery passes at all three truths, but the central cutoff does
+not transport. The benchmark remains conditional on one landscape and the
+Goal 004 composite likelihood, which omits between-site process dependence.
+
 ## Operating Style
 
 Work is goal-based and modular, with human review at scientific gates. Apply

@@ -96,3 +96,17 @@ within each site's repeated history but is not a full joint spatial likelihood.
 Use `--output-dir PATH` only to redirect the deterministic bundle. Scientifically
 negative classes remain successful completed runs; only
 `implementation_blocked` suppresses the bundle and exits nonzero.
+
+## Goal 005
+
+Goal 005 extends the one-rate benchmark to prespecified generating rates
+`rho = 0.5, 1, 2` without changing the landscape, calendar, detection model,
+rate grid, likelihood, or neutral comparator. Each truth receives its own
+locally calibrated cutoff; the frozen `rho = 1` cutoff is transported to the
+flanks only as a separate diagnostic. The ignored 15-file review bundle is
+written to `artifacts/goal005_stochastic_one_rate_cross_rate/`. The completed
+result is `one_rate_recovery_robust_cutoff_nontransportable`: local recovery
+favours the stochastic process at all three truths, but the `rho = 1` cutoff
+is too conservative at both flanks. The result remains conditional on one
+landscape and a composite likelihood that omits between-site process
+dependence.
