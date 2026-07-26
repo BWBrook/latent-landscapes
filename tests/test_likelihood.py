@@ -72,6 +72,47 @@ def test_exact_profile_reports_every_class_mle_and_nominal_support() -> None:
     assert profile.support_components[0].upper_closed is True
 
 
+def test_explicit_lr_threshold_changes_only_support_membership() -> None:
+    likelihood = load_likelihood()
+    arguments = {
+        "model": "habitat",
+        "scope": "training",
+        "distances": {"A": 1.0, "B": 2.0},
+        "records": hand_records(),
+        "detection_probability": 0.5,
+    }
+
+    default_profile = likelihood.profile_likelihood(**arguments)
+    nominal_profile = likelihood.profile_likelihood(
+        **arguments, lr_threshold=likelihood.LR_THRESHOLD
+    )
+    strict_profile = likelihood.profile_likelihood(**arguments, lr_threshold=0.0)
+
+    assert nominal_profile == default_profile
+    assert strict_profile.classes == default_profile.classes
+    assert strict_profile.mle_classes == default_profile.mle_classes
+    assert strict_profile.maximum_log_likelihood == default_profile.maximum_log_likelihood
+    assert strict_profile.raw_breakpoint_count == default_profile.raw_breakpoint_count
+    assert strict_profile.clipped_unique_breakpoints == default_profile.clipped_unique_breakpoints
+    assert strict_profile.support_classes == strict_profile.mle_classes
+    assert strict_profile.support_components == (strict_profile.mle_classes[0].as_interval(),)
+
+
+@pytest.mark.parametrize("threshold", [-1.0, inf])
+def test_explicit_lr_threshold_must_be_finite_and_nonnegative(threshold: float) -> None:
+    likelihood = load_likelihood()
+
+    with pytest.raises(ValueError, match="LR threshold"):
+        likelihood.profile_likelihood(
+            model="habitat",
+            scope="training",
+            distances={"A": 1.0, "B": 2.0},
+            records=hand_records(),
+            detection_probability=0.5,
+            lr_threshold=threshold,
+        )
+
+
 def test_breakpoint_at_upper_domain_bound_is_a_nonempty_singleton_class() -> None:
     likelihood = load_likelihood()
     records = (Record("A", 1.0, 1),)

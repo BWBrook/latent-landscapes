@@ -23,11 +23,13 @@ mink-vole application is a later, separate programme or paper.
 
 1. Deterministic predator spread with one unknown global spread rate and known
    landscape, sources, and conductance.
-2. Stochastic spread and additional spread parameters.
-3. Prey-impact dynamics with direct predator observations.
-4. Indirect inference from prey responses.
-5. A synth-realistic stress test.
-6. A small, prespecified alternative-model set for model discrimination and
+2. Detection-noise calibration of the deterministic one-rate benchmark,
+   including a full-support predictive neutral baseline.
+3. Stochastic spread and additional spread parameters.
+4. Prey-impact dynamics with direct predator observations.
+5. Indirect inference from prey responses.
+6. A synth-realistic stress test.
+7. A small, prespecified alternative-model set for model discrimination and
    misspecification robustness.
 
 Progression up the ladder depends on scientific review of the preceding step.
@@ -54,6 +56,18 @@ neutral predictive baseline. The analysis distinguishes ideal process
 identifiability from design-specific practical identifiability. Failure triggers
 diagnosis, not retuning. The approved implementation contract is in
 `docs/goals/001-deterministic-predator-spread-identifiability-benchmark/`.
+
+## Goal 002
+
+Goal 002 freezes the Goal 001 process truth and sampling design and varies only
+the Bernoulli detection realization. It estimates the operating characteristics
+of the set-valued spread-rate estimator, calibrates its likelihood-ratio support
+at the generating rate, and tests predictive value against a time-stratified,
+full-support neutral baseline.
+
+This calibration rung deliberately precedes stochastic spread or additional
+focal parameters. Its purpose is to separate observation-driven uncertainty
+from process uncertainty before those sources are combined.
 
 ## Operating Style
 

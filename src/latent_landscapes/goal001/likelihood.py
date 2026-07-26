@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
-from math import inf, isclose, log
+from math import inf, isclose, isfinite, log
 from typing import Protocol
 
 RATE_DOMAIN = (0.25, 4.0)
@@ -147,8 +147,11 @@ def profile_likelihood(
     records: Sequence[RecordLike],
     detection_probability: float,
     rate_domain: tuple[float, float] = RATE_DOMAIN,
+    lr_threshold: float = LR_THRESHOLD,
 ) -> LikelihoodProfile:
     _validate_domain(rate_domain)
+    if not isfinite(lr_threshold) or lr_threshold < 0.0:
+        raise ValueError("LR threshold must be finite and nonnegative")
     raw_breakpoints = tuple(distances[record.site_id] / record.time for record in records)
     clipped_breakpoints = tuple(
         sorted({min(max(value, rate_domain[0]), rate_domain[1]) for value in raw_breakpoints})
@@ -175,7 +178,7 @@ def profile_likelihood(
     support_classes = tuple(
         value
         for value in classes
-        if value.log_likelihood != -inf and 2.0 * (maximum - value.log_likelihood) <= LR_THRESHOLD
+        if value.log_likelihood != -inf and 2.0 * (maximum - value.log_likelihood) <= lr_threshold
     )
     support_components = _union_intervals(tuple(value.as_interval() for value in support_classes))
     return LikelihoodProfile(
