@@ -82,8 +82,9 @@ def multi_source_dijkstra(
     return tuple(distances), tuple(labels)
 
 
-def compute_spread(landscape: Landscape) -> SpreadTruth:
-    weighted_edges: list[tuple[int, int, float]] = []
+def passable_edges(landscape: Landscape) -> tuple[tuple[int, int, float], ...]:
+    """Return accepted undirected passable rook edges in row-major order."""
+    edges: list[tuple[int, int, float]] = []
     for row in range(landscape.rows):
         for col in range(landscape.cols):
             if not landscape.passable[row, col]:
@@ -95,7 +96,7 @@ def compute_spread(landscape: Landscape) -> SpreadTruth:
                 if not landscape.passable[target_row, target_col]:
                     continue
                 target_id = target_row * landscape.cols + target_col
-                weighted_edges.append(
+                edges.append(
                     (
                         source_id,
                         target_id,
@@ -111,17 +112,31 @@ def compute_spread(landscape: Landscape) -> SpreadTruth:
                         ),
                     )
                 )
+    return tuple(edges)
 
-    source_labels = {
+
+def source_labels(landscape: Landscape) -> dict[int, str]:
+    """Return source-cell labels keyed by row-major cell identifier."""
+    return {
         row * landscape.cols + col: str(landscape.source_zone[row, col])
         for row in range(landscape.rows)
         for col in range(landscape.cols)
         if landscape.source_zone[row, col]
     }
+
+
+# Explicit names for downstream stochastic-process code.
+build_passable_edges = passable_edges
+build_source_labels = source_labels
+
+
+def compute_spread(landscape: Landscape) -> SpreadTruth:
+    weighted_edges = passable_edges(landscape)
+    source_labels_by_node = source_labels(landscape)
     distance_values, label_values = multi_source_dijkstra(
         node_count=landscape.cell_count,
         weighted_edges=weighted_edges,
-        source_labels=source_labels,
+        source_labels=source_labels_by_node,
     )
     arrival = np.asarray(distance_values, dtype=np.float64).reshape(landscape.shape)
     source_zone = np.asarray(label_values, dtype="U24").reshape(landscape.shape)

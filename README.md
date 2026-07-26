@@ -62,3 +62,18 @@ scientifically negative outcomes exit successfully; only
 Programme scope and method sequence are in `docs/programme.md`. Legacy-source
 handling is governed by `docs/provenance.md` and
 `docs/decisions/0001-rebuild-from-spatext.md`.
+
+Goal 003's frozen stochastic review is run with:
+
+```bash
+uv run python scripts/run_goal003.py
+```
+
+The ignored 13-file review pack is written to
+`artifacts/goal003_stochastic_spread_process/`. It uses exactly 100 ordered
+`SeedSequence(20260727)` PCG64 children, exponential edge times with
+`rate = rho / c_e` at `rho = 1`, and no normalization or tuning. The pack
+retains compact summaries and mechanically selected t50-rank realizations,
+never raw ensemble grids. A completed `time_scale_review_required` outcome is
+scientifically valid when stochastic path competition shifts global timing
+relative to Goal 001.

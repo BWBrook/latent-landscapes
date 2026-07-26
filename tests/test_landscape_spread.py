@@ -108,6 +108,19 @@ def test_edge_cost_uses_approved_baseline_equation() -> None:
     assert cost == pytest.approx(0.88 / ((0.33 + 0.64) / 2.0) + 0.46 * 3 / 4)
 
 
+def test_extracted_graph_helpers_retain_frozen_order_and_sources() -> None:
+    landscape_module = load_module("landscape")
+    spread_module = load_module("spread")
+    landscape = landscape_module.build_landscape()
+
+    edges = spread_module.passable_edges(landscape)
+    assert len(edges) == 10_120
+    assert edges[0][:2] == (0, 84)
+    assert edges[-1][0] < edges[-1][1]
+    labels = spread_module.source_labels(landscape)
+    assert len(labels) == 81
+
+
 def test_equal_cost_dijkstra_tie_uses_lexicographically_smaller_source() -> None:
     spread_module = load_module("spread")
 

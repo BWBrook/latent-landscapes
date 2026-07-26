@@ -25,11 +25,13 @@ mink-vole application is a later, separate programme or paper.
    landscape, sources, and conductance.
 2. Detection-noise calibration of the deterministic one-rate benchmark,
    including a full-support predictive neutral baseline.
-3. Stochastic spread and additional spread parameters.
-4. Prey-impact dynamics with direct predator observations.
-5. Indirect inference from prey responses.
-6. A synth-realistic stress test.
-7. A small, prespecified alternative-model set for model discrimination and
+3. Stochastic spread-process review, followed by one-rate recovery under
+   process and observation uncertainty.
+4. Additional spread parameters only after the one-rate stochastic benchmark.
+5. Prey-impact dynamics with direct predator observations.
+6. Indirect inference from prey responses.
+7. A synth-realistic stress test.
+8. A small, prespecified alternative-model set for model discrimination and
    misspecification robustness.
 
 Progression up the ladder depends on scientific review of the preceding step.
@@ -68,6 +70,18 @@ full-support neutral baseline.
 This calibration rung deliberately precedes stochastic spread or additional
 focal parameters. Its purpose is to separate observation-driven uncertainty
 from process uncertainty before those sources are combined.
+
+## Goal 003
+
+Goal 003 introduces a frozen conductance-weighted stochastic first-passage
+spread process while retaining `rho` as the sole future focal rate. It reviews
+latent arrival morphology, stochastic variation, landscape signal, source
+provenance, and temporal scale before any observation simulation or fitting.
+
+The process preserves Goal 001 mean edge transit times, not its deterministic
+whole-landscape arrival surface. Path competition can therefore accelerate the
+global wave. Goal 003 reports that effect explicitly and requires human review
+rather than post-hoc normalization.
 
 ## Operating Style
 
