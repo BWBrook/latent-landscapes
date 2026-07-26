@@ -77,3 +77,22 @@ retains compact summaries and mechanically selected t50-rank realizations,
 never raw ensemble grids. A completed `time_scale_review_required` outcome is
 scientifically valid when stochastic path competition shifts global timing
 relative to Goal 001.
+
+Goal 004 combines the accepted stochastic spread process with imperfect
+detection and evaluates one-rate recovery on the prospectively frozen
+`10, 20, 30, 40, 50, 60` survey calendar:
+
+```bash
+uv run python scripts/run_goal004.py
+```
+
+The ignored 12-file review pack is written to
+`artifacts/goal004_stochastic_one_rate_recovery/`. It calibrates a
+seven-category, Jeffreys-smoothed site-history simulated composite likelihood
+at `rho = 1`, checks the full 4,096-draw integration bank against two disjoint
+2,048-draw halves, and compares training-only fitted stochastic predictions
+with the full-support time-stratified neutral. The method preserves dependence
+within each site's repeated history but is not a full joint spatial likelihood.
+Use `--output-dir PATH` only to redirect the deterministic bundle. Scientifically
+negative classes remain successful completed runs; only
+`implementation_blocked` suppresses the bundle and exits nonzero.

@@ -108,3 +108,42 @@ def test_baseline_rejects_unknown_holdout_times_and_empty_holdout() -> None:
         baseline.score_time_stratified_baseline(model, (Record(20, 1),))
     with pytest.raises(ValueError, match="empty"):
         baseline.score_time_stratified_baseline(model, ())
+
+
+def test_explicit_calendar_generalizes_baseline_without_changing_default() -> None:
+    baseline = load_baseline()
+    calendar = (10, 20, 30, 40, 50, 60)
+    training = tuple(
+        record for time in calendar for record in (Record(time, 0), Record(time, int(time >= 30)))
+    )
+
+    model = baseline.fit_time_stratified_baseline(training, survey_times=calendar)
+
+    assert tuple(time for time, _ in model.probabilities) == calendar
+    assert model.survey_times == calendar
+    assert model.probability(10) == pytest.approx(1.0 / 6.0)
+    assert model.probability(30) == pytest.approx(0.5)
+    assert baseline.fit_time_stratified_baseline(frozen_training_records()).survey_times == (
+        10,
+        30,
+        50,
+        70,
+        90,
+        110,
+    )
+
+
+def test_explicit_calendar_rejects_missing_duplicate_and_unknown_times() -> None:
+    baseline = load_baseline()
+    calendar = (10, 20, 30, 40, 50, 60)
+    training = tuple(Record(time, 0) for time in calendar)
+
+    with pytest.raises(ValueError, match="strictly increasing"):
+        baseline.fit_time_stratified_baseline(training, survey_times=(10, 20, 20))
+    with pytest.raises(ValueError, match="missing survey time"):
+        baseline.fit_time_stratified_baseline(training[:-1], survey_times=calendar)
+    with pytest.raises(ValueError, match="unknown survey time"):
+        baseline.fit_time_stratified_baseline(
+            (*training, Record(70, 0)),
+            survey_times=calendar,
+        )

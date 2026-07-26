@@ -5,6 +5,7 @@ from __future__ import annotations
 from collections import Counter
 from collections.abc import Sequence
 from dataclasses import dataclass
+from itertools import pairwise
 from math import isfinite, log
 from typing import Protocol
 
@@ -22,10 +23,12 @@ class TimeRecordLike(Protocol):
 @dataclass(frozen=True, slots=True)
 class TimeStratifiedBaseline:
     probabilities: tuple[tuple[int, float], ...]
+    survey_times: tuple[int, ...] = SURVEY_TIMES
 
     def __post_init__(self) -> None:
         times = tuple(time for time, _ in self.probabilities)
-        if times != SURVEY_TIMES:
+        _validate_calendar(self.survey_times)
+        if times != self.survey_times:
             raise ValueError("baseline probabilities must cover the frozen survey times")
         if any(not isfinite(value) or not 0.0 < value < 1.0 for _, value in self.probabilities):
             raise ValueError("baseline probabilities must be finite and lie in (0, 1)")
@@ -46,18 +49,22 @@ class BaselineScore:
 
 def fit_time_stratified_baseline(
     training_records: Sequence[TimeRecordLike],
+    *,
+    survey_times: tuple[int, ...] = SURVEY_TIMES,
 ) -> TimeStratifiedBaseline:
+    _validate_calendar(survey_times)
     detections: Counter[int] = Counter()
     counts: Counter[int] = Counter()
     for record in training_records:
-        _validate_record(record)
+        _validate_record(record, survey_times)
         counts[record.time] += 1
         detections[record.time] += record.detected
-    missing = tuple(time for time in SURVEY_TIMES if counts[time] == 0)
+    missing = tuple(time for time in survey_times if counts[time] == 0)
     if missing:
         raise ValueError(f"missing survey time strata: {missing}")
     return TimeStratifiedBaseline(
-        tuple((time, (detections[time] + 0.5) / (counts[time] + 1.0)) for time in SURVEY_TIMES)
+        tuple((time, (detections[time] + 0.5) / (counts[time] + 1.0)) for time in survey_times),
+        survey_times,
     )
 
 
@@ -70,7 +77,7 @@ def score_time_stratified_baseline(
     total_log_score = 0.0
     squared_errors = 0.0
     for record in holdout_records:
-        _validate_record(record)
+        _validate_record(record, model.survey_times)
         probability = model.probability(record.time)
         total_log_score += log(probability if record.detected else 1.0 - probability)
         squared_errors += (record.detected - probability) ** 2
@@ -81,8 +88,13 @@ def score_time_stratified_baseline(
     )
 
 
-def _validate_record(record: TimeRecordLike) -> None:
-    if record.time not in SURVEY_TIMES:
+def _validate_record(record: TimeRecordLike, survey_times: tuple[int, ...]) -> None:
+    if record.time not in survey_times:
         raise ValueError(f"unknown survey time: {record.time}")
     if record.detected not in (0, 1):
         raise ValueError("detected outcome must be binary")
+
+
+def _validate_calendar(survey_times: tuple[int, ...]) -> None:
+    if not survey_times or any(left >= right for left, right in pairwise(survey_times)):
+        raise ValueError("survey times must be nonempty and strictly increasing")

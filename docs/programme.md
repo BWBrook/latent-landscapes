@@ -83,6 +83,30 @@ whole-landscape arrival surface. Path competition can therefore accelerate the
 global wave. Goal 003 reports that effect explicitly and requires human review
 rather than post-hoc normalization.
 
+## Goal 004
+
+Goal 004 is the first recovery benchmark for the accepted stochastic generator.
+It retains the frozen Goal 001 sampling sites and cluster split, replaces only
+the saturated deterministic-era observation calendar with the prospectively
+chosen `10, 20, 30, 40, 50, 60` schedule, and generates one complete stochastic
+arrival field plus one joint detection history per dataset.
+
+Inference uses a seven-category, Jeffreys-smoothed site-history simulated
+composite likelihood over one independent 4,096-draw integration bank. The
+construction preserves within-site dependence across repeated visits and
+surveys, but deliberately omits between-site dependence from the shared
+stochastic edge field and is not a full joint spatial likelihood. Likelihood
+support is calibrated only at `rho = 1` under the frozen landscape, design,
+calendar, detection model, rate grid, and integration scheme.
+
+The complete calibration and validation calculation is repeated with two
+disjoint 2,048-draw bank halves. Held-out predictions use rate and neutral
+fits based on training clusters only, with the stochastic comparison taking
+the worst Brier score over every tied training-MLE grid point. Bank instability,
+weak support topology, failed calibration, neutral superiority, and predictive
+inconclusiveness are all completed scientific outcomes rather than reasons to
+retune the accepted process.
+
 ## Operating Style
 
 Work is goal-based and modular, with human review at scientific gates. Apply
