@@ -110,3 +110,21 @@ favours the stochastic process at all three truths, but the `rho = 1` cutoff
 is too conservative at both flanks. The result remains conditional on one
 landscape and a composite likelihood that omits between-site process
 dependence.
+
+## Goal 006
+
+Goal 006 tests whether geometric-mean-preserving landscape-resistance contrast
+produces a spatial signal beyond a global change in spread speed. It evaluates
+`eta = 0, 0.5, 1, 1.5, 2` at fixed `rho = 1`, reusing one exponential edge
+shock vector across all eta values within each of 100 edge-field replicates:
+
+```bash
+uv run python scripts/run_goal006.py
+```
+
+The ignored 15-file review pack is written to
+`artifacts/goal006_stochastic_resistance_contrast/`. Raw arrivals are retained
+only long enough to form compact replicate, habitat, source, and representative
+summaries. Alignment removes global-time confounding only in diagnostics; it
+does not alter the generator. This is a process-suitability review, not a
+joint `(rho, eta)` identifiability or observation benchmark.

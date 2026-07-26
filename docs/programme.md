@@ -120,6 +120,18 @@ stochastic recovery passes at all three truths, but the central cutoff does
 not transport. The benchmark remains conditional on one landscape and the
 Goal 004 composite likelihood, which omits between-site process dependence.
 
+## Goal 006
+
+Goal 006 introduces one additional process parameter, landscape-resistance
+contrast `eta`, while fixing `rho = 1`. The transform preserves the geometric
+mean accepted edge cost and is evaluated at `0, 0.5, 1, 1.5, 2` using paired
+exponential edge shocks. The eta-one field must replay the frozen Goal 003
+process exactly. Global-time alignment is used only for diagnostic residuals;
+replicate-level matched-front, rank, habitat, and source metrics determine
+whether contrast has a stable spatial signature. The 15-file review pack and
+decision class are produced by `scripts/run_goal006.py`. This goal does not
+fit parameters, simulate observations, or claim joint identifiability.
+
 ## Operating Style
 
 Work is goal-based and modular, with human review at scientific gates. Apply
