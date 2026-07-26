@@ -33,11 +33,11 @@ mink-vole application is a later, separate programme or paper.
 Progression up the ladder depends on scientific review of the preceding step.
 Negative or weak-identifiability results are valid outcomes.
 
-## First Future Goal
+## Goal 001
 
-The first future goal is not yet drafted. Its intended scope is an exact
-one-dimensional likelihood profile for spread rate from imperfect direct
-predator observations on the approved synth-medium landscape.
+Goal 001 is the deterministic predator-spread identifiability benchmark. Its
+scope is an exact one-dimensional likelihood profile for spread rate from
+imperfect direct predator observations on the approved synth-medium landscape.
 
 The observation design will use:
 
@@ -47,9 +47,13 @@ The observation design will use:
 - no false positives; and
 - spatial cluster holdout.
 
-A geometry-only nearest-source radial wave will be the neutral comparator. The
-analysis must distinguish ideal process identifiability from design-specific
-practical identifiability. Failure triggers diagnosis, not retuning.
+A geometry-only nearest-source radial wave is the `neutral` machine-readable
+**geometry-only hard-front comparator**. It is a deliberately rigid comparator
+with deterministic occupancy and no false positives, not yet a full-support
+neutral predictive baseline. The analysis distinguishes ideal process
+identifiability from design-specific practical identifiability. Failure triggers
+diagnosis, not retuning. The approved implementation contract is in
+`docs/goals/001-deterministic-predator-spread-identifiability-benchmark/`.
 
 ## Operating Style
 
