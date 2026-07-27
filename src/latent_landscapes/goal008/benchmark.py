@@ -88,20 +88,39 @@ PINNED_SOURCE_PATHS = {
     "lockfile_blob": "uv.lock",
 }
 
-CENTRAL_REFERENCE = {
-    "calibration_projection_sha256": (
-        "60b541649ad8fffa7bef0810c5246358c50dacf01027c2a6fa5bf6cbb5523f24"
-    ),
-    "validation_projection_sha256": (
-        "ac559b76981b9962db4e537f725dd8c87b8348866e4c28000c7316348bb08439"
-    ),
-    "bank_projection_sha256": ("76168e5525ddf86f50c702c88ffff04206875de19acba12801c0d548dd788e3d"),
+CENTRAL_HISTORICAL_RAW_HASHES = {
+    "calibration": "60b541649ad8fffa7bef0810c5246358c50dacf01027c2a6fa5bf6cbb5523f24",
+    "validation": "ac559b76981b9962db4e537f725dd8c87b8348866e4c28000c7316348bb08439",
+    "bank": "76168e5525ddf86f50c702c88ffff04206875de19acba12801c0d548dd788e3d",
+}
+CENTRAL_STRUCTURAL_HASHES = {
+    "calibration": "2da6de6fd746892c72e4ba7b2eff5174c494f33912f4b097c2d7ed3c64d916d7",
+    "validation": "9edab67ef228a0e8ec634caae235e9f858f1fd461e5886dc0e113d5aa0acb173",
+    "bank": "ef9510ad0bab11c6bc1f2b6281be485499343b66aac3ae7b98d4525d95af8971",
+}
+CENTRAL_CANONICAL_HASHES = {
+    "calibration": "b2d157ce2ab0c2303f6a9cc9455c9c64f89275581eb9805ba745b0f03f9955b9",
+    "validation": "bce714706ccf2ecdb9377d213ed54f17d37c3b0c30bb4b9ae11fada0351452f4",
+    "bank": "5c5c97e2b3ab273f7976a0fda1285cb56c94d25a3a06803a2b835eb87c7cb5ce",
+}
+CENTRAL_REFERENCE: dict[str, object] = {
+    "historical_raw_hashes": CENTRAL_HISTORICAL_RAW_HASHES,
+    "structural_hashes": CENTRAL_STRUCTURAL_HASHES,
+    "canonical_hashes": CENTRAL_CANONICAL_HASHES,
+    "seed_manifest_sha256": ("2b57f1eb90db41201d5a1311db168c7012953e4f6683bd5c37845ac7a0113aae"),
+    "source_identity_sha256": ("e4ff4b3a9db477b39137b85c44e9c2714abbdf1e338fe7b0a71d1b69c65850aa"),
     "outcome": "advance_to_joint_cross_truth_perfect_detection",
-    "cutoffs": {
-        "full": 90.52424805293424,
-        "first_half": 91.98552825118509,
-        "second_half": 87.52085163628863,
-    },
+}
+CANONICALIZATION_RULE = {
+    "finite_float_decimal_places": 9,
+    "negative_zero": "normalized_to_positive_zero",
+    "nonfinite": "rejected_before_canonicalization",
+    "representation": "json_number_rounded_to_decimal_places",
+}
+NONFINITE_TAGS = {
+    "nan": "__nonfinite_float__:nan",
+    "positive_infinity": "__nonfinite_float__:positive_infinity",
+    "negative_infinity": "__nonfinite_float__:negative_infinity",
 }
 
 
@@ -360,6 +379,13 @@ class CampaignExecutionTelemetry:
 
 
 @dataclass(frozen=True, slots=True)
+class ProjectionHashes:
+    raw_sha256: str
+    structural_sha256: str
+    canonical_sha256: str
+
+
+@dataclass(frozen=True, slots=True)
 class CentralProjection:
     truth_cell: str
     calibration_rows: tuple[CalibrationResult, ...]
@@ -370,6 +396,12 @@ class CentralProjection:
     checks: dict[str, bool]
     observed: dict[str, object]
     expected: dict[str, object]
+    raw_hashes: dict[str, str | None]
+    historical_raw_hashes: dict[str, str]
+    structural_hashes: dict[str, str | None]
+    canonical_hashes: dict[str, str | None]
+    canonicalization_rule: dict[str, object]
+    nonfinite_paths: tuple[str, ...]
 
 
 @dataclass(frozen=True, slots=True)
@@ -380,6 +412,7 @@ class Goal008Result:
     validation_results: tuple[ValidationResult, ...]
     representative_profiles: tuple[RepresentativeProfile, ...]
     cell_bank_summaries: tuple[CellBankSummary, ...]
+    cell_invariants: dict[str, dict[str, bool]]
     central_reconciliation: CentralProjection
     execution_telemetry: CampaignExecutionTelemetry
     invariants: dict[str, bool]
@@ -730,10 +763,21 @@ def run_campaign(
         row for cell_result in cell_results for row in cell_result.representative_profiles
     )
     summaries = tuple(row for cell_result in cell_results for row in cell_result.bank_summaries)
-    central = _central_projection(config, calibration, validation, summaries)
     expected_seed_digest = _seed_manifest_digest(manifest)
+    source_invariants = _source_invariants(config)
+    central = _central_projection(
+        config,
+        calibration,
+        validation,
+        summaries,
+        manifest,
+        source_invariants,
+    )
+    cell_invariants = {
+        result.truth_cell.cell_id: dict(result.invariants) for result in cell_results
+    }
     invariants = {
-        **_source_invariants(config),
+        **source_invariants,
         "cell_result_order": tuple(result.truth_cell for result in cell_results)
         == config.truth_cells,
         "cell_invariants": all(
@@ -777,6 +821,7 @@ def run_campaign(
         validation_results=validation,
         representative_profiles=representatives,
         cell_bank_summaries=summaries,
+        cell_invariants=cell_invariants,
         central_reconciliation=central,
         execution_telemetry=execution_telemetry,
         invariants=invariants,
@@ -796,8 +841,9 @@ def campaign_digest(result: Goal008Result) -> str:
         for field in fields(result)
         if field.name != "execution_telemetry"
     }
+    serializable, _ = diagnostic_json_value(scientific_content)
     payload = json.dumps(
-        _canonical_value(scientific_content),
+        serializable,
         sort_keys=True,
         separators=(",", ":"),
         allow_nan=False,
@@ -1133,34 +1179,71 @@ def _central_projection(
     calibration: tuple[CalibrationResult, ...],
     validation: tuple[ValidationResult, ...],
     summaries: tuple[CellBankSummary, ...],
+    manifest: goal007.SeedManifest,
+    source_invariants: Mapping[str, bool],
 ) -> CentralProjection:
     central_calibration = tuple(row for row in calibration if row.truth_cell == "cell-04")
     central_validation = tuple(row for row in validation if row.truth_cell == "cell-04")
     central_summaries = tuple(row for row in summaries if row.truth_cell == "cell-04")
+    projection_payloads = {
+        "calibration": [_central_calibration_payload(row) for row in central_calibration],
+        "validation": [_central_validation_payload(row) for row in central_validation],
+        "bank": [_central_bank_payload(row) for row in central_summaries],
+    }
+    raw_hashes: dict[str, str | None] = {}
+    structural_hashes: dict[str, str | None] = {}
+    canonical_hashes: dict[str, str | None] = {}
+    nonfinite_paths: list[str] = []
+    for label, payload in projection_payloads.items():
+        try:
+            hashes = projection_hashes(payload)
+        except ValueError:
+            raw_hashes[label] = None
+            structural_hashes[label] = None
+            canonical_hashes[label] = None
+            nonfinite_paths.extend(_nonfinite_paths(payload, path=f"$.{label}"))
+        else:
+            raw_hashes[label] = hashes.raw_sha256
+            structural_hashes[label] = hashes.structural_sha256
+            canonical_hashes[label] = hashes.canonical_sha256
+
+    seed_manifest_sha256 = _projection_digest(_central_seed_payload(manifest))
+    source_identity_sha256 = _projection_digest(SOURCE_IDENTITY)
+    central_outcome = _central_outcome(central_summaries)
     observed: dict[str, object] = {
-        "calibration_projection_sha256": _projection_digest(
-            [_central_calibration_payload(row) for row in central_calibration]
-        ),
-        "validation_projection_sha256": _projection_digest(
-            [_central_validation_payload(row) for row in central_validation]
-        ),
-        "bank_projection_sha256": _projection_digest(
-            [_central_bank_payload(row) for row in central_summaries]
-        ),
-        "outcome": _central_outcome(central_summaries),
-        "cutoffs": {row.bank_variant: row.cutoff.cutoff for row in central_summaries},
+        "raw_hashes": raw_hashes,
+        "structural_hashes": structural_hashes,
+        "canonical_hashes": canonical_hashes,
+        "seed_manifest_sha256": seed_manifest_sha256,
+        "source_identity_sha256": source_identity_sha256,
+        "source_identity": dict(SOURCE_IDENTITY),
+        "outcome": central_outcome,
+        "nonfinite_paths": tuple(nonfinite_paths),
     }
     if config.is_production:
-        checks = {
-            key: observed[key] == CENTRAL_REFERENCE[key]
-            for key in (
-                "calibration_projection_sha256",
-                "validation_projection_sha256",
-                "bank_projection_sha256",
-                "outcome",
-                "cutoffs",
-            )
+        checks: dict[str, bool] = {
+            "central_projection_finite": not nonfinite_paths,
+            "seed_manifest_identity": (
+                seed_manifest_sha256 == CENTRAL_REFERENCE["seed_manifest_sha256"]
+            ),
+            "source_identity": (
+                source_identity_sha256 == CENTRAL_REFERENCE["source_identity_sha256"]
+                and source_invariants.get("frozen_source_blobs_reconciled") is True
+            ),
+            "central_outcome": central_outcome == CENTRAL_REFERENCE["outcome"],
         }
+        checks.update(
+            {
+                f"{label}_structure": (structural_hashes[label] == CENTRAL_STRUCTURAL_HASHES[label])
+                for label in projection_payloads
+            }
+        )
+        checks.update(
+            {
+                f"{label}_canonical": (canonical_hashes[label] == CENTRAL_CANONICAL_HASHES[label])
+                for label in projection_payloads
+            }
+        )
         matched: bool | None = all(checks.values())
     else:
         checks = {}
@@ -1175,11 +1258,18 @@ def _central_projection(
         checks=checks,
         observed=observed,
         expected=dict(CENTRAL_REFERENCE),
+        raw_hashes=raw_hashes,
+        historical_raw_hashes=dict(CENTRAL_HISTORICAL_RAW_HASHES),
+        structural_hashes=structural_hashes,
+        canonical_hashes=canonical_hashes,
+        canonicalization_rule=dict(CANONICALIZATION_RULE),
+        nonfinite_paths=tuple(nonfinite_paths),
     )
 
 
 def _central_calibration_payload(row: CalibrationResult) -> dict[str, object]:
     return {
+        "phase": row.phase,
         "dataset_index": row.block_index,
         "bank_variant": row.bank_variant,
         "analyst_record_count": row.analyst_record_count,
@@ -1197,6 +1287,7 @@ def _central_calibration_payload(row: CalibrationResult) -> dict[str, object]:
 
 def _central_validation_payload(row: ValidationResult) -> dict[str, object]:
     return {
+        "phase": row.phase,
         "dataset_index": row.block_index,
         "bank_variant": row.bank_variant,
         "analyst_record_count": row.analyst_record_count,
@@ -1271,6 +1362,25 @@ def _central_bank_payload(row: CellBankSummary) -> dict[str, object]:
     }
 
 
+def _central_seed_payload(
+    manifest: goal007.SeedManifest,
+) -> list[dict[str, object]]:
+    return [
+        {
+            "phase": record.phase,
+            "index": record.index,
+            "stream_role": record.stream_role,
+            "entropy": record.entropy,
+            "spawn_key": record.spawn_key,
+            "state_words": record.state_words,
+            "pool_size": record.pool_size,
+            "bit_generator": "PCG64",
+            "between_site_process_dependence": "omitted",
+        }
+        for record in manifest.stream_records
+    ]
+
+
 def _central_outcome(rows: tuple[CellBankSummary, ...]) -> str:
     classes = tuple(row.downstream_class for row in rows)
     if classes == ("cell_joint_recoverable",) * 3:
@@ -1278,6 +1388,16 @@ def _central_outcome(rows: tuple[CellBankSummary, ...]) -> str:
     if len(classes) != 3 or len(set(classes)) != 1:
         return "likelihood_approximation_unstable"
     return classes[0] if classes else "implementation_blocked"
+
+
+def projection_hashes(payload: object) -> ProjectionHashes:
+    """Return raw, exact-structure, and nine-decimal projection hashes."""
+    canonical = _canonical_projection_value(payload)
+    return ProjectionHashes(
+        raw_sha256=_projection_digest(payload),
+        structural_sha256=_projection_digest(_structural_projection_value(payload)),
+        canonical_sha256=_projection_digest(canonical),
+    )
 
 
 def _projection_digest(payload: object) -> str:
@@ -1406,8 +1526,168 @@ def _canonical_value(value: object) -> object:
         }
     if isinstance(value, (tuple, list)):
         return [_canonical_value(item) for item in value]
+    if isinstance(value, np.bool_):
+        return bool(value)
     if isinstance(value, np.integer):
         return int(value)
     if isinstance(value, np.floating):
         return float(value)
     return value
+
+
+def _canonical_projection_value(value: object, *, path: str = "$") -> object:
+    if is_dataclass(value) and not isinstance(value, type):
+        return {
+            field.name: _canonical_projection_value(
+                getattr(value, field.name),
+                path=_mapping_path(path, field.name),
+            )
+            for field in fields(value)
+        }
+    if isinstance(value, np.ndarray):
+        return _canonical_projection_value(value.tolist(), path=path)
+    if isinstance(value, Mapping):
+        return {
+            str(key): _canonical_projection_value(
+                item,
+                path=_mapping_path(path, str(key)),
+            )
+            for key, item in sorted(value.items(), key=lambda pair: str(pair[0]))
+        }
+    if isinstance(value, (tuple, list)):
+        return [
+            _canonical_projection_value(item, path=f"{path}[{index}]")
+            for index, item in enumerate(value)
+        ]
+    if isinstance(value, np.bool_):
+        return bool(value)
+    if isinstance(value, np.integer):
+        return int(value)
+    if isinstance(value, np.floating):
+        value = float(value)
+    if isinstance(value, float):
+        if not isfinite(value):
+            raise ValueError(f"non-finite projection value at {path}")
+        rounded = round(value, 9)
+        return 0.0 if rounded == 0.0 else rounded
+    return value
+
+
+def _structural_projection_value(value: object) -> object:
+    if is_dataclass(value) and not isinstance(value, type):
+        return {
+            field.name: _structural_projection_value(getattr(value, field.name))
+            for field in fields(value)
+        }
+    if isinstance(value, np.ndarray):
+        return _structural_projection_value(value.tolist())
+    if isinstance(value, Mapping):
+        return {
+            str(key): _structural_projection_value(item)
+            for key, item in sorted(value.items(), key=lambda pair: str(pair[0]))
+        }
+    if isinstance(value, (tuple, list)):
+        return [_structural_projection_value(item) for item in value]
+    if isinstance(value, np.bool_):
+        return bool(value)
+    if isinstance(value, np.integer):
+        return int(value)
+    if isinstance(value, (float, np.floating)):
+        return {"__finite_float__": True}
+    return value
+
+
+def diagnostic_json_value(
+    value: object,
+) -> tuple[object, tuple[dict[str, str], ...]]:
+    """Convert a result payload to strict JSON and enumerate tagged non-finites."""
+    nonfinite_values: list[dict[str, str]] = []
+
+    def convert(item: object, path: str) -> object:
+        if is_dataclass(item) and not isinstance(item, type):
+            return {
+                field.name: convert(
+                    getattr(item, field.name),
+                    _mapping_path(path, field.name),
+                )
+                for field in fields(item)
+            }
+        if isinstance(item, np.ndarray):
+            return convert(item.tolist(), path)
+        if isinstance(item, Mapping):
+            return {
+                str(key): convert(value, _mapping_path(path, str(key)))
+                for key, value in sorted(item.items(), key=lambda pair: str(pair[0]))
+            }
+        if isinstance(item, (tuple, list)):
+            return [convert(value, f"{path}[{index}]") for index, value in enumerate(item)]
+        if isinstance(item, np.bool_):
+            return bool(item)
+        if isinstance(item, np.integer):
+            return int(item)
+        if isinstance(item, np.floating):
+            item = float(item)
+        if isinstance(item, float) and not isfinite(item):
+            if np.isnan(item):
+                tag = NONFINITE_TAGS["nan"]
+            elif item > 0.0:
+                tag = NONFINITE_TAGS["positive_infinity"]
+            else:
+                tag = NONFINITE_TAGS["negative_infinity"]
+            nonfinite_values.append({"path": path, "tag": tag})
+            return tag
+        return item
+
+    return convert(value, "$"), tuple(nonfinite_values)
+
+
+def _nonfinite_paths(value: object, *, path: str = "$") -> tuple[str, ...]:
+    return tuple(row["path"] for row in nonfinite_value_evidence(value, path=path))
+
+
+def nonfinite_value_evidence(
+    value: object,
+    *,
+    path: str = "$",
+) -> tuple[dict[str, str], ...]:
+    """Return tagged paths for non-finite float leaves without copying the payload."""
+    rows: list[dict[str, str]] = []
+
+    def scan(item: object, item_path: str) -> None:
+        if is_dataclass(item) and not isinstance(item, type):
+            for field in fields(item):
+                scan(
+                    getattr(item, field.name),
+                    _mapping_path(item_path, field.name),
+                )
+            return
+        if isinstance(item, np.ndarray):
+            scan(item.tolist(), item_path)
+            return
+        if isinstance(item, Mapping):
+            for key, nested in sorted(item.items(), key=lambda pair: str(pair[0])):
+                scan(nested, _mapping_path(item_path, str(key)))
+            return
+        if isinstance(item, (tuple, list)):
+            for index, nested in enumerate(item):
+                scan(nested, f"{item_path}[{index}]")
+            return
+        if isinstance(item, np.floating):
+            item = float(item)
+        if isinstance(item, float) and not isfinite(item):
+            if np.isnan(item):
+                tag = NONFINITE_TAGS["nan"]
+            elif item > 0.0:
+                tag = NONFINITE_TAGS["positive_infinity"]
+            else:
+                tag = NONFINITE_TAGS["negative_infinity"]
+            rows.append({"path": item_path, "tag": tag})
+
+    scan(value, path)
+    return tuple(rows)
+
+
+def _mapping_path(path: str, key: str) -> str:
+    if key.isidentifier():
+        return f"{path}.{key}"
+    return f"{path}[{json.dumps(key)}]"

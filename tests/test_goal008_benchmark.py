@@ -140,6 +140,146 @@ def test_support_boundary_faces_are_deterministic_and_complete() -> None:
     )
 
 
+def test_platform_stable_projection_hashes_keep_structure_exact() -> None:
+    value = 1.2345678912
+    payload = {
+        "row": 0,
+        "identity": ["validation", "full"],
+        "value": value,
+        "nested": {"negative_zero": -0.0},
+    }
+
+    exact = benchmark.projection_hashes(payload)
+    replay = benchmark.projection_hashes(payload)
+    one_ulp = benchmark.projection_hashes(payload | {"value": float(np.nextafter(value, np.inf))})
+    material = benchmark.projection_hashes(payload | {"value": value + 1e-6})
+    structural = benchmark.projection_hashes(payload | {"row": 1})
+
+    assert replay == exact
+    assert one_ulp.raw_sha256 != exact.raw_sha256
+    assert one_ulp.canonical_sha256 == exact.canonical_sha256
+    assert one_ulp.structural_sha256 == exact.structural_sha256
+    assert material.canonical_sha256 != exact.canonical_sha256
+    assert structural.structural_sha256 != exact.structural_sha256
+    assert (
+        benchmark.projection_hashes({"value": -0.0}).canonical_sha256
+        == benchmark.projection_hashes({"value": 0.0}).canonical_sha256
+    )
+
+
+def test_platform_stable_projection_rejects_nonfinite_values_with_paths() -> None:
+    for value in (float("nan"), float("inf"), float("-inf")):
+        with pytest.raises(ValueError, match=r"\$\.nested\[0\]"):
+            benchmark.projection_hashes({"nested": [value]})
+
+
+def test_reviewed_goal007_projection_constants_are_hardcoded() -> None:
+    assert benchmark.CENTRAL_REFERENCE == {
+        "historical_raw_hashes": {
+            "calibration": "60b541649ad8fffa7bef0810c5246358c50dacf01027c2a6fa5bf6cbb5523f24",
+            "validation": "ac559b76981b9962db4e537f725dd8c87b8348866e4c28000c7316348bb08439",
+            "bank": "76168e5525ddf86f50c702c88ffff04206875de19acba12801c0d548dd788e3d",
+        },
+        "structural_hashes": {
+            "calibration": "2da6de6fd746892c72e4ba7b2eff5174c494f33912f4b097c2d7ed3c64d916d7",
+            "validation": "9edab67ef228a0e8ec634caae235e9f858f1fd461e5886dc0e113d5aa0acb173",
+            "bank": "ef9510ad0bab11c6bc1f2b6281be485499343b66aac3ae7b98d4525d95af8971",
+        },
+        "canonical_hashes": {
+            "calibration": "b2d157ce2ab0c2303f6a9cc9455c9c64f89275581eb9805ba745b0f03f9955b9",
+            "validation": "bce714706ccf2ecdb9377d213ed54f17d37c3b0c30bb4b9ae11fada0351452f4",
+            "bank": "5c5c97e2b3ab273f7976a0fda1285cb56c94d25a3a06803a2b835eb87c7cb5ce",
+        },
+        "seed_manifest_sha256": (
+            "2b57f1eb90db41201d5a1311db168c7012953e4f6683bd5c37845ac7a0113aae"
+        ),
+        "source_identity_sha256": (
+            "e4ff4b3a9db477b39137b85c44e9c2714abbdf1e338fe7b0a71d1b69c65850aa"
+        ),
+        "outcome": "advance_to_joint_cross_truth_perfect_detection",
+    }
+
+
+def test_central_phase_mutation_fails_the_real_reconciliation_gate(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    result = benchmark.run_campaign(tiny_config(), workers=1)
+    central_calibration = tuple(
+        row for row in result.calibration_results if row.truth_cell == "cell-04"
+    )
+    central_validation = tuple(
+        row for row in result.validation_results if row.truth_cell == "cell-04"
+    )
+    central_summaries = tuple(
+        row for row in result.cell_bank_summaries if row.truth_cell == "cell-04"
+    )
+    payloads = {
+        "calibration": [benchmark._central_calibration_payload(row) for row in central_calibration],
+        "validation": [benchmark._central_validation_payload(row) for row in central_validation],
+        "bank": [benchmark._central_bank_payload(row) for row in central_summaries],
+    }
+    hashes = {label: benchmark.projection_hashes(payload) for label, payload in payloads.items()}
+    monkeypatch.setattr(
+        benchmark,
+        "CENTRAL_STRUCTURAL_HASHES",
+        {label: projection.structural_sha256 for label, projection in hashes.items()},
+    )
+    monkeypatch.setattr(
+        benchmark,
+        "CENTRAL_CANONICAL_HASHES",
+        {label: projection.canonical_sha256 for label, projection in hashes.items()},
+    )
+    reference = dict(benchmark.CENTRAL_REFERENCE)
+    reference["seed_manifest_sha256"] = benchmark._projection_digest(
+        benchmark._central_seed_payload(result.seed_manifest)
+    )
+    reference["source_identity_sha256"] = benchmark._projection_digest(benchmark.SOURCE_IDENTITY)
+    reference["outcome"] = benchmark._central_outcome(central_summaries)
+    monkeypatch.setattr(benchmark, "CENTRAL_REFERENCE", reference)
+    monkeypatch.setattr(
+        benchmark.Goal008Config,
+        "is_production",
+        property(lambda self: True),
+    )
+    source_invariants = {"frozen_source_blobs_reconciled": True}
+
+    exact = benchmark._central_projection(
+        result.config,
+        result.calibration_results,
+        result.validation_results,
+        result.cell_bank_summaries,
+        result.seed_manifest,
+        source_invariants,
+    )
+    assert exact.production_reference_match is True
+
+    mutated_calibration = list(result.calibration_results)
+    central_index = next(
+        index for index, row in enumerate(mutated_calibration) if row.truth_cell == "cell-04"
+    )
+    mutated_calibration[central_index] = replace(
+        mutated_calibration[central_index],
+        phase="validation",
+    )
+    mutated = benchmark._central_projection(
+        result.config,
+        tuple(mutated_calibration),
+        result.validation_results,
+        result.cell_bank_summaries,
+        result.seed_manifest,
+        source_invariants,
+    )
+
+    assert mutated.production_reference_match is False
+    assert mutated.checks["calibration_structure"] is False
+    assert mutated.checks["calibration_canonical"] is False
+    assert all(
+        passed
+        for name, passed in mutated.checks.items()
+        if name not in {"calibration_structure", "calibration_canonical"}
+    )
+
+
 def test_config_and_cell_entrypoint_reject_duplicate_or_unknown_cells() -> None:
     cells = _tiny_truth_cells()
     with pytest.raises(ValueError, match="unique"):
@@ -271,6 +411,11 @@ def test_tiny_campaign_has_local_cutoffs_central_projection_and_worker_determini
     assert len(sequential.representative_profiles) == 9 * 3
     assert sequential.outcome != "implementation_blocked"
     assert all(sequential.invariants.values())
+    assert tuple(sequential.cell_invariants) == tuple(
+        cell.cell_id for cell in sequential.config.truth_cells
+    )
+    assert len(sequential.cell_invariants) == 9
+    assert all(all(invariants.values()) for invariants in sequential.cell_invariants.values())
     assert benchmark.campaign_digest(sequential) == benchmark.campaign_digest(parallel)
     changed_telemetry = replace(
         sequential,
@@ -330,6 +475,16 @@ def test_tiny_campaign_has_local_cutoffs_central_projection_and_worker_determini
     assert len(central.bank_summaries) == 3
     assert central.production_reference_checked is False
     assert central.production_reference_match is None
+    assert central.canonicalization_rule == {
+        "finite_float_decimal_places": 9,
+        "negative_zero": "normalized_to_positive_zero",
+        "nonfinite": "rejected_before_canonicalization",
+        "representation": "json_number_rounded_to_decimal_places",
+    }
+    assert set(central.raw_hashes) == {"calibration", "validation", "bank"}
+    assert set(central.canonical_hashes) == {"calibration", "validation", "bank"}
+    assert set(central.structural_hashes) == {"calibration", "validation", "bank"}
+    assert central.nonfinite_paths == ()
     assert all(row.mle_indices and row.mle_cells for row in sequential.calibration_results)
     assert all(
         row.mle_indices and row.mle_cells and row.training_mle_indices and row.training_mle_cells

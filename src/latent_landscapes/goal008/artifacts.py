@@ -6,6 +6,7 @@ import csv
 import hashlib
 import io
 import json
+import os
 import platform
 import re
 import subprocess
@@ -30,9 +31,13 @@ from .benchmark import (
     CellBankSummary,
     Goal008Result,
     TruthCell,
+    campaign_digest,
+    diagnostic_json_value,
+    nonfinite_value_evidence,
 )
 
 DEFAULT_OUTPUT_DIR = Path("artifacts/goal008_joint_rho_eta_cross_truth_perfect_detection")
+DEFAULT_BLOCKED_DIAGNOSTICS_DIR = Path("artifacts/goal009_cross_truth_blocked_diagnostics")
 METHOD = "site-history simulated composite likelihood"
 EXPECTED_FILES = (
     "config.json",
@@ -50,6 +55,11 @@ EXPECTED_FILES = (
     "visuals/truth_grid_calibration.svg",
     "visuals/truth_grid_ridge.svg",
     "visuals/truth_grid_predictive.svg",
+    "verification.json",
+)
+BLOCKED_DIAGNOSTIC_FILES = (
+    "diagnostics.json",
+    "compute_provenance.json",
     "verification.json",
 )
 
@@ -138,6 +148,143 @@ def write_review_bundle(
         raise RuntimeError("review pack does not match the exact 16-file contract")
     _validate_serialized_bundle(target, observed)
     return tuple(target / relative for relative in EXPECTED_FILES)
+
+
+def write_blocked_diagnostics(
+    result: Goal008Result,
+    output_dir: Path = DEFAULT_BLOCKED_DIAGNOSTICS_DIR,
+    compute_provenance: Mapping[str, object] | None = None,
+) -> tuple[Path, ...]:
+    """Write the exact trusted three-file quarantine for a completed hard block."""
+    if result.outcome != "implementation_blocked":
+        raise ValueError("blocked diagnostics require outcome='implementation_blocked'")
+    target = Path(output_dir)
+    if target.exists():
+        raise RuntimeError("refusing to overwrite a stale diagnostic directory")
+    if compute_provenance is None:
+        raise ValueError("blocked diagnostics require compute provenance")
+    _validate_completed_diagnostic_surface(result)
+    provenance = _validated_compute_provenance(result, compute_provenance)
+
+    base_payload = _blocked_diagnostics_payload(result)
+    diagnostics, serialized_nonfinite = diagnostic_json_value(base_payload)
+    if not isinstance(diagnostics, dict):
+        raise TypeError("blocked diagnostics payload must be a mapping")
+    scientific_nonfinite = nonfinite_value_evidence(
+        {
+            "calibration_results": result.calibration_results,
+            "validation_results": result.validation_results,
+            "representative_profiles": result.representative_profiles,
+        },
+        path="$.result",
+    )
+    all_nonfinite = {
+        (row["path"], row["tag"]): row for row in (*serialized_nonfinite, *scientific_nonfinite)
+    }
+    diagnostics["nonfinite_values"] = [all_nonfinite[key] for key in sorted(all_nonfinite)]
+
+    diagnostic_bytes = _json_bytes(diagnostics)
+    provenance_bytes = _json_bytes(provenance)
+    verification = {
+        "goal": "009-platform-stable-cross-truth-recovery",
+        "outcome": result.outcome,
+        "evidence_status": "quarantined_completed_campaign",
+        "expected_artifact_file_count": 3,
+        "observed_artifact_file_count": 3,
+        "scientific_review_pack_accepted": False,
+        "compute_provenance_validated": True,
+        "sha256": {
+            "diagnostics.json": hashlib.sha256(diagnostic_bytes).hexdigest(),
+            "compute_provenance.json": hashlib.sha256(provenance_bytes).hexdigest(),
+        },
+    }
+    verification_bytes = _json_bytes(verification)
+
+    target.mkdir(parents=True)
+    (target / "diagnostics.json").write_bytes(diagnostic_bytes)
+    (target / "compute_provenance.json").write_bytes(provenance_bytes)
+    (target / "verification.json").write_bytes(verification_bytes)
+    observed = {path.name for path in target.iterdir() if path.is_file()}
+    if observed != set(BLOCKED_DIAGNOSTIC_FILES):
+        raise RuntimeError("blocked diagnostics do not match the exact three-file contract")
+    _validate_serialized_bundle(target, observed)
+    return tuple(target / relative for relative in BLOCKED_DIAGNOSTIC_FILES)
+
+
+def _blocked_diagnostics_payload(result: Goal008Result) -> dict[str, object]:
+    cell_invariants = [
+        {
+            "truth_cell": cell.cell_id,
+            "invariants": result.cell_invariants[cell.cell_id],
+            "false_invariants": sorted(
+                name for name, passed in result.cell_invariants[cell.cell_id].items() if not passed
+            ),
+        }
+        for cell in result.config.truth_cells
+    ]
+    telemetry = result.execution_telemetry
+    return {
+        "goal": "009-platform-stable-cross-truth-recovery",
+        "scientific_goal": "008-joint-rho-eta-cross-truth-perfect-detection",
+        "evidence_status": "quarantined_completed_campaign",
+        "outcome": result.outcome,
+        "scientific_review_pack_accepted": False,
+        "reason_no_scientific_review_pack": ("completed campaign returned implementation_blocked"),
+        "campaign_invariants": result.invariants,
+        "false_campaign_invariants": sorted(
+            name for name, passed in result.invariants.items() if not passed
+        ),
+        "cell_invariants": cell_invariants,
+        "central_reconciliation": _central_payload(result),
+        "cell_bank_surface": [_summary_row(row) for row in result.cell_bank_summaries],
+        "execution_telemetry": {
+            "worker_count": telemetry.worker_count,
+            "thread_limits": telemetry.thread_limits,
+            "campaign_exit_status": telemetry.campaign_exit_status,
+            "cell_telemetry": [
+                {
+                    "truth_cell": row.truth_cell,
+                    "exit_status": row.exit_status,
+                    "wall_time_seconds": row.wall_time_seconds,
+                    "maximum_rss_bytes": row.maximum_rss_bytes,
+                }
+                for row in telemetry.cell_telemetry
+            ],
+        },
+        "source_identity": SOURCE_IDENTITY,
+        "campaign_digest": campaign_digest(result),
+        "nonfinite_encoding": {
+            "strategy": "tagged_string",
+            "nan": "__nonfinite_float__:nan",
+            "positive_infinity": "__nonfinite_float__:positive_infinity",
+            "negative_infinity": "__nonfinite_float__:negative_infinity",
+            "paths": "JSONPath-like paths rooted at '$'",
+        },
+    }
+
+
+def _validate_completed_diagnostic_surface(result: Goal008Result) -> None:
+    expected_cells = tuple(cell.cell_id for cell in result.config.truth_cells)
+    if tuple(result.cell_invariants) != expected_cells or any(
+        not invariants or any(not isinstance(value, bool) for value in invariants.values())
+        for invariants in result.cell_invariants.values()
+    ):
+        raise ValueError("blocked diagnostics require all nine cell invariant maps")
+    expected_surface = tuple((cell, bank) for cell in expected_cells for bank in BANK_VARIANT_NAMES)
+    observed_surface = tuple(
+        (row.truth_cell, row.bank_variant) for row in result.cell_bank_summaries
+    )
+    if observed_surface != expected_surface:
+        raise ValueError("blocked diagnostics require the complete ordered 27-row surface")
+    if any(not isinstance(value, bool) for value in result.invariants.values()):
+        raise ValueError("campaign invariants must be boolean")
+    telemetry = result.execution_telemetry
+    if (
+        telemetry.campaign_exit_status != 0
+        or tuple(row.truth_cell for row in telemetry.cell_telemetry) != expected_cells
+        or any(row.exit_status != 0 for row in telemetry.cell_telemetry)
+    ):
+        raise ValueError("blocked diagnostics require a completed successful worker campaign")
 
 
 def _config_payload(result: Goal008Result) -> dict[str, object]:
@@ -413,9 +560,22 @@ def _central_payload(result: Goal008Result) -> dict[str, object]:
         "checks": central.checks,
         "observed": central.observed,
         "expected": central.expected,
-        "comparison_basis": (
-            "frozen accepted constants and canonical projections; no second Goal 008 call"
-        ),
+        "raw_hashes": {
+            "observed": central.raw_hashes,
+            "historical": central.historical_raw_hashes,
+            "acceptance_gate": False,
+        },
+        "structural_hashes": {
+            "observed": central.structural_hashes,
+            "expected": central.expected["structural_hashes"],
+        },
+        "canonical_hashes": {
+            "observed": central.canonical_hashes,
+            "expected": central.expected["canonical_hashes"],
+        },
+        "canonicalization_rule": central.canonicalization_rule,
+        "nonfinite_paths": central.nonfinite_paths,
+        "comparison_basis": ("independently derived Goal 007 constants; no second Goal 008 call"),
     }
 
 
@@ -654,10 +814,11 @@ def _heatmap(
 
 
 def _write_json(path: Path, payload: object) -> None:
-    path.write_text(
-        json.dumps(payload, indent=2, sort_keys=True, allow_nan=False) + "\n",
-        encoding="utf-8",
-    )
+    path.write_bytes(_json_bytes(payload))
+
+
+def _json_bytes(payload: object) -> bytes:
+    return (json.dumps(payload, indent=2, sort_keys=True, allow_nan=False) + "\n").encode()
 
 
 def _write_csv(path: Path, rows: Sequence[CsvRow]) -> None:
@@ -730,6 +891,24 @@ def _validate_portable_provenance(provenance: Mapping[str, object]) -> None:
         raise ValueError("compute provenance must use portable identifiers, not absolute paths")
 
 
+def validate_pre_campaign_provenance(
+    declared: Mapping[str, object],
+    *,
+    workers: int,
+) -> None:
+    """Reject untrusted production declarations before starting the campaign."""
+    provenance = dict(declared)
+    _validate_portable_provenance(provenance)
+    if provenance.get("provenance_mode") != "production":
+        raise ValueError("production provenance must use provenance_mode='production'")
+    _validate_portable_identifiers(provenance)
+    _validate_production_declaration(
+        provenance,
+        worker_count=workers,
+        thread_limits={name: os.environ.get(name, "") for name in THREAD_LIMIT_NAMES},
+    )
+
+
 def _validated_compute_provenance(
     result: Goal008Result,
     declared: Mapping[str, object],
@@ -743,10 +922,7 @@ def _validated_compute_provenance(
         _validate_production_provenance(result, provenance)
     elif mode != "test":
         raise ValueError("nonproduction provenance must be explicitly labelled test")
-    for key in ("run_id", "host_id"):
-        value = provenance.get(key)
-        if not isinstance(value, str) or PORTABLE_ID_PATTERN.fullmatch(value) is None:
-            raise ValueError(f"{key} must be a portable identifier")
+    _validate_portable_identifiers(provenance)
 
     runtime = _runtime_identifiers()
     telemetry = result.execution_telemetry
@@ -776,6 +952,40 @@ def _validated_compute_provenance(
 def _validate_production_provenance(
     result: Goal008Result,
     provenance: Mapping[str, object],
+) -> None:
+    telemetry = result.execution_telemetry
+    _validate_production_declaration(
+        provenance,
+        worker_count=telemetry.worker_count,
+        thread_limits=telemetry.thread_limits,
+    )
+    if (
+        telemetry.campaign_exit_status != 0
+        or tuple(row.truth_cell for row in telemetry.cell_telemetry)
+        != tuple(cell.cell_id for cell in result.config.truth_cells)
+        or any(
+            row.exit_status != 0
+            or not isfinite(row.wall_time_seconds)
+            or row.wall_time_seconds < 0.0
+            or row.maximum_rss_bytes <= 0
+            for row in telemetry.cell_telemetry
+        )
+    ):
+        raise ValueError("production provenance contains failed or invalid cell telemetry")
+
+
+def _validate_portable_identifiers(provenance: Mapping[str, object]) -> None:
+    for key in ("run_id", "host_id"):
+        value = provenance.get(key)
+        if not isinstance(value, str) or PORTABLE_ID_PATTERN.fullmatch(value) is None:
+            raise ValueError(f"{key} must be a portable identifier")
+
+
+def _validate_production_declaration(
+    provenance: Mapping[str, object],
+    *,
+    worker_count: int,
+    thread_limits: Mapping[str, str],
 ) -> None:
     repository_root = Path(__file__).resolve().parents[3]
     current_commit = _git_output(repository_root, ("rev-parse", "HEAD"))
@@ -811,31 +1021,17 @@ def _validate_production_provenance(
         raise ValueError("production provenance remote_head_clean disagrees with git status")
     if provenance.get("host_id") != platform.node():
         raise ValueError("production provenance host_id does not match the runtime host")
-    if provenance.get("worker_count") != 9 or result.execution_telemetry.worker_count != 9:
+    if provenance.get("worker_count") != 9 or worker_count != 9:
         raise ValueError("production provenance requires an actual worker_count of 9")
     expected_threads = {name: "1" for name in THREAD_LIMIT_NAMES}
     if (
         provenance.get("thread_limits") != expected_threads
-        or result.execution_telemetry.thread_limits != expected_threads
+        or dict(thread_limits) != expected_threads
     ):
         raise ValueError("production provenance requires all four thread limits set to 1")
     for key, actual in runtime.items():
         if provenance.get(key) != actual:
             raise ValueError(f"production provenance {key} does not match the runtime")
-    telemetry = result.execution_telemetry
-    if (
-        telemetry.campaign_exit_status != 0
-        or tuple(row.truth_cell for row in telemetry.cell_telemetry)
-        != tuple(cell.cell_id for cell in result.config.truth_cells)
-        or any(
-            row.exit_status != 0
-            or not isfinite(row.wall_time_seconds)
-            or row.wall_time_seconds < 0.0
-            or row.maximum_rss_bytes <= 0
-            for row in telemetry.cell_telemetry
-        )
-    ):
-        raise ValueError("production provenance contains failed or invalid cell telemetry")
 
 
 def _runtime_identifiers() -> dict[str, str]:

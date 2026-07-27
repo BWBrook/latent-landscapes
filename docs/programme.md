@@ -164,6 +164,17 @@ intervals are pointwise, while the overall decision is a prespecified
 worst-cell rule. The central `(1, 1)` projection must reproduce independently
 frozen Goal 007 evidence before progression to joint imperfect detection.
 
+## Goal 009
+
+Goal 009 is a bounded recovery of the unchanged Goal 008 campaign. Central
+row identity, discrete fields, seed and source identities, and outcome remain
+exact; finite projection values are recursively rounded to nine decimal places
+for cross-platform continuity, with bit-exact hashes retained only as audit
+evidence. Any completed hard block preserves a trusted three-file quarantine
+containing campaign and cell invariants, central comparisons, all 27
+cell-by-bank decision rows, telemetry, provenance, and tagged non-finite paths.
+It does not retune the likelihood or alter any scientific threshold or class.
+
 ## Operating Style
 
 Work is goal-based and modular, with human review at scientific gates. Apply

@@ -45,13 +45,42 @@ def main() -> int:
     args = parse_args()
     try:
         provenance = _load_compute_provenance(args.compute_provenance_json)
+        artifacts.validate_pre_campaign_provenance(
+            provenance,
+            workers=args.workers,
+        )
+    except Exception as error:
+        print(
+            f"Goal 008 campaign did not start: {error}; no diagnostics were written.",
+            file=sys.stderr,
+        )
+        return 1
+    try:
         result = benchmark.run_campaign(workers=args.workers)
     except Exception as error:
-        print(f"Goal 008 blocked: implementation_blocked; {error}", file=sys.stderr)
+        print(
+            f"Goal 008 campaign did not complete: {error}; no diagnostics were written.",
+            file=sys.stderr,
+        )
         return 1
     if result.outcome == "implementation_blocked":
+        try:
+            written = artifacts.write_blocked_diagnostics(
+                result,
+                artifacts.DEFAULT_BLOCKED_DIAGNOSTICS_DIR,
+                provenance,
+            )
+        except Exception as error:
+            print(
+                "Goal 008 completed as implementation_blocked, but trusted "
+                f"diagnostics failed: {error}",
+                file=sys.stderr,
+            )
+            return 1
         print(
-            "Goal 008 blocked: implementation_blocked; review pack was not written.",
+            "Goal 008 completed blocked campaign diagnostics: "
+            f"wrote {len(written)} files to "
+            f"{artifacts.DEFAULT_BLOCKED_DIAGNOSTICS_DIR}",
             file=sys.stderr,
         )
         return 1
@@ -63,7 +92,7 @@ def main() -> int:
         )
     except Exception as error:
         print(
-            f"Goal 008 blocked: implementation_blocked; review pack failed: {error}",
+            f"Goal 008 completed, but the trusted review pack failed: {error}",
             file=sys.stderr,
         )
         return 1

@@ -164,5 +164,9 @@ independent shock blocks per phase generate nine paired counterfactuals, so
 cellwise intervals are pointwise rather than familywise. The ignored 16-file
 review pack is written to
 `artifacts/goal008_joint_rho_eta_cross_truth_perfect_detection/`. Completed
-negative or mixed results exit successfully; only `implementation_blocked`
-suppresses the pack and exits nonzero.
+negative or mixed results exit successfully. Goal 009 keeps discrete central
+continuity exact while comparing finite projection values after recursive
+nine-decimal rounding; raw hashes remain non-gating audit evidence. A returned
+`implementation_blocked` campaign suppresses the scientific pack, writes only
+the three-file quarantine at
+`artifacts/goal009_cross_truth_blocked_diagnostics/`, and exits nonzero.

@@ -72,6 +72,39 @@ def _test_provenance() -> dict[str, object]:
     }
 
 
+def _blocked_result(result: benchmark.Goal008Result) -> benchmark.Goal008Result:
+    cell_invariants = {
+        cell: dict(invariants) for cell, invariants in result.cell_invariants.items()
+    }
+    cell_invariants["cell-08"]["finite_likelihoods_and_scores"] = False
+    campaign_invariants = dict(result.invariants)
+    campaign_invariants["cell_invariants"] = False
+    summaries = (
+        replace(
+            result.cell_bank_summaries[0],
+            paired_brier_interval=replace(
+                result.cell_bank_summaries[0].paired_brier_interval,
+                estimate=float("inf"),
+            ),
+        ),
+        *result.cell_bank_summaries[1:],
+    )
+    central = replace(
+        result.central_reconciliation,
+        production_reference_checked=True,
+        production_reference_match=False,
+        checks={"canonical_validation": False},
+    )
+    return replace(
+        result,
+        cell_bank_summaries=summaries,
+        central_reconciliation=central,
+        cell_invariants=cell_invariants,
+        invariants=campaign_invariants,
+        outcome="implementation_blocked",
+    )
+
+
 @pytest.fixture(scope="module")
 def small_result() -> benchmark.Goal008Result:
     return benchmark.run_campaign(tiny_config(), workers=1)
@@ -209,10 +242,101 @@ def test_review_pack_rejects_stale_blocked_and_nonportable_provenance(
     assert not (tmp_path / "untrusted-production").exists()
 
 
+def test_blocked_diagnostics_are_exact_strict_deterministic_and_complete(
+    tmp_path: Path,
+    small_result: benchmark.Goal008Result,
+) -> None:
+    blocked = _blocked_result(small_result)
+    first = tmp_path / "first-blocked"
+    second = tmp_path / "second-blocked"
+
+    written = artifacts.write_blocked_diagnostics(blocked, first, _test_provenance())
+    artifacts.write_blocked_diagnostics(blocked, second, _test_provenance())
+
+    expected = {"diagnostics.json", "compute_provenance.json", "verification.json"}
+    observed = {path.relative_to(first).as_posix() for path in first.iterdir()}
+    assert observed == expected
+    assert len(written) == 3
+    assert {path.relative_to(first).as_posix() for path in written} == expected
+    for relative in expected:
+        assert (first / relative).read_bytes() == (second / relative).read_bytes()
+        json.loads(
+            (first / relative).read_text(encoding="utf-8"),
+            parse_constant=lambda value: pytest.fail(f"non-strict JSON token: {value}"),
+        )
+
+    diagnostics = json.loads((first / "diagnostics.json").read_text(encoding="utf-8"))
+    provenance = json.loads((first / "compute_provenance.json").read_text(encoding="utf-8"))
+    verification = json.loads((first / "verification.json").read_text(encoding="utf-8"))
+
+    assert diagnostics["outcome"] == "implementation_blocked"
+    assert diagnostics["scientific_review_pack_accepted"] is False
+    assert diagnostics["false_campaign_invariants"] == ["cell_invariants"]
+    assert diagnostics["campaign_invariants"]["cell_invariants"] is False
+    assert len(diagnostics["cell_invariants"]) == 9
+    cell_08 = next(row for row in diagnostics["cell_invariants"] if row["truth_cell"] == "cell-08")
+    assert cell_08["false_invariants"] == ["finite_likelihoods_and_scores"]
+    assert len(diagnostics["cell_bank_surface"]) == 27
+    assert {
+        (row["truth_cell"], row["bank_variant"]) for row in diagnostics["cell_bank_surface"]
+    } == {
+        (cell.cell_id, bank)
+        for cell in blocked.config.truth_cells
+        for bank in benchmark.BANK_VARIANT_NAMES
+    }
+    assert diagnostics["execution_telemetry"]["campaign_exit_status"] == 0
+    assert len(diagnostics["execution_telemetry"]["cell_telemetry"]) == 9
+    assert diagnostics["source_identity"] == benchmark.SOURCE_IDENTITY
+    assert diagnostics["campaign_digest"] == benchmark.campaign_digest(blocked)
+    assert diagnostics["central_reconciliation"]["raw_hashes"]
+    assert diagnostics["central_reconciliation"]["canonical_hashes"]
+    assert diagnostics["central_reconciliation"]["structural_hashes"]
+    assert diagnostics["nonfinite_encoding"]["strategy"] == "tagged_string"
+    assert diagnostics["nonfinite_values"] == [
+        {
+            "path": "$.cell_bank_surface[0].paired_brier_estimate",
+            "tag": "__nonfinite_float__:positive_infinity",
+        }
+    ]
+    assert (
+        diagnostics["cell_bank_surface"][0]["paired_brier_estimate"]
+        == "__nonfinite_float__:positive_infinity"
+    )
+    assert provenance["provenance_validation_passed"] is True
+    assert verification["expected_artifact_file_count"] == 3
+    assert verification["observed_artifact_file_count"] == 3
+    assert verification["scientific_review_pack_accepted"] is False
+    assert set(verification["sha256"]) == {"diagnostics.json", "compute_provenance.json"}
+    for relative, expected_hash in verification["sha256"].items():
+        assert hashlib.sha256((first / relative).read_bytes()).hexdigest() == expected_hash
+
+
+def test_blocked_diagnostics_refuse_stale_or_nonblocked_results(
+    tmp_path: Path,
+    small_result: benchmark.Goal008Result,
+) -> None:
+    stale = tmp_path / "stale-diagnostics"
+    stale.mkdir()
+    with pytest.raises(RuntimeError, match="stale"):
+        artifacts.write_blocked_diagnostics(
+            _blocked_result(small_result),
+            stale,
+            _test_provenance(),
+        )
+    with pytest.raises(ValueError, match="implementation_blocked"):
+        artifacts.write_blocked_diagnostics(
+            small_result,
+            tmp_path / "not-blocked",
+            _test_provenance(),
+        )
+    assert not (tmp_path / "not-blocked").exists()
+
+
 def test_artifact_destinations_are_ignored() -> None:
     for path in (
         "artifacts/goal008_joint_rho_eta_cross_truth_perfect_detection",
         "artifacts/goal008_joint_rho_eta_cross_truth_perfect_detection_repeat",
+        "artifacts/goal009_cross_truth_blocked_diagnostics",
     ):
         completed = subprocess.run(["git", "check-ignore", "-q", path], check=False)
         assert completed.returncode == 0
@@ -226,12 +350,19 @@ def test_cli_writes_completed_negative_and_rejects_scientific_tuning(
 ) -> None:
     negative = replace(small_result, outcome="joint_cross_truth_recovery_imprecise")
     output_dir = tmp_path / "negative"
+    diagnostics_dir = tmp_path / "unexpected-diagnostics"
     provenance_path = tmp_path / "compute.json"
     provenance_path.write_text(
         json.dumps(_test_provenance()),
         encoding="utf-8",
     )
     monkeypatch.setattr(benchmark, "run_campaign", lambda *, workers: negative)
+    monkeypatch.setattr(
+        artifacts,
+        "validate_pre_campaign_provenance",
+        lambda declared, *, workers: None,
+    )
+    monkeypatch.setattr(artifacts, "DEFAULT_BLOCKED_DIAGNOSTICS_DIR", diagnostics_dir)
     monkeypatch.setattr(
         sys,
         "argv",
@@ -254,6 +385,7 @@ def test_cli_writes_completed_negative_and_rejects_scientific_tuning(
     assert {
         path.relative_to(output_dir).as_posix() for path in output_dir.rglob("*") if path.is_file()
     } == _expected_files()
+    assert not diagnostics_dir.exists()
 
     required = subprocess.run(
         [sys.executable, "scripts/run_goal008.py"],
@@ -281,3 +413,90 @@ def test_cli_writes_completed_negative_and_rejects_scientific_tuning(
         )
         assert completed.returncode == 2
         assert "unrecognized arguments" in completed.stderr
+
+
+def test_cli_writes_only_quarantine_for_returned_block_and_none_for_exceptions(
+    tmp_path: Path,
+    small_result: benchmark.Goal008Result,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    blocked = _blocked_result(small_result)
+    output_dir = tmp_path / "scientific"
+    diagnostics_dir = tmp_path / "blocked-diagnostics"
+    provenance_path = tmp_path / "compute.json"
+    provenance_path.write_text(json.dumps(_test_provenance()), encoding="utf-8")
+    monkeypatch.setattr(benchmark, "run_campaign", lambda *, workers: blocked)
+    monkeypatch.setattr(
+        artifacts,
+        "validate_pre_campaign_provenance",
+        lambda declared, *, workers: None,
+    )
+    monkeypatch.setattr(artifacts, "DEFAULT_BLOCKED_DIAGNOSTICS_DIR", diagnostics_dir)
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "scripts/run_goal008.py",
+            "--output-dir",
+            str(output_dir),
+            "--workers",
+            "2",
+            "--compute-provenance-json",
+            str(provenance_path),
+        ],
+    )
+
+    with pytest.raises(SystemExit) as raised:
+        runpy.run_path("scripts/run_goal008.py", run_name="__main__")
+
+    captured = capsys.readouterr()
+    assert raised.value.code == 1
+    assert "completed blocked campaign diagnostics" in captured.err
+    assert not output_dir.exists()
+    assert {path.name for path in diagnostics_dir.iterdir()} == {
+        "diagnostics.json",
+        "compute_provenance.json",
+        "verification.json",
+    }
+
+    exception_dir = tmp_path / "exception-diagnostics"
+    monkeypatch.setattr(artifacts, "DEFAULT_BLOCKED_DIAGNOSTICS_DIR", exception_dir)
+    monkeypatch.setattr(
+        benchmark,
+        "run_campaign",
+        lambda *, workers: (_ for _ in ()).throw(RuntimeError("worker failed")),
+    )
+    with pytest.raises(SystemExit) as raised:
+        runpy.run_path("scripts/run_goal008.py", run_name="__main__")
+
+    captured = capsys.readouterr()
+    assert raised.value.code == 1
+    assert "campaign did not complete" in captured.err
+    assert "completed blocked campaign diagnostics" not in captured.err
+    assert not exception_dir.exists()
+
+    pre_campaign_dir = tmp_path / "pre-campaign-diagnostics"
+    monkeypatch.setattr(
+        artifacts,
+        "DEFAULT_BLOCKED_DIAGNOSTICS_DIR",
+        pre_campaign_dir,
+    )
+    monkeypatch.setattr(
+        artifacts,
+        "validate_pre_campaign_provenance",
+        lambda declared, *, workers: (_ for _ in ()).throw(ValueError("untrusted provenance")),
+    )
+    monkeypatch.setattr(
+        benchmark,
+        "run_campaign",
+        lambda *, workers: pytest.fail("campaign started after trust failure"),
+    )
+    with pytest.raises(SystemExit) as raised:
+        runpy.run_path("scripts/run_goal008.py", run_name="__main__")
+
+    captured = capsys.readouterr()
+    assert raised.value.code == 1
+    assert "campaign did not start" in captured.err
+    assert "completed blocked campaign diagnostics" not in captured.err
+    assert not pre_campaign_dir.exists()
