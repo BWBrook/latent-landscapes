@@ -155,3 +155,65 @@ Ruff check                             passed
 targeted mypy                          2 source files passed
 git diff --check (three owned paths)   passed
 ```
+
+## 2026-07-27: Production Result And Acceptance
+
+The reviewed feature was committed as
+`9cb53dea4fc671cf22d52404b6845a6388000874`. A verified Git bundle reproduced
+that exact detached, clean commit and the accepted lockfile on `deep-server`.
+Python 3.14.5 and NumPy 2.5.1 passed 18 focused tests and the nine-worker
+miniature campaign before the one authorized production run.
+
+Run `goal009-20260727T093142Z-9cb53de` completed in 50 minutes 27 seconds. All
+nine truth-cell workers exited successfully, and the CLI wrote the exact
+16-file scientific pack rather than a quarantine diagnostic. The completed
+outcome is:
+
+```text
+joint_cross_truth_design_limited
+```
+
+The platform-stable reconciliation passed every finite, structural, seed,
+source, and central-outcome check. The raw calibration and validation hashes
+differed from the Mac-derived audit values, while the nine-decimal canonical
+and exact structural hashes matched. Raw equality was explicitly non-gating.
+This directly supports the cross-platform floating-point diagnosis that
+motivated Goal 009, although the exact failed check from the first opaque run
+remains unknowable.
+
+The full-bank scientific surface was:
+
+```text
+cell-00  rho=0.5 eta=0.5  topology=278/500  design_limited
+cell-01  rho=1.0 eta=0.5  topology=350/500  design_limited
+cell-02  rho=2.0 eta=0.5  topology=389/500  design_limited
+cell-03  rho=0.5 eta=1.0  topology=493/500  recoverable
+cell-04  rho=1.0 eta=1.0  topology=494/500  recoverable
+cell-05  rho=2.0 eta=1.0  topology=497/500  recoverable
+cell-06  rho=0.5 eta=1.5  topology=344/500  design_limited
+cell-07  rho=1.0 eta=1.5  topology=449/500  design_limited
+cell-08  rho=2.0 eta=1.5  topology=486/500  recoverable
+```
+
+All three integration-bank variants agreed within every cell. The five
+design-limited cells missed the prespecified 475/500 connected-interior
+topology threshold by material margins. Boundary contact dominated: every
+low-eta contact was at the physical `eta=0` face, while high-eta contacts were
+at the artificial upper `eta=2` face. Full-bank median log-rho error was
+0.0231 to 0.0416, eta error was zero, both projected widths passed, and every
+paired-Brier interval was wholly negative. `cell-00` also had a secondary
+local-calibration warning: all three Wilson intervals excluded 0.95 through
+slight overcoverage, but the frozen first-match rule retained the stronger
+`design_limited` class.
+
+The returned 29-file evidence manifest and all 15 internal scientific-pack
+hashes verified locally. Independent recomputation reproduced all 27 row
+classes, bank stability, and the overall precedence decision; browser review
+found all four SVGs readable and coherent. A separate final audit accepted the
+result for publication without another campaign.
+
+This is a valid negative/mixed perfect-detection result, not an implementation
+failure. It is conditional on one landscape, design, calendar, candidate
+domain, and site-history composite likelihood that omits between-site process
+dependence. Intervals are pointwise rather than familywise. Imperfect detection
+must not begin until the eta-boundary failure anatomy is resolved.
