@@ -132,6 +132,24 @@ whether contrast has a stable spatial signature. The 15-file review pack and
 decision class are produced by `scripts/run_goal006.py`. This goal does not
 fit parameters, simulate observations, or claim joint identifiability.
 
+## Goal 007
+
+Goal 007 combines the accepted stochastic spread rate `rho` with resistance
+contrast `eta` in a deliberately favourable perfect-detection positive control
+at the central truth `(1, 1)`. One paired integration bank supplies nine
+eta-specific arrival slices, while exact rate scaling evaluates the frozen
+601-point rho grid. Full-data likelihood-ratio support is calibrated separately
+for the full 4,096 draws and two disjoint halves using four-neighbour rook
+connectivity.
+
+The two same-time design visits remain in the analyst-facing records but are
+verified and collapsed to one binary site-time outcome. Training-only joint
+MLE cells are compared with the full-support time-only neutral on held-out
+clusters. The result is conditional on one landscape and one central truth;
+the site-history simulated composite likelihood omits between-site process
+dependence. Cross-truth recovery and imperfect detection remain separate,
+later scientific gates.
+
 ## Operating Style
 
 Work is goal-based and modular, with human review at scientific gates. Apply

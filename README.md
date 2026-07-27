@@ -128,3 +128,22 @@ only long enough to form compact replicate, habitat, source, and representative
 summaries. Alignment removes global-time confounding only in diagnostics; it
 does not alter the generator. This is a process-suitability review, not a
 joint `(rho, eta)` identifiability or observation benchmark.
+
+## Goal 007
+
+Goal 007 is the central-truth joint `(rho, eta)` positive control under perfect
+direct predator detection:
+
+```bash
+uv run python scripts/run_goal007.py
+```
+
+The ignored 14-file review pack is written to
+`artifacts/goal007_joint_rho_eta_perfect_detection/`. The frozen two same-time
+visits are verified as exact duplicates and collapsed before fitting. Separate
+full- and half-bank calibrations use a two-dimensional rook-connected support,
+while held-out predictions use training-only tied MLE cells and the frozen
+time-only neutral. The site-history simulated composite likelihood omits
+between-site process dependence and is not a full joint spatial likelihood.
+Scientifically negative classes exit successfully; only
+`implementation_blocked` suppresses the pack and exits nonzero.
