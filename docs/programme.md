@@ -150,6 +150,20 @@ the site-history simulated composite likelihood omits between-site process
 dependence. Cross-truth recovery and imperfect detection remain separate,
 later scientific gates.
 
+## Goal 008
+
+Goal 008 tests whether Goal 007's local joint recovery transports across the
+prespecified 3 by 3 truth grid under perfect detection. It reuses one shock
+block across eta-specific fields and derives the three rho truths by exact
+arrival-time scaling, making the nine truth cells paired counterfactuals within
+each of 500 independent calibration and 500 independent validation blocks.
+
+Calibration remains local to each truth-cell and full/half-bank combination;
+cutoffs are not pooled or transported. Cellwise Wilson and paired-Brier
+intervals are pointwise, while the overall decision is a prespecified
+worst-cell rule. The central `(1, 1)` projection must reproduce independently
+frozen Goal 007 evidence before progression to joint imperfect detection.
+
 ## Operating Style
 
 Work is goal-based and modular, with human review at scientific gates. Apply

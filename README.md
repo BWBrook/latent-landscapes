@@ -147,3 +147,22 @@ time-only neutral. The site-history simulated composite likelihood omits
 between-site process dependence and is not a full joint spatial likelihood.
 Scientifically negative classes exit successfully; only
 `implementation_blocked` suppresses the pack and exits nonzero.
+
+## Goal 008
+
+Goal 008 extends the same joint perfect-detection benchmark to the frozen
+3 by 3 grid crossing `rho = {0.5, 1, 2}` with `eta = {0.5, 1, 1.5}`:
+
+```bash
+uv run python scripts/run_goal008.py \
+  --workers 9 \
+  --compute-provenance-json compute-provenance.json
+```
+
+Each truth-cell and bank combination receives its own local cutoff. The 500
+independent shock blocks per phase generate nine paired counterfactuals, so
+cellwise intervals are pointwise rather than familywise. The ignored 16-file
+review pack is written to
+`artifacts/goal008_joint_rho_eta_cross_truth_perfect_detection/`. Completed
+negative or mixed results exit successfully; only `implementation_blocked`
+suppresses the pack and exits nonzero.
