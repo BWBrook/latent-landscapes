@@ -199,6 +199,18 @@ practical joint recovery. Eta-2.5 MLE counts are descriptive and do not gate
 the outcome. Persistence at the new face is not proof of universal or genuine
 non-identifiability.
 
+The completed bounded campaign returned
+`bounded_upper_expansion_resolves_primary_decision_limit`. For the primary
+cell 06, the full and two half banks changed from `152/150/156` upper-face
+contacts at `eta = 2` to zero contacts at `eta = 2.5`, and from
+`344/347/338` to `479/481/478` connected-interior supports. Cells 07-08
+agreed, all nine expanded cell-bank summaries were recoverable, and the
+recomputed cutoffs were numerically unchanged. Thus the high-eta failure was
+an artificial candidate-domain truncation in this frozen perfect-detection
+experiment. The low-eta inability to exclude the accepted `eta = 0` null
+remains a separate practical-identifiability result, and Goal 009 is not
+retrospectively reclassified.
+
 ## Operating Style
 
 Work is goal-based and modular, with human review at scientific gates. Apply

@@ -130,3 +130,107 @@ Ruff format and lint checks clean, mypy clean across 70 source files, a
 successful package build, and `git diff --check` clean. One test-only mypy
 annotation issue and two formatting differences were repaired before this
 checkpoint; neither changed scientific behavior.
+
+## 2026-07-28: Production Campaign
+
+The accepted implementation was committed as
+`46cbdf4a592c609d2ba1ba08a5c438fb388890a4`. Run
+`goal010-20260728T045355Z-46cbdf4` used a clean detached checkout of that
+commit on `deep-server`, Python 3.14.5, NumPy 2.5.1, three worker processes,
+and all four numerical-library thread limits set to one. The Git bundle,
+lockfile, and exact 16-file Goal 009 input pack were verified before compute.
+
+The first reduced smoke attempt correctly blocked because it paired the
+three-rho smoke configuration with the full 601-rho production input pack.
+Every other invariant passed. Before production, the intended internally
+validated three-rho fixture was generated and the unchanged smoke then passed.
+The production command used the untouched, checksum-authenticated 601-rho
+Goal 009 pack. This was a smoke-fixture mismatch, not a scientific retry or a
+source change; both the failed diagnostic and correction record are retained
+in the returned run evidence.
+
+The one authorized production command started at `2026-07-28T05:05:42Z`,
+finished at `2026-07-28T07:32:20Z`, and exited zero after about 2 hours 26
+minutes. It wrote and internally validated the exact 14-file scientific pack.
+No second expansion, retuning, cell change, threshold change, or production
+retry occurred.
+
+## 2026-07-28: Scientific Result
+
+The completed decision is:
+
+```text
+bounded_upper_expansion_resolves_primary_decision_limit
+```
+
+For the primary `cell-06`, the full, first-half, and second-half banks changed
+as follows:
+
+```text
+bank         eta-upper contact     connected interior       class
+full             152 -> 0              344 -> 479       design-limited -> recoverable
+first_half       150 -> 0              347 -> 481       design-limited -> recoverable
+second_half      156 -> 0              338 -> 478       design-limited -> recoverable
+```
+
+All three banks retained truth coverage at `479/500`. Their recomputed
+476th-order-statistic cutoffs were respectively `80.44725329481041`,
+`80.85234464173627`, and `81.16875882526983`; these equal the original
+cutoffs because the appended domain never improved the corresponding profile
+maximum. No validation support or descriptive MLE reached `eta = 2.5`.
+
+The prespecified comparators agreed. Cell 07 changed from 48, 49, and 47
+upper-face contacts to zero and from 449, 450, and 451 connected-interior
+supports to 497, 499, and 498. Cell 08 changed from 14, 14, and 13 contacts to
+zero and from 486, 486, and 485 connected-interior supports to 500, 500, and
+498. Every expanded cell-bank row classified as recoverable.
+
+### Observation And Inference
+
+Observed: appending only `eta = 2.25, 2.5` removed all new upper-face contact,
+restored the prespecified topology gate in the three high-eta truth cells,
+preserved coverage and predictive guards, and left the numerical cutoffs
+unchanged.
+
+Inferred: within this frozen perfect-detection benchmark, Goal 009's high-eta
+design limitation was caused by truncation at the artificial `eta = 2`
+candidate ceiling rather than by a ridge that persisted to `eta = 2.5`.
+This is a local bounded-domain diagnosis, not evidence of universal joint
+identifiability.
+
+The result remains conditional on one landscape, sampling design, calendar,
+perfect detection, candidate grid, and a site-history simulated composite
+likelihood that omits between-site process dependence. Cells 07-08 are
+comparators rather than independent replications. The inability of low-eta
+truth cells to exclude the accepted `eta = 0` uniform-resistance null is
+untouched and remains a scientifically meaningful practical-identifiability
+limit. Goal 009 remains `joint_cross_truth_design_limited`; it is not
+retrospectively reclassified.
+
+## 2026-07-28: Local Evidence Audit
+
+The returned recursive SHA-256 manifest verified all 36 files. A standalone
+standard-library audit, without importing Goal 010, then:
+
+- reproduced all nine 476th-of-500 calibration cutoffs directly from 4,500
+  calibration rows, and confirmed all 4,500 profile maxima and likelihood
+  ratios were unchanged from Goal 009;
+- recomputed likelihood ratios, rook-connected components, boundary faces,
+  truth inclusion, Wilson intervals, normal-mean intervals, medians, cell
+  classes, and the overall decision from all 4,500 validation rows;
+- reconciled every original/expanded validation pair against the authenticated
+  Goal 009 table;
+- reconciled the 27-row baseline anatomy, nine cell-bank summaries, nine
+  domain comparisons, and 59,499 representative-profile rows; and
+- reproduced the primary-bank counts and
+  `bounded_upper_expansion_resolves_primary_decision_limit`.
+
+Both SVGs were rendered in Chrome and visually inspected. They are readable,
+non-overlapping, and agree with the source tables.
+
+An independent final reviewer separately verified the returned manifests,
+primary counts, calibration cutoffs, coverage and precision gates, predictive
+intervals, comparator consistency, and both figures. The verdict was
+`ACCEPT`: the initial smoke failure was confined to its fixture mismatch, no
+material provenance or scientific blocker remained, and no rerun or further
+repair was justified before publication.
