@@ -170,3 +170,26 @@ nine-decimal rounding; raw hashes remain non-gating audit evidence. A returned
 `implementation_blocked` campaign suppresses the scientific pack, writes only
 the three-file quarantine at
 `artifacts/goal009_cross_truth_blocked_diagnostics/`, and exits nonzero.
+
+## Goal 010
+
+Goal 010 is a bounded perfect-detection sensitivity for the three high-`eta`
+truth cells. It appends only `eta = 2.25, 2.5` to the candidate grid, preserves
+the Goal 009 rho grid, shocks, seeds, block order, and bank halves, and
+recomputes each local cutoff under the unchanged 476th-of-500 rule:
+
+```bash
+uv run --frozen python scripts/run_goal010.py \
+  --goal009-pack PATH \
+  --output-dir PATH \
+  --workers 3 \
+  --compute-provenance-json PATH
+```
+
+The ignored 14-file review bundle is written to
+`artifacts/goal010_boundary_aware_joint_identifiability/`. Goal 009 remains
+unchanged. More than 25 primary-cell contacts at the expanded `eta = 2.5`
+face means the bounded candidate domain did not close; it is not proof of
+universal or genuine non-identifiability. Scientifically negative outcomes
+exit successfully. Provenance, exact bank replay, row-pairing, or other
+implementation failures exit nonzero and write no scientific pack.

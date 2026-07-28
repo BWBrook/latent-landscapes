@@ -175,6 +175,30 @@ containing campaign and cell invariants, central comparisons, all 27
 cell-by-bank decision rows, telemetry, provenance, and tagged non-finite paths.
 It does not retune the likelihood or alter any scientific threshold or class.
 
+## Goal 010
+
+Goal 010 diagnoses the high-`eta` boundary anatomy without reclassifying Goal
+009. It authenticates the complete published Goal 009 pack, reports all nine
+truth cells and three banks from disk, then reruns only cells 06-08 after
+appending candidate values `eta = 2.25, 2.5`. Candidate rho, truth generation,
+seeds, shock members, block order, bank halves, likelihood, neutral comparator,
+and scientific thresholds remain unchanged.
+
+Because the expanded candidate domain can change the profile maximum, each
+truth-cell and bank combination recomputes its numeric cutoff using the same
+local rank rule. Every selected validation row is paired by block, cell, and
+bank. Exact old integration-bank slices must replay against a separately built
+old-domain bank before the result is accepted.
+
+For the primary cell 06, more than 25 expanded upper-face contacts in any bank
+means the bounded domain remains unclosed. Resolution requires at least 475
+connected-interior supports and a recoverable class in all banks. When all
+upper-face counts are at most 25 and strictly below their Goal 009 baselines
+but another unchanged gate fails, the expansion contributed without restoring
+practical joint recovery. Eta-2.5 MLE counts are descriptive and do not gate
+the outcome. Persistence at the new face is not proof of universal or genuine
+non-identifiability.
+
 ## Operating Style
 
 Work is goal-based and modular, with human review at scientific gates. Apply
