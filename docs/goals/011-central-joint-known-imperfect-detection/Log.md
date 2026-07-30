@@ -150,3 +150,85 @@ remote campaign without a repair request. The review:
 
 The remaining risks are the declared composite-likelihood approximation and
 ordinary remote operational failure. Neither is an implementation blocker.
+
+## 2026-07-30: Single Remote Campaign
+
+The accepted implementation was committed before dispatch:
+
+```text
+d7a1670852e9b8cb7e6e30cd098db38fabdbd91a
+feat: add joint known-detection benchmark
+```
+
+The campaign used the clean detached source bundle
+`goal011-20260730T055654Z-d7a1670` on `deep-server`. Its frozen lockfile hash
+was:
+
+```text
+c6452f1ada29e08ba0b97c0df0d8d3fad61ff0e821348e305b9a6caaa890deb5
+```
+
+The first non-login preflight stopped before tests or simulation because `uv`
+was not on that shell's `PATH`. Repeating the operational preflight with the
+explicit installed path passed the 12 focused tests and the reduced smoke. This
+did not consume the single production attempt.
+
+The production command started at `2026-07-30T05:58:53Z` and completed at
+`2026-07-30T07:30:20Z`:
+
+```text
+exit status       0
+elapsed           1:31:26
+maximum RSS       449844 KiB
+outcome           advance_to_cross_truth_joint_imperfect_detection
+```
+
+The recursive retrieval manifest covered 39 evidence files. Every returned
+hash, the internal 15-file review-pack contract, the source bundle, source
+manifest, commit identity, and lockfile hash verified locally. Generated
+remote evidence was retained under ignored `artifacts/` and was not staged.
+
+## 2026-07-30: Scientific Result
+
+The expanded-domain results were:
+
+| Bank | Coverage | Wilson interval | Connected interior | Boundary contacts | Median absolute log-rho error | Median absolute eta error | Log-rho width | Eta width |
+| --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| full | 470/500 | 0.9156-0.9577 | 494/500 | 0 | 0.041589 | 0 | 0.346574 | 0.5 |
+| first half | 472/500 | 0.9203-0.9610 | 492/500 | 0 | 0.041589 | 0 | 0.346574 | 0.5 |
+| second half | 471/500 | 0.9179-0.9593 | 494/500 | 0 | 0.041589 | 0 | 0.351195 | 0.5 |
+
+All three paired-Brier intervals were wholly below zero. Mean process Brier
+scores were approximately `0.13915`, compared with `0.18699` for the
+training-only time neutral. Expanded and separately recalibrated old-domain
+cutoffs and outcomes were identical in every bank, and neither fitted support
+nor any MLE used `eta > 2`.
+
+The observed coverage estimates were `0.940-0.944`; they passed because their
+Wilson intervals contained `0.95`, not because the point estimates equalled
+the nominal target. Median precision gates also do not mean every replicate
+was precise: 52-56 of 500 validation datasets per bank exceeded absolute
+log-rho error `0.10`, and two per bank exceeded absolute eta error `0.25`.
+
+The accepted conclusion is therefore bounded: at the central truth, with one
+landscape and sampling design, known homogeneous detection `p = 0.65`, zero
+false positives, and this calibrated composite likelihood, the process model
+is practically recoverable and predictively superior to the neutral. The
+likelihood retains within-site histories but omits shared between-site spatial
+dependence. The result does not establish cross-truth robustness or recovery
+under estimated or heterogeneous detection.
+
+## 2026-07-30: Independent Result Review
+
+Two independent read-only reviews accepted publication. The science reviewer
+recomputed all cutoffs, Wilson intervals, topology counts, errors, widths,
+paired-Brier intervals, domain-use counts, and downstream classes from the raw
+tables. The provenance reviewer verified all retrieval and internal hashes,
+reconstructed all 6,096 unique seed streams, reconciled table row counts and
+timing records, and rendered all three SVGs against their source tables.
+
+The only non-blocking provenance limitation was that `preflight.log` began at
+environment synchronisation rather than retaining the earlier remote Git and
+lock-hash probe output. The adjacent verified bundle, manifest, frozen command,
+focused remote tests, and recursive retrieval manifest provide the source
+linkage used for acceptance.

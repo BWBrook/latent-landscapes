@@ -211,3 +211,12 @@ false positives, while held-out predictions target
 `artifacts/goal011_joint_known_imperfect_detection/`. Goal 007 remains
 historical perfect-detection context rather than a strictly matched causal
 contrast.
+
+The completed production campaign returned
+`advance_to_cross_truth_joint_imperfect_detection` for the full integration
+bank and both halves. Coverage was `470/500`, `472/500`, and `471/500`, with
+all three Wilson intervals containing `0.95`; connected-interior support was
+`494/500`, `492/500`, and `494/500`, with no boundary contacts. No fitted
+support or MLE used the appended `eta > 2` slices. The result authorizes the
+next cross-truth known-detection benchmark, not a claim of general robustness
+to observation error.

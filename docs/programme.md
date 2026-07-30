@@ -228,6 +228,21 @@ the time-only neutral are fitted on 1,440 training records and scored on 480
 held-out records. The composite likelihood preserves within-site history but
 continues to omit between-site process dependence.
 
+The completed central campaign returned
+`advance_to_cross_truth_joint_imperfect_detection` in the full bank and both
+halves. Validation coverage was `470/500`, `472/500`, and `471/500`; each
+Wilson interval contained `0.95`. Connected-interior support counts were
+`494/500`, `492/500`, and `494/500`, with zero boundary contacts. Median
+absolute log-rho error was `0.041589`, median absolute eta error was zero,
+projected widths remained within the frozen practical bounds, and every paired
+Brier interval lay wholly below zero. The expanded and old-domain calculations
+were identical: no support or MLE used `eta > 2`.
+
+This establishes the central known-detection positive control needed to advance
+to cross-truth testing under the same observation model. It does not yet show
+robustness across process truths, estimated or heterogeneous detection, false
+positives, alternative landscapes, or full spatial dependence.
+
 ## Operating Style
 
 Work is goal-based and modular, with human review at scientific gates. Apply
