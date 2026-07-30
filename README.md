@@ -193,3 +193,21 @@ face means the bounded candidate domain did not close; it is not proof of
 universal or genuine non-identifiability. Scientifically negative outcomes
 exit successfully. Provenance, exact bank replay, row-pairing, or other
 implementation failures exit nonzero and write no scientific pack.
+
+## Goal 011
+
+Goal 011 returns to the central truth `(rho, eta) = (1, 1)` and retains both
+known imperfect-detection visits at every site-time:
+
+```bash
+uv run python scripts/run_goal011.py
+```
+
+The primary candidate domain uses `eta = 0, 0.25, ..., 2.5`; a separately
+recalibrated `eta <= 2` projection is descriptive and non-gating. Complete
+12-record site histories are marginalized under known `p = 0.65` and zero
+false positives, while held-out predictions target
+`0.65 * Pr(occupied)`. The exact 15-file ignored review pack is written to
+`artifacts/goal011_joint_known_imperfect_detection/`. Goal 007 remains
+historical perfect-detection context rather than a strictly matched causal
+contrast.

@@ -211,6 +211,23 @@ experiment. The low-eta inability to exclude the accepted `eta = 0` null
 remains a separate practical-identifiability result, and Goal 009 is not
 retrospectively reclassified.
 
+## Goal 011
+
+Goal 011 is the first joint imperfect-detection benchmark. It returns to the
+central truth `(rho, eta) = (1, 1)`, preserves the Goal 007 process streams,
+and appends independent calibration and validation detection streams. Every
+dataset retains all 1,920 records from two visits at six times across 160
+sites, with known homogeneous `p = 0.65` and zero false positives.
+
+Inference directly composes Goal 004 complete-history probabilities with Goal
+007 joint category weights. The expanded `eta <= 2.5` profile is primary and
+receives fresh full- and half-bank calibration cutoffs. A separately
+recalibrated `eta <= 2` projection from the same profiles diagnoses candidate
+domain use but does not gate the result. Visit-level process predictions and
+the time-only neutral are fitted on 1,440 training records and scored on 480
+held-out records. The composite likelihood preserves within-site history but
+continues to omit between-site process dependence.
+
 ## Operating Style
 
 Work is goal-based and modular, with human review at scientific gates. Apply
