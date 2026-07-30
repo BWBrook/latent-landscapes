@@ -220,3 +220,30 @@ all three Wilson intervals containing `0.95`; connected-interior support was
 support or MLE used the appended `eta > 2` slices. The result authorizes the
 next cross-truth known-detection benchmark, not a claim of general robustness
 to observation error.
+
+## Goal 012
+
+Goal 012 evaluates the same known-`p = 0.65` joint recovery method at all nine
+frozen `(rho, eta)` truths. It preserves Goal 011 exactly at cell 04, pairs
+process shocks across truth cells, and uses a unique appended detection stream
+for every noncentral cell and process block:
+
+```bash
+uv run python scripts/run_goal012.py \
+  --output-dir artifacts/goal012_cross_truth_joint_known_imperfect_detection \
+  --workers 9 \
+  --compute-provenance-json PATH
+```
+
+The CLI also accepts `--reduced-smoke` for the explicit non-scientific local
+check. Scientific grids, replicate counts, detection, cutoffs, thresholds, and
+decision order are not command-line settings.
+
+Every cell recalibrates full- and half-bank cutoffs separately for the primary
+`eta <= 2.5` domain and descriptive `eta <= 2` projection. Artificial
+candidate-face contact is reported separately from inability to exclude the
+physical `eta = 0` null. The exact ignored review pack contains 15 files,
+including all 27 cell-by-bank summaries and the three truth-grid figures.
+Scientifically negative or mixed outcomes exit successfully; implementation or
+provenance failures do not produce an accepted scientific pack. The 500/500
+campaign has not been run locally.

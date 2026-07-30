@@ -243,6 +243,38 @@ to cross-truth testing under the same observation model. It does not yet show
 robustness across process truths, estimated or heterogeneous detection, false
 positives, alternative landscapes, or full spatial dependence.
 
+## Goal 012
+
+Goal 012 is the frozen cross-truth transport benchmark for Goal 011's known
+imperfect-detection method. It evaluates the nine row-major truths
+`rho = 0.5, 1, 2` by `eta = 0.5, 1, 1.5` on the unchanged 601 by 11 candidate
+grid. Each truth receives separate full- and half-bank cutoffs for both the
+primary `eta <= 2.5` domain and the descriptive, non-gating `eta <= 2`
+projection.
+
+The seven-root seed tree preserves Goal 011's first five roots exactly. Within
+each phase, one process block supplies the common edge shocks for all truth
+cells and rho changes use exact arrival-time scaling. Cell 04 also reuses Goal
+011's detection stream; every noncentral cell instead receives its own
+block-specific child from one of two appended detection roots. Cross-cell
+results are therefore process-paired but observation-noise-distinct.
+
+The benchmark retains all 1,920 records per dataset and explicitly supplies
+each truth's rho and eta to support summaries. Artificial contact with
+`eta_max`, `rho_min`, or `rho_max` gates candidate-domain closure separately
+from disconnected support or contact with the accepted physical `eta = 0`
+uniform-resistance null. Cell classes use the frozen calibration, precision,
+and prediction thresholds; the overall class uses bank stability followed by
+the prespecified worst-cell precedence.
+
+The implementation produces a deterministic 15-file review pack with 27
+cell-by-bank summaries, raw calibration and validation rows, both-domain
+support fields, central Goal 011 reconciliation, and three truth-grid figures.
+It remains conditional on one landscape, one sampling design, known
+homogeneous detection, zero false positives, and an independence composite
+likelihood. No production evidence or cross-truth scientific conclusion is
+recorded before the single authorized campaign.
+
 ## Operating Style
 
 Work is goal-based and modular, with human review at scientific gates. Apply
