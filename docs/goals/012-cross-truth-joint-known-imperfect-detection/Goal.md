@@ -2,7 +2,8 @@
 
 ## Status
 
-Approved for execution by Barry on 2026-07-30.
+Completed and accepted on 2026-07-31. The single production campaign returned
+`cross_truth_design_limited`.
 
 ## Objective
 

@@ -148,3 +148,49 @@ the exact Git-bundle, detached-checkout, portable production-provenance,
 preflight, reduced-smoke, `tmux`, sentinel, checksum, retrieval, and local
 verification recipe. No scientific code, candidate or truth grid, seed,
 cutoff, threshold, neutral, decision rule, or reduced-smoke outcome changed.
+
+## 2026-07-31: Production Campaign And Acceptance
+
+The single authorized nine-worker campaign ran on `deep-server` from clean
+detached implementation commit
+`b2bdfbb95051bfec09676c4cdbfa4e2e0303fd97`. Run
+`goal012-20260730T142431Z-b2bdfbb` completed once with exit status zero in
+`2:08:44` and returned:
+
+```text
+cross_truth_design_limited
+```
+
+The complete 45-file remote evidence bundle passed recursive checksum
+verification before and after retrieval. All nine worker processes exited
+zero; the production pack contains exactly the required 15 files and all raw
+table, seed, source, environment, and central Goal 011 reconciliation checks
+passed.
+
+The result is stable across the full integration bank and both halves. The
+three `eta = 0.5` truths are `cell_design_limited`: their full-bank
+connected-interior counts are `251`, `344`, and `327` of 500, driven
+principally by `249`, `155`, and `171` supports contacting the physical
+`eta = 0` uniform-resistance null. The six truths with `eta >= 1` are
+`cell_recoverable`. No primary-domain support contacts an artificial face,
+every precision gate passes, and every paired Brier interval lies wholly below
+zero. Cell 00 additionally shows conservative overcoverage, but the same
+physical-null limitation remains at calibrated cells 01 and 02.
+
+The descriptive old `eta <= 2` projection shows artificial upper-face contact
+for cells 06 and 07; it is non-gating, and the primary `eta <= 2.5` domain
+removes that truncation.
+
+Two independent audits accepted the result. The scientific audit reconstructed
+all 54 cutoffs and every aggregate, gate, and class from the 13,500 calibration
+and 13,500 validation rows. The provenance audit verified the complete bundle,
+14,096 unique seed streams, worker telemetry, source and lock hashes, all
+declared output hashes, rendered figure annotations, and exact Goal 011 central
+replay.
+
+The inference is deliberately narrow: under this frozen landscape, sampling
+design, known homogeneous `p = 0.65`, and composite likelihood, weak
+landscape-resistance contrast cannot reliably be separated from uniform
+resistance. This is not evidence of universal structural non-identifiability,
+a sharp threshold between `eta = 0.5` and `eta = 1`, or failed prediction.
+Goal 012 stops without retuning or a rescue campaign.

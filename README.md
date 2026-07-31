@@ -245,5 +245,13 @@ candidate-face contact is reported separately from inability to exclude the
 physical `eta = 0` null. The exact ignored review pack contains 15 files,
 including all 27 cell-by-bank summaries and the three truth-grid figures.
 Scientifically negative or mixed outcomes exit successfully; implementation or
-provenance failures do not produce an accepted scientific pack. The 500/500
-campaign has not been run locally.
+provenance failures do not produce an accepted scientific pack.
+
+The completed production campaign returned `cross_truth_design_limited`,
+stable across the full bank and both halves. All three `eta = 0.5` truths
+frequently retained the physical `eta = 0` uniform-resistance null; all six
+truths with `eta >= 1` were recoverable. No primary-domain support contacted
+an artificial face, all precision gates passed, and the process model beat the
+time-only neutral predictively in every cell. The result therefore identifies
+a practical weak-contrast limit under this frozen design and likelihood, not
+universal non-identifiability or predictive failure.

@@ -272,8 +272,26 @@ cell-by-bank summaries, raw calibration and validation rows, both-domain
 support fields, central Goal 011 reconciliation, and three truth-grid figures.
 It remains conditional on one landscape, one sampling design, known
 homogeneous detection, zero false positives, and an independence composite
-likelihood. No production evidence or cross-truth scientific conclusion is
-recorded before the single authorized campaign.
+likelihood.
+
+The single production campaign returned `cross_truth_design_limited`, with the
+decision stable across the full integration bank and both halves. The three
+`eta = 0.5` cells were design-limited because their supports frequently
+retained the physical `eta = 0` uniform-resistance null: full-bank
+connected-interior counts were `251`, `344`, and `327` of 500, with `249`,
+`155`, and `171` lower-face contacts. All six `eta >= 1` cells were
+recoverable. No primary-domain support contacted an artificial face, all
+precision gates passed, and every paired Brier interval lay wholly below zero.
+Cell 00 also overcovered conservatively; cells 01 and 02 were locally
+calibrated yet showed the same physical-null limitation.
+
+Independent scientific and provenance audits reconstructed every decision
+from the raw tables, verified all 14,096 unique seed streams and declared
+hashes, and reproduced the accepted Goal 011 central evidence exactly. The
+completed result is a practical weak-contrast limitation conditional on this
+landscape, design, known `p = 0.65`, and composite likelihood. It is not a
+claim of universal structural non-identifiability, a sharp contrast threshold,
+or failed prediction.
 
 ## Operating Style
 
