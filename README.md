@@ -255,3 +255,35 @@ an artificial face, all precision gates passed, and the process model beat the
 time-only neutral predictively in every cell. The result therefore identifies
 a practical weak-contrast limit under this frozen design and likelihood, not
 universal non-identifiability or predictive failure.
+
+## Goal 013
+
+Goal 013 tests one prospectively frozen, equal-effort sampling-design
+intervention for the three weak `eta = 0.5` truths while retaining cell 04 as
+the central positive control. The selector balances low and high deterministic
+path-resistance signatures within each original distance stratum, retains 32
+clusters and 160 sites, and assigns one low- and one high-tail holdout cluster
+per stratum. It cannot access stochastic shocks, observations, fitted values,
+or recovery outcomes.
+
+The non-scientific local smoke is:
+
+```bash
+uv run python scripts/run_goal013.py \
+  --output-dir artifacts/goal013_reduced_smoke_local_20260731 \
+  --reduced-smoke
+```
+
+Production requires explicit authenticated Goal 009 and Goal 012 evidence
+directories, portable compute provenance, and exactly four workers. It reuses
+the accepted baseline evidence rather than rerunning it, projects the same
+ordered integration shocks onto the intervention sites, and appends disjoint
+calibration and validation detection roots. Only cells 00, 01, 02, and 04 are
+simulated, and every intervention truth and bank is recalibrated locally.
+
+The exact ignored review pack contains 18 files under
+`artifacts/goal013_weak_contrast_sampling_design_intervention/`. Baseline and
+intervention rows are paired by process block but not by record-level
+detection noise. Comparisons are therefore design-specific operating
+performance contrasts, not a matched causal estimate of detection or a
+universal effect of contrast balancing.

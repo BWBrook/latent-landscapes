@@ -718,6 +718,9 @@ def classify_overall(
 def run_truth_cell(
     cell: goal008.TruthCell,
     config: Goal012Config = DEFAULT_CONFIG,
+    *,
+    fixed_inputs: goal007.FixedInputs | None = None,
+    seed_manifest: SeedManifest | None = None,
 ) -> CellResult:
     """Run one deterministic truth-cell analysis without writing artifacts."""
     cells = config.resolved_truth_cells
@@ -725,8 +728,8 @@ def run_truth_cell(
     if len(matches) != 1:
         raise ValueError("truth cell is not part of this Goal 012 configuration")
     cell = matches[0]
-    fixed = build_fixed_inputs()
-    manifest = spawn_seed_manifest(config)
+    fixed = fixed_inputs if fixed_inputs is not None else build_fixed_inputs()
+    manifest = seed_manifest if seed_manifest is not None else spawn_seed_manifest(config)
     bank, variants, bank_replay = goal011.build_integration_banks(
         config.goal011_config,
         fixed,
@@ -1162,7 +1165,7 @@ def _run_cell_calibration(
     etas = np.asarray(config.etas, dtype=np.float64)
     rows: list[CalibrationResult] = []
     for block in blocks:
-        truth = _truth_for_cell(fixed, block.process, cell, config.resolved_truth_cells)
+        truth = _truth_for_cell(fixed, block.process, cell)
         records = generate_cell_observations(
             fixed,
             truth,
@@ -1259,7 +1262,7 @@ def _run_cell_validation(
     occupied_signals: dict[int, list[float]] = {survey_time: [] for survey_time in SURVEY_TIMES}
     detected_signals: dict[int, list[float]] = {survey_time: [] for survey_time in SURVEY_TIMES}
     for block in blocks:
-        truth = _truth_for_cell(fixed, block.process, cell, config.resolved_truth_cells)
+        truth = _truth_for_cell(fixed, block.process, cell)
         records = generate_cell_observations(
             fixed,
             truth,
@@ -1989,11 +1992,10 @@ def _truth_for_cell(
     fixed: goal007.FixedInputs,
     process_seed: goal007.StreamSeedRecord,
     cell: goal008.TruthCell,
-    truth_cells: tuple[goal008.TruthCell, ...],
 ) -> ContrastSpreadTruth:
     return next(
         truth
-        for truth_cell, truth in generate_truth_block(fixed, process_seed, truth_cells)
+        for truth_cell, truth in generate_truth_block(fixed, process_seed, (cell,))
         if truth_cell.cell_id == cell.cell_id
     )
 

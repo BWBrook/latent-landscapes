@@ -293,6 +293,39 @@ landscape, design, known `p = 0.65`, and composite likelihood. It is not a
 claim of universal structural non-identifiability, a sharp contrast threshold,
 or failed prediction.
 
+## Goal 013
+
+Goal 013 is one prespecified sampling-design intervention for the practical
+weak-contrast limitation established by Goals 009 and 012. It changes only
+cluster locations and the training/holdout allocation. Total effort, access
+network, process, known homogeneous `p = 0.65`, candidate grids, integration
+members, calibration, prediction, recovery thresholds, and neutral comparator
+remain frozen.
+
+The intervention selector computes deterministic uniform-cost and
+accepted-cost shortest-path times without stochastic edge shocks. Within each
+of the four original distance strata it selects four low- and four high-tail
+clusters under the original eight-cell separation rule, then holds out the
+cluster closest to each stratum-tail mean. A fixed 10,000-attempt PCG64 search,
+lexicographic ranking, 12-decimal canonicalization, and within-stratum
+correlation gate make the design reproducible and fail-closed.
+
+The accepted Goal 009 perfect-detection and Goal 012 known-detection packs are
+authenticated from disk and their six weak-cell rows are independently
+recomputed. The intervention simulates only cells 00-02 and central control
+cell 04. It preserves Goal 012's first seven seed roots and uses two appended,
+disjoint detection roots; process blocks are matched to the baseline while
+detection realizations are not.
+
+The primary decision first checks implementation integrity, bank stability,
+artificial candidate faces, and preservation of the central positive control.
+It then distinguishes restored low-eta recovery from a material but incomplete
+reduction in physical-null contact. The latter requires at least 25 fewer
+full-bank `eta = 0` contacts and a wholly negative block-indexed normal
+interval in every weak truth. A negative or mixed result completes the goal.
+The comparison remains conditional on one landscape and one selected design,
+and the composite likelihood still omits between-site process dependence.
+
 ## Operating Style
 
 Work is goal-based and modular, with human review at scientific gates. Apply
