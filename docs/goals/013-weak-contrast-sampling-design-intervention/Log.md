@@ -102,3 +102,19 @@ variance from intentionally unmatched detection noise.
 The reviewer authorised the single production campaign after committing and
 pinning this exact reviewed state in the detached-checkout preflight. No
 retuning, rescue campaign, or stronger preproduction audit is justified.
+
+## 2026-07-31: Cross-Filesystem Preflight Repair
+
+The first remote preflight attempt stopped before simulation because its
+bundle-verification command ran outside the detached repository. After that
+dispatch-only command was corrected, the focused Linux suite exposed one
+test-harness portability defect: the evidence-tamper test assumed that a hard
+link could cross from deep-server's `/data` filesystem into pytest's `/tmp`
+scratch filesystem. Nineteen of twenty remote tests passed; the failed test
+did not enter the benchmark or production campaign.
+
+The test helper now falls back to a normal metadata-preserving copy only for
+the cross-device-link error. No selector, evidence reader, process,
+observation, likelihood, seed, candidate, cutoff, threshold, decision, or
+artifact code changed. The focused local Goal 013 and Goal 012 suites were
+rerun before issuing a new pinned implementation commit and remote bundle.

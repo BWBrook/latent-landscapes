@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import errno
 import os
 import pickle
 import shutil
@@ -11,6 +12,15 @@ import pytest
 from latent_landscapes.goal002.calibration import EstimateInterval
 from latent_landscapes.goal012 import benchmark as goal012
 from latent_landscapes.goal013 import benchmark
+
+
+def _hardlink_or_copy(source: str, destination: str) -> None:
+    try:
+        os.link(source, destination)
+    except OSError as error:
+        if error.errno != errno.EXDEV:
+            raise
+        shutil.copy2(source, destination)
 
 
 def tiny_config() -> benchmark.Goal013Config:
@@ -96,7 +106,7 @@ def test_authenticates_and_recomputes_both_accepted_weak_contrast_packs(
     shutil.copytree(
         benchmark.DEFAULT_GOAL012_EVIDENCE_DIR,
         tampered,
-        copy_function=os.link,
+        copy_function=_hardlink_or_copy,
     )
     summary = tampered / "truth_cell_summary.csv"
     original = summary.read_text(encoding="utf-8")
