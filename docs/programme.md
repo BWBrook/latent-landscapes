@@ -326,6 +326,24 @@ interval in every weak truth. A negative or mixed result completes the goal.
 The comparison remains conditional on one landscape and one selected design,
 and the composite likelihood still omits between-site process dependence.
 
+The completed campaign returned `contrast_balancing_not_supported`. All three
+weak truths remain design-limited across the full integration bank and both
+halves, while central control cell 04 remains recoverable. Full-bank
+physical-null contacts changed from `249` to `213` for cell 00, `155` to `148`
+for cell 01, and `171` to `169` for cell 02. Only cell 00 met the prespecified
+material-contribution criteria. Thus the balanced design produced a real but
+rho-specific improvement rather than a general rescue of weak-contrast
+recovery.
+
+This closes the single authorized layout intervention. It does not establish
+that sampling design is irrelevant, nor does it justify serial layout tuning.
+The remaining load-bearing methodological question is whether the stable
+process-level spatial signal identified in Goal 006 survives in joint
+spatiotemporal observations but is discarded by the site-marginal composite
+likelihood. Testing that known inferential omission, or broadening to new
+landscapes if it carries no stable information, requires a separately approved
+goal.
+
 ## Operating Style
 
 Work is goal-based and modular, with human review at scientific gates. Apply

@@ -287,3 +287,14 @@ intervention rows are paired by process block but not by record-level
 detection noise. Comparisons are therefore design-specific operating
 performance contrasts, not a matched causal estimate of detection or a
 universal effect of contrast balancing.
+
+The completed production campaign returned
+`contrast_balancing_not_supported`, stable across the full bank and both
+halves. Cells 00-02 remain `cell_design_limited`; central control cell 04
+remains `cell_recoverable`. Full-bank physical-null contacts changed from
+`249` to `213`, `155` to `148`, and `171` to `169`. Only cell 00 met both
+material-contribution criteria, so the intervention showed a cell-specific
+benefit but did not generally resolve weak-contrast recovery across spread
+rates. All design and candidate-domain gates passed. The authenticated
+retrieved production pack is under
+`artifacts/goal013_remote_runs/goal013-20260731T034814Z-2944b1a/output/`.

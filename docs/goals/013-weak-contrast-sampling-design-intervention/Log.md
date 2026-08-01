@@ -118,3 +118,64 @@ the cross-device-link error. No selector, evidence reader, process,
 observation, likelihood, seed, candidate, cutoff, threshold, decision, or
 artifact code changed. The focused local Goal 013 and Goal 012 suites were
 rerun before issuing a new pinned implementation commit and remote bundle.
+
+## 2026-08-01: Production Campaign And Acceptance
+
+The single authorized four-worker campaign ran on `deep-server` from clean
+detached commit `2944b1a61b77c6c3092c8669326d27f519a50db9`. Run
+`goal013-20260731T034814Z-2944b1a` completed once with exit status zero in
+`1:46:21` and returned:
+
+```text
+contrast_balancing_not_supported
+```
+
+Before launch, the repaired Linux preflight verified the exact Git bundle and
+lockfile, passed all 20 focused Goal 013 and Goal 012 tests, wrote the complete
+18-file reduced smoke, and validated the portable production provenance. The
+retrieved run record contains 47 files including its 46-entry recursive
+checksum manifest; every checksum passed before and after transfer. The
+production pack contains exactly the required 18 files, every declared hash
+matches, and all source, evidence, design, seed, bank, numerical, and artifact
+invariants are true.
+
+The selector reproduced 635 eligible centres, excluded the six whose footprint
+overlapped a source, retained 629 candidates, and selected 32 clusters and 160
+sites with a 24/8 training/holdout split. The maximum absolute within-stratum
+`u`-`z` correlation is `0.570746495042`, within the frozen `0.60` gate, and the
+design digest is
+`ba887b460d8a8dff1b731086de77dd2d00edce1c00d37c8550fa161558092410`.
+
+All three weak truths remain `cell_design_limited` in the full bank and both
+halves. Their full-bank physical-topology successes are `287`, `352`, and
+`331` of 500 for cells 00, 01, and 02. Central control cell 04 remains
+`cell_recoverable` at `500/500`, and no primary support contacts an artificial
+candidate face.
+
+The independently recomputed full-bank physical-null comparisons are:
+
+| Truth cell | Goal 012 contacts | Intervention contacts | Difference | 95% interval |
+| --- | ---: | ---: | ---: | ---: |
+| cell-00 | 249 | 213 | -36 | [-0.111122, -0.032878] |
+| cell-01 | 155 | 148 | -7 | [-0.046571, 0.018571] |
+| cell-02 | 171 | 169 | -2 | [-0.046982, 0.038982] |
+
+Cell 00 meets both material-contribution criteria, but cells 01 and 02 do not.
+Because the prospective rule requires material evidence in every weak truth,
+the intervention neither restores weak-contrast recovery nor qualifies as a
+general material contribution. The omnibus outcome must not be paraphrased as
+“no benefit”: it records one cell-specific improvement that did not generalize
+across spread rates.
+
+An independent postproduction audit accepted the result with limitations and
+reconstructed the selector, all 12 cutoffs, 6,000 calibration rows, 6,000
+validation rows, support topology, classes, paired comparisons, predecessor
+evidence, and 18,096 seed records. It found no material defect and recommended
+no repair or rerun. The design figure's blue/orange low/high-tail colours lack
+a colour legend; the machine-readable table is explicit, so this is a minor
+standalone-figure limitation rather than a scientific defect.
+
+The inference remains conditional on one landscape, one prespecified design,
+known homogeneous detection, and a site-history composite likelihood that
+omits between-site process dependence. Goal 013 closes without retuning,
+another layout intervention, or a rescue campaign.
