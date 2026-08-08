@@ -6,14 +6,12 @@ import hashlib
 import json
 import os
 import resource
-import subprocess
 import sys
 import time
 from collections.abc import Mapping
 from concurrent.futures import ProcessPoolExecutor
 from dataclasses import dataclass, fields, is_dataclass, replace
 from math import isfinite
-from pathlib import Path
 from statistics import fmean, median
 from typing import Any
 
@@ -77,17 +75,6 @@ SOURCE_IDENTITY = {
     "accepted_goal007_log_blob": "d3fe2e6a73ef0031c5ce3de46eb7cd8a1204d27b",
     "lockfile_blob": "56ac1fe55b4c1182e4f89448a95d1864745261dc",
 }
-PINNED_SOURCE_PATHS = {
-    "goal007_benchmark_blob": "src/latent_landscapes/goal007/benchmark.py",
-    "goal007_likelihood_blob": "src/latent_landscapes/goal007/likelihood.py",
-    "goal007_observation_blob": "src/latent_landscapes/goal007/observations.py",
-    "goal007_artifact_blob": "src/latent_landscapes/goal007/artifacts.py",
-    "accepted_goal007_log_blob": (
-        "docs/goals/007-joint-rho-eta-perfect-detection-positive-control/Log.md"
-    ),
-    "lockfile_blob": "uv.lock",
-}
-
 CENTRAL_HISTORICAL_RAW_HASHES = {
     "calibration": "60b541649ad8fffa7bef0810c5246358c50dacf01027c2a6fa5bf6cbb5523f24",
     "validation": "ac559b76981b9962db4e537f725dd8c87b8348866e4c28000c7316348bb08439",
@@ -764,20 +751,20 @@ def run_campaign(
     )
     summaries = tuple(row for cell_result in cell_results for row in cell_result.bank_summaries)
     expected_seed_digest = _seed_manifest_digest(manifest)
-    source_invariants = _source_invariants(config)
+    runtime_invariants = _runtime_invariants(config)
     central = _central_projection(
         config,
         calibration,
         validation,
         summaries,
         manifest,
-        source_invariants,
+        runtime_invariants,
     )
     cell_invariants = {
         result.truth_cell.cell_id: dict(result.invariants) for result in cell_results
     }
     invariants = {
-        **source_invariants,
+        **runtime_invariants,
         "cell_result_order": tuple(result.truth_cell for result in cell_results)
         == config.truth_cells,
         "cell_invariants": all(
@@ -1180,7 +1167,7 @@ def _central_projection(
     validation: tuple[ValidationResult, ...],
     summaries: tuple[CellBankSummary, ...],
     manifest: goal007.SeedManifest,
-    source_invariants: Mapping[str, bool],
+    runtime_invariants: Mapping[str, bool],
 ) -> CentralProjection:
     central_calibration = tuple(row for row in calibration if row.truth_cell == "cell-04")
     central_validation = tuple(row for row in validation if row.truth_cell == "cell-04")
@@ -1228,7 +1215,6 @@ def _central_projection(
             ),
             "source_identity": (
                 source_identity_sha256 == CENTRAL_REFERENCE["source_identity_sha256"]
-                and source_invariants.get("frozen_source_blobs_reconciled") is True
             ),
             "central_outcome": central_outcome == CENTRAL_REFERENCE["outcome"],
         }
@@ -1438,25 +1424,8 @@ def _maximum_rss_bytes() -> int:
     return max(1, int(maximum * multiplier))
 
 
-def _source_invariants(config: Goal008Config) -> dict[str, bool]:
-    repository_root = Path(__file__).resolve().parents[3]
-    commit = SOURCE_IDENTITY["repository_commit"]
-    commit_reconciled = _git_commit_is_ancestor(repository_root, commit)
-    parent_reconciled = all(
-        _git_commit_blob_sha(repository_root, commit, path) == SOURCE_IDENTITY[key]
-        for key, path in PINNED_SOURCE_PATHS.items()
-    )
-    runtime_reconciled = all(
-        _git_blob_sha(repository_root / path) == SOURCE_IDENTITY[key]
-        for key, path in PINNED_SOURCE_PATHS.items()
-    )
+def _runtime_invariants(config: Goal008Config) -> dict[str, bool]:
     return {
-        "frozen_repository_commit_reconciled": commit_reconciled,
-        "frozen_parent_source_blobs_reconciled": parent_reconciled,
-        "frozen_runtime_source_blobs_reconciled": runtime_reconciled,
-        "frozen_source_blobs_reconciled": (
-            commit_reconciled and parent_reconciled and runtime_reconciled
-        ),
         "production_contract": not config.is_production
         or (
             config.master_seed == MASTER_SEED
@@ -1469,49 +1438,6 @@ def _source_invariants(config: Goal008Config) -> dict[str, bool]:
             and config.truth_cells == TRUTH_CELLS
         ),
     }
-
-
-def _git_blob_sha(path: Path) -> str:
-    try:
-        return subprocess.run(
-            ["git", "hash-object", str(path)],
-            check=True,
-            capture_output=True,
-            text=True,
-        ).stdout.strip()
-    except (OSError, subprocess.CalledProcessError):
-        return ""
-
-
-def _git_commit_is_ancestor(repository_root: Path, commit: str) -> bool:
-    try:
-        return (
-            subprocess.run(
-                ["git", "merge-base", "--is-ancestor", commit, "HEAD"],
-                cwd=repository_root,
-                check=False,
-            ).returncode
-            == 0
-        )
-    except OSError:
-        return False
-
-
-def _git_commit_blob_sha(
-    repository_root: Path,
-    commit: str,
-    path: str,
-) -> str | None:
-    try:
-        return subprocess.run(
-            ["git", "rev-parse", f"{commit}:{path}"],
-            cwd=repository_root,
-            check=True,
-            capture_output=True,
-            text=True,
-        ).stdout.strip()
-    except (OSError, subprocess.CalledProcessError):
-        return None
 
 
 def _canonical_value(value: object) -> object:

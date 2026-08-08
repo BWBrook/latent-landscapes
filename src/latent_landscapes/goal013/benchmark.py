@@ -1,4 +1,4 @@
-"""Four-cell Goal 013 intervention benchmark composed from Goal 012."""
+"""Four-cell intervention benchmark using the shared cross-truth engine."""
 
 from __future__ import annotations
 
@@ -18,12 +18,12 @@ from typing import Any, cast
 
 import numpy as np
 
+from latent_landscapes import cross_truth
 from latent_landscapes.goal002.calibration import EstimateInterval, normal_mean_interval
 from latent_landscapes.goal004 import benchmark as goal004
 from latent_landscapes.goal007 import benchmark as goal007
 from latent_landscapes.goal008 import benchmark as goal008
 from latent_landscapes.goal011 import benchmark as goal011
-from latent_landscapes.goal012 import benchmark as goal012
 
 from . import design
 from .evidence import (
@@ -36,18 +36,18 @@ from .evidence import (
 )
 
 TARGET_CELL_IDS = ("cell-00", "cell-01", "cell-02", "cell-04")
-THREAD_LIMIT_NAMES = goal012.THREAD_LIMIT_NAMES
-STATE_WORD_COUNT = goal012.STATE_WORD_COUNT
-ACCEPTED_GOAL012_COMMIT = "b2bdfbb95051bfec09676c4cdbfa4e2e0303fd97"
+THREAD_LIMIT_NAMES = cross_truth.THREAD_LIMIT_NAMES
+STATE_WORD_COUNT = cross_truth.STATE_WORD_COUNT
 
 
 @dataclass(frozen=True, slots=True)
 class Goal013Config:
-    goal012_config: goal012.Goal012Config = goal012.DEFAULT_CONFIG
+    cross_truth_config: cross_truth.CrossTruthConfig = cross_truth.DEFAULT_CONFIG
 
     def __post_init__(self) -> None:
         by_id = {
-            cell.cell_id: (cell.rho, cell.eta) for cell in self.goal012_config.resolved_truth_cells
+            cell.cell_id: (cell.rho, cell.eta)
+            for cell in self.cross_truth_config.resolved_truth_cells
         }
         expected = {
             "cell-00": (0.5, 0.5),
@@ -60,7 +60,7 @@ class Goal013Config:
 
     @property
     def target_truth_cells(self) -> tuple[goal008.TruthCell, ...]:
-        by_id = {cell.cell_id: cell for cell in self.goal012_config.resolved_truth_cells}
+        by_id = {cell.cell_id: cell for cell in self.cross_truth_config.resolved_truth_cells}
         return tuple(by_id[cell_id] for cell_id in TARGET_CELL_IDS)
 
     @property
@@ -73,7 +73,7 @@ DEFAULT_CONFIG = Goal013Config()
 
 def smoke_config() -> Goal013Config:
     """Return the explicit reduced smoke while preserving the full grids."""
-    return Goal013Config(goal012_config=goal012.smoke_config())
+    return Goal013Config(cross_truth_config=cross_truth.smoke_config())
 
 
 SeedRecord = goal007.StreamSeedRecord | goal004.StreamSeedRecord
@@ -81,8 +81,8 @@ SeedRecord = goal007.StreamSeedRecord | goal004.StreamSeedRecord
 
 @dataclass(frozen=True, slots=True)
 class Goal013SeedManifest:
-    baseline: goal012.SeedManifest
-    intervention: goal012.SeedManifest
+    baseline: cross_truth.SeedManifest
+    intervention: cross_truth.SeedManifest
 
     @property
     def appended_detection_records(self) -> tuple[goal004.StreamSeedRecord, ...]:
@@ -135,11 +135,11 @@ class Goal013Result:
     design: design.DesignSelection
     seed_manifest: Goal013SeedManifest
     evidence: ExistingEvidence
-    calibration_results: tuple[goal012.CalibrationResult, ...]
-    validation_results: tuple[goal012.ValidationResult, ...]
-    observation_signal_summary: tuple[goal012.ObservationSignalSummary, ...]
-    representative_profiles: tuple[goal012.RepresentativeProfile, ...]
-    truth_cell_summaries: tuple[goal012.CellBankSummary, ...]
+    calibration_results: tuple[cross_truth.CalibrationResult, ...]
+    validation_results: tuple[cross_truth.ValidationResult, ...]
+    observation_signal_summary: tuple[cross_truth.ObservationSignalSummary, ...]
+    representative_profiles: tuple[cross_truth.RepresentativeProfile, ...]
+    truth_cell_summaries: tuple[cross_truth.CellBankSummary, ...]
     baseline_intervention_comparisons: tuple[BaselineInterventionComparison, ...]
     cell_invariants: dict[str, dict[str, bool]]
     execution_telemetry: CampaignExecutionTelemetry
@@ -148,10 +148,10 @@ class Goal013Result:
 
 
 def spawn_seed_manifest(
-    config: goal012.Goal012Config = goal012.DEFAULT_CONFIG,
+    config: cross_truth.CrossTruthConfig = cross_truth.DEFAULT_CONFIG,
 ) -> Goal013SeedManifest:
     """Preserve roots zero-to-six and append intervention roots seven and eight."""
-    baseline = goal012.spawn_seed_manifest(config)
+    baseline = cross_truth.spawn_seed_manifest(config)
     roots = np.random.SeedSequence(config.master_seed).spawn(9)
     calibration_detection = _intervention_detection_blocks(
         roots[7],
@@ -163,10 +163,10 @@ def spawn_seed_manifest(
         phase="validation",
         count=config.validation_blocks,
     )
-    intervention = goal012.SeedManifest(
+    intervention = cross_truth.SeedManifest(
         integration_bank=baseline.integration_bank,
         calibration=tuple(
-            goal012.BlockSeedRecord(
+            cross_truth.BlockSeedRecord(
                 phase="calibration",
                 index=index,
                 process=baseline.calibration[index].process,
@@ -175,7 +175,7 @@ def spawn_seed_manifest(
             for index in range(config.calibration_blocks)
         ),
         validation=tuple(
-            goal012.BlockSeedRecord(
+            cross_truth.BlockSeedRecord(
                 phase="validation",
                 index=index,
                 process=baseline.validation[index].process,
@@ -252,9 +252,9 @@ def run_campaign(
     )
     selected = design.build_contrast_balanced_design()
     fixed = build_fixed_inputs(selected)
-    manifest = spawn_seed_manifest(config.goal012_config)
+    manifest = spawn_seed_manifest(config.cross_truth_config)
     tasks = tuple(
-        (cell, config.goal012_config, fixed, manifest.intervention)
+        (cell, config.cross_truth_config, fixed, manifest.intervention)
         for cell in config.target_truth_cells
     )
     if workers == 1:
@@ -285,26 +285,26 @@ def run_campaign(
     cell_invariants = {
         result.truth_cell.cell_id: dict(result.invariants) for result in cell_results
     }
-    source_invariants = _source_invariants()
     all_streams = manifest.all_stream_records
     expected_calibration_count = (
-        len(TARGET_CELL_IDS) * len(BANK_VARIANT_NAMES) * config.goal012_config.calibration_blocks
+        len(TARGET_CELL_IDS)
+        * len(BANK_VARIANT_NAMES)
+        * config.cross_truth_config.calibration_blocks
     )
     expected_validation_count = (
-        len(TARGET_CELL_IDS) * len(BANK_VARIANT_NAMES) * config.goal012_config.validation_blocks
+        len(TARGET_CELL_IDS) * len(BANK_VARIANT_NAMES) * config.cross_truth_config.validation_blocks
     )
     comparison_ids = {(row.truth_cell, row.bank_variant) for row in comparisons}
     invariants = {
-        **source_invariants,
         **{f"design_{key}": value for key, value in selected.invariants.items()},
         **{f"evidence_{key}": value for key, value in existing.invariants.items()},
         "production_contract": not config.is_production
         or (
-            config.goal012_config == goal012.DEFAULT_CONFIG
+            config.cross_truth_config == cross_truth.DEFAULT_CONFIG
             and TARGET_CELL_IDS == ("cell-00", "cell-01", "cell-02", "cell-04")
         ),
         "goal012_first_seven_roots_exact": (
-            manifest.baseline == goal012.spawn_seed_manifest(config.goal012_config)
+            manifest.baseline == cross_truth.spawn_seed_manifest(config.cross_truth_config)
         ),
         "appended_detection_roots": all(
             item.detection.spawn_key[0] == 7
@@ -356,7 +356,8 @@ def run_campaign(
         "baseline_intervention_pairing": comparison_ids
         == {(cell, bank) for cell in WEAK_CELL_IDS for bank in BANK_VARIANT_NAMES}
         and all(
-            row.validation_blocks == config.goal012_config.validation_blocks for row in comparisons
+            row.validation_blocks == config.cross_truth_config.validation_blocks
+            for row in comparisons
         ),
         "cell_processes_succeeded": len(cell_telemetry) == len(TARGET_CELL_IDS)
         and all(row.exit_status == 0 for row in cell_telemetry),
@@ -454,7 +455,7 @@ def campaign_digest(result: Goal013Result) -> str:
 def _baseline_intervention_comparisons(
     config: Goal013Config,
     existing: ExistingEvidence,
-    validation: tuple[goal012.ValidationResult, ...],
+    validation: tuple[cross_truth.ValidationResult, ...],
 ) -> tuple[BaselineInterventionComparison, ...]:
     baseline = {
         (row.truth_cell, row.bank_variant, row.block_index): row.eta_zero_contact
@@ -468,7 +469,7 @@ def _baseline_intervention_comparisons(
             rows = tuple(
                 row for row in validation if row.truth_cell == cell_id and row.bank_variant == bank
             )
-            if len(rows) != config.goal012_config.validation_blocks:
+            if len(rows) != config.cross_truth_config.validation_blocks:
                 raise ValueError("intervention comparison row count is incomplete")
             ordered = tuple(sorted(rows, key=lambda row: row.block_index))
             if tuple(row.block_index for row in ordered) != tuple(range(len(ordered))):
@@ -511,10 +512,10 @@ def _intervention_detection_blocks(
     *,
     phase: str,
     count: int,
-) -> tuple[tuple[goal012.CellDetectionSeed, ...], ...]:
+) -> tuple[tuple[cross_truth.CellDetectionSeed, ...], ...]:
     return tuple(
         tuple(
-            goal012.CellDetectionSeed(
+            cross_truth.CellDetectionSeed(
                 truth_cell=cell_id,
                 detection=_detection_record(phase, block_index, child),
             )
@@ -547,14 +548,14 @@ def _detection_record(
 def _run_cell_task(
     task: tuple[
         goal008.TruthCell,
-        goal012.Goal012Config,
+        cross_truth.CrossTruthConfig,
         goal007.FixedInputs,
-        goal012.SeedManifest,
+        cross_truth.SeedManifest,
     ],
-) -> tuple[goal012.CellResult, CellExecutionTelemetry]:
+) -> tuple[cross_truth.CellResult, CellExecutionTelemetry]:
     cell, config, fixed, manifest = task
     started = time.perf_counter()
-    result = goal012.run_truth_cell(
+    result = cross_truth.run_truth_cell(
         cell,
         config,
         fixed_inputs=fixed,
@@ -592,30 +593,6 @@ def _validate_production_runtime(
     )
     if status.stdout:
         raise ValueError("production campaign requires a clean source state")
-
-
-def _source_invariants() -> dict[str, bool]:
-    root = Path(__file__).resolve().parents[3]
-    accepted_is_ancestor = (
-        subprocess.run(
-            [
-                "git",
-                "merge-base",
-                "--is-ancestor",
-                ACCEPTED_GOAL012_COMMIT,
-                "HEAD",
-            ],
-            cwd=root,
-            check=False,
-            capture_output=True,
-        ).returncode
-        == 0
-    )
-    predecessor = goal012._source_invariants()
-    return {
-        "accepted_goal012_commit_is_ancestor": accepted_is_ancestor,
-        "goal012_predecessor_sources_reconciled": all(predecessor.values()),
-    }
 
 
 def _maximum_rss_bytes() -> int:

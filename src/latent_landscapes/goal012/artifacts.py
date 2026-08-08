@@ -19,6 +19,12 @@ import numpy as np
 from matplotlib.axes import Axes
 from matplotlib.figure import Figure
 
+from latent_landscapes.cross_truth import (
+    BANK_VARIANT_NAMES,
+    CalibrationResult,
+    CellBankSummary,
+    ValidationResult,
+)
 from latent_landscapes.goal004.benchmark import (
     StreamSeedRecord as DetectionSeedRecord,
 )
@@ -28,12 +34,8 @@ from latent_landscapes.goal007.benchmark import (
 from latent_landscapes.goal008 import artifacts as goal008_artifacts
 
 from .benchmark import (
-    BANK_VARIANT_NAMES,
     SOURCE_IDENTITY,
-    CalibrationResult,
-    CellBankSummary,
     Goal012Result,
-    ValidationResult,
 )
 
 DEFAULT_OUTPUT_DIR = Path("artifacts/goal012_cross_truth_joint_known_imperfect_detection")

@@ -25,6 +25,7 @@ import numpy as np
 from matplotlib.axes import Axes
 from matplotlib.figure import Figure
 
+from latent_landscapes import cross_truth
 from latent_landscapes.goal001.design import (
     SamplingDesign,
     build_design,
@@ -32,7 +33,7 @@ from latent_landscapes.goal001.design import (
 )
 from latent_landscapes.goal001.landscape import Landscape, build_landscape
 from latent_landscapes.goal012 import artifacts as goal012_artifacts
-from latent_landscapes.goal012 import benchmark as goal012
+from latent_landscapes.goal012 import benchmark as goal012_campaign
 
 from .design import SEARCH_ATTEMPTS, SELECTOR_SEED, DesignSelection
 
@@ -125,7 +126,7 @@ def write_review_bundle(
         target / "existing_evidence_reconciliation.csv",
         _evidence_rows(result),
     )
-    compatible = cast(goal012.Goal012Result, result)
+    compatible = cast(goal012_campaign.Goal012Result, result)
     _write_csv(
         target / "calibration_results.csv",
         goal012_artifacts._calibration_rows(compatible),
@@ -196,7 +197,7 @@ def write_review_bundle(
 
 
 def _config_payload(result: Goal013Result) -> dict[str, object]:
-    config = result.config.goal012_config
+    config = result.config.cross_truth_config
     return {
         "goal": "013-weak-contrast-sampling-design-intervention",
         "scientific_parent": "012-cross-truth-joint-known-imperfect-detection",
@@ -720,7 +721,7 @@ def _validated_compute_provenance(
         provenance,
         workers=telemetry.worker_count,
     )
-    production = result.config.goal012_config.is_production
+    production = result.config.cross_truth_config.is_production
     if production and provenance.get("provenance_mode") != "production":
         raise ValueError("production result requires production provenance")
     if not production and provenance.get("provenance_mode") != "test":
@@ -783,8 +784,8 @@ def _validate_production_declaration(
         value = provenance.get(field)
         if not isinstance(value, str) or SHA256_PATTERN.fullmatch(value) is None:
             raise ValueError(f"production {field} must be 64 lowercase hex digits")
-    expected_threads = {name: "1" for name in goal012.THREAD_LIMIT_NAMES}
-    observed_threads = {name: os.environ.get(name, "") for name in goal012.THREAD_LIMIT_NAMES}
+    expected_threads = {name: "1" for name in cross_truth.THREAD_LIMIT_NAMES}
+    observed_threads = {name: os.environ.get(name, "") for name in cross_truth.THREAD_LIMIT_NAMES}
     if (
         workers != 4
         or provenance.get("worker_count") != 4

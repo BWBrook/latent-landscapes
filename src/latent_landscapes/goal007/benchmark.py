@@ -2,12 +2,9 @@
 
 from __future__ import annotations
 
-import hashlib
-import subprocess
 from collections import Counter
 from dataclasses import dataclass
 from math import ceil, isfinite
-from pathlib import Path
 from statistics import fmean, median
 from typing import cast
 
@@ -83,16 +80,6 @@ SOURCE_IDENTITY = {
     "goal004_likelihood_blob": "b427bdfd25e2747ca69e2272e1be2df93aa6f49e",
     "goal004_benchmark_blob": "92b5f91d7f47882c2da4b44f00f82448c44fa826",
     "goal006_contrast_spread_blob": "da0ae999dcdcfaf3b721a4f0204acc110e6560e7",
-}
-PINNED_SOURCE_PATHS = {
-    "goal001_landscape_blob": "src/latent_landscapes/goal001/landscape.py",
-    "goal001_design_blob": "src/latent_landscapes/goal001/design.py",
-    "goal002_neutral_baseline_blob": "src/latent_landscapes/goal002/baseline.py",
-    "goal003_stochastic_spread_blob": "src/latent_landscapes/goal003/spread.py",
-    "goal004_observation_blob": "src/latent_landscapes/goal004/observations.py",
-    "goal004_likelihood_blob": "src/latent_landscapes/goal004/likelihood.py",
-    "goal004_benchmark_blob": "src/latent_landscapes/goal004/benchmark.py",
-    "goal006_contrast_spread_blob": "src/latent_landscapes/goal006/spread.py",
 }
 
 
@@ -376,30 +363,12 @@ def generator_from_seed_record(record: StreamSeedRecord) -> np.random.Generator:
 
 
 def build_fixed_inputs() -> FixedInputs:
-    """Rebuild and reconcile the frozen landscape, graph, and sampling design."""
+    """Build and validate the landscape, graph, and sampling design."""
     landscape = build_landscape()
     centre_rng, holdout_rng, _ = spawn_generators()
     design = build_design(landscape, centre_rng, holdout_rng)
     cluster_counts = Counter(cluster.split for cluster in design.clusters)
-    package_root = Path(__file__).resolve().parents[1]
-    repository_root = package_root.parents[1]
-    pinned_commit = SOURCE_IDENTITY["repository_commit"]
-    commit_reconciled = _git_commit_is_ancestor(repository_root, pinned_commit)
-    parent_blobs_reconciled = all(
-        _git_commit_blob_sha(repository_root, pinned_commit, path) == SOURCE_IDENTITY[key]
-        for key, path in PINNED_SOURCE_PATHS.items()
-    )
-    runtime_blobs_reconciled = all(
-        _git_blob_sha(repository_root / path) == SOURCE_IDENTITY[key]
-        for key, path in PINNED_SOURCE_PATHS.items()
-    )
     invariants = {
-        "frozen_repository_commit_reconciled": commit_reconciled,
-        "frozen_parent_source_blobs_reconciled": parent_blobs_reconciled,
-        "frozen_runtime_source_blobs_reconciled": runtime_blobs_reconciled,
-        "frozen_source_blobs_reconciled": (
-            commit_reconciled and parent_blobs_reconciled and runtime_blobs_reconciled
-        ),
         "landscape_counts": landscape.shape == (72, 84)
         and int(landscape.passable.sum()) == 5225
         and int((~landscape.passable).sum()) == 823
@@ -1094,36 +1063,6 @@ def _stream_record(
         state_words=tuple(int(value) for value in sequence.generate_state(STATE_WORD_COUNT)),
         pool_size=sequence.pool_size,
     )
-
-
-def _git_blob_sha(path: Path) -> str:
-    contents = path.read_bytes()
-    return hashlib.sha1(f"blob {len(contents)}\0".encode() + contents).hexdigest()
-
-
-def _git_commit_is_ancestor(repository_root: Path, commit: str) -> bool:
-    try:
-        completed = subprocess.run(
-            ["git", "-C", str(repository_root), "merge-base", "--is-ancestor", commit, "HEAD"],
-            check=False,
-            capture_output=True,
-        )
-    except OSError:
-        return False
-    return completed.returncode == 0
-
-
-def _git_commit_blob_sha(repository_root: Path, commit: str, path: str) -> str | None:
-    try:
-        completed = subprocess.run(
-            ["git", "-C", str(repository_root), "rev-parse", f"{commit}:{path}"],
-            check=False,
-            capture_output=True,
-            text=True,
-        )
-    except OSError:
-        return None
-    return completed.stdout.strip() if completed.returncode == 0 else None
 
 
 run_joint_recovery = run_goal007

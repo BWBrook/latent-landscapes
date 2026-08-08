@@ -11,6 +11,7 @@ from pathlib import Path
 
 import pytest
 
+from latent_landscapes import cross_truth
 from latent_landscapes.goal012 import artifacts, benchmark
 
 
@@ -50,7 +51,7 @@ def _provenance() -> dict[str, object]:
 @pytest.fixture(scope="module")
 def small_result() -> benchmark.Goal012Result:
     return benchmark.run_campaign(
-        benchmark.Goal012Config(
+        cross_truth.CrossTruthConfig(
             bank_size=2,
             calibration_blocks=2,
             validation_blocks=2,
@@ -103,7 +104,7 @@ def test_exact_deterministic_15_file_review_pack_contract(
     assert config["holdout_records_per_dataset"] == 480
     assert config["candidate_etas"][-2:] == [2.25, 2.5]
     assert config["old_domain_eta_maximum"] == 2.0
-    assert config["truth_cell_order"] == [cell.cell_id for cell in benchmark.TRUTH_CELLS]
+    assert config["truth_cell_order"] == [cell.cell_id for cell in cross_truth.TRUTH_CELLS]
     assert compute["worker_count"] == 1
     assert compute["campaign_exit_success"] is True
     assert len(compute["cell_telemetry"]) == 9

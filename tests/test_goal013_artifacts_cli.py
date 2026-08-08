@@ -11,7 +11,7 @@ from pathlib import Path
 
 import pytest
 
-from latent_landscapes.goal012 import benchmark as goal012
+from latent_landscapes import cross_truth
 from latent_landscapes.goal013 import artifacts, benchmark
 
 
@@ -55,7 +55,7 @@ def _provenance() -> dict[str, object]:
 def small_result() -> benchmark.Goal013Result:
     return benchmark.run_campaign(
         benchmark.Goal013Config(
-            goal012_config=goal012.Goal012Config(
+            cross_truth_config=cross_truth.CrossTruthConfig(
                 master_seed=20260730,
                 bank_size=2,
                 calibration_blocks=2,

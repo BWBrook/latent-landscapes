@@ -9,8 +9,8 @@ from pathlib import Path
 import numpy as np
 import pytest
 
+from latent_landscapes import cross_truth
 from latent_landscapes.goal002.calibration import EstimateInterval
-from latent_landscapes.goal012 import benchmark as goal012
 from latent_landscapes.goal013 import benchmark
 
 
@@ -25,7 +25,7 @@ def _hardlink_or_copy(source: str, destination: str) -> None:
 
 def tiny_config() -> benchmark.Goal013Config:
     return benchmark.Goal013Config(
-        goal012_config=goal012.Goal012Config(
+        cross_truth_config=cross_truth.CrossTruthConfig(
             master_seed=20260730,
             bank_size=2,
             calibration_blocks=2,
@@ -117,9 +117,9 @@ def test_authenticates_and_recomputes_both_accepted_weak_contrast_packs(
 
 
 def test_nine_root_manifest_preserves_goal012_and_appends_disjoint_detection() -> None:
-    config = tiny_config().goal012_config
+    config = tiny_config().cross_truth_config
     observed = benchmark.spawn_seed_manifest(config)
-    baseline = goal012.spawn_seed_manifest(config)
+    baseline = cross_truth.spawn_seed_manifest(config)
 
     assert observed.baseline == baseline
     assert observed.intervention.integration_bank == baseline.integration_bank
@@ -170,6 +170,9 @@ def test_reduced_campaign_runs_only_four_cells_with_local_cutoffs_and_comparison
     assert len(result.baseline_intervention_comparisons) == 3 * 3
     assert result.outcome != "implementation_blocked"
     assert all(result.invariants.values())
+    assert not any(key.startswith("frozen_") for key in result.invariants)
+    assert "accepted_goal012_commit_is_ancestor" not in result.invariants
+    assert "goal012_predecessor_sources_reconciled" not in result.invariants
     assert all(
         row.cutoff_source_cell == row.truth_cell
         and row.cutoff.sample_size == 2
@@ -232,22 +235,22 @@ def test_first_match_decision_precedence_is_frozen() -> None:
     )
 
 
-def test_goal012_default_runner_matches_injected_inputs_and_singleton_truth(
+def test_cross_truth_default_runner_matches_injected_inputs_and_singleton_truth(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    config = tiny_config().goal012_config
+    config = tiny_config().cross_truth_config
     cell = next(row for row in config.resolved_truth_cells if row.cell_id == "cell-04")
-    fixed = goal012.build_fixed_inputs()
-    manifest = goal012.spawn_seed_manifest(config)
+    fixed = cross_truth.build_fixed_inputs()
+    manifest = cross_truth.spawn_seed_manifest(config)
 
-    default = goal012.run_truth_cell(cell, config)
+    default = cross_truth.run_truth_cell(cell, config)
 
     def fail_default_builder(*args: object, **kwargs: object) -> None:
-        raise AssertionError("explicit Goal012 inputs fell through to a default builder")
+        raise AssertionError("explicit cross-truth inputs fell through to a default builder")
 
-    monkeypatch.setattr(goal012, "build_fixed_inputs", fail_default_builder)
-    monkeypatch.setattr(goal012, "spawn_seed_manifest", fail_default_builder)
-    injected = goal012.run_truth_cell(
+    monkeypatch.setattr(cross_truth, "build_fixed_inputs", fail_default_builder)
+    monkeypatch.setattr(cross_truth, "spawn_seed_manifest", fail_default_builder)
+    injected = cross_truth.run_truth_cell(
         cell,
         config,
         fixed_inputs=fixed,
@@ -257,8 +260,8 @@ def test_goal012_default_runner_matches_injected_inputs_and_singleton_truth(
 
     block = manifest.calibration[0]
     all_truth = dict(
-        goal012.generate_truth_block(fixed, block.process, config.resolved_truth_cells)
+        cross_truth.generate_truth_block(fixed, block.process, config.resolved_truth_cells)
     )[cell]
-    singleton_truth = dict(goal012.generate_truth_block(fixed, block.process, (cell,)))[cell]
+    singleton_truth = dict(cross_truth.generate_truth_block(fixed, block.process, (cell,)))[cell]
     assert np.array_equal(all_truth.arrival, singleton_truth.arrival)
     assert np.array_equal(all_truth.edge_shocks, singleton_truth.edge_shocks)

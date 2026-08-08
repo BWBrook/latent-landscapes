@@ -4,6 +4,7 @@ from dataclasses import replace
 
 import numpy as np
 
+from latent_landscapes import cross_truth
 from latent_landscapes.goal002.calibration import EstimateInterval
 from latent_landscapes.goal004.observations import DETECTION_PROBABILITY
 from latent_landscapes.goal008 import benchmark as goal008
@@ -11,8 +12,8 @@ from latent_landscapes.goal011 import benchmark as goal011
 from latent_landscapes.goal012 import benchmark
 
 
-def tiny_config() -> benchmark.Goal012Config:
-    return benchmark.Goal012Config(
+def tiny_config() -> cross_truth.CrossTruthConfig:
+    return cross_truth.CrossTruthConfig(
         master_seed=20260730,
         bank_size=2,
         calibration_blocks=2,
@@ -30,8 +31,8 @@ def _stable_classes(
     full_class: str = "cell_recoverable",
 ) -> dict[str, dict[str, str]]:
     return {
-        cell.cell_id: {bank: full_class for bank in benchmark.BANK_VARIANT_NAMES}
-        for cell in benchmark.TRUTH_CELLS
+        cell.cell_id: {bank: full_class for bank in cross_truth.BANK_VARIANT_NAMES}
+        for cell in cross_truth.TRUTH_CELLS
     }
 
 
@@ -42,8 +43,8 @@ def _cell_decision(
     calibrated_coverage: EstimateInterval,
     median_absolute_eta_error: float = 0.0,
     paired_brier_interval: EstimateInterval,
-) -> benchmark.CellDecision:
-    return benchmark.classify_cell(
+) -> cross_truth.CellDecision:
+    return cross_truth.classify_cell(
         artificial_face_contact_count=artificial_face_contact_count,
         physical_topology_success_count=physical_topology_success_count,
         validation_count=500,
@@ -58,12 +59,12 @@ def _cell_decision(
 
 def test_truth_grid_and_seven_root_seed_identity_are_exact() -> None:
     config = tiny_config()
-    manifest = benchmark.spawn_seed_manifest(config)
+    manifest = cross_truth.spawn_seed_manifest(config)
     central = goal011.spawn_seed_manifest(config.goal011_config)
 
     assert tuple(
         (cell.cell_id, cell.rho, cell.eta, cell.rho_index, cell.eta_index)
-        for cell in benchmark.TRUTH_CELLS
+        for cell in cross_truth.TRUTH_CELLS
     ) == (
         ("cell-00", 0.5, 0.5, 150, 2),
         ("cell-01", 1.0, 0.5, 300, 2),
@@ -112,9 +113,9 @@ def test_truth_grid_and_seven_root_seed_identity_are_exact() -> None:
 
 def test_process_block_scaling_and_cell04_process_detection_replay() -> None:
     config = tiny_config()
-    fixed = benchmark.build_fixed_inputs()
-    block = benchmark.spawn_seed_manifest(config).calibration[0]
-    truths = benchmark.generate_truth_block(fixed, block.process)
+    fixed = cross_truth.build_fixed_inputs()
+    block = cross_truth.spawn_seed_manifest(config).calibration[0]
+    truths = cross_truth.generate_truth_block(fixed, block.process)
     by_cell = {cell.cell_id: truth for cell, truth in truths}
 
     assert all(
@@ -127,7 +128,7 @@ def test_process_block_scaling_and_cell04_process_detection_replay() -> None:
 
     central_seed = goal011.spawn_seed_manifest(config.goal011_config).calibration[0]
     expected_truth, expected_records = goal011.generate_dataset(fixed, central_seed)
-    observed_records = benchmark.generate_cell_observations(
+    observed_records = cross_truth.generate_cell_observations(
         fixed,
         by_cell["cell-04"],
         block.detection_for("cell-04"),
@@ -138,16 +139,16 @@ def test_process_block_scaling_and_cell04_process_detection_replay() -> None:
 
 def test_noncentral_detection_streams_are_unique_and_visits_are_complete() -> None:
     config = tiny_config()
-    fixed = benchmark.build_fixed_inputs()
-    block = benchmark.spawn_seed_manifest(config).validation[0]
-    truths = benchmark.generate_truth_block(fixed, block.process)
+    fixed = cross_truth.build_fixed_inputs()
+    block = cross_truth.spawn_seed_manifest(config).validation[0]
+    truths = cross_truth.generate_truth_block(fixed, block.process)
 
     detections = tuple(item.detection for item in block.cell_detection)
     assert len(detections) == 9
     assert len({(row.entropy, row.spawn_key) for row in detections}) == 9
     signatures: list[tuple[int, ...]] = []
     for cell, truth in truths:
-        records = benchmark.generate_cell_observations(
+        records = cross_truth.generate_cell_observations(
             fixed,
             truth,
             block.detection_for(cell.cell_id),
@@ -155,7 +156,7 @@ def test_noncentral_detection_streams_are_unique_and_visits_are_complete() -> No
         assert len(records) == 1920
         assert sum(row.split == "training" for row in records) == 1440
         assert sum(row.split == "holdout" for row in records) == 480
-        assert benchmark.no_false_positives(records, truth)
+        assert cross_truth.no_false_positives(records, truth)
         signatures.append(tuple(row.detected for row in records))
     assert len(set(signatures)) > 1
 
@@ -276,7 +277,7 @@ def test_cell_and_overall_precedence_separate_artificial_and_physical_limits() -
     )
     for cell_class, overall in expected:
         classes = _stable_classes()
-        classes["cell-08"] = {bank: cell_class for bank in benchmark.BANK_VARIANT_NAMES}
+        classes["cell-08"] = {bank: cell_class for bank in cross_truth.BANK_VARIANT_NAMES}
         assert benchmark.classify_overall({"all": True}, classes) == overall
     assert benchmark.classify_overall({"all": True}, stable) == (
         "cross_truth_joint_known_detection_recoverable"
@@ -287,7 +288,7 @@ def test_worker_count_does_not_change_scientific_order_or_digest() -> None:
     sequential = benchmark.run_campaign(tiny_config(), workers=1)
     parallel = benchmark.run_campaign(tiny_config(), workers=2)
 
-    expected_order = tuple(cell.cell_id for cell in benchmark.TRUTH_CELLS)
+    expected_order = tuple(cell.cell_id for cell in cross_truth.TRUTH_CELLS)
     assert tuple(sequential.cell_invariants) == expected_order
     assert tuple(row.truth_cell for row in sequential.execution_telemetry.cell_telemetry) == (
         expected_order
@@ -332,5 +333,5 @@ def test_cell04_result_reconciles_independent_goal011_public_path() -> None:
             tuple(row for row in result.truth_cell_summaries if row.truth_cell == "cell-04")
         )
     ) == tuple(row.expanded_downstream_class for row in reference.bank_summaries)
-    assert DETECTION_PROBABILITY == benchmark.DETECTION_PROBABILITY == 0.65
-    assert goal008.TRUTH_CELLS == benchmark.TRUTH_CELLS
+    assert DETECTION_PROBABILITY == cross_truth.DETECTION_PROBABILITY == 0.65
+    assert goal008.TRUTH_CELLS == cross_truth.TRUTH_CELLS
