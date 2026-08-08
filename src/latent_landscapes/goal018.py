@@ -184,7 +184,7 @@ def detection_profile(
         or (np.diff(candidates) <= 0.0).any()
     ):
         raise ValueError("candidate probabilities must be interior and increasing")
-    selected, detections, nondetections, valid = _history_exponents(site_ids, records)
+    selected, detections, nondetections, valid = history_exponents(site_ids, records)
     site_index = {site_id: index for index, site_id in enumerate(site_ids)}
     selected_weights = weights[[site_index[site_id] for site_id in selected]]
     p = candidates[:, None, None]
@@ -358,7 +358,7 @@ def write_review_bundle(result: Goal018Result, output_dir: Path) -> tuple[Path, 
     return written
 
 
-def _history_exponents(
+def history_exponents(
     site_ids: tuple[str, ...],
     records: Sequence[HistoryRecordLike],
 ) -> tuple[tuple[str, ...], NDArray[np.int64], NDArray[np.int64], NDArray[np.bool_]]:
