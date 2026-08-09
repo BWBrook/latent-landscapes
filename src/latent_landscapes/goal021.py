@@ -281,10 +281,23 @@ def summarize_support(
     profile: ThreeParameterProfile,
     *,
     cutoff: float,
+    truth_rho: float = TRUTH_RHO,
+    truth_eta: float = TRUTH_ETA,
+    truth_probability: float = TRUTH_PROBABILITY,
 ) -> SupportSummary:
     """Summarize a calibrated six-neighbour three-dimensional support."""
     if not math.isfinite(cutoff) or cutoff < 0.0:
         raise ValueError("support cutoff must be finite and nonnegative")
+    if (
+        not math.isfinite(truth_rho)
+        or truth_rho <= 0.0
+        or not math.isfinite(truth_eta)
+        or not math.isfinite(truth_probability)
+        or sum(value == truth_rho for value in profile.rhos) != 1
+        or sum(value == truth_eta for value in profile.etas) != 1
+        or sum(value == truth_probability for value in profile.probabilities) != 1
+    ):
+        raise ValueError("truth coordinates must be finite and occur once on the profile")
     statistic = 2.0 * (profile.maximum_log_likelihood - profile.log_likelihoods)
     support = tuple(
         (int(eta_index), int(rho_index), int(p_index))
@@ -298,9 +311,9 @@ def summarize_support(
     log_rhos = np.log(rho_values)
     return SupportSummary(
         truth_included=any(
-            profile.etas[eta_index] == TRUTH_ETA
-            and profile.rhos[rho_index] == TRUTH_RHO
-            and profile.probabilities[p_index] == TRUTH_PROBABILITY
+            profile.etas[eta_index] == truth_eta
+            and profile.rhos[rho_index] == truth_rho
+            and profile.probabilities[p_index] == truth_probability
             for eta_index, rho_index, p_index in support
         ),
         cell_count=len(support),
@@ -315,11 +328,11 @@ def summarize_support(
         projected_eta_width=float(eta_values.max() - eta_values.min()),
         projected_probability_width=float(p_values.max() - p_values.min()),
         minimum_log_rho_error=min(
-            abs(math.log(rho / TRUTH_RHO)) for rho, _, _ in profile.mle_cells
+            abs(math.log(rho / truth_rho)) for rho, _, _ in profile.mle_cells
         ),
-        minimum_eta_error=min(abs(eta - TRUTH_ETA) for _, eta, _ in profile.mle_cells),
+        minimum_eta_error=min(abs(eta - truth_eta) for _, eta, _ in profile.mle_cells),
         minimum_probability_error=min(
-            abs(probability - TRUTH_PROBABILITY) for _, _, probability in profile.mle_cells
+            abs(probability - truth_probability) for _, _, probability in profile.mle_cells
         ),
         rho_eta_correlation=_correlation(log_rhos, eta_values),
         rho_probability_correlation=_correlation(log_rhos, p_values),
