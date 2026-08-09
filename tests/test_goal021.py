@@ -124,6 +124,21 @@ def test_three_dimensional_support_and_progression() -> None:
         )
         == "three_parameter_recovery_imprecise"
     )
+    assert (
+        classify_outcome(
+            invariants={"valid": True},
+            connected_interior_count=240,
+            validation_count=250,
+            coverage=calibrated,
+            median_log_rho_error=0.04,
+            median_eta_error=0.20,
+            median_probability_error=0.02,
+            median_log_rho_width=0.30,
+            median_eta_width=0.50,
+            median_probability_width=0.20000000000000007,
+        )
+        == "advance_to_cross_truth_three_parameter_benchmark"
+    )
 
 
 def test_goal021_smoke_writes_only_the_compact_review_surface(tmp_path: Path) -> None:

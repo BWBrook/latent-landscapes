@@ -347,16 +347,28 @@ def classify_outcome(
         return "three_parameter_support_design_limited"
     if not coverage.lower <= 0.95 <= coverage.upper:
         return "three_parameter_calibration_not_ready"
-    if (
-        median_log_rho_error > 0.10
-        or median_eta_error > 0.25
-        or median_probability_error > 0.05
-        or median_log_rho_width > 0.50
-        or median_eta_width > 0.75
-        or median_probability_width > 0.20
+    if any(
+        _materially_exceeds(value, threshold)
+        for value, threshold in (
+            (median_log_rho_error, 0.10),
+            (median_eta_error, 0.25),
+            (median_probability_error, 0.05),
+            (median_log_rho_width, 0.50),
+            (median_eta_width, 0.75),
+            (median_probability_width, 0.20),
+        )
     ):
         return "three_parameter_recovery_imprecise"
     return "advance_to_cross_truth_three_parameter_benchmark"
+
+
+def _materially_exceeds(value: float, threshold: float) -> bool:
+    return value > threshold and not math.isclose(
+        value,
+        threshold,
+        rel_tol=0.0,
+        abs_tol=1e-12,
+    )
 
 
 def run_goal021(config: Goal021Config = DEFAULT_CONFIG) -> Goal021Result:
