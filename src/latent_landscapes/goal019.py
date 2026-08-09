@@ -208,10 +208,56 @@ def spread_detection_profile(
     """Profile rho and p jointly while resistance remains fixed."""
     weights = np.asarray(category_weights, dtype=np.float64)
     rho_values = np.asarray(tuple(rhos), dtype=np.float64)
-    p_values = np.asarray(tuple(probabilities), dtype=np.float64)
     expected_shape = (len(rho_values), len(site_ids), CATEGORY_COUNT)
     if weights.shape != expected_shape:
         raise ValueError("category weights have an invalid shape")
+    p_values, log_likelihoods = parameter_detection_log_likelihoods(
+        site_ids=site_ids,
+        records=records,
+        category_weights=weights,
+        probabilities=probabilities,
+    )
+    maximum = float(log_likelihoods.max())
+    mle_indices = tuple(
+        (int(rho_index), int(p_index))
+        for rho_index, p_index in np.argwhere(
+            np.isclose(log_likelihoods, maximum, rtol=0.0, atol=MLE_TOLERANCE)
+        )
+    )
+    return SpreadDetectionProfile(
+        rhos=rho_values.copy(),
+        probabilities=p_values.copy(),
+        log_likelihoods=log_likelihoods,
+        maximum_log_likelihood=maximum,
+        mle_indices=mle_indices,
+        mle_cells=tuple(
+            (float(rho_values[rho_index]), float(p_values[p_index]))
+            for rho_index, p_index in mle_indices
+        ),
+    )
+
+
+def parameter_detection_log_likelihoods(
+    *,
+    site_ids: tuple[str, ...],
+    records: Sequence[HistoryRecordLike],
+    category_weights: NDArray[np.float64],
+    probabilities: Sequence[float] | NDArray[np.float64],
+) -> tuple[NDArray[np.float64], NDArray[np.float64]]:
+    """Calculate a generic parameter-by-detection complete-history surface."""
+    weights = np.asarray(category_weights, dtype=np.float64)
+    p_values = np.asarray(tuple(probabilities), dtype=np.float64)
+    if weights.ndim != 3 or weights.shape[1:] != (len(site_ids), CATEGORY_COUNT):
+        raise ValueError("category weights have an invalid shape")
+    if (
+        p_values.ndim != 1
+        or len(p_values) == 0
+        or not np.isfinite(p_values).all()
+        or (p_values <= 0.0).any()
+        or (p_values >= 1.0).any()
+        or (np.diff(p_values) <= 0.0).any()
+    ):
+        raise ValueError("probability grid must be finite, interior, and increasing")
     if (
         not np.isfinite(weights).all()
         or (weights <= 0.0).any()
@@ -231,24 +277,7 @@ def spread_detection_profile(
     if not np.isfinite(site_probabilities).all() or (site_probabilities <= 0.0).any():
         raise ValueError("site-history probabilities must be finite and positive")
     log_likelihoods = np.log(site_probabilities).sum(axis=2)
-    maximum = float(log_likelihoods.max())
-    mle_indices = tuple(
-        (int(rho_index), int(p_index))
-        for rho_index, p_index in np.argwhere(
-            np.isclose(log_likelihoods, maximum, rtol=0.0, atol=MLE_TOLERANCE)
-        )
-    )
-    return SpreadDetectionProfile(
-        rhos=rho_values.copy(),
-        probabilities=p_values.copy(),
-        log_likelihoods=log_likelihoods,
-        maximum_log_likelihood=maximum,
-        mle_indices=mle_indices,
-        mle_cells=tuple(
-            (float(rho_values[rho_index]), float(p_values[p_index]))
-            for rho_index, p_index in mle_indices
-        ),
-    )
+    return p_values.copy(), log_likelihoods
 
 
 def summarize_support(
@@ -278,7 +307,7 @@ def summarize_support(
             for rho_index, p_index in support
         ),
         cell_count=len(support),
-        component_count=_rook_component_count(support),
+        component_count=rook_component_count(support),
         boundary_contact=any(
             rho_index in (0, len(profile.rhos) - 1)
             or p_index in (0, len(profile.probabilities) - 1)
@@ -456,7 +485,7 @@ def write_review_bundle(result: Goal019Result, output_dir: Path) -> tuple[Path, 
     return written
 
 
-def _rook_component_count(indices: tuple[tuple[int, int], ...]) -> int:
+def rook_component_count(indices: tuple[tuple[int, int], ...]) -> int:
     remaining = set(indices)
     components = 0
     while remaining:
