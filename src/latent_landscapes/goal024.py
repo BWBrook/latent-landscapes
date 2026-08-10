@@ -158,6 +158,29 @@ class Goal024Result:
 
 def load_goal023_anchors(evidence_dir: Path) -> Goal023Anchors:
     """Load and reconcile the two accepted Goal 023 resistance anchors."""
+    summaries = load_goal023_summaries(evidence_dir)
+    weak = one_summary(summaries, "weaker_resistance")
+    central = one_summary(summaries, "central")
+    if not (
+        weak.truth_rho == 1.0
+        and weak.truth_eta == 0.5
+        and weak.truth_probability == 0.65
+        and weak.connected_interior_count == 166
+        and weak.boundary_contact_count == 84
+        and weak.outcome == "three_parameter_support_design_limited"
+        and central.truth_rho == 1.0
+        and central.truth_eta == 1.0
+        and central.truth_probability == 0.65
+        and central.connected_interior_count == 250
+        and central.boundary_contact_count == 0
+        and central.outcome == ADVANCE
+    ):
+        raise ValueError("Goal 023 resistance anchors changed")
+    return Goal023Anchors(weaker_resistance=weak, central=central)
+
+
+def load_goal023_summaries(evidence_dir: Path) -> tuple[TruthSummary, ...]:
+    """Load the accepted production truth summaries and verify their CSV mirror."""
     target = Path(evidence_dir)
     summary_path = target / "summary.json"
     table_path = target / "truth_summary.csv"
@@ -187,29 +210,10 @@ def load_goal023_anchors(evidence_dir: Path) -> Goal023Anchors:
     )
     with table_path.open(encoding="utf-8", newline="") as handle:
         csv_ids = {row.get("truth_id") for row in csv.DictReader(handle)}
-    required_ids = {"central", "weaker_resistance"}
-    if not required_ids.issubset({summary.truth_id for summary in summaries}) or not (
-        required_ids.issubset(csv_ids)
-    ):
+    summary_ids = {summary.truth_id for summary in summaries}
+    if not summaries or len(summary_ids) != len(summaries) or csv_ids != summary_ids:
         raise ValueError("Goal 023 truth table did not reconcile")
-    weak = _one_summary(summaries, "weaker_resistance")
-    central = _one_summary(summaries, "central")
-    if not (
-        weak.truth_rho == 1.0
-        and weak.truth_eta == 0.5
-        and weak.truth_probability == 0.65
-        and weak.connected_interior_count == 166
-        and weak.boundary_contact_count == 84
-        and weak.outcome == "three_parameter_support_design_limited"
-        and central.truth_rho == 1.0
-        and central.truth_eta == 1.0
-        and central.truth_probability == 0.65
-        and central.connected_interior_count == 250
-        and central.boundary_contact_count == 0
-        and central.outcome == ADVANCE
-    ):
-        raise ValueError("Goal 023 resistance anchors changed")
-    return Goal023Anchors(weaker_resistance=weak, central=central)
+    return summaries
 
 
 def classify_transition(
@@ -498,7 +502,7 @@ def _integer(row: Mapping[str, object], key: str) -> int:
     return int(value)
 
 
-def _one_summary(summaries: tuple[TruthSummary, ...], truth_id: str) -> TruthSummary:
+def one_summary(summaries: tuple[TruthSummary, ...], truth_id: str) -> TruthSummary:
     matches = [summary for summary in summaries if summary.truth_id == truth_id]
     if len(matches) != 1:
         raise ValueError("Goal 023 truth summary is missing or duplicated")
