@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Latent Landscapes | Team briefing</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23128577'/%3E%3Cpath d='M8 7h5v14h11v4H8z' fill='white'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="deck.css" />
+  </head>
+  <body>
+    <div class="progress" aria-hidden="true"><span id="progress-fill"></span></div>
+
+    <main class="deck" id="deck" aria-live="polite">
+      <section class="slide title-slide is-active" data-title="Latent Landscapes">
+        <div class="title-copy">
+          <p class="date-line">Team briefing | 13 August 2026</p>
+          <h1>Latent<br />Landscapes</h1>
+          <p class="title-question">
+            When can ecological process be recovered from imperfect spatial observations?
+          </p>
+          <p class="programme-line">
+            Synthetic methods <span>→</span> mink–water vole <span>→</span> Australian predator impacts
+          </p>
+          <p class="author">Barry W. Brook</p>
+        </div>
+        <div class="title-visual" aria-label="Current synthetic landscape">
+          <img src="assets/landscape_design.png" alt="Synthetic landscape, access network and sampling sites" />
+          <div class="title-visual-label">A known-truth ecological laboratory</div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Why the programme reset">
+        <header class="slide-header">
+          <p class="section-label">Background | Why known-truth synthetic experiments</p>
+          <h2>Real-data dead ends motivated a known-truth reset</h2>
+        </header>
+        <div class="timeline" aria-label="Project evolution">
+          <article class="timeline-step reveal">
+            <span class="timeline-number">01</span>
+            <h3>Discovery concept</h3>
+            <p>Process, observation and inference sketched at a high level.</p>
+          </article>
+          <article class="timeline-step below reveal">
+            <span class="timeline-number">02</span>
+            <h3>Mink–water vole start</h3>
+            <p>Realism arrived before parameter truth or diagnostic control.</p>
+          </article>
+          <article class="timeline-step reveal">
+            <span class="timeline-number">03</span>
+            <h3>Known-truth synth-small</h3>
+            <p>Synthetic control helped, but the wave was too simple.</p>
+          </article>
+          <article class="timeline-step below accent reveal">
+            <span class="timeline-number">04</span>
+            <h3>Latent Landscapes</h3>
+            <p>A richer Python laboratory isolates one failure mode at a time.</p>
+          </article>
+        </div>
+        <p class="takeaway">The programme advanced through progressive diagnosis.</p>
+      </section>
+
+      <section class="slide" data-title="Why synth-small was not enough">
+        <header class="slide-header">
+          <p class="section-label">Known-truth reset | The first synthetic model</p>
+          <h2>The first synthetic model exposed the limits of an over-simple landscape</h2>
+        </header>
+        <div class="legacy-layout">
+          <figure class="legacy-figure">
+            <img src="assets/legacy_suitability.png" alt="Smooth synth-small suitability surface" />
+            <figcaption>Smooth habitat</figcaption>
+          </figure>
+          <figure class="legacy-figure">
+            <img src="assets/legacy_driver_arrival.png" alt="Near-linear synth-small predator arrival wave" />
+            <figcaption>Near-linear arrival wave</figcaption>
+          </figure>
+          <div class="legacy-diagnosis">
+            <div>
+              <h3 class="good">What it gave us</h3>
+              <ul>
+                <li>Known truth and easy visual checks</li>
+                <li>A safe place to expose observation failures</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="warning">What it could not give us</h3>
+              <ul>
+                <li>Enough spatial contrast to distinguish mechanisms</li>
+                <li>A realistic test of resistance, barriers or biased sampling</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Current landscape and sampling">
+        <header class="slide-header">
+          <p class="section-label">Current synthetic laboratory | Landscape and sampling</p>
+          <h2>The current laboratory makes resistance and biased sampling explicit</h2>
+        </header>
+        <div class="landscape-layout">
+          <figure class="landscape-figure">
+            <img src="assets/landscape_design.png" alt="Accepted landscape, access network and frozen clusters" />
+          </figure>
+          <aside class="landscape-facts">
+            <h3>72 × 84 cells</h3>
+            <ul class="fact-list">
+              <li><b>Water barriers</b>; passable low-quality matrix</li>
+              <li><b>High-conductance corridors</b> and high-quality patches</li>
+              <li><b>Three western source zones</b></li>
+            </ul>
+            <div class="line-key"><span></span>Fixed road / transect network</div>
+            <p class="fact-emphasis">32 clusters; 8 held out</p>
+            <p class="small-copy">
+              Clusters are balanced by distance from sources — not targeted to good habitat.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Truth versus observation">
+        <header class="slide-header compact">
+          <p class="section-label">Current synthetic laboratory | Process and observation</p>
+          <h2>Imperfect detection fragments the spread history</h2>
+        </header>
+        <div class="encoding-rail">
+          <div><strong>Left</strong> background = true arrival day; circle size + fill = the same detection count</div>
+          <div><strong>Right</strong> circle colour = first detection day; purple / 120 = never detected; red edge = holdout</div>
+        </div>
+        <figure class="truth-observation-figure">
+          <img src="assets/truth_observation.png" alt="True arrival, detection histories and first observed detections" />
+        </figure>
+        <p class="takeaway">Surveys ended at day 110 while the wave continued beyond day 200: observed spread reflects both the survey window and missed detections.</p>
+      </section>
+
+      <section class="slide" data-title="Resistance and spread thresholds">
+        <header class="slide-header">
+          <p class="section-label">Predator spread | Recovery thresholds</p>
+          <h2>Moderate habitat contrasts are detectable; slower waves reduce detection precision</h2>
+        </header>
+        <p class="definition-band">
+          <strong>Resistance</strong> is movement cost through passable habitat. Contrast <b>η = 0</b> makes all passable habitat equal; <b>η = 1</b> retains the full designed differences.
+        </p>
+        <div class="result-grid spread-results">
+          <article class="result-panel">
+            <h3>Can we distinguish habitat-guided spread from uniform movement?</h3>
+            <p class="experiment-context">250 independent simulated surveys at each known contrast</p>
+            <div class="result-table three-column-table" role="table" aria-label="Resistance contrast recovery">
+              <div class="table-head" role="row"><span>True contrast</span><span>Excluded uniform movement</span><span>Interpretation</span></div>
+              <div class="table-row" role="row"><strong>η = 0.50</strong><span>166 / 250</span><em class="status-warning">Often ambiguous</em></div>
+              <div class="table-row" role="row"><strong>η = 0.75</strong><span>250 / 250</span><em class="status-good">Reliably detected</em></div>
+              <div class="table-row" role="row"><strong>η = 1.00</strong><span>250 / 250</span><em class="status-good">Reliably detected</em></div>
+            </div>
+            <p class="criterion-note">Reliable detection required at least 95% of experiments to exclude uniform movement.</p>
+          </article>
+          <article class="result-panel">
+            <h3>Can we estimate detection probability precisely?</h3>
+            <p class="experiment-context"><b>p</b> = chance of detecting the predator on one survey after arrival; target interval width ≤ 0.20</p>
+            <div class="result-table three-column-table" role="table" aria-label="Detection probability precision">
+              <div class="table-head" role="row"><span>True spread rate</span><span>Typical interval width for p</span><span>Interpretation</span></div>
+              <div class="table-row" role="row"><strong>0.76× · slower</strong><span>0.26</span><em class="status-warning">Too broad</em></div>
+              <div class="table-row" role="row"><strong>0.87× · intermediate</strong><span>0.24</span><em class="status-warning">Too broad</em></div>
+              <div class="table-row" role="row"><strong>1.00× · reference</strong><span>0.20</span><em class="status-good">Meets target</em></div>
+            </div>
+            <p class="criterion-note">Spread rate itself was accurately recovered at all three speeds.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Prey-effect ladder">
+        <header class="slide-header">
+          <p class="section-label">Prey response | Recovery thresholds</p>
+          <h2>A strong predator effect survived imperfect observation</h2>
+        </header>
+        <p class="definition-band">
+          <strong>Prey-effect multiplier</strong> = local prey-extirpation risk after predator arrival ÷ background risk; <b>1×</b> means no predator effect.
+        </p>
+        <div class="prey-layout">
+          <article class="result-panel prey-strength-panel">
+            <h3>How strong must the prey response be?</h3>
+            <p class="experiment-context">Known arrival dates, perfect prey observation and 1,000 simulated experiments per effect</p>
+            <div class="result-table prey-result-table" role="table" aria-label="Prey effect recovery">
+              <div class="table-head" role="row"><span>True effect</span><span>Excluded no effect</span><span>Interpretation</span></div>
+              <div class="table-row" role="row"><strong>2×</strong><span>653 / 1,000</span><em class="status-warning">Frequently ambiguous</em></div>
+              <div class="table-row" role="row"><strong>3×</strong><span>986 / 1,000</span><em class="status-middle">Detected; size slightly imprecise</em></div>
+              <div class="table-row" role="row"><strong>5×</strong><span>1,000 / 1,000</span><em class="status-good">Fully recovered</em></div>
+            </div>
+          </article>
+          <div class="observation-ladder">
+            <article class="ladder-step reveal">
+              <span>✓</span><div><h3>Arrival known; prey observed perfectly</h3><p>Fivefold effect recovered</p></div>
+            </article>
+            <article class="ladder-step reveal">
+              <span>✓</span><div><h3>Arrival known; prey detected imperfectly</h3><p>Two visits per survey; detection probability 0.65</p></div>
+            </article>
+            <article class="ladder-step accent reveal">
+              <span>✓</span><div><h3>Arrival hidden; both species detected imperfectly</h3><p>Fivefold effect still recovered</p></div>
+            </article>
+            <p class="recovery-definition"><b>Recovered</b> = calibrated uncertainty, adequate precision, better held-out prediction than a simple time-only model and ≥95% of experiments excluding no effect.</p>
+          </div>
+        </div>
+        <p class="takeaway teal-tint">For the tested fivefold effect, imperfect prey detection and hidden predator-arrival dates caused only a modest loss of precision.</p>
+      </section>
+
+      <section class="slide" data-title="A crucial inference lesson">
+        <header class="slide-header">
+          <p class="section-label">Inference | Calibrating uncertainty</p>
+          <h2>The estimates were sound; the first uncertainty test was too blunt</h2>
+        </header>
+        <p class="definition-band inference-setup">
+          Known generating values: <b>spread rate 1.0</b> and <b>fivefold prey-extirpation risk after arrival</b>. Both were estimated from imperfect observations in 1,000 experiments.
+        </p>
+        <div class="inference-layout">
+          <article class="estimate-panel">
+            <h3>The model usually found the known values</h3>
+            <div class="estimate-head"><span>Quantity</span><span>Known value</span><span>Typical estimate</span></div>
+            <div class="estimate-row"><strong>Predator spread rate</strong><span>1.0</span><b>1.0</b></div>
+            <div class="estimate-row"><strong>Increase in prey-extirpation risk</strong><span>5×</span><b>5×</b></div>
+            <p>Best-fitting values were centred on the values used to generate the data.</p>
+          </article>
+          <article class="uncertainty-panel">
+            <h3>The uncertainty question changed the conclusion</h3>
+            <div class="uncertainty-row shared">
+              <strong>One shared envelope for both parameters</strong>
+              <span><b>130 / 1,000</b> excluded no prey effect</span>
+              <small>Typical prey-effect range: 1×–10×</small>
+            </div>
+            <div class="uncertainty-row separate">
+              <strong>One calibrated interval for each parameter</strong>
+              <span><b>1,000 / 1,000</b> excluded no prey effect</span>
+              <small>Typical prey-effect interval: approximately twofold</small>
+            </div>
+          </article>
+        </div>
+        <p class="inference-caveat">Separate intervals describe each parameter reliably; simultaneous coverage of both parameters remains a later question.</p>
+        <p class="takeaway">Variation among entire invasion waves inflated the shared uncertainty envelope; the prey-effect signal remained.</p>
+      </section>
+
+      <section class="slide" data-title="The central scientific take-away">
+        <header class="slide-header">
+          <p class="section-label">Current scientific position | What now works</p>
+          <h2>The synthetic laboratory now recovers spread, resistance and prey impact</h2>
+        </header>
+        <div class="three-achievements">
+          <article class="achievement blue-achievement">
+            <p>Predator spread</p><h3>Movement and landscape effects</h3>
+            <span></span>
+            <strong>3 / 3</strong>
+            <div>tested wave speeds recovered</div>
+            <ul><li>Moderate and full resistance contrasts reliably detected</li><li>Held-out predictions beat simpler time-only models</li></ul>
+          </article>
+          <article class="achievement orange-achievement">
+            <p>Prey response</p><h3>Indirect ecological impact</h3>
+            <span></span>
+            <strong>5× effect</strong>
+            <div>recovered across the observation ladder</div>
+            <ul><li>Survived missed prey detections</li><li>Survived hidden predator-arrival dates</li></ul>
+          </article>
+          <article class="achievement teal-achievement">
+            <p>Scientific diagnosis</p><h3>Known truth separates failure modes</h3>
+            <span></span>
+            <strong>1,000 / 1,000</strong>
+            <div>prey-effect intervals excluded no effect</div>
+            <ul><li>Weak signal distinguished from observation limits</li><li>Over-broad joint uncertainty identified</li></ul>
+          </article>
+        </div>
+        <p class="takeaway teal-tint">An end-to-end synthetic system now recovers multiple ecological processes under imperfect observation and identifies when information becomes limiting.</p>
+      </section>
+
+      <section class="slide" data-title="The three-paper sequence">
+        <header class="slide-header">
+          <p class="section-label">Research programme | Where the work leads</p>
+          <h2>Three papers add ecological realism by design</h2>
+        </header>
+        <div class="paper-sequence">
+          <article class="paper-step reveal">
+            <span>1</span><h3>Synthetic methods</h3>
+            <p>Known truth; identifiability thresholds; calibrated uncertainty; more than one landscape/model.</p>
+            <img src="assets/landscape_design.png" alt="Known-truth synthetic landscape" />
+          </article>
+          <article class="paper-step blue-step reveal">
+            <span>2</span><h3>Mink–water vole</h3>
+            <p>Great Britain as a constrained real-world test; islands retained as potential natural contrasts.</p>
+            <img src="assets/american_mink.jpg" alt="American mink in riparian habitat" />
+          </article>
+          <article class="paper-step rust-step reveal">
+            <span>3</span><h3>Australian murids</h3>
+            <p>Cats and potentially foxes under sparse, difficult data; the grant-scale ecological endpoint.</p>
+            <img src="assets/australian_feral_cat.jpg" alt="Feral cat in an Australian arid landscape" />
+          </article>
+        </div>
+        <p class="takeaway">The study systems become progressively more complex as our capacity to infer ecological processes from sparse data develops.</p>
+      </section>
+
+      <section class="slide discussion-slide" data-title="Questions for collaborators">
+        <div class="discussion-heading">
+          <p class="section-label">Discussion</p>
+          <h2>Questions<br />for the team</h2>
+        </div>
+        <div class="questions">
+          <article class="question reveal"><span>1</span><p>Which result so far seems most scientifically important or surprising?</p></article>
+          <article class="question reveal"><span>2</span><p>Does a synthetic-only first paper feel like a substantial contribution, and what evidence must it contain?</p></article>
+          <article class="question reveal"><span>3</span><p>Which feature of the current ecology, landscape or sampling design feels least convincing?</p></article>
+          <article class="question reveal"><span>4</span><p>What additional landscapes or models are essential before publication?</p></article>
+          <article class="question reveal"><span>5</span><p>Which constraints from the mink–water vole and Australian systems should inform the design of the synthetic work now?</p></article>
+        </div>
+      </section>
+    </main>
+
+    <aside class="notes-panel" id="notes-panel" aria-label="Presenter notes">
+      <header>
+        <div><span id="notes-slide-number">01</span><strong id="notes-title">Latent Landscapes</strong></div>
+        <div class="notes-time"><span id="elapsed">00:00</span><span id="target-time">0:45</span></div>
+      </header>
+      <div class="notes-body">
+        <p id="notes-copy"></p>
+        <h3>Sources</h3>
+        <ul id="notes-sources"></ul>
+      </div>
+    </aside>
+
+    <nav class="deck-controls" aria-label="Presentation controls">
+      <button id="prev" type="button" title="Previous slide" aria-label="Previous slide">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+      </button>
+      <span id="slide-counter">1 / 11</span>
+      <button id="next" type="button" title="Next slide" aria-label="Next slide">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+      </button>
+      <button id="overview" type="button" title="Slide overview" aria-label="Slide overview">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" /><rect x="14" y="4" width="6" height="6" /><rect x="4" y="14" width="6" height="6" /><rect x="14" y="14" width="6" height="6" /></svg>
+      </button>
+      <button id="notes" type="button" title="Presenter notes" aria-label="Presenter notes">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5" /></svg>
+      </button>
+      <button id="presenter" type="button" title="Open presenter view" aria-label="Open presenter view">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H4zM8 20l4-4 4 4" /></svg>
+      </button>
+      <button id="fullscreen" type="button" title="Full screen" aria-label="Full screen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5" /></svg>
+      </button>
+    </nav>
+
+    <script src="deck.js"></script>
+  </body>
+</html>
