@@ -7,9 +7,11 @@ inside this repository unless an explicit goal authorizes a named external
 read or side effect. Do not alter sibling repositories or treat them as
 runtime dependencies.
 
-The scientific scope is defined in `docs/programme.md`. Provenance and legacy
-reuse are governed by `docs/provenance.md` and the decision records under
-`docs/decisions/`.
+The Paper 1 scientific North Star and definition of done are defined in
+`docs/paper1-experimental-design-charter.md`. Adaptive execution is governed by
+`docs/paper1-adaptive-implementation-roadmap.md`. The detailed historical record
+remains in `docs/programme.md`. Provenance and legacy reuse are governed by
+`docs/provenance.md` and the decision records under `docs/decisions/`.
 
 ## Authority
 
@@ -22,6 +24,10 @@ reuse are governed by `docs/provenance.md` and the decision records under
 - Apply Pareto discipline: add machinery only when it materially improves
   scientific validity, reproducibility, or reviewability.
 - Do not introduce exhaustive contract machinery by default.
+- Every substantial goal must identify the charter pillar, roadmap arc,
+  scientific decision, or planned manuscript evidence it advances.
+- Perform bounded code consolidation at major scientific arc boundaries rather
+  than preserving goal-specific developmental machinery indefinitely.
 - Do not commit, push, publish, create remotes, or expose the repository
   externally without explicit goal authority.
 

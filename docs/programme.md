@@ -7,6 +7,19 @@
 > from imperfect data, and how well is inferential uncertainty calibrated when
 > the generating system is known?
 
+## Governing Paper 1 Documents
+
+The programme's forward scientific direction is governed by:
+
+- `docs/paper1-experimental-design-charter.md`, which defines the synthetic
+  paper's claim, scope, evidence pillars, and definition of done; and
+- `docs/paper1-adaptive-implementation-roadmap.md`, which defines the research
+  arcs, decision gates, sensitivity-design strategy, and consolidation cadence.
+
+The goal sections below retain the detailed experimental history. They are a
+laboratory record rather than a requirement that future work continue as a
+linear extension of the existing goal sequence.
+
 ## Programme Boundary
 
 Paper 1 is synthetic-only. Its purpose is controlled study of identifiability,

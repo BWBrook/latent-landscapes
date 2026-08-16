@@ -110,10 +110,16 @@ data improves.
 
 ## Start Here
 
+- [Paper 1 experimental design charter](docs/paper1-experimental-design-charter.md):
+  the governing scientific claim, scope, evidence pillars, and definition of
+  done for the synthetic methods paper.
+- [Paper 1 adaptive implementation roadmap](docs/paper1-adaptive-implementation-roadmap.md):
+  the research arcs, decision gates, sensitivity-design strategy, and
+  consolidation cadence.
 - [Team briefing](docs/presentations/2026-08-13-team-briefing/index.html):
   an 11-slide visual overview of the programme, main results, and trajectory.
-- [Programme](docs/programme.md): the scientific ladder and detailed status of
-  the experimental sequence.
+- [Programme record](docs/programme.md): the detailed historical ladder and
+  status of the experimental sequence.
 - [Provenance](docs/provenance.md): how selected parts of the earlier SpatExt
   work were adapted without creating a runtime dependency.
 - [Rebuild decision](docs/decisions/0001-rebuild-from-spatext.md): why this
