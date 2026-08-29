@@ -1,6 +1,6 @@
 # Arc 2 Recoverability Design Brief
 
-- **Status:** Goal 038 review pack complete; provisional pending collaborator approval
+- **Status:** Goal 038 design approved; Goal 039 initial production authorized
 - **Charter role:** Pillar 2, Recoverability Map
 - **Production authority:** None
 

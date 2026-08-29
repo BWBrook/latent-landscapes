@@ -88,10 +88,11 @@ transition brackets, calibrated marginal uncertainty, an explicit negative
 joint-uncertainty result, and held-out neutral comparisons. These findings are
 conditional evidence rather than universal thresholds.
 
-The next proposed stage is human review of the completed Goal 038 predator-only
-Arc 2A design pack. It translates landscape-resistance contrast into ecological
-movement-cost ratios, supplies the exact 16-point Sobol pilot, and estimates
-the production workload. No Arc 2 production campaign has been authorized.
+Goal 038 froze the predator-only Arc 2A design after human review: 16 continuous
+Sobol truths across spread rate, resistance contrast, and detection probability,
+plus a separate no-resistance diagnostic. Goal 039 now implements the first
+paired production campaign. It will return raw truth-level recovery evidence
+before any response surface is fitted or additional design points are added.
 
 Later paper stages must test generality across process and observation
 conditions, landscape and sampling families, alternative generating models,
