@@ -150,18 +150,6 @@ class ValidationResult:
 
 
 @dataclass(frozen=True, slots=True)
-class ValidationDiagnostics:
-    """Truth-assisted event-information audit for one validation dataset."""
-
-    dataset_index: int
-    censored_count: int
-    pre_arrival_observed_event_count: int
-    post_arrival_observed_event_count: int
-    arrived_by_day60_count: int
-    post_arrival_at_risk_exposure_days: float
-
-
-@dataclass(frozen=True, slots=True)
 class RecoverySummary:
     cutoff: float
     coverage_count: int
@@ -178,7 +166,6 @@ class Goal026Result:
     config: Goal026Config
     calibration_statistics: tuple[CalibrationStatistic, ...]
     validation_results: tuple[ValidationResult, ...]
-    validation_diagnostics: tuple[ValidationDiagnostics, ...]
     representative_histories: tuple[PreyHistory, ...]
     representative_arrival: NDArray[np.float64]
     summary: RecoverySummary
@@ -380,7 +367,6 @@ def run_goal026(config: Goal026Config = DEFAULT_CONFIG) -> Goal026Result:
         rank_one_based=config.calibration_rank_one_based,
     )
     validation_rows: list[ValidationResult] = []
-    validation_diagnostics: list[ValidationDiagnostics] = []
     representative_histories: tuple[PreyHistory, ...] = ()
     representative_arrival = np.empty((0, 0), dtype=np.float64)
     for seed in validation_seeds:
@@ -429,7 +415,6 @@ def run_goal026(config: Goal026Config = DEFAULT_CONFIG) -> Goal026Result:
                 heldout_log_score_advantage=predator_score - neutral_score,
             )
         )
-        validation_diagnostics.append(_validation_diagnostics(seed.index, histories))
         valid_histories &= _histories_valid(histories)
         finite_likelihoods &= bool(
             np.isfinite(all_profile.log_likelihoods).all()
@@ -491,7 +476,6 @@ def run_goal026(config: Goal026Config = DEFAULT_CONFIG) -> Goal026Result:
         config=config,
         calibration_statistics=tuple(calibration_rows),
         validation_results=tuple(validation_rows),
-        validation_diagnostics=tuple(validation_diagnostics),
         representative_histories=representative_histories,
         representative_arrival=representative_arrival,
         summary=summary,
@@ -672,30 +656,6 @@ def _histories_valid(histories: tuple[PreyHistory, ...]) -> bool:
 
 def _event_count(histories: tuple[PreyHistory, ...]) -> int:
     return sum(row.event_observed for row in histories)
-
-
-def _validation_diagnostics(
-    dataset_index: int,
-    histories: tuple[PreyHistory, ...],
-) -> ValidationDiagnostics:
-    horizon = SURVEY_TIMES[-1]
-    observed = tuple(row for row in histories if row.event_observed)
-    pre_arrival = sum(row.true_extirpation_time < row.predator_arrival_time for row in observed)
-    post_arrival = len(observed) - pre_arrival
-    return ValidationDiagnostics(
-        dataset_index=dataset_index,
-        censored_count=len(histories) - len(observed),
-        pre_arrival_observed_event_count=pre_arrival,
-        post_arrival_observed_event_count=post_arrival,
-        arrived_by_day60_count=sum(row.predator_arrival_time <= horizon for row in histories),
-        post_arrival_at_risk_exposure_days=sum(
-            max(
-                0.0,
-                min(horizon, row.true_extirpation_time) - row.predator_arrival_time,
-            )
-            for row in histories
-        ),
-    )
 
 
 CsvRow = CalibrationStatistic | ValidationResult | PreyHistory

@@ -14,21 +14,25 @@ review.
 
 ## Current Position
 
-The programme has established a working end-to-end reference laboratory on one
-synthetic landscape. It has demonstrated:
+Arc 1 is frozen, pending acceptance of the Goal 037 synthesis and consolidation
+tranche. The working end-to-end reference laboratory on one synthetic landscape
+has demonstrated:
 
 - recovery of spread rate across several wave speeds;
 - a practical transition from weak to informative resistance contrast;
 - interaction between wave timing, survey window, and detection precision;
-- a prey-effect transition from weak identification to reliable recovery;
+- a strict prey-effect recovery transition between threefold and fourfold at
+  the reference background risk, plus conditional loss of precision at low
+  event yield;
 - recovery of a strong prey effect under imperfect observation and latent
   predator arrival; and
 - a distinction between informative point estimates, parameter-specific
   uncertainty, and an overly broad simultaneous joint envelope.
 
-These results justify moving from isolated benchmarks toward the paper-level
-experimental design. They do not yet establish generality across landscapes,
-sampling designs, background prey turnover, or generating models.
+These results meet the Arc 1 exit gate and justify moving from isolated
+benchmarks to the Paper 1 recoverability map. They do not establish generality
+across continuous process and observation conditions, landscapes, sampling
+designs, or generating models.
 
 ## Arc 1: Close And Freeze The Reference Case
 
@@ -37,23 +41,27 @@ sampling designs, background prey turnover, or generating models.
 Resolve only the remaining questions that materially affect the design or
 interpretation of the broader study.
 
-### Likely decision targets
+### Resolved decision targets
 
-- determine whether a fourfold prey effect usefully sharpens the transition
-  between detectable and precisely recoverable effects;
-- test enough background-hazard variation to show whether the prey-effect
-  result is tied to one arbitrary turnover scale;
-- define the paper's defensible marginal and joint uncertainty statements;
-- freeze the core estimands, standard response metrics, and reference design;
-  and
-- distinguish reference-case findings from questions better answered in the
-  broader sensitivity design.
+- fourfold prey effect sharpened strict recovery to a threefold-fourfold
+  reference-case bracket;
+- low, reference, and high counterfactual 60-day background extirpation risks
+  distinguished reliable detection from event-limited precision;
+- parameter-specific intervals are defensible marginal statements, while the
+  tested simultaneous joint region remains too broad;
+- core estimands, standard response metrics, and the reference design are
+  frozen; and
+- remaining generality questions move to the broader sensitivity design.
 
 ### Exit gate
 
 Freeze the reference case when additional work would mainly polish transition
 locations rather than change factor selection, interpretation, or downstream
 experimental design.
+
+**Gate met:** accepted Arc 1 evidence now satisfies this condition. Reopening a
+reference truth requires a new decision-relevant reason, not a desire to refine
+its threshold.
 
 ### Fallback
 
@@ -71,9 +79,9 @@ continuous ecological and observation conditions that matter most.
 ### Factor families
 
 Process candidates include spread rate, resistance contrast, prey-effect
-strength, and background prey hazard. Observation candidates include detection
-probability, survey duration, survey frequency, sampling effort, and sampling
-density.
+strength, and counterfactual 60-day background extirpation risk. Observation
+candidates include detection probability, survey duration, survey frequency,
+sampling effort, and sampling density.
 
 The final factor list and ranges require scientific review before production.
 Factors should be included because they test a paper claim, not merely because
@@ -296,14 +304,19 @@ run.
 
 ## Immediate Decision Boundary
 
-After this roadmap is accepted, the next scientific discussion should close
-Arc 1 by deciding:
+Before Arc 2A production, Barry should review the provisional design in
+`docs/arc2-recoverability-design-brief.md` and decide:
 
-1. which reference-case loose ends materially affect the broader design;
-2. which can be absorbed into the Arc 2 factor domain;
-3. the stable response metrics for the paper; and
-4. the smallest consolidation needed before scaling to a multivariate
-   experiment.
+1. whether the first map is predator-only (`rho`, `eta`, and `p`);
+2. the factor domains, especially the ecological edge-cost translation needed
+   to freeze `eta`;
+3. whether the landscape, sites, six surveys, two visits, and zero-false-
+   positive assumption remain fixed;
+4. whether continuous operating-performance surfaces are primary and binary
+   gates secondary; and
+5. whether the staged 16-point to 32-point Sobol design, with at most eight
+   targeted enrichment points, is proportionate.
 
-That discussion should produce one bounded next goal, not a detailed schedule
-for all remaining arcs.
+That human decision should authorize one bounded Arc 2A implementation goal or
+send the design brief back for revision. It does not authorize the full Arc 2
+programme automatically.

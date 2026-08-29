@@ -89,21 +89,26 @@ a compelling reason to change that boundary.
 
 ### 1. Trusted Reference Laboratory
 
+**Status:** Satisfied and frozen conditionally on the accepted reference
+landscape, access design, survey calendar, process family, and tested truths.
+The durable evidence and claim boundaries are summarized in
+`docs/arc1-reference-laboratory-synthesis.md`.
+
 The current synthetic landscape must provide an understood positive-control
 ladder for:
 
 - predator spread rate;
 - landscape-resistance contrast;
 - predator detection;
-- prey effect and background prey turnover; and
+- prey effect and counterfactual 60-day background extirpation risk; and
 - selected joint estimation problems.
 
-The reference case is complete when remaining questions would refine a
-numerical transition rather than overturn the interpretation or prevent design
-of the broader experiment. Consequential open issues currently include the
-fourfold prey-effect transition, dependence on background prey hazard, and the
-defensible interpretation of parameter-specific versus simultaneous joint
-uncertainty.
+The reference case is complete because the fourfold prey-effect transition,
+conditional background-risk comparison, and defensible distinction between
+parameter-specific and simultaneous joint uncertainty have been resolved far
+enough to design the broader experiment. Remaining reference-case work would
+mainly refine local numerical boundaries rather than alter factor selection or
+interpretation.
 
 ### 2. Recoverability Map
 
@@ -111,7 +116,7 @@ The paper must describe how inference changes over a prespecified domain of
 ecological and observational conditions. Candidate dimensions include:
 
 - spread rate and resistance contrast;
-- prey-effect strength and background prey turnover;
+- prey-effect strength and counterfactual 60-day background extirpation risk;
 - detection probability;
 - survey frequency, duration, and effort; and
 - sampling density and access bias.

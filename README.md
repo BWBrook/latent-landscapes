@@ -43,8 +43,8 @@ The present laboratory combines:
 - deterministic and stochastic first-passage predator spread;
 - a global spread-rate parameter, landscape-resistance contrast, repeated
   imperfect predator detection, and explicit survey windows;
-- an absorbing prey-extirpation process with a background hazard and a
-  predator-effect multiplier;
+- an absorbing prey-extirpation process parameterized by counterfactual 60-day
+  background extirpation risk and a predator-effect multiplier;
 - perfect and imperfect prey observation, including cases where predator
   arrival is latent; and
 - fitted neutral comparators evaluated on held-out sites.
@@ -66,8 +66,10 @@ Under the current landscape and observation designs:
   reducing precision for detection probability even when spread rate itself is
   recovered;
 - a twofold prey effect remains weakly identified, a threefold effect is
-  reliably detected but slightly imprecise, and a fivefold effect is recovered
-  through progressively less ideal observation cases;
+  reliably detected but slightly imprecise, and strict recovery begins by a
+  fourfold effect at the reference background risk;
+- a fivefold prey effect is detected but imprecise at 5% counterfactual 60-day
+  background extirpation risk and fully recovered at 11.3% and 20%;
 - jointly fitted spread and prey-effect point estimates remain centred near
   truth, but one shared simultaneous uncertainty envelope is too blunt;
   parameter-specific calibration gives informative marginal intervals; and
@@ -80,18 +82,20 @@ set of generating values.
 
 ## Current Scientific Boundary
 
-The repository now contains a working end-to-end synthetic laboratory, but the
-first paper is not finished. Important remaining questions include:
+The single-landscape reference laboratory is now frozen, pending acceptance of
+its Arc 1 synthesis. It supplies understood positive controls, reference-case
+transition brackets, calibrated marginal uncertainty, an explicit negative
+joint-uncertainty result, and held-out neutral comparisons. These findings are
+conditional evidence rather than universal thresholds.
 
-- how the conclusions generalise across a small prespecified set of landscapes
-  and alternative generating models;
-- whether a fourfold prey effect locates the practical recovery transition more
-  precisely;
-- how background prey turnover changes prey-effect recoverability;
-- how to represent simultaneous joint uncertainty without discarding useful
-  parameter-specific information; and
-- which additional complications are necessary for an ecologically plausible
-  synthetic stress test, rather than merely adding realism for its own sake.
+The next proposed stage is human review of a predator-only Arc 2A design. That
+design would map recoverability continuously across spread rate, landscape-
+resistance contrast, and detection probability before the prey layer or other
+landscapes are added. No Arc 2 production campaign has been authorized.
+
+Later paper stages must test generality across process and observation
+conditions, landscape and sampling families, alternative generating models,
+and one synthetic-realistic capstone.
 
 No result in this repository is yet a claim about real mink, water voles,
 Australian murids, cats, or foxes.
@@ -116,6 +120,10 @@ data improves.
 - [Paper 1 adaptive implementation roadmap](docs/paper1-adaptive-implementation-roadmap.md):
   the research arcs, decision gates, sensitivity-design strategy, and
   consolidation cadence.
+- [Arc 1 reference synthesis](docs/arc1-reference-laboratory-synthesis.md): the
+  frozen evidence, claims, boundaries, and standard evaluation surface.
+- [Arc 2 recoverability design brief](docs/arc2-recoverability-design-brief.md):
+  the provisional predator-only design awaiting collaborator decisions.
 - [Team briefing](docs/presentations/2026-08-13-team-briefing/index.html):
   an 11-slide visual overview of the programme, main results, and trajectory.
 - [Programme record](docs/programme.md): the detailed historical ladder and
