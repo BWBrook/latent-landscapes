@@ -893,10 +893,16 @@ def _review(result: Goal039Result) -> str:
             "# Goal 039 reduced smoke\n\nImplementation check only; no scientific interpretation.\n"
         )
     summaries = result.truth_summaries
-    recoverable = sum(
-        row.outcome == "advance_to_cross_truth_three_parameter_benchmark" for row in summaries
+    continuous_summaries = tuple(
+        row for row in summaries if row.design_role == "sobol_pilot"
     )
-    process_better = sum(row.mean_paired_brier_difference < 0.0 for row in summaries)
+    recoverable = sum(
+        row.outcome == "advance_to_cross_truth_three_parameter_benchmark"
+        for row in continuous_summaries
+    )
+    process_better = sum(
+        row.mean_paired_brier_difference < 0.0 for row in continuous_summaries
+    )
     return f"""# Arc 2A predator recoverability pilot
 
 ## Result
