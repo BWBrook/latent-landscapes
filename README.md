@@ -90,9 +90,13 @@ conditional evidence rather than universal thresholds.
 
 Goal 038 froze the predator-only Arc 2A design after human review: 16 continuous
 Sobol truths across spread rate, resistance contrast, and detection probability,
-plus a separate no-resistance diagnostic. Goal 039 now implements the first
-paired production campaign. It will return raw truth-level recovery evidence
-before any response surface is fitted or additional design points are added.
+plus a separate no-resistance diagnostic. Goal 039 has completed that paired
+production campaign on its review branch. Calibration and point recovery were
+strong across the pilot, while weak resistance contrast and some slower-wave
+conditions retained broad or boundary-touching uncertainty. All 16 process
+models outpredicted fitted time-only neutral baselines. These are raw
+truth-level results: no response surface has yet been fitted and no additional
+design points have been added.
 
 Later paper stages must test generality across process and observation
 conditions, landscape and sampling families, alternative generating models,

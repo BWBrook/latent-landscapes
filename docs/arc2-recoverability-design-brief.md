@@ -1,8 +1,8 @@
 # Arc 2 Recoverability Design Brief
 
-- **Status:** Goal 038 design approved; Goal 039 initial production authorized
+- **Status:** Goal 039 raw pilot complete on its review branch
 - **Charter role:** Pillar 2, Recoverability Map
-- **Production authority:** None
+- **Production authority:** No extension beyond the completed 16-point pilot
 
 ## Scientific purpose
 

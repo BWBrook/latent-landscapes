@@ -79,3 +79,29 @@ review pack. A negative or uneven recoverability map is a valid result. Stop
 after one focused implementation review and one material repair. Do not extend
 the Sobol design or increase replication until Barry has reviewed the raw
 truth-level evidence.
+
+## Observed production result
+
+The accepted design completed on `deep-server` from source commit
+`57df84a82f793e30984245c292fdca82f1bf177c` using 12 workers. The detached run
+finished with exit status 0 in 24 minutes 37 seconds and wrote the exact
+eight-file review bundle. All generator, pairing, truth-coordinate, row-count,
+finite-metric, and Arc 1 reconciliation invariants passed.
+
+The first-order scientific pattern is:
+
+- 5 of 16 continuous truths met every inherited Arc 1 recovery gate;
+- empirical calibrated coverage ranged from 0.932 to 0.964, straddling the
+  nominal 0.95 target at every truth;
+- median point errors were below their prespecified thresholds at every truth;
+- all 16 process models had lower mean held-out Brier error than their fitted
+  time-only neutral baselines;
+- 6 truths were classified as support-design limited, with 5 of those 6 at
+  resistance contrast below 0.75; and
+- 5 truths were classified as imprecise solely because of interval width: four
+  for detection probability and one for resistance contrast.
+
+The separate `eta = 0` diagnostic behaved as a useful null: its support
+excluded zero in only 1 of 250 validation histories and touched the parameter
+boundary in 249 of 250. These are raw condition-level findings. No response
+surface has yet been fitted and no additional design points are authorized.
