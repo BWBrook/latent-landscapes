@@ -88,10 +88,10 @@ transition brackets, calibrated marginal uncertainty, an explicit negative
 joint-uncertainty result, and held-out neutral comparisons. These findings are
 conditional evidence rather than universal thresholds.
 
-The next proposed stage is human review of a predator-only Arc 2A design. That
-design would map recoverability continuously across spread rate, landscape-
-resistance contrast, and detection probability before the prey layer or other
-landscapes are added. No Arc 2 production campaign has been authorized.
+The next proposed stage is human review of the completed Goal 038 predator-only
+Arc 2A design pack. It translates landscape-resistance contrast into ecological
+movement-cost ratios, supplies the exact 16-point Sobol pilot, and estimates
+the production workload. No Arc 2 production campaign has been authorized.
 
 Later paper stages must test generality across process and observation
 conditions, landscape and sampling families, alternative generating models,
@@ -123,7 +123,8 @@ data improves.
 - [Arc 1 reference synthesis](docs/arc1-reference-laboratory-synthesis.md): the
   frozen evidence, claims, boundaries, and standard evaluation surface.
 - [Arc 2 recoverability design brief](docs/arc2-recoverability-design-brief.md):
-  the provisional predator-only design awaiting collaborator decisions.
+  the provisional predator-only design and Goal 038 ecological translation
+  awaiting collaborator decisions.
 - [Team briefing](docs/presentations/2026-08-13-team-briefing/index.html):
   an 11-slide visual overview of the programme, main results, and trajectory.
 - [Programme record](docs/programme.md): the detailed historical ladder and

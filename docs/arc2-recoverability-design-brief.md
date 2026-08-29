@@ -1,6 +1,6 @@
 # Arc 2 Recoverability Design Brief
 
-- **Status:** Provisional design for collaborator review
+- **Status:** Goal 038 review pack complete; provisional pending collaborator approval
 - **Charter role:** Pillar 2, Recoverability Map
 - **Production authority:** None
 
@@ -36,6 +36,38 @@ and water-adjacent movement on the reference landscape. Barry should approve a
 range expressed in those ecological contrasts, not only in an abstract
 exponent.
 
+### Goal 038 ecological translation
+
+The deterministic Goal 038 review pack expresses each transformed cost as an
+expected per-edge traversal-time weight before the stochastic edge shock and
+global `rho` scaling. Relative to a dry corridor edge:
+
+| `eta` | dry patch | medium habitat | dry matrix | highest/lowest passable edge |
+| ---: | ---: | ---: | ---: | ---: |
+| 0.25 | 1.06x | 1.15x | 1.36x | 1.48x |
+| 0.50 | 1.12x | 1.32x | 1.84x | 2.20x |
+| 0.75 | 1.18x | 1.52x | 2.50x | 3.26x |
+| 1.00 | 1.24x | 1.75x | 3.39x | 4.83x |
+| 1.50 | 1.39x | 2.32x | 6.25x | 10.62x |
+| 2.00 | 1.55x | 3.06x | 11.52x | 23.35x |
+
+The separate water-adjacency addition is modest under this particular edge
+equation: the median water-adjacent matrix edge is 1.04x its dry-matrix
+counterpart at `eta = 1` and 1.09x at `eta = 2`. Most landscape contrast comes
+from habitat conductance rather than the water-neighbour term.
+
+The provisional recommendation is to retain `eta = 2` as a deliberately strong
+stress bound, not as a typical ecological condition. The initial Sobol block
+still places six of sixteen points below `eta = 0.9`, spanning the accepted
+0.5-0.75 discrimination transition. Barry may instead cap the continuous
+domain at `eta = 1.5` if a 23-fold whole-edge contrast is judged ecologically
+unhelpful.
+
+`Rho = 0.5-2` means half to twice the reference global spread rate. Under two
+visits per survey, per-visit detection values `p = 0.35`, `0.65`, and `0.85`
+correspond to conditional probabilities of at least one detection of 0.58,
+0.88, and 0.98.
+
 ### Frozen experimental context
 
 - the accepted reference landscape, access network, 160 sites, and spatial
@@ -55,8 +87,8 @@ detection, model misspecification, and real data are excluded from Arc 2A.
 ### Staged design
 
 1. Generate a reproducible 16-point scrambled Sobol block across the three
-   continuous factor domains. These 16 new points define the initial response
-   surface.
+   continuous factor domains using scramble seed `20260829`. These 16 new
+   points define the initial response surface.
 2. Evaluate `eta = 0` as a separately labelled diagnostic boundary cell, not as
    part of the continuous surface. Overlay compatible accepted Arc 1 anchors as
    external references rather than rerunning their full ensembles. A reduced
@@ -158,3 +190,9 @@ Barry should explicitly approve or modify these five choices:
    display pass/fail gates only as secondary interpretation aids.
 5. **Staged compute:** review 16 Sobol points before any extension to 32, then
    allow at most eight human-approved targeted enrichment points.
+
+Goal 038 estimates 8,500 condition histories for the first 16 points plus the
+central no-resistance diagnostic. Scaling Goal 023's measured Mac runtime by
+history count gives 116 minutes, or 145 minutes with a 25% planning uplift.
+This is not a benchmark of the future runner; a reduced timing probe remains a
+hard gate before detached `deep-server` production.
