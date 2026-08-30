@@ -580,6 +580,19 @@ def _review(result: Goal041Result) -> str:
         metric_id for metric_id in LEARNABLE_METRICS if by_id[metric_id].prospective_skill > 0.0
     ]
     eta = by_id["eta_interval_width"]
+    eta_failures = [
+        row.condition_id
+        for row in result.scores
+        if row.metric_id == "eta_interval_width" and not row.observed_passes_threshold
+    ]
+    coverage_flags = [
+        row.condition_id
+        for row in result.campaign.truth_summaries
+        if not row.coverage_lower <= 0.95 <= row.coverage_upper
+    ]
+    skill_lines = "\n".join(
+        f"- `{row.metric_id}`: `{row.prospective_skill:.3f}`" for row in result.metric_summaries
+    )
     return f"""# Arc 2A nested prospective validation
 
 ## Result
@@ -588,12 +601,26 @@ Outcome: `{result.outcome}`.
 
 Goal 040's predictions were frozen before these 16 conditions were simulated.
 `{len(validated)}` of the four previously learnable surfaces predicted the new
-block better than the frozen first-block mean. The detailed skill values are in
-`metric_validation_summary.csv`; positive values favour the surface.
+block better than the frozen first-block mean. Positive skill favours the
+surface:
+
+{skill_lines}
 
 The resistance interval was broader than the accepted `0.75` limit at
-`{eta.observed_fail_count}` of 16 new truths. This count answers the one question
-that justified extending the Sobol design.
+`{eta.observed_fail_count}` of 16 new truths (`{", ".join(eta_failures)}`). The
+frozen Goal 040 resistance-width surface predicted that threshold class
+correctly and had positive new-block skill, so reproduction alone does not
+justify automatic enrichment.
+
+Boundary-contact probability was the exception: its smooth first-block surface
+performed worse than the frozen first-block mean. Boundary contact is therefore
+better retained as a condition-level support-topology diagnostic than presented
+as a stable smooth response surface.
+
+All point-error checks passed and the process model beat neutral at all 16 new
+truths. The nominal-coverage interval missed 0.95 at `{len(coverage_flags)}`
+condition (`{", ".join(coverage_flags)}`). An isolated miss among 16 simultaneous
+checks is a flag to retain, not by itself evidence of systematic miscalibration.
 
 ## Interpretation boundary
 

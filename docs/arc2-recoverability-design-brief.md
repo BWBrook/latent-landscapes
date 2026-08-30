@@ -1,8 +1,8 @@
 # Arc 2 Recoverability Design Brief
 
-- **Status:** Goal 040 first-block surface review complete on its review branch
+- **Status:** Goal 041 nested prospective validation complete on its review branch
 - **Charter role:** Pillar 2, Recoverability Map
-- **Production authority:** No extension beyond the completed 16-point pilot
+- **Production authority:** No extension beyond the completed 32-point design
 
 ## Scientific purpose
 
@@ -127,6 +127,26 @@ The provisional next step is therefore the already planned nested 16-point
 block, used as prospective validation and specifically to determine whether the
 isolated broad resistance interval is reproducible. This is a review
 recommendation, not production authority.
+
+### Nested prospective validation
+
+Goal 041 froze the Goal 040 predictions before simulating `S17-S32`. Detection-
+probability interval width, resistance exclusion, and predictive advantage over
+neutral all predicted the new block better than the frozen first-block mean.
+Resistance-interval width also had positive prospective skill and correctly
+classified every new truth relative to the accepted width limit, including one
+new broad interval at `S19`.
+
+Boundary-contact probability did not generalize as a smooth low-order surface.
+Its abrupt support-topology changes are better retained as condition-level
+diagnostics than hidden behind a more flexible emulator. All point-error limits
+passed and the process model beat neutral throughout the new block. One of 16
+new coverage intervals missed 0.95; retain that isolated calibration flag in
+the synthesis without treating it as systematic undercoverage.
+
+The 32-truth block now contains enough evidence for an Arc 2A synthesis and
+combined descriptive refit. No targeted enrichment is recommended before that
+review.
 
 ### Analysis and review surface
 

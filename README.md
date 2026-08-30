@@ -101,8 +101,15 @@ Boundary contact, detection-interval width, resistance exclusion, and
 predictive advantage showed useful leave-one-truth-out structure. Resistance
 interval width did not: one condition crossed its accepted limit, but the
 surface could not predict that variation better than using the overall mean.
-The resulting recommendation is a single nested validation block, not an open
-ended design expansion. No additional design points have yet been run.
+
+Goal 041 then prospectively tested those frozen relationships at the next 16
+nested Sobol truths. Detection-interval width, resistance exclusion,
+resistance-interval width, and predictive advantage generalized better than a
+first-block mean comparator. Boundary-contact probability did not and is best
+treated as a condition-level topology diagnostic. One new broad resistance
+interval was reproduced, but its threshold class was predicted correctly.
+These results support synthesis of the 32-truth Arc 2A block without automatic
+targeted enrichment.
 
 Later paper stages must test generality across process and observation
 conditions, landscape and sampling families, alternative generating models,

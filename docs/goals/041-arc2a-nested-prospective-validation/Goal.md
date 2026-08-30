@@ -110,3 +110,40 @@ Do not change the landscape, observation design, factor domains, likelihood,
 neutral comparator, thresholds, replication counts, or common-random-number
 roots. Do not add prey dynamics, targeted design points, alternative models,
 new landscapes, or Goal 042 work.
+
+## Observed production result
+
+The frozen campaign completed on `deep-server` from source commit
+`bbb8f1be6bbf5df9835d6de5b1e7e734d205d057` using 12 workers. The scientific
+command finished in 23 minutes 39 seconds, wrote the exact eleven-file bundle,
+and passed all data, pairing, coordinate, source, and finite-metric invariants.
+The retrieved files matched their remote SHA-256 manifest.
+
+Three of Goal 040's four previously learnable surfaces predicted the new block
+better than the frozen first-block mean: detection-interval width
+(`skill = 0.842`), resistance exclusion (`0.202`), and predictive advantage
+over neutral (`0.879`). Boundary-contact probability did not (`-0.234`) and
+correctly classified only half the new truths relative to its descriptive
+threshold. It should therefore remain a condition-level topology diagnostic,
+not be presented as a reliable smooth surface.
+
+The broad resistance interval was reproduced once, at `S19` (`width = 0.875`).
+Crucially, the frozen resistance-width surface predicted `S19` to be above the
+`0.75` limit, classified all 16 new truths correctly relative to that limit,
+and achieved positive prospective skill (`0.314`). The reproduction therefore
+triggers the prespecified human review but does not, on current evidence,
+justify automatic targeted enrichment.
+
+All point-error limits passed and the process model outpredicted neutral at all
+16 new truths. One condition, `S20`, had a 95% Wilson interval for calibrated
+coverage (`0.875-0.944`) that did not include 0.95. This isolated miss is
+retained as a calibration flag; among 16 simultaneous interval checks it is
+not by itself evidence of systematic undercoverage.
+
+The outer `tmux` sentinel wrapper wrote an empty exit-status file and a false
+`FAILED` marker because of a shell-quoting defect. The scientific command's
+captured `/usr/bin/time` exit status was 0, its own completion message and exact
+bundle were present, the source checkout was clean and exact, every bundle
+invariant passed, and all retrieved checksums matched. Repeating the unchanged
+24-minute campaign would add no scientific evidence, so the sentinel defect is
+recorded rather than concealed or used to force a rerun.
