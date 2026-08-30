@@ -14,9 +14,9 @@ review.
 
 ## Current Position
 
-Arc 1 is frozen, pending acceptance of the Goal 037 synthesis and consolidation
-tranche. The working end-to-end reference laboratory on one synthetic landscape
-has demonstrated:
+Arc 1 is frozen. Arc 2A has completed its 32-truth predator-only recoverability
+synthesis on one accepted landscape and observation design. The working
+end-to-end reference laboratory has demonstrated:
 
 - recovery of spread rate across several wave speeds;
 - a practical transition from weak to informative resistance contrast;
@@ -29,10 +29,14 @@ has demonstrated:
 - a distinction between informative point estimates, parameter-specific
   uncertainty, and an overly broad simultaneous joint envelope.
 
-These results meet the Arc 1 exit gate and justify moving from isolated
-benchmarks to the Paper 1 recoverability map. They do not establish generality
-across continuous process and observation conditions, landscapes, sampling
-designs, or generating models.
+The first recoverability map adds prospectively validated relationships for
+detection precision, resistance precision, resistance exclusion, and held-out
+predictive advantage across continuous spread-rate, resistance, and detection
+conditions. Boundary contact remains a truth-level topology diagnostic rather
+than a reliable smooth surface. These results meet the Arc 2A exit gate but do
+not establish generality across prey-process conditions, landscapes, sampling
+designs, or generating models. One bounded Arc 2A consolidation tranche should
+precede Arc 2B.
 
 ## Arc 1: Close And Freeze The Reference Case
 

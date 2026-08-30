@@ -88,28 +88,21 @@ transition brackets, calibrated marginal uncertainty, an explicit negative
 joint-uncertainty result, and held-out neutral comparisons. These findings are
 conditional evidence rather than universal thresholds.
 
-Goal 038 froze the predator-only Arc 2A design after human review: 16 continuous
-Sobol truths across spread rate, resistance contrast, and detection probability,
-plus a separate no-resistance diagnostic. Goal 039 has completed that paired
-production campaign. Calibration and point recovery were strong across the
-pilot, while weak resistance contrast and some slower-wave conditions retained
-broad or boundary-touching uncertainty. All 16 process models outpredicted
-fitted time-only neutral baselines. These are raw truth-level results.
+Arc 2A has now evaluated 32 prespecified predator-only truths spanning spread
+rate, resistance contrast, and detection probability. The first 16 truths were
+used to learn transparent low-order relationships; predictions were frozen
+before the second 16 were generated. Detection precision, resistance
+precision, resistance exclusion, and predictive advantage all predicted that
+new block better than a first-block mean comparator.
 
-Goal 040 has now fitted and tested the first transparent low-order surfaces.
-Boundary contact, detection-interval width, resistance exclusion, and
-predictive advantage showed useful leave-one-truth-out structure. Resistance
-interval width did not: one condition crossed its accepted limit, but the
-surface could not predict that variation better than using the overall mean.
-
-Goal 041 then prospectively tested those frozen relationships at the next 16
-nested Sobol truths. Detection-interval width, resistance exclusion,
-resistance-interval width, and predictive advantage generalized better than a
-first-block mean comparator. Boundary-contact probability did not and is best
-treated as a condition-level topology diagnostic. One new broad resistance
-interval was reproduced, but its threshold class was predicted correctly.
-These results support synthesis of the 32-truth Arc 2A block without automatic
-targeted enrichment.
+Across all 32 truths, point estimates met the accepted error limits and every
+process model outpredicted its fitted time-only neutral baseline. Two truths
+had broad resistance intervals, but the second occurrence was predicted before
+it was observed. One truth retained an isolated calibrated-coverage flag.
+Boundary-contact probability did not generalize as a smooth surface and is
+therefore reported only as an observed support-topology diagnostic. The
+predator-only block is ready for human closeout and bounded code consolidation;
+further local interpolation is not recommended.
 
 Later paper stages must test generality across process and observation
 conditions, landscape and sampling families, alternative generating models,

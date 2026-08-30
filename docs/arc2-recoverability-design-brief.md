@@ -1,6 +1,6 @@
 # Arc 2 Recoverability Design Brief
 
-- **Status:** Goal 041 nested prospective validation complete on its review branch
+- **Status:** Goal 042 32-truth synthesis complete on its review branch
 - **Charter role:** Pillar 2, Recoverability Map
 - **Production authority:** No extension beyond the completed 32-point design
 
@@ -148,6 +148,28 @@ The 32-truth block now contains enough evidence for an Arc 2A synthesis and
 combined descriptive refit. No targeted enrichment is recommended before that
 review.
 
+### Arc 2A synthesis and exit decision
+
+Goal 042 preserved the prospective test as the primary generalization evidence
+and only then refitted the accepted model forms across all 32 truths. Detection-
+probability precision, resistance precision, resistance exclusion, and held-
+out predictive advantage all had positive prospective skill. The combined
+descriptive fits also had positive leave-one-truth-out skill, strongest for
+detection precision and predictive advantage.
+
+All 32 truths met the accepted point-error limits, and the process model beat
+its fitted time-only neutral comparator throughout. Resistance intervals were
+strictly broader than `0.75` at `S10` and `S19`; the second occurrence was
+predicted prospectively. The single Wilson coverage flag remained `S20`.
+Neither result warrants targeted enrichment.
+
+Boundary-contact probability failed prospective interpolation and is therefore
+retained as an observed truth-level support-topology diagnostic rather than
+rescued with a flexible emulator. Subject to human review, Arc 2A has met its
+exit gate with this explicit topology limitation. The next work is bounded
+consolidation of the active Arc 2A code path, not another predator-only
+simulation tranche.
+
 ### Analysis and review surface
 
 Continuous outcomes are primary:
@@ -210,7 +232,7 @@ recovery transitions persist when spread and prey response are estimated
 together, and it must retain the distinction between marginal and simultaneous
 joint uncertainty.
 
-## Decisions required before Arc 2A production
+## Decisions that governed Arc 2A production
 
 Barry should explicitly approve or modify these five choices:
 
