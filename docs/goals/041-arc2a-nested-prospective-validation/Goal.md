@@ -35,7 +35,7 @@ Before running any new process simulation, write and commit the predicted value
 for all five Goal 040 outcomes at every new truth. The frozen table must record
 the source Goal 040 commit and use its accepted coefficient and scaling rules.
 The resulting 80-row table is `prospective_predictions.csv`, with SHA-256
-`0d8721b00b7ab555b4cf6b648194f8965da35c89559b5850548bb45b281cee84`.
+`1f57091555acde69aedaa5712bdf4668c513fe3f02fad1aff9634d355fab91b9`.
 
 For each metric, calculate prospective skill against the frozen first-block
 mean:

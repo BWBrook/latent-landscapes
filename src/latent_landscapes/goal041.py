@@ -208,7 +208,11 @@ def _write_csv(path: Path, rows: Sequence[Any]) -> None:
     if not payload:
         raise ValueError("CSV rows must not be empty")
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=tuple(payload[0]))
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=tuple(payload[0]),
+            lineterminator="\n",
+        )
         writer.writeheader()
         writer.writerows(payload)
 
