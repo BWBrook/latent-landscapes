@@ -1,6 +1,6 @@
 # Arc 2 Recoverability Design Brief
 
-- **Status:** Goal 039 raw pilot complete on its review branch
+- **Status:** Goal 040 first-block surface review complete on its review branch
 - **Charter role:** Pillar 2, Recoverability Map
 - **Production authority:** No extension beyond the completed 16-point pilot
 
@@ -113,6 +113,20 @@ detection, model misspecification, and real data are excluded from Arc 2A.
 The initial 250 + 250 histories per truth are exploratory operating-performance
 replicates, not a promise of final Monte Carlo precision. Increase replication
 only if its uncertainty could change a substantive conclusion.
+
+### First-block surface decision
+
+Goal 040 found useful held-out predictive structure for boundary contact,
+detection-probability interval width, resistance exclusion, and predictive
+advantage over neutral. Point accuracy and calibration passed throughout the
+16-point block. Resistance-contrast interval width remained the sole unresolved
+surface: one truth exceeded the accepted width limit and neither low-order
+candidate predicted that variation better than a mean-only comparator.
+
+The provisional next step is therefore the already planned nested 16-point
+block, used as prospective validation and specifically to determine whether the
+isolated broad resistance interval is reproducible. This is a review
+recommendation, not production authority.
 
 ### Analysis and review surface
 
