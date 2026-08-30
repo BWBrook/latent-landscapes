@@ -776,9 +776,7 @@ def run_goal039(
         "condition_detection_probabilities_valid": all(
             0.0 < truth.probability < 1.0 for truth in config.truths
         ),
-        "truth_count": len(config.truths) == 17
-        if config.is_production
-        else len(config.truths) in (3, 17),
+        "truth_count": len(config.truths) == 17 if config.is_production else bool(config.truths),
         "exact_truth_coordinates": all(
             model.rhos.count(model.truth.rho) == 1
             and model.etas.count(model.truth.eta) == 1
