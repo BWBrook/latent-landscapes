@@ -6,7 +6,7 @@ from pathlib import Path
 
 import numpy as np
 
-from latent_landscapes import goal040, goal042
+from latent_landscapes import arc2a_synthesis
 
 
 def _validation_arrays(
@@ -16,10 +16,10 @@ def _validation_arrays(
     detection_width: float,
     eta_width: float,
     brier_difference: float,
-) -> goal040.ValidationArrays:
+) -> arc2a_synthesis.ValidationArrays:
     indices = np.arange(250, dtype=np.int64)
     wave = 0.004 * np.sin(indices * 0.17)
-    return goal040.ValidationArrays(
+    return arc2a_synthesis.ValidationArrays(
         condition_id,
         indices,
         indices < round(boundary_probability * 250),
@@ -30,9 +30,9 @@ def _validation_arrays(
     )
 
 
-def _inputs() -> goal042.Goal042Inputs:
-    conditions: list[goal040.ConditionOutcome] = []
-    validation: list[goal040.ValidationArrays] = []
+def _inputs() -> arc2a_synthesis.SynthesisInputs:
+    conditions: list[arc2a_synthesis.ConditionOutcome] = []
+    validation: list[arc2a_synthesis.ValidationArrays] = []
     for zero_index in range(32):
         index = zero_index + 1
         u_rho = (zero_index + 0.5) / 32
@@ -57,7 +57,7 @@ def _inputs() -> goal042.Goal042Inputs:
         coverage_lower = 0.875 if index == 20 else 0.915
         coverage_upper = 0.944 if index == 20 else 0.972
         conditions.append(
-            goal040.ConditionOutcome(
+            arc2a_synthesis.ConditionOutcome(
                 f"S{index:02d}",
                 "sobol_pilot" if index <= 16 else "sobol_nested_validation",
                 rho,
@@ -80,33 +80,40 @@ def _inputs() -> goal042.Goal042Inputs:
             )
         )
     prospective = (
-        goal042.ProspectiveEvidence(
+        arc2a_synthesis.ProspectiveEvidence(
             "boundary_contact_probability", 0.24, 0.14, 0.21, -0.2, 0.75, 0.5, 10, 6
         ),
-        goal042.ProspectiveEvidence(
+        arc2a_synthesis.ProspectiveEvidence(
             "detection_interval_width", 0.02, 0.04, 0.05, 0.8, 1.0, 1.0, 9, 7
         ),
-        goal042.ProspectiveEvidence("eta_interval_width", 0.07, 0.09, 0.09, 0.3, 1.0, 1.0, 15, 1),
-        goal042.ProspectiveEvidence(
+        arc2a_synthesis.ProspectiveEvidence(
+            "eta_interval_width", 0.07, 0.09, 0.09, 0.3, 1.0, 1.0, 15, 1
+        ),
+        arc2a_synthesis.ProspectiveEvidence(
             "eta_zero_exclusion_probability", 0.19, 0.17, 0.22, 0.2, 0.88, 0.81, 12, 4
         ),
-        goal042.ProspectiveEvidence(
+        arc2a_synthesis.ProspectiveEvidence(
             "heldout_brier_difference", 0.008, 0.006, 0.024, 0.88, 0.88, 1.0, 16, 0
         ),
     )
-    return goal042.Goal042Inputs(
+    return arc2a_synthesis.SynthesisInputs(
         tuple(conditions),
         tuple(validation),
         prospective,
-        {"goal039": "test-039", "goal041": "test-041"},
+        {"pilot": "test-pilot", "prospective": "test-prospective"},
         {"test": "digest"},
         {"synthetic_fixture": True},
     )
 
 
-def test_run_goal042_closes_arc2a_without_smoothing_topology() -> None:
-    result = goal042.run_goal042(_inputs(), bootstrap_count=8)
+def test_run_synthesis_closes_arc2a_without_smoothing_topology() -> None:
+    frozen = arc2a_synthesis.load_frozen_predictions(arc2a_synthesis.DEFAULT_FROZEN_PREDICTIONS)
+    result = arc2a_synthesis.run_synthesis(_inputs(), bootstrap_count=8)
 
+    assert len(frozen) == 80
+    assert {row.source_surface_commit for row in frozen} == {
+        arc2a_synthesis.ACCEPTED_SURFACE_COMMIT
+    }
     assert result.outcome == "arc2a_ready_for_closeout_with_topology_limit"
     assert len(result.fits) == 4
     assert len(result.condition_rows) == 32
@@ -116,12 +123,12 @@ def test_run_goal042_closes_arc2a_without_smoothing_topology() -> None:
     assert result.checks["boundary_surface_failure_preserved"]
 
 
-def test_goal042_writes_exact_compact_bundle(tmp_path: Path) -> None:
-    result = goal042.run_goal042(_inputs(), bootstrap_count=8)
-    written = goal042.write_review_bundle(result, tmp_path)
+def test_synthesis_writes_exact_compact_bundle(tmp_path: Path) -> None:
+    result = arc2a_synthesis.run_synthesis(_inputs(), bootstrap_count=8)
+    written = arc2a_synthesis.write_review_bundle(result, tmp_path)
 
-    assert tuple(path.name for path in written) == goal042.EXPECTED_FILES
-    assert {path.name for path in tmp_path.iterdir()} == set(goal042.EXPECTED_FILES)
+    assert tuple(path.name for path in written) == arc2a_synthesis.EXPECTED_FILES
+    assert {path.name for path in tmp_path.iterdir()} == set(arc2a_synthesis.EXPECTED_FILES)
     summary = json.loads((tmp_path / "synthesis_summary.json").read_text())
     assert summary["truth_count"] == 32
     assert summary["boundary_contact"]["smooth_surface_supported"] is False

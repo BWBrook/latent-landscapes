@@ -100,9 +100,10 @@ process model outpredicted its fitted time-only neutral baseline. Two truths
 had broad resistance intervals, but the second occurrence was predicted before
 it was observed. One truth retained an isolated calibrated-coverage flag.
 Boundary-contact probability did not generalize as a smooth surface and is
-therefore reported only as an observed support-topology diagnostic. The
-predator-only block is ready for human closeout and bounded code consolidation;
-further local interpolation is not recommended.
+therefore reported only as an observed support-topology diagnostic. Arc 2A is
+scientifically closed and its active code has been consolidated into design,
+campaign, and synthesis components. Further local interpolation is not
+recommended.
 
 Later paper stages must test generality across process and observation
 conditions, landscape and sampling families, alternative generating models,
@@ -134,8 +135,8 @@ data improves.
 - [Arc 1 reference synthesis](docs/arc1-reference-laboratory-synthesis.md): the
   frozen evidence, claims, boundaries, and standard evaluation surface.
 - [Arc 2 recoverability design brief](docs/arc2-recoverability-design-brief.md):
-  the provisional predator-only design and Goal 038 ecological translation
-  awaiting collaborator decisions.
+  the ecological translation and staged design underlying the accepted
+  predator-only experiment.
 - [Team briefing](docs/presentations/2026-08-13-team-briefing/index.html):
   an 11-slide visual overview of the programme, main results, and trajectory.
 - [Programme record](docs/programme.md): the detailed historical ladder and
@@ -174,6 +175,13 @@ the foundational deterministic benchmark can be regenerated with:
 
 ```bash
 uv run python scripts/run_goal001.py
+```
+
+The retained Arc 2A workflow is exposed through:
+
+```bash
+uv run python scripts/run_arc2a_campaign.py --help
+uv run python scripts/synthesize_arc2a.py --help
 ```
 
 Later production experiments can be computationally expensive and may depend

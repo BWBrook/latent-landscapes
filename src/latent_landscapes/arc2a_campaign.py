@@ -1,4 +1,4 @@
-"""Arc 2A predator-only recoverability pilot."""
+"""Canonical paired campaign engine for Arc 2A predator recoverability."""
 
 from __future__ import annotations
 
@@ -23,6 +23,7 @@ import matplotlib as mpl
 import numpy as np
 from numpy.typing import NDArray
 
+from latent_landscapes.arc2a_design import Block, TruthCondition, campaign_truths
 from latent_landscapes.goal001.design import DesignSite
 from latent_landscapes.goal001.observations import Observation
 from latent_landscapes.goal002.baseline import (
@@ -56,14 +57,13 @@ from latent_landscapes.goal021 import (
     three_parameter_profile,
 )
 from latent_landscapes.goal022 import REFINED_ETA_GRID
-from latent_landscapes.goal038 import generate_pilot_truths, no_resistance_diagnostic
 
 mpl.use("Agg")
-mpl.rcParams["svg.hashsalt"] = "latent-landscapes-goal039"
+mpl.rcParams["svg.hashsalt"] = "latent-landscapes-arc2a-campaign"
 import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib.figure import Figure  # noqa: E402
 
-DEFAULT_OUTPUT_DIR = Path("artifacts/goal039_arc2a_pilot")
+DEFAULT_OUTPUT_DIR = Path("artifacts/arc2a_campaign")
 EXPECTED_FILES = (
     "truth_design.csv",
     "calibration_statistics.csv",
@@ -82,34 +82,7 @@ CALIBRATION_RANK_ONE_BASED = 239
 
 
 @dataclass(frozen=True, slots=True)
-class TruthCondition:
-    condition_id: str
-    design_role: str
-    rho: float
-    eta: float
-    probability: float
-
-
-def default_truths() -> tuple[TruthCondition, ...]:
-    rows = tuple(
-        TruthCondition(point.point_id, point.design_role, point.rho, point.eta, point.p)
-        for point in generate_pilot_truths()
-    )
-    diagnostic = no_resistance_diagnostic()
-    return (
-        *rows,
-        TruthCondition(
-            diagnostic.point_id,
-            diagnostic.design_role,
-            diagnostic.rho,
-            diagnostic.eta,
-            diagnostic.p,
-        ),
-    )
-
-
-@dataclass(frozen=True, slots=True)
-class Goal039Config:
+class CampaignConfig:
     master_seed: int = MASTER_SEED
     bank_size: int = INTEGRATION_BANK_SIZE
     calibration_replicates: int = CALIBRATION_REPLICATES
@@ -118,7 +91,7 @@ class Goal039Config:
     base_rhos: tuple[float, ...] = RHO_GRID
     base_etas: tuple[float, ...] = REFINED_ETA_GRID
     base_probabilities: tuple[float, ...] = PROBABILITY_GRID
-    truths: tuple[TruthCondition, ...] = default_truths()
+    truths: tuple[TruthCondition, ...] = campaign_truths("pilot")
 
     def __post_init__(self) -> None:
         if self.bank_size <= 0:
@@ -165,7 +138,27 @@ class Goal039Config:
 
     @property
     def is_production(self) -> bool:
-        return self == Goal039Config()
+        return self.production_block is not None
+
+    @property
+    def production_block(self) -> Block | None:
+        standard_settings = (
+            self.master_seed == MASTER_SEED
+            and self.bank_size == INTEGRATION_BANK_SIZE
+            and self.calibration_replicates == CALIBRATION_REPLICATES
+            and self.validation_replicates == VALIDATION_REPLICATES
+            and self.calibration_rank_one_based == CALIBRATION_RANK_ONE_BASED
+            and self.base_rhos == RHO_GRID
+            and self.base_etas == REFINED_ETA_GRID
+            and self.base_probabilities == PROBABILITY_GRID
+        )
+        if not standard_settings:
+            return None
+        if self.truths == campaign_truths("pilot"):
+            return "pilot"
+        if self.truths == campaign_truths("prospective"):
+            return "prospective"
+        return None
 
     @property
     def seed_config(self) -> goal011.Goal011Config:
@@ -178,12 +171,20 @@ class Goal039Config:
         )
 
 
-DEFAULT_CONFIG = Goal039Config()
+PILOT_CONFIG = CampaignConfig()
 
 
-def smoke_config() -> Goal039Config:
+def prospective_config() -> CampaignConfig:
+    return CampaignConfig(truths=campaign_truths("prospective"))
+
+
+def smoke_config(block: Block = "pilot") -> CampaignConfig:
     """Return a small implementation check without scientific meaning."""
-    return Goal039Config(
+    truths = campaign_truths(block)
+    selected = truths[:2]
+    if block == "pilot":
+        selected = (*selected, truths[-1])
+    return CampaignConfig(
         bank_size=8,
         calibration_replicates=4,
         validation_replicates=4,
@@ -191,17 +192,18 @@ def smoke_config() -> Goal039Config:
         base_rhos=(0.5, 1.0, 2.0),
         base_etas=(0.0, 0.5, 1.0, 1.5, 2.0),
         base_probabilities=(0.35, 0.65, 0.85),
-        truths=(*default_truths()[:2], default_truths()[-1]),
+        truths=selected,
     )
 
 
-def timing_config() -> Goal039Config:
+def timing_config(block: Block = "pilot") -> CampaignConfig:
     """Return a full-grid, full-design timing probe without scientific meaning."""
-    return Goal039Config(
+    return CampaignConfig(
         bank_size=64,
         calibration_replicates=2,
         validation_replicates=2,
         calibration_rank_one_based=2,
+        truths=campaign_truths(block),
     )
 
 
@@ -284,8 +286,8 @@ class TruthSummary:
 
 
 @dataclass(frozen=True, slots=True)
-class Goal039Result:
-    config: Goal039Config
+class CampaignResult:
+    config: CampaignConfig
     calibration_metrics: tuple[CalibrationMetric, ...]
     validation_metrics: tuple[ValidationMetric, ...]
     truth_summaries: tuple[TruthSummary, ...]
@@ -307,7 +309,7 @@ class _GeneratedDataset:
 
 @dataclass(frozen=True, slots=True)
 class _WorkerContext:
-    config: Goal039Config
+    config: CampaignConfig
     fixed: goal007.FixedInputs
     models: tuple[ConditionModel, ...]
 
@@ -380,7 +382,7 @@ def build_shared_bank(
 
 
 def build_condition_models(
-    config: Goal039Config,
+    config: CampaignConfig,
     bank: goal007.IntegrationBank,
 ) -> tuple[ConditionModel, ...]:
     """Slice one shared bank into exact-truth condition grids."""
@@ -636,7 +638,7 @@ def _run_phase(
 
 
 def _summarize_truth(
-    config: Goal039Config,
+    config: CampaignConfig,
     truth: TruthCondition,
     cutoff: float,
     rows: tuple[ValidationMetric, ...],
@@ -719,12 +721,12 @@ def _central_generator_reconciled(
     )
 
 
-def run_goal039(
-    config: Goal039Config = DEFAULT_CONFIG,
+def run_campaign(
+    config: CampaignConfig = PILOT_CONFIG,
     *,
     workers: int = 1,
     source_commit: str = "unknown",
-) -> Goal039Result:
+) -> CampaignResult:
     """Run the paired Arc 2A calibration and validation campaign."""
     if workers <= 0:
         raise ValueError("workers must be positive")
@@ -776,7 +778,9 @@ def run_goal039(
         "condition_detection_probabilities_valid": all(
             0.0 < truth.probability < 1.0 for truth in config.truths
         ),
-        "truth_count": len(config.truths) == 17 if config.is_production else bool(config.truths),
+        "truth_count": len(config.truths) == len(campaign_truths(config.production_block))
+        if config.production_block is not None
+        else bool(config.truths),
         "exact_truth_coordinates": all(
             model.rhos.count(model.truth.rho) == 1
             and model.etas.count(model.truth.eta) == 1
@@ -809,13 +813,13 @@ def run_goal039(
         ),
     }
     outcome = (
-        "ready_for_arc2a_response_surface_review"
+        "ready_for_arc2a_synthesis"
         if all(invariants.values()) and config.is_production
         else "non_scientific_smoke"
         if all(invariants.values())
         else "implementation_blocked"
     )
-    return Goal039Result(
+    return CampaignResult(
         config,
         calibration,
         validation,
@@ -841,11 +845,11 @@ def _write_csv(path: Path, rows: Sequence[Any]) -> None:
         writer.writerows(payload)
 
 
-def _summary_payload(result: Goal039Result) -> dict[str, Any]:
+def _summary_payload(result: CampaignResult) -> dict[str, Any]:
     return {
-        "goal": "039-arc2a-predator-recoverability-pilot",
+        "workflow": "arc2a-predator-recoverability-campaign",
         "outcome": result.outcome,
-        "run_mode": "production" if result.config.is_production else "reduced_smoke",
+        "run_mode": result.config.production_block or "reduced_smoke",
         "truth_count": len(result.config.truths),
         "calibration_replicates_per_truth": result.config.calibration_replicates,
         "validation_replicates_per_truth": result.config.validation_replicates,
@@ -862,7 +866,7 @@ def _summary_payload(result: Goal039Result) -> dict[str, Any]:
     }
 
 
-def _provenance_payload(result: Goal039Result) -> dict[str, Any]:
+def _provenance_payload(result: CampaignResult) -> dict[str, Any]:
     return {
         "completed_utc": datetime.now(UTC).isoformat(),
         "source_commit": result.source_commit,
@@ -885,30 +889,34 @@ def _provenance_payload(result: Goal039Result) -> dict[str, Any]:
     }
 
 
-def _review(result: Goal039Result) -> str:
+def _review(result: CampaignResult) -> str:
     if not result.config.is_production:
         return (
-            "# Goal 039 reduced smoke\n\nImplementation check only; no scientific interpretation.\n"
+            "# Arc 2A reduced smoke\n\nImplementation check only; no scientific interpretation.\n"
         )
-    summaries = result.truth_summaries
-    continuous_summaries = tuple(row for row in summaries if row.design_role == "sobol_pilot")
+    continuous_summaries = tuple(
+        row for row in result.truth_summaries if row.design_role != "no_resistance_diagnostic"
+    )
     recoverable = sum(
         row.outcome == "advance_to_cross_truth_three_parameter_benchmark"
         for row in continuous_summaries
     )
     process_better = sum(row.mean_paired_brier_difference < 0.0 for row in continuous_summaries)
-    return f"""# Arc 2A predator recoverability pilot
+    block = result.config.production_block
+    diagnostic_text = (
+        " The separate no-resistance diagnostic is included." if block == "pilot" else ""
+    )
+    return f"""# Arc 2A predator recoverability campaign: {block}
 
 ## Result
 
-Outcome: `{result.outcome}`. All 16 Sobol conditions and the separate no-resistance
-diagnostic completed with paired process and observation noise.
+Outcome: `{result.outcome}`. All {len(continuous_summaries)} Sobol conditions
+completed with paired process and observation noise.{diagnostic_text}
 
-This is the raw truth-level review, not yet a fitted response surface. Of the 16
-continuous pilot conditions, `{recoverable}` met the inherited Arc 1 recovery
-gate and `{process_better}` had lower mean held-out Brier error than the fitted
-time-only neutral baseline. Those counts are orientation aids, not the paper
-claim; Goal 040 should model the continuous outcomes and paired uncertainty.
+This is a compact campaign bundle for the canonical Arc 2A synthesis.
+`{recoverable}` conditions met the inherited Arc 1 recovery gate and
+`{process_better}` had lower mean held-out Brier error than the fitted time-only
+neutral baseline. Those counts are orientation aids, not the paper claim.
 
 ## How to read the evidence
 
@@ -923,15 +931,12 @@ claim; Goal 040 should model the continuous outcomes and paired uncertainty.
 - Supports touching a candidate-domain boundary remain a warning that their
   width may be truncated.
 
-## Next decision
-
-Fit a transparent low-order response surface only if these raw condition
-summaries are complete and scientifically interpretable. Do not extend to 32
-Sobol points until the first surface has been reviewed.
+Interpret both campaign blocks through the frozen prospective predictions and
+combined Arc 2A synthesis; do not infer paper conclusions from this block alone.
 """
 
 
-def _review_figure(result: Goal039Result) -> Figure:
+def _review_figure(result: CampaignResult) -> Figure:
     summaries = result.truth_summaries
     labels = [row.condition_id for row in summaries]
     x = np.arange(len(labels))
@@ -976,7 +981,7 @@ def _review_figure(result: Goal039Result) -> Figure:
 
 
 def write_review_bundle(
-    result: Goal039Result,
+    result: CampaignResult,
     output_dir: Path = DEFAULT_OUTPUT_DIR,
 ) -> tuple[Path, ...]:
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -1005,10 +1010,10 @@ def write_review_bundle(
     plt.close(figure)
     unexpected = {path.name for path in output_dir.iterdir()} - set(EXPECTED_FILES)
     if unexpected:
-        raise RuntimeError(f"unexpected Goal 039 artifact files: {sorted(unexpected)}")
+        raise RuntimeError(f"unexpected Arc 2A campaign files: {sorted(unexpected)}")
     written = tuple(output_dir / name for name in EXPECTED_FILES)
     if not all(path.is_file() and path.stat().st_size > 0 for path in written):
-        raise RuntimeError("Goal 039 review bundle is incomplete")
+        raise RuntimeError("Arc 2A campaign bundle is incomplete")
     return written
 
 

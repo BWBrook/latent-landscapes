@@ -9,7 +9,7 @@ import math
 from collections.abc import Sequence
 from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal, cast
 
 import matplotlib as mpl
 import numpy as np
@@ -17,13 +17,14 @@ from matplotlib.colors import Normalize
 from matplotlib.figure import Figure
 from numpy.typing import NDArray
 
-from latent_landscapes import goal040, goal041
-
 mpl.use("Agg")
-mpl.rcParams["svg.hashsalt"] = "latent-landscapes-goal042"
+mpl.rcParams["svg.hashsalt"] = "latent-landscapes-arc2a-synthesis"
 import matplotlib.pyplot as plt  # noqa: E402
 
-DEFAULT_OUTPUT_DIR = Path("artifacts/goal042_arc2a_synthesis")
+DEFAULT_OUTPUT_DIR = Path("artifacts/arc2a_synthesis")
+DEFAULT_FROZEN_PREDICTIONS = Path(
+    "docs/goals/041-arc2a-nested-prospective-validation/prospective_predictions.csv"
+)
 EXPECTED_FILES = (
     "combined_condition_outcomes.csv",
     "prospective_evidence.csv",
@@ -37,7 +38,11 @@ EXPECTED_FILES = (
 BOOTSTRAP_SEED = 20260830
 DEFAULT_BOOTSTRAPS = 1_000
 VALIDATION_COUNT = 250
-FIXED_MODELS: dict[str, goal040.ModelType] = {
+ACCEPTED_SURFACE_COMMIT = "a7f32a7d2d7d72d1694b739b028c6ffcdd4c0bc5"
+ACCEPTED_PREDICTION_SHA256 = "1f57091555acde69aedaa5712bdf4668c513fe3f02fad1aff9634d355fab91b9"
+ModelType = Literal["additive", "two_way_interactions"]
+TransformType = Literal["identity", "empirical_logit"]
+FIXED_MODELS: dict[str, ModelType] = {
     "detection_interval_width": "additive",
     "eta_interval_width": "additive",
     "eta_zero_exclusion_probability": "two_way_interactions",
@@ -45,6 +50,106 @@ FIXED_MODELS: dict[str, goal040.ModelType] = {
 }
 REQUIRED_POSITIVE_PROSPECTIVE_METRICS = frozenset(FIXED_MODELS)
 FloatArray = NDArray[np.float64]
+BoolArray = NDArray[np.bool_]
+
+
+@dataclass(frozen=True, slots=True)
+class MetricSpec:
+    metric_id: str
+    field_name: str
+    aggregation: Literal["mean", "median"]
+    transform: TransformType
+    threshold: float
+    lower_is_better: bool
+
+
+METRICS = (
+    MetricSpec(
+        "boundary_contact_probability",
+        "support_boundary_contact",
+        "mean",
+        "empirical_logit",
+        0.05,
+        True,
+    ),
+    MetricSpec(
+        "detection_interval_width",
+        "projected_probability_width",
+        "median",
+        "identity",
+        0.20,
+        True,
+    ),
+    MetricSpec(
+        "eta_zero_exclusion_probability",
+        "eta_zero_excluded",
+        "mean",
+        "empirical_logit",
+        0.95,
+        False,
+    ),
+    MetricSpec(
+        "heldout_brier_difference",
+        "paired_brier_difference",
+        "mean",
+        "identity",
+        0.0,
+        True,
+    ),
+    MetricSpec(
+        "eta_interval_width",
+        "projected_eta_width",
+        "median",
+        "identity",
+        0.75,
+        True,
+    ),
+)
+METRIC_BY_ID = {metric.metric_id: metric for metric in METRICS}
+
+
+@dataclass(frozen=True, slots=True)
+class ConditionOutcome:
+    condition_id: str
+    design_role: str
+    rho: float
+    eta: float
+    probability: float
+    validation_count: int
+    coverage: float
+    coverage_lower: float
+    coverage_upper: float
+    median_absolute_log_rho_error: float
+    median_absolute_eta_error: float
+    median_absolute_probability_error: float
+    median_log_rho_width: float
+    median_eta_width: float
+    median_probability_width: float
+    boundary_contact_probability: float
+    eta_zero_exclusion_probability: float
+    mean_paired_brier_difference: float
+    campaign_outcome: str
+
+
+@dataclass(frozen=True, slots=True)
+class ValidationArrays:
+    condition_id: str
+    dataset_index: NDArray[np.int64]
+    support_boundary_contact: BoolArray
+    eta_zero_excluded: BoolArray
+    projected_probability_width: FloatArray
+    projected_eta_width: FloatArray
+    paired_brier_difference: FloatArray
+
+
+@dataclass(frozen=True, slots=True)
+class CandidateModel:
+    terms: tuple[str, ...]
+    coefficients: FloatArray
+    loo_predictions: FloatArray
+    loo_rmse: float
+    baseline_rmse: float
+    loo_skill: float
 
 
 @dataclass(frozen=True, slots=True)
@@ -61,9 +166,29 @@ class ProspectiveEvidence:
 
 
 @dataclass(frozen=True, slots=True)
-class Goal042Inputs:
-    conditions: tuple[goal040.ConditionOutcome, ...]
-    validation: tuple[goal040.ValidationArrays, ...]
+class FrozenPrediction:
+    source_surface_commit: str
+    coefficient_sha256: str
+    condition_id: str
+    rho: float
+    eta: float
+    probability: float
+    metric_id: str
+    response_scale: TransformType
+    model_type: ModelType
+    predicted: float
+    loo_rmse: float
+    error_envelope_lower: float
+    error_envelope_upper: float
+    pilot_mean: float
+    threshold: float
+    lower_is_better: bool
+
+
+@dataclass(frozen=True, slots=True)
+class SynthesisInputs:
+    conditions: tuple[ConditionOutcome, ...]
+    validation: tuple[ValidationArrays, ...]
     prospective: tuple[ProspectiveEvidence, ...]
     source_commits: dict[str, str]
     input_sha256: dict[str, str]
@@ -72,8 +197,8 @@ class Goal042Inputs:
 
 @dataclass(frozen=True, slots=True)
 class CombinedFit:
-    spec: goal040.MetricSpec
-    model_type: goal040.ModelType
+    spec: MetricSpec
+    model_type: ModelType
     terms: tuple[str, ...]
     coefficients: FloatArray
     bootstrap_coefficients: FloatArray
@@ -147,8 +272,8 @@ class TopologyRow:
 
 
 @dataclass(frozen=True, slots=True)
-class Goal042Result:
-    inputs: Goal042Inputs
+class SynthesisResult:
+    inputs: SynthesisInputs
     fits: tuple[CombinedFit, ...]
     condition_rows: tuple[ConditionRow, ...]
     coefficient_rows: tuple[CoefficientRow, ...]
@@ -179,158 +304,392 @@ def _read_json(path: Path) -> dict[str, Any]:
     return payload
 
 
-def _load_goal041_block(
-    input_dir: Path,
-) -> tuple[
-    tuple[goal040.ConditionOutcome, ...],
-    tuple[goal040.ValidationArrays, ...],
-    tuple[ProspectiveEvidence, ...],
-    str,
-    str,
-]:
+def _as_bool(value: str) -> bool:
+    if value == "True":
+        return True
+    if value == "False":
+        return False
+    raise ValueError(f"expected boolean text, received {value!r}")
+
+
+def _condition_from_row(row: dict[str, str]) -> ConditionOutcome:
+    count = int(row["validation_count"])
+    return ConditionOutcome(
+        row["condition_id"],
+        row["design_role"],
+        float(row["truth_rho"]),
+        float(row["truth_eta"]),
+        float(row["truth_probability"]),
+        count,
+        float(row["coverage"]),
+        float(row["coverage_lower"]),
+        float(row["coverage_upper"]),
+        float(row["median_absolute_log_rho_error"]),
+        float(row["median_absolute_eta_error"]),
+        float(row["median_absolute_probability_error"]),
+        float(row["median_projected_log_rho_width"]),
+        float(row["median_projected_eta_width"]),
+        float(row["median_projected_probability_width"]),
+        int(row["boundary_contact_count"]) / count,
+        float(row["eta_zero_exclusion_probability"]),
+        float(row["mean_paired_brier_difference"]),
+        row["outcome"],
+    )
+
+
+def _validation_arrays(condition_id: str, rows: Sequence[dict[str, str]]) -> ValidationArrays:
+    selected = sorted(
+        (row for row in rows if row["condition_id"] == condition_id),
+        key=lambda row: int(row["dataset_index"]),
+    )
+    return ValidationArrays(
+        condition_id,
+        np.asarray([int(row["dataset_index"]) for row in selected], dtype=np.int64),
+        np.asarray(
+            [_as_bool(row["support_boundary_contact"]) for row in selected],
+            dtype=np.bool_,
+        ),
+        np.asarray([_as_bool(row["eta_zero_excluded"]) for row in selected], dtype=np.bool_),
+        np.asarray([float(row["projected_probability_width"]) for row in selected]),
+        np.asarray([float(row["projected_eta_width"]) for row in selected]),
+        np.asarray([float(row["paired_brier_difference"]) for row in selected]),
+    )
+
+
+def _load_campaign_block(
+    input_dir: Path, expected_ids: tuple[str, ...]
+) -> tuple[tuple[ConditionOutcome, ...], tuple[ValidationArrays, ...], str]:
     required = (
         "truth_summary.csv",
         "validation_metrics.csv",
-        "metric_validation_summary.csv",
         "summary.json",
         "run_provenance.json",
     )
     if not all((input_dir / name).is_file() for name in required):
-        raise ValueError("Goal 041 input bundle is incomplete")
+        raise ValueError(f"campaign bundle is incomplete: {input_dir}")
     summary = _read_json(input_dir / "summary.json")
     invariants = summary.get("invariants")
-    if summary.get("outcome") != "review_bounded_eta_precision_followup":
-        raise ValueError("Goal 041 outcome is not accepted for synthesis")
     if not isinstance(invariants, dict) or not invariants or not all(invariants.values()):
-        raise ValueError("Goal 041 input invariants did not pass")
-    conditions = tuple(
+        raise ValueError(f"campaign invariants did not pass: {input_dir}")
+    all_conditions = tuple(
         sorted(
-            (
-                goal040._condition_from_row(row)
-                for row in _read_csv(input_dir / "truth_summary.csv")
-            ),
+            (_condition_from_row(row) for row in _read_csv(input_dir / "truth_summary.csv")),
             key=lambda row: row.condition_id,
         )
     )
+    by_id = {row.condition_id: row for row in all_conditions}
+    if not set(expected_ids).issubset(by_id):
+        raise ValueError(f"campaign truth IDs do not match the requested block: {input_dir}")
+    conditions = tuple(by_id[condition_id] for condition_id in expected_ids)
     validation_rows = _read_csv(input_dir / "validation_metrics.csv")
     validation = tuple(
-        goal040._validation_arrays(row.condition_id, validation_rows) for row in conditions
+        _validation_arrays(condition.condition_id, validation_rows) for condition in conditions
     )
-    prospective = tuple(
-        ProspectiveEvidence(
-            row["metric_id"],
-            float(row["prospective_rmse"]),
-            float(row["goal040_loo_rmse"]),
-            float(row["frozen_mean_rmse"]),
-            float(row["prospective_skill"]),
-            float(row["error_envelope_coverage"]),
-            float(row["threshold_class_accuracy"]),
-            int(row["observed_pass_count"]),
-            int(row["observed_fail_count"]),
-        )
-        for row in _read_csv(input_dir / "metric_validation_summary.csv")
-    )
-    provenance = _read_json(input_dir / "run_provenance.json")
-    return (
-        conditions,
-        validation,
-        prospective,
-        str(provenance.get("source_commit", "unknown")),
-        str(summary.get("source_goal040_commit", "unknown")),
-    )
-
-
-def load_inputs(goal039_dir: Path, goal040_dir: Path, goal041_dir: Path) -> Goal042Inputs:
-    """Load and reconcile the accepted Arc 2A evidence blocks."""
-    first = goal040.load_goal039_inputs(goal039_dir)
-    (
-        second_conditions,
-        second_validation,
-        prospective,
-        goal041_commit,
-        goal041_goal040_commit,
-    ) = _load_goal041_block(goal041_dir)
-    goal040_summary = _read_json(goal040_dir / "analysis_summary.json")
-    models = goal040_summary.get("models")
-    if not isinstance(models, dict):
-        raise ValueError("Goal 040 model summary is incomplete")
-    selected_models = {
-        metric_id: row.get("selected_model")
-        for metric_id, row in models.items()
-        if isinstance(row, dict)
-    }
-    conditions = tuple(
-        sorted((*first.continuous, *second_conditions), key=lambda x: x.condition_id)
-    )
-    validation_by_id = {row.condition_id: row for row in (*first.validation, *second_validation)}
-    validation = tuple(validation_by_id[row.condition_id] for row in conditions)
-    expected_ids = tuple(f"S{index:02d}" for index in range(1, 33))
     expected_indices = np.arange(VALIDATION_COUNT, dtype=np.int64)
-    prospective_by_metric = {row.metric_id: row for row in prospective}
-    first_ids = {row.condition_id for row in first.continuous}
-    second_ids = {row.condition_id for row in second_conditions}
-    invariants = {
-        "truth_ids_exact": tuple(row.condition_id for row in conditions) == expected_ids,
-        "first_block_count": len(first.continuous) == 16 and first_ids == set(expected_ids[:16]),
-        "second_block_count": len(second_conditions) == 16 and second_ids == set(expected_ids[16:]),
-        "validation_rows_complete": len(validation) == 32
-        and all(len(row.dataset_index) == VALIDATION_COUNT for row in validation),
-        "paired_dataset_indices_complete": all(
-            np.array_equal(row.dataset_index, expected_indices) for row in validation
-        ),
-        "prospective_metrics_complete": set(prospective_by_metric) == set(goal040.METRIC_BY_ID),
-        "accepted_model_forms_preserved": all(
-            selected_models.get(metric_id) == model_type
+    if not all(
+        len(row.dataset_index) == VALIDATION_COUNT
+        and np.array_equal(row.dataset_index, expected_indices)
+        for row in validation
+    ):
+        raise ValueError(f"campaign validation histories are incomplete: {input_dir}")
+    provenance = _read_json(input_dir / "run_provenance.json")
+    return conditions, validation, str(provenance.get("source_commit", "unknown"))
+
+
+def _parse_transform(value: str) -> TransformType:
+    if value not in ("identity", "empirical_logit"):
+        raise ValueError(f"unknown response scale: {value}")
+    return cast(TransformType, value)
+
+
+def _parse_model_type(value: str) -> ModelType:
+    if value not in ("additive", "two_way_interactions"):
+        raise ValueError(f"unknown model type: {value}")
+    return cast(ModelType, value)
+
+
+def load_frozen_predictions(path: Path) -> tuple[FrozenPrediction, ...]:
+    if _sha256(path) != ACCEPTED_PREDICTION_SHA256:
+        raise ValueError("frozen prospective prediction checksum changed")
+    rows = tuple(
+        FrozenPrediction(
+            row["source_goal040_commit"],
+            row["coefficient_sha256"],
+            row["condition_id"],
+            float(row["rho"]),
+            float(row["eta"]),
+            float(row["probability"]),
+            row["metric_id"],
+            _parse_transform(row["response_scale"]),
+            _parse_model_type(row["model_type"]),
+            float(row["predicted"]),
+            float(row["loo_rmse"]),
+            float(row["error_envelope_lower"]),
+            float(row["error_envelope_upper"]),
+            float(row["first_block_mean"]),
+            float(row["threshold"]),
+            _as_bool(row["lower_is_better"]),
+        )
+        for row in _read_csv(path)
+    )
+    expected_ids = {f"S{index:02d}" for index in range(17, 33)}
+    forms_by_metric = {
+        metric_id: {row.model_type for row in rows if row.metric_id == metric_id}
+        for metric_id in METRIC_BY_ID
+    }
+    checks = (
+        len(rows) == 16 * len(METRICS),
+        {row.condition_id for row in rows} == expected_ids,
+        {row.metric_id for row in rows} == set(METRIC_BY_ID),
+        {row.source_surface_commit for row in rows} == {ACCEPTED_SURFACE_COMMIT},
+        all(
+            forms_by_metric[metric_id] == {model_type}
             for metric_id, model_type in FIXED_MODELS.items()
         ),
-        "goal041_references_accepted_goal040": goal040_summary.get("goal")
-        == "040-arc2a-transparent-recoverability-surface"
-        and goal041_goal040_commit == goal041.ACCEPTED_GOAL040_COMMIT,
-        "finite_condition_metrics": all(
-            all(
-                math.isfinite(value)
-                for value in (
-                    row.rho,
-                    row.eta,
-                    row.probability,
-                    row.coverage,
-                    row.median_absolute_log_rho_error,
-                    row.median_absolute_eta_error,
-                    row.median_absolute_probability_error,
-                    row.median_eta_width,
-                    row.median_probability_width,
-                    row.boundary_contact_probability,
-                    row.eta_zero_exclusion_probability,
-                    row.mean_paired_brier_difference,
-                )
+        all(
+            row.response_scale == METRIC_BY_ID[row.metric_id].transform
+            and row.threshold == METRIC_BY_ID[row.metric_id].threshold
+            and row.lower_is_better == METRIC_BY_ID[row.metric_id].lower_is_better
+            for row in rows
+        ),
+    )
+    if not all(checks):
+        raise ValueError("frozen prospective predictions are incomplete or inconsistent")
+    return rows
+
+
+def _passes_threshold(value: float, prediction: FrozenPrediction) -> bool:
+    if prediction.metric_id == "heldout_brier_difference":
+        return value < prediction.threshold
+    return (
+        value <= prediction.threshold
+        if prediction.lower_is_better
+        else value >= prediction.threshold
+    )
+
+
+def _prospective_evidence(
+    conditions: Sequence[ConditionOutcome], predictions: Sequence[FrozenPrediction]
+) -> tuple[ProspectiveEvidence, ...]:
+    conditions_by_id = {row.condition_id: row for row in conditions}
+    evidence: list[ProspectiveEvidence] = []
+    for spec in METRICS:
+        frozen = tuple(row for row in predictions if row.metric_id == spec.metric_id)
+        observed = np.asarray(
+            [
+                _observed_metric((conditions_by_id[row.condition_id],), spec.metric_id)[0]
+                for row in frozen
+            ],
+            dtype=np.float64,
+        )
+        surface_sse = sum(
+            (float(value) - row.predicted) ** 2 for value, row in zip(observed, frozen, strict=True)
+        )
+        mean_sse = sum(
+            (float(value) - row.pilot_mean) ** 2
+            for value, row in zip(observed, frozen, strict=True)
+        )
+        observed_passes = [
+            _passes_threshold(float(value), row)
+            for value, row in zip(observed, frozen, strict=True)
+        ]
+        predicted_passes = [_passes_threshold(row.predicted, row) for row in frozen]
+        evidence.append(
+            ProspectiveEvidence(
+                spec.metric_id,
+                math.sqrt(surface_sse / len(frozen)),
+                frozen[0].loo_rmse,
+                math.sqrt(mean_sse / len(frozen)),
+                1.0 - surface_sse / mean_sse,
+                float(
+                    np.mean(
+                        [
+                            row.error_envelope_lower <= value <= row.error_envelope_upper
+                            for value, row in zip(observed, frozen, strict=True)
+                        ]
+                    )
+                ),
+                float(
+                    np.mean(
+                        [
+                            predicted_pass == observed_pass
+                            for predicted_pass, observed_pass in zip(
+                                predicted_passes, observed_passes, strict=True
+                            )
+                        ]
+                    )
+                ),
+                sum(observed_passes),
+                len(observed_passes) - sum(observed_passes),
             )
+        )
+    return tuple(evidence)
+
+
+def load_inputs(
+    pilot_dir: Path,
+    prospective_dir: Path,
+    frozen_predictions_path: Path = DEFAULT_FROZEN_PREDICTIONS,
+) -> SynthesisInputs:
+    """Load two campaign blocks and reconstruct the frozen prospective test."""
+    pilot_ids = tuple(f"S{index:02d}" for index in range(1, 17))
+    prospective_ids = tuple(f"S{index:02d}" for index in range(17, 33))
+    pilot_conditions, pilot_validation, pilot_commit = _load_campaign_block(pilot_dir, pilot_ids)
+    prospective_conditions, prospective_validation, prospective_commit = _load_campaign_block(
+        prospective_dir, prospective_ids
+    )
+    frozen = load_frozen_predictions(frozen_predictions_path)
+    prospective = _prospective_evidence(prospective_conditions, frozen)
+    conditions = (*pilot_conditions, *prospective_conditions)
+    validation = (*pilot_validation, *prospective_validation)
+    expected_indices = np.arange(VALIDATION_COUNT, dtype=np.int64)
+    invariants = {
+        "truth_ids_exact": tuple(row.condition_id for row in conditions)
+        == (*pilot_ids, *prospective_ids),
+        "two_prespecified_blocks": len(pilot_conditions) == len(prospective_conditions) == 16,
+        "validation_histories_complete": len(validation) == 32
+        and all(np.array_equal(row.dataset_index, expected_indices) for row in validation),
+        "frozen_predictions_bound": len(frozen) == 80,
+        "prospective_metrics_complete": {row.metric_id for row in prospective} == set(METRIC_BY_ID),
+        "finite_condition_metrics": all(
+            math.isfinite(value)
             for row in conditions
+            for value in (
+                row.rho,
+                row.eta,
+                row.probability,
+                row.coverage,
+                row.median_absolute_log_rho_error,
+                row.median_absolute_eta_error,
+                row.median_absolute_probability_error,
+                row.median_eta_width,
+                row.median_probability_width,
+                row.boundary_contact_probability,
+                row.eta_zero_exclusion_probability,
+                row.mean_paired_brier_difference,
+            )
         ),
     }
     if not all(invariants.values()):
         raise ValueError(f"Arc 2A evidence reconciliation failed: {invariants}")
     digest_paths = {
-        "goal039_truth_summary.csv": goal039_dir / "truth_summary.csv",
-        "goal039_validation_metrics.csv": goal039_dir / "validation_metrics.csv",
-        "goal040_analysis_summary.json": goal040_dir / "analysis_summary.json",
-        "goal041_truth_summary.csv": goal041_dir / "truth_summary.csv",
-        "goal041_validation_metrics.csv": goal041_dir / "validation_metrics.csv",
-        "goal041_metric_validation_summary.csv": goal041_dir / "metric_validation_summary.csv",
+        "pilot_truth_summary.csv": pilot_dir / "truth_summary.csv",
+        "pilot_validation_metrics.csv": pilot_dir / "validation_metrics.csv",
+        "prospective_truth_summary.csv": prospective_dir / "truth_summary.csv",
+        "prospective_validation_metrics.csv": prospective_dir / "validation_metrics.csv",
+        "frozen_predictions.csv": frozen_predictions_path,
     }
-    return Goal042Inputs(
+    return SynthesisInputs(
         conditions,
         validation,
         prospective,
-        {"goal039": first.source_commit, "goal041": goal041_commit},
+        {"pilot": pilot_commit, "prospective": prospective_commit},
         {name: _sha256(path) for name, path in digest_paths.items()},
         invariants,
     )
 
 
-def _fit_combined(inputs: Goal042Inputs, bootstrap_count: int) -> tuple[CombinedFit, ...]:
+def _scaled_predictors(conditions: Sequence[ConditionOutcome]) -> FloatArray:
+    return np.asarray(
+        [
+            (
+                math.log2(row.rho),
+                (row.eta - 1.125) / 0.875,
+                (row.probability - 0.60) / 0.25,
+            )
+            for row in conditions
+        ],
+        dtype=np.float64,
+    )
+
+
+def _design_matrix(predictors: FloatArray, model_type: ModelType) -> FloatArray:
+    base = np.column_stack((np.ones(len(predictors)), predictors))
+    if model_type == "additive":
+        return base
+    return np.column_stack(
+        (
+            base,
+            predictors[:, 0] * predictors[:, 1],
+            predictors[:, 0] * predictors[:, 2],
+            predictors[:, 1] * predictors[:, 2],
+        )
+    )
+
+
+def _terms(model_type: ModelType) -> tuple[str, ...]:
+    base = ("intercept", "log2_rho", "eta", "detection_p")
+    if model_type == "additive":
+        return base
+    return (*base, "log2_rho:eta", "log2_rho:detection_p", "eta:detection_p")
+
+
+def _transform(values: FloatArray, transform: TransformType, sample_size: int) -> FloatArray:
+    if transform == "identity":
+        return values
+    adjusted = (values * sample_size + 0.5) / (sample_size + 1.0)
+    return np.log(adjusted / (1.0 - adjusted))
+
+
+def _inverse(values: FloatArray, transform: TransformType) -> FloatArray:
+    if transform == "identity":
+        return values
+    return 1.0 / (1.0 + np.exp(-values))
+
+
+def _aggregate(arrays: ValidationArrays, spec: MetricSpec, indices: NDArray[np.int64]) -> float:
+    values = np.asarray(getattr(arrays, spec.field_name))[indices]
+    if spec.aggregation == "mean":
+        return float(np.mean(values))
+    return float(np.median(values))
+
+
+def _observed_metric(conditions: Sequence[ConditionOutcome], metric_id: str) -> FloatArray:
+    field = {
+        "boundary_contact_probability": "boundary_contact_probability",
+        "detection_interval_width": "median_probability_width",
+        "eta_zero_exclusion_probability": "eta_zero_exclusion_probability",
+        "heldout_brier_difference": "mean_paired_brier_difference",
+        "eta_interval_width": "median_eta_width",
+    }[metric_id]
+    return np.asarray([float(getattr(row, field)) for row in conditions], dtype=np.float64)
+
+
+def _fit_coefficients(matrix: FloatArray, response: FloatArray) -> FloatArray:
+    return np.asarray(np.linalg.lstsq(matrix, response, rcond=None)[0], dtype=np.float64)
+
+
+def _loo_candidate(
+    matrix: FloatArray,
+    observed: FloatArray,
+    transform: TransformType,
+    sample_size: int,
+    model_type: ModelType,
+) -> CandidateModel:
+    transformed = _transform(observed, transform, sample_size)
+    predicted = np.empty(len(observed), dtype=np.float64)
+    baseline = np.empty(len(observed), dtype=np.float64)
+    for index in range(len(observed)):
+        keep = np.arange(len(observed)) != index
+        coefficients = _fit_coefficients(matrix[keep], transformed[keep])
+        predicted[index] = float(_inverse(np.asarray([matrix[index] @ coefficients]), transform)[0])
+        baseline[index] = float(np.mean(observed[keep]))
+    rmse = float(np.sqrt(np.mean(np.square(observed - predicted))))
+    baseline_rmse = float(np.sqrt(np.mean(np.square(observed - baseline))))
+    return CandidateModel(
+        _terms(model_type),
+        _fit_coefficients(matrix, transformed),
+        predicted,
+        rmse,
+        baseline_rmse,
+        1.0 - (rmse * rmse) / (baseline_rmse * baseline_rmse),
+    )
+
+
+def _fit_combined(inputs: SynthesisInputs, bootstrap_count: int) -> tuple[CombinedFit, ...]:
     if bootstrap_count <= 0:
         raise ValueError("bootstrap_count must be positive")
-    predictors = goal040._scaled_predictors(inputs.conditions)
+    predictors = _scaled_predictors(inputs.conditions)
     arrays_by_id = {row.condition_id: row for row in inputs.validation}
     arrays = tuple(arrays_by_id[row.condition_id] for row in inputs.conditions)
     rng = np.random.default_rng(BOOTSTRAP_SEED)
@@ -339,21 +698,19 @@ def _fit_combined(inputs: Goal042Inputs, bootstrap_count: int) -> tuple[Combined
     )
     fits: list[CombinedFit] = []
     for metric_id, model_type in FIXED_MODELS.items():
-        spec = goal040.METRIC_BY_ID[metric_id]
-        matrix = goal040._design_matrix(predictors, model_type)
-        observed = goal040._observed_metric(inputs.conditions, metric_id)
-        candidate = goal040._loo_candidate(
-            matrix, observed, spec.transform, VALIDATION_COUNT, model_type
-        )
+        spec = METRIC_BY_ID[metric_id]
+        matrix = _design_matrix(predictors, model_type)
+        observed = _observed_metric(inputs.conditions, metric_id)
+        candidate = _loo_candidate(matrix, observed, spec.transform, VALIDATION_COUNT, model_type)
         bootstrap = np.empty((bootstrap_count, matrix.shape[1]), dtype=np.float64)
         for bootstrap_index, indices in enumerate(resamples):
             values = np.asarray(
-                [goal040._aggregate(row, spec, indices) for row in arrays],
+                [_aggregate(row, spec, indices) for row in arrays],
                 dtype=np.float64,
             )
-            bootstrap[bootstrap_index] = goal040._fit_coefficients(
+            bootstrap[bootstrap_index] = _fit_coefficients(
                 matrix,
-                goal040._transform(values, spec.transform, len(indices)),
+                _transform(values, spec.transform, len(indices)),
             )
         fits.append(
             CombinedFit(
@@ -372,7 +729,7 @@ def _fit_combined(inputs: Goal042Inputs, bootstrap_count: int) -> tuple[Combined
     return tuple(fits)
 
 
-def _condition_rows(conditions: Sequence[goal040.ConditionOutcome]) -> tuple[ConditionRow, ...]:
+def _condition_rows(conditions: Sequence[ConditionOutcome]) -> tuple[ConditionRow, ...]:
     return tuple(
         ConditionRow(
             row.condition_id,
@@ -429,7 +786,7 @@ def _grid_rows(fits: Sequence[CombinedFit]) -> tuple[GridRow, ...]:
     for fit in fits:
         for probability in (0.35, 0.60, 0.85):
             conditions = tuple(
-                goal040.ConditionOutcome(
+                ConditionOutcome(
                     "grid",
                     "combined_descriptive_grid",
                     float(rho),
@@ -453,12 +810,12 @@ def _grid_rows(fits: Sequence[CombinedFit]) -> tuple[GridRow, ...]:
                 for eta in etas
                 for rho in rhos
             )
-            matrix = goal040._design_matrix(
-                goal040._scaled_predictors(conditions),
+            matrix = _design_matrix(
+                _scaled_predictors(conditions),
                 fit.model_type,
             )
-            estimates = goal040._inverse(matrix @ fit.coefficients, fit.spec.transform)
-            bootstrap_estimates = goal040._inverse(
+            estimates = _inverse(matrix @ fit.coefficients, fit.spec.transform)
+            bootstrap_estimates = _inverse(
                 matrix @ fit.bootstrap_coefficients.T, fit.spec.transform
             )
             lower = np.quantile(bootstrap_estimates, 0.025, axis=1)
@@ -488,7 +845,7 @@ def _grid_rows(fits: Sequence[CombinedFit]) -> tuple[GridRow, ...]:
     return tuple(rows)
 
 
-def _topology_rows(conditions: Sequence[goal040.ConditionOutcome]) -> tuple[TopologyRow, ...]:
+def _topology_rows(conditions: Sequence[ConditionOutcome]) -> tuple[TopologyRow, ...]:
     return tuple(
         TopologyRow(
             row.condition_id,
@@ -504,7 +861,9 @@ def _topology_rows(conditions: Sequence[goal040.ConditionOutcome]) -> tuple[Topo
     )
 
 
-def run_goal042(inputs: Goal042Inputs, bootstrap_count: int = DEFAULT_BOOTSTRAPS) -> Goal042Result:
+def run_synthesis(
+    inputs: SynthesisInputs, bootstrap_count: int = DEFAULT_BOOTSTRAPS
+) -> SynthesisResult:
     """Build the combined descriptive refit while retaining prospective evidence."""
     fits = _fit_combined(inputs, bootstrap_count)
     condition_rows = _condition_rows(inputs.conditions)
@@ -540,7 +899,7 @@ def run_goal042(inputs: Goal042Inputs, bootstrap_count: int = DEFAULT_BOOTSTRAPS
         if all(checks.values())
         else "arc2a_requires_named_followup"
     )
-    return Goal042Result(
+    return SynthesisResult(
         inputs,
         fits,
         condition_rows,
@@ -553,7 +912,7 @@ def run_goal042(inputs: Goal042Inputs, bootstrap_count: int = DEFAULT_BOOTSTRAPS
     )
 
 
-def _summary(result: Goal042Result) -> dict[str, Any]:
+def _summary(result: SynthesisResult) -> dict[str, Any]:
     flagged_coverage = [
         row.condition_id for row in result.condition_rows if not row.coverage_interval_includes_0_95
     ]
@@ -563,7 +922,7 @@ def _summary(result: Goal042Result) -> dict[str, Any]:
         if row.resistance_interval_broader_than_0_75
     ]
     return {
-        "goal": "042-arc2a-32-truth-synthesis",
+        "workflow": "arc2a-predator-recoverability-synthesis",
         "outcome": result.outcome,
         "truth_count": len(result.condition_rows),
         "validation_histories_per_truth": VALIDATION_COUNT,
@@ -626,11 +985,11 @@ def _summary(result: Goal042Result) -> dict[str, Any]:
             "One accepted landscape, access network, observation schedule, likelihood, "
             "and process formulation; no prey layer or structural generality claim."
         ),
-        "next_step": "human Arc 2A closeout review, then bounded code consolidation",
+        "next_step": "human consolidation review, then separately designed Arc 2B work",
     }
 
 
-def _synthesis(result: Goal042Result) -> str:
+def _synthesis(result: SynthesisResult) -> str:
     prospective = {row.metric_id: row for row in result.inputs.prospective}
     flags = [
         row.condition_id for row in result.condition_rows if not row.coverage_interval_includes_0_95
@@ -670,8 +1029,8 @@ reliable smooth response surface.
 
 ## The prospective test came first
 
-Goal 040 learned low-order relationships from `S01-S16`. Goal 041 froze their
-predictions before generating `S17-S32`. Positive skill means the frozen
+Low-order relationships were learned from `S01-S16`, and their predictions
+were frozen before generating `S17-S32`. Positive skill means the frozen
 surface predicted the new block better than simply using the first-block mean.
 
 | Outcome | Prospective skill | Threshold-class accuracy |
@@ -721,15 +1080,15 @@ generality.
 
 **{result.outcome}**
 
-No targeted enrichment or flexible emulator is recommended. The next tranche
-is a bounded Arc 2A code consolidation after human review, followed by a
-separately designed Arc 2B prey-effect map.
+No targeted enrichment or flexible emulator is recommended. Arc 2A's active
+code is now consolidated; the next scientific tranche is a separately designed
+Arc 2B prey-effect map after human review.
 """
 
 
 def _surface_panel(
     axis: Any,
-    result: Goal042Result,
+    result: SynthesisResult,
     metric_id: str,
     title: str,
     cmap: str,
@@ -770,7 +1129,7 @@ def _surface_panel(
     colorbar.ax.tick_params(labelsize=8)
 
 
-def _figure(result: Goal042Result) -> Figure:
+def _figure(result: SynthesisResult) -> Figure:
     figure, axes = plt.subplots(3, 2, figsize=(12.4, 13.8), constrained_layout=True)
     figure.suptitle(
         "Arc 2A: recoverability across 32 predator-only truths",
@@ -884,9 +1243,9 @@ def _write_csv(path: Path, rows: Sequence[Any]) -> None:
 
 
 def write_review_bundle(
-    result: Goal042Result, output_dir: Path = DEFAULT_OUTPUT_DIR
+    result: SynthesisResult, output_dir: Path = DEFAULT_OUTPUT_DIR
 ) -> tuple[Path, ...]:
-    """Write the exact compact Goal 042 review bundle."""
+    """Write the exact compact Arc 2A review bundle."""
     output_dir.mkdir(parents=True, exist_ok=True)
     prospective_rows = tuple(sorted(result.inputs.prospective, key=lambda row: row.metric_id))
     _write_csv(output_dir / EXPECTED_FILES[0], result.condition_rows)
@@ -906,13 +1265,13 @@ def write_review_bundle(
     if actual != tuple(sorted(EXPECTED_FILES)) or not all(
         path.stat().st_size > 0 for path in written
     ):
-        raise RuntimeError("Goal 042 artifact contract failed")
+        raise RuntimeError("Arc 2A artifact contract failed")
     return written
 
 
-def summarize_for_cli(result: Goal042Result) -> str:
+def summarize_for_cli(result: SynthesisResult) -> str:
     return (
-        "Goal 042 Arc 2A 32-truth synthesis complete\n"
+        "Arc 2A 32-truth synthesis complete\n"
         f"Outcome: {result.outcome}\n"
         f"Truths: {len(result.condition_rows)}\n"
         "Smooth descriptive outcomes: 4\n"

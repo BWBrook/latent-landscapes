@@ -35,8 +35,9 @@ predictive advantage across continuous spread-rate, resistance, and detection
 conditions. Boundary contact remains a truth-level topology diagnostic rather
 than a reliable smooth surface. These results meet the Arc 2A exit gate but do
 not establish generality across prey-process conditions, landscapes, sampling
-designs, or generating models. One bounded Arc 2A consolidation tranche should
-precede Arc 2B.
+designs, or generating models. The accepted Arc 2A path has now been
+consolidated into one frozen design, one campaign kernel, and one synthesis;
+Arc 2B is the next scientific design boundary.
 
 ## Arc 1: Close And Freeze The Reference Case
 
