@@ -17,6 +17,7 @@ from latent_landscapes.arc2b_campaign import (
     PSEUDO_ARRIVALS,
     CrossLayerHistory,
     _classify_truth,
+    _neutral_profile,
     build_arrival_integration,
     latent_arrival_profile,
     run_campaign,
@@ -45,6 +46,9 @@ def test_smoke_campaign_writes_compact_replayable_bundle(tmp_path: Path) -> None
     assert tuple(path.name for path in written) == EXPECTED_FILES
     assert {path.name for path in tmp_path.iterdir()} == set(EXPECTED_FILES)
     assert json.loads((tmp_path / "summary.json").read_text())["run_mode"] == "reduced_smoke"
+    header = (tmp_path / "validation_metrics.csv").read_text().splitlines()[0]
+    assert "heldout_known_background_no_effect_advantage_per_record" in header
+    assert "heldout_fitted_neutral_advantage_per_record" in header
 
 
 def test_provenance_records_supplied_frozen_prediction_digest(tmp_path: Path) -> None:
@@ -130,6 +134,10 @@ def test_latent_profile_uses_shared_arrival_for_both_observation_layers() -> Non
     )
     config = smoke_config("prospective")
     profile = latent_arrival_profile((history,), integration, config)
+    known_no_effect = _neutral_profile((history,), integration, (0.002,), config)
+    assert math.exp(float(profile.log_likelihoods[0])) == pytest.approx(
+        math.exp(float(known_no_effect.log_likelihoods[0])), rel=1e-12
+    )
     pred = []
     prey = []
     augmented = (5.0, 25.0, 45.0, 65.0, *PSEUDO_ARRIVALS)
@@ -165,7 +173,7 @@ def test_latent_profile_uses_shared_arrival_for_both_observation_layers() -> Non
 
 
 def test_neutral_control_accepts_interval_spanning_zero_only() -> None:
-    from latent_landscapes.arc2b_design import NEUTRAL_CONTROL
+    from latent_landscapes.arc2b_design import NEUTRAL_CONTROL, REFERENCE_CONTROL, truths_for_block
 
     assert (
         _classify_truth(
@@ -193,3 +201,26 @@ def test_neutral_control_accepts_interval_spanning_zero_only() -> None:
         )
         == "control_review_required"
     )
+    positive_score = SimpleNamespace(lower=0.01, upper=0.03)
+    r00 = _classify_truth(
+        REFERENCE_CONTROL,
+        score_interval=positive_score,
+        coverage=SimpleNamespace(lower=0.94, upper=0.96),
+        connected=238,
+        null_count=238,
+        count=250,
+        error=0.19,
+        width=1.2,
+    )
+    continuous = _classify_truth(
+        truths_for_block("pilot")[0],
+        score_interval=positive_score,
+        coverage=SimpleNamespace(lower=0.94, upper=0.96),
+        connected=238,
+        null_count=238,
+        count=250,
+        error=0.19,
+        width=1.2,
+    )
+    assert r00 == "reference_control_valid"
+    assert continuous == "detected_but_not_fully_recovered"

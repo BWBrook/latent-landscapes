@@ -75,9 +75,9 @@ METRICS = (
         "identity",
     ),
     MetricSpec(
-        "mean_heldout_log_score_advantage_per_record",
-        "heldout_log_score_advantage_per_record",
-        "mean_heldout_log_score_advantage_per_record",
+        "mean_heldout_known_background_no_effect_advantage_per_record",
+        "heldout_known_background_no_effect_advantage_per_record",
+        "mean_heldout_known_background_no_effect_advantage_per_record",
         "mean",
         "identity",
     ),
@@ -114,9 +114,12 @@ class ConditionOutcome:
     no_effect_exclusion_probability: float
     median_absolute_log_effect_error: float
     median_log_support_width: float
-    mean_heldout_log_score_advantage_per_record: float
-    heldout_log_score_advantage_lower: float
-    heldout_log_score_advantage_upper: float
+    mean_heldout_known_background_no_effect_advantage_per_record: float
+    heldout_known_background_no_effect_advantage_lower: float
+    heldout_known_background_no_effect_advantage_upper: float
+    mean_heldout_fitted_neutral_advantage_per_record: float
+    heldout_fitted_neutral_advantage_lower: float
+    heldout_fitted_neutral_advantage_upper: float
     mean_true_extirpations_by_day60: float
     mean_pre_arrival_true_extirpations: float
     mean_post_arrival_true_extirpations: float
@@ -137,7 +140,8 @@ class ValidationArrays:
     no_effect_excluded: BoolArray
     absolute_log_effect_error: FloatArray
     log_support_width: FloatArray
-    heldout_log_score_advantage_per_record: FloatArray
+    heldout_known_background_no_effect_advantage_per_record: FloatArray
+    heldout_fitted_neutral_advantage_per_record: FloatArray
 
 
 @dataclass(frozen=True, slots=True)
@@ -260,8 +264,10 @@ class ControlDecision:
     no_effect_exclusion_probability: float
     median_absolute_log_effect_error: float
     median_log_support_width: float
-    mean_heldout_log_score_advantage_per_record: float
-    heldout_log_score_advantage_lower: float
+    mean_heldout_known_background_no_effect_advantage_per_record: float
+    heldout_known_background_no_effect_advantage_lower: float
+    mean_heldout_fitted_neutral_advantage_per_record: float
+    heldout_fitted_neutral_advantage_lower: float
 
 
 @dataclass(frozen=True, slots=True)
@@ -359,7 +365,9 @@ def _classification(row: dict[str, str]) -> tuple[str, str]:
         "excludes_no_effect": float(row["no_effect_exclusion_probability"]) >= 238 / 250,
         "point_error": float(row["median_absolute_log_effect_error"]) <= 0.20,
         "support_width": float(row["median_log_support_width"]) <= 0.80,
-        "predictive_advantage": float(row["heldout_log_score_advantage_lower"]) > 0.0,
+        "predictive_advantage": (
+            float(row["heldout_known_background_no_effect_advantage_lower"]) > 0.0
+        ),
         "production_count": count == PRODUCTION_VALIDATION_COUNT,
     }
     failed = tuple(name for name, passed in passes.items() if not passed)
@@ -388,9 +396,12 @@ def _condition_from_row(row: dict[str, str]) -> ConditionOutcome:
         float(row["no_effect_exclusion_probability"]),
         float(row["median_absolute_log_effect_error"]),
         float(row["median_log_support_width"]),
-        float(row["mean_heldout_log_score_advantage_per_record"]),
-        float(row["heldout_log_score_advantage_lower"]),
-        float(row["heldout_log_score_advantage_upper"]),
+        float(row["mean_heldout_known_background_no_effect_advantage_per_record"]),
+        float(row["heldout_known_background_no_effect_advantage_lower"]),
+        float(row["heldout_known_background_no_effect_advantage_upper"]),
+        float(row["mean_heldout_fitted_neutral_advantage_per_record"]),
+        float(row["heldout_fitted_neutral_advantage_lower"]),
+        float(row["heldout_fitted_neutral_advantage_upper"]),
         float(row["mean_true_extirpations_by_day60"]),
         float(row["mean_pre_arrival_true_extirpations"]),
         float(row["mean_post_arrival_true_extirpations"]),
@@ -422,7 +433,13 @@ def _validation_arrays(condition_id: str, rows: Sequence[dict[str, str]]) -> Val
         np.asarray([_as_bool(row["no_effect_excluded"]) for row in selected], dtype=np.bool_),
         np.asarray([float(row["absolute_log_effect_error"]) for row in selected]),
         np.asarray([float(row["log_support_width"]) for row in selected]),
-        np.asarray([float(row["heldout_log_score_advantage_per_record"]) for row in selected]),
+        np.asarray(
+            [
+                float(row["heldout_known_background_no_effect_advantage_per_record"])
+                for row in selected
+            ]
+        ),
+        np.asarray([float(row["heldout_fitted_neutral_advantage_per_record"]) for row in selected]),
     )
 
 
@@ -481,8 +498,13 @@ def load_campaign_block(input_dir: Path) -> CampaignBlock:
                 abs_tol=1e-12,
             ),
             math.isclose(
-                float(np.mean(arrays.heldout_log_score_advantage_per_record)),
-                condition.mean_heldout_log_score_advantage_per_record,
+                float(np.mean(arrays.heldout_known_background_no_effect_advantage_per_record)),
+                condition.mean_heldout_known_background_no_effect_advantage_per_record,
+                abs_tol=1e-12,
+            ),
+            math.isclose(
+                float(np.mean(arrays.heldout_fitted_neutral_advantage_per_record)),
+                condition.mean_heldout_fitted_neutral_advantage_per_record,
                 abs_tol=1e-12,
             ),
         )
@@ -921,8 +943,9 @@ def _control_decision(condition: ConditionOutcome, arrays: ValidationArrays) -> 
             "connected_and_interior": condition.connected_interior_frequency >= 238 / 250,
             "excludes_no_effect": condition.no_effect_exclusion_probability >= 238 / 250,
             "point_error": condition.median_absolute_log_effect_error <= 0.20,
-            "support_width": condition.median_log_support_width <= 0.80,
-            "predictive_advantage": condition.heldout_log_score_advantage_lower > 0.0,
+            "predictive_advantage": (
+                condition.heldout_known_background_no_effect_advantage_lower > 0.0
+            ),
         }
         connected_frequency = condition.connected_interior_frequency
         label = "reference_control_valid"
@@ -934,7 +957,7 @@ def _control_decision(condition: ConditionOutcome, arrays: ValidationArrays) -> 
             "connected": connected_frequency >= 238 / 250,
             "false_no_effect_exclusion": condition.no_effect_exclusion_probability <= 19 / 250,
             "no_demonstrated_predictive_advantage": (
-                condition.heldout_log_score_advantage_lower <= 0.0
+                condition.heldout_known_background_no_effect_advantage_lower <= 0.0
             ),
         }
         label = "neutral_control_valid"
@@ -951,8 +974,10 @@ def _control_decision(condition: ConditionOutcome, arrays: ValidationArrays) -> 
         condition.no_effect_exclusion_probability,
         condition.median_absolute_log_effect_error,
         condition.median_log_support_width,
-        condition.mean_heldout_log_score_advantage_per_record,
-        condition.heldout_log_score_advantage_lower,
+        condition.mean_heldout_known_background_no_effect_advantage_per_record,
+        condition.heldout_known_background_no_effect_advantage_lower,
+        condition.mean_heldout_fitted_neutral_advantage_per_record,
+        condition.heldout_fitted_neutral_advantage_lower,
     )
 
 
@@ -1236,6 +1261,11 @@ def _summary(result: SynthesisResult) -> dict[str, Any]:
         "recovery_class_counts": class_counts,
         "controls": [asdict(row) for row in result.controls],
         "prospective_scores": [asdict(row) for row in result.prospective_scores],
+        "predictive_comparator": {
+            "primary": "known_background_no_effect",
+            "secondary_descriptive": "fitted_neutral",
+            "secondary_surface_fitted": False,
+        },
         "strongest_descriptive_event_associations": [asdict(row) for row in strongest],
         "source_commits": result.source_commits,
         "source_sha256": result.source_sha256,
@@ -1298,6 +1328,10 @@ frozen pilot mean. The paired bootstrap intervals quantify Monte Carlo precision
 conditional on the realised local cutoffs; they are not total response-surface
 uncertainty.
 
+Predictive recovery is defined against the known-background no-effect model.
+Advantage over a separately fitted neutral is retained only as a secondary
+condition-level description and is not given another response surface.
+
 ## Controls
 
 {control_lines}
@@ -1312,8 +1346,12 @@ For `R00`, the current values versus Goal 031 are: coverage
 {reference.no_effect_exclusion_probability:.3f} versus 1.000; median absolute
 log-effect error {reference.median_absolute_log_effect_error:.3f} versus 0.128;
 median log-support width {reference.median_log_support_width:.3f} versus 0.757;
-and mean held-out log-score advantage
-{reference.mean_heldout_log_score_advantage_per_record:.4f} versus 0.0530.
+the primary mean held-out advantage over the known-background no-effect model is
+{reference.mean_heldout_known_background_no_effect_advantage_per_record:.4f}
+(lower bound {reference.heldout_known_background_no_effect_advantage_lower:.4f}).
+The secondary mean advantage over a fitted neutral is
+{reference.mean_heldout_fitted_neutral_advantage_per_record:.4f}, compared
+descriptively with Goal 031's fitted-neutral value of 0.0530.
 
 ## Reading the map
 

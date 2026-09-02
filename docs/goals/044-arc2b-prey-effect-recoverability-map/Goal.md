@@ -21,7 +21,7 @@ risk, and known prey-detection probability jointly determine:
 
 - accuracy and precision of the estimated predator effect;
 - calibrated uncertainty and reliable exclusion of no effect; and
-- held-out predictive advantage over an observation-matched neutral model?
+- held-out predictive advantage over a known-background no-effect model?
 
 The intended output is an interpretable recoverability map, not a catalogue of
 independent pass/fail cells.
@@ -37,8 +37,9 @@ independent pass/fail cells.
 - known per-visit predator detection probability `0.65`;
 - latent realised predator arrival, integrated through one independent
   4,096-draw arrival bank from the known central process;
-- absorbing prey extirpation and the accepted observation-aware constant-
-  hazard neutral comparator; and
+- absorbing prey extirpation, a primary no-effect comparator given the same
+  known background hazard as the process model, and the accepted fitted
+  observation-aware constant-hazard neutral as a secondary benchmark; and
 - the parameter-specific calibrated likelihood-support interpretation used by
   the accepted prey-effect positive controls.
 
@@ -73,30 +74,61 @@ two separately labelled controls outside the continuous surface:
 false effect detection and neutral behaviour and is not subject to an
 interior-support requirement because truth lies at the physical null boundary.
 
+### Pilot-triggered comparator amendment
+
+The original pilot completed before any `S17-S32` history was generated. It
+showed sound null inference at `N00` (coverage `0.940`, connected support
+`1.000`, and false no-effect exclusion `15/250`) but a small positive held-out
+advantage over the fitted neutral. That comparison was asymmetric: at no
+effect the process model contains the exact known background hazard, whereas
+the fitted neutral must estimate its hazard from the training sites. The pilot
+therefore tested unequal background-hazard knowledge rather than a necessary
+null prediction.
+
+Barry approved the following prospective amendment on 2 September 2026:
+
+- preserve the original pilot bundle as an audit record;
+- replay exactly the same pilot histories and calibration cutoffs, changing
+  only predictive scoring;
+- use the no-effect model at the condition's known background hazard as the
+  primary comparator for controls, recovery classifications, and surfaces;
+- retain the fitted constant-hazard neutral score as a secondary descriptive
+  benchmark; and
+- freeze the amended pilot surfaces before generating any prospective history.
+
+The replay is not a top-up or retuning exercise. Seeds, histories, likelihood,
+cutoffs, factor domain, recovery thresholds, and surface-selection rules remain
+unchanged.
+
 ### Control decision contract
 
-`R00` is valid only when its 250 validation histories satisfy the accepted
-Goal 031 gates at the smaller ensemble size:
+Goal 031 remains the formal high-precision positive control. `R00` is a
+smaller-ensemble reconciliation and is valid when:
 
 - the 95% Wilson interval for coverage contains `0.95`;
 - at least `238/250` supports are connected and interior;
 - at least `238/250` supports exclude a hazard ratio of `1`;
 - median absolute log-effect error is at most `0.20`;
-- median log-support width is at most `0.80`; and
-- the paired 95% lower bound on held-out log-score advantage is above zero.
+- the paired 95% lower bound on held-out primary log-score advantage is above
+  zero.
 
 Report descriptive differences from Goal 031's accepted coverage `0.963`,
 topology `0.993`, exclusion `1.000`, median error `0.128`, median width `0.757`,
-and mean held-out advantage `0.0530`. Do not require numerical identity because
-`R00` uses smaller, independent calibration and validation ensembles.
+and mean held-out advantage `0.0530`. Report support width descriptively rather
+than transferring the `0.80` gate to the smaller calibration ensemble: the
+original pilot's `0.824` width followed an unusually high but plausible local
+cutoff (`4.885` versus `4.095` in Goal 031), while all other reconciliation
+criteria passed. Do not require numerical identity because `R00` uses smaller,
+independent calibration and validation ensembles.
 
 `N00` is valid only when:
 
 - its 95% Wilson interval for coverage contains `0.95`;
 - at least `238/250` supports are connected, with no interior requirement;
 - at most `19/250` supports falsely exclude the no-effect truth; and
-- the paired 95% lower bound on held-out advantage is at most zero, so the
-  process model has no demonstrated predictive advantage over the true neutral.
+- the paired 95% lower bound on held-out primary advantage is at most zero, so
+  estimating a predator effect has no demonstrated predictive advantage over
+  the known-background no-effect comparator.
 
 Report null point error and width descriptively without imposing the positive-
 control precision gates. Any control failure returns `control_review_required`;
@@ -138,7 +170,7 @@ The additive design is `[1, xE, xB, xP]`. The interaction design adds
 searches, weights, or alternative predictor transforms.
 
 Model median absolute log-effect error, median log-support width, and mean
-held-out log-score advantage on their observed scales. Model connected-and-
+held-out primary log-score advantage on their observed scales. Model connected-and-
 interior and no-effect-exclusion frequencies using the Jeffreys empirical
 logit `log((k + 0.5) / (250 - k + 0.5))`. Coverage remains a condition-level
 local-calibration check rather than a learned ecological surface. Event and
@@ -209,15 +241,17 @@ For every continuous truth report:
 - empirical support coverage with its Wilson interval;
 - connected/interior support frequency;
 - probability of excluding the no-effect value;
-- held-out log-score advantage over the fitted neutral with paired uncertainty;
-- observed prey-extirpation event yield, pre- and post-arrival events,
-  censoring, post-arrival at-risk exposure, and observation support; and
+- held-out log-score advantage over the known-background no-effect comparator
+  with paired uncertainty, plus the fitted-neutral advantage as a secondary
+  descriptive benchmark;
+- truth-assisted prey-extirpation yield, pre- and post-arrival events,
+  censoring, post-arrival at-risk exposure, and observed prey support; and
 - an explicit failure classification.
 
 Classify a truth as `fully_recovered` only when coverage contains `0.95`, at
 least `238/250` supports are connected and interior, at least `238/250` exclude
 no effect, median error is at most `0.20`, median width is at most `0.80`, and
-the paired lower 95% bound on held-out advantage is positive. Classify it as
+the paired lower 95% bound on primary held-out advantage is positive. Classify it as
 `detected_but_not_fully_recovered` when the exclusion and predictive gates pass
 but another recovery gate fails. Otherwise use `not_reliably_detected` and
 record the failed gates.

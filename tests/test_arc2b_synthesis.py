@@ -31,9 +31,11 @@ def _condition(
     error: float = 0.10,
     width: float = 0.50,
     score: float = 0.04,
+    fitted_score: float = 0.03,
     connected: float = 1.0,
     exclusion: float = 1.0,
     score_lower: float = 0.02,
+    fitted_score_lower: float = 0.01,
 ) -> arc2b_synthesis.ConditionOutcome:
     return arc2b_synthesis.ConditionOutcome(
         condition_id,
@@ -52,6 +54,9 @@ def _condition(
         score,
         score_lower,
         0.06,
+        fitted_score,
+        fitted_score_lower,
+        0.05,
         80.0,
         20.0,
         60.0,
@@ -70,6 +75,7 @@ def _arrays(
     error: float = 0.10,
     width: float = 0.50,
     score: float = 0.04,
+    fitted_score: float = 0.03,
     connected_count: int | None = None,
     exclusion_count: int | None = None,
 ) -> arc2b_synthesis.ValidationArrays:
@@ -87,6 +93,7 @@ def _arrays(
         np.full(count, error),
         np.full(count, width),
         np.full(count, score),
+        np.full(count, fitted_score),
     )
 
 
@@ -118,7 +125,12 @@ def _frozen_rows() -> tuple[arc2b_synthesis.FrozenPrediction, ...]:
     coefficients_by_metric = {
         "median_absolute_log_effect_error": (0.12, 0.02, 0.0, 0.0),
         "median_log_support_width": (0.50, 0.04, 0.0, 0.0),
-        "mean_heldout_log_score_advantage_per_record": (0.04, 0.01, 0.0, 0.0),
+        "mean_heldout_known_background_no_effect_advantage_per_record": (
+            0.04,
+            0.01,
+            0.0,
+            0.0,
+        ),
         "connected_interior_frequency": (3.0, 0.4, 0.0, 0.0),
         "no_effect_exclusion_probability": (2.5, 0.7, 0.0, 0.0),
     }
@@ -202,7 +214,7 @@ def test_prospective_score_uses_frozen_predictions_and_mean() -> None:
                 ].frozen_prediction_observed_scale,
                 width=metric_rows["median_log_support_width"].frozen_prediction_observed_scale,
                 score=metric_rows[
-                    "mean_heldout_log_score_advantage_per_record"
+                    "mean_heldout_known_background_no_effect_advantage_per_record"
                 ].frozen_prediction_observed_scale,
                 connected=metric_rows[
                     "connected_interior_frequency"
@@ -217,7 +229,7 @@ def test_prospective_score_uses_frozen_predictions_and_mean() -> None:
                 truth.condition_id,
                 error=conditions[-1].median_absolute_log_effect_error,
                 width=conditions[-1].median_log_support_width,
-                score=conditions[-1].mean_heldout_log_score_advantage_per_record,
+                score=(conditions[-1].mean_heldout_known_background_no_effect_advantage_per_record),
                 connected_count=round(conditions[-1].connected_interior_frequency * 20),
                 exclusion_count=round(conditions[-1].no_effect_exclusion_probability * 20),
             )
@@ -228,10 +240,11 @@ def test_prospective_score_uses_frozen_predictions_and_mean() -> None:
     assert len(scores) == 5
     assert all(row.prospective_skill is not None and row.prospective_skill > 0.80 for row in scores)
     assert all(row.decision == "supported" for row in scores)
+    assert not any("fitted_neutral" in row.metric_id for row in scores)
 
 
 def test_control_classification_applies_distinct_reference_and_null_rules() -> None:
-    reference = _condition("R00", 5.0, 0.113, 0.65, role="reference_control", count=250)
+    reference = _condition("R00", 5.0, 0.113, 0.65, role="reference_control", count=250, width=1.20)
     neutral = _condition(
         "N00",
         1.0,
@@ -253,12 +266,31 @@ def test_control_classification_applies_distinct_reference_and_null_rules() -> N
         "reference_control_valid",
         "neutral_control_valid",
     ]
+    assert controls[0].median_log_support_width == 1.20
     failed_reference = replace(reference, no_effect_exclusion_probability=0.80)
     failed = arc2b_synthesis.classify_controls(
         (failed_reference, neutral), (reference_arrays, neutral_arrays)
     )
     assert failed[0].valid is False
     assert "excludes_no_effect" in failed[0].failed_gates
+
+
+def test_continuous_recovery_classification_retains_width_gate() -> None:
+    classification, failed = arc2b_synthesis._classification(
+        {
+            "validation_count": "250",
+            "coverage_lower": "0.92",
+            "coverage_upper": "0.98",
+            "connected_interior_frequency": "0.96",
+            "no_effect_exclusion_probability": "0.96",
+            "median_absolute_log_effect_error": "0.10",
+            "median_log_support_width": "0.90",
+            "heldout_known_background_no_effect_advantage_lower": "0.01",
+        }
+    )
+
+    assert classification == "detected_but_not_fully_recovered"
+    assert failed == "support_width"
 
 
 def test_campaign_bundle_round_trip_respects_neutral_boundary_exemption(
@@ -297,9 +329,12 @@ def test_campaign_bundle_round_trip_respects_neutral_boundary_exemption(
                 "no_effect_exclusion_probability": exclusion_count / 4,
                 "median_absolute_log_effect_error": 0.10,
                 "median_log_support_width": 0.50,
-                "mean_heldout_log_score_advantage_per_record": 0.04,
-                "heldout_log_score_advantage_lower": 0.01,
-                "heldout_log_score_advantage_upper": 0.07,
+                "mean_heldout_known_background_no_effect_advantage_per_record": 0.04,
+                "heldout_known_background_no_effect_advantage_lower": 0.01,
+                "heldout_known_background_no_effect_advantage_upper": 0.07,
+                "mean_heldout_fitted_neutral_advantage_per_record": 0.03,
+                "heldout_fitted_neutral_advantage_lower": 0.00,
+                "heldout_fitted_neutral_advantage_upper": 0.06,
                 "mean_true_extirpations_by_day60": 80.0,
                 "mean_pre_arrival_true_extirpations": 20.0,
                 "mean_post_arrival_true_extirpations": 60.0,
@@ -322,7 +357,8 @@ def test_campaign_bundle_round_trip_respects_neutral_boundary_exemption(
                     "mle_effect_multiplier": effect,
                     "absolute_log_effect_error": 0.10,
                     "log_support_width": 0.50,
-                    "heldout_log_score_advantage_per_record": 0.04,
+                    "heldout_known_background_no_effect_advantage_per_record": 0.04,
+                    "heldout_fitted_neutral_advantage_per_record": 0.03,
                     "true_extirpations_by_day60": 80,
                     "pre_arrival_true_extirpations": 20,
                     "post_arrival_true_extirpations": 60,
@@ -378,7 +414,8 @@ def test_final_synthesis_writes_compact_review_bundle(tmp_path: Path) -> None:
             count=250,
             error=row.median_absolute_log_effect_error,
             width=row.median_log_support_width,
-            score=row.mean_heldout_log_score_advantage_per_record,
+            score=row.mean_heldout_known_background_no_effect_advantage_per_record,
+            fitted_score=row.mean_heldout_fitted_neutral_advantage_per_record,
             connected_count=250,
             exclusion_count=10 if row.condition_id == "N00" else 250,
         )
@@ -397,7 +434,7 @@ def test_final_synthesis_writes_compact_review_bundle(tmp_path: Path) -> None:
             error=by_metric["median_absolute_log_effect_error"].frozen_prediction_observed_scale,
             width=by_metric["median_log_support_width"].frozen_prediction_observed_scale,
             score=by_metric[
-                "mean_heldout_log_score_advantage_per_record"
+                "mean_heldout_known_background_no_effect_advantage_per_record"
             ].frozen_prediction_observed_scale,
             connected=by_metric["connected_interior_frequency"].frozen_prediction_observed_scale,
             exclusion=by_metric["no_effect_exclusion_probability"].frozen_prediction_observed_scale,
@@ -409,7 +446,8 @@ def test_final_synthesis_writes_compact_review_bundle(tmp_path: Path) -> None:
                 count=250,
                 error=condition.median_absolute_log_effect_error,
                 width=condition.median_log_support_width,
-                score=condition.mean_heldout_log_score_advantage_per_record,
+                score=(condition.mean_heldout_known_background_no_effect_advantage_per_record),
+                fitted_score=condition.mean_heldout_fitted_neutral_advantage_per_record,
                 connected_count=round(condition.connected_interior_frequency * 250),
                 exclusion_count=round(condition.no_effect_exclusion_probability * 250),
             )
@@ -467,11 +505,19 @@ def test_final_synthesis_writes_compact_review_bundle(tmp_path: Path) -> None:
     assert {path.name for path in tmp_path.iterdir()} == set(arc2b_synthesis.EXPECTED_FILES)
     summary = json.loads((tmp_path / "synthesis_summary.json").read_text())
     assert summary["truth_count"] == 32
+    assert summary["predictive_comparator"] == {
+        "primary": "known_background_no_effect",
+        "secondary_descriptive": "fitted_neutral",
+        "secondary_surface_fitted": False,
+    }
     assert summary["checks"]["prospective_scored_before_combined_refit"] is True
     assert summary["checks"]["prospective_bound_to_frozen_predictions"] is True
     figure_text = (tmp_path / "arc2b_recovery_map.svg").read_text()
     assert "projected across the representative prey-detection slices" in figure_text
     assert "latent true extirpations by day 60" in figure_text
+    report = (tmp_path / "synthesis.md").read_text()
+    assert "known-background no-effect model" in report
+    assert "fitted neutral" in report
 
     blocked = arc2b_synthesis.run_synthesis(
         pilot,

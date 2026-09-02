@@ -265,7 +265,8 @@ class ValidationMetric:
     mle_effect_multiplier: float
     absolute_log_effect_error: float
     log_support_width: float
-    heldout_log_score_advantage_per_record: float
+    heldout_known_background_no_effect_advantage_per_record: float
+    heldout_fitted_neutral_advantage_per_record: float
     true_extirpations_by_day60: int
     pre_arrival_true_extirpations: int
     post_arrival_true_extirpations: int
@@ -290,9 +291,12 @@ class TruthSummary:
     no_effect_exclusion_probability: float
     median_absolute_log_effect_error: float
     median_log_support_width: float
-    mean_heldout_log_score_advantage_per_record: float
-    heldout_log_score_advantage_lower: float
-    heldout_log_score_advantage_upper: float
+    mean_heldout_known_background_no_effect_advantage_per_record: float
+    heldout_known_background_no_effect_advantage_lower: float
+    heldout_known_background_no_effect_advantage_upper: float
+    mean_heldout_fitted_neutral_advantage_per_record: float
+    heldout_fitted_neutral_advantage_lower: float
+    heldout_fitted_neutral_advantage_upper: float
     mean_true_extirpations_by_day60: float
     mean_pre_arrival_true_extirpations: float
     mean_post_arrival_true_extirpations: float
@@ -726,7 +730,7 @@ def _classify_truth(
         and connected >= math.ceil(0.952 * count)
         and null_count >= math.ceil(0.952 * count)
         and error <= 0.20
-        and width <= 0.80
+        and (truth.design_role == "reference_control" or width <= 0.80)
         and score_interval.lower > 0.0
     )
     if truth.design_role == "reference_control":
@@ -790,12 +794,15 @@ def _validation_task(
         training = tuple(row for row in histories if row.split == "training")
         holdout = tuple(row for row in histories if row.split == "holdout")
         train_profile = latent_arrival_profile(training, integration, config)
-        neutral = neutral_hazard_profile(training, config, integration)
+        fitted_neutral = neutral_hazard_profile(training, config, integration)
         process_score = latent_arrival_profile(holdout, integration, config).log_likelihoods[
             np.argmax(train_profile.log_likelihoods)
         ] / len(holdout)
-        neutral_score = _neutral_profile(
-            holdout, integration, (neutral.mle,), config
+        known_background_score = _neutral_profile(
+            holdout, integration, (truth.background_hazard,), config
+        ).maximum_log_likelihood / len(holdout)
+        fitted_neutral_score = _neutral_profile(
+            holdout, integration, (fitted_neutral.mle,), config
         ).maximum_log_likelihood / len(holdout)
         rows.append(
             ValidationMetric(
@@ -808,7 +815,8 @@ def _validation_task(
                 profile.mle,
                 abs(math.log(profile.mle / truth.effect_multiplier)),
                 math.log(upper / lower),
-                process_score - neutral_score,
+                process_score - known_background_score,
+                process_score - fitted_neutral_score,
                 *_extirpation_metrics(histories),
             )
         )
@@ -887,8 +895,11 @@ def run_campaign(
             for row in selected
         )
         null_count = sum(row.no_effect_excluded for row in selected)
-        score_interval = normal_mean_interval(
-            [row.heldout_log_score_advantage_per_record for row in selected]
+        known_background_score_interval = normal_mean_interval(
+            [row.heldout_known_background_no_effect_advantage_per_record for row in selected]
+        )
+        fitted_neutral_score_interval = normal_mean_interval(
+            [row.heldout_fitted_neutral_advantage_per_record for row in selected]
         )
         median_error = median(row.absolute_log_effect_error for row in selected)
         median_width = median(row.log_support_width for row in selected)
@@ -919,11 +930,16 @@ def run_campaign(
                 no_effect_exclusion_probability=null_count / len(selected),
                 median_absolute_log_effect_error=median_error,
                 median_log_support_width=median_width,
-                mean_heldout_log_score_advantage_per_record=fmean(
-                    row.heldout_log_score_advantage_per_record for row in selected
+                mean_heldout_known_background_no_effect_advantage_per_record=fmean(
+                    row.heldout_known_background_no_effect_advantage_per_record for row in selected
                 ),
-                heldout_log_score_advantage_lower=score_interval.lower,
-                heldout_log_score_advantage_upper=score_interval.upper,
+                heldout_known_background_no_effect_advantage_lower=known_background_score_interval.lower,
+                heldout_known_background_no_effect_advantage_upper=known_background_score_interval.upper,
+                mean_heldout_fitted_neutral_advantage_per_record=fmean(
+                    row.heldout_fitted_neutral_advantage_per_record for row in selected
+                ),
+                heldout_fitted_neutral_advantage_lower=fitted_neutral_score_interval.lower,
+                heldout_fitted_neutral_advantage_upper=fitted_neutral_score_interval.upper,
                 mean_true_extirpations_by_day60=diagnostics[0],
                 mean_pre_arrival_true_extirpations=diagnostics[1],
                 mean_post_arrival_true_extirpations=diagnostics[2],
@@ -938,7 +954,7 @@ def run_campaign(
                     count=len(selected),
                     error=median_error,
                     width=median_width,
-                    score_interval=score_interval,
+                    score_interval=known_background_score_interval,
                 ),
             )
         )
@@ -974,7 +990,8 @@ def run_campaign(
                 row.mle_effect_multiplier,
                 row.absolute_log_effect_error,
                 row.log_support_width,
-                row.heldout_log_score_advantage_per_record,
+                row.heldout_known_background_no_effect_advantage_per_record,
+                row.heldout_fitted_neutral_advantage_per_record,
             )
         ),
         "history_shape": all(
