@@ -42,6 +42,7 @@ EXPECTED_FILES = (
 DEFAULT_BOOTSTRAPS = 1_000
 BOOTSTRAP_SEED = 20260902
 PRODUCTION_VALIDATION_COUNT = 250
+REPRESENTATIVE_DETECTION_SLICES = (0.40, 0.60, 0.80)
 ModelType = Literal["additive", "two_way_interactions", "invariant"]
 TransformType = Literal["identity", "jeffreys_logit"]
 Aggregation = Literal["mean", "median"]
@@ -1300,6 +1301,19 @@ def _report(result: SynthesisResult) -> str:
         + (f" (failed: {row.failed_gates})" if row.failed_gates else ".")
         for row in result.controls
     )
+    supported_scores = sum(row.decision == "supported" for row in result.prospective_scores)
+    low_effect = tuple(row for row in result.conditions if row.effect_multiplier < 3.0)
+    low_effect_not_reliable = sum(
+        row.recovery_classification == "not_reliably_detected" for row in low_effect
+    )
+    surface_result = (
+        "All five prespecified operating-performance surfaces generalized prospectively."
+        if supported_scores == len(result.prospective_scores) == 5
+        else (
+            f"{supported_scores} of {len(result.prospective_scores)} prespecified "
+            "operating-performance surfaces generalized prospectively."
+        )
+    )
     reference = next(row for row in result.controls if row.condition_id == "R00")
     return f"""# Arc 2B prey-effect recoverability synthesis
 
@@ -1319,6 +1333,15 @@ Recovery classifications across the 32 truths were:
 - detected but not fully recovered: {class_counts["detected_but_not_fully_recovered"]}; and
 - not reliably detected: {class_counts["not_reliably_detected"]}.
 
+{surface_result} Biological recovery was much more selective: only
+{class_counts["fully_recovered"]}/32 truths were fully recovered,
+{class_counts["not_reliably_detected"]}/32 were not reliably detected, and
+{low_effect_not_reliable}/{len(low_effect)} truths with an effect multiplier
+below 3 were not reliably detected. Accordingly,
+`close_arc2b_validated` means that the low-order recovery surfaces validated on
+new truths; it does not mean that predator effects were recoverable throughout
+the biological factor domain.
+
 ## Prospective test
 
 {score_lines}
@@ -1331,6 +1354,29 @@ uncertainty.
 Predictive recovery is defined against the known-background no-effect model.
 Advantage over a separately fitted neutral is retained only as a secondary
 condition-level description and is not given another response surface.
+
+## Pilot amendment and prospective integrity
+
+The original pilot ended as **`control_review_required`** for two distinct
+reasons. At `N00`, the process model appeared to outperform the fitted neutral
+(mean advantage `0.003243` per record; paired lower bound `0.001521`) because
+the process model was given the known background hazard while the neutral had
+to estimate it. At `R00`, the median log-support width was `0.824`, just above
+the initially transferred `0.80` width gate, although coverage, topology,
+no-effect exclusion, point error, and held-out prediction all reconciled with
+the larger Goal 031 positive control.
+
+After that pilot but before any `S17-S32` history was generated, Barry approved
+a narrow amendment: compare primarily with the no-effect model at the same
+known background hazard, treat the `R00` width as descriptive, and retain the
+fitted-neutral score only as a secondary descriptive comparison. The pilot was
+then replayed with exactly the same seeds, histories, likelihood, cutoffs,
+factor design, thresholds, and surface-selection rules. Its truth design,
+calibration statistics, calibration summaries, and review record were
+byte-identical; only the comparator-derived predictive fields and decisions
+changed. The amended predictions were frozen before the prospective block.
+The `S17-S32` design, histories, and scoring rules were therefore untouched by
+this amendment.
 
 ## Controls
 
@@ -1358,8 +1404,9 @@ descriptively with Goal 031's fitted-neutral value of 0.0530.
 The figure shows fixed-form descriptive refits after prospective scoring. Rows
 hold prey detection at 0.40, 0.60, and 0.80; columns show the probability of
 excluding no effect and median absolute log-effect error across effect strength
-and 60-day background risk. All 32 simulated truths are projected onto each
-representative detection slice; marker shape encodes recovery class and size
+and 60-day background risk. Each of the 32 simulated truths appears once per
+metric in the row nearest its exact prey-detection probability; exact values
+remain in `condition_outcomes.csv`. Marker shape encodes recovery class and size
 indicates mean latent true-extirpation yield by day 60.
 
 Latent true extirpation yield, pre/post-arrival timing, censoring, exposure, and
@@ -1374,6 +1421,13 @@ predator dynamics, observation parameters, and background prey risk. It does not
 establish transfer to unknown spread, misspecified process models, other
 landscapes, or between-site dependence. Arc 2C is outside this goal.
 """
+
+
+def _nearest_detection_slice(detection: float) -> float:
+    return min(
+        REPRESENTATIVE_DETECTION_SLICES,
+        key=lambda value: abs(value - detection),
+    )
 
 
 def _figure(result: SynthesisResult) -> Figure:
@@ -1423,7 +1477,12 @@ def _figure(result: SynthesisResult) -> Figure:
         ),
         "not_reliably_detected": ("x", "#ef4444", "Not reliably detected"),
     }
-    for row_index, detection in enumerate((0.40, 0.60, 0.80)):
+    for row_index, detection in enumerate(REPRESENTATIVE_DETECTION_SLICES):
+        slice_indices = [
+            index
+            for index, condition in enumerate(result.conditions)
+            if _nearest_detection_slice(condition.prey_detection_probability) == detection
+        ]
         for column_index, (metric_id, label, cmap) in enumerate(metric_columns):
             axis = axes[row_index, column_index]
             selected = [
@@ -1449,18 +1508,26 @@ def _figure(result: SynthesisResult) -> Figure:
             for classification, (marker, edge, _) in class_styles.items():
                 indices = [
                     index
-                    for index, row in enumerate(result.conditions)
-                    if row.recovery_classification == classification
+                    for index in slice_indices
+                    if result.conditions[index].recovery_classification == classification
                 ]
                 if indices:
+                    scatter_args = {
+                        "s": sizes[indices],
+                        "marker": marker,
+                        "linewidths": 1.2,
+                        "label": classification,
+                        "zorder": 3,
+                    }
+                    if marker == "x":
+                        scatter_args["color"] = edge
+                    else:
+                        scatter_args["facecolors"] = "none"
+                        scatter_args["edgecolors"] = edge
                     axis.scatter(
                         [result.conditions[index].effect_multiplier for index in indices],
                         [result.conditions[index].background_risk for index in indices],
-                        s=sizes[indices],
-                        marker=marker,
-                        facecolors="none",
-                        edgecolors=edge,
-                        linewidths=0.9,
+                        **scatter_args,
                     )
             axis.set_xscale("log")
             axis.set_xticks((1.5, 2.0, 3.0, 4.0, 6.0), labels=("1.5", "2", "3", "4", "6"))
@@ -1481,33 +1548,30 @@ def _figure(result: SynthesisResult) -> Figure:
             pad=0.025,
             label=label,
         )
-    legend_handles = [
-        Line2D(
-            [0],
-            [0],
-            marker=marker,
-            color="none",
-            markerfacecolor="none",
-            markeredgecolor=edge,
-            markeredgewidth=1.2,
-            label=label,
+    legend_handles = []
+    for marker, edge, label in class_styles.values():
+        legend_handles.append(
+            Line2D(
+                [0],
+                [0],
+                marker=marker,
+                linestyle="none",
+                color=edge if marker == "x" else "none",
+                markerfacecolor="none",
+                markeredgecolor=edge,
+                markeredgewidth=1.2,
+                label=label,
+            )
         )
-        for marker, edge, label in class_styles.values()
-    ]
     figure.legend(
         handles=legend_handles,
-        loc="lower center",
+        loc="outside lower center",
         ncol=3,
-        bbox_to_anchor=(0.5, 0.018),
         frameon=False,
-    )
-    figure.text(
-        0.5,
-        0.005,
-        "All 32 truth points are projected across the representative prey-detection slices; "
-        "larger markers indicate more latent true extirpations by day 60.",
-        ha="center",
-        fontsize=9,
+        title=(
+            "Truths assigned to nearest detection row; marker area = mean latent true "
+            "extirpations by day 60"
+        ),
     )
     return figure
 

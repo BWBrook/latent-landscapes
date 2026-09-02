@@ -2,15 +2,21 @@ from __future__ import annotations
 
 import csv
 import json
+import warnings
 from dataclasses import replace
 from pathlib import Path
 
 import numpy as np
 import pytest
 from matplotlib import pyplot as plt
+from matplotlib.collections import PathCollection
 
 from latent_landscapes import arc2b_synthesis
 from latent_landscapes.arc2b_design import truths_for_block
+
+
+def _path_collection_count(collection: PathCollection) -> int:
+    return int(np.asarray(collection.get_offsets()).shape[0])
 
 
 def _write_dict_rows(path: Path, rows: list[dict[str, object]]) -> None:
@@ -482,7 +488,14 @@ def test_final_synthesis_writes_compact_review_bundle(tmp_path: Path) -> None:
         frozen_predictions_sha256="predictions-digest",
         bootstrap_count=4,
     )
-    figure = arc2b_synthesis._figure(result)
+    figure_conditions = list(result.conditions)
+    figure_conditions[0] = replace(
+        figure_conditions[0], recovery_classification="not_reliably_detected"
+    )
+    figure_result = replace(result, conditions=tuple(figure_conditions))
+    with warnings.catch_warnings():
+        warnings.simplefilter("error", UserWarning)
+        figure = arc2b_synthesis._figure(figure_result)
     plot_axes = figure.axes[:6]
     for axis_indices in ((0, 2, 4), (1, 3, 5)):
         limits = {
@@ -493,11 +506,52 @@ def test_final_synthesis_writes_compact_review_bundle(tmp_path: Path) -> None:
             for index in axis_indices
         }
         assert len(limits) == 1
+    marker_labels = {
+        "fully_recovered",
+        "detected_but_not_fully_recovered",
+        "not_reliably_detected",
+    }
+    row_marker_counts: list[int] = []
+    for row_index, detection in enumerate(arc2b_synthesis.REPRESENTATIVE_DETECTION_SLICES):
+        marker_collections = [
+            collection
+            for collection in plot_axes[row_index * 2].collections
+            if isinstance(collection, PathCollection) and collection.get_label() in marker_labels
+        ]
+        row_marker_counts.append(sum(map(_path_collection_count, marker_collections)))
+        expected_count = len(
+            tuple(
+                row
+                for row in figure_result.conditions
+                if arc2b_synthesis._nearest_detection_slice(row.prey_detection_probability)
+                == detection
+            )
+        )
+        assert row_marker_counts[-1] == expected_count
+    assert sum(row_marker_counts) == 32
+    not_reliable_markers = [
+        collection
+        for axis in plot_axes
+        for collection in axis.collections
+        if isinstance(collection, PathCollection)
+        and collection.get_label() == "not_reliably_detected"
+    ]
+    assert not_reliable_markers
+    assert all(
+        np.any(np.asarray(collection.get_facecolor())[:, 3] > 0)
+        for collection in not_reliable_markers
+    )
     assert {text.get_text() for text in figure.legends[0].get_texts()} == {
         "Fully recovered",
         "Detected, not fully recovered",
         "Not reliably detected",
     }
+    assert (
+        figure.legends[0]
+        .get_title()
+        .get_text()
+        .startswith("Truths assigned to nearest detection row")
+    )
     plt.close(figure)
     written = arc2b_synthesis.write_review_bundle(result, tmp_path)
 
@@ -513,11 +567,17 @@ def test_final_synthesis_writes_compact_review_bundle(tmp_path: Path) -> None:
     assert summary["checks"]["prospective_scored_before_combined_refit"] is True
     assert summary["checks"]["prospective_bound_to_frozen_predictions"] is True
     figure_text = (tmp_path / "arc2b_recovery_map.svg").read_text()
-    assert "projected across the representative prey-detection slices" in figure_text
+    assert "assigned to nearest detection row" in figure_text
     assert "latent true extirpations by day 60" in figure_text
     report = (tmp_path / "synthesis.md").read_text()
     assert "known-background no-effect model" in report
     assert "fitted neutral" in report
+    assert "Pilot amendment and prospective integrity" in report
+    assert "control_review_required" in report
+    assert "byte-identical" in report
+    assert "before any `S17-S32` history was generated" in report
+    assert "All five prespecified operating-performance surfaces" in report
+    assert "means that the low-order recovery surfaces validated on" in report
 
     blocked = arc2b_synthesis.run_synthesis(
         pilot,
