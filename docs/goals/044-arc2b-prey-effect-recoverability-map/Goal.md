@@ -335,3 +335,47 @@ artifacts, the bounded consolidation, documentation of the observed result,
 and fast-forward publication to canonical `main` when the scientific and
 repository gates pass. Generated artifacts and build outputs remain ignored.
 Goal 045 or Arc 2C is not authorised.
+
+## Observed outcome
+
+Goal 044 completed the 32 prespecified continuous truths and both controls.
+The amended `S01-S16` pilot was replayed at commit `ebf5c06` and the resulting
+80 prospective predictions were frozen in Git at commit `2644de6` before any
+`S17-S32` history was generated. The prospective campaign ran from that commit
+and recorded the frozen table's SHA-256 digest
+`491d9dfb6b9b1132817beae85d56d459efaf5ad1cf7e8211899aedd25de8631b`.
+
+The original and amended pilot truth design, calibration statistics,
+calibration summaries, and review record were byte-identical. Across all 4,500
+validation rows, every common non-score field was unchanged, and every original
+fitted-neutral score reappeared exactly in the amended secondary field. The
+amendment changed only the primary comparator-derived scores and decisions.
+Both controls then passed: `R00` retained accurate, strongly detected recovery,
+while `N00` had
+15/250 false no-effect exclusions and no demonstrated predictive advantage
+over the matched known-background null.
+
+All five pilot-fitted surfaces generalized to the untouched prospective block.
+Prospective skills were `0.887` for median absolute log-effect error, `0.521`
+for median log-support width, `0.720` for held-out predictive advantage,
+`0.661` for connected/interior support, and `0.942` for no-effect exclusion.
+All paired bootstrap lower bounds were positive, and independent leave-one-
+prospective-truth checks left every skill positive.
+
+The outcome is `close_arc2b_validated`, meaning that the prespecified
+operating-performance surfaces predicted new truths better than the frozen
+pilot mean. Biological recovery remained selective: 3/32 truths were fully
+recovered, 10/32 detected the effect without meeting every strict gate, and
+19/32 were not reliably detected. All 16 truths below a threefold effect were
+not reliably detected. Stronger effects dominated the transition; greater
+background event yield and better prey detection generally improved recovery.
+Truth-assisted event associations are descriptive and conditional, not causal
+effects or field-transfer claims.
+
+One independent scientific audit reconstructed the cutoffs, control decisions,
+classifications, prospective skills, bootstrap intervals, and freeze
+provenance from the compact tables. It supported closure after a single figure
+and disclosure repair. No further simulation, retuning, or local enrichment is
+warranted. The active Arc 2B code path is consolidated to design, campaign, and
+synthesis components; historical goal records and Git retain the developmental
+path. Arc 2C remains outside this goal.

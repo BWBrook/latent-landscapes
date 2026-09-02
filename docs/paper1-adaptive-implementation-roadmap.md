@@ -14,8 +14,9 @@ review.
 
 ## Current Position
 
-Arc 1 is frozen. Arc 2A has completed its 32-truth predator-only recoverability
-synthesis on one accepted landscape and observation design. The working
+Arc 1 is frozen. Arc 2A and Arc 2B have completed prospectively tested
+32-truth recoverability syntheses on one accepted landscape and observation
+design. The working
 end-to-end reference laboratory has demonstrated:
 
 - recovery of spread rate across several wave speeds;
@@ -29,15 +30,33 @@ end-to-end reference laboratory has demonstrated:
 - a distinction between informative point estimates, parameter-specific
   uncertainty, and an overly broad simultaneous joint envelope.
 
-The first recoverability map adds prospectively validated relationships for
+The predator recoverability map adds prospectively validated relationships for
 detection precision, resistance precision, resistance exclusion, and held-out
 predictive advantage across continuous spread-rate, resistance, and detection
 conditions. Boundary contact remains a truth-level topology diagnostic rather
 than a reliable smooth surface. These results meet the Arc 2A exit gate but do
 not establish generality across prey-process conditions, landscapes, sampling
 designs, or generating models. The accepted Arc 2A path has now been
-consolidated into one frozen design, one campaign kernel, and one synthesis;
-Arc 2B is the next scientific design boundary.
+consolidated into one frozen design, one campaign kernel, and one synthesis.
+
+The prey-effect map varied the true predator-effect multiplier, counterfactual
+60-day background prey-loss risk, and known prey detection. All five low-order
+surfaces learned from the first 16 truths predicted the untouched second 16
+better than the frozen pilot mean. The map is informative precisely because
+recovery is not universal: 3/32 truths were fully recovered, 10/32 detected
+the effect without passing every strict gate, and 19/32 were not reliably
+detected. Every tested effect below threefold fell in the latter class. Event
+yield and observation quality help explain this transition, but remain
+conditional associations within the synthetic experiment.
+
+The Arc 2B pilot prompted a disclosed comparator amendment before prospective
+simulation: the primary no-effect model now receives the same known background
+hazard as the process model, while the fitted neutral remains a secondary
+description. Exact replay preserved the histories, calibration, and cutoffs.
+The accepted Arc 2B path is consolidated into the same clear
+`design -> campaign -> synthesis` structure. Arc 2C is now the next scientific
+design boundary and should combine only a small set of interactions that Arc
+2A and Arc 2B show to be decision-relevant.
 
 ## Arc 1: Close And Freeze The Reference Case
 
@@ -309,19 +328,14 @@ run.
 
 ## Immediate Decision Boundary
 
-Before Arc 2A production, Barry should review the provisional design in
-`docs/arc2-recoverability-design-brief.md` and decide:
+Arc 2A and Arc 2B are complete. Before Arc 2C, Barry and the orchestrator should
+select a small predator-prey bridge that answers one question: do the recovery
+transitions understood separately persist when spread and prey effect are
+estimated together?
 
-1. whether the first map is predator-only (`rho`, `eta`, and `p`);
-2. the factor domains, especially the ecological edge-cost translation needed
-   to freeze `eta`;
-3. whether the landscape, sites, six surveys, two visits, and zero-false-
-   positive assumption remain fixed;
-4. whether continuous operating-performance surfaces are primary and binary
-   gates secondary; and
-5. whether the staged 16-point to 32-point Sobol design, with at most eight
-   targeted enrichment points, is proportionate.
-
-That human decision should authorize one bounded Arc 2A implementation goal or
-send the design brief back for revision. It does not authorize the full Arc 2
-programme automatically.
+That design should retain favorable, transitional, and failure conditions;
+vary only interactions supported by the two completed maps; distinguish
+marginal from simultaneous joint uncertainty; and exclude a full factor
+cross-product. It should not reopen the completed surfaces merely to refine
+local contours. Arc 2C remains a human scientific design decision, not an
+automatic consequence of Goal 044.

@@ -1,20 +1,17 @@
 # Arc 2 Recoverability Design Brief
 
-- **Status:** Goal 042 32-truth synthesis complete on its review branch
+- **Status:** Arc 2A and Arc 2B complete; Arc 2C awaits scientific design
 - **Charter role:** Pillar 2, Recoverability Map
-- **Production authority:** No extension beyond the completed 32-point design
+- **Production authority:** No extension beyond the completed Arc 2A/2B designs
 
 ## Scientific purpose
 
-Arc 2 should replace isolated reference truths with continuous maps showing
-where inference is accurate, precise, calibrated, and predictively useful. The
-first block should remain predator-only. It asks how recovery changes jointly
-with global spread rate, habitat-resistance contrast, and detection
-probability, while the accepted landscape and observation budget remain fixed.
-
-This ordering keeps the first multivariate experiment interpretable. The prey
-layer and the combined predator-prey bridge follow only after the predator map
-is understood.
+Arc 2 replaces isolated reference truths with continuous maps showing where
+inference is accurate, precise, calibrated, and predictively useful. Arc 2A
+mapped predator spread, resistance, and detection first. Arc 2B then mapped
+prey-effect recovery while the accepted landscape and predator process
+remained fixed. This ordering keeps each multivariate experiment interpretable
+before the selected predator-prey bridge in Arc 2C.
 
 ## Arc 2A: Direct predator-observation map
 
@@ -219,10 +216,32 @@ suffice.
 
 ### Arc 2B: Prey-effect and event-information map
 
-After Arc 2A, map prey-effect recovery across an ecologically expressed
-predator-effect range and counterfactual 60-day background extirpation risk.
-Begin with known predator arrival and perfect or known prey observation. Use
-Arc 1's threefold/fourfold effect and 5%/11.3%/20% background-risk anchors.
+Goal 044 completed a nested 32-truth Sobol experiment across predator effects
+of 1.5-6, counterfactual 60-day background prey-loss risks of 5-20%, and known
+prey detection probabilities of 0.35-0.85. The first 16 truths selected frozen
+additive surfaces for point error, predictive advantage, support topology, and
+no-effect exclusion, plus one two-way-interaction surface for interval width.
+All five predicted the untouched second 16 better than the pilot mean; paired
+bootstrap lower bounds on prospective skill were positive.
+
+This validates the low-order operating-performance map, not universal
+prey-effect recovery. Across all 32 truths, 3 were fully recovered, 10 detected
+the effect but missed at least one strict gate, and 19 were not reliably
+detected. All 16 effects below threefold were not reliably detected. More
+post-arrival prey-extirpation events were strongly associated with smaller
+point error and greater held-out predictive advantage, but those truth-assisted
+associations are explanatory rather than causal or field-observable.
+
+The original pilot exposed an asymmetric null comparison: the process model
+knew background hazard while the fitted neutral estimated it. Before any
+prospective history was generated, the primary comparator was amended to a
+no-effect model with the same known background hazard; the fitted neutral was
+retained descriptively. The identical pilot replay changed only comparator
+scores and their decisions. Both controls then passed, and the prospective
+freeze remained genuine.
+
+No enrichment or further Arc 2B interpolation is warranted. The retained
+active path is `arc2b_design -> arc2b_campaign -> arc2b_synthesis`.
 
 ### Arc 2C: Selected predator-prey bridge
 

@@ -70,6 +70,12 @@ Under the current landscape and observation designs:
   fourfold effect at the reference background risk;
 - a fivefold prey effect is detected but imprecise at 5% counterfactual 60-day
   background extirpation risk and fully recovered at 11.3% and 20%;
+- across 32 prespecified prey-process truths, simple maps learned from the
+  first 16 predicted all five operating-performance outcomes in the untouched
+  second 16 better than a first-block mean;
+- prey-effect recovery nevertheless remains selective: only 3/32 truths met
+  every strict recovery gate, while all 16 truths below a threefold effect were
+  not reliably detected;
 - jointly fitted spread and prey-effect point estimates remain centred near
   truth, but one shared simultaneous uncertainty envelope is too blunt;
   parameter-specific calibration gives informative marginal intervals; and
@@ -82,8 +88,8 @@ set of generating values.
 
 ## Current Scientific Boundary
 
-The single-landscape reference laboratory is now frozen, pending acceptance of
-its Arc 1 synthesis. It supplies understood positive controls, reference-case
+The single-landscape reference laboratory and its Arc 1 synthesis are frozen
+and accepted. They supply understood positive controls, reference-case
 transition brackets, calibrated marginal uncertainty, an explicit negative
 joint-uncertainty result, and held-out neutral comparisons. These findings are
 conditional evidence rather than universal thresholds.
@@ -104,6 +110,25 @@ therefore reported only as an observed support-topology diagnostic. Arc 2A is
 scientifically closed and its active code has been consolidated into design,
 campaign, and synthesis components. Further local interpolation is not
 recommended.
+
+Arc 2B has likewise evaluated 32 prespecified prey-effect truths spanning a
+1.5- to 6-fold predator effect, 5-20% counterfactual 60-day background prey
+loss, and 0.35-0.85 known prey detection. Five transparent surfaces learned
+from `S01-S16` all generalized prospectively to the frozen `S17-S32` block.
+Effect strength was the dominant transition, while greater event yield and
+better prey detection improved accuracy, precision, topology, and predictive
+separation. These are maps of where recovery succeeds or fails, not evidence
+that recovery is universal: 3/32 truths were fully recovered, 10/32 detected
+the effect without meeting every strict gate, and 19/32 were not reliably
+detected.
+
+The Arc 2B null comparison was amended transparently after the pilot but before
+prospective simulation. The primary comparator now uses the same known
+background hazard as the fitted process model; a separately fitted neutral is
+retained descriptively. Exact replay confirmed that no simulated history,
+calibration statistic, cutoff, or non-score result changed. Arc 2B is now
+scientifically closed and consolidated. The next decision is the design of a
+small, selected predator-prey bridge, not another local interpolation campaign.
 
 Later paper stages must test generality across process and observation
 conditions, landscape and sampling families, alternative generating models,
@@ -182,6 +207,13 @@ The retained Arc 2A workflow is exposed through:
 ```bash
 uv run python scripts/run_arc2a_campaign.py --help
 uv run python scripts/synthesize_arc2a.py --help
+```
+
+The retained Arc 2B workflow is exposed through:
+
+```bash
+uv run python scripts/run_arc2b_campaign.py --help
+uv run python scripts/synthesize_arc2b.py --help
 ```
 
 Later production experiments can be computationally expensive and may depend
