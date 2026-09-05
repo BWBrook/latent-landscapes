@@ -1,6 +1,6 @@
 # Goal 045: The Cost of Estimating Predator Spread Speed
 
-Status: approved by Barry on 5 September 2026; source frozen, detached preflight running.
+Status: approved; preflight stopped for numerical review; successor handover prepared.
 Programme role: Arc 2C, Charter Pillar 2, selected joint-recovery bridge.
 
 ## Question and completion condition
@@ -181,3 +181,13 @@ can trigger diagnosis; a negative ecological result is not an implementation bug
   bootstrap resamples; review independently; update the roadmap/report and
   publish exact accepted paths. Do not mark the goal complete merely because
   simulation exited successfully.
+- Handover update, 2026-09-05 08:35 UTC: timing exited zero (566.7 seconds),
+  but the workflow stopped at `preflight_gate` with exit 1. Production did not
+  start. Bank-doubling profile changes were <0.038; local joint-grid refinement
+  gained 1.19-1.25 log-likelihood units in the three usual-speed cases, above
+  the 0.25 review limit. This needs bounded numerical diagnosis, not an unchanged
+  relaunch or an ecological failure claim. The original evidence is preserved.
+- Barry requested a fresh successor task in the code repo. `HANDOVER.md` is the
+  compact entry point. The old task's heartbeat is paused to avoid competing
+  execution; its target must be changed before any resumption. No remote job
+  was interrupted, no model repair was made, and this goal remains unfinished.
