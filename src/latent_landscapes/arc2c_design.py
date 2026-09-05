@@ -11,7 +11,7 @@ BACKGROUND_HAZARD = 0.002
 BACKGROUND_RISK = float(-np.expm1(-60.0 * BACKGROUND_HAZARD))
 DETECTION_PROBABILITY = 0.65
 LANES = ("known_speed", "estimated_speed")
-RHO_GRID = tuple(sorted({*map(float, np.exp2(np.linspace(-2.0, 2.0, 51))), 0.5, 1.0}))
+RHO_GRID = tuple(float(value) for value in np.exp2(np.linspace(-2.0, 2.0, 201)))
 EFFECT_GRID = tuple(float(value) for value in np.linspace(1.0, 10.0, 181))
 
 

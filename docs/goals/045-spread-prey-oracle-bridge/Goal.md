@@ -1,6 +1,6 @@
 # Goal 045: The Cost of Estimating Predator Spread Speed
 
-Status: approved; preflight stopped for numerical review; successor handover prepared.
+Status: in execution; numerical grid repair undergoing expanded preflight.
 Programme role: Arc 2C, Charter Pillar 2, selected joint-recovery bridge.
 
 ## Question and completion condition
@@ -41,7 +41,7 @@ Both analyses keep realised predator arrival latent. Within each site both
 species share the same candidate arrival before integration. Across sites we
 retain the site-marginal composite likelihood, with no spatial dependence claim.
 
-Use the existing broad rho domain 0.25-4 (51 log-spaced points plus exact 0.5)
+Use the existing broad rho domain 0.25-4 (201 log-spaced points, including exact 0.5 and 1)
 and effect domain 1-10 (181 linear points), including all generating values.
 Rho scales each base arrival by 1/rho exactly under the accepted spread model.
 Retain a 4096-draw arrival integration bank. Master seed is 20260905, independent
@@ -89,6 +89,38 @@ both-analyses-weak cases from deterioration specific to estimating speed.
 Forecasts: central fivefold recovery should remain informative; slower spread
 should reduce observed post-arrival events; the added estimation cost may be
 largest near the threefold case. These are predictions, not acceptance tests.
+
+## Numerical amendment before production, 6 September 2026
+
+The original 51-point log-rho grid plus exact 0.5 did not resolve the joint
+likelihood maximum in the first preselected usual-speed history. Its recorded
+half-grid gains of 1.19–1.25 log-likelihood units exceeded the 0.25 numerical
+review limit, while doubling the bank changed the old-node profile LRs by
+less than 0.038. Production had not started.
+
+A local nested-grid diagnosis reused that history and the saved 4096-draw bank.
+It covered the original LR<=10 speed ranges plus one coarse neighbour on each
+side, retaining all 181 effect values. Against the locally evaluated 401-point
+grid, the largest maximum-LL deficit was 1.311 on the original grid and 0.0741
+on the 201-point grid. The 101-point grid happened to place this history's peak
+equally well, but its larger spacing is less robust to a peak falling elsewhere
+between candidates. The fixed 201-point grid is the numerical repair; this is
+not a new biological domain, estimator, or recovery threshold. The original
+evidence remains under `artifacts/goal045_execution/` and its recorded remote
+run directories. The diagnosis is under
+`/data/codex/scratch/goal045-grid-diagnosis-20260906-fbc6f77/`.
+
+The expanded preflight uses the two calibration and two evaluation histories
+already included in the timing run, with the six cases kept paired. Save their
+training surfaces and compare the 4096/8192 banks at the new candidate nodes.
+Assess profile changes over the union where either comparison has LR<=10,
+including direct truth-LR changes. Recheck the local half-grid maxima and
+profile shapes, retaining the original 0.25 LL-gain, 0.5 LR-change and MLE
+review limits. Inspect the eventual calibrated cutoffs against the numerical
+range before final acceptance. Seeds, production ensembles, effect grid,
+observation design, comparator information and calibration rule are unchanged.
+The experiment will be reported as prospectively completed after a numerical
+amendment, rather than described as wholly prespecified.
 
 ## Stages and checks
 

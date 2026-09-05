@@ -45,7 +45,14 @@ def _bundle() -> synthesis.CampaignBundle:
         "validation_spread_mle": spread_mle,
         "conditional_advantage": conditional,
         "joint_advantage": conditional + 0.03,
-        "representative_train_joint": -0.5 * (rho_drops[:, :, None] + effect_drops[:, None, :]),
+        "calibration_train_joint": np.broadcast_to(
+            -0.5 * (rho_drops[:, None, :, None] + effect_drops[:, None, None, :]),
+            (c, 2, len(rhos), len(effects)),
+        ).copy(),
+        "validation_train_joint": np.broadcast_to(
+            -0.5 * (rho_drops[:, None, :, None] + effect_drops[:, None, None, :]),
+            (c, 2, len(rhos), len(effects)),
+        ).copy(),
         "event_diagnostics": events,
     }
     summary = {

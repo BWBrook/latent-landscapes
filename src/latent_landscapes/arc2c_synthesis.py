@@ -102,7 +102,8 @@ def validate_bundle(bundle: CampaignBundle) -> None:
         "validation_spread_mle": (c, nv),
         "conditional_advantage": (c, 2, nv),
         "joint_advantage": (c, 2, nv),
-        "representative_train_joint": (c, r, h),
+        "calibration_train_joint": (c, min(2, nc), r, h),
+        "validation_train_joint": (c, min(2, nv), r, h),
         "event_diagnostics": (c, nv, 6),
     }
     for name, shape in shapes.items():
@@ -737,7 +738,7 @@ def representative_likelihood_figure(result: SynthesisResult) -> Figure:
     figure, axes = plt.subplots(2, 3, figsize=(14.5, 9))
     rhos, effects = result.bundle.profiles["rhos"], result.bundle.profiles["effects"]
     for index, (axis, truth) in enumerate(zip(axes.flat, result.bundle.truths, strict=True)):
-        likelihood = result.bundle.profiles["representative_train_joint"][index]
+        likelihood = result.bundle.profiles["validation_train_joint"][index, 0]
         loss = 2 * (np.max(likelihood) - likelihood)
         mesh = axis.pcolormesh(
             effects, rhos, loss, shading="nearest", cmap="viridis", vmin=0, vmax=12, rasterized=True

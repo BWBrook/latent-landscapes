@@ -66,7 +66,7 @@ class DatasetProfiles:
 class DatasetBlock:
     profiles: tuple[DatasetProfiles, ...]
     event_diagnostics: NDArray[np.float64]
-    representative_train_joint: NDArray[np.float64] | None
+    training_joint: NDArray[np.float64] | None
     histories_valid: bool
     shared_random_numbers_valid: bool
 
@@ -219,8 +219,8 @@ def _dataset_task(
     histories = likelihood.paired_histories(fixed, seed)
     profiles: list[DatasetProfiles] = []
     diagnostics: list[tuple[int, int, int, int, float, int]] = []
-    representative: list[NDArray[np.float64]] = []
-    save_representative = seed.phase == "validation" and seed.index == 0
+    saved_training: list[NDArray[np.float64]] = []
+    save_training = seed.index < 2
     for truth, records in zip(TRUTHS, histories, strict=True):
         training_joint, holdout_joint, holdout_predator = likelihood.evaluate_dataset(
             records, integration
@@ -238,12 +238,12 @@ def _dataset_task(
         diagnostics.append(
             arc2b._extirpation_metrics(tuple(row for row in records if row.split == "training"))
         )
-        if save_representative:
-            representative.append(training_joint)
+        if save_training:
+            saved_training.append(training_joint)
     return DatasetBlock(
         tuple(profiles),
         np.asarray(diagnostics, dtype=np.float64),
-        np.stack(representative) if save_representative else None,
+        np.stack(saved_training) if save_training else None,
         all(arc2b._histories_valid(records) for records in histories),
         _shared_random_numbers_valid(histories),
     )
@@ -291,9 +291,16 @@ def _assemble_profiles(
     calibration: tuple[DatasetBlock, ...],
     validation: tuple[DatasetBlock, ...],
 ) -> ProfileBundle:
-    representative = validation[0].representative_train_joint
-    if representative is None:
-        raise RuntimeError("first evaluation dataset is missing its representative likelihood")
+    def training_prefix(blocks: tuple[DatasetBlock, ...]) -> NDArray[np.float64]:
+        surfaces = []
+        for block in blocks[:2]:
+            if block.training_joint is None:
+                raise RuntimeError(
+                    "first two phase histories must retain their training likelihoods"
+                )
+            surfaces.append(block.training_joint)
+        return np.stack(surfaces, axis=1)
+
     return {
         "rhos": np.asarray(config.rhos, dtype=np.float64),
         "effects": np.asarray(config.effects, dtype=np.float64),
@@ -334,7 +341,8 @@ def _assemble_profiles(
             [np.stack([row.joint_advantage for row in block.profiles]) for block in validation],
             axis=2,
         ),
-        "representative_train_joint": representative,
+        "calibration_train_joint": training_prefix(calibration),
+        "validation_train_joint": training_prefix(validation),
         "event_diagnostics": np.stack([block.event_diagnostics for block in validation], axis=1),
     }
 

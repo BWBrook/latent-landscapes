@@ -106,24 +106,42 @@ def test_smoke_campaign_has_complete_profiles_and_roundtrips(tmp_path: Path) -> 
         "validation_spread_mle": (6, 4),
         "conditional_advantage": (6, 2, 4),
         "joint_advantage": (6, 2, 4),
-        "representative_train_joint": (6, 5, 6),
+        "calibration_train_joint": (6, 2, 5, 6),
+        "validation_train_joint": (6, 2, 5, 6),
         "event_diagnostics": (6, 4, 6),
     }
     assert {name: values.shape for name, values in result.profiles.items()} == expected_shapes
-    for condition_index, truth in enumerate(TRUTHS):
-        joint = result.profiles["representative_train_joint"][condition_index]
-        rho_index = config.rhos.index(truth.rho)
-        known = joint[rho_index]
-        estimated = joint.max(axis=0)
-        np.testing.assert_allclose(
-            result.profiles["validation_effect_drops"][condition_index, :, 0],
-            np.stack((2 * (known.max() - known), 2 * (estimated.max() - estimated))),
-        )
-        spread = joint.max(axis=1)
-        np.testing.assert_allclose(
-            result.profiles["validation_spread_drops"][condition_index, 0],
-            2 * (spread.max() - spread),
-        )
+    for phase in ("calibration", "validation"):
+        for condition_index, truth in enumerate(TRUTHS):
+            for history_index in range(2):
+                joint = result.profiles[f"{phase}_train_joint"][condition_index, history_index]
+                known = joint[config.rhos.index(truth.rho)]
+                estimated = joint.max(axis=0)
+                effect_drops = np.stack(
+                    (2 * (known.max() - known), 2 * (estimated.max() - estimated))
+                )
+                spread = joint.max(axis=1)
+                spread_drops = 2 * (spread.max() - spread)
+                if phase == "calibration":
+                    np.testing.assert_allclose(
+                        result.profiles["calibration_effect_lr"][condition_index, :, history_index],
+                        effect_drops[:, config.effects.index(truth.effect)],
+                    )
+                    np.testing.assert_allclose(
+                        result.profiles["calibration_spread_lr"][condition_index, history_index],
+                        spread_drops[config.rhos.index(truth.rho)],
+                    )
+                else:
+                    np.testing.assert_allclose(
+                        result.profiles["validation_effect_drops"][
+                            condition_index, :, history_index
+                        ],
+                        effect_drops,
+                    )
+                    np.testing.assert_allclose(
+                        result.profiles["validation_spread_drops"][condition_index, history_index],
+                        spread_drops,
+                    )
     written = write_campaign_bundle(result, tmp_path)
     assert tuple(path.name for path in written) == EXPECTED_FILES
     assert {path.name for path in tmp_path.iterdir()} == set(EXPECTED_FILES)
