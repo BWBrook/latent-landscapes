@@ -1,7 +1,7 @@
 # Goal 045: The Cost of Estimating Predator Spread Speed
 
-Status: in execution; repaired grid and 16384-draw bank accepted numerically;
-six-case production running.
+Status: production and 1000-bootstrap synthesis complete; wider-range rho
+materiality check and final scientific review pending.
 Programme role: Arc 2C, Charter Pillar 2, selected joint-recovery bridge.
 
 ## Question and completion condition
@@ -367,3 +367,44 @@ can trigger diagnosis; a negative ecological result is not an implementation bug
   datasets per case. The heartbeat now follows this production root and resumes
   provenance/range checks, 1000-bootstrap synthesis and independent final review
   after completion. Numerical acceptance does not itself close the goal.
+- Production completed successfully in 4500.9 seconds (75.0 minutes): 3492.7
+  seconds integration, 504.3 calibration and 503.3 evaluation. All invariants,
+  six cases, 250+250 histories, source and bank checksum were verified. The
+  first two calibration/evaluation surfaces matched the accepted 16384-draw
+  canaries within 1e-9. Profiles checksum:
+  `f268bc56d437aa8978acf57a3e81944c26ebd51c71b4a70fc9a4de572a64b11b`.
+- The provisional 1000-resample synthesis completed and its figures were
+  inspected. Primary effect cutoffs were 2.665–4.613 (bootstrap upper bounds
+  below 6), within the verified LR<=10 range. Calibrated rho cutoffs were
+  44.02–44.82 at usual speed and 20.14–20.31 at half speed, extending beyond it.
+  The saved 16384/32768 canaries differ by up to 1.027 LR at an interior node
+  in that wider range. Observed-cutoff endpoints were unchanged; at bootstrap
+  cutoff bounds only two endpoints moved, each by one G201 cell.
+- Independent methodological review distinguished the original LR<=10 accuracy
+  criterion from the wider-range review. It supports the primary effect
+  comparison, but requires a bounded check of the actual reported rho quantities
+  before closure: paired 16384/32768 predator-marginal recalibration across all
+  250+250 histories, followed by full joint checks of calibration-rank and
+  interval-boundary sentinels. The materiality criteria are cutoff movement
+  <=0.5 LR, unchanged topology/boundary classification, endpoints and mean/median
+  log-width movement <=one G201 cell, and coverage movement <=one dataset per
+  case. This does not redefine the original LR<=10 criterion. A production
+  rerun or bank escalation is warranted only if the reported quantities fail
+  these checks. The automatic synthesis outcome label is not final acceptance.
+- Actual production runtime made a full matched 32768-draw reference more
+  proportionate than implementing a selected-history approximation. Independent
+  methodological review endorsed this substitution: it gives exact paired
+  comparisons of every calibration cutoff and evaluation support without
+  sentinel-selection assumptions. The 16384 result remains the candidate;
+  the reference is numerical sensitivity evidence, not independent replication
+  or automatic replacement. No new biological histories are generated.
+- The full reference launched at 2026-09-05 22:49 UTC under
+  `/data/codex/scratch/goal045-full-bank-reference-20260906-e8c08f1/`, tmux
+  `ll-goal045-reference`. Initial status was `RUNNING`; frozen source `e8c08f1`
+  and successful 32768-draw cache loading were verified. Its wrapper checks
+  full-bank and 16384-prefix checksums, identical 250+250 history seeds and
+  the <=24-hour runtime boundary. It uses the existing campaign path, with
+  `timing` marking a nonproduction numerical reference despite full ensemble
+  sizes. The heartbeat follows this run and will compare complete paired
+  outputs before final scientific review. The optional predator-only full-
+  ensemble screen is no longer needed for closure and has not been launched.

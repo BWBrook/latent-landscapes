@@ -45,27 +45,40 @@ the LR comparisons and no-effect factorisation independently. Evidence:
   and checks 16384-draw rho midpoints in the supported windows. Original limits
   are unchanged; rho topology/endpoints are checked at LR 2, 5 and 10.
 
-**Active production:** launched at 2026-09-05 20:38 UTC, verified `RUNNING`,
-stage `production`, from source `e8c08f10f7b67118a85ee37770d8ee48ee2c213a`.
-The bank amendment is documented in Goal 045. All 18 focused tests, Ruff and
-strict mypy passed, including exact cached/regenerated profile equivalence.
+The 16384-draw production completed successfully in 75 minutes from source
+`e8c08f10f7b67118a85ee37770d8ee48ee2c213a`. All invariants, seed/provenance
+checks and saved canary surfaces reconciled. The 1000-bootstrap synthesis is
+complete locally under `artifacts/goal045_execution/production16384/synthesis`.
 
-- Host/session: `deep-server-ts`, tmux `ll-goal045-production`.
 - Root: `/data/codex/artifacts/goal045-production-16384-20260906-e8c08f1/`.
-- Probe `workflow.status`, `workflow.stage`, `workflow.exit.status` and
-  `run.log` once while running, then end the wake.
-- `preflight.json` confirms numerical acceptance, 16384 draws, 201 rho values,
-  181 effects, 250 calibration and 250 evaluation datasets, and conservative
-  projected runtime 6.66 hours. The validated cached bank loaded successfully.
-- On completion retrieve `output/`, `preflight.json` and compact receipts;
-  verify invariants, provenance and the first two phase surfaces against the
-  accepted 16384-draw numerical surfaces. Then check calibrated cutoffs against
-  the numerical LR range before final acceptance and complete synthesis/review.
+- Candidate data: `artifacts/goal045_execution/production16384/output` locally.
+- Effect cutoffs and bootstrap bounds are below LR 10. Rho cutoffs are about
+  44 at usual speed and 20 at half speed. The wider-range bank discrepancy is
+  inside support, with observed canary endpoints unchanged; full-ensemble
+  materiality checks are required before acceptance.
+
+**Active numerical reference:** matched 32768-draw replay, launched at
+2026-09-05 22:49 UTC and verified `RUNNING` with successful cache loading.
+
+- Host/session: `deep-server-ts`, tmux `ll-goal045-reference`.
+- Root: `/data/codex/scratch/goal045-full-bank-reference-20260906-e8c08f1/`.
+- Probe `status`, `exit.status` and `run.log` once, then end running wakes.
+- This uses the same frozen source, 250+250 histories and scientific settings;
+  only bank size changes. `timing` in its campaign metadata marks a numerical
+  reference, not a reduced ensemble or automatic production replacement.
+- On success retrieve compact `output/` profiles, summaries and seed provenance
+  plus `reference_provenance.json`; leave bank payloads remote. Compare complete
+  paired joint cutoffs, evaluation supports/coverage/widths/MLEs and effect
+  contrasts, with identical bootstrap index draws. The Goal's materiality
+  criteria govern acceptance. Retain 16384 if quantities agree materially;
+  otherwise diagnose and check 32768/65536 before promoting any candidate.
+- This full replay replaces the proposed subset/sentinel workflow; its observed
+  runtime made complete comparisons simpler. No predator-only full-ensemble
+  screen has been launched. The candidate result remains scientifically pending.
 - Quiet two-hour heartbeat: `goal-045-completion-check`, attached to the current
-  successor task and updated to follow production. Diagnose failure
-  before rerunning. After production retrieve evidence, check eventual calibrated
-  cutoffs against the canary LR<=10 range, synthesize with 1000 paired
-  whole-dataset bootstraps, inspect figures, obtain independent final scientific
+  successor task and updated to follow the reference replay. Diagnose failure
+  before rerunning. Finish the numerical comparison, inspect figures and claims,
+  obtain independent final scientific
   review, and publish the exact accepted paths. Pause the heartbeat at completion
   or a required human decision. No new approval is needed for these stages.
 

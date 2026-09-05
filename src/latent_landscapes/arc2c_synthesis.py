@@ -533,9 +533,14 @@ def _report(result: SynthesisResult) -> str:
         formatted = []
         for row in rows:
             scale = 100.0 if row["units"] == "proportion" else 1.0
+            precision = {
+                "mean_absolute_log_error": 4,
+                "conditional_prey_advantage": 5,
+            }.get(row["metric"], 3)
             formatted.append(
-                f"{scale * row['paired_mean_change']:+.3f} "
-                f"[{scale * row['bootstrap_lower']:+.3f}, {scale * row['bootstrap_upper']:+.3f}]"
+                f"{scale * row['paired_mean_change']:+.{precision}f} "
+                f"[{scale * row['bootstrap_lower']:+.{precision}f}, "
+                f"{scale * row['bootstrap_upper']:+.{precision}f}]"
             )
         lines.append(f"| {_case_label(truth)} | " + " | ".join(formatted) + " |")
     lines.extend(
@@ -632,7 +637,11 @@ def _report(result: SynthesisResult) -> str:
             "in advance for all cases. Colours show twice the joint training log-likelihood loss "
             "from that panel's maximum, not a confidence region. Crosses mark generating values, "
             "circles mark joint maximum-likelihood fits, and dashed lines show supplied speed. "
-            "The panels illustrate likelihood trade-offs without selecting attractive datasets.",
+            "Every panel displays rho from 0.8 to 1.2 times its generating speed, with the same "
+            "relative scale in both rows. The full fitting domain remains "
+            f"rho={config.rhos[0]:g} to {config.rhos[-1]:g} and effect="
+            f"{config.effects[0]:g} to {config.effects[-1]:g}; "
+            "the display zoom does not alter fitting.",
             "",
             "`event_information.csv` reports true loss counts by day 60, pre-arrival and "
             "post-arrival loss counts, censored sites, post-arrival at-risk exposure in site-days, "
@@ -756,9 +765,10 @@ def representative_likelihood_figure(result: SynthesisResult) -> Figure:
             markersize=10,
         )
         axis.set_yscale("log", base=2)
-        axis.set_yticks([0.25, 0.5, 1, 2, 4], ["0.25", "0.5", "1", "2", "4"])
-        axis.set_xlim(float(effects[0]), float(effects[-1]))
-        axis.set_ylim(float(rhos[0]), float(rhos[-1]))
+        ticks = truth.rho * np.asarray([0.8, 0.9, 1.0, 1.1, 1.2])
+        axis.set_yticks(ticks, [f"{value:g}" for value in ticks])
+        axis.set_xlim(float(effects[0]) - 0.25, float(effects[-1]) + 0.25)
+        axis.set_ylim(0.8 * truth.rho, 1.2 * truth.rho)
         axis.set_title(_case_label(truth), loc="left", fontsize=12, fontweight="bold")
         axis.set_xlabel("Prey loss hazard multiplier")
         axis.set_ylabel("Relative predator spread speed (rho)")
@@ -795,10 +805,12 @@ def representative_likelihood_figure(result: SynthesisResult) -> Figure:
     figure.text(
         0.07,
         0.055,
-        "Every panel uses the prespecified evaluation dataset index 0; only its 120 training "
-        "sites enter the likelihood.\n"
-        "Colours show relative joint composite likelihood, not a calibrated confidence region. "
-        "Darker areas are closer to each panel's best fit.",
+        "Prespecified evaluation dataset 0; likelihood uses its 120 training sites. "
+        "Display: rho is 0.8 to 1.2 times generating rho.\n"
+        f"Full fitting domain: rho {rhos[0]:g} to {rhos[-1]:g}; "
+        f"prey hazard multiplier {effects[0]:g} to {effects[-1]:g}.\n"
+        "Colours show joint composite likelihood loss from each full-grid maximum, "
+        "not a calibrated confidence region.",
         fontsize=10,
     )
     return figure
