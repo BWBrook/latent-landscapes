@@ -5,13 +5,13 @@
 The earlier failed-preflight snapshot below is historical. Bounded diagnosis
 identified rho-grid resolution as the leading numerical issue. The repaired
 201-point grid preserves the scientific design and is documented in Goal 045.
-Source `ce368b36824b51b859e1136b60c95fe4b9d35a15` is frozen and pushed to main;
+Numerical-check source `ce368b36824b51b859e1136b60c95fe4b9d35a15` was frozen and pushed;
 17 relevant tests, Ruff and strict mypy passed.
 
 The repaired-grid workflow stopped at `preflight_gate` at 2026-09-05 16:23 UTC.
 All four-history grid checks passed (maximum LL gain 0.0741); one shared
 calibration predator history failed the bank spread-profile LR tolerance
-(1.012 versus 0.5). Production has not started. Its preserved evidence is at:
+(1.012 versus 0.5). That workflow did not start production. Its evidence is at:
 
 - Host: `deep-server-ts`; original tmux session `ll-goal045-rho201` has ended.
 - Run root: `/data/codex/artifacts/goal045-rho201-20260906-ce368b3/`.
