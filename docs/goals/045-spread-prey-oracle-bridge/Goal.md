@@ -1,6 +1,6 @@
 # Goal 045: The Cost of Estimating Predator Spread Speed
 
-Status: in execution; numerical grid repair undergoing expanded preflight.
+Status: in execution; repaired-grid remote preflight running, production gated.
 Programme role: Arc 2C, Charter Pillar 2, selected joint-recovery bridge.
 
 ## Question and completion condition
@@ -231,3 +231,25 @@ can trigger diagnosis; a negative ecological result is not an implementation bug
   acceptance of Goal 045; all numerical and result-review gates remain open.
   The obsolete heartbeat has now been deleted, and the retiring Chief worktree
   removed. Project evidence and remote runs were not deleted or restarted.
+- Resumed 6 September 2026 (Hobart): bounded diagnosis and independent numerical
+  review selected the fixed 201-point rho grid described above. Source commit
+  `ce368b36824b51b859e1136b60c95fe4b9d35a15` is frozen and pushed to main.
+  The four-history canary retains calibration/evaluation surfaces, checks union
+  LR<=10 changes and truth LRs, and verifies replay at retained candidate nodes.
+  All 17 focused likelihood/campaign/synthesis/canary tests, scoped Ruff and
+  strict mypy passed. These are implementation checks, not numerical acceptance.
+- New detached workflow launched at 2026-09-05 14:33 UTC on `deep-server-ts`,
+  tmux `ll-goal045-rho201`, under
+  `/data/codex/artifacts/goal045-rho201-20260906-ce368b3/`.
+  The first receipt confirms `RUNNING`, stage `timing`, correct source commit,
+  and bank generation underway. The original failed workflow remains intact.
+  `workflow_rho201.sh` runs eight-worker timing into `timing/`, the expanded
+  numerical canary, and then eight-worker production into `output/` only after
+  numerical limits and the conservative <=24-hour runtime gate pass.
+  Source was transferred in a Git bundle and installed with `uv sync --frozen`.
+- The successor task now owns active two-hour heartbeat
+  `goal-045-completion-check`. While running it performs a bounded quiet probe;
+  after completion it resumes retrieval, calibrated-range numerical review,
+  1000-bootstrap synthesis, independent scientific review and exact-path
+  publication. It pauses after closeout or a required human decision. Goal 045
+  remains unfinished until those scientific completion conditions are met.

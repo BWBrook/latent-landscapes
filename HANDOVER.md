@@ -1,5 +1,35 @@
 # Latent Landscapes: Successor Handover
 
+## Current execution update: 6 September 2026 (Hobart)
+
+The earlier failed-preflight snapshot below is historical. Bounded diagnosis
+identified rho-grid resolution as the leading numerical issue. The repaired
+201-point grid preserves the scientific design and is documented in Goal 045.
+Source `ce368b36824b51b859e1136b60c95fe4b9d35a15` is frozen and pushed to main;
+17 relevant tests, Ruff and strict mypy passed.
+
+The new detached workflow is **running**, initially verified at 2026-09-05
+14:33 UTC in stage `timing`, with production still gated on numerical checks:
+
+- Host/session: `deep-server-ts`, tmux `ll-goal045-rho201`.
+- Run root: `/data/codex/artifacts/goal045-rho201-20260906-ce368b3/`.
+- Status: `workflow.status`, `workflow.stage`, `workflow.exit.status`.
+- Evidence: `timing/`, `numerical_canary.json`, `numerical_canary.npz`,
+  `preflight_gate.log`, and production `output/` if the gate passes.
+- Quiet two-hour heartbeat: `goal-045-completion-check`, attached to the current
+  successor task. Probe once and end unchanged running wakes. Diagnose failure
+  before rerunning. On success retrieve evidence, check eventual calibrated
+  cutoffs against the canary LR<=10 range, synthesize with 1000 paired
+  whole-dataset bootstraps, inspect figures, obtain independent final scientific
+  review, and publish the exact accepted paths. Pause the heartbeat at completion
+  or a required human decision. No new approval is needed for these stages.
+
+Four frozen timing histories (two calibration, two evaluation) now support the
+bank/grid canary, with all six cases kept paired. Original failed-run evidence
+is preserved. Goal 045 is still scientifically unfinished.
+
+## Historical handover snapshot
+
 Prepared 5 September 2026 for a fresh task started directly in
 `/Users/bwbrook/papers/latent-landscapes`. Remote state was verified at
 approximately 08:35 UTC; the Git/automation notes include Barry's subsequent
