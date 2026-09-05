@@ -1,6 +1,6 @@
 # Goal 045: The Cost of Estimating Predator Spread Speed
 
-Status: approved by Barry on 5 September 2026; implementation in progress.
+Status: approved by Barry on 5 September 2026; source frozen, detached preflight running.
 Programme role: Arc 2C, Charter Pillar 2, selected joint-recovery bridge.
 
 ## Question and completion condition
@@ -155,5 +155,29 @@ can trigger diagnosis; a negative ecological result is not an implementation bug
   change 0.5 within the original LR<=10 range, and local maximum log-likelihood
   gain 0.25. All three parameter profiles and both analysis maxima are checked.
   These are numerical review prompts, not new ecological selection gates.
-- Full-bank timing, canary results, frozen source SHA, and remote production
-  location will be recorded before the scheduled-monitoring handoff.
+- Independent pre-launch review passed after the material repairs. Build also
+  passed. Source is frozen and pushed on the goal branch at
+  `b67e5e6cf0f7d297883c265dd5c245ce1f90ea5e`; canonical main remains the accepted
+  Goal 044 checkpoint until results are reviewed.
+- Detached timing run: `deep-server-ts`,
+  `/data/codex/scratch/goal045-timing-20260905-b67e5e6`, tmux
+  `ll-goal045-timing`. It started at 07:00 UTC on 5 September 2026.
+- Guarded workflow: `/data/codex/artifacts/goal045-production-20260905-b67e5e6`,
+  tmux `ll-goal045-workflow`. It waits for successful timing, runs the numerical
+  canary, and starts eight-worker production only if all numerical review limits
+  pass and the conservative runtime estimate is <=24 hours. Failure preserves
+  the stage and logs for diagnosis; it does not relax the scientific design.
+  Frozen source checkouts were materialised from a Git bundle and `uv sync
+  --frozen`; no remote GitHub credentials are required.
+- Last receipt at 07:05 UTC: workflow `RUNNING`, stage `waiting_for_timing`.
+  Full-bank timing and production scientific results remain pending.
+- Active Codex heartbeat `goal-045-completion-check` checks every two hours.
+  It ends unchanged wakes after a bounded probe, resumes review after success,
+  diagnoses failure narrowly, and pauses itself after closeout or a genuine
+  human decision. No live monitoring loop is required.
+- Next continuation: inspect `workflow.status`, `workflow.stage`,
+  `workflow.exit.status`, numerical evidence and output `run_summary.json`;
+  retrieve compact artifacts excluding source/venv; synthesize with 1000
+  bootstrap resamples; review independently; update the roadmap/report and
+  publish exact accepted paths. Do not mark the goal complete merely because
+  simulation exited successfully.
