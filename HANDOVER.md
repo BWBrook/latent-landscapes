@@ -8,17 +8,35 @@ identified rho-grid resolution as the leading numerical issue. The repaired
 Source `ce368b36824b51b859e1136b60c95fe4b9d35a15` is frozen and pushed to main;
 17 relevant tests, Ruff and strict mypy passed.
 
-The new detached workflow is **running**, initially verified at 2026-09-05
-14:33 UTC in stage `timing`, with production still gated on numerical checks:
+The repaired-grid workflow stopped at `preflight_gate` at 2026-09-05 16:23 UTC.
+All four-history grid checks passed (maximum LL gain 0.0741); one shared
+calibration predator history failed the bank spread-profile LR tolerance
+(1.012 versus 0.5). Production has not started. Its preserved evidence is at:
 
-- Host/session: `deep-server-ts`, tmux `ll-goal045-rho201`.
+- Host: `deep-server-ts`; original tmux session `ll-goal045-rho201` has ended.
 - Run root: `/data/codex/artifacts/goal045-rho201-20260906-ce368b3/`.
 - Status: `workflow.status`, `workflow.stage`, `workflow.exit.status`.
 - Evidence: `timing/`, `numerical_canary.json`, `numerical_canary.npz`,
-  `preflight_gate.log`, and production `output/` if the gate passes.
+  `preflight_gate.log`. Production `output/` is absent.
+
+**Active diagnostic:** nested-bank predator-marginal screen, launched at
+2026-09-05 16:43 UTC and verified `RUNNING` with seven 4096-draw chunks started.
+
+- Host/session: `deep-server-ts`, tmux `ll-goal045-bank`.
+- Root: `/data/codex/scratch/goal045-bank-convergence-20260906-ce368b3/`.
+- Probe `status`, `exit.status` and `run.log` once while running, then end the wake.
+- On success inspect `output/predator_bank_convergence.json`,
+  `output/predator_profiles.npz` and `output/bank_provenance.json`; preserve and
+  reuse `output/base_arrivals_32768.npy`. These are diagnostic predator-only
+  profiles over all 201 rho values and all four paired timing histories.
+- Next: assess 16384 versus 32768, then certify with the full joint likelihood,
+  all 181 effect values and all six paired cases in the fixed union of relevant
+  LR<=10 windows plus neighbouring cells. Keep the numerical limits, including
+  MLE/truth-LR stability and support topology/endpoints. Document a supported
+  numerical bank amendment before production. The screen alone is insufficient.
 - Quiet two-hour heartbeat: `goal-045-completion-check`, attached to the current
-  successor task. Probe once and end unchanged running wakes. Diagnose failure
-  before rerunning. On success retrieve evidence, check eventual calibrated
+  successor task and updated to follow this diagnostic. Diagnose failure
+  before rerunning. After production retrieve evidence, check eventual calibrated
   cutoffs against the canary LR<=10 range, synthesize with 1000 paired
   whole-dataset bootstraps, inspect figures, obtain independent final scientific
   review, and publish the exact accepted paths. Pause the heartbeat at completion

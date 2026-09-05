@@ -1,6 +1,7 @@
 # Goal 045: The Cost of Estimating Predator Spread Speed
 
-Status: in execution; repaired-grid remote preflight running, production gated.
+Status: in execution; repaired grid passed, bank convergence under diagnosis;
+production has not started.
 Programme role: Arc 2C, Charter Pillar 2, selected joint-recovery bridge.
 
 ## Question and completion condition
@@ -253,3 +254,43 @@ can trigger diagnosis; a negative ecological result is not an implementation bug
   1000-bootstrap synthesis, independent scientific review and exact-path
   publication. It pauses after closeout or a required human decision. Goal 045
   remains unfinished until those scientific completion conditions are met.
+- At 2026-09-05 16:23 UTC the repaired-grid workflow stopped at `preflight_gate`.
+  Timing and the expanded canary completed successfully as computations; the
+  numerical gate failed. Conservative production projection was 3.46 hours.
+  All 24 case/history grid checks passed: maximum half-grid LL gain 0.0741 and
+  maximum grid profile-LR change 0.1482. Three bank checks failed, all sharing
+  calibration history 0 at usual speed: spread profile-LR changes were
+  1.009–1.012 against the 0.5 limit. Other bank profile, MLE and direct truth-LR
+  checks passed. These three cases share the same predator observations and
+  constitute one numerical sensitivity event, not three independent failures.
+- At rho 0.972655, that history's no-effect spread LR changed from 6.969 to
+  7.978 between 4096 and 8192 draws, while its MLE stayed at rho 1.013959.
+  Two influential training sites had only 10 and 14 compatible bank arrivals
+  at that node (27 and 34 at the MLE). A draw-level delta-method diagnostic,
+  retaining covariance across sites, gave approximate LR Monte Carlo SE 0.839
+  at 4096 draws. Repeating the identical empirical bank while only reducing
+  pseudo-count weight changed this LR by 0.056 on doubling, much less than the
+  observed 1.009. This supports finite-bank rare-event error as the next issue.
+  Rho-support component counts agreed between the original, doubled and refined
+  surfaces at LR cutoffs 2, 5 and 10; this does not override the failed LR limit.
+- Independent numerical review recommended a cheap nested 8192/16384/32768
+  predator-marginal screen over all 201 rho values and all four timing histories,
+  followed by a full joint 16384-versus-32768 check with all 181 effects and all
+  six paired cases over the union of relevant likelihood windows. The screen
+  is diagnostic only. Production bank size remains 4096 pending evidence and
+  a recorded numerical amendment; no acceptance limit or pseudo-count changes.
+- The diagnostic-only screen launched at 2026-09-05 16:43 UTC under
+  `/data/codex/scratch/goal045-bank-convergence-20260906-ce368b3/`, tmux
+  `ll-goal045-bank`, using frozen source `ce368b3`. Seven independent 4096-draw
+  chunks extend the original bank in exact seed order; BLAS threads are capped
+  at one. The initial receipt confirms `RUNNING` and all seven chunks started.
+  The standalone ignored script `artifacts/goal045_execution/bank_convergence.py`
+  saves the full bank before screening and validates hashes and seeds on reuse.
+  Its category calculation and reduced predator profiles matched the accepted
+  kernel; Ruff and strict mypy passed. Separate direct checks confirmed that
+  16384/32768 bank sizes preserve all 250 calibration and 250 evaluation seeds.
+- Current heartbeat `goal-045-completion-check` now follows the diagnostic
+  `status`/`exit.status`/`run.log`, then resumes full joint numerical review.
+  This launch does not modify production configuration or automatically start
+  production. Detailed artifact paths and next-stage instructions are at the
+  top of `HANDOVER.md`.
