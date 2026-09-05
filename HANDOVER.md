@@ -19,21 +19,34 @@ calibration predator history failed the bank spread-profile LR tolerance
 - Evidence: `timing/`, `numerical_canary.json`, `numerical_canary.npz`,
   `preflight_gate.log`. Production `output/` is absent.
 
-**Active diagnostic:** nested-bank predator-marginal screen, launched at
-2026-09-05 16:43 UTC and verified `RUNNING` with seven 4096-draw chunks started.
+The nested-bank predator-marginal screen completed at 2026-09-05 16:50 UTC.
+Candidate 16384 versus reference 32768 passed the screen's LR and MLE limits:
+maximum profile change 0.35357 and truth-LR change 0.18985, with unchanged MLEs.
+The full bank and profile checksums were independently verified. Bank evidence:
 
-- Host/session: `deep-server-ts`, tmux `ll-goal045-bank`.
 - Root: `/data/codex/scratch/goal045-bank-convergence-20260906-ce368b3/`.
-- Probe `status`, `exit.status` and `run.log` once while running, then end the wake.
-- On success inspect `output/predator_bank_convergence.json`,
+- Inspect `output/predator_bank_convergence.json`,
   `output/predator_profiles.npz` and `output/bank_provenance.json`; preserve and
   reuse `output/base_arrivals_32768.npy`. These are diagnostic predator-only
   profiles over all 201 rho values and all four paired timing histories.
-- Next: assess 16384 versus 32768, then certify with the full joint likelihood,
-  all 181 effect values and all six paired cases in the fixed union of relevant
-  LR<=10 windows plus neighbouring cells. Keep the numerical limits, including
-  MLE/truth-LR stability and support topology/endpoints. Document a supported
-  numerical bank amendment before production. The screen alone is insufficient.
+
+**Active diagnostic:** full joint bank/grid check, launched around 2026-09-05
+18:40 UTC and initially verified `RUNNING` in tmux `ll-goal045-joint`.
+
+- Root: `/data/codex/scratch/goal045-joint-bank-check-20260906-ce368b3/`.
+- Probe `status`, `exit.status` and `run.log` once while running, then end the wake.
+- On success inspect `output/joint_bank_convergence.json` and `.npz`, plus
+  `output/original_joint.npz`. Computational success is distinct from the
+  report's numerical acceptance fields; review both numerical and topology
+  results before advancing.
+- This check reuses the validated bank, evaluates both 16384 and 32768 over
+  all 201 rho candidates and all 181 effects for the four histories/six cases,
+  and checks 16384-draw rho midpoints in the supported windows. Original limits
+  are unchanged; rho topology/endpoints are checked at LR 2, 5 and 10.
+- If accepted, document the numerical bank amendment, preserve every scientific
+  setting and calibration/evaluation seed, freeze source and run gated
+  production under the existing <=24-hour authority. Production remains at
+  4096 draws in source until this decision is supported.
 - Quiet two-hour heartbeat: `goal-045-completion-check`, attached to the current
   successor task and updated to follow this diagnostic. Diagnose failure
   before rerunning. After production retrieve evidence, check eventual calibrated

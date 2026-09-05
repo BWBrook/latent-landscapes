@@ -294,3 +294,29 @@ can trigger diagnosis; a negative ecological result is not an implementation bug
   This launch does not modify production configuration or automatically start
   production. Detailed artifact paths and next-stage instructions are at the
   top of `HANDOVER.md`.
+- The predator-marginal screen completed at 2026-09-05 16:50 UTC in 404 seconds.
+  Checksums of the saved profiles and full bank were independently verified.
+  Between 16384 and 32768 draws, the maximum LR change within the union LR<=10
+  range was 0.35357 and the maximum generating-rho LR change was 0.18985; all
+  fitted speeds were unchanged. Support components and domain-boundary contact
+  agreed at cutoffs 5 and 10. In contrast, 8192 versus 16384 changed one
+  generating-rho LR by 0.77669. These results support 16384 as the next candidate
+  bank to test; they do not yet certify the joint predator-prey likelihood.
+- The next check evaluates both 16384- and 32768-draw joint likelihoods across
+  all 201 rho values, all 181 effects, and all four frozen timing histories.
+  Independent rho rows use up to eight processes. Computing the full original
+  grid avoids combining old-bank likelihoods outside a restricted window with
+  new-bank likelihoods inside it. The additional 16384-draw midpoint check
+  remains confined to the union LR<=10 windows plus neighbours. The original
+  effect/rho MLE, profile/truth-LR and maximum-LL limits remain unchanged;
+  rho support topology and endpoint movement are also inspected.
+- The full joint check launched around 2026-09-05 18:40 UTC under
+  `/data/codex/scratch/goal045-joint-bank-check-20260906-ce368b3/`, tmux
+  `ll-goal045-joint`, and was initially verified `RUNNING`. It reuses the saved
+  32768-draw bank and frozen source `ce368b3`. The standalone diagnostic's
+  per-rho workers matched direct integration exactly for all 24 reduced
+  history/case evaluations; known-effect halfsteps and topology failure checks
+  also passed. Ruff and strict mypy passed. Original-grid surfaces are saved
+  before refinement; final JSON distinguishes computational completion from
+  numerical acceptance. The heartbeat now follows this check. Production
+  configuration is unchanged pending the result.
