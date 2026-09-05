@@ -21,6 +21,7 @@ from latent_landscapes.arc2c_campaign import (
     write_campaign_bundle,
 )
 from latent_landscapes.arc2c_design import LANES, TRUTHS, smoke_config
+from latent_landscapes.goal011 import benchmark as goal011
 
 
 def test_seed_manifest_reuses_independent_arc2b_root_schedule() -> None:
@@ -178,6 +179,41 @@ def test_smoke_campaign_has_complete_profiles_and_roundtrips(tmp_path: Path) -> 
     np.testing.assert_array_equal(
         np.load(timing_dir / TIMING_BANK_FILENAME, allow_pickle=False), result.base_arrivals
     )
+
+
+def test_bank_cache_preserves_profiles_and_rejects_mismatched_provenance(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    config = smoke_config()
+    regenerated = run_campaign(config, progress=None)
+    np.save(tmp_path / "base_arrivals.npy", regenerated.base_arrivals, allow_pickle=False)
+    fixed = goal011.build_fixed_inputs()
+    receipt = {
+        "bank_checksum": regenerated.bank_checksum,
+        "bank_seeds": list(regenerated.seed_manifest.bank_seeds),
+        "site_ids": sorted(site.site_id for site in fixed.design.sites),
+    }
+    receipt_path = tmp_path / "bank_cache.json"
+    receipt_path.write_text(json.dumps(receipt), encoding="utf-8")
+
+    def fail_generator(*args: object, **kwargs: object) -> None:
+        pytest.fail("validated cache must bypass bank generation")
+
+    monkeypatch.setattr(arc2b, "_generate_bank", fail_generator)
+    cached = run_campaign(config, bank_cache_dir=tmp_path, progress=None)
+    assert cached.bank_checksum == regenerated.bank_checksum
+    assert cached.invariants == regenerated.invariants
+    assert cached.profiles.keys() == regenerated.profiles.keys()
+    for key in regenerated.profiles:
+        np.testing.assert_array_equal(cached.profiles[key], regenerated.profiles[key])
+    for key, bad_value in (
+        ("bank_seeds", list(reversed(regenerated.seed_manifest.bank_seeds))),
+        ("site_ids", sorted((site.site_id for site in fixed.design.sites), reverse=True)),
+        ("bank_checksum", "incorrect"),
+    ):
+        receipt_path.write_text(json.dumps({**receipt, key: bad_value}), encoding="utf-8")
+        with pytest.raises(ValueError, match="arrival bank cache differs"):
+            run_campaign(config, bank_cache_dir=tmp_path, progress=None)
 
 
 def test_cli_requires_explicit_mode_and_rejects_invalid_worker_count() -> None:

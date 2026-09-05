@@ -33,7 +33,7 @@ TRUTHS = tuple(
 @dataclass(frozen=True, slots=True)
 class BridgeConfig:
     master_seed: int = MASTER_SEED
-    bank_size: int = 4096
+    bank_size: int = 16384
     calibration_replicates: int = 250
     validation_replicates: int = 250
     calibration_rank: int = 239

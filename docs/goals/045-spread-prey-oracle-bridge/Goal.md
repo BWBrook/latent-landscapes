@@ -1,7 +1,7 @@
 # Goal 045: The Cost of Estimating Predator Spread Speed
 
-Status: in execution; repaired grid passed, bank convergence under diagnosis;
-production has not started.
+Status: in execution; repaired grid and 16384-draw bank accepted numerically;
+production being prepared.
 Programme role: Arc 2C, Charter Pillar 2, selected joint-recovery bridge.
 
 ## Question and completion condition
@@ -45,8 +45,8 @@ retain the site-marginal composite likelihood, with no spatial dependence claim.
 Use the existing broad rho domain 0.25-4 (201 log-spaced points, including exact 0.5 and 1)
 and effect domain 1-10 (181 linear points), including all generating values.
 Rho scales each base arrival by 1/rho exactly under the accepted spread model.
-Retain a 4096-draw arrival integration bank. Master seed is 20260905, independent
-of Arc 2A/B. Use common random numbers across the six cases and paired analyses,
+Use the numerically verified 16384-draw arrival integration bank. Master seed is
+20260905, independent of Arc 2A/B. Use common random numbers across the six cases and paired analyses,
 with separate integration, calibration, and evaluation streams.
 
 Each case has 250 calibration and 250 independent evaluation datasets. The
@@ -122,6 +122,33 @@ range before final acceptance. Seeds, production ensembles, effect grid,
 observation design, comparator information and calibration rule are unchanged.
 The experiment will be reported as prospectively completed after a numerical
 amendment, rather than described as wholly prespecified.
+
+## Bank amendment before production, 6 September 2026
+
+The four-history check on the repaired rho grid revealed finite-bank sensitivity
+in one shared calibration predator history. The 4096-to-8192 comparison changed
+its spread-profile LR by 1.012, exceeding 0.5, with sparse compatible arrivals
+at two influential sites. The larger nested-bank screen and subsequent full
+joint check support 16384 draws against a 32768-draw reference.
+
+The full joint check covered all 201 rho values, all 181 effect values and all
+24 paired case/history profiles, followed by local rho midpoint and known-speed
+effect midpoint checks. All original numerical limits passed. Maximum bank
+profile-LR change was 0.3592, maximum direct truth-LR change 0.1904, maximum
+grid profile-LR change 0.1752 and maximum LL gain 0.0876. Rho support components,
+boundary contact and endpoint movement passed the checks at cutoffs 2, 5 and 10.
+Saved array checks independently reproduced the spread-LR comparisons and the
+no-effect factorisation against the separate predator-only screen.
+
+The production bank is therefore amended from 4096 to 16384. It is the first
+16384 draws of the verified nested 32768 bank; its array checksum is
+`087cdd674d84c5df8ba217fd6013a6421d0d4a3c61d626c6969aac3db5ea5e93`.
+Reuse it with exact seed, site-order and checksum validation. The root seed,
+all calibration/evaluation histories, grid domain, pseudo-count, observation
+model, estimands, comparators and numerical limits are unchanged. This is a
+documented numerical-accuracy amendment within the approved diagnostic scope.
+Numerical evidence remains conditional on four paired histories; inspect the
+eventual calibrated cutoffs before final scientific acceptance.
 
 ## Stages and checks
 

@@ -22,6 +22,9 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--mode", choices=("smoke", "timing", "production"), required=True)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--workers", type=int, default=1)
+    parser.add_argument(
+        "--bank-cache", type=Path, help="Directory containing a verified arrival bank"
+    )
     args = parser.parse_args(argv)
     if args.workers <= 0:
         parser.error("--workers must be positive")
@@ -39,7 +42,11 @@ def main() -> int:
     )
     try:
         result = run_campaign(
-            config, mode=args.mode, workers=args.workers, source_commit=current_git_commit()
+            config,
+            mode=args.mode,
+            workers=args.workers,
+            source_commit=current_git_commit(),
+            bank_cache_dir=args.bank_cache,
         )
         written = write_campaign_bundle(result, args.output_dir)
         if result.outcome == "implementation_blocked":

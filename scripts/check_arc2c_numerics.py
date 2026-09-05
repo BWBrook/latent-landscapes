@@ -121,7 +121,7 @@ def main() -> None:
         (bundle.profiles["calibration_train_joint"], bundle.profiles["validation_train_joint"]),
         axis=1,
     ).swapaxes(0, 1)
-    print("Generating the second half of the nested 8192-draw bank", flush=True)
+    print(f"Generating the second half of the nested {2 * config.bank_size}-draw bank", flush=True)
     extra = arc2b._generate_bank(fixed, seeds.bank_seeds[config.bank_size :])
     integration = build_joint_integration(
         np.concatenate((bank, extra)), sites, config.rhos, config.effects

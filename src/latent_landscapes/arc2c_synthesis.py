@@ -550,7 +550,7 @@ def _report(result: SynthesisResult) -> str:
             "Uncertainty includes calibration-sample variation but remains conditional on this "
             "integration bank and generating model.",
             f"The saved run uses {config.bank_size} arrival integration draws "
-            "(4096 in production), with no additional draws during synthesis.",
+            "with no additional draws during synthesis.",
             "",
             "Primary prediction is the holdout-site mean of log P(prey,predator | training fit) "
             "minus log P(predator | that same fit). Holdout predator observations are permissible "

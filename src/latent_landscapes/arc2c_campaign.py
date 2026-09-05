@@ -364,6 +364,26 @@ def _seeds_disjoint(manifest: arc2b.SeedManifest) -> bool:
     return len(values) == len(set(values))
 
 
+def _load_bank_cache(
+    directory: Path, bank_seeds: tuple[int, ...], site_ids: tuple[str, ...]
+) -> NDArray[np.float64]:
+    bank = np.asarray(
+        np.load(directory / "base_arrivals.npy", allow_pickle=False), dtype=np.float64
+    )
+    receipt = json.loads((directory / "bank_cache.json").read_text(encoding="utf-8"))
+    if (
+        bank.shape != (len(bank_seeds), len(site_ids))
+        or not np.isfinite(bank).all()
+        or (bank < 0).any()
+        or not isinstance(receipt, dict)
+        or receipt.get("bank_checksum") != hashlib.sha256(bank.tobytes(order="C")).hexdigest()
+        or receipt.get("bank_seeds") != list(bank_seeds)
+        or receipt.get("site_ids") != list(site_ids)
+    ):
+        raise ValueError("arrival bank cache differs from the requested seeds, sites, or checksum")
+    return bank
+
+
 def run_campaign(
     config: BridgeConfig = DEFAULT_CONFIG,
     *,
@@ -371,6 +391,7 @@ def run_campaign(
     workers: int = 1,
     source_commit: str = "unknown",
     progress: Progress | None = _print_progress,
+    bank_cache_dir: Path | None = None,
 ) -> CampaignResult:
     if workers <= 0:
         raise ValueError("workers must be positive")
@@ -388,7 +409,13 @@ def run_campaign(
     bank_started = time.perf_counter()
     if progress is not None:
         progress(f"arrival bank started draws={config.bank_size} sites={len(sites)}")
-    bank = arc2b._generate_bank(fixed, manifest.bank_seeds)
+    bank = (
+        arc2b._generate_bank(fixed, manifest.bank_seeds)
+        if bank_cache_dir is None
+        else _load_bank_cache(
+            bank_cache_dir, manifest.bank_seeds, tuple(site.site_id for site in sites)
+        )
+    )
     bank_runtime = time.perf_counter() - bank_started
     if progress is not None:
         progress(f"arrival bank complete elapsed_seconds={bank_runtime:.3f}")
