@@ -191,3 +191,11 @@ can trigger diagnosis; a negative ecological result is not an implementation bug
   compact entry point. The old task's heartbeat is paused to avoid competing
   execution; its target must be changed before any resumption. No remote job
   was interrupted, no model repair was made, and this goal remains unfinished.
+- Subsequent cleanup request, 2026-09-05: Barry explicitly authorised a clean
+  handover with only `main` retained. Consolidate the existing Goal 045 source
+  and handover into `main` without changing simulation code, then remove goal
+  branches only after their tips are verified as preserved in `main` and
+  `origin/main`. This is an administrative handover snapshot, not scientific
+  acceptance of Goal 045; all numerical and result-review gates remain open.
+  The obsolete heartbeat has now been deleted, and the retiring Chief worktree
+  removed. Project evidence and remote runs were not deleted or restarted.

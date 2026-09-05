@@ -1,7 +1,9 @@
 # Latent Landscapes: Successor Handover
 
-Verified 5 September 2026, approximately 08:35 UTC. Written for a fresh task
-started directly in `/Users/bwbrook/papers/latent-landscapes`.
+Prepared 5 September 2026 for a fresh task started directly in
+`/Users/bwbrook/papers/latent-landscapes`. Remote state was verified at
+approximately 08:35 UTC; the Git/automation notes include Barry's subsequent
+branch-cleanup request.
 
 **Immediate state: Goal 045 is approved but unfinished. Its numerical
 preflight stopped before production. Diagnose that bounded issue next;
@@ -119,8 +121,8 @@ analyses on identical simulated observations.
   calibration and evaluation. Calibration still knows the generating condition.
 - Primary prediction is held-out prey prediction conditional on predator
   observations, against an information-matched no-effect model. The no-effect
-  model's conditional prey score is independent of speed. This avoids the comparator asymmetry
-  found and transparently amended during Arc 2B.
+  model's conditional prey score is independent of speed. This avoids the
+  comparator asymmetry found and transparently amended during Arc 2B.
 
 Gold stamp: an interpretable six-case paired comparison with uncertainty,
 numerical checks, clear tables/figures, independent final review, bounded
@@ -131,11 +133,14 @@ need Barry. Routine numerical repair within the question is ours to resolve.
 
 ## Exact Handoff State
 
-The checkout was clean before this documentation update, on
-`codex/latent-landscapes-goal045-spread-prey-bridge`, pushed through `4f70bbe`.
-`main` and `origin/main` remain at accepted Goal 044 commit `4d6d23b`.
-Frozen run source is `b67e5e6cf0f7d297883c265dd5c245ce1f90ea5e`; later handover
-commits are documentation, not different simulation source.
+At Barry's explicit request, the handover checkout uses **`main` only**, with
+the former goal branches consolidated and removed locally and from origin.
+Their commit history is preserved. Goal 044 commit `4d6d23b` remains the last
+scientifically accepted checkpoint; the unfinished Goal 045 source and handover
+through `07737e7` are now included on `main` for continuity, not as an acceptance
+claim. This branch cleanup does not close Goal 045 or relax its review gates.
+Frozen run source is `b67e5e6cf0f7d297883c265dd5c245ce1f90ea5e`; subsequent
+handover/cleanup commits change documentation, not simulation code.
 
 Active code is `src/latent_landscapes/arc2c_{design,likelihood,campaign,synthesis}.py`.
 It reuses the accepted Arc 2B likelihood kernel. CLIs are
@@ -167,11 +172,12 @@ Remote locations on `deep-server-ts`:
 - Compact local copies: `artifacts/goal045_execution/numerical_canary.json`
   and `timing_run_summary.json`. These and raw outputs remain ignored.
 
-The old task's two-hourly heartbeat, `goal-045-completion-check`, is **PAUSED**
-for this transition. Do not unpause it with its old task target. After taking
-ownership, arrange a quiet scheduled continuation in the new task if needed.
-The old task's Codex goal remains unfinished; it was not falsely closed for
-handover. Execution ownership now passes to the successor, not back to that task.
+The old task's two-hourly heartbeat, `goal-045-completion-check`, was paused and
+then **deleted** during the authorised cleanup. Its Chief of Staff worktree was
+also removed. The project checkout and scientific evidence remain intact.
+After taking ownership, arrange a quiet scheduled continuation in the new task
+if needed. The old task's Codex goal remains unfinished; it was not falsely
+closed for handover. Execution ownership passes to the successor.
 
 ## First Useful Actions
 
