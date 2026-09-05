@@ -8,6 +8,10 @@ from typing import Literal
 import numpy as np
 from scipy.stats import qmc  # type: ignore[import-untyped]
 
+RHO_GRID = tuple(2.0 ** (-2.0 + 4.0 * index / 100.0) for index in range(101))
+PROBABILITY_GRID = tuple(round(0.05 + 0.02 * index, 2) for index in range(46))
+REFINED_ETA_GRID = tuple(float(value / 8) for value in range(21))
+
 SOBOL_SCRAMBLE_SEED = 20260829
 Block = Literal["pilot", "prospective"]
 

@@ -1,24 +1,18 @@
 from __future__ import annotations
 
-import json
 from math import log
-from pathlib import Path
 
 import numpy as np
 
+from latent_landscapes.arc2a_likelihood import (
+    ThreeParameterProfile,
+    classify_outcome,
+    summarize_support,
+    three_parameter_profile,
+)
 from latent_landscapes.goal001.observations import Observation
 from latent_landscapes.goal002.calibration import EstimateInterval
 from latent_landscapes.goal004.observations import REPLICATES, SURVEY_TIMES
-from latent_landscapes.goal021 import (
-    EXPECTED_FILES,
-    ThreeParameterProfile,
-    classify_outcome,
-    run_goal021,
-    smoke_config,
-    summarize_support,
-    three_parameter_profile,
-    write_review_bundle,
-)
 
 
 def _all_zero_history() -> tuple[Observation, ...]:
@@ -141,15 +135,28 @@ def test_three_dimensional_support_and_progression() -> None:
     )
 
 
-def test_goal021_smoke_writes_only_the_compact_review_surface(tmp_path: Path) -> None:
-    result = run_goal021(smoke_config())
+def test_arbitrary_truth_support() -> None:
+    values = np.full((3, 3, 3), -10.0)
+    values[0, 0, 0] = 0.0
+    profile = ThreeParameterProfile(
+        etas=np.asarray([0.5, 1.0, 1.5]),
+        rhos=np.asarray([0.5, 1.0, 2.0]),
+        probabilities=np.asarray([0.45, 0.65, 0.85]),
+        log_likelihoods=values,
+        maximum_log_likelihood=0.0,
+        mle_indices=((0, 0, 0),),
+        mle_cells=((0.5, 0.5, 0.45),),
+    )
 
-    written = write_review_bundle(result, tmp_path)
+    support = summarize_support(
+        profile,
+        cutoff=1.0,
+        truth_rho=0.5,
+        truth_eta=0.5,
+        truth_probability=0.45,
+    )
 
-    assert result.outcome == "non_scientific_smoke"
-    assert all(result.invariants.values())
-    assert {path.name for path in written} == set(EXPECTED_FILES)
-    assert all(path.stat().st_size > 0 for path in written)
-    summary = json.loads((tmp_path / "summary.json").read_text(encoding="utf-8"))
-    assert summary["scientific_interpretation"] == "non_scientific_smoke"
-    assert "implementation check only" in (tmp_path / "review.md").read_text(encoding="utf-8")
+    assert support.truth_included
+    assert support.minimum_log_rho_error == 0.0
+    assert support.minimum_eta_error == 0.0
+    assert support.minimum_probability_error == 0.0

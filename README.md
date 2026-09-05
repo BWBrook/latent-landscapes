@@ -127,8 +127,14 @@ prospective simulation. The primary comparator now uses the same known
 background hazard as the fitted process model; a separately fitted neutral is
 retained descriptively. Exact replay confirmed that no simulated history,
 calibration statistic, cutoff, or non-score result changed. Arc 2B is now
-scientifically closed and consolidated. The next decision is the design of a
-small, selected predator-prey bridge, not another local interpolation campaign.
+scientifically closed and consolidated.
+
+Arc 2C's six-case paired comparison is approved in
+[Goal 045](docs/goals/045-spread-prey-oracle-bridge/Goal.md). It asks how much
+prey-effect recovery changes when predator spread speed must also be estimated.
+Implementation and timing are complete, but the numerical preflight stopped
+for spread-grid review before production. No Arc 2C scientific result is yet
+accepted.
 
 Later paper stages must test generality across process and observation
 conditions, landscape and sampling families, alternative generating models,
@@ -216,6 +222,10 @@ uv run python scripts/run_arc2b_campaign.py --help
 uv run python scripts/synthesize_arc2b.py --help
 ```
 
+The current Arc 2C workflow uses `scripts/run_arc2c_campaign.py`,
+`scripts/check_arc2c_numerics.py`, and `scripts/synthesize_arc2c.py`.
+Goal 045's numerical acceptance gate must be resolved before production.
+
 Later production experiments can be computationally expensive and may depend
 on accepted evidence from earlier runs. Read the corresponding goal record and
 script help before launching one.
@@ -236,6 +246,15 @@ Generated review packs and build outputs are intentionally not committed unless
 a specific communication or provenance need requires them. A fresh clone
 contains the code and durable scientific record, not every production
 realisation.
+
+The active Arc 2 workflows follow `design -> likelihood -> campaign -> synthesis`;
+Arc 2B keeps its shared likelihood kernel in the campaign module. Arc 2A's
+predator likelihood and support calculations live in `arc2a_likelihood.py`.
+Older numbered modules remain where they supply live kernels or reference
+benchmarks. Superseded Goal 012–013 and 018–025 runners are preserved in Git
+history through `abcd080`; their goal records and generated evidence remain
+available. Historical instructions in those records apply to their recorded
+source versions.
 
 ## Collaboration
 

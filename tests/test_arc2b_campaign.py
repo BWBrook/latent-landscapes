@@ -36,7 +36,13 @@ def test_seed_manifest_pairs_with_disjoint_phase_roots() -> None:
 
 
 def test_smoke_campaign_writes_compact_replayable_bundle(tmp_path: Path) -> None:
-    result = run_campaign(smoke_config("prospective"), workers=1, source_commit="test")
+    digest = hashlib.sha256(b"condition_id,predicted\nS17,0.5\n").hexdigest()
+    result = run_campaign(
+        smoke_config("prospective"),
+        workers=1,
+        source_commit="test",
+        frozen_predictions_sha256=digest,
+    )
     assert result.outcome == "non_scientific_smoke"
     assert all(result.invariants.values())
     assert len(result.truth_summaries) == 2
@@ -49,21 +55,7 @@ def test_smoke_campaign_writes_compact_replayable_bundle(tmp_path: Path) -> None
     header = (tmp_path / "validation_metrics.csv").read_text().splitlines()[0]
     assert "heldout_known_background_no_effect_advantage_per_record" in header
     assert "heldout_fitted_neutral_advantage_per_record" in header
-
-
-def test_provenance_records_supplied_frozen_prediction_digest(tmp_path: Path) -> None:
-    frozen = tmp_path / "frozen_predictions.csv"
-    frozen.write_bytes(b"condition_id,predicted\nS17,0.5\n")
-    digest = hashlib.sha256(frozen.read_bytes()).hexdigest()
-    result = run_campaign(
-        smoke_config("prospective"),
-        workers=1,
-        source_commit="test",
-        frozen_predictions_sha256=digest,
-    )
-    output = tmp_path / "bundle"
-    write_review_bundle(result, output)
-    payload = json.loads((output / "seed_provenance.json").read_text())
+    payload = json.loads((tmp_path / "seed_provenance.json").read_text())
     assert payload["frozen_predictions_sha256"] == digest
 
 

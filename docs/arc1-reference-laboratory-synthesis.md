@@ -1,6 +1,6 @@
 # Arc 1 Reference Laboratory Synthesis
 
-- **Status:** Frozen reference case, pending Goal 037 acceptance
+- **Status:** Accepted and frozen reference case (Goal 037)
 - **Paper role:** Charter Pillar 1 and planned Figure 2 evidence
 - **Claim scope:** One synthetic landscape, sampling design, survey calendar,
   process family, and prespecified set of generating values

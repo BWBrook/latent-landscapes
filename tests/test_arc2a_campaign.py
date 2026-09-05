@@ -7,7 +7,6 @@ import numpy as np
 from latent_landscapes import arc2a_campaign
 from latent_landscapes.arc2a_design import TruthCondition
 from latent_landscapes.goal011 import benchmark as goal011
-from latent_landscapes.goal023 import TruthCell, generate_truth_dataset
 
 
 def test_exact_truth_grids_and_paired_generator_reconcile_arc1() -> None:
@@ -15,16 +14,19 @@ def test_exact_truth_grids_and_paired_generator_reconcile_arc1() -> None:
     fixed = goal011.build_fixed_inputs()
     manifest = goal011.spawn_seed_manifest(config.seed_config)
     central = TruthCondition("central", "test", 1.0, 1.0, 0.65)
-    generated = arc2a_campaign.generate_paired_datasets(fixed, manifest.calibration[0], (central,))[
-        0
-    ]
-    reference_truth, reference_records = generate_truth_dataset(
-        fixed,
-        manifest.calibration[0],
-        TruthCell("central", 1.0, 1.0, 0.65),
+    low_detection = TruthCondition("low_detection", "test", 1.0, 1.0, 0.45)
+    generated, low = arc2a_campaign.generate_paired_datasets(
+        fixed, manifest.calibration[0], (central, low_detection)
     )
+    reference_truth, reference_records = goal011.generate_dataset(fixed, manifest.calibration[0])
     assert np.array_equal(generated.truth.arrival, reference_truth.arrival)
     assert generated.records == reference_records
+    assert np.array_equal(generated.truth.arrival, low.truth.arrival)
+    assert len(generated.records) == len(low.records) == 1920
+    assert all(
+        low_record.detected <= central_record.detected
+        for central_record, low_record in zip(generated.records, low.records, strict=True)
+    )
     for truth in config.truths:
         assert arc2a_campaign.candidate_grid(config.base_rhos, truth.rho).count(truth.rho) == 1
         assert arc2a_campaign.candidate_grid(config.base_etas, truth.eta).count(truth.eta) == 1

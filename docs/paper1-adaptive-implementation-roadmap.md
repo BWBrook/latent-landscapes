@@ -54,9 +54,10 @@ simulation: the primary no-effect model now receives the same known background
 hazard as the process model, while the fitted neutral remains a secondary
 description. Exact replay preserved the histories, calibration, and cutoffs.
 The accepted Arc 2B path is consolidated into the same clear
-`design -> campaign -> synthesis` structure. Arc 2C is now the next scientific
-design boundary and should combine only a small set of interactions that Arc
-2A and Arc 2B show to be decision-relevant.
+`design -> campaign -> synthesis` structure. Goal 045 now defines the approved
+Arc 2C bridge: compare prey-effect recovery with known versus estimated spread
+speed in six paired cases. Its numerical preflight stopped before production;
+the immediate task is bounded numerical diagnosis within that design.
 
 ## Arc 1: Close And Freeze The Reference Case
 
@@ -328,14 +329,14 @@ run.
 
 ## Immediate Decision Boundary
 
-Arc 2A and Arc 2B are complete. Before Arc 2C, Barry and the orchestrator should
-select a small predator-prey bridge that answers one question: do the recovery
-transitions understood separately persist when spread and prey effect are
-estimated together?
+Arc 2A and Arc 2B are complete. Barry approved the small predator-prey bridge
+in `docs/goals/045-spread-prey-oracle-bridge/Goal.md`: usual and half-speed
+spread crossed with onefold, threefold, and fivefold prey hazard multipliers.
+The paired comparison isolates the cost of estimating speed, retaining
+parameter-specific calibration and matched held-out prediction.
 
-That design should retain favorable, transitional, and failure conditions;
-vary only interactions supported by the two completed maps; distinguish
-marginal from simultaneous joint uncertainty; and exclude a full factor
-cross-product. It should not reopen the completed surfaces merely to refine
-local contours. Arc 2C remains a human scientific design decision, not an
-automatic consequence of Goal 044.
+The unresolved gate is numerical: diagnose the saved preflight grid-refinement
+failure before production, then complete the approved comparison and review.
+Changes to the scientific design still require human review. This approval
+does not reopen the completed surfaces or authorize the later landscape and
+model arcs.

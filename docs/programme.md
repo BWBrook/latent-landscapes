@@ -20,6 +20,31 @@ The goal sections below retain the detailed experimental history. They are a
 laboratory record rather than a requirement that future work continue as a
 linear extension of the existing goal sequence.
 
+## Active-path consolidation, 5 September 2026
+
+Barry requested a bounded code and test simplification before resuming Goal
+045. This maintenance advances Charter Pillar 6 without changing the scientific
+design or accepted inferential rules. Arc 2A now owns its predator likelihood
+and support kernel; the original arithmetic, candidate grids, and thresholds
+are retained. Superseded Goal 012–013 and 018–025 execution/reporting paths and
+their historical workflow tests were retired. Their records, generated evidence,
+and source history through `abcd080` remain intact.
+
+The retained tests protect independent scientific risks, including explicit
+likelihood calculations, support topology, paired simulation, latent-arrival
+sharing, training/holdout separation, and uncertainty calibration. Duplicate
+Arc 2 smoke computations were merged, and unused scikit-learn dependencies
+were removed. Older modules with live consumers remain; deeper extraction is
+deferred until it serves a current scientific workflow. Goal 045's numerical
+repair and production remain separate from this maintenance.
+
+Verification: all five reduced Arc 2 campaign outputs matched the pre-cleanup
+results exactly, excluding timings. The extracted kernel syntax and full
+candidate-grid definitions were unchanged. The full suite passed 225 tests in
+108 seconds, compared with 268 in 186 seconds before cleanup on the same host.
+Formatting, Ruff, strict mypy, package build, and an independent preservation
+review passed. No production campaign was rerun.
+
 ## Programme Boundary
 
 Paper 1 is synthetic-only. Its purpose is controlled study of identifiability,

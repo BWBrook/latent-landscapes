@@ -23,7 +23,20 @@ import matplotlib as mpl
 import numpy as np
 from numpy.typing import NDArray
 
-from latent_landscapes.arc2a_design import Block, TruthCondition, campaign_truths
+from latent_landscapes.arc2a_design import (
+    PROBABILITY_GRID,
+    REFINED_ETA_GRID,
+    RHO_GRID,
+    Block,
+    TruthCondition,
+    campaign_truths,
+)
+from latent_landscapes.arc2a_likelihood import (
+    ThreeParameterProfile,
+    classify_outcome,
+    summarize_support,
+    three_parameter_profile,
+)
 from latent_landscapes.goal001.design import DesignSite
 from latent_landscapes.goal001.observations import Observation
 from latent_landscapes.goal002.baseline import (
@@ -49,14 +62,6 @@ from latent_landscapes.goal006.spread import (
 from latent_landscapes.goal007 import benchmark as goal007
 from latent_landscapes.goal007.likelihood import joint_category_weights
 from latent_landscapes.goal011 import benchmark as goal011
-from latent_landscapes.goal019 import PROBABILITY_GRID, RHO_GRID
-from latent_landscapes.goal021 import (
-    ThreeParameterProfile,
-    classify_outcome,
-    summarize_support,
-    three_parameter_profile,
-)
-from latent_landscapes.goal022 import REFINED_ETA_GRID
 
 mpl.use("Agg")
 mpl.rcParams["svg.hashsalt"] = "latent-landscapes-arc2a-campaign"

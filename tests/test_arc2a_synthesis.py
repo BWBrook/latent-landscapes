@@ -106,7 +106,7 @@ def _inputs() -> arc2a_synthesis.SynthesisInputs:
     )
 
 
-def test_run_synthesis_closes_arc2a_without_smoothing_topology() -> None:
+def test_synthesis_preserves_prospective_evidence_and_writes_bundle(tmp_path: Path) -> None:
     frozen = arc2a_synthesis.load_frozen_predictions(arc2a_synthesis.DEFAULT_FROZEN_PREDICTIONS)
     result = arc2a_synthesis.run_synthesis(_inputs(), bootstrap_count=8)
 
@@ -121,10 +121,6 @@ def test_run_synthesis_closes_arc2a_without_smoothing_topology() -> None:
     assert all(not row.smooth_surface_supported for row in result.topology_rows)
     assert result.checks["retained_metrics_have_positive_prospective_skill"]
     assert result.checks["boundary_surface_failure_preserved"]
-
-
-def test_synthesis_writes_exact_compact_bundle(tmp_path: Path) -> None:
-    result = arc2a_synthesis.run_synthesis(_inputs(), bootstrap_count=8)
     written = arc2a_synthesis.write_review_bundle(result, tmp_path)
 
     assert tuple(path.name for path in written) == arc2a_synthesis.EXPECTED_FILES
@@ -133,6 +129,3 @@ def test_synthesis_writes_exact_compact_bundle(tmp_path: Path) -> None:
     assert summary["truth_count"] == 32
     assert summary["boundary_contact"]["smooth_surface_supported"] is False
     assert summary["outcome"] == "arc2a_ready_for_closeout_with_topology_limit"
-    synthesis = (tmp_path / "synthesis.md").read_text()
-    assert "The prospective test came first" in synthesis
-    assert "No targeted enrichment or flexible emulator is recommended" in synthesis
