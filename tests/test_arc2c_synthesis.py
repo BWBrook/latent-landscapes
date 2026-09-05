@@ -179,6 +179,12 @@ def test_summary_round_trip_and_figures_use_saved_profile_evidence(tmp_path: Pat
         pixels = np.asarray(canvas.buffer_rgba())
         assert np.std(pixels[:, :, :3]) > 20
         assert all(axis.get_xlabel() for axis in figure.axes[:6])
+        if make_figure is synthesis.representative_likelihood_figure:
+            for axis, truth in zip(figure.axes[:6], TRUTHS, strict=True):
+                np.testing.assert_allclose(axis.get_ylim(), (0.8 * truth.rho, 1.2 * truth.rho))
+                np.testing.assert_allclose(
+                    axis.get_yticks(), truth.rho * np.asarray([0.8, 0.9, 1.0, 1.1, 1.2])
+                )
         plt.close(figure)
 
 
