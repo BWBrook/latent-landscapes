@@ -1,7 +1,7 @@
 # Goal 045: The Cost of Estimating Predator Spread Speed
 
 Status: in execution; repaired grid and 16384-draw bank accepted numerically;
-production being prepared.
+six-case production running.
 Programme role: Arc 2C, Charter Pillar 2, selected joint-recovery bridge.
 
 ## Question and completion condition
@@ -347,3 +347,23 @@ can trigger diagnosis; a negative ecological result is not an implementation bug
   before refinement; final JSON distinguishes computational completion from
   numerical acceptance. The heartbeat now follows this check. Production
   configuration is unchanged pending the result.
+- At 2026-09-05 19:15 UTC the full joint check completed in 2143 seconds. All
+  24 original numerical and rho-topology checks passed. Its profile checksums
+  and LR values were independently reconciled, along with no-effect
+  factorisation against the predator-only screen. The accepted bank amendment
+  above records the numerical result and preserved scientific settings.
+- Production source `e8c08f10f7b67118a85ee37770d8ee48ee2c213a` was frozen and
+  pushed after 18 focused tests, Ruff and strict mypy passed. Optional bank-cache
+  loading validates exact seed list, site order, dimensions and checksum;
+  tests established identical profiles to regeneration and rejected invalid
+  metadata. The cache is exported from the verified 32768-draw bank prefix.
+- Detached production launched at 2026-09-05 20:38 UTC under
+  `/data/codex/artifacts/goal045-production-16384-20260906-e8c08f1/`, tmux
+  `ll-goal045-production`. The initial receipt confirms `RUNNING`, stage
+  `production`, correct source commit and successful 16384-draw cache loading.
+  The preflight records accepted numerical evidence and a conservative 6.66-hour
+  runtime estimate, including bank-generation cost that cache reuse eliminates.
+  Eight workers run the frozen six cases with 250 calibration and 250 evaluation
+  datasets per case. The heartbeat now follows this production root and resumes
+  provenance/range checks, 1000-bootstrap synthesis and independent final review
+  after completion. Numerical acceptance does not itself close the goal.

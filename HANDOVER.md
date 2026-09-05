@@ -30,12 +30,13 @@ The full bank and profile checksums were independently verified. Bank evidence:
   reuse `output/base_arrivals_32768.npy`. These are diagnostic predator-only
   profiles over all 201 rho values and all four paired timing histories.
 
-**Active diagnostic:** full joint bank/grid check, launched around 2026-09-05
-18:40 UTC and initially verified `RUNNING` in tmux `ll-goal045-joint`.
+The full joint bank/grid check completed at 2026-09-05 19:15 UTC. All 24
+numerical and rho-topology checks passed. The largest bank profile-LR change
+was 0.3592 and the largest grid LL gain 0.0876. Saved-array checks reproduced
+the LR comparisons and no-effect factorisation independently. Evidence:
 
 - Root: `/data/codex/scratch/goal045-joint-bank-check-20260906-ce368b3/`.
-- Probe `status`, `exit.status` and `run.log` once while running, then end the wake.
-- On success inspect `output/joint_bank_convergence.json` and `.npz`, plus
+- Inspect `output/joint_bank_convergence.json` and `.npz`, plus
   `output/original_joint.npz`. Computational success is distinct from the
   report's numerical acceptance fields; review both numerical and topology
   results before advancing.
@@ -43,12 +44,25 @@ The full bank and profile checksums were independently verified. Bank evidence:
   all 201 rho candidates and all 181 effects for the four histories/six cases,
   and checks 16384-draw rho midpoints in the supported windows. Original limits
   are unchanged; rho topology/endpoints are checked at LR 2, 5 and 10.
-- If accepted, document the numerical bank amendment, preserve every scientific
-  setting and calibration/evaluation seed, freeze source and run gated
-  production under the existing <=24-hour authority. Production remains at
-  4096 draws in source until this decision is supported.
+
+**Active production:** launched at 2026-09-05 20:38 UTC, verified `RUNNING`,
+stage `production`, from source `e8c08f10f7b67118a85ee37770d8ee48ee2c213a`.
+The bank amendment is documented in Goal 045. All 18 focused tests, Ruff and
+strict mypy passed, including exact cached/regenerated profile equivalence.
+
+- Host/session: `deep-server-ts`, tmux `ll-goal045-production`.
+- Root: `/data/codex/artifacts/goal045-production-16384-20260906-e8c08f1/`.
+- Probe `workflow.status`, `workflow.stage`, `workflow.exit.status` and
+  `run.log` once while running, then end the wake.
+- `preflight.json` confirms numerical acceptance, 16384 draws, 201 rho values,
+  181 effects, 250 calibration and 250 evaluation datasets, and conservative
+  projected runtime 6.66 hours. The validated cached bank loaded successfully.
+- On completion retrieve `output/`, `preflight.json` and compact receipts;
+  verify invariants, provenance and the first two phase surfaces against the
+  accepted 16384-draw numerical surfaces. Then check calibrated cutoffs against
+  the numerical LR range before final acceptance and complete synthesis/review.
 - Quiet two-hour heartbeat: `goal-045-completion-check`, attached to the current
-  successor task and updated to follow this diagnostic. Diagnose failure
+  successor task and updated to follow production. Diagnose failure
   before rerunning. After production retrieve evidence, check eventual calibrated
   cutoffs against the canary LR<=10 range, synthesize with 1000 paired
   whole-dataset bootstraps, inspect figures, obtain independent final scientific
