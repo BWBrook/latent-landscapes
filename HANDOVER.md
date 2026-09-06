@@ -57,30 +57,50 @@ complete locally under `artifacts/goal045_execution/production16384/synthesis`.
   inside support, with observed canary endpoints unchanged; full-ensemble
   materiality checks are required before acceptance.
 
-**Active numerical reference:** matched 32768-draw replay, launched at
-2026-09-05 22:49 UTC and verified `RUNNING` with successful cache loading.
+**Latest numerical decision:** the full matched 32768 reference completed in
+2.99 hours. All provenance and retained-canary surfaces reconciled, but the
+recorded 0.5-LR cutoff materiality criterion failed in usual_1 (+0.51923) and
+usual_3 (+0.51608), driven by the same calibration history 198. All observed
+rho topology, boundary, endpoint, coverage and width criteria passed; primary
+effect contrasts remain stable. The result is still scientifically pending.
+See [the numerical review](docs/goals/045-spread-prey-oracle-bridge/numerical-review.md)
+and its compact paired-comparison JSON.
 
-- Host/session: `deep-server-ts`, tmux `ll-goal045-reference`.
-- Root: `/data/codex/scratch/goal045-full-bank-reference-20260906-e8c08f1/`.
-- Probe `status`, `exit.status` and `run.log` once, then end running wakes.
-- This uses the same frozen source, 250+250 histories and scientific settings;
-  only bank size changes. `timing` in its campaign metadata marks a numerical
-  reference, not a reduced ensemble or automatic production replacement.
-- On success retrieve compact `output/` profiles, summaries and seed provenance
-  plus `reference_provenance.json`; leave bank payloads remote. Compare complete
-  paired joint cutoffs, evaluation supports/coverage/widths/MLEs and effect
-  contrasts, with identical bootstrap index draws. The Goal's materiality
-  criteria govern acceptance. Retain 16384 if quantities agree materially;
-  otherwise diagnose and check 32768/65536 before promoting any candidate.
-- This full replay replaces the proposed subset/sentinel workflow; its observed
-  runtime made complete comparisons simpler. No predator-only full-ensemble
-  screen has been launched. The candidate result remains scientifically pending.
-- Quiet two-hour heartbeat: `goal-045-completion-check`, attached to the current
-  successor task and updated to follow the reference replay. Diagnose failure
-  before rerunning. Finish the numerical comparison, inspect figures and claims,
-  obtain independent final scientific
-  review, and publish the exact accepted paths. Pause the heartbeat at completion
-  or a required human decision. No new approval is needed for these stages.
+The prescribed next comparison is full matched 32768 versus 65536. Independent
+methodological review supports this complete replay and retaining G201, with
+speed intervals described as discrete-grid supports. Do not add a G401 run or
+claim continuous-profile endpoint validation. No bank is promoted automatically.
+
+**Active reference:** launched 2026-09-06 02:52:32 UTC; verified `RUNNING`
+with all eight bank-extension workers started. The unchanged frozen-source and
+input checks passed before generation. Conservative projection: 8.78 hours.
+
+- Host/session: `deep-server-ts`, tmux `ll-goal045-reference64`.
+- Root: `/data/codex/scratch/goal045-full-bank-reference64-20260906-e8c08f1/`.
+- Probe `status`, `exit.status` and `run.log` once; end running wakes quietly.
+- On success retrieve compact `output/profiles.npz`, `run_summary.json`,
+  `seed_provenance.json`, and `reference_provenance.json`. Leave banks remote.
+- The two-hour `goal-045-completion-check` heartbeat now follows this run.
+
+- Completed 32768 reference root:
+  `/data/codex/scratch/goal045-full-bank-reference-20260906-e8c08f1/`.
+- Local bundles: `artifacts/goal045_execution/production16384/output` and
+  `artifacts/goal045_execution/reference32768/output`.
+- Local reproducible comparison and rare-history diagnosis:
+  `artifacts/goal045_execution/compare_full_banks.py`,
+  `artifacts/goal045_execution/diagnose_rank198.py`, and the reference directory.
+- The next reference must retain source `e8c08f1`, the full nested bank prefix,
+  all 250+250 history seeds, G201/H181, and all six biological cases. Verify
+  32768/65536 with the same recorded criteria and paired bootstrap indices.
+  Repeat the original four-history bank canary from the retained surfaces
+  (union LR<=10, truth LR, MLE and rho topology at cutoffs 2/5/10). Both the
+  canary and full-ensemble materiality criteria must pass before promotion.
+- On numerical agreement, document the accepted bank amendment, synthesize from
+  that bundle, obtain fresh independent final scientific review, and publish
+  exact reviewed report/figure paths. If it fails, diagnose before escalation.
+- Keep raw profiles and bulky banks outside Git. No new biological scope or
+  approval is needed for this numerical stage. Pause the heartbeat at completion
+  or a required human decision; simulation success alone does not close Goal 045.
 
 Four frozen timing histories (two calibration, two evaluation) now support the
 bank/grid canary, with all six cases kept paired. Original failed-run evidence

@@ -1,7 +1,7 @@
 # Goal 045: The Cost of Estimating Predator Spread Speed
 
-Status: production and 1000-bootstrap synthesis complete; wider-range rho
-materiality check and final scientific review pending.
+Status: production and synthesis complete; full 16384/32768 comparison fails
+two rho-cutoff materiality checks. Matched 65536 reference running; final review pending.
 Programme role: Arc 2C, Charter Pillar 2, selected joint-recovery bridge.
 
 ## Question and completion condition
@@ -408,3 +408,28 @@ can trigger diagnosis; a negative ecological result is not an implementation bug
   sizes. The heartbeat follows this run and will compare complete paired
   outputs before final scientific review. The optional predator-only full-
   ensemble screen is no longer needed for closure and has not been launched.
+
+- The complete 32768 reference finished successfully in 10749.6 seconds. All
+  provenance, seed, event and retained-canary checks reconciled. Full paired
+  comparison failed the recorded cutoff limit in usual_1 (+0.51923 LR) and
+  usual_3 (+0.51608); other observed support criteria passed. The same
+  calibration history 198 drives both failures. Primary effect contrasts and
+  their interpretation are stable. See [numerical-review.md](numerical-review.md)
+  and its compact JSON for the full diagnostic and paired bootstrap evidence.
+- Independent methodological review supports retaining the G201 grid and
+  explicitly reporting discrete-grid supports, with no continuum-endpoint
+  claim. It recommends the prescribed full matched 65536 reference against
+  32768. No bank promotion or acceptance-criterion change is authorized by the
+  numerical result itself. The observed 32768 runtime gives a conservative
+  next-run projection below nine hours, within the existing 24-hour boundary.
+- The full 65536 reference launched at 2026-09-06 02:52:32 UTC under
+  `/data/codex/scratch/goal045-full-bank-reference64-20260906-e8c08f1/`, tmux
+  `ll-goal045-reference64`. Frozen-source/input checks passed and all eight
+  4096-draw extension workers were verified running. The conservative runtime
+  projection is 8.78 hours. The runner preserves the complete 32768 prefix,
+  validates exact histories and profile hashes, saves its bank receipt before
+  campaign execution, and does not promote any bank automatically. Python/Bash
+  syntax and Ruff passed; a four-draw serial-versus-spawned-worker equivalence
+  check passed locally and on deep-server. Both original four-history bank
+  criteria and full-ensemble materiality criteria must pass before any 32768
+  amendment. The active two-hour heartbeat now follows this reference.
