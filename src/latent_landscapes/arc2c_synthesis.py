@@ -494,12 +494,11 @@ def _report(result: SynthesisResult) -> str:
     lines = [
         "# The cost of estimating predator spread speed",
         "",
-        f"Outcome: **{result.outcome}**. "
-        + (
-            "Full six-case production comparison."
-            if config.is_production
-            else "Reduced execution check only; not production scientific evidence."
-        ),
+        f"Automated synthesis classification: **{result.outcome}**. "
+        f"Six cases with {config.calibration_replicates} calibration and "
+        f"{config.validation_replicates} evaluation datasets per case. "
+        "This classification does not establish numerical acceptance or scientific closeout; "
+        "those require the separate numerical and scientific reviews recorded in Goal 045.",
         "",
         "## What was compared",
         "",
@@ -576,7 +575,9 @@ def _report(result: SynthesisResult) -> str:
             "still knows the generating condition: the experiment relaxes the process oracle, "
             "but does not establish field-ready calibration. Grid support is retained exactly; "
             "reported log width is log(upper/lower) across support extrema, with disconnected "
-            "components and boundary contacts reported separately.",
+            "components and boundary contacts reported separately. Endpoints, connectivity "
+            "and widths describe the discrete fitting grid; continuous-profile endpoints "
+            "have not been validated.",
             "",
             "| No-effect control | Analysis | False exclusions / datasets | "
             "Rate [95% Wilson interval] |",

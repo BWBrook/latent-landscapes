@@ -1,7 +1,8 @@
 # Goal 045: The Cost of Estimating Predator Spread Speed
 
-Status: production and synthesis complete; full 16384/32768 comparison fails
-two rho-cutoff materiality checks. Matched 65536 reference running; final review pending.
+Status: completed 65536 reference; original canary passes but wider-range rho
+cutoff criteria fail. Awaiting Barry's decision on the proposed primary-result
+closeout amendment. No bank promoted; heartbeat paused; scientific goal open.
 Programme role: Arc 2C, Charter Pillar 2, selected joint-recovery bridge.
 
 ## Question and completion condition
@@ -433,3 +434,21 @@ can trigger diagnosis; a negative ecological result is not an implementation bug
   check passed locally and on deep-server. Both original four-history bank
   criteria and full-ensemble materiality criteria must pass before any 32768
   amendment. The active two-hour heartbeat now follows this reference.
+- The 65536 reference completed at 2026-09-06 11:35 UTC, after 30965.1
+  campaign seconds. All provenance checks passed, including direct verification
+  of both bank prefixes. The original four-history bank canary passes all 24
+  comparisons, but wider-range cutoff changes fail in all three usual-speed
+  cases (+0.67085, +0.72610, +0.58645 LR). Other observed interval criteria pass.
+  The primary contrasts remain stable; diagnostic pseudo-count dilution is too
+  small to explain the tail shifts. Full evidence and a decision-grade audit
+  are in [numerical-decision.md](numerical-decision.md).
+- Independent scientific audit recommends an explicit human amendment: retain
+  the original 16384 primary result with three-bank sensitivity and narrow
+  claims, mark secondary rho calibration unresolved, and stop full-bank
+  escalation. A 131072 replay projects to 25.34 hours under the same conservative
+  rule and has not been launched. This recommendation does not itself amend
+  the contract or complete the goal. The heartbeat is paused pending Barry.
+- The report generator now distinguishes automatic synthesis classification
+  from scientific acceptance, states actual ensemble sizes for reference runs,
+  and explicitly describes discrete-grid supports. This is a presentation
+  correction; campaign kernels, profiles, statistics and thresholds are unchanged.

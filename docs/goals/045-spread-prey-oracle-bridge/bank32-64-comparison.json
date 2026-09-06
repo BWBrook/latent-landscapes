@@ -1,0 +1,1276 @@
+{
+  "source_commit": "e8c08f10f7b67118a85ee37770d8ee48ee2c213a",
+  "profiles_sha256": {
+    "32768": "17187f873fc45255557e0d72ff6bbdb3dd912a21c82cc340d1b844688d6c80d1",
+    "65536": "68cb9acc72e07589d6ab752841dba74313a1f1d9d4a297923f560d586f07d8ad"
+  },
+  "provenance_checks_pass": true,
+  "rho_log_grid_cell": 0.013862943611198863,
+  "rho_materiality": [
+    {
+      "condition": "usual_1",
+      "cutoff32": 44.536925165849425,
+      "cutoff64": 45.20777897741527,
+      "cutoff_change": 0.6708538115658484,
+      "max_endpoint_cells": 1,
+      "endpoint_changed_datasets": 23,
+      "component_changes": 0,
+      "boundary_changes": 0,
+      "coverage32": 0.96,
+      "coverage64": 0.964,
+      "coverage_count_change": 1,
+      "mean_logwidth_change": 0.001330842586675124,
+      "median_logwidth_change": 0.0,
+      "max_mle_cells": 1.0000000000000158,
+      "materiality_pass": false
+    },
+    {
+      "condition": "usual_3",
+      "cutoff32": 45.094737932512544,
+      "cutoff64": 45.82083997645259,
+      "cutoff_change": 0.7261020439400454,
+      "max_endpoint_cells": 1,
+      "endpoint_changed_datasets": 20,
+      "component_changes": 0,
+      "boundary_changes": 0,
+      "coverage32": 0.964,
+      "coverage64": 0.964,
+      "coverage_count_change": 0,
+      "mean_logwidth_change": 0.0011090354888959042,
+      "median_logwidth_change": 0.0,
+      "max_mle_cells": 1.0,
+      "materiality_pass": false
+    },
+    {
+      "condition": "usual_5",
+      "cutoff32": 45.19271488504728,
+      "cutoff64": 45.77916362986389,
+      "cutoff_change": 0.5864487448166074,
+      "max_endpoint_cells": 1,
+      "endpoint_changed_datasets": 27,
+      "component_changes": 0,
+      "boundary_changes": 0,
+      "coverage32": 0.964,
+      "coverage64": 0.964,
+      "coverage_count_change": 0,
+      "mean_logwidth_change": 0.001552649684454288,
+      "median_logwidth_change": 0.0,
+      "max_mle_cells": 1.0000000000000158,
+      "materiality_pass": false
+    },
+    {
+      "condition": "slow_1",
+      "cutoff32": 19.989549201665795,
+      "cutoff64": 20.159723396585605,
+      "cutoff_change": 0.17017419491980945,
+      "max_endpoint_cells": 1,
+      "endpoint_changed_datasets": 15,
+      "component_changes": 0,
+      "boundary_changes": 0,
+      "coverage32": 0.924,
+      "coverage64": 0.924,
+      "coverage_count_change": 0,
+      "mean_logwidth_change": 0.0003881624211135859,
+      "median_logwidth_change": 0.0,
+      "max_mle_cells": 1.0000000000000158,
+      "materiality_pass": true
+    },
+    {
+      "condition": "slow_3",
+      "cutoff32": 19.949322021768694,
+      "cutoff64": 20.11820726729252,
+      "cutoff_change": 0.16888524552382478,
+      "max_endpoint_cells": 1,
+      "endpoint_changed_datasets": 20,
+      "component_changes": 0,
+      "boundary_changes": 0,
+      "coverage32": 0.924,
+      "coverage64": 0.924,
+      "coverage_count_change": 0,
+      "mean_logwidth_change": 0.0005545177444479799,
+      "median_logwidth_change": 0.0,
+      "max_mle_cells": 1.0000000000000158,
+      "materiality_pass": true
+    },
+    {
+      "condition": "slow_5",
+      "cutoff32": 20.220867660761087,
+      "cutoff64": 20.26131052873734,
+      "cutoff_change": 0.04044286797625318,
+      "max_endpoint_cells": 1,
+      "endpoint_changed_datasets": 13,
+      "component_changes": 0,
+      "boundary_changes": 0,
+      "coverage32": 0.924,
+      "coverage64": 0.924,
+      "coverage_count_change": 0,
+      "mean_logwidth_change": -0.0001663553233343662,
+      "median_logwidth_change": 0.0,
+      "max_mle_cells": 1.000000000000009,
+      "materiality_pass": true
+    }
+  ],
+  "all_observed_rho_materiality_pass": false,
+  "rho_paired_bootstrap": [
+    {
+      "condition": "usual_1",
+      "cutoff": {
+        "bounds32": [
+          37.30077202885468,
+          61.54428427687162
+        ],
+        "bounds64": [
+          37.26786693642816,
+          61.330027719306145
+        ],
+        "paired_change_bounds": [
+          -0.29586073899508847,
+          0.7861016077504246
+        ],
+        "max_absolute_paired_change": 0.8521552475976932
+      },
+      "coverage": {
+        "bounds32": [
+          0.904,
+          0.988
+        ],
+        "bounds64": [
+          0.9,
+          0.988
+        ],
+        "paired_change_bounds": [
+          -0.008000000000000007,
+          0.008000000000000007
+        ],
+        "max_absolute_paired_change": 0.020000000000000018
+      },
+      "mean_log_interval_width": {
+        "bounds32": [
+          0.16280502347555886,
+          0.2129916519368212
+        ],
+        "bounds64": [
+          0.16219505395666614,
+          0.2124911996724569
+        ],
+        "paired_change_bounds": [
+          -0.0009981319400063082,
+          0.0018299085566782231
+        ],
+        "max_absolute_paired_change": 0.002273522752236634
+      },
+      "median_log_interval_width": {
+        "bounds32": [
+          0.166355323334387,
+          0.20794415416798379
+        ],
+        "bounds64": [
+          0.1663553233343868,
+          0.20794415416798379
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.013862943611198664
+        ],
+        "max_absolute_paired_change": 0.01386294361119883
+      },
+      "connected": {
+        "bounds32": [
+          1.0,
+          1.0
+        ],
+        "bounds64": [
+          1.0,
+          1.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      },
+      "boundary_contact": {
+        "bounds32": [
+          0.0,
+          0.0
+        ],
+        "bounds64": [
+          0.0,
+          0.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      }
+    },
+    {
+      "condition": "usual_3",
+      "cutoff": {
+        "bounds32": [
+          37.59021053282231,
+          61.97044254223056
+        ],
+        "bounds64": [
+          37.55872738688231,
+          61.750577892020374
+        ],
+        "paired_change_bounds": [
+          -0.22845966906015747,
+          0.7846376583825077
+        ],
+        "max_absolute_paired_change": 0.8525736195642821
+      },
+      "coverage": {
+        "bounds32": [
+          0.904,
+          0.988
+        ],
+        "bounds64": [
+          0.904,
+          0.988
+        ],
+        "paired_change_bounds": [
+          -0.008000000000000007,
+          0.01200000000000001
+        ],
+        "max_absolute_paired_change": 0.02400000000000002
+      },
+      "mean_log_interval_width": {
+        "bounds32": [
+          0.16330408944556205,
+          0.2132148453289615
+        ],
+        "bounds64": [
+          0.16280640976992003,
+          0.21244129307545662
+        ],
+        "paired_change_bounds": [
+          -0.000942680165561538,
+          0.0016635532333438285
+        ],
+        "max_absolute_paired_change": 0.0019962638800126165
+      },
+      "median_log_interval_width": {
+        "bounds32": [
+          0.166355323334387,
+          0.20794415416798379
+        ],
+        "bounds64": [
+          0.166355323334387,
+          0.20794415416798379
+        ],
+        "paired_change_bounds": [
+          -1.942890293094024e-16,
+          0.013862943611198664
+        ],
+        "max_absolute_paired_change": 0.01386294361119883
+      },
+      "connected": {
+        "bounds32": [
+          1.0,
+          1.0
+        ],
+        "bounds64": [
+          1.0,
+          1.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      },
+      "boundary_contact": {
+        "bounds32": [
+          0.0,
+          0.0
+        ],
+        "bounds64": [
+          0.0,
+          0.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      }
+    },
+    {
+      "condition": "usual_5",
+      "cutoff": {
+        "bounds32": [
+          37.495395586994164,
+          62.734578393498396
+        ],
+        "bounds64": [
+          37.46106456941288,
+          62.51065824237139
+        ],
+        "paired_change_bounds": [
+          -0.22392015112700392,
+          0.8068417251033679
+        ],
+        "max_absolute_paired_change": 0.8640847281549213
+      },
+      "coverage": {
+        "bounds32": [
+          0.904,
+          0.988
+        ],
+        "bounds64": [
+          0.904,
+          0.988
+        ],
+        "paired_change_bounds": [
+          -0.008000000000000007,
+          0.0040000000000000036
+        ],
+        "max_absolute_paired_change": 0.020000000000000018
+      },
+      "mean_log_interval_width": {
+        "bounds32": [
+          0.16230595750555574,
+          0.21421020468024557
+        ],
+        "bounds64": [
+          0.16202453975024841,
+          0.21349071790682433
+        ],
+        "paired_change_bounds": [
+          -0.00088722839111674,
+          0.0019408121055678462
+        ],
+        "max_absolute_paired_change": 0.00238442630112623
+      },
+      "median_log_interval_width": {
+        "bounds32": [
+          0.166355323334387,
+          0.20794415416798379
+        ],
+        "bounds64": [
+          0.1663553233343868,
+          0.20794415416798379
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.01386294361119872
+        ],
+        "max_absolute_paired_change": 0.01386294361119883
+      },
+      "connected": {
+        "bounds32": [
+          1.0,
+          1.0
+        ],
+        "bounds64": [
+          1.0,
+          1.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      },
+      "boundary_contact": {
+        "bounds32": [
+          0.0,
+          0.0
+        ],
+        "bounds64": [
+          0.0,
+          0.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      }
+    },
+    {
+      "condition": "slow_1",
+      "cutoff": {
+        "bounds32": [
+          14.239994286713,
+          32.03424155519156
+        ],
+        "bounds64": [
+          14.221436593033559,
+          32.58267775692343
+        ],
+        "paired_change_bounds": [
+          -0.17553486215342673,
+          0.5548670360835786
+        ],
+        "max_absolute_paired_change": 0.7710474183875249
+      },
+      "coverage": {
+        "bounds32": [
+          0.8799,
+          0.9680999999999998
+        ],
+        "bounds64": [
+          0.88,
+          0.972
+        ],
+        "paired_change_bounds": [
+          -0.019999999999999907,
+          0.008000000000000007
+        ],
+        "max_absolute_paired_change": 0.03599999999999992
+      },
+      "mean_log_interval_width": {
+        "bounds32": [
+          0.16568712945232714,
+          0.25397051325152514
+        ],
+        "bounds64": [
+          0.16524628784549103,
+          0.25574497003375857
+        ],
+        "paired_change_bounds": [
+          -0.001608101458899086,
+          0.002828040496684614
+        ],
+        "max_absolute_paired_change": 0.0038816242111356924
+      },
+      "median_log_interval_width": {
+        "bounds32": [
+          0.166355323334387,
+          0.24953298500158053
+        ],
+        "bounds64": [
+          0.166355323334387,
+          0.26339592861277905
+        ],
+        "paired_change_bounds": [
+          -0.006931471805599333,
+          0.013862943611198691
+        ],
+        "max_absolute_paired_change": 0.013862943611198886
+      },
+      "connected": {
+        "bounds32": [
+          1.0,
+          1.0
+        ],
+        "bounds64": [
+          1.0,
+          1.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      },
+      "boundary_contact": {
+        "bounds32": [
+          0.0,
+          0.0
+        ],
+        "bounds64": [
+          0.0,
+          0.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      }
+    },
+    {
+      "condition": "slow_3",
+      "cutoff": {
+        "bounds32": [
+          14.276256601194973,
+          32.0506666974436
+        ],
+        "bounds64": [
+          14.228032228277698,
+          32.59542027918974
+        ],
+        "paired_change_bounds": [
+          -0.1860851742228533,
+          0.5542027119713566
+        ],
+        "max_absolute_paired_change": 0.7685695623492848
+      },
+      "coverage": {
+        "bounds32": [
+          0.8799,
+          0.9680999999999998
+        ],
+        "bounds64": [
+          0.8799,
+          0.972
+        ],
+        "paired_change_bounds": [
+          -0.01200000000000001,
+          0.01200000000000001
+        ],
+        "max_absolute_paired_change": 0.03200000000000003
+      },
+      "mean_log_interval_width": {
+        "bounds32": [
+          0.1656330639722435,
+          0.25424777212374905
+        ],
+        "bounds64": [
+          0.16540987058010317,
+          0.2558004218082034
+        ],
+        "paired_change_bounds": [
+          -0.0013862943611199219,
+          0.0029943958200189255
+        ],
+        "max_absolute_paired_change": 0.0038261724366908667
+      },
+      "median_log_interval_width": {
+        "bounds32": [
+          0.166355323334387,
+          0.24970627179672034
+        ],
+        "bounds64": [
+          0.166355323334387,
+          0.26339592861277905
+        ],
+        "paired_change_bounds": [
+          -0.007104758600739306,
+          0.013862943611198691
+        ],
+        "max_absolute_paired_change": 0.013862943611198858
+      },
+      "connected": {
+        "bounds32": [
+          1.0,
+          1.0
+        ],
+        "bounds64": [
+          1.0,
+          1.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      },
+      "boundary_contact": {
+        "bounds32": [
+          0.0,
+          0.0
+        ],
+        "bounds64": [
+          0.0,
+          0.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      }
+    },
+    {
+      "condition": "slow_5",
+      "cutoff": {
+        "bounds32": [
+          14.227080462161666,
+          32.184977100781
+        ],
+        "bounds64": [
+          14.165377032035394,
+          32.85743975280593
+        ],
+        "paired_change_bounds": [
+          -0.1758004298153537,
+          0.672462652024933
+        ],
+        "max_absolute_paired_change": 0.7658925761459159
+      },
+      "coverage": {
+        "bounds32": [
+          0.876,
+          0.9680999999999998
+        ],
+        "bounds64": [
+          0.872,
+          0.972
+        ],
+        "paired_change_bounds": [
+          -0.008000000000000007,
+          0.008000000000000007
+        ],
+        "max_absolute_paired_change": 0.02400000000000002
+      },
+      "mean_log_interval_width": {
+        "bounds32": [
+          0.1646876112179597,
+          0.25419370664366536
+        ],
+        "bounds64": [
+          0.16385999348437116,
+          0.25641177762145717
+        ],
+        "paired_change_bounds": [
+          -0.0012753908122302704,
+          0.0031621374377144656
+        ],
+        "max_absolute_paired_change": 0.004325238406694049
+      },
+      "median_log_interval_width": {
+        "bounds32": [
+          0.166355323334387,
+          0.26339592861277905
+        ],
+        "bounds64": [
+          0.166355323334387,
+          0.26339592861277905
+        ],
+        "paired_change_bounds": [
+          -0.006931471805599332,
+          0.013862943611198525
+        ],
+        "max_absolute_paired_change": 0.013862943611198691
+      },
+      "connected": {
+        "bounds32": [
+          1.0,
+          1.0
+        ],
+        "bounds64": [
+          1.0,
+          1.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      },
+      "boundary_contact": {
+        "bounds32": [
+          0.0,
+          0.0
+        ],
+        "bounds64": [
+          0.0,
+          0.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      }
+    }
+  ],
+  "primary_effect_changes": [
+    {
+      "condition": "usual_1",
+      "metric": "mean_absolute_log_error",
+      "estimate32": 0.00021457365752261537,
+      "estimate64": 0.00027041784309883576,
+      "bounds32": [
+        -0.001759659584790719,
+        0.0021545614007733153
+      ],
+      "bounds64": [
+        -0.0016215716868716375,
+        0.002169549411411987
+      ],
+      "numerical_change_bounds": [
+        -0.00045288393579415165,
+        0.00045120206019524543
+      ]
+    },
+    {
+      "condition": "usual_1",
+      "metric": "mean_log_interval_width",
+      "estimate32": -0.022555421972879852,
+      "estimate64": -0.022555421972879852,
+      "bounds32": [
+        -0.040042234111955975,
+        0.0272503340889501
+      ],
+      "bounds64": [
+        -0.040077099335166434,
+        0.02718112911415097
+      ],
+      "numerical_change_bounds": [
+        -0.0008636997868338436,
+        0.000539125071456259
+      ]
+    },
+    {
+      "condition": "usual_1",
+      "metric": "coverage",
+      "estimate32": -0.01200000000000001,
+      "estimate64": -0.01200000000000001,
+      "bounds32": [
+        -0.02400000000000002,
+        0.01200000000000001
+      ],
+      "bounds64": [
+        -0.02400000000000002,
+        0.01200000000000001
+      ],
+      "numerical_change_bounds": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "condition": "usual_1",
+      "metric": "no_effect_exclusion",
+      "estimate32": 0.011999999999999997,
+      "estimate64": 0.011999999999999997,
+      "bounds32": [
+        -0.012,
+        0.024000000000000007
+      ],
+      "bounds64": [
+        -0.012,
+        0.024000000000000007
+      ],
+      "numerical_change_bounds": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "condition": "usual_1",
+      "metric": "conditional_prey_advantage",
+      "estimate32": 2.847855818812339e-05,
+      "estimate64": 1.7409046110748218e-05,
+      "bounds32": [
+        -4.820631748899463e-05,
+        0.00010223881833846456
+      ],
+      "bounds64": [
+        -5.687686258385204e-05,
+        9.736948930579085e-05
+      ],
+      "numerical_change_bounds": [
+        -3.7505325367344674e-05,
+        4.591270331796271e-06
+      ]
+    },
+    {
+      "condition": "usual_3",
+      "metric": "mean_absolute_log_error",
+      "estimate32": 0.00016296966375428656,
+      "estimate64": 0.00023504368576499068,
+      "bounds32": [
+        -0.002103474328058898,
+        0.002567978346207619
+      ],
+      "bounds64": [
+        -0.002021284715259191,
+        0.0026012051653804776
+      ],
+      "numerical_change_bounds": [
+        0.0,
+        0.00021622206603216787
+      ]
+    },
+    {
+      "condition": "usual_3",
+      "metric": "mean_log_interval_width",
+      "estimate32": -0.018504003134405478,
+      "estimate64": -0.017723952700547718,
+      "bounds32": [
+        -0.0237174568984461,
+        0.053934853957586536
+      ],
+      "bounds64": [
+        -0.023838918835617083,
+        0.05375729964578694
+      ],
+      "numerical_change_bounds": [
+        -0.0009717108183014577,
+        0.0009976587758876332
+      ]
+    },
+    {
+      "condition": "usual_3",
+      "metric": "coverage",
+      "estimate32": 0.0,
+      "estimate64": 0.0,
+      "bounds32": [
+        -0.008000000000000007,
+        0.02399999999999991
+      ],
+      "bounds64": [
+        -0.008000000000000007,
+        0.02399999999999991
+      ],
+      "numerical_change_bounds": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "condition": "usual_3",
+      "metric": "no_effect_exclusion",
+      "estimate32": 0.016000000000000014,
+      "estimate64": 0.016000000000000014,
+      "bounds32": [
+        -0.03200000000000003,
+        0.02400000000000002
+      ],
+      "bounds64": [
+        -0.03200000000000003,
+        0.02400000000000002
+      ],
+      "numerical_change_bounds": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "condition": "usual_3",
+      "metric": "conditional_prey_advantage",
+      "estimate32": 0.0001517320425376209,
+      "estimate64": 0.00014576203413633332,
+      "bounds32": [
+        -0.00011725388150158766,
+        0.0004206073416492548
+      ],
+      "bounds64": [
+        -0.0001280551741940597,
+        0.0004162978767459127
+      ],
+      "numerical_change_bounds": [
+        -1.6193936170983378e-05,
+        1.2837208269063367e-06
+      ]
+    },
+    {
+      "condition": "usual_5",
+      "metric": "mean_absolute_log_error",
+      "estimate32": 0.00017869722278110456,
+      "estimate64": 6.261606274909903e-05,
+      "bounds32": [
+        -0.0027574604712238297,
+        0.0032380780974049133
+      ],
+      "bounds64": [
+        -0.0028025207067184322,
+        0.0031363831375850184
+      ],
+      "numerical_change_bounds": [
+        -0.0003571576640613146,
+        0.00010255673602127049
+      ]
+    },
+    {
+      "condition": "usual_5",
+      "metric": "mean_log_interval_width",
+      "estimate32": -0.0102780865301636,
+      "estimate64": -0.010268855202074989,
+      "bounds32": [
+        -0.030758985668551418,
+        0.03900563886725943
+      ],
+      "bounds64": [
+        -0.03081125330396039,
+        0.0392590455089649
+      ],
+      "numerical_change_bounds": [
+        -0.0004934902117343598,
+        0.000973126811682906
+      ]
+    },
+    {
+      "condition": "usual_5",
+      "metric": "coverage",
+      "estimate32": 0.0,
+      "estimate64": 0.0,
+      "bounds32": [
+        -0.03600000000000003,
+        0.028000000000000025
+      ],
+      "bounds64": [
+        -0.03200000000000003,
+        0.028000000000000025
+      ],
+      "numerical_change_bounds": [
+        -0.008000000000000007,
+        0.0040000000000000036
+      ]
+    },
+    {
+      "condition": "usual_5",
+      "metric": "no_effect_exclusion",
+      "estimate32": 0.0,
+      "estimate64": 0.0,
+      "bounds32": [
+        0.0,
+        0.0
+      ],
+      "bounds64": [
+        -0.0040000000000000036,
+        0.0
+      ],
+      "numerical_change_bounds": [
+        -0.0040000000000000036,
+        0.0
+      ]
+    },
+    {
+      "condition": "usual_5",
+      "metric": "conditional_prey_advantage",
+      "estimate32": 0.00023472018766568237,
+      "estimate64": 0.00023493577680881728,
+      "bounds32": [
+        -0.0002173059466389484,
+        0.0007242615136013839
+      ],
+      "bounds64": [
+        -0.00022278369609717504,
+        0.0007327522812607335
+      ],
+      "numerical_change_bounds": [
+        -2.4015318460675338e-05,
+        2.613083382893774e-05
+      ]
+    },
+    {
+      "condition": "slow_1",
+      "metric": "mean_absolute_log_error",
+      "estimate32": 0.0005246754498276496,
+      "estimate64": 0.0001574178584631547,
+      "bounds32": [
+        -0.0013735589515932712,
+        0.0025596168042642856
+      ],
+      "bounds64": [
+        -0.0017424511213163323,
+        0.0021984685671671265
+      ],
+      "numerical_change_bounds": [
+        -0.0009131317908232787,
+        0.0
+      ]
+    },
+    {
+      "condition": "slow_1",
+      "metric": "mean_log_interval_width",
+      "estimate32": -0.013241875279013104,
+      "estimate64": -0.013108463041147544,
+      "bounds32": [
+        -0.021529917274445524,
+        0.0334310145751381
+      ],
+      "bounds64": [
+        -0.021445355301459888,
+        0.0332187989139791
+      ],
+      "numerical_change_bounds": [
+        -0.0013625492870769807,
+        0.0006025529932262269
+      ]
+    },
+    {
+      "condition": "slow_1",
+      "metric": "coverage",
+      "estimate32": 0.0,
+      "estimate64": 0.0,
+      "bounds32": [
+        -0.01200000000000001,
+        0.0040000000000000036
+      ],
+      "bounds64": [
+        -0.01200000000000001,
+        0.0040000000000000036
+      ],
+      "numerical_change_bounds": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "condition": "slow_1",
+      "metric": "no_effect_exclusion",
+      "estimate32": 0.0,
+      "estimate64": 0.0,
+      "bounds32": [
+        -0.003999999999999997,
+        0.012000000000000004
+      ],
+      "bounds64": [
+        -0.003999999999999997,
+        0.012000000000000004
+      ],
+      "numerical_change_bounds": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "condition": "slow_1",
+      "metric": "conditional_prey_advantage",
+      "estimate32": 8.004810790447137e-06,
+      "estimate64": 2.6946529134679183e-06,
+      "bounds32": [
+        -5.323431037809959e-05,
+        6.381406453626823e-05
+      ],
+      "bounds64": [
+        -6.013963221384861e-05,
+        5.7858593828165874e-05
+      ],
+      "numerical_change_bounds": [
+        -1.6171550886556232e-05,
+        2.2758655787505254e-06
+      ]
+    },
+    {
+      "condition": "slow_3",
+      "metric": "mean_absolute_log_error",
+      "estimate32": -0.00010597439690296362,
+      "estimate64": -9.702325829413772e-05,
+      "bounds32": [
+        -0.0024320827693545878,
+        0.0021573270600843105
+      ],
+      "bounds64": [
+        -0.002438005768732565,
+        0.0022063786375303234
+      ],
+      "numerical_change_bounds": [
+        -0.000510033591947856,
+        0.0005453523188534814
+      ]
+    },
+    {
+      "condition": "slow_3",
+      "metric": "mean_log_interval_width",
+      "estimate32": 0.015218107658649949,
+      "estimate64": 0.015845797457792354,
+      "bounds32": [
+        -0.021364648263183673,
+        0.048288903957639635
+      ],
+      "bounds64": [
+        -0.02094480300331381,
+        0.047881348589749066
+      ],
+      "numerical_change_bounds": [
+        -0.0030590680792529855,
+        0.0009381099050226486
+      ]
+    },
+    {
+      "condition": "slow_3",
+      "metric": "coverage",
+      "estimate32": -0.0040000000000000036,
+      "estimate64": -0.0040000000000000036,
+      "bounds32": [
+        -0.01999999999999991,
+        0.01200000000000001
+      ],
+      "bounds64": [
+        -0.016000000000000014,
+        0.01200000000000001
+      ],
+      "numerical_change_bounds": [
+        -0.01200000000000001,
+        0.0040000000000000036
+      ]
+    },
+    {
+      "condition": "slow_3",
+      "metric": "no_effect_exclusion",
+      "estimate32": -0.020000000000000018,
+      "estimate64": -0.020000000000000018,
+      "bounds32": [
+        -0.028000000000000025,
+        0.02399999999999991
+      ],
+      "bounds64": [
+        -0.028000000000000025,
+        0.016000000000000014
+      ],
+      "numerical_change_bounds": [
+        -0.008000000000000007,
+        0.0
+      ]
+    },
+    {
+      "condition": "slow_3",
+      "metric": "conditional_prey_advantage",
+      "estimate32": -1.5854649532645593e-05,
+      "estimate64": -1.3636780295291084e-06,
+      "bounds32": [
+        -0.00022100452293905866,
+        0.00019529693018419624
+      ],
+      "bounds64": [
+        -0.000203856789211961,
+        0.00020878934357953412
+      ],
+      "numerical_change_bounds": [
+        -2.4935094619686883e-06,
+        3.200164226971375e-05
+      ]
+    },
+    {
+      "condition": "slow_5",
+      "metric": "mean_absolute_log_error",
+      "estimate32": -0.001973108624810316,
+      "estimate64": -0.00199905828449759,
+      "bounds32": [
+        -0.004342107851731948,
+        0.00026749384407910993
+      ],
+      "bounds64": [
+        -0.004343968838385862,
+        0.00021831440872048917
+      ],
+      "numerical_change_bounds": [
+        -0.0002665521215445096,
+        0.00021795891842448233
+      ]
+    },
+    {
+      "condition": "slow_5",
+      "metric": "mean_log_interval_width",
+      "estimate32": -0.021945228835754893,
+      "estimate64": -0.02168346099137941,
+      "bounds32": [
+        -0.039432408333815554,
+        0.04400169510732695
+      ],
+      "bounds64": [
+        -0.03924013047546017,
+        0.037836227164315804
+      ],
+      "numerical_change_bounds": [
+        -0.006662999322426044,
+        0.0007567387119044365
+      ]
+    },
+    {
+      "condition": "slow_5",
+      "metric": "coverage",
+      "estimate32": -0.007999999999999896,
+      "estimate64": -0.007999999999999896,
+      "bounds32": [
+        -0.015999999999999903,
+        0.01200000000000001
+      ],
+      "bounds64": [
+        -0.015999999999999903,
+        0.01200000000000001
+      ],
+      "numerical_change_bounds": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "condition": "slow_5",
+      "metric": "no_effect_exclusion",
+      "estimate32": 0.0040000000000000036,
+      "estimate64": 0.0040000000000000036,
+      "bounds32": [
+        -0.0040000000000000036,
+        0.020000000000000018
+      ],
+      "bounds64": [
+        -0.0040000000000000036,
+        0.020000000000000018
+      ],
+      "numerical_change_bounds": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "condition": "slow_5",
+      "metric": "conditional_prey_advantage",
+      "estimate32": 7.657120729321482e-05,
+      "estimate64": 8.93700457262267e-05,
+      "bounds32": [
+        -0.00022976626547135097,
+        0.00036949956662651927
+      ],
+      "bounds64": [
+        -0.00021598571090883332,
+        0.0003901084541880874
+      ],
+      "numerical_change_bounds": [
+        -3.8515333123073646e-06,
+        2.925360498753099e-05
+      ]
+    }
+  ],
+  "effect_cutoffs32": [
+    [
+      2.8861090523428174,
+      2.661869645297429
+    ],
+    [
+      4.013509267526388,
+      3.851711588800299
+    ],
+    [
+      3.072761958769206,
+      2.97985999388402
+    ],
+    [
+      3.2340659304995825,
+      3.102835472153629
+    ],
+    [
+      4.522890597955211,
+      4.611021946916935
+    ],
+    [
+      4.01655063175167,
+      3.8607140979358974
+    ]
+  ],
+  "effect_cutoffs64": [
+    [
+      2.886329632793604,
+      2.661470795284913
+    ],
+    [
+      4.011705223826084,
+      3.8549452263446256
+    ],
+    [
+      3.0719922615157884,
+      2.979083231549339
+    ],
+    [
+      3.2319286881472635,
+      3.102089799097712
+    ],
+    [
+      4.520263519075797,
+      4.614122372839802
+    ],
+    [
+      4.012684818499565,
+      3.858514199916044
+    ]
+  ],
+  "reference_runtime_seconds": {
+    "bank": 0.36963542999728816,
+    "calibration": 879.8955557309964,
+    "integration": 29255.93123412,
+    "total": 30965.137486227002,
+    "validation": 827.2557882330002
+  },
+  "note": "Bootstrap uses identical seeds/indices across banks; reference is nested numerical sensitivity, not independent replication."
+}

@@ -2,109 +2,59 @@
 
 ## Current execution update: 6 September 2026 (Hobart)
 
-The earlier failed-preflight snapshot below is historical. Bounded diagnosis
-identified rho-grid resolution as the leading numerical issue. The repaired
-201-point grid preserves the scientific design and is documented in Goal 045.
-Numerical-check source `ce368b36824b51b859e1136b60c95fe4b9d35a15` was frozen and pushed;
-17 relevant tests, Ruff and strict mypy passed.
+**Goal 045 is awaiting Barry's scientific decision. All remote computation has
+finished. The heartbeat is paused. No bank has been promoted and the goal is
+not scientifically closed.**
 
-The repaired-grid workflow stopped at `preflight_gate` at 2026-09-05 16:23 UTC.
-All four-history grid checks passed (maximum LL gain 0.0741); one shared
-calibration predator history failed the bank spread-profile LR tolerance
-(1.012 versus 0.5). That workflow did not start production. Its evidence is at:
+Read the [decision brief](docs/goals/045-spread-prey-oracle-bridge/numerical-decision.md)
+and [Goal 045](docs/goals/045-spread-prey-oracle-bridge/Goal.md) before continuing.
+The full 65536-draw reference completed successfully at 2026-09-06 11:35 UTC.
+It passed the original four-history likelihood checks, but the full-ensemble
+rho-cutoff criterion failed in all three usual-speed cases: +0.67085, +0.72610
+and +0.58645 LR between 32768 and 65536, against the unchanged 0.5 limit.
+Other observed interval criteria passed. Direct bank-prefix hashes, histories,
+event diagnostics and source provenance reconciled.
 
-- Host: `deep-server-ts`; original tmux session `ll-goal045-rho201` has ended.
-- Run root: `/data/codex/artifacts/goal045-rho201-20260906-ce368b3/`.
-- Status: `workflow.status`, `workflow.stage`, `workflow.exit.status`.
-- Evidence: `timing/`, `numerical_canary.json`, `numerical_canary.npz`,
-  `preflight_gate.log`. Production `output/` is absent.
+The primary paired effect result is stable across all three banks. An independent
+scientific auditor reconstructed all 30 contrasts and bootstrap intervals, and
+recommends a human amendment: retain the original 16384 primary result with the
+three-bank sensitivity analysis; mark secondary rho cutoff/coverage/precision
+numerically unresolved; make no equivalence or general speed-recovery claim.
+This is a recommendation, not an approved closeout. Both analyses remain weak
+in several cases and usual_5 has 91.6% effect coverage in both lanes.
 
-The nested-bank predator-marginal screen completed at 2026-09-05 16:50 UTC.
-Candidate 16384 versus reference 32768 passed the screen's LR and MLE limits:
-maximum profile change 0.35357 and truth-LR change 0.18985, with unchanged MLEs.
-The full bank and profile checksums were independently verified. Bank evidence:
+A further full doubling projects to 25.34 hours and was not launched. Do not
+promote a bank, relax a numerical limit, or declare completion automatically.
+If Barry approves the documented amendment, finalize the report and figures
+under those exact claims, perform the focused final review, publish the exact
+accepted paths and close Goal 045. If Barry instead requires accepted rho
+inference, agree the bounded numerical-method tranche before new heavy work.
 
-- Root: `/data/codex/scratch/goal045-bank-convergence-20260906-ce368b3/`.
-- Inspect `output/predator_bank_convergence.json`,
-  `output/predator_profiles.npz` and `output/bank_provenance.json`; preserve and
-  reuse `output/base_arrivals_32768.npy`. These are diagnostic predator-only
-  profiles over all 201 rho values and all four paired timing histories.
+Evidence locations:
 
-The full joint bank/grid check completed at 2026-09-05 19:15 UTC. All 24
-numerical and rho-topology checks passed. The largest bank profile-LR change
-was 0.3592 and the largest grid LL gain 0.0876. Saved-array checks reproduced
-the LR comparisons and no-effect factorisation independently. Evidence:
+- Frozen campaign source: `e8c08f10f7b67118a85ee37770d8ee48ee2c213a`.
+- Original production: remote
+  `/data/codex/artifacts/goal045-production-16384-20260906-e8c08f1/`;
+  local `artifacts/goal045_execution/production16384/`.
+- Completed 32768 reference: remote
+  `/data/codex/scratch/goal045-full-bank-reference-20260906-e8c08f1/`;
+  local `artifacts/goal045_execution/reference32768/`.
+- Completed 65536 reference: remote
+  `/data/codex/scratch/goal045-full-bank-reference64-20260906-e8c08f1/`;
+  local `artifacts/goal045_execution/reference65536/`.
+- Compact comparison JSON/CSV and numerical decision are tracked beside Goal.md.
+  Reproducible comparison, canary and diagnosis scripts remain in the local
+  execution directory and the corresponding remote reference root. Raw profiles
+  and banks remain outside Git.
+- The production synthesis is regenerated locally with explicit wording that
+  `bridge_complete` is an automatic classification, not scientific acceptance.
+  Grid supports are discrete; continuous-profile endpoints are not validated.
+- `goal-045-completion-check` is paused pending the human decision. Do not restart
+  it solely because the remote tmux session has ended; the reference succeeded.
 
-- Root: `/data/codex/scratch/goal045-joint-bank-check-20260906-ce368b3/`.
-- Inspect `output/joint_bank_convergence.json` and `.npz`, plus
-  `output/original_joint.npz`. Computational success is distinct from the
-  report's numerical acceptance fields; review both numerical and topology
-  results before advancing.
-- This check reuses the validated bank, evaluates both 16384 and 32768 over
-  all 201 rho candidates and all 181 effects for the four histories/six cases,
-  and checks 16384-draw rho midpoints in the supported windows. Original limits
-  are unchanged; rho topology/endpoints are checked at LR 2, 5 and 10.
-
-The 16384-draw production completed successfully in 75 minutes from source
-`e8c08f10f7b67118a85ee37770d8ee48ee2c213a`. All invariants, seed/provenance
-checks and saved canary surfaces reconciled. The 1000-bootstrap synthesis is
-complete locally under `artifacts/goal045_execution/production16384/synthesis`.
-
-- Root: `/data/codex/artifacts/goal045-production-16384-20260906-e8c08f1/`.
-- Candidate data: `artifacts/goal045_execution/production16384/output` locally.
-- Effect cutoffs and bootstrap bounds are below LR 10. Rho cutoffs are about
-  44 at usual speed and 20 at half speed. The wider-range bank discrepancy is
-  inside support, with observed canary endpoints unchanged; full-ensemble
-  materiality checks are required before acceptance.
-
-**Latest numerical decision:** the full matched 32768 reference completed in
-2.99 hours. All provenance and retained-canary surfaces reconciled, but the
-recorded 0.5-LR cutoff materiality criterion failed in usual_1 (+0.51923) and
-usual_3 (+0.51608), driven by the same calibration history 198. All observed
-rho topology, boundary, endpoint, coverage and width criteria passed; primary
-effect contrasts remain stable. The result is still scientifically pending.
-See [the numerical review](docs/goals/045-spread-prey-oracle-bridge/numerical-review.md)
-and its compact paired-comparison JSON.
-
-The prescribed next comparison is full matched 32768 versus 65536. Independent
-methodological review supports this complete replay and retaining G201, with
-speed intervals described as discrete-grid supports. Do not add a G401 run or
-claim continuous-profile endpoint validation. No bank is promoted automatically.
-
-**Active reference:** launched 2026-09-06 02:52:32 UTC; verified `RUNNING`
-with all eight bank-extension workers started. The unchanged frozen-source and
-input checks passed before generation. Conservative projection: 8.78 hours.
-
-- Host/session: `deep-server-ts`, tmux `ll-goal045-reference64`.
-- Root: `/data/codex/scratch/goal045-full-bank-reference64-20260906-e8c08f1/`.
-- Probe `status`, `exit.status` and `run.log` once; end running wakes quietly.
-- On success retrieve compact `output/profiles.npz`, `run_summary.json`,
-  `seed_provenance.json`, and `reference_provenance.json`. Leave banks remote.
-- The two-hour `goal-045-completion-check` heartbeat now follows this run.
-
-- Completed 32768 reference root:
-  `/data/codex/scratch/goal045-full-bank-reference-20260906-e8c08f1/`.
-- Local bundles: `artifacts/goal045_execution/production16384/output` and
-  `artifacts/goal045_execution/reference32768/output`.
-- Local reproducible comparison and rare-history diagnosis:
-  `artifacts/goal045_execution/compare_full_banks.py`,
-  `artifacts/goal045_execution/diagnose_rank198.py`, and the reference directory.
-- The next reference must retain source `e8c08f1`, the full nested bank prefix,
-  all 250+250 history seeds, G201/H181, and all six biological cases. Verify
-  32768/65536 with the same recorded criteria and paired bootstrap indices.
-  Repeat the original four-history bank canary from the retained surfaces
-  (union LR<=10, truth LR, MLE and rho topology at cutoffs 2/5/10). Both the
-  canary and full-ensemble materiality criteria must pass before promotion.
-- On numerical agreement, document the accepted bank amendment, synthesize from
-  that bundle, obtain fresh independent final scientific review, and publish
-  exact reviewed report/figure paths. If it fails, diagnose before escalation.
-- Keep raw profiles and bulky banks outside Git. No new biological scope or
-  approval is needed for this numerical stage. Pause the heartbeat at completion
-  or a required human decision; simulation success alone does not close Goal 045.
-
-Four frozen timing histories (two calibration, two evaluation) now support the
-bank/grid canary, with all six cases kept paired. Original failed-run evidence
-is preserved. Goal 045 is still scientifically unfinished.
+The earlier numerical failures and amendments remain in the Goal execution
+record and numerical-review.md. Paper 1 remains synthetic-only; no next goal,
+new truths, observation change or sibling-repository work is authorized.
 
 ## Historical handover snapshot
 

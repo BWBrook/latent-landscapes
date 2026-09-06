@@ -1,0 +1,40 @@
+{
+  "scope": "first two calibration and first two validation histories across six truths",
+  "decision": "PASS",
+  "bank_sizes": [
+    32768,
+    65536
+  ],
+  "source_commit": "e8c08f10f7b67118a85ee37770d8ee48ee2c213a",
+  "review_limits": {
+    "bank_effect_abs_log_mle_change": 0.05,
+    "bank_rho_abs_log_mle_change": 0.06,
+    "profile_lr_change_on_union_within_10": 0.5,
+    "truth_lr_change": 0.5,
+    "rho_endpoint_movement_g201_cells": 1.0
+  },
+  "provenance": {
+    "reference32768_profile_sha256": "17187f873fc45255557e0d72ff6bbdb3dd912a21c82cc340d1b844688d6c80d1",
+    "reference65536_profile_sha256": "68cb9acc72e07589d6ab752841dba74313a1f1d9d4a297923f560d586f07d8ad",
+    "retained_canary_sha256": "aa76a946caaf486337b9a27e3a707e2cbfa880d24d423e60be6b30a5198a7128",
+    "reference32768_retained_max_abs_difference": 0.0,
+    "reference32768_retained_reconciled_atol_1e_9": true
+  },
+  "metric_maxima": {
+    "bank_effect_max_abs_log_mle_change": 0.012739025777429712,
+    "bank_rho_abs_log_mle_change": 0.0,
+    "known_effect_profile_lr_change_union_le_10": 0.010632692966282775,
+    "estimated_effect_profile_lr_change_union_le_10": 0.10905626337398644,
+    "spread_profile_lr_change_union_le_10": 0.2303556899182695,
+    "truth_lr_change": 0.17017419491980945,
+    "rho_endpoint_movement_g201_cells": 1.0
+  },
+  "failures": [],
+  "limitations": [
+    "bank sensitivity on four preselected histories only",
+    "G201 discrete profile supports; no continuous-profile endpoint validation",
+    "no new midpoint calculations were performed"
+  ],
+  "full_result_sha256": "10ccc266badea785161bb87d1a85289384a17d38b395dedd49430fbddf2f0d19",
+  "full_result_path": "artifacts/goal045_execution/reference65536/canary_comparison.json"
+}
