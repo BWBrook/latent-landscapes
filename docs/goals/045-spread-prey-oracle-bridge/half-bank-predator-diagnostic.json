@@ -1,0 +1,289 @@
+{
+  "scope": {
+    "calibration_indices": [
+      198,
+      221
+    ],
+    "bank_partitions": [
+      "first_32768",
+      "second_32768",
+      "pooled_65536"
+    ],
+    "rho_grid_points": 201,
+    "truth_rho": 1.0,
+    "training_sites": 120,
+    "detection_probability": 0.65,
+    "estimand": "predator-marginal G201 likelihood-ratio profile over rho",
+    "purpose": "diagnose Monte Carlo convergence direction; not an acceptance gate"
+  },
+  "provenance": {
+    "source_commit": "e8c08f10f7b67118a85ee37770d8ee48ee2c213a",
+    "full_bank_array_sha256": "6e5ca1d19c1f825f608453c5692cfb8e327b11ed19208e232f5309658b2cb833",
+    "full_bank_file_sha256": "17c3cadadc6758558846b056f0f9affc34a6b18a2cf3607bec81630ffd53f870",
+    "first_32768_array_sha256": "5b5c3f35313a308158e125828613656a184af69fbe9d6a001d1e4da3f28e9740",
+    "second_32768_array_sha256": "9c26d2738e4fc5b9aa37e6e424418797253678da3d38bfc0ca7102120cf2aede",
+    "bank_seed_sha256": "30116849dd4f7b6a166910f4464c8cb2faba06cec90c6e74c58c754d4666f70e",
+    "exact_bank_and_history_seed_schedule_validated": true,
+    "pooled_raw_counts_equal_disjoint_half_sums": true,
+    "diagnostic_script_sha256": "886882a99b98fdd947c5a8e01407abc0406a2c844837b49acda598f6c7e55aa9"
+  },
+  "results": [
+    {
+      "calibration_index": 198,
+      "history_seed": {
+        "phase": "calibration",
+        "index": 198,
+        "process_seed": 1383985189559669585,
+        "predator_detection_seed": 18381242103884527500,
+        "prey_seed": 196593129547083363,
+        "prey_detection_seed": 13621639159843619789
+      },
+      "role": "predator marginal diagnostic with effect fixed at one; usual-speed predator observations shared across effect truths",
+      "profiles": {
+        "first_32768": {
+          "rho_mle": 1.0867348625260582,
+          "truth_lr": 44.48538176743898,
+          "maximum_log_likelihood": -448.8752652172069
+        },
+        "second_32768": {
+          "rho_mle": 1.1019051158766109,
+          "truth_lr": 45.85656868616729,
+          "maximum_log_likelihood": -448.7906782233001
+        },
+        "pooled_65536": {
+          "rho_mle": 1.0867348625260582,
+          "truth_lr": 45.15631014368864,
+          "maximum_log_likelihood": -448.8367084030488
+        }
+      },
+      "profile_comparisons": [
+        {
+          "first": "first_32768",
+          "second": "second_32768",
+          "max_abs_lr_change_union_le_10": 0.3364798887677125,
+          "max_abs_lr_change_all_g201": 21.74602659818288,
+          "rho_at_max_abs_lr_change_all_g201": 0.6155722066724582,
+          "truth_lr_change": 1.3711869187283128,
+          "absolute_truth_lr_change": 1.3711869187283128
+        },
+        {
+          "first": "first_32768",
+          "second": "pooled_65536",
+          "max_abs_lr_change_union_le_10": 0.1501108370472366,
+          "max_abs_lr_change_all_g201": 133.3450787238237,
+          "rho_at_max_abs_lr_change_all_g201": 0.25,
+          "truth_lr_change": 0.6709283762496625,
+          "absolute_truth_lr_change": 0.6709283762496625
+        },
+        {
+          "first": "second_32768",
+          "second": "pooled_65536",
+          "max_abs_lr_change_union_le_10": 0.1863690517204759,
+          "max_abs_lr_change_all_g201": 130.7488697190065,
+          "rho_at_max_abs_lr_change_all_g201": 0.25702845666401664,
+          "truth_lr_change": -0.7002585424786503,
+          "absolute_truth_lr_change": 0.7002585424786503
+        }
+      ],
+      "largest_half_lr_contribution_change_site": {
+        "site": "cluster_20_site_0",
+        "selection_rule": "largest absolute first-half versus second-half difference in the site-level truth-LR contribution among the 120 training sites",
+        "predator_category_emissions": [
+          0.0005972182638652341,
+          0.004875251133593749,
+          0.03979796843749999,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "partitions": [
+          {
+            "partition": "first_32768",
+            "raw_arrival_category_counts": [
+              0,
+              0,
+              91,
+              24660,
+              8017,
+              0,
+              0
+            ],
+            "compatible_draws": 91,
+            "integrated_observed_history_probability": 0.00011120181702790469,
+            "truth_lr_site_contribution": 5.001851116286103
+          },
+          {
+            "partition": "second_32768",
+            "raw_arrival_category_counts": [
+              0,
+              0,
+              88,
+              24621,
+              8059,
+              0,
+              0
+            ],
+            "compatible_draws": 88,
+            "integrated_observed_history_probability": 0.00010755859333315468,
+            "truth_lr_site_contribution": 5.727773952758852
+          },
+          {
+            "partition": "pooled_65536",
+            "raw_arrival_category_counts": [
+              0,
+              0,
+              179,
+              49281,
+              16076,
+              0,
+              0
+            ],
+            "compatible_draws": 179,
+            "integrated_observed_history_probability": 0.00010904067881552313,
+            "truth_lr_site_contribution": 5.017271654448331
+          }
+        ]
+      },
+      "prior_tail_diagnosis_reconciliation": {
+        "first_32768_truth_lr": 0.0,
+        "pooled_65536_truth_lr": 0.0,
+        "first_32768_mle_matches": true,
+        "pooled_65536_mle_matches": true,
+        "within_atol_1e_9": true
+      }
+    },
+    {
+      "calibration_index": 221,
+      "history_seed": {
+        "phase": "calibration",
+        "index": 221,
+        "process_seed": 8155091688135848294,
+        "predator_detection_seed": 4633329726559815172,
+        "prey_seed": 10568650889007480225,
+        "prey_detection_seed": 6796254895634562997
+      },
+      "role": "predator marginal diagnostic with effect fixed at one; usual-speed predator observations shared across effect truths",
+      "profiles": {
+        "first_32768": {
+          "rho_mle": 1.0867348625260582,
+          "truth_lr": 45.57786588894692,
+          "maximum_log_likelihood": -467.95272995854384
+        },
+        "second_32768": {
+          "rho_mle": 1.1019051158766109,
+          "truth_lr": 46.907109207057715,
+          "maximum_log_likelihood": -468.0017077668306
+        },
+        "pooled_65536": {
+          "rho_mle": 1.1019051158766109,
+          "truth_lr": 46.21321630531395,
+          "maximum_log_likelihood": -467.98494658524123
+        }
+      },
+      "profile_comparisons": [
+        {
+          "first": "first_32768",
+          "second": "second_32768",
+          "max_abs_lr_change_union_le_10": 0.3327324879760454,
+          "max_abs_lr_change_all_g201": 18.907552493687945,
+          "rho_at_max_abs_lr_change_all_g201": 0.6155722066724582,
+          "truth_lr_change": 1.329243318110798,
+          "absolute_truth_lr_change": 1.329243318110798
+        },
+        {
+          "first": "first_32768",
+          "second": "pooled_65536",
+          "max_abs_lr_change_union_le_10": 0.1406918811799187,
+          "max_abs_lr_change_all_g201": 133.52069987491313,
+          "rho_at_max_abs_lr_change_all_g201": 0.25,
+          "truth_lr_change": 0.6353504163670323,
+          "absolute_truth_lr_change": 0.6353504163670323
+        },
+        {
+          "first": "second_32768",
+          "second": "pooled_65536",
+          "max_abs_lr_change_union_le_10": 0.19204060679612667,
+          "max_abs_lr_change_all_g201": 130.5653724793774,
+          "rho_at_max_abs_lr_change_all_g201": 0.2534898699475073,
+          "truth_lr_change": -0.6938929017437658,
+          "absolute_truth_lr_change": 0.6938929017437658
+        }
+      ],
+      "largest_half_lr_contribution_change_site": {
+        "site": "cluster_17_site_1",
+        "selection_rule": "largest absolute first-half versus second-half difference in the site-level truth-LR contribution among the 120 training sites",
+        "predator_category_emissions": [
+          0.00017315795816210926,
+          0.0014135343523437492,
+          0.011539055937499995,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "partitions": [
+          {
+            "partition": "first_32768",
+            "raw_arrival_category_counts": [
+              0,
+              0,
+              772,
+              29639,
+              2357,
+              0,
+              0
+            ],
+            "compatible_draws": 772,
+            "integrated_observed_history_probability": 0.00027202642716610465,
+            "truth_lr_site_contribution": 3.6783794636374374
+          },
+          {
+            "partition": "second_32768",
+            "raw_arrival_category_counts": [
+              0,
+              0,
+              730,
+              29643,
+              2395,
+              0,
+              0
+            ],
+            "compatible_draws": 730,
+            "integrated_observed_history_probability": 0.00025723795702055135,
+            "truth_lr_site_contribution": 4.188441315120443
+          },
+          {
+            "partition": "pooled_65536",
+            "raw_arrival_category_counts": [
+              0,
+              0,
+              1502,
+              59282,
+              4752,
+              0,
+              0
+            ],
+            "compatible_draws": 1502,
+            "integrated_observed_history_probability": 0.00026454618805833117,
+            "truth_lr_site_contribution": 4.166193618556381
+          }
+        ]
+      },
+      "prior_tail_diagnosis_reconciliation": {
+        "first_32768_truth_lr": 0.0,
+        "pooled_65536_truth_lr": 0.0,
+        "first_32768_mle_matches": true,
+        "pooled_65536_mle_matches": true,
+        "within_atol_1e_9": true
+      }
+    }
+  ],
+  "all_prior_tail_diagnosis_values_reconciled": true,
+  "limitations": [
+    "the two half banks are disjoint Monte Carlo estimates but use the same fixed histories",
+    "the pooled bank contains both halves and is therefore dependent on each half",
+    "predator marginal only; it does not reproduce the joint effect-profiled rho likelihood",
+    "the site diagnostic is selected to explain half-bank variance and is not an inference input"
+  ]
+}

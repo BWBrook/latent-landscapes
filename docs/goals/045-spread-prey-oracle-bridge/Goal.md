@@ -1,8 +1,7 @@
 # Goal 045: The Cost of Estimating Predator Spread Speed
 
-Status: completed 65536 reference; original canary passes but wider-range rho
-cutoff criteria fail. Awaiting Barry's decision on the proposed primary-result
-closeout amendment. No bank promoted; heartbeat paused; scientific goal open.
+Status: original scientific scope retained. Barry authorized one further
+131072-draw reference on 7 September; running on deep-server. No bank promoted.
 Programme role: Arc 2C, Charter Pillar 2, selected joint-recovery bridge.
 
 ## Question and completion condition
@@ -178,6 +177,13 @@ paths. No unrelated cleanup or destructive Git operations. External reads and
 actions are limited to global skills/instructions, nectar control-plane docs,
 deep-server under /data/codex, GitHub source publication, and the requested
 Codex heartbeat. No legacy spatext dependency or sibling-project edits.
+
+On 7 September 2026 Barry explicitly authorized the projected 25.34-hour
+131072-draw reference on idle deep-server if scientifically useful. Independent
+reassessment and parent judgment support this one final bank doubling. This is
+a run-specific exception to the 24-hour boundary, not standing authority for
+serial escalation. The narrower primary-only closeout proposal was not approved.
+All scientific settings, estimands and numerical criteria remain unchanged.
 
 Use the Mac mini for development and deep-server for detached production after
 timing/memory checks. Escalate projected production over 24 hours or a material
@@ -452,3 +458,35 @@ can trigger diagnosis; a negative ecological result is not an implementation bug
   from scientific acceptance, states actual ensemble sizes for reference runs,
   and explicitly describes discrete-grid supports. This is a presentation
   correction; campaign kernels, profiles, statistics and thresholds are unchanged.
+
+- On 7 September Barry offered explicit authority for the projected 25.34-hour
+  doubling on idle deep-server. Live checks confirmed negligible load and about
+  123 GiB available memory. Independent audit reassessment supports one final
+  65536/131072 comparison: two correlated nested increments do not establish
+  persistent bias, and the next comparison has useful decision value under the
+  unchanged gates. No promise of convergence is made.
+- Preserve frozen source e8c08f1, all 250+250 histories, the complete 65536 bank
+  prefix, G201/H181, rank 239 and every acceptance criterion. Both the original
+  four-history canary and full-ensemble reported-quantity checks must pass
+  before a documented 65536 candidate amendment. On any criterion failure,
+  stop automatic doubling; no 262144 run or tolerance relaxation is authorized.
+  Return the unresolved secondary-calibration decision for scientific review.
+- A disjoint-half predator-only diagnostic uses existing first/second 32768 bank
+  halves for calibration histories 198 and 221. It characterizes empirical bank
+  variation only; it does not select favourable seeds or substitute for the
+  full joint comparison. The final reference launch does not depend on the
+  direction of that diagnostic. No new biological histories are introduced.
+- The disjoint-half diagnostic completed before launch. At the generating rho,
+  predator-marginal LR differences between the two 32768 halves were +1.37119
+  (history 198) and +1.32924 (history 221), while the maximum near-peak profile
+  changes within union LR<=10 were 0.33648 and 0.33273. Pooled 65536 truth LRs
+  lie between the two halves. Hashes, seeds and prior diagnostic values reconcile.
+  This supports empirical bank variability; it neither guarantees convergence
+  nor alters the joint acceptance criteria. Compact evidence is in
+  [half-bank-predator-diagnostic.json](half-bank-predator-diagnostic.json).
+- The final 131072 reference launched at 2026-09-07 02:10:12 UTC under
+  `/data/codex/scratch/goal045-full-bank-reference128-20260907-e8c08f1/`, tmux
+  `ll-goal045-reference128`. Initial status is RUNNING; frozen inputs verified,
+  projection 25.341 hours, and all eight 8192-draw extension workers started.
+  Python/Bash syntax, Ruff, and four-draw serial/spawn equivalence passed both
+  locally and on deep-server. The quiet two-hour heartbeat is active again.

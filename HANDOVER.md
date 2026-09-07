@@ -1,60 +1,73 @@
 # Latent Landscapes: Successor Handover
 
-## Current execution update: 6 September 2026 (Hobart)
+## Current execution update: 7 September 2026 (Hobart)
 
-**Goal 045 is awaiting Barry's scientific decision. All remote computation has
-finished. The heartbeat is paused. No bank has been promoted and the goal is
-not scientifically closed.**
+**Goal 045 retains its original scientific scope. Barry authorized one final
+projected 25.34-hour bank doubling; the 131072 reference is RUNNING. The quiet
+two-hour heartbeat is active. No bank is promoted and the goal remains open.**
 
-Read the [decision brief](docs/goals/045-spread-prey-oracle-bridge/numerical-decision.md)
-and [Goal 045](docs/goals/045-spread-prey-oracle-bridge/Goal.md) before continuing.
-The full 65536-draw reference completed successfully at 2026-09-06 11:35 UTC.
-It passed the original four-history likelihood checks, but the full-ensemble
-rho-cutoff criterion failed in all three usual-speed cases: +0.67085, +0.72610
-and +0.58645 LR between 32768 and 65536, against the unchanged 0.5 limit.
-Other observed interval criteria passed. Direct bank-prefix hashes, histories,
-event diagnostics and source provenance reconciled.
+The primary-only closeout proposal was not approved. Barry offered compute for
+another doubling, and independent reassessment supports one final test: two
+correlated nested differences do not establish persistent bias. The existing
+bank's disjoint 32768 halves differ by about 1.3–1.4 LR in the sensitive tails
+but by less than 0.337 near the likelihood peak. That diagnostic supports bank
+variability and does not select a favourable launch or acceptance outcome.
 
-The primary paired effect result is stable across all three banks. An independent
-scientific auditor reconstructed all 30 contrasts and bootstrap intervals, and
-recommends a human amendment: retain the original 16384 primary result with the
-three-bank sensitivity analysis; mark secondary rho cutoff/coverage/precision
-numerically unresolved; make no equivalence or general speed-recovery claim.
-This is a recommendation, not an approved closeout. Both analyses remain weak
-in several cases and usual_5 has 91.6% effect coverage in both lanes.
+Active reference:
 
-A further full doubling projects to 25.34 hours and was not launched. Do not
-promote a bank, relax a numerical limit, or declare completion automatically.
-If Barry approves the documented amendment, finalize the report and figures
-under those exact claims, perform the focused final review, publish the exact
-accepted paths and close Goal 045. If Barry instead requires accepted rho
-inference, agree the bounded numerical-method tranche before new heavy work.
+- Host/session: `deep-server-ts`, tmux `ll-goal045-reference128`.
+- Root: `/data/codex/scratch/goal045-full-bank-reference128-20260907-e8c08f1/`.
+- Started 2026-09-07 02:10:12 UTC. Frozen inputs verified; all eight 8192-draw
+  extension workers started. Conservative projection 25.341 hours is explicitly
+  authorized for this run. The normal 24-hour boundary still applies otherwise.
+- Probe `status`, `exit.status` and `run.log` once. While running, end wakes
+  quietly after that bounded check. No additional full-bank run is authorized.
+- Source remains `e8c08f10f7b67118a85ee37770d8ee48ee2c213a`. Same 250+250 history
+  seeds, six cases, G201/H181, rank 239 and scientific settings. The existing
+  65536 bank is the exact prefix; mode `timing` denotes numerical reference.
+- On success retrieve compact `output/profiles.npz`, `run_summary.json`,
+  `seed_provenance.json`, and `reference_provenance.json`; leave banks remote.
 
-Evidence locations:
+Acceptance and continuation:
 
-- Frozen campaign source: `e8c08f10f7b67118a85ee37770d8ee48ee2c213a`.
-- Original production: remote
+1. Compare with local `artifacts/goal045_execution/reference65536/output`
+   (remote `/data/codex/scratch/goal045-full-bank-reference64-20260906-e8c08f1/output`).
+   Verify source, hashes, exact bank prefix, history seeds and event diagnostics.
+2. Require BOTH the original four-history canary and full-ensemble criteria
+   recorded in Goal.md. Use identical bootstrap indices. Existing comparison
+   scripts are under `artifacts/goal045_execution/`; adapt their hard-coded bank
+   labels/provenance keys carefully. Do not substitute the predator diagnostic.
+3. If all criteria pass, document the 65536 bank amendment, synthesize from that
+   bundle, obtain final independent scientific review, inspect figures/claims,
+   publish exact accepted paths and close Goal 045. Keep failed-bank evidence.
+4. If any criterion fails, stop automatic doubling: no 262144 run, altered
+   tolerance or automatic promotion. Return the unresolved secondary-calibration
+   decision to Barry and pause the heartbeat. The earlier primary-only proposal
+   remains available for review but is not approved by the compute authorization.
+
+Prior evidence and limits:
+
+- Original 16384 production:
   `/data/codex/artifacts/goal045-production-16384-20260906-e8c08f1/`;
   local `artifacts/goal045_execution/production16384/`.
-- Completed 32768 reference: remote
+- Completed 32768 reference:
   `/data/codex/scratch/goal045-full-bank-reference-20260906-e8c08f1/`;
   local `artifacts/goal045_execution/reference32768/`.
-- Completed 65536 reference: remote
-  `/data/codex/scratch/goal045-full-bank-reference64-20260906-e8c08f1/`;
-  local `artifacts/goal045_execution/reference65536/`.
-- Compact comparison JSON/CSV and numerical decision are tracked beside Goal.md.
-  Reproducible comparison, canary and diagnosis scripts remain in the local
-  execution directory and the corresponding remote reference root. Raw profiles
-  and banks remain outside Git.
-- The production synthesis is regenerated locally with explicit wording that
-  `bridge_complete` is an automatic classification, not scientific acceptance.
-  Grid supports are discrete; continuous-profile endpoints are not validated.
-- `goal-045-completion-check` is paused pending the human decision. Do not restart
-  it solely because the remote tmux session has ended; the reference succeeded.
-
-The earlier numerical failures and amendments remain in the Goal execution
-record and numerical-review.md. Paper 1 remains synthetic-only; no next goal,
-new truths, observation change or sibling-repository work is authorized.
+- Completed 65536 reference: root above; local
+  `artifacts/goal045_execution/reference65536/`.
+- The 32/64 original canary passed, but usual-speed rho cutoff changes of
+  +0.67085,+0.72610,+0.58645 failed the unchanged 0.5 limit. Other observed
+  interval criteria passed. Full evidence is beside
+  [Goal 045](docs/goals/045-spread-prey-oracle-bridge/Goal.md), including
+  [the decision record](docs/goals/045-spread-prey-oracle-bridge/numerical-decision.md).
+- All 30 primary paired bootstrap intervals include zero at 16k/32k/64k, with
+  stable small point contrasts. This is not equivalence or good absolute
+  recovery: both lanes are weak in several cases and usual_5 coverage is 91.6%.
+- Grid supports are discrete; no continuous-profile endpoint validation or
+  field-ready calibration claim. The automatic `bridge_complete` synthesis
+  classification does not establish scientific acceptance.
+- Raw profiles/banks remain outside Git. Paper 1 is synthetic-only; no new
+  biological scope, real data, next goal or sibling-repository work is authorized.
 
 ## Historical handover snapshot
 

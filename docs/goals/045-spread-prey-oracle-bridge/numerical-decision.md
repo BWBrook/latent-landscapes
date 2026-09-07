@@ -1,7 +1,9 @@
 # Goal 045: decision after the 65536-draw reference
 
-Status: numerical acceptance unresolved; no bank promoted and no scientific
-closeout declared. The completed runs answer the same six-case question with
+Status as of 7 September: numerical acceptance remains unresolved. Barry has
+authorized one final projected 25.34-hour doubling; the primary-only amendment
+below remains an unapproved historical proposal. No bank has been promoted or
+scientific closeout declared. The completed runs answer the same six-case question with
 unchanged simulated observations, grids and calibration rule.
 
 ## Decision-relevant evidence
@@ -105,7 +107,7 @@ Applying the same conservative projection to a 131072-draw replay gives
 not been launched. It would also provide no advance guarantee of convergence.
 The current numerical gate remains unresolved.
 
-## Independent audit and proposed amendment
+## Independent audit and proposed amendment, 6 September
 
 An independent scientific auditor reconstructed all 30 point contrasts and
 1000-bootstrap intervals directly from each of the three profile bundles.
@@ -147,3 +149,45 @@ The two-hour heartbeat is paused at this human scientific gate. Goal 045 remains
 open. This amendment is proposed, not approved: Goal 045 requires both numerical
 criteria to pass under the current contract, and its authority section reserves
 material scientific changes and projected runs over 24 hours for Barry.
+
+## Reassessment after explicit compute approval, 7 September
+
+Barry authorized the projected 25.34-hour doubling on idle deep-server if useful.
+The independent auditor and parent now recommend **one final 65536/131072
+reference**. The earlier recommendation weighed the original compute boundary;
+the two observed, correlated nested differences do not prove persistent bias.
+Another doubling can test the original secondary-rho objective under the same
+criteria, though it cannot guarantee convergence or establish universal
+Monte Carlo accuracy.
+
+A pass of both the original four-history canary and the full-ensemble criteria
+would support a documented 65536 bank amendment and final synthesis/review.
+Any failure ends automatic bank doubling for this goal; no 262144 replay or
+relaxed tolerance is authorized. The primary-only closeout proposal would then
+return for Barry's scientific decision. Original failing evidence is preserved.
+
+The wrapper appends eight 8192-draw chunks to the exact existing 65536 prefix,
+then invokes the unchanged frozen campaign. The scientific design, seed streams,
+grids, calibration rank and acceptance limits are unchanged. A cheap diagnostic
+of the disjoint 32768 halves characterizes numerical variation and does not
+select the launch or acceptance outcome.
+
+Runner SHA-256:
+`c5bfd9b5758ae56d1c252bdde2cb14f27ace85344c4bc05d4382e9e4022f0eb7`.
+Wrapper SHA-256:
+`18ed36bc6cdb7c8c860e41f510c0671b7936c93c2eb4429d45936c28d9558511`.
+Syntax/Ruff checks and exact four-draw serial/spawn equivalence passed locally
+and on deep-server before launch.
+
+The [disjoint-half diagnostic](half-bank-predator-diagnostic.json) reproduced
+all prior tail values exactly. The two 32768 halves differ by 1.37119 and
+1.32924 LR at generating rho for histories 198 and 221, while near-peak profile
+changes within union LR<=10 are only 0.33648 and 0.33273. The pooled 65536 values
+lie between the halves. These are fixed-history numerical comparisons, not
+independent biological replications, and they do not predict the next direction.
+
+The final reference launched at 2026-09-07 02:10:12 UTC under
+`/data/codex/scratch/goal045-full-bank-reference128-20260907-e8c08f1/`, with
+frozen inputs verified and all eight extension workers running. The two-hour
+heartbeat is active again. The original scientific question and review gates
+remain in force; no larger bank has been promoted.
