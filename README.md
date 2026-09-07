@@ -129,12 +129,16 @@ retained descriptively. Exact replay confirmed that no simulated history,
 calibration statistic, cutoff, or non-score result changed. Arc 2B is now
 scientifically closed and consolidated.
 
-Arc 2C's six-case paired comparison is approved in
-[Goal 045](docs/goals/045-spread-prey-oracle-bridge/Goal.md). It asks how much
-prey-effect recovery changes when predator spread speed must also be estimated.
-Implementation and timing are complete, but the numerical preflight stopped
-for spread-grid review before production. No Arc 2C scientific result is yet
-accepted.
+Arc 2C is scientifically closed after independent review of its six-case
+comparison. Estimating spread speed produced no detected systematic deterioration
+in prey-effect recovery: all 30 paired bootstrap intervals include zero. This
+is not equivalence. Both analyses remain weak in the threefold cases and the
+slow fivefold case, and usual-speed fivefold effect coverage is 91.6% in both.
+The result conditions on known detection/background and one landscape/design.
+The 65536-draw integration bank passes the unchanged criteria against 131072;
+earlier numerical failures and the grid/bank amendments remain documented.
+See the [scientific synthesis](docs/goals/045-spread-prey-oracle-bridge/synthesis.md)
+for the six-case table, figures, uncertainty, numerical evidence and limits.
 
 Later paper stages must test generality across process and observation
 conditions, landscape and sampling families, alternative generating models,
@@ -224,7 +228,8 @@ uv run python scripts/synthesize_arc2b.py --help
 
 The current Arc 2C workflow uses `scripts/run_arc2c_campaign.py`,
 `scripts/check_arc2c_numerics.py`, and `scripts/synthesize_arc2c.py`.
-Goal 045's numerical acceptance gate must be resolved before production.
+Goal 045's accepted bank uses 65536 draws on the repaired 201-point rho grid.
+Its saved full-ensemble profiles support replay without further simulation.
 
 Later production experiments can be computationally expensive and may depend
 on accepted evidence from earlier runs. Read the corresponding goal record and

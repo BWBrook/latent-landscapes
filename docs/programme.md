@@ -20,6 +20,26 @@ The goal sections below retain the detailed experimental history. They are a
 laboratory record rather than a requirement that future work continue as a
 linear extension of the existing goal sequence.
 
+## Arc 2C closeout, 8 September 2026
+
+Goal 045 completed the six-case paired comparison of prey-effect recovery with
+true versus jointly estimated predator spread speed. All 30 primary paired
+95% bootstrap intervals include zero: no detected systematic deterioration in
+these frozen synthetic conditions, without an equivalence claim. Both analyses
+remain weak for the threefold cases and the slow fivefold case; usual-speed
+fivefold effect coverage is 91.6% in both. Calibration-sample uncertainty and
+the fixed known-detection/background scope remain explicit.
+
+The documented G201 grid repair and final 65536/131072 bank comparison passed
+the unchanged numerical criteria. Earlier tail-cutoff failures remain in the
+record. Independent final scientific review reproduced the paired estimates,
+bootstrap endpoints and numerical criteria without material repair. The active
+path remains four scientific modules and three entry points. See the
+[accepted synthesis](goals/045-spread-prey-oracle-bridge/synthesis.md) and
+[final review](goals/045-spread-prey-oracle-bridge/final-review.md). This closes
+Charter Pillar 2's selected process-oracle bridge; it does not authorize another
+goal or establish landscape, model or field generality.
+
 ## Active-path consolidation, 5 September 2026
 
 Barry requested a bounded code and test simplification before resuming Goal

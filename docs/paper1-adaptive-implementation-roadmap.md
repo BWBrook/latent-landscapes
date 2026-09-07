@@ -54,10 +54,16 @@ simulation: the primary no-effect model now receives the same known background
 hazard as the process model, while the fitted neutral remains a secondary
 description. Exact replay preserved the histories, calibration, and cutoffs.
 The accepted Arc 2B path is consolidated into the same clear
-`design -> campaign -> synthesis` structure. Goal 045 now defines the approved
-Arc 2C bridge: compare prey-effect recovery with known versus estimated spread
-speed in six paired cases. Its numerical preflight stopped before production;
-the immediate task is bounded numerical diagnosis within that design.
+`design -> campaign -> synthesis` structure. Goal 045's Arc 2C bridge is now
+scientifically closed after numerical acceptance and independent final review. Across six
+paired cases, estimating spread speed produces no detected systematic
+prey-effect recovery penalty; all 30 paired bootstrap intervals include zero.
+This is not equivalence, and both analyses remain weak in the threefold cases
+and the slow fivefold case. Usual-speed fivefold effect coverage is 91.6% in
+both analyses. The [synthesis](goals/045-spread-prey-oracle-bridge/synthesis.md)
+records the conditional claim and uncertainty. A documented G201 grid repair
+and 65536/131072 bank comparison resolved the numerical review without changing
+the scientific cases, calibration rule or acceptance tolerances.
 
 ## Arc 1: Close And Freeze The Reference Case
 
@@ -329,14 +335,15 @@ run.
 
 ## Immediate Decision Boundary
 
-Arc 2A and Arc 2B are complete. Barry approved the small predator-prey bridge
-in `docs/goals/045-spread-prey-oracle-bridge/Goal.md`: usual and half-speed
-spread crossed with onefold, threefold, and fivefold prey hazard multipliers.
-The paired comparison isolates the cost of estimating speed, retaining
-parameter-specific calibration and matched held-out prediction.
+Arc 2A, Arc 2B and Goal 045's six-case Arc 2C comparison are scientifically
+complete, with numerical acceptance and independent final review recorded.
+The paired result isolates the cost of estimating spread speed with detection,
+background and resistance known. The evidence supports no detected systematic
+added cost in these cases, while preserving weak absolute recovery and the
+usual-speed fivefold coverage limitation.
 
-The unresolved gate is numerical: diagnose the saved preflight grid-refinement
-failure before production, then complete the approved comparison and review.
-Changes to the scientific design still require human review. This approval
-does not reopen the completed surfaces or authorize the later landscape and
-model arcs.
+The bounded bridge is closed. The next substantive programme decision concerns
+generality beyond this reference model and design;
+it requires a separate bounded scientific question. No new conditions,
+landscapes, calibration method, response surface or later arc is authorized by
+Goal 045. Its null result does not reopen the completed recoverability maps.

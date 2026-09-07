@@ -1,271 +1,65 @@
-# Latent Landscapes: Successor Handover
+# Latent Landscapes: current handover
 
-## Current execution update: 7 September 2026 (Hobart)
+8 September 2026 (Hobart).
 
-**Goal 045 retains its original scientific scope. Barry authorized one final
-projected 25.34-hour bank doubling; the 131072 reference is RUNNING. The quiet
-two-hour heartbeat is active. No bank is promoted and the goal remains open.**
+Goal 045 / Arc 2C is scientifically complete after numerical acceptance and
+independent final review. The accepted integration bank has 65536 draws. No
+remote campaign is running and no further doubling is authorized. The completion
+heartbeat is paused as part of closeout.
 
-The primary-only closeout proposal was not approved. Barry offered compute for
-another doubling, and independent reassessment supports one final test: two
-correlated nested differences do not establish persistent bias. The existing
-bank's disjoint 32768 halves differ by about 1.3–1.4 LR in the sensitive tails
-but by less than 0.337 near the likelihood peak. That diagnostic supports bank
-variability and does not select a favourable launch or acceptance outcome.
+## Scientific result
 
-Active reference:
+Across the six frozen synthetic conditions, estimating predator spread speed
+produced no detected systematic deterioration in prey-effect recovery relative
+to supplying its true value. All 30 paired 95% bootstrap intervals include zero;
+this is not an equivalence claim. Both analyses remain weak in the threefold
+cases and the slow fivefold case. Usual-speed fivefold effect coverage is 91.6%
+in both analyses, despite informative accuracy, width and exclusion.
 
-- Host/session: `deep-server-ts`, tmux `ll-goal045-reference128`.
-- Root: `/data/codex/scratch/goal045-full-bank-reference128-20260907-e8c08f1/`.
-- Started 2026-09-07 02:10:12 UTC. Frozen inputs verified; all eight 8192-draw
-  extension workers started. Conservative projection 25.341 hours is explicitly
-  authorized for this run. The normal 24-hour boundary still applies otherwise.
-- Probe `status`, `exit.status` and `run.log` once. While running, end wakes
-  quietly after that bounded check. No additional full-bank run is authorized.
-- Source remains `e8c08f10f7b67118a85ee37770d8ee48ee2c213a`. Same 250+250 history
-  seeds, six cases, G201/H181, rank 239 and scientific settings. The existing
-  65536 bank is the exact prefix; mode `timing` denotes numerical reference.
-- On success retrieve compact `output/profiles.npz`, `run_summary.json`,
-  `seed_provenance.json`, and `reference_provenance.json`; leave banks remote.
+Rho supports are now numerically accepted on the discrete G201 grid. Coverage
+is 96.4% at usual speed and 92.4% at half speed. All are connected and avoid
+boundaries. Truth-specific calibration, known detection/background/resistance,
+one landscape and fixed observation design remain substantive limits.
 
-Acceptance and continuation:
+Start with [the synthesis](docs/goals/045-spread-prey-oracle-bridge/synthesis.md),
+then [Goal 045](docs/goals/045-spread-prey-oracle-bridge/Goal.md) and the
+[numerical decision](docs/goals/045-spread-prey-oracle-bridge/numerical-decision.md)
+if the execution history is relevant. The [independent review](docs/goals/045-spread-prey-oracle-bridge/final-review.md)
+records the acceptance verdict. README and the adaptive roadmap identify
+the broader scientific boundary. Earlier handovers remain in Git history;
+they describe superseded operational states.
 
-1. Compare with local `artifacts/goal045_execution/reference65536/output`
-   (remote `/data/codex/scratch/goal045-full-bank-reference64-20260906-e8c08f1/output`).
-   Verify source, hashes, exact bank prefix, history seeds and event diagnostics.
-2. Require BOTH the original four-history canary and full-ensemble criteria
-   recorded in Goal.md. Use identical bootstrap indices. Existing comparison
-   scripts are under `artifacts/goal045_execution/`; adapt their hard-coded bank
-   labels/provenance keys carefully. Do not substitute the predator diagnostic.
-3. If all criteria pass, document the 65536 bank amendment, synthesize from that
-   bundle, obtain final independent scientific review, inspect figures/claims,
-   publish exact accepted paths and close Goal 045. Keep failed-bank evidence.
-4. If any criterion fails, stop automatic doubling: no 262144 run, altered
-   tolerance or automatic promotion. Return the unresolved secondary-calibration
-   decision to Barry and pause the heartbeat. The earlier primary-only proposal
-   remains available for review but is not approved by the compute authorization.
+## Evidence and source
 
-Prior evidence and limits:
+- Frozen campaign source: `e8c08f10f7b67118a85ee37770d8ee48ee2c213a`.
+- Accepted profiles: `artifacts/goal045_execution/reference65536/output/`;
+  131072 numerical reference: `artifacts/goal045_execution/reference131072/output/`.
+- Remote roots on `deep-server-ts`:
+  `/data/codex/scratch/goal045-full-bank-reference64-20260906-e8c08f1/` and
+  `/data/codex/scratch/goal045-full-bank-reference128-20260907-e8c08f1/`.
+- The last reference finished successfully at 2026-09-07 16:57 UTC, taking
+  14.565 campaign hours plus approximately 13 minutes to extend the bank.
+- Both runs contain 250 calibration and 250 evaluation histories per case.
+  Their original `timing`/nonproduction receipts are retained. The explicit
+  bank amendment accepts the completed 65536 reference as scientific evidence;
+  current source changes only the bank-size default.
+- Durable tables, figures, numerical comparisons and provenance are under
+  `docs/goals/045-spread-prey-oracle-bridge/`; banks/raw arrays remain outside Git.
+- Active code: `arc2c_{design,likelihood,campaign,synthesis}.py`, with run,
+  numerical-check and synthesis entry points. The path already reuses the
+  accepted Arc 2B likelihood kernel and needs no additional framework.
 
-- Original 16384 production:
-  `/data/codex/artifacts/goal045-production-16384-20260906-e8c08f1/`;
-  local `artifacts/goal045_execution/production16384/`.
-- Completed 32768 reference:
-  `/data/codex/scratch/goal045-full-bank-reference-20260906-e8c08f1/`;
-  local `artifacts/goal045_execution/reference32768/`.
-- Completed 65536 reference: root above; local
-  `artifacts/goal045_execution/reference65536/`.
-- The 32/64 original canary passed, but usual-speed rho cutoff changes of
-  +0.67085,+0.72610,+0.58645 failed the unchanged 0.5 limit. Other observed
-  interval criteria passed. Full evidence is beside
-  [Goal 045](docs/goals/045-spread-prey-oracle-bridge/Goal.md), including
-  [the decision record](docs/goals/045-spread-prey-oracle-bridge/numerical-decision.md).
-- All 30 primary paired bootstrap intervals include zero at 16k/32k/64k, with
-  stable small point contrasts. This is not equivalence or good absolute
-  recovery: both lanes are weak in several cases and usual_5 coverage is 91.6%.
-- Grid supports are discrete; no continuous-profile endpoint validation or
-  field-ready calibration claim. The automatic `bridge_complete` synthesis
-  classification does not establish scientific acceptance.
-- Raw profiles/banks remain outside Git. Paper 1 is synthetic-only; no new
-  biological scope, real data, next goal or sibling-repository work is authorized.
+## Closeout boundary
 
-## Historical handover snapshot
+The final independent audit passed without a material repair. Exact reviewed
+paths are published to main under Goal 045's authority; the completion check is
+paused. The focused 24-test suite, scoped formatting/Ruff/strict mypy, build,
+raw-profile checksum checks and figure inspection passed. Do not start another
+goal or remote run.
 
-Prepared 5 September 2026 for a fresh task started directly in
-`/Users/bwbrook/papers/latent-landscapes`. Remote state was verified at
-approximately 08:35 UTC; the Git/automation notes include Barry's subsequent
-branch-cleanup request.
-
-**Immediate state: Goal 045 is approved but unfinished. Its numerical
-preflight stopped before production. Diagnose that bounded issue next;
-do not restart the programme or launch an unchanged campaign.**
-
-## Start Here
-
-Read the current global `~/.codex/AGENTS.md`, then these repo files in order:
-
-1. [AGENTS.md](AGENTS.md): scope and authority.
-2. [README.md](README.md): present scientific system and accepted findings.
-3. [Paper 1 charter](docs/paper1-experimental-design-charter.md): the North Star
-   and paper-level definition of done.
-4. [Adaptive roadmap](docs/paper1-adaptive-implementation-roadmap.md): the arcs;
-   its last Arc 2C design gate has now been resolved by approval of Goal 045.
-5. [Goal 045](docs/goals/045-spread-prey-oracle-bridge/Goal.md): current contract
-   and execution record. This handover supplies the latest operational snapshot.
-
-Do not read the entire old conversation, every historical goal, or the legacy
-repo for orientation. Consult history when a specific question needs it.
-Current code and evidence outrank this dated snapshot.
-
-## Scientific Direction
-
-Our question is: **under what landscape, process and observation conditions
-are spatial predator-prey parameters identifiable and recoverable from
-imperfect data, and is their reported uncertainty calibrated?**
-
-The agreed publication sequence is synthetic methodology first, British
-mink-water vole application second, and Australian murid responses to invasive
-cats and potentially foxes third. Barry's collaborators are Natalie Briscoe,
-Damien Fordham and Ryo Ogawa. Their contributions may now appear in the private
-repo; preserve others' work and inspect Git state before editing.
-
-Early real-data work and an overly simple synthetic system motivated this
-controlled rebuild. The old `/Users/bwbrook/papers/spatext` is a read-only
-laboratory notebook/parts catalogue, not a dependency or architecture to retain.
-Its goal numbers are unrelated to this repo's. The old `mink` action task is
-retired. Chief of Staff is not the technical control surface for this project.
-
-The current reference landscape is a reproducible 72 x 84 grid with water
-barriers, matrix, patches, corridors and three western sources. Sampling uses
-160 access-constrained sites and spatially separated training/holdout clusters.
-The model combines stochastic predator spread, habitat resistance, imperfect
-repeated detection and absorbing prey extirpation. `rho` controls spread speed;
-`eta` controls resistance contrast; the prey-effect multiplier increases loss
-hazard after predator arrival. Hazard multipliers are not loss probabilities.
-
-Accepted milestones, conditional on this landscape/model/design:
-
-- **Arc 1 is frozen:** understood recovery controls for spread, resistance,
-  detection and prey effect. Weak signals can remain unidentifiable. Locally
-  calibrated, parameter-specific intervals were more useful than the tested
-  broad simultaneous envelope. See the linked README and Arc 1 synthesis.
-- **Arc 2A is closed:** 16 predator-process truths informed simple performance
-  maps, then 16 untouched truths tested them prospectively. Useful predictive
-  relationships emerged; boundary-contact topology did not generalise as a
-  smooth surface.
-- **Arc 2B is closed:** the equivalent 16+16 prey-effect experiment varied effect,
-  background loss and known detection. All five performance maps beat their
-  frozen mean comparator prospectively, but biological recovery remained
-  selective: 3/32 truths fully recovered, 10 detected without meeting every
-  strict gate, 19 not reliably detected. Successful prediction of recoverability
-  is not successful recovery everywhere.
-
-Later arcs test landscape/sampling generality, a small alternative-model set,
-and a synthetic-realistic capstone, followed by synthesis and consolidation.
-We have not completed those or established universal recovery thresholds.
-Do not expand the present bridge into that whole programme.
-
-## How To Collaborate With Barry
-
-Use these skills selectively:
-
-- [Twilight Laboratory](/Users/bwbrook/.codex/skills/twilight-laboratory/SKILL.md):
-  align on the consequential endpoint and authority, then execute internal
-  stages autonomously. Return at the gold stamp, a genuine scientific decision,
-  or a real blocker; not for another routine `proceed`.
-- [Kill Your Darlings](/Users/bwbrook/.codex/skills/kill-your-darlings/SKILL.md):
-  consolidate the active path at meaningful boundaries. Retain code/tests for
-  current consumers and distinct consequential risks, not historical comfort.
-
-The rule is **rigour at the scientific decision boundary; proportional
-engineering everywhere else**. Complete the useful end-to-end tranche, perform
-one serious review/material repair pass, and stop optional polishing. Negative
-results are results. Do not retune truths or remove inconvenient gates to obtain
-a favourable result. Match comparators' information and nuisance assumptions.
-
-Use native subagents for genuinely independent implementation or review, under
-current global policy. Do not revive old model-routing tables, named persistent
-executors, thread-tool dependencies, or elaborate approval ladders. Verify key
-claims directly. Explain results in ecological language with defined quantities
-and self-contained figures; Barry has repeatedly corrected opaque technical
-summaries that hid the actual scientific question.
-
-## The Approved Bridge: Goal 045 / Arc 2C
-
-Question: **how much harder is prey-effect estimation when predator spread
-speed must also be estimated rather than supplied correctly?** Compare both
-analyses on identical simulated observations.
-
-- Six cases: usual/half speed (`rho=1/0.5`) crossed with prey effects `1/3/5`.
-  The 1x cases are no-effect controls.
-- Keep resistance fixed at 1, both detection probabilities known at 0.65, and
-  background hazard known at 0.002/day (11.3% loss risk over 60 days without
-  predators). Six survey times, two visits each, zero false positives.
-- All fitting uses 120 training sites; 40 holdout sites score prediction only.
-  Older all-160-site recovery summaries are context, not exact replay targets.
-- Realised predator arrival remains latent in both analyses. Integrate the
-  same candidate arrival jointly across both species within a site. Across
-  sites use the established marginal composite likelihood.
-- Production plan: 4096-draw integration bank; 250 calibration and 250 independent
-  evaluation datasets per case; paired random streams; parameter-specific
-  calibrated intervals; 1000 whole-dataset paired bootstrap resamples of both
-  calibration and evaluation. Calibration still knows the generating condition.
-- Primary prediction is held-out prey prediction conditional on predator
-  observations, against an information-matched no-effect model. The no-effect
-  model's conditional prey score is independent of speed. This avoids the
-  comparator asymmetry found and transparently amended during Arc 2B.
-
-Gold stamp: an interpretable six-case paired comparison with uncertainty,
-numerical checks, clear tables/figures, independent final review, bounded
-consolidation and authorised publication. Weak/negative recovery can satisfy it.
-Unknown background/detection, new landscapes/truths, extra surfaces and Goal 046
-are outside scope. Material scientific changes or projected runs over 24 hours
-need Barry. Routine numerical repair within the question is ours to resolve.
-
-## Exact Handoff State
-
-At Barry's explicit request, the handover checkout uses **`main` only**, with
-the former goal branches consolidated and removed locally and from origin.
-Their commit history is preserved. Goal 044 commit `4d6d23b` remains the last
-scientifically accepted checkpoint; the unfinished Goal 045 source and handover
-through `07737e7` are now included on `main` for continuity, not as an acceptance
-claim. This branch cleanup does not close Goal 045 or relax its review gates.
-Frozen run source is `b67e5e6cf0f7d297883c265dd5c245ce1f90ea5e`; subsequent
-handover/cleanup commits change documentation, not simulation code.
-
-Active code is `src/latent_landscapes/arc2c_{design,likelihood,campaign,synthesis}.py`.
-It reuses the accepted Arc 2B likelihood kernel. CLIs are
-`scripts/run_arc2c_campaign.py`, `scripts/check_arc2c_numerics.py`, and
-`scripts/synthesize_arc2c.py`. Pre-launch review and 28 focused tests, scoped
-Ruff/mypy and build passed. Those checks do not establish scientific completion.
-
-**Newly verified result:** timing succeeded in 566.7 seconds; the workflow then
-stopped at `preflight_gate` with exit 1. Production output is absent and the
-workflow tmux session is gone. It was not a crash during production.
-
-For the first preselected evaluation history across the six cases, doubling
-the bank to 8192 changed profile likelihood-ratio values by less than 0.038.
-However, local half-grid refinement improved the joint maximum log likelihood
-by about 1.19-1.25 in all three usual-speed cases, exceeding the 0.25 review
-limit. Known-speed gains were negligible; slow-speed cases passed. This points
-to spread-speed grid resolution near the peak, **an interpretation to diagnose**,
-not evidence that the ecological model failed. No repair or rerun was started
-during this handover.
-
-Remote locations on `deep-server-ts`:
-
-- Timing, base bank and first-history profiles:
-  `/data/codex/scratch/goal045-timing-20260905-b67e5e6/`.
-- Workflow, canary and reserved production directory:
-  `/data/codex/artifacts/goal045-production-20260905-b67e5e6/`.
-- Read `workflow.status`, `workflow.stage`, `workflow.log`, and
-  `numerical_canary.json`; timing inputs are under `output/`.
-- Compact local copies: `artifacts/goal045_execution/numerical_canary.json`
-  and `timing_run_summary.json`. These and raw outputs remain ignored.
-
-The old task's two-hourly heartbeat, `goal-045-completion-check`, was paused and
-then **deleted** during the authorised cleanup. Its Chief of Staff worktree was
-also removed. The project checkout and scientific evidence remain intact.
-After taking ownership, arrange a quiet scheduled continuation in the new task
-if needed. The old task's Codex goal remains unfinished; it was not falsely
-closed for handover. Execution ownership passes to the successor.
-
-## First Useful Actions
-
-1. Verify current Git/run state and inspect the existing canary evidence.
-2. Diagnose the grid-resolution issue using the saved timing bank/histories.
-   Prefer the smallest numerical repair that answers the approved question;
-   do not blindly enlarge every grid or rerun unchanged checks. Preserve the
-   original evidence and record any justified amendment before production.
-3. After numerical acceptance, freeze source and run the same six-case campaign.
-   Use `uv run --frozen`; check remote-compute guidance in
-   `/Users/bwbrook/work/nectar` before dispatch. Mac mini is the control host;
-   `deep-server` is the CPU-work default. Never infer completion from a stale
-   status file alone or restart merely because monitoring timed out.
-4. Retrieve/verify evidence, synthesize, inspect findings and figures, obtain
-   independent final review, then publish exact accepted paths under Goal 045's
-   existing authority. Keep raw profiles and bulky outputs out of Git. Update
-   the README/roadmap at scientific closeout, not at every internal step.
-
-Bring Barry a clear result and recommendation. The purpose of the fresh task
-is better judgment with less historical burden, not another architectural reset.
+Later programme work needs an explicit bounded scientific decision. Paper 1
+remains synthetic-only; no unknown detection/background, new landscape,
+observation-design change, real data or sibling-repository work is authorized.
+Preserve original failed numerical comparisons; they are part of the methods
+record, not stale files to erase. The earlier primary-only closeout proposal
+was never approved and is superseded by completion of the original criteria.

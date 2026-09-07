@@ -1,0 +1,2658 @@
+{
+  "scope": "first two calibration and first two validation histories across six truths",
+  "decision": "PASS",
+  "bank_sizes": [
+    65536,
+    131072
+  ],
+  "source_commit": "e8c08f10f7b67118a85ee37770d8ee48ee2c213a",
+  "review_limits": {
+    "bank_effect_abs_log_mle_change": 0.05,
+    "bank_rho_abs_log_mle_change": 0.06,
+    "profile_lr_change_on_union_within_10": 0.5,
+    "truth_lr_change": 0.5,
+    "rho_endpoint_movement_g201_cells": 1.0
+  },
+  "provenance": {
+    "reference65536_profile_sha256": "68cb9acc72e07589d6ab752841dba74313a1f1d9d4a297923f560d586f07d8ad",
+    "reference131072_profile_sha256": "fb215d517cc19733772fe56700a7d00041be04f304cabefe6ff0689479f6fce4",
+    "reference65536_seed_provenance_sha256": "8c2d97728b89072ba8014a0c4149f986116352f992d16ef16707d822cb7a5382",
+    "reference131072_seed_provenance_sha256": "da8981e722455c3aad09778327b10f73ad4325cb1fee93a4364f7bd8d64e24ee",
+    "prior_32768_65536_canary_sha256": "10ccc266badea785161bb87d1a85289384a17d38b395dedd49430fbddf2f0d19",
+    "reference65536_matches_prior_canary_input": true,
+    "nested_seed_schedule_reconciled": true
+  },
+  "metric_maxima": {
+    "bank_effect_max_abs_log_mle_change": 0.0,
+    "bank_rho_abs_log_mle_change": 0.0,
+    "known_effect_profile_lr_change_union_le_10": 0.00569316430892286,
+    "estimated_effect_profile_lr_change_union_le_10": 0.011683326280945039,
+    "spread_profile_lr_change_union_le_10": 0.10177134344075967,
+    "truth_lr_change": 0.06258546414483135,
+    "rho_endpoint_movement_g201_cells": 0.0
+  },
+  "failures": [],
+  "conditions": [
+    {
+      "phase": "calibration",
+      "dataset_index": 0,
+      "condition_id": "usual_1",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.0024230302019532246,
+        "estimated_effect": 0.0015624369898432633,
+        "spread": 0.053210924651466485
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 0.0,
+        "estimated_effect": 0.0,
+        "spread": 0.013820947508065728
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0,
+                1.0281138266560665
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0,
+                1.0281138266560665
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9862327044933592,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9862327044933592,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9726549474122855,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9726549474122855,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "calibration",
+      "dataset_index": 0,
+      "condition_id": "usual_3",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.005456725754356739,
+        "estimated_effect": 0.004917851189475186,
+        "spread": 0.05348836045277494
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 0.003358575302627287,
+        "estimated_effect": 0.0030681295866088476,
+        "spread": 0.013941894066192617
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0,
+                1.0281138266560665
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0,
+                1.0281138266560665
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9862327044933592,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9862327044933592,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9726549474122855,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9726549474122855,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "calibration",
+      "dataset_index": 0,
+      "condition_id": "usual_5",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.00569316430892286,
+        "estimated_effect": 0.005144932885286835,
+        "spread": 0.05458575495686091
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 0.001852155002325162,
+        "estimated_effect": 0.001688136188477074,
+        "spread": 0.014418755553833762
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0,
+                1.0281138266560665
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0,
+                1.0281138266560665
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9862327044933592,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9862327044933592,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9726549474122855,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9726549474122855,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "calibration",
+      "dataset_index": 0,
+      "condition_id": "slow_1",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.0025196501753725897,
+        "estimated_effect": 0.0026572599449536938,
+        "spread": 0.09297365884958708
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 0.00020648061308747856,
+        "estimated_effect": 0.0006890710633342678,
+        "spread": 0.04442478084024515
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5358867312681466,
+                0.5586435690361099
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5358867312681466,
+                0.5586435690361099
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5285090202806902,
+                0.5664419426478993
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5285090202806902,
+                0.5664419426478993
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5212328804205607,
+                0.5823667932342279
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5212328804205607,
+                0.5823667932342279
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "calibration",
+      "dataset_index": 0,
+      "condition_id": "slow_3",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.003807738943351069,
+        "estimated_effect": 0.002822550451810457,
+        "spread": 0.0941803084424464
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 0.00011473377639958926,
+        "estimated_effect": 0.00016030497317842674,
+        "spread": 0.04481615849749687
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5358867312681466,
+                0.5586435690361099
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5358867312681466,
+                0.5586435690361099
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5285090202806902,
+                0.5664419426478993
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5285090202806902,
+                0.5664419426478993
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5212328804205607,
+                0.5823667932342279
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5212328804205607,
+                0.5823667932342279
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "calibration",
+      "dataset_index": 0,
+      "condition_id": "slow_5",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.004035623591789772,
+        "estimated_effect": 0.011683326280945039,
+        "spread": 0.09526694096575739
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 0.00026377070525995805,
+        "estimated_effect": 0.000263815738435369,
+        "spread": 0.04481781170193244
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5358867312681466,
+                0.5586435690361099
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5358867312681466,
+                0.5586435690361099
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5285090202806902,
+                0.5664419426478993
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5285090202806902,
+                0.5664419426478993
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5140569133280333,
+                0.5823667932342279
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5140569133280333,
+                0.5823667932342279
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "calibration",
+      "dataset_index": 1,
+      "condition_id": "usual_1",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.001039965006384591,
+        "estimated_effect": 0.000551255131540529,
+        "spread": 0.0495331925390019
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 0.0,
+        "estimated_effect": 0.0,
+        "spread": 0.06258546414483135
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0281138266560665,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0281138266560665,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0281138266560665,
+                1.0717734625362931
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0281138266560665,
+                1.0717734625362931
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.013959479790029,
+                1.0867348625260582
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.013959479790029,
+                1.0867348625260582
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "calibration",
+      "dataset_index": 1,
+      "condition_id": "usual_3",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.001630020066841098,
+        "estimated_effect": 1.5790501947776647e-05,
+        "spread": 0.04825373963421953
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 0.000216475812067074,
+        "estimated_effect": 5.284141025185818e-06,
+        "spread": 0.06096702581862701
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0281138266560665,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0281138266560665,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0281138266560665,
+                1.0717734625362931
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0281138266560665,
+                1.0717734625362931
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.013959479790029,
+                1.0867348625260582
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.013959479790029,
+                1.0867348625260582
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "calibration",
+      "dataset_index": 1,
+      "condition_id": "usual_5",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.0016297077040690056,
+        "estimated_effect": 2.1571372599282768e-05,
+        "spread": 0.0474867168786659
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 0.0003053817363252165,
+        "estimated_effect": 7.799180821166374e-07,
+        "spread": 0.059967939075704635
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0281138266560665,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0281138266560665,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0281138266560665,
+                1.0717734625362931
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0281138266560665,
+                1.0717734625362931
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.013959479790029,
+                1.0867348625260582
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.013959479790029,
+                1.0867348625260582
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "calibration",
+      "dataset_index": 1,
+      "condition_id": "slow_1",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.0011538811650098069,
+        "estimated_effect": 0.0010745830102223408,
+        "spread": 0.01887138149254497
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 0.0,
+        "estimated_effect": 0.0,
+        "spread": 0.012728698785394954
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5,
+                0.5212328804205607
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5,
+                0.5212328804205607
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.48632747370614277,
+                0.5285090202806902
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.48632747370614277,
+                0.5285090202806902
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.47963205966263217,
+                0.5433674312630291
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.47963205966263217,
+                0.5433674312630291
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "calibration",
+      "dataset_index": 1,
+      "condition_id": "slow_3",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.002492778186478972,
+        "estimated_effect": 0.002197901768340671,
+        "spread": 0.01883243932888945
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 0.0008572841709337808,
+        "estimated_effect": 0.0006934792770607601,
+        "spread": 0.012495740186750481
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5,
+                0.5212328804205607
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.5,
+                0.5212328804205607
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.48632747370614277,
+                0.5285090202806902
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.48632747370614277,
+                0.5285090202806902
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.47963205966263217,
+                0.5433674312630291
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.47963205966263217,
+                0.5433674312630291
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "calibration",
+      "dataset_index": 1,
+      "condition_id": "slow_5",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.0024412961379312037,
+        "estimated_effect": 0.0022844869033633586,
+        "spread": 0.018935032373747163
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 0.000670105129302101,
+        "estimated_effect": 0.0006256437573028961,
+        "spread": 0.012266917236502195
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.4931163522466796,
+                0.5212328804205607
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.4931163522466796,
+                0.5212328804205607
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.48632747370614277,
+                0.5285090202806902
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.48632747370614277,
+                0.5285090202806902
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.47963205966263217,
+                0.5433674312630291
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.47963205966263217,
+                0.5433674312630291
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "validation",
+      "dataset_index": 0,
+      "condition_id": "usual_1",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.00044677911364487954,
+        "estimated_effect": 0.00011924431100851507,
+        "spread": 0.033760309218905604
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 0.0,
+        "estimated_effect": 0.0,
+        "spread": 0.018200092274582857
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.013959479790029,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.013959479790029,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9862327044933592,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9862327044933592,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "validation",
+      "dataset_index": 0,
+      "condition_id": "usual_3",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.0013201846122683492,
+        "estimated_effect": 0.0002135041663677839,
+        "spread": 0.03433208618980643
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 0.0003307441784272669,
+        "estimated_effect": 3.112886179224006e-05,
+        "spread": 0.018312751277790085
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.013959479790029,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.013959479790029,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9862327044933592,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9862327044933592,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "validation",
+      "dataset_index": 0,
+      "condition_id": "usual_5",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.0017746595544849697,
+        "estimated_effect": 0.00023783251799613936,
+        "spread": 0.03410961134841273
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 0.00046532707256119465,
+        "estimated_effect": 5.3311599003791343e-05,
+        "spread": 0.01913079619862401
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.013959479790029,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.013959479790029,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9862327044933592,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9862327044933592,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "validation",
+      "dataset_index": 0,
+      "condition_id": "slow_1",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.00047489640496678476,
+        "estimated_effect": 0.002092586265916907,
+        "spread": 0.04868586857128321
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 0.00010313393704564078,
+        "estimated_effect": 0.00067451447739586,
+        "spread": 0.012783562470758625
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.47302882336279795,
+                0.5
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.47302882336279795,
+                0.5
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.4665164957684037,
+                0.5140569133280333
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.4665164957684037,
+                0.5140569133280333
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.4537595776585804,
+                0.5212328804205607
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.4537595776585804,
+                0.5212328804205607
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "validation",
+      "dataset_index": 0,
+      "condition_id": "slow_3",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.003760322808602723,
+        "estimated_effect": 0.006483930449803665,
+        "spread": 0.044359460290479547
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 7.836795157345477e-05,
+        "estimated_effect": 7.915395372037892e-05,
+        "spread": 0.014935789571609348
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.47302882336279795,
+                0.5
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.47302882336279795,
+                0.5
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.4665164957684037,
+                0.5140569133280333
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.4665164957684037,
+                0.5140569133280333
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.4537595776585804,
+                0.5212328804205607
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.4537595776585804,
+                0.5212328804205607
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "validation",
+      "dataset_index": 0,
+      "condition_id": "slow_5",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.0037704403557654587,
+        "estimated_effect": 0.006268696862889556,
+        "spread": 0.04361899371042455
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 0.00023085940892997314,
+        "estimated_effect": 0.0007166634152326878,
+        "spread": 0.014710438437759876
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.47302882336279795,
+                0.5
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.47302882336279795,
+                0.5
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.4665164957684037,
+                0.5140569133280333
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.4665164957684037,
+                0.5140569133280333
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.4537595776585804,
+                0.5212328804205607
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.4537595776585804,
+                0.5212328804205607
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "validation",
+      "dataset_index": 1,
+      "condition_id": "usual_1",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.00012470796355046332,
+        "estimated_effect": 0.0002238418610431836,
+        "spread": 0.03570664644939825
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 2.811697413562797e-05,
+        "estimated_effect": 3.377123266545823e-05,
+        "spread": 0.012649707191030757
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0,
+                1.0281138266560665
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0,
+                1.0281138266560665
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9862327044933592,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9862327044933592,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9726549474122855,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9726549474122855,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "validation",
+      "dataset_index": 1,
+      "condition_id": "usual_3",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.0008064233852564939,
+        "estimated_effect": 0.0012738022396661108,
+        "spread": 0.03777398296188039
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 1.1908511169167468e-05,
+        "estimated_effect": 2.5300701054220553e-05,
+        "spread": 0.012187982595605718
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0,
+                1.0281138266560665
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0,
+                1.0281138266560665
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9862327044933592,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9862327044933592,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9726549474122855,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9726549474122855,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "validation",
+      "dataset_index": 1,
+      "condition_id": "usual_5",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.0008767610529503145,
+        "estimated_effect": 0.002435094545944594,
+        "spread": 0.037705537174588244
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 5.368157644625171e-05,
+        "estimated_effect": 0.00013168053737899754,
+        "spread": 0.008829824840177025
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0,
+                1.0281138266560665
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                1.0,
+                1.0281138266560665
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9862327044933592,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9862327044933592,
+                1.0424657608411214
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9726549474122855,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.9726549474122855,
+                1.0570180405613805
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "validation",
+      "dataset_index": 1,
+      "condition_id": "slow_1",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.002158858975462863,
+        "estimated_effect": 0.002158858975462863,
+        "spread": 0.10177134344075967
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 0.0,
+        "estimated_effect": 0.0,
+        "spread": 0.0
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.48632747370614277,
+                0.5140569133280333
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.48632747370614277,
+                0.5140569133280333
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.47302882336279795,
+                0.5212328804205607
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.47302882336279795,
+                0.5212328804205607
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.4665164957684037,
+                0.5285090202806902
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.4665164957684037,
+                0.5285090202806902
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "validation",
+      "dataset_index": 1,
+      "condition_id": "slow_3",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.002487902430630129,
+        "estimated_effect": 0.002487902430630129,
+        "spread": 0.09827421087788935
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 0.00045712186715718417,
+        "estimated_effect": 0.00045712186715718417,
+        "spread": 0.0
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.48632747370614277,
+                0.5140569133280333
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.48632747370614277,
+                0.5140569133280333
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.47302882336279795,
+                0.5212328804205607
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.47302882336279795,
+                0.5212328804205607
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.4665164957684037,
+                0.5285090202806902
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.4665164957684037,
+                0.5285090202806902
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    },
+    {
+      "phase": "validation",
+      "dataset_index": 1,
+      "condition_id": "slow_5",
+      "bank_effect_max_abs_log_mle_change": 0.0,
+      "bank_rho_abs_log_mle_change": 0.0,
+      "bank_profile_lr_changes_union_le_10": {
+        "known_effect": 0.002849045859193211,
+        "estimated_effect": 0.002849045859193211,
+        "spread": 0.09481878242377206
+      },
+      "bank_truth_lr_changes": {
+        "known_effect": 0.00017608541111258091,
+        "estimated_effect": 0.00017608541111258091,
+        "spread": 0.0
+      },
+      "rho_bank_topology": [
+        {
+          "cutoff": 2.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.48632747370614277,
+                0.5140569133280333
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.48632747370614277,
+                0.5140569133280333
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 5.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.47302882336279795,
+                0.5212328804205607
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.47302882336279795,
+                0.5212328804205607
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        },
+        {
+          "cutoff": 10.0,
+          "old": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.4665164957684037,
+                0.5285090202806902
+              ]
+            ]
+          },
+          "new": {
+            "components": 1,
+            "lower_boundary_contact": false,
+            "upper_boundary_contact": false,
+            "component_endpoints": [
+              [
+                0.4665164957684037,
+                0.5285090202806902
+              ]
+            ]
+          },
+          "same_components": true,
+          "same_boundaries": true,
+          "max_endpoint_movement_original_cells": 0.0,
+          "within_review_limits": true
+        }
+      ],
+      "within_existing_bank_numerical_limits": true,
+      "within_rho_topology_limits": true,
+      "within_review_limits": true
+    }
+  ],
+  "limitations": [
+    "bank sensitivity on four preselected histories only",
+    "G201 discrete profile supports; no continuous-profile endpoint validation",
+    "no new likelihood or midpoint calculations were performed"
+  ]
+}

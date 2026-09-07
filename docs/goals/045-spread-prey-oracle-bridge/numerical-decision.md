@@ -1,6 +1,10 @@
-# Goal 045: decision after the 65536-draw reference
+# Goal 045: bank review and final numerical decision
 
-Status as of 7 September: numerical acceptance remains unresolved. Barry has
+Current status, 8 September: both final comparison families pass; accept the
+65536-draw bank under the amendment in Goal.md. Independent scientific review
+also passed; Goal 045 is closed. See the final section below.
+
+Historical status as of 7 September: numerical acceptance remained unresolved. Barry has
 authorized one final projected 25.34-hour doubling; the primary-only amendment
 below remains an unapproved historical proposal. No bank has been promoted or
 scientific closeout declared. The completed runs answer the same six-case question with
@@ -191,3 +195,53 @@ The final reference launched at 2026-09-07 02:10:12 UTC under
 frozen inputs verified and all eight extension workers running. The two-hour
 heartbeat is active again. The original scientific question and review gates
 remain in force; no larger bank has been promoted.
+
+## Final numerical decision, 8 September 2026
+
+**PASS: accept 65536 draws against 131072 under the unchanged criteria.**
+The full reference finished successfully on 7 September at 16:57 UTC, taking
+14.565 campaign hours plus approximately 13 minutes to extend the bank. It
+used all 250 calibration and 250 evaluation datasets per case. Exact source,
+history seeds, nested bank prefixes, event diagnostics and profile checksums
+reconciled, including direct hashes of the saved remote bank arrays.
+
+| Case | Rho cutoff, 65536 | Rho cutoff, 131072 | Change |
+| --- | ---: | ---: | ---: |
+| usual_1 | 45.20778 | 45.09906 | -0.10872 |
+| usual_3 | 45.82084 | 45.69653 | -0.12431 |
+| usual_5 | 45.77916 | 45.69499 | -0.08418 |
+| slow_1 | 20.15972 | 20.11530 | -0.04442 |
+| slow_3 | 20.11821 | 20.07339 | -0.04482 |
+| slow_5 | 20.26131 | 20.30520 | +0.04389 |
+
+All observed cutoff changes are below 0.5 LR; all 1500 evaluation rho supports
+retain component counts and boundary classification, with endpoints moving at
+most one G201 cell. Coverage counts and median widths are unchanged in each
+case; maximum mean log-width movement is 0.000278 against one cell of 0.013863.
+The paired bootstrap distributions were also compared using identical indices;
+their diagnostics are retained in [the full comparison](bank64-128-comparison.json).
+Those distribution comparisons do not impose the observed-point criteria on
+every bootstrap resample. All 30 primary paired intervals include zero at
+both banks, so the interpretation is unchanged.
+
+The [original four-history canary](bank64-128-canary-summary.json) passes all
+24 comparisons and 72 topology checks at cutoffs 2, 5 and 10. Maximum core
+rho-profile LR change is 0.101771, profiled-effect change 0.011683, known-speed
+effect change 0.005693, and direct truth-LR change 0.062585. MLE and support
+endpoint movement are zero. The original G201 local midpoint evidence remains
+in force; this comparison tests bank accuracy, not new continuum endpoints.
+
+The accepted bank is the exact 65536-draw prefix of the 131072 bank. The
+completed 65536 reference is accepted as the final scientific evidence via the
+explicit numerical amendment; its original metadata and output bytes remain
+unchanged. No further full-bank simulation is required or authorized. Earlier
+failures are preserved above and in the linked comparisons. This bounded pass
+does not establish exact integration or general Monte Carlo convergence, and
+the bootstrap does not incorporate uncertainty from independent banks.
+
+The unapproved primary-only proposal above is superseded by completion of the
+original numerical scope. The scientific result and limitations are evaluated
+in [the synthesis memo](synthesis.md); a numerical pass alone is not closeout.
+
+The [independent final scientific review](final-review.md) passed without
+material repair. Goal 045 is now scientifically closed under the original scope.

@@ -1,7 +1,7 @@
 # Goal 045: The Cost of Estimating Predator Spread Speed
 
-Status: original scientific scope retained. Barry authorized one further
-131072-draw reference on 7 September; running on deep-server. No bank promoted.
+Status: scientifically complete, 8 September 2026. The 65536-draw bank passes
+both final numerical criteria families; synthesis and independent review pass.
 Programme role: Arc 2C, Charter Pillar 2, selected joint-recovery bridge.
 
 ## Question and completion condition
@@ -45,7 +45,7 @@ retain the site-marginal composite likelihood, with no spatial dependence claim.
 Use the existing broad rho domain 0.25-4 (201 log-spaced points, including exact 0.5 and 1)
 and effect domain 1-10 (181 linear points), including all generating values.
 Rho scales each base arrival by 1/rho exactly under the accepted spread model.
-Use the numerically verified 16384-draw arrival integration bank. Master seed is
+Use the numerically verified 65536-draw arrival integration bank. Master seed is
 20260905, independent of Arc 2A/B. Use common random numbers across the six cases and paired analyses,
 with separate integration, calibration, and evaluation streams.
 
@@ -149,6 +149,33 @@ model, estimands, comparators and numerical limits are unchanged. This is a
 documented numerical-accuracy amendment within the approved diagnostic scope.
 Numerical evidence remains conditional on four paired histories; inspect the
 eventual calibrated cutoffs before final scientific acceptance.
+
+## Final bank amendment, 8 September 2026
+
+Accept 65536 integration draws against the final nested 131072-draw reference.
+Both the original four-history canary and the additional full-ensemble criteria
+pass without changing their limits. The maximum observed rho cutoff change is
+0.12431 LR (limit 0.5); endpoints move at most one G201 cell; components,
+boundary contact and coverage counts are unchanged in all six cases. Mean log
+width changes by at most 0.000278 (one cell is 0.013863); median widths are
+unchanged. All 30 primary paired bootstrap intervals still include zero.
+The canary passes all 24 rows and 72 topology checks: maximum core rho-profile
+LR change 0.10178, truth-LR change 0.06259, and no MLE or endpoint movement.
+
+The accepted bank checksum is
+`6e5ca1d19c1f825f608453c5692cfb8e327b11ed19208e232f5309658b2cb833`.
+Reuse the completed 65536 full-ensemble reference profiles from frozen source
+`e8c08f10f7b67118a85ee37770d8ee48ee2c213a`; their checksum is
+`68cb9acc72e07589d6ab752841dba74313a1f1d9d4a297923f560d586f07d8ad`.
+Its original `timing` mode and nonproduction metadata remain intact: it ran
+all 250 calibration and 250 evaluation histories per case with only bank size
+changed. This amendment accepts that full-ensemble evidence, rather than
+rewriting its receipt or rerunning identical simulations. The current source
+default is updated to the accepted bank size; kernels and scientific settings
+are unchanged. Failed earlier comparisons remain part of the numerical record.
+This is bounded numerical stability on nested banks, not proof of exact
+integration, independent replication or continuous-grid convergence. Final
+scientific acceptance also requires the synthesis and independent review.
 
 ## Stages and checks
 
@@ -490,3 +517,28 @@ can trigger diagnosis; a negative ecological result is not an implementation bug
   projection 25.341 hours, and all eight 8192-draw extension workers started.
   Python/Bash syntax, Ruff, and four-draw serial/spawn equivalence passed both
   locally and on deep-server. The quiet two-hour heartbeat is active again.
+
+- Final closeout, 8 September 2026: the 131072 reference exited successfully at
+  2026-09-07 16:57 UTC after 14.565 campaign hours plus approximately 13 minutes
+  of bank extension. Exact source, seeds, nested bank arrays, profile hashes
+  and event diagnostics reconciled. Both original canary and full-ensemble
+  numerical criteria pass against 65536; the bank amendment above is accepted.
+- The completed 65536 profiles were synthesized with the declared 1000 paired
+  whole-dataset bootstrap resamples. All 30 primary intervals include zero;
+  the accepted claim is no detected systematic deterioration in prey-effect
+  recovery in these six conditions, not equivalence. Shared weak recovery and
+  usual-speed fivefold effect coverage of 91.6% are retained explicitly.
+- [Independent final review](final-review.md) passed without material repair:
+  exact replay of all point contrasts and canonical bootstrap endpoints, both
+  numerical check families independently reproduced, and source, calibration,
+  pairing, holdout and interpretation checked. The audit-only 10000-resample
+  sensitivity result retained the same zero-inclusion conclusion.
+- Twenty-four focused Arc 2C/shared Arc 2B tests passed; scoped formatting,
+  Ruff, strict mypy and build passed. Both figures were visually inspected.
+  Bounded active-path review retained the existing four modules and three
+  entry points; no further consolidation or simulation was warranted.
+- [Scientific synthesis](synthesis.md), six-case tables, figures, compact
+  provenance and numerical comparisons are published to main under the goal's
+  explicit authority. Bulky raw profiles and banks remain outside Git. The
+  completion heartbeat is paused. Goal 045 closes within its original scope;
+  no next goal, new biological conditions or real-data work is launched.

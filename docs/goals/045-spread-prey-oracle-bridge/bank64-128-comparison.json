@@ -1,0 +1,1276 @@
+{
+  "source_commit": "e8c08f10f7b67118a85ee37770d8ee48ee2c213a",
+  "profiles_sha256": {
+    "65536": "68cb9acc72e07589d6ab752841dba74313a1f1d9d4a297923f560d586f07d8ad",
+    "131072": "fb215d517cc19733772fe56700a7d00041be04f304cabefe6ff0689479f6fce4"
+  },
+  "provenance_checks_pass": true,
+  "rho_log_grid_cell": 0.013862943611198863,
+  "rho_materiality": [
+    {
+      "condition": "usual_1",
+      "cutoff64": 45.20777897741527,
+      "cutoff128": 45.099063146387834,
+      "cutoff_change": -0.10871583102743898,
+      "max_endpoint_cells": 1,
+      "endpoint_changed_datasets": 2,
+      "component_changes": 0,
+      "boundary_changes": 0,
+      "coverage64": 0.964,
+      "coverage128": 0.964,
+      "coverage_count_change": 0,
+      "mean_logwidth_change": -0.00011090354888962373,
+      "median_logwidth_change": 0.0,
+      "max_mle_cells": 1.0000000000000158,
+      "materiality_pass": true
+    },
+    {
+      "condition": "usual_3",
+      "cutoff64": 45.82083997645259,
+      "cutoff128": 45.69652919614418,
+      "cutoff_change": -0.12431078030840581,
+      "max_endpoint_cells": 1,
+      "endpoint_changed_datasets": 1,
+      "component_changes": 0,
+      "boundary_changes": 0,
+      "coverage64": 0.964,
+      "coverage128": 0.964,
+      "coverage_count_change": 0,
+      "mean_logwidth_change": -5.545177444477023e-05,
+      "median_logwidth_change": 0.0,
+      "max_mle_cells": 1.000000000000001,
+      "materiality_pass": true
+    },
+    {
+      "condition": "usual_5",
+      "cutoff64": 45.77916362986389,
+      "cutoff128": 45.694985321443255,
+      "cutoff_change": -0.08417830842063267,
+      "max_endpoint_cells": 1,
+      "endpoint_changed_datasets": 4,
+      "component_changes": 0,
+      "boundary_changes": 0,
+      "coverage64": 0.964,
+      "coverage128": 0.964,
+      "coverage_count_change": 0,
+      "mean_logwidth_change": -0.00011090354888959597,
+      "median_logwidth_change": 0.0,
+      "max_mle_cells": 1.0000000000000158,
+      "materiality_pass": true
+    },
+    {
+      "condition": "slow_1",
+      "cutoff64": 20.159723396585605,
+      "cutoff128": 20.11529861574536,
+      "cutoff_change": -0.04442478084024515,
+      "max_endpoint_cells": 1,
+      "endpoint_changed_datasets": 4,
+      "component_changes": 0,
+      "boundary_changes": 0,
+      "coverage64": 0.924,
+      "coverage128": 0.924,
+      "coverage_count_change": 0,
+      "mean_logwidth_change": 0.00011090354888959597,
+      "median_logwidth_change": 0.0,
+      "max_mle_cells": 1.0000000000000158,
+      "materiality_pass": true
+    },
+    {
+      "condition": "slow_3",
+      "cutoff64": 20.11820726729252,
+      "cutoff128": 20.073391108795022,
+      "cutoff_change": -0.04481615849749687,
+      "max_endpoint_cells": 1,
+      "endpoint_changed_datasets": 3,
+      "component_changes": 0,
+      "boundary_changes": 0,
+      "coverage64": 0.924,
+      "coverage128": 0.924,
+      "coverage_count_change": 0,
+      "mean_logwidth_change": -5.545177444477023e-05,
+      "median_logwidth_change": 0.0,
+      "max_mle_cells": 1.0,
+      "materiality_pass": true
+    },
+    {
+      "condition": "slow_5",
+      "cutoff64": 20.26131052873734,
+      "cutoff128": 20.305204712528848,
+      "cutoff_change": 0.04389418379150811,
+      "max_endpoint_cells": 1,
+      "endpoint_changed_datasets": 9,
+      "component_changes": 0,
+      "boundary_changes": 0,
+      "coverage64": 0.924,
+      "coverage128": 0.924,
+      "coverage_count_change": 0,
+      "mean_logwidth_change": 0.00027725887222396217,
+      "median_logwidth_change": 0.0,
+      "max_mle_cells": 1.000000000000001,
+      "materiality_pass": true
+    }
+  ],
+  "all_observed_rho_materiality_pass": true,
+  "rho_paired_bootstrap": [
+    {
+      "condition": "usual_1",
+      "cutoff": {
+        "bounds64": [
+          37.26786693642816,
+          61.330027719306145
+        ],
+        "bounds128": [
+          37.262796804840036,
+          61.25162496428629
+        ],
+        "paired_change_bounds": [
+          -0.28153053301639375,
+          -0.023821877785394463
+        ],
+        "max_absolute_paired_change": 0.3114264367331998
+      },
+      "coverage": {
+        "bounds64": [
+          0.9,
+          0.988
+        ],
+        "bounds128": [
+          0.9,
+          0.988
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.008000000000000007
+      },
+      "mean_log_interval_width": {
+        "bounds64": [
+          0.16219505395666614,
+          0.2124911996724569
+        ],
+        "bounds128": [
+          0.16214098847658243,
+          0.2125466514469017
+        ],
+        "paired_change_bounds": [
+          -0.0005004522643643274,
+          0.00033271064666876016
+        ],
+        "max_absolute_paired_change": 0.0010535837144511062
+      },
+      "median_log_interval_width": {
+        "bounds64": [
+          0.1663553233343868,
+          0.20794415416798379
+        ],
+        "bounds128": [
+          0.1663553233343868,
+          0.20794415416798379
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.013862943611198664
+      },
+      "connected": {
+        "bounds64": [
+          1.0,
+          1.0
+        ],
+        "bounds128": [
+          1.0,
+          1.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      },
+      "boundary_contact": {
+        "bounds64": [
+          0.0,
+          0.0
+        ],
+        "bounds128": [
+          0.0,
+          0.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      }
+    },
+    {
+      "condition": "usual_3",
+      "cutoff": {
+        "bounds64": [
+          37.55872738688231,
+          61.750577892020374
+        ],
+        "bounds128": [
+          37.55421376775075,
+          61.67251671857139
+        ],
+        "paired_change_bounds": [
+          -0.2805065290181119,
+          -0.020810496823287394
+        ],
+        "max_absolute_paired_change": 0.31308905556988975
+      },
+      "coverage": {
+        "bounds64": [
+          0.904,
+          0.988
+        ],
+        "bounds128": [
+          0.904,
+          0.988
+        ],
+        "paired_change_bounds": [
+          -0.0040000000000000036,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.01200000000000001
+      },
+      "mean_log_interval_width": {
+        "bounds64": [
+          0.16280640976992003,
+          0.21244129307545662
+        ],
+        "bounds128": [
+          0.1629159270244485,
+          0.21282529661348681
+        ],
+        "paired_change_bounds": [
+          -0.000831776616671942,
+          0.0002772588722239629
+        ],
+        "max_absolute_paired_change": 0.0012199390377855002
+      },
+      "median_log_interval_width": {
+        "bounds64": [
+          0.166355323334387,
+          0.20794415416798379
+        ],
+        "bounds128": [
+          0.166355323334387,
+          0.20794415416798379
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.006931471805599332
+      },
+      "connected": {
+        "bounds64": [
+          1.0,
+          1.0
+        ],
+        "bounds128": [
+          1.0,
+          1.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      },
+      "boundary_contact": {
+        "bounds64": [
+          0.0,
+          0.0
+        ],
+        "bounds128": [
+          0.0,
+          0.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      }
+    },
+    {
+      "condition": "usual_5",
+      "cutoff": {
+        "bounds64": [
+          37.46106456941288,
+          62.51065824237139
+        ],
+        "bounds128": [
+          37.45382984178423,
+          62.43242550371315
+        ],
+        "paired_change_bounds": [
+          -0.31570919244950346,
+          -0.018362270653142332
+        ],
+        "max_absolute_paired_change": 0.3858942383012618
+      },
+      "coverage": {
+        "bounds64": [
+          0.904,
+          0.988
+        ],
+        "bounds128": [
+          0.904,
+          0.988
+        ],
+        "paired_change_bounds": [
+          -0.0040000000000000036,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.016000000000000014
+      },
+      "mean_log_interval_width": {
+        "bounds64": [
+          0.16202453975024841,
+          0.21349071790682433
+        ],
+        "bounds128": [
+          0.16202869863333177,
+          0.21360023516135282
+        ],
+        "paired_change_bounds": [
+          -0.0007763248422271169,
+          0.00022180709777916419
+        ],
+        "max_absolute_paired_change": 0.001275390812230326
+      },
+      "median_log_interval_width": {
+        "bounds64": [
+          0.1663553233343868,
+          0.20794415416798379
+        ],
+        "bounds128": [
+          0.1663553233343868,
+          0.20794415416798379
+        ],
+        "paired_change_bounds": [
+          -1.6653345369377348e-16,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.01386294361119872
+      },
+      "connected": {
+        "bounds64": [
+          1.0,
+          1.0
+        ],
+        "bounds128": [
+          1.0,
+          1.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      },
+      "boundary_contact": {
+        "bounds64": [
+          0.0,
+          0.0
+        ],
+        "bounds128": [
+          0.0,
+          0.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      }
+    },
+    {
+      "condition": "slow_1",
+      "cutoff": {
+        "bounds64": [
+          14.221436593033559,
+          32.58267775692343
+        ],
+        "bounds128": [
+          14.227522818044918,
+          32.383148406730925
+        ],
+        "paired_change_bounds": [
+          -0.19952935019250617,
+          0.1130161709818367
+        ],
+        "max_absolute_paired_change": 0.3787467800680133
+      },
+      "coverage": {
+        "bounds64": [
+          0.88,
+          0.972
+        ],
+        "bounds128": [
+          0.88,
+          0.9680999999999998
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.01200000000000001
+        ],
+        "max_absolute_paired_change": 0.03599999999999992
+      },
+      "mean_log_interval_width": {
+        "bounds64": [
+          0.16524628784549103,
+          0.25574497003375857
+        ],
+        "bounds128": [
+          0.1653558051000195,
+          0.25530551472128354
+        ],
+        "paired_change_bounds": [
+          -0.0009440664599227113,
+          0.0011090354888959042
+        ],
+        "max_absolute_paired_change": 0.00177445678223348
+      },
+      "median_log_interval_width": {
+        "bounds64": [
+          0.166355323334387,
+          0.26339592861277905
+        ],
+        "bounds128": [
+          0.166355323334387,
+          0.26339592861277905
+        ],
+        "paired_change_bounds": [
+          -1.1102230246251565e-16,
+          0.006931471805599332
+        ],
+        "max_absolute_paired_change": 0.013862943611198747
+      },
+      "connected": {
+        "bounds64": [
+          1.0,
+          1.0
+        ],
+        "bounds128": [
+          1.0,
+          1.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      },
+      "boundary_contact": {
+        "bounds64": [
+          0.0,
+          0.0
+        ],
+        "bounds128": [
+          0.0,
+          0.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      }
+    },
+    {
+      "condition": "slow_3",
+      "cutoff": {
+        "bounds64": [
+          14.228032228277698,
+          32.59542027918974
+        ],
+        "bounds128": [
+          14.238830281361516,
+          32.42648984106222
+        ],
+        "paired_change_bounds": [
+          -0.1900045789250271,
+          0.11168131141880622
+        ],
+        "max_absolute_paired_change": 0.379387240453525
+      },
+      "coverage": {
+        "bounds64": [
+          0.8799,
+          0.972
+        ],
+        "bounds128": [
+          0.88,
+          0.972
+        ],
+        "paired_change_bounds": [
+          -0.008000000000000007,
+          9.999999999990914e-05
+        ],
+        "max_absolute_paired_change": 0.020000000000000018
+      },
+      "mean_log_interval_width": {
+        "bounds64": [
+          0.16540987058010317,
+          0.2558004218082034
+        ],
+        "bounds128": [
+          0.16552077412899277,
+          0.25546771116153455
+        ],
+        "paired_change_bounds": [
+          -0.0014971979100094623,
+          0.0008872283911167407
+        ],
+        "max_absolute_paired_change": 0.001996263880012672
+      },
+      "median_log_interval_width": {
+        "bounds64": [
+          0.166355323334387,
+          0.26339592861277905
+        ],
+        "bounds128": [
+          0.166355323334387,
+          0.26339592861277905
+        ],
+        "paired_change_bounds": [
+          -1.942890293094024e-16,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.013862943611198747
+      },
+      "connected": {
+        "bounds64": [
+          1.0,
+          1.0
+        ],
+        "bounds128": [
+          1.0,
+          1.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      },
+      "boundary_contact": {
+        "bounds64": [
+          0.0,
+          0.0
+        ],
+        "bounds128": [
+          0.0,
+          0.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      }
+    },
+    {
+      "condition": "slow_5",
+      "cutoff": {
+        "bounds64": [
+          14.165377032035394,
+          32.85743975280593
+        ],
+        "bounds128": [
+          14.182355168163213,
+          32.52952495696172
+        ],
+        "paired_change_bounds": [
+          -0.32791479584420813,
+          0.10795557045389614
+        ],
+        "max_absolute_paired_change": 0.38003586720469684
+      },
+      "coverage": {
+        "bounds64": [
+          0.872,
+          0.972
+        ],
+        "bounds128": [
+          0.872,
+          0.9680999999999998
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.008000000000000007
+        ],
+        "max_absolute_paired_change": 0.02400000000000002
+      },
+      "mean_log_interval_width": {
+        "bounds64": [
+          0.16385999348437116,
+          0.25641177762145717
+        ],
+        "bounds128": [
+          0.16429667620812388,
+          0.2555813872991464
+        ],
+        "paired_change_bounds": [
+          -0.001053583714451134,
+          0.0008331629110330608
+        ],
+        "max_absolute_paired_change": 0.0018299085566783058
+      },
+      "median_log_interval_width": {
+        "bounds64": [
+          0.166355323334387,
+          0.26339592861277905
+        ],
+        "bounds128": [
+          0.166355323334387,
+          0.26339592861277905
+        ],
+        "paired_change_bounds": [
+          -1.6653345369377348e-16,
+          8.326672684688674e-17
+        ],
+        "max_absolute_paired_change": 0.013862943611198691
+      },
+      "connected": {
+        "bounds64": [
+          1.0,
+          1.0
+        ],
+        "bounds128": [
+          1.0,
+          1.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      },
+      "boundary_contact": {
+        "bounds64": [
+          0.0,
+          0.0
+        ],
+        "bounds128": [
+          0.0,
+          0.0
+        ],
+        "paired_change_bounds": [
+          0.0,
+          0.0
+        ],
+        "max_absolute_paired_change": 0.0
+      }
+    }
+  ],
+  "primary_effect_changes": [
+    {
+      "condition": "usual_1",
+      "metric": "mean_absolute_log_error",
+      "estimate64": 0.00027041784309883576,
+      "estimate128": 0.0001577343352320293,
+      "bounds64": [
+        -0.0016215716868716375,
+        0.002169549411411987
+      ],
+      "bounds128": [
+        -0.0017357821793950248,
+        0.0020404908361523755
+      ],
+      "numerical_change_bounds": [
+        -0.0003408676112970596,
+        0.0
+      ]
+    },
+    {
+      "condition": "usual_1",
+      "metric": "mean_log_interval_width",
+      "estimate64": -0.022555421972879852,
+      "estimate128": -0.022281058136373932,
+      "bounds64": [
+        -0.040077099335166434,
+        0.02718112911415097
+      ],
+      "bounds128": [
+        -0.039693839326763444,
+        0.027182600646756976
+      ],
+      "numerical_change_bounds": [
+        -0.0006073263704582388,
+        0.0007784776447412156
+      ]
+    },
+    {
+      "condition": "usual_1",
+      "metric": "coverage",
+      "estimate64": -0.01200000000000001,
+      "estimate128": -0.01200000000000001,
+      "bounds64": [
+        -0.02400000000000002,
+        0.01200000000000001
+      ],
+      "bounds128": [
+        -0.02400000000000002,
+        0.01200000000000001
+      ],
+      "numerical_change_bounds": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "condition": "usual_1",
+      "metric": "no_effect_exclusion",
+      "estimate64": 0.011999999999999997,
+      "estimate128": 0.011999999999999997,
+      "bounds64": [
+        -0.012,
+        0.024000000000000007
+      ],
+      "bounds128": [
+        -0.012,
+        0.024000000000000007
+      ],
+      "numerical_change_bounds": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "condition": "usual_1",
+      "metric": "conditional_prey_advantage",
+      "estimate64": 1.7409046110748218e-05,
+      "estimate128": 2.6567376332119403e-05,
+      "bounds64": [
+        -5.687686258385204e-05,
+        9.736948930579085e-05
+      ],
+      "bounds128": [
+        -4.860996915853813e-05,
+        0.00010021195459983275
+      ],
+      "numerical_change_bounds": [
+        -9.011772153181786e-07,
+        2.9097258258054793e-05
+      ]
+    },
+    {
+      "condition": "usual_3",
+      "metric": "mean_absolute_log_error",
+      "estimate64": 0.00023504368576499068,
+      "estimate128": 0.00023504368576499068,
+      "bounds64": [
+        -0.002021284715259191,
+        0.0026012051653804776
+      ],
+      "bounds128": [
+        -0.002021284715259191,
+        0.0026012051653804776
+      ],
+      "numerical_change_bounds": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "condition": "usual_3",
+      "metric": "mean_log_interval_width",
+      "estimate64": -0.017723952700547718,
+      "estimate128": -0.017279123061469948,
+      "bounds64": [
+        -0.023838918835617083,
+        0.05375729964578694
+      ],
+      "bounds128": [
+        -0.02393116347131304,
+        0.053921869430781
+      ],
+      "numerical_change_bounds": [
+        -0.0007331023096962819,
+        0.0009222685017240827
+      ]
+    },
+    {
+      "condition": "usual_3",
+      "metric": "coverage",
+      "estimate64": 0.0,
+      "estimate128": 0.0040000000000000036,
+      "bounds64": [
+        -0.008000000000000007,
+        0.02399999999999991
+      ],
+      "bounds128": [
+        -0.008000000000000007,
+        0.02399999999999991
+      ],
+      "numerical_change_bounds": [
+        -0.008000000000000007,
+        0.008000000000000007
+      ]
+    },
+    {
+      "condition": "usual_3",
+      "metric": "no_effect_exclusion",
+      "estimate64": 0.016000000000000014,
+      "estimate128": 0.016000000000000014,
+      "bounds64": [
+        -0.03200000000000003,
+        0.02400000000000002
+      ],
+      "bounds128": [
+        -0.03200000000000003,
+        0.02400000000000002
+      ],
+      "numerical_change_bounds": [
+        -0.008000000000000007,
+        0.0
+      ]
+    },
+    {
+      "condition": "usual_3",
+      "metric": "conditional_prey_advantage",
+      "estimate64": 0.00014576203413633332,
+      "estimate128": 0.0001462309394999195,
+      "bounds64": [
+        -0.0001280551741940597,
+        0.0004162978767459127
+      ],
+      "bounds128": [
+        -0.00012349567323629987,
+        0.0004183276102738855
+      ],
+      "numerical_change_bounds": [
+        -3.3918164436312626e-06,
+        6.5434035268690365e-06
+      ]
+    },
+    {
+      "condition": "usual_5",
+      "metric": "mean_absolute_log_error",
+      "estimate64": 6.261606274909903e-05,
+      "estimate128": 2.2414719335089872e-05,
+      "bounds64": [
+        -0.0028025207067184322,
+        0.0031363831375850184
+      ],
+      "bounds128": [
+        -0.0028972172628119568,
+        0.003109752050351454
+      ],
+      "numerical_change_bounds": [
+        -0.00018055382057227746,
+        0.00011399265782518147
+      ]
+    },
+    {
+      "condition": "usual_5",
+      "metric": "mean_log_interval_width",
+      "estimate64": -0.010268855202074989,
+      "estimate128": -0.010075117136440936,
+      "bounds64": [
+        -0.03081125330396039,
+        0.0392590455089649
+      ],
+      "bounds128": [
+        -0.030772165123619993,
+        0.038907559208727474
+      ],
+      "numerical_change_bounds": [
+        -0.00037001333983432695,
+        0.0008094035094494243
+      ]
+    },
+    {
+      "condition": "usual_5",
+      "metric": "coverage",
+      "estimate64": 0.0,
+      "estimate128": 0.0,
+      "bounds64": [
+        -0.03200000000000003,
+        0.028000000000000025
+      ],
+      "bounds128": [
+        -0.03200000000000003,
+        0.028000000000000025
+      ],
+      "numerical_change_bounds": [
+        0.0,
+        0.007999999999999896
+      ]
+    },
+    {
+      "condition": "usual_5",
+      "metric": "no_effect_exclusion",
+      "estimate64": 0.0,
+      "estimate128": 0.0,
+      "bounds64": [
+        -0.0040000000000000036,
+        0.0
+      ],
+      "bounds128": [
+        -0.0040000000000000036,
+        0.0
+      ],
+      "numerical_change_bounds": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "condition": "usual_5",
+      "metric": "conditional_prey_advantage",
+      "estimate64": 0.00023493577680881728,
+      "estimate128": 0.00023470570692325776,
+      "bounds64": [
+        -0.00022278369609717504,
+        0.0007327522812607335
+      ],
+      "bounds128": [
+        -0.00022178360642816154,
+        0.000733112293555933
+      ],
+      "numerical_change_bounds": [
+        -6.740747603822817e-06,
+        8.949255862332816e-06
+      ]
+    },
+    {
+      "condition": "slow_1",
+      "metric": "mean_absolute_log_error",
+      "estimate64": 0.0001574178584631547,
+      "estimate128": 0.0001703698395582598,
+      "bounds64": [
+        -0.0017424511213163323,
+        0.0021984685671671265
+      ],
+      "bounds128": [
+        -0.001604336915593116,
+        0.0021347677181075787
+      ],
+      "numerical_change_bounds": [
+        -0.0004904042069104053,
+        0.0005759485935230443
+      ]
+    },
+    {
+      "condition": "slow_1",
+      "metric": "mean_log_interval_width",
+      "estimate64": -0.013108463041147544,
+      "estimate128": -0.013275478829993359,
+      "bounds64": [
+        -0.021445355301459888,
+        0.0332187989139791
+      ],
+      "bounds128": [
+        -0.020822239333118026,
+        0.033189204587324966
+      ],
+      "numerical_change_bounds": [
+        -0.0010104308537706274,
+        0.0009768736294851644
+      ]
+    },
+    {
+      "condition": "slow_1",
+      "metric": "coverage",
+      "estimate64": 0.0,
+      "estimate128": 0.0,
+      "bounds64": [
+        -0.01200000000000001,
+        0.0040000000000000036
+      ],
+      "bounds128": [
+        -0.01200000000000001,
+        0.0040000000000000036
+      ],
+      "numerical_change_bounds": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "condition": "slow_1",
+      "metric": "no_effect_exclusion",
+      "estimate64": 0.0,
+      "estimate128": 0.0,
+      "bounds64": [
+        -0.003999999999999997,
+        0.012000000000000004
+      ],
+      "bounds128": [
+        -0.003999999999999997,
+        0.012000000000000004
+      ],
+      "numerical_change_bounds": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "condition": "slow_1",
+      "metric": "conditional_prey_advantage",
+      "estimate64": 2.6946529134679183e-06,
+      "estimate128": 4.4627001791553225e-06,
+      "bounds64": [
+        -6.013963221384861e-05,
+        5.7858593828165874e-05
+      ],
+      "bounds128": [
+        -5.60261787973947e-05,
+        5.97963045371575e-05
+      ],
+      "numerical_change_bounds": [
+        -1.1231173184487818e-05,
+        1.4181788657304766e-05
+      ]
+    },
+    {
+      "condition": "slow_3",
+      "metric": "mean_absolute_log_error",
+      "estimate64": -9.702325829413772e-05,
+      "estimate128": -0.00020633469394343296,
+      "bounds64": [
+        -0.002438005768732565,
+        0.0022063786375303234
+      ],
+      "bounds128": [
+        -0.0024789093703674867,
+        0.002098128041128309
+      ],
+      "numerical_change_bounds": [
+        -0.00035989520629959996,
+        9.580952837373591e-05
+      ]
+    },
+    {
+      "condition": "slow_3",
+      "metric": "mean_log_interval_width",
+      "estimate64": 0.015845797457792354,
+      "estimate128": 0.016331505832096527,
+      "bounds64": [
+        -0.02094480300331381,
+        0.047881348589749066
+      ],
+      "bounds128": [
+        -0.021297938758746866,
+        0.04790276561847434
+      ],
+      "numerical_change_bounds": [
+        -0.0008909079328649428,
+        0.0007436181128922969
+      ]
+    },
+    {
+      "condition": "slow_3",
+      "metric": "coverage",
+      "estimate64": -0.0040000000000000036,
+      "estimate128": -0.0040000000000000036,
+      "bounds64": [
+        -0.016000000000000014,
+        0.01200000000000001
+      ],
+      "bounds128": [
+        -0.016000000000000014,
+        0.01200000000000001
+      ],
+      "numerical_change_bounds": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "condition": "slow_3",
+      "metric": "no_effect_exclusion",
+      "estimate64": -0.020000000000000018,
+      "estimate128": -0.020000000000000018,
+      "bounds64": [
+        -0.028000000000000025,
+        0.016000000000000014
+      ],
+      "bounds128": [
+        -0.028000000000000025,
+        0.020099999999999923
+      ],
+      "numerical_change_bounds": [
+        -0.0040000000000000036,
+        0.008000000000000007
+      ]
+    },
+    {
+      "condition": "slow_3",
+      "metric": "conditional_prey_advantage",
+      "estimate64": -1.3636780295291084e-06,
+      "estimate128": 3.389063544112156e-06,
+      "bounds64": [
+        -0.000203856789211961,
+        0.00020878934357953412
+      ],
+      "bounds128": [
+        -0.00019898038329426018,
+        0.00021153333034704477
+      ],
+      "numerical_change_bounds": [
+        -1.60493850772255e-06,
+        1.3316169335742628e-05
+      ]
+    },
+    {
+      "condition": "slow_5",
+      "metric": "mean_absolute_log_error",
+      "estimate64": -0.00199905828449759,
+      "estimate128": -0.0021588151171197945,
+      "bounds64": [
+        -0.004343968838385862,
+        0.00021831440872048917
+      ],
+      "bounds128": [
+        -0.004480067202018106,
+        9.568491736361415e-05
+      ],
+      "numerical_change_bounds": [
+        -0.00040303845737991447,
+        7.593519341545224e-05
+      ]
+    },
+    {
+      "condition": "slow_5",
+      "metric": "mean_log_interval_width",
+      "estimate64": -0.02168346099137941,
+      "estimate128": -0.02126720198746046,
+      "bounds64": [
+        -0.03924013047546017,
+        0.037836227164315804
+      ],
+      "bounds128": [
+        -0.03928264081651204,
+        0.036595846538065156
+      ],
+      "numerical_change_bounds": [
+        -0.0014737018549964508,
+        0.0033001957825164897
+      ]
+    },
+    {
+      "condition": "slow_5",
+      "metric": "coverage",
+      "estimate64": -0.007999999999999896,
+      "estimate128": -0.007999999999999896,
+      "bounds64": [
+        -0.015999999999999903,
+        0.01200000000000001
+      ],
+      "bounds128": [
+        -0.015999999999999903,
+        0.01200000000000001
+      ],
+      "numerical_change_bounds": [
+        0.0,
+        0.0040000000000000036
+      ]
+    },
+    {
+      "condition": "slow_5",
+      "metric": "no_effect_exclusion",
+      "estimate64": 0.0040000000000000036,
+      "estimate128": 0.0040000000000000036,
+      "bounds64": [
+        -0.0040000000000000036,
+        0.020000000000000018
+      ],
+      "bounds128": [
+        -0.0040000000000000036,
+        0.020000000000000018
+      ],
+      "numerical_change_bounds": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "condition": "slow_5",
+      "metric": "conditional_prey_advantage",
+      "estimate64": 8.93700457262267e-05,
+      "estimate128": 9.682005083942735e-05,
+      "bounds64": [
+        -0.00021598571090883332,
+        0.0003901084541880874
+      ],
+      "bounds128": [
+        -0.00020170597857178534,
+        0.0003943742802330438
+      ],
+      "numerical_change_bounds": [
+        -8.084494975161941e-06,
+        2.6876969512809073e-05
+      ]
+    }
+  ],
+  "effect_cutoffs64": [
+    [
+      2.886329632793604,
+      2.661470795284913
+    ],
+    [
+      4.011705223826084,
+      3.8549452263446256
+    ],
+    [
+      3.0719922615157884,
+      2.979083231549339
+    ],
+    [
+      3.2319286881472635,
+      3.102089799097712
+    ],
+    [
+      4.520263519075797,
+      4.614122372839802
+    ],
+    [
+      4.012684818499565,
+      3.858514199916044
+    ]
+  ],
+  "effect_cutoffs128": [
+    [
+      2.8851629397336183,
+      2.6608598282618914
+    ],
+    [
+      4.010920079206244,
+      3.8567355341801886
+    ],
+    [
+      3.071059067268834,
+      2.9796442994429526
+    ],
+    [
+      3.231036497401874,
+      3.1005077710485693
+    ],
+    [
+      4.517982119659337,
+      4.613994522414259
+    ],
+    [
+      4.011777833316046,
+      3.8592272395974305
+    ]
+  ],
+  "reference_runtime_seconds": {
+    "bank": 0.7588614950072952,
+    "calibration": 497.6926720479969,
+    "integration": 51432.90251438999,
+    "total": 52435.732069848,
+    "validation": 501.5115858069912
+  },
+  "note": "Bootstrap uses identical seeds/indices across banks; reference is nested numerical sensitivity, not independent replication."
+}
