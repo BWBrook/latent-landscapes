@@ -1,0 +1,9 @@
+{
+  "matplotlib_version": "3.11.0",
+  "outputs": {
+    "holdout_score_comparison.pdf": "ad6ac453316d98021f63124bfbe39471eb4b3571cf50f6692a55a2556f799a51",
+    "holdout_score_comparison.png": "f9f3dd9173d62d6a0c5f36c30c731035b59cb5f098d4448e3d5e85d3547a0a61"
+  },
+  "renderer_sha256": "fd74e4e5d11b39606bc19b6ca2e592c81c9467bc28846ed6b75a6f603c3b5ac6",
+  "totals_sha256": "2265203dfe113cf7824d25cb11c44622c151b327e9f3f3a68d0ed38b08905560"
+}

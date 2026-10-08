@@ -1,5 +1,47 @@
 # Latent Landscapes: current handover
 
+8 October 2026 (Hobart), after the complete report lock.
+
+**The training-plus-holdout analysis is complete; the independently reviewed
+combined report is locked for Claude's review.** Barry explicitly
+released the holdout on 8 October. Its archive matches the prior commitment,
+and all 3,734 training-lock files remain unchanged. Truth remains sealed.
+
+The [combined report](docs/goals/061-blinded-capstone-training/complete-report.md)
+records one leading-pair forecast hit (case-00) and three misses. Case-01's
+10.51-nat adjusted training gain reverses to a 1.85-nat held-out disadvantage.
+Cases 01 and 03 have tiny differences between their two constant fits; their
+exact winner labels do not imply substantive separation. No fit or declaration
+changed. The four p_BB values remain 1, 1, 0.422 and 1.
+
+All 16 scores, 640 site contributions, 128 cluster contributions and 24
+pairwise differences passed the independent direct-bank audit. Maximum score
+and contrast discrepancies were 5.69e-14 and 1.14e-13 nats. All exact winner
+sets and forecast outcomes agree. Seven targeted tests passed in the original
+Linux runtime. The [holdout execution record](docs/goals/061-blinded-capstone-training/holdout-analysis-2026-10-08.md)
+preserves the released input, immutable training bindings, original and final
+audit sources, resource receipts and checksummed evidence return.
+
+The [complete-report lock](docs/goals/061-blinded-capstone-training/complete-report-lock.md)
+binds 23 direct files, the 36 returned run files and the unchanged 3,734-file
+training closure: **3,793 unique files / 6,376,862,557 bytes**. Exhaustive
+verification passed, as did comparison of all 258 previously qualified current
+source/script/test files. The root is
+`artifacts/goal061_holdout/complete-report-lock.json`, SHA-256
+`baa0ec8660321d698e4cb5b2d3ef9f41ef41fec9b3a7e751fe18a00813e835af`.
+Its separate receipt is
+`artifacts/goal061_holdout/complete-lock-verification.json`.
+
+**Next boundary:** Claude reviews the locked complete report; Barry then
+separately releases truth. This review is pending. The truth forecasts and
+their scoring rules remain unchanged. Decision Inbox guidance has been read and is available when
+a substantive decision needs Barry's input; no questionnaire is needed now.
+
+## Preserved handover before holdout release
+
+The following records the training-lock and Git checkpoint state before
+Barry's subsequent holdout release above.
+
 8 October 2026 (Hobart), after the training-lock review and repository checks.
 
 **Goal 061 is complete: the blinded training report is locked and accepted by

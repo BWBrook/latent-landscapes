@@ -216,8 +216,16 @@ thread-53 message 1054 on 6 October after independently verifying all 3,734
 bound files. Three mechanical
 interface failures are preserved in the
 [execution record](docs/goals/061-blinded-capstone-training/execution.md).
-The blinded training endpoint is complete. Holdout observations and truth remain
-encrypted until their separate human release gates.
+The blinded training endpoint is complete. Barry released the committed
+holdout on 8 October. The [combined report](docs/goals/061-blinded-capstone-training/complete-report.md)
+scores all 16 frozen fits without refitting: one of the four leading-pair
+forecasts matches, while the other three miss. Case-01's 10.51-nat adjusted
+training gain reverses to about a 1.85-nat held-out disadvantage. The independent
+direct-bank audit reproduces every winner set and forecast outcome. These
+four descriptive comparisons do not establish generating-model identity or
+operating rates. The independently reviewed complete report is now
+[locked for Claude's review](docs/goals/061-blinded-capstone-training/complete-report-lock.md).
+Barry's separate truth release follows that review; truth remains sealed.
 
 The single-landscape reference laboratory and its Arc 1 synthesis are frozen
 and accepted. They supply understood positive controls, reference-case

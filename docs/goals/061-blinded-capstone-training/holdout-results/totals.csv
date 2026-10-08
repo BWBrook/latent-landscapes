@@ -1,0 +1,17 @@
+case_id,model,status,fit_status,total_nats,mean_nats_per_site
+case-00,constant_free_h,available,converged,-389.55363282335327,-9.738840820583832
+case-00,adjusted_free_h,available,converged,-389.0594022388504,-9.72648505597126
+case-00,constant_h1,available,converged,-389.61050355419513,-9.740262588854879
+case-00,adjusted_h1,available,converged,-389.0594022388504,-9.72648505597126
+case-01,constant_free_h,available,converged,-455.86824236954584,-11.396706059238646
+case-01,adjusted_free_h,available,converged,-457.7171019205211,-11.442927548013028
+case-01,constant_h1,available,converged,-455.8682435116213,-11.396706087790532
+case-01,adjusted_h1,available,converged,-457.71709950198056,-11.442927487549515
+case-02,constant_free_h,available,converged,-388.11380678108844,-9.702845169527212
+case-02,adjusted_free_h,available,converged,-388.13159237290324,-9.70328980932258
+case-02,constant_h1,available,converged,-387.9536088172524,-9.698840220431311
+case-02,adjusted_h1,available,converged,-387.8295670190477,-9.695739175476193
+case-03,constant_free_h,available,converged,-496.9088752899745,-12.422721882249363
+case-03,adjusted_free_h,available,converged,-496.9316143831934,-12.423290359579834
+case-03,constant_h1,available,converged,-496.90887452300734,-12.422721863075184
+case-03,adjusted_h1,available,converged,-496.931611649522,-12.42329029123805

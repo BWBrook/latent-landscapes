@@ -1,0 +1,5 @@
+case_id,predicted_left,predicted_right,winner_set,pair_hit,winning_margin_nats,co_winners_outside_predicted_pair,named_two_of_four
+case-00,adjusted_free_h,adjusted_h1,adjusted_free_h;adjusted_h1,True,0.0,,True
+case-01,adjusted_free_h,adjusted_h1,constant_free_h,False,1.1420754617574858e-06,constant_free_h,True
+case-02,constant_free_h,adjusted_free_h,adjusted_h1,False,0.12404179820470063,adjusted_h1,True
+case-03,adjusted_free_h,adjusted_h1,constant_h1,False,7.669671617804852e-07,constant_h1,True

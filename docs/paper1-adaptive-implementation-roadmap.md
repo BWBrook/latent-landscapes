@@ -399,8 +399,15 @@ binds the complete returned evidence, independent claims review, figures and
 unchanged predictive specification and prereveal forecasts. This completes the
 blinded training endpoint. Claude (historically Fable) accepted the lock on
 6 October in thread-53 message 1054 after independently verifying all 3,734
-bound files. Holdout and truth remain encrypted until their separate human
-release gates.
+bound files. Barry released the committed holdout on 8 October. The
+[combined report](goals/061-blinded-capstone-training/complete-report.md) evaluates
+all 16 unchanged fits: the case-00 leading-pair forecast matches, while the
+three other pair forecasts miss. The independent direct-bank audit reproduces
+every maximizing set and forecast outcome. No calibrated declaration changes,
+and these four comparisons do not establish recovery or operating rates. The
+complete report passed independent review and is
+[locked for Claude's review](goals/061-blinded-capstone-training/complete-report-lock.md).
+Truth remains sealed until Barry's separate release after that review.
 
 ### Objective
 
