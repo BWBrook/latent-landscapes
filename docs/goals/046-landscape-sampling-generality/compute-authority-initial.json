@@ -1,0 +1,16 @@
+{
+  "goal": "046",
+  "authorization": "Barry approved up to 24 elapsed hours for numerical qualification, production, monitoring and scientific review",
+  "approved_utc": "2026-09-08T00:27:19Z",
+  "started_utc": "2026-09-08T00:35:54.584345+00:00",
+  "deadline_utc": "2026-09-09T00:35:54.584345+00:00",
+  "started_epoch": 1788827754,
+  "deadline_epoch": 1788914154,
+  "host": "deep-server-ts",
+  "max_map_processes": 9,
+  "threads_per_map": 4,
+  "aggregate_memory_ceiling_gib": 96,
+  "max_selected_bank_size": 65536,
+  "max_reference_bank_size": 131072,
+  "commit_push_publication_authorized": false
+}

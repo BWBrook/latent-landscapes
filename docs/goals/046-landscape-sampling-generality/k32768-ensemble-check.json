@@ -1,0 +1,327 @@
+{
+  "checked_utc": "2026-09-09T23:06:24.528502+00:00",
+  "method": "Return check: remote immutable adoption validation plus local numerical replay.\n\nRemote receipt paths remain unchanged. The local adapter only supplies the\nalready verified adoption record after reconciling every returned bundle file,\nreceipt hash and actual bank prefix. It does not change the numerical checker.\n",
+  "source_recheck": {
+    "checked_utc": "2026-09-09T23:04:13.471406+00:00",
+    "campaign_sources": [
+      {
+        "root": "/data/codex/scratch/goal046-production-20260908-k16384-v2",
+        "source_snapshot_sha256": "6ee147ed17b3324bc2c432b9a1ce7f686f527417f9abb9fa290cea05c53e4c87",
+        "verified_files": 82
+      },
+      {
+        "root": "/data/codex/scratch/goal046-production-20260908-k32768",
+        "source_snapshot_sha256": "6ee147ed17b3324bc2c432b9a1ce7f686f527417f9abb9fa290cea05c53e4c87",
+        "verified_files": 82
+      }
+    ],
+    "review_snapshot_sha256": "52ee6a6b1976f7f4dbde257e47c533a0031e6baf2b3b9f87ade955dde0f176cc",
+    "verified_review_files": 10
+  },
+  "maps": [
+    {
+      "map": "barrier-2026090811",
+      "returned_files_match_adoption": true,
+      "actual_bank_prefix_exact": true,
+      "all_numerical_report_fields_reproduce_exactly": true,
+      "status": "numerical_review_failed",
+      "checks": {
+        "effect_cutoff_movement": true,
+        "support_and_count_stability": false,
+        "paired_sampling_contrasts": true,
+        "stored_joint_surface_review": true
+      },
+      "failed_support_rows": [
+        {
+          "condition_id": "access_5",
+          "lane": "estimated_speed",
+          "support_components_unchanged": true,
+          "lower_boundary_unchanged": true,
+          "upper_boundary_unchanged": false,
+          "boundary_classification_unchanged": false,
+          "max_endpoint_cell_change": 1,
+          "coverage_count_delta": 0,
+          "exclusion_count_delta": 0
+        },
+        {
+          "condition_id": "balanced_3",
+          "lane": "estimated_speed",
+          "support_components_unchanged": true,
+          "lower_boundary_unchanged": false,
+          "upper_boundary_unchanged": true,
+          "boundary_classification_unchanged": false,
+          "max_endpoint_cell_change": 1,
+          "coverage_count_delta": 0,
+          "exclusion_count_delta": 1
+        }
+      ],
+      "profile_hashes": {
+        "selected": "ed019e682b6d370f7e3444eb7469914d11c9e5e6f3c6ca3f0e12c5565ec3eb07",
+        "reference": "59ae376846c4b1520cb3e60c6476956655e0cf041e6a59d49a546c0b11bb331d"
+      },
+      "adoption_receipt_sha256": "71ab25809d869878d9ffb6a5a7f0fb5984598e3780a6080e3b447d0747997dd9",
+      "ensemble_report_sha256": "78755d091584069d25ab1c5436b65c51250762fa8da720dd14a3ecb818c5a484",
+      "campaign_runtimes_seconds": {
+        "bank": 7772.302558792988,
+        "calibration": 1293.7423977559956,
+        "integration": 12441.875576448016,
+        "total": 22867.76470222001,
+        "validation": 1357.938514226029
+      }
+    },
+    {
+      "map": "barrier-2026090812",
+      "returned_files_match_adoption": true,
+      "actual_bank_prefix_exact": true,
+      "all_numerical_report_fields_reproduce_exactly": true,
+      "status": "ensemble_numerical_checks_passed",
+      "checks": {
+        "effect_cutoff_movement": true,
+        "support_and_count_stability": true,
+        "paired_sampling_contrasts": true,
+        "stored_joint_surface_review": true
+      },
+      "failed_support_rows": [],
+      "profile_hashes": {
+        "selected": "cb46937c630872ce1d1b8a2eca537b5d2734b47404598720d2e2b5089dfbf9df",
+        "reference": "cecd36a4aa120ec3acd1a134f4685fc4ff3f552856be12fcc9205db7773a6df8"
+      },
+      "adoption_receipt_sha256": "a1eda8e2d04eaab817a886b94a8d6e176f9f670db52a5a4dd80afb21701382ae",
+      "ensemble_report_sha256": "d6c70b520b5703fc092f100448686b7ba21e16f67d85f9965f46b869cebb681f",
+      "campaign_runtimes_seconds": {
+        "bank": 8179.723477035994,
+        "calibration": 1359.765429616993,
+        "integration": 11990.760788754007,
+        "total": 22863.20685788599,
+        "validation": 1330.951266752003
+      }
+    },
+    {
+      "map": "barrier-2026090813",
+      "returned_files_match_adoption": true,
+      "actual_bank_prefix_exact": true,
+      "all_numerical_report_fields_reproduce_exactly": true,
+      "status": "ensemble_numerical_checks_passed",
+      "checks": {
+        "effect_cutoff_movement": true,
+        "support_and_count_stability": true,
+        "paired_sampling_contrasts": true,
+        "stored_joint_surface_review": true
+      },
+      "failed_support_rows": [],
+      "profile_hashes": {
+        "selected": "f3c9012b2c8d947dcef13ac7338a7dc578d0fcc23f4ba2db8a55d11011648b27",
+        "reference": "41d4f53bbb873247cd70375e24dde4dfec2e7ae86e9eab03647bfd40da9bb6d0"
+      },
+      "adoption_receipt_sha256": "e64ded794c03c00d7bb759231c96d8262a7b8384111d7814472179358d8da778",
+      "ensemble_report_sha256": "fe2aa16e74d775b81d71cefb9f81b38664aa07f7d3d6756c5ed30f78e90dbce2",
+      "campaign_runtimes_seconds": {
+        "bank": 8110.0256860200025,
+        "calibration": 1348.7467524859821,
+        "integration": 12126.327380887,
+        "total": 23024.764217334014,
+        "validation": 1437.445862439985
+      }
+    },
+    {
+      "map": "connected-2026090811",
+      "returned_files_match_adoption": true,
+      "actual_bank_prefix_exact": true,
+      "all_numerical_report_fields_reproduce_exactly": true,
+      "status": "ensemble_numerical_checks_passed",
+      "checks": {
+        "effect_cutoff_movement": true,
+        "support_and_count_stability": true,
+        "paired_sampling_contrasts": true,
+        "stored_joint_surface_review": true
+      },
+      "failed_support_rows": [],
+      "profile_hashes": {
+        "selected": "caedd79a83bbb3253de505c7a7dbc5a00a54e0f15071d3a3365cfcb30705220d",
+        "reference": "9a6d447b4ee1b175bf21923ab1043fba3da329992447afc09c30fe2c629645b6"
+      },
+      "adoption_receipt_sha256": "ce66602db2e369994b21c39588f8a9e6236dd6fc9596d121df0383437e4c6cd4",
+      "ensemble_report_sha256": "ecaa3a6082ee72140971262dda2a4a4ec309429041c52f5e504474c4e1fa0295",
+      "campaign_runtimes_seconds": {
+        "bank": 7549.461749582028,
+        "calibration": 1327.385116688034,
+        "integration": 16230.281992877979,
+        "total": 26347.41315759404,
+        "validation": 1238.4713986960123
+      }
+    },
+    {
+      "map": "connected-2026090812",
+      "returned_files_match_adoption": true,
+      "actual_bank_prefix_exact": true,
+      "all_numerical_report_fields_reproduce_exactly": true,
+      "status": "numerical_review_failed",
+      "checks": {
+        "effect_cutoff_movement": true,
+        "support_and_count_stability": false,
+        "paired_sampling_contrasts": false,
+        "stored_joint_surface_review": true
+      },
+      "failed_support_rows": [
+        {
+          "condition_id": "access_1",
+          "lane": "estimated_speed",
+          "support_components_unchanged": true,
+          "lower_boundary_unchanged": false,
+          "upper_boundary_unchanged": true,
+          "boundary_classification_unchanged": false,
+          "max_endpoint_cell_change": 1,
+          "coverage_count_delta": 1,
+          "exclusion_count_delta": 1
+        }
+      ],
+      "profile_hashes": {
+        "selected": "051be3f5c5dfca73003205cdb3472181f1e28c462173c31d66dde78fb7e5eb6e",
+        "reference": "9152c1ad13df05e14d4b44d6d25514c804d7eff3c8c8e6496dbe4136a4e7f809"
+      },
+      "adoption_receipt_sha256": "ca387e0340dd5df6046a973fed089a5190f44d1e97ef52b6c515804e5339e820",
+      "ensemble_report_sha256": "bdc62a3fa38df92b89b9e96977942251fd603d32144d6502ef8b5fa84f2a5194",
+      "campaign_runtimes_seconds": {
+        "bank": 7536.947488406993,
+        "calibration": 1321.8798047220334,
+        "integration": 16520.842518741963,
+        "total": 26634.170126643003,
+        "validation": 1252.319845533988
+      }
+    },
+    {
+      "map": "connected-2026090813",
+      "returned_files_match_adoption": true,
+      "actual_bank_prefix_exact": true,
+      "all_numerical_report_fields_reproduce_exactly": true,
+      "status": "numerical_review_failed",
+      "checks": {
+        "effect_cutoff_movement": true,
+        "support_and_count_stability": false,
+        "paired_sampling_contrasts": true,
+        "stored_joint_surface_review": true
+      },
+      "failed_support_rows": [
+        {
+          "condition_id": "balanced_3",
+          "lane": "estimated_speed",
+          "support_components_unchanged": true,
+          "lower_boundary_unchanged": false,
+          "upper_boundary_unchanged": true,
+          "boundary_classification_unchanged": false,
+          "max_endpoint_cell_change": 1,
+          "coverage_count_delta": 0,
+          "exclusion_count_delta": 1
+        }
+      ],
+      "profile_hashes": {
+        "selected": "ac5eb32a8322cd22cffeca7d36ee8ce2e18feda07e581b4fcf798a8d7943cab8",
+        "reference": "da27dd3fc662b78a63c789444dd9c38cf9cb0476ca500ec90007ea4b46dd05e0"
+      },
+      "adoption_receipt_sha256": "91ef394343939554e3b52bc488699d3a85166753c4552db3ade7609e6cf08ff2",
+      "ensemble_report_sha256": "89dbbca4a8e8f05c5bfe6d10e2ccde0f86c1232ab63377abee49df605708f330",
+      "campaign_runtimes_seconds": {
+        "bank": 7844.756660009996,
+        "calibration": 1553.2952895120252,
+        "integration": 14549.47263699898,
+        "total": 25330.670380264986,
+        "validation": 1381.2515617680037
+      }
+    },
+    {
+      "map": "corridor-2026090811",
+      "returned_files_match_adoption": true,
+      "actual_bank_prefix_exact": true,
+      "all_numerical_report_fields_reproduce_exactly": true,
+      "status": "ensemble_numerical_checks_passed",
+      "checks": {
+        "effect_cutoff_movement": true,
+        "support_and_count_stability": true,
+        "paired_sampling_contrasts": true,
+        "stored_joint_surface_review": true
+      },
+      "failed_support_rows": [],
+      "profile_hashes": {
+        "selected": "aa6a7f0125a6c214ad4cf06e265c188f7b6ca12bf76d0e6de88bc02f9e695c5e",
+        "reference": "c87711ec8480f37852ed2da523f5f85fa4c4c486a51fef9ca97895239e3221a6"
+      },
+      "adoption_receipt_sha256": "35492922df42159cd30951c59b91ecb9e4951be82d288c4e2459adb8ddb3061c",
+      "ensemble_report_sha256": "93c5e8e3be5dd0039a02b74cc57782c27f6cfced2166adf7ca0d55f5e98a4856",
+      "campaign_runtimes_seconds": {
+        "bank": 7624.240441111004,
+        "calibration": 1321.7276223269873,
+        "integration": 15177.75873741202,
+        "total": 25431.89579978198,
+        "validation": 1306.2869760600151
+      }
+    },
+    {
+      "map": "corridor-2026090812",
+      "returned_files_match_adoption": true,
+      "actual_bank_prefix_exact": true,
+      "all_numerical_report_fields_reproduce_exactly": true,
+      "status": "numerical_review_failed",
+      "checks": {
+        "effect_cutoff_movement": true,
+        "support_and_count_stability": false,
+        "paired_sampling_contrasts": true,
+        "stored_joint_surface_review": true
+      },
+      "failed_support_rows": [
+        {
+          "condition_id": "access_1",
+          "lane": "estimated_speed",
+          "support_components_unchanged": true,
+          "lower_boundary_unchanged": false,
+          "upper_boundary_unchanged": true,
+          "boundary_classification_unchanged": false,
+          "max_endpoint_cell_change": 1,
+          "coverage_count_delta": 1,
+          "exclusion_count_delta": 1
+        }
+      ],
+      "profile_hashes": {
+        "selected": "c6901f7618613008b1d75e0aebd91ab112f3f7075ce6c21a35fda3612daa42a3",
+        "reference": "d9fe949f4d55ad1cd945753be2c7c99db8af4f879ddd8a4ea81e21801cdeeb55"
+      },
+      "adoption_receipt_sha256": "736209ffe18ad577e0d117e8eacb510cf094dc898bb369922971ce8f85d772de",
+      "ensemble_report_sha256": "504e69d127c749dfc31a4de26fa59386b3f2fb2b0c7f0d9d0af9e7bdd0982c1f",
+      "campaign_runtimes_seconds": {
+        "bank": 7787.266801687016,
+        "calibration": 1304.611680104048,
+        "integration": 17448.370472258975,
+        "total": 28103.093213187007,
+        "validation": 1561.0281845270074
+      }
+    },
+    {
+      "map": "corridor-2026090813",
+      "returned_files_match_adoption": true,
+      "actual_bank_prefix_exact": true,
+      "all_numerical_report_fields_reproduce_exactly": true,
+      "status": "ensemble_numerical_checks_passed",
+      "checks": {
+        "effect_cutoff_movement": true,
+        "support_and_count_stability": true,
+        "paired_sampling_contrasts": true,
+        "stored_joint_surface_review": true
+      },
+      "failed_support_rows": [],
+      "profile_hashes": {
+        "selected": "d308ce9af064eba0962c55105fa647fb05ede02e72420c0ec3f4019a14ad8b16",
+        "reference": "52abb597e08ec432db3604b110aac0263e6abb27c8cb7990f6ab8d995e8a3a96"
+      },
+      "adoption_receipt_sha256": "34a7e47846049ccc7f01ba7f1cab9bf4abe742d43436352af5e619e1fde375be",
+      "ensemble_report_sha256": "83a104b8bea63f43546e50f3badbcac110000a060e158c3abef33eb2f57ed2ba",
+      "campaign_runtimes_seconds": {
+        "bank": 7824.045110354986,
+        "calibration": 1303.1552065809956,
+        "integration": 16028.616127287009,
+        "total": 26456.273357333004,
+        "validation": 1298.6029490649817
+      }
+    }
+  ],
+  "all_returned_files_and_metrics_verified": true,
+  "scientific_acceptance": false
+}

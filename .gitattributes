@@ -1,0 +1,2 @@
+# Preserve the original bytes of these generated scientific tables.
+docs/goals/046-landscape-sampling-generality/results/*.csv -text

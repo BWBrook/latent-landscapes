@@ -372,6 +372,28 @@ background event yield and better prey detection generally improved recovery.
 Truth-assisted event associations are descriptive and conditional, not causal
 effects or field-transfer claims.
 
+### Goal 049 retrospective interpretation amendment
+
+The historical classifier and its `3 / 10 / 19` result above remain frozen.
+That classifier treated same-truth coverage as a full-recovery gate even though
+this goal already described coverage as chiefly a calibration check. Under the
+reviewed amended interpretation, local coverage and null-truth false exclusion
+are calibration quality control rather than biological-recoverability evidence.
+Removing only the coverage gate changes one truth: `S08`, whose observed
+coverage was 0.98 and whose only historical failed gate was coverage, moves
+from `detected_but_not_fully_recovered` to `fully_recovered`. The side-by-side
+counts are therefore historical `3 / 10 / 19` and amended `4 / 9 / 19`.
+
+No observations, cutoffs, response surfaces, prospective scores, or original
+CSV decisions were changed. The 19 `not_reliably_detected` truths are unchanged
+because their classification depends on non-null exclusion and prediction.
+Point error estimates accuracy; width and connected/interior status estimate
+resolution and topology; non-null exclusion estimates conditional detection
+power; held-out score estimates prediction. These remain the recovery evidence,
+with width, topology, and power qualified by the truth-specific oracle cutoff.
+The derivation is recorded in
+[`interpretation-amendments.md`](../049-operational-calibration/interpretation-amendments.md).
+
 One independent scientific audit reconstructed the cutoffs, control decisions,
 classifications, prospective skills, bootstrap intervals, and freeze
 provenance from the compact tables. It supported closure after a single figure

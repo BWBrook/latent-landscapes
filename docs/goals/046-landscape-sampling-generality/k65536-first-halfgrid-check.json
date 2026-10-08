@@ -1,0 +1,56 @@
+{
+  "all_completed_subset_metrics_exact": true,
+  "all_nine_completion_claimed": false,
+  "checked_utc": "2026-09-10T19:20:53.091192+00:00",
+  "goal": "046",
+  "maps": [
+    {
+      "adoption_receipt_sha256": "d6a47b2ce7f16ae938dba7377f2fca00d20e0e37c7d3531f52c7b1ab6ce3f3cd",
+      "all_24_pass": true,
+      "map": "barrier-2026090812",
+      "remote_report_path": "/data/codex/scratch/goal046-production-20260910-k65536/barrier-2026090812/halfgrid-review.json",
+      "remote_sidecar_path": "/data/codex/scratch/goal046-production-20260910-k65536/barrier-2026090812/halfgrid-review.npz",
+      "report_sha256": "7c4a08497e258dbd43e0e583ce6e9f57364ef1083d5d8ed4c8b684f1bb030915",
+      "reported_and_recomputed_metrics_exact": true,
+      "retained_grid_nodes_exact": true,
+      "rows_verified": 24,
+      "runtime_seconds": 22790.125429896987,
+      "saved_and_replayed_surfaces_exact": true,
+      "sidecar_sha256": "10b04c960446b1a681927464583d49ae783e88a69abbcdbf6366b2569c3602a9"
+    },
+    {
+      "adoption_receipt_sha256": "b590137e587d23ac58046d0808a157e22c3e40fe40d3d7a38846fe79a28d9f3f",
+      "all_24_pass": true,
+      "map": "barrier-2026090813",
+      "remote_report_path": "/data/codex/scratch/goal046-production-20260910-k65536/barrier-2026090813/halfgrid-review.json",
+      "remote_sidecar_path": "/data/codex/scratch/goal046-production-20260910-k65536/barrier-2026090813/halfgrid-review.npz",
+      "report_sha256": "ef3183a3ee58692e8691efb59b44e26ce9d110f45295ea85b437f4b4f81641cd",
+      "reported_and_recomputed_metrics_exact": true,
+      "retained_grid_nodes_exact": true,
+      "rows_verified": 24,
+      "runtime_seconds": 22085.73821683001,
+      "saved_and_replayed_surfaces_exact": true,
+      "sidecar_sha256": "a86e233cb73a0a8b77bfc27ec634fb56b756bf63ea4b41e566a43c3e2d984b26"
+    }
+  ],
+  "maps_verified": 2,
+  "new_freeze_sha256": "2e72b2ad5f716bdb2c041a8d5f36d48bcab026de2a93d63f0fc9496c87b50d8a",
+  "old_freeze_sha256": "9d332a1c35592f0b5cb3dbf77e07b7b95605a791e195a93bbdf820f50222da7d",
+  "partial_replay_receipt": {
+    "path": "artifacts/goal046_execution/production65536/partial-halfgrid-return-check.json",
+    "sha256": "393c344a20997e96c742154cac382eef6b3826655061b46be791b9bc773d7512"
+  },
+  "reference_bank_size": 131072,
+  "remaining_scope": "Seven final half-grid checks remain pending; this receipt intentionally excludes them.",
+  "remote_adoption_receipt": {
+    "path": "artifacts/goal046_execution/production65536/all-adoption-remote-check.json",
+    "sha256": "798028d7211c6ca5ab2668cb18dbd53e27a13da37e59eba7f48937cf278eae94"
+  },
+  "retained_grid_nodes_exact": true,
+  "rows_verified": 48,
+  "saved_and_replayed_surfaces_exact": true,
+  "scientific_acceptance": false,
+  "scope": "first completed K65536 selected to K131072 reference half-grid checks; barrier maps 2026090812 and 2026090813 only",
+  "selected_bank_size": 65536,
+  "source_snapshot_sha256": "6ee147ed17b3324bc2c432b9a1ce7f686f527417f9abb9fa290cea05c53e4c87"
+}

@@ -1,0 +1,201 @@
+{
+  "all_bundle_hashes_verified": true,
+  "all_numerical_report_fields_reproduce_exactly": true,
+  "all_seed_schedules_and_nested_bank_prefixes_verified": true,
+  "checked_utc": "2026-09-10T15:35:00.705798+00:00",
+  "goal": "046",
+  "halfgrid_verification": "pending separate remote checks; no final halfgrid hash claimed here",
+  "local_replay_receipt": {
+    "path": "artifacts/goal046_execution/production65536/all-reference-return-check.json",
+    "sha256": "dc26eaa603f91d51da69ed660ba7b7b710f336876ae16ff5035163be60f059c0"
+  },
+  "maps": [
+    {
+      "adoption_receipt_sha256": "5b69da4ebc90f897f4a064726884ec2546fe0a60b3cdf151d06fc2b63247401e",
+      "all_numerical_report_fields_reproduce_exactly": true,
+      "ensemble_checks": {
+        "effect_cutoff_movement": true,
+        "paired_sampling_contrasts": true,
+        "stored_joint_surface_review": true,
+        "support_and_count_stability": true
+      },
+      "ensemble_report_sha256": "cc28edb93aaafa5d5c7b3dff609d4154ba2ca30cde7e9c1711c63690ef4424e9",
+      "failed_support_rows": [],
+      "map": "connected-2026090811",
+      "status": "ensemble_numerical_checks_passed"
+    },
+    {
+      "adoption_receipt_sha256": "ed98f9cf28c07260b9311c0cf38109a7b4e033b64d6a0441fbd4ea93a30b4fdd",
+      "all_numerical_report_fields_reproduce_exactly": true,
+      "ensemble_checks": {
+        "effect_cutoff_movement": true,
+        "paired_sampling_contrasts": false,
+        "stored_joint_surface_review": true,
+        "support_and_count_stability": false
+      },
+      "ensemble_report_sha256": "f4e7c7899c3e37469596e08f8bfbc9c14e39ad2a2a4445f103930db1b155d01d",
+      "failed_support_rows": [
+        {
+          "boundary_classification_unchanged": false,
+          "condition_id": "balanced_1",
+          "coverage_count_delta": 1,
+          "exclusion_count_delta": 1,
+          "lane": "known_speed",
+          "lower_boundary_unchanged": false,
+          "max_endpoint_cell_change": 1,
+          "support_components_unchanged": true,
+          "upper_boundary_unchanged": true
+        }
+      ],
+      "map": "connected-2026090812",
+      "status": "numerical_review_failed"
+    },
+    {
+      "adoption_receipt_sha256": "e43050df4c6b98146cda5b80004f91520213de85c5b1d88f2cf41a63f51de59c",
+      "all_numerical_report_fields_reproduce_exactly": true,
+      "ensemble_checks": {
+        "effect_cutoff_movement": true,
+        "paired_sampling_contrasts": true,
+        "stored_joint_surface_review": true,
+        "support_and_count_stability": true
+      },
+      "ensemble_report_sha256": "320ca45a683e4c1af99381a38e9a202501f4de0e86063681f8a14ae5b022e1d3",
+      "failed_support_rows": [],
+      "map": "connected-2026090813",
+      "status": "ensemble_numerical_checks_passed"
+    },
+    {
+      "adoption_receipt_sha256": "d70a2dd14eef47d047ddd33d55b2038c7bb907db6dacc0c7c67f0e98afb9d610",
+      "all_numerical_report_fields_reproduce_exactly": true,
+      "ensemble_checks": {
+        "effect_cutoff_movement": true,
+        "paired_sampling_contrasts": true,
+        "stored_joint_surface_review": true,
+        "support_and_count_stability": true
+      },
+      "ensemble_report_sha256": "350e90ea6bc2df481969e38e97e11c99e80f69a34d3a9dd450c00b355d280e0c",
+      "failed_support_rows": [],
+      "map": "corridor-2026090811",
+      "status": "ensemble_numerical_checks_passed"
+    },
+    {
+      "adoption_receipt_sha256": "12d7c15df0cb802114c84e828ef285a6b2bedd690c14ff90e9871d1d83f80f3d",
+      "all_numerical_report_fields_reproduce_exactly": true,
+      "ensemble_checks": {
+        "effect_cutoff_movement": true,
+        "paired_sampling_contrasts": true,
+        "stored_joint_surface_review": false,
+        "support_and_count_stability": true
+      },
+      "ensemble_report_sha256": "27fa0a6f209407262b3209094573fe44c9b7786f18bf119e48d7920aa73d69fc",
+      "failed_support_rows": [],
+      "map": "corridor-2026090812",
+      "status": "numerical_review_failed"
+    },
+    {
+      "adoption_receipt_sha256": "e025c48fa2cc4a0e52b3d9311afdca531512ab36b7a6516ff2dace3c138f3508",
+      "all_numerical_report_fields_reproduce_exactly": true,
+      "ensemble_checks": {
+        "effect_cutoff_movement": true,
+        "paired_sampling_contrasts": true,
+        "stored_joint_surface_review": true,
+        "support_and_count_stability": true
+      },
+      "ensemble_report_sha256": "f36889e7e04be34bb5d74dad1fb6477e791f04eaec2fae621792f5054ff01971",
+      "failed_support_rows": [],
+      "map": "corridor-2026090813",
+      "status": "ensemble_numerical_checks_passed"
+    },
+    {
+      "adoption_receipt_sha256": "566e0565ac7ad8e78000f96290e73842e559bd8c32f4bd9b63851781de83f86a",
+      "all_numerical_report_fields_reproduce_exactly": true,
+      "ensemble_checks": {
+        "effect_cutoff_movement": true,
+        "paired_sampling_contrasts": true,
+        "stored_joint_surface_review": true,
+        "support_and_count_stability": false
+      },
+      "ensemble_report_sha256": "205b9796deb19907d85585724a74733d107ae68792e725be857af7a958a8083a",
+      "failed_support_rows": [
+        {
+          "boundary_classification_unchanged": false,
+          "condition_id": "access_1",
+          "coverage_count_delta": 1,
+          "exclusion_count_delta": 1,
+          "lane": "estimated_speed",
+          "lower_boundary_unchanged": false,
+          "max_endpoint_cell_change": 1,
+          "support_components_unchanged": true,
+          "upper_boundary_unchanged": true
+        }
+      ],
+      "map": "barrier-2026090811",
+      "status": "numerical_review_failed"
+    },
+    {
+      "adoption_receipt_sha256": "d6a47b2ce7f16ae938dba7377f2fca00d20e0e37c7d3531f52c7b1ab6ce3f3cd",
+      "all_numerical_report_fields_reproduce_exactly": true,
+      "ensemble_checks": {
+        "effect_cutoff_movement": true,
+        "paired_sampling_contrasts": true,
+        "stored_joint_surface_review": true,
+        "support_and_count_stability": false
+      },
+      "ensemble_report_sha256": "521406afc47eaa2527144bbc52cf2496ee3f9d08acc54fe17efafaee3d1abfb3",
+      "failed_support_rows": [
+        {
+          "boundary_classification_unchanged": false,
+          "condition_id": "access_5",
+          "coverage_count_delta": 0,
+          "exclusion_count_delta": 0,
+          "lane": "estimated_speed",
+          "lower_boundary_unchanged": true,
+          "max_endpoint_cell_change": 1,
+          "support_components_unchanged": true,
+          "upper_boundary_unchanged": false
+        }
+      ],
+      "map": "barrier-2026090812",
+      "status": "numerical_review_failed"
+    },
+    {
+      "adoption_receipt_sha256": "b590137e587d23ac58046d0808a157e22c3e40fe40d3d7a38846fe79a28d9f3f",
+      "all_numerical_report_fields_reproduce_exactly": true,
+      "ensemble_checks": {
+        "effect_cutoff_movement": true,
+        "paired_sampling_contrasts": true,
+        "stored_joint_surface_review": true,
+        "support_and_count_stability": true
+      },
+      "ensemble_report_sha256": "3e75b0c1c9e1c363bde59f80b201dc51a3485487104eea4f393702033f43d71c",
+      "failed_support_rows": [],
+      "map": "barrier-2026090813",
+      "status": "ensemble_numerical_checks_passed"
+    }
+  ],
+  "maps_verified": 9,
+  "new_freeze_sha256": "2e72b2ad5f716bdb2c041a8d5f36d48bcab026de2a93d63f0fc9496c87b50d8a",
+  "old_freeze_sha256": "9d332a1c35592f0b5cb3dbf77e07b7b95605a791e195a93bbdf820f50222da7d",
+  "reference_bank_size": 131072,
+  "remote_adoption_receipt": {
+    "all_nine_adoptions_verified": true,
+    "maps": 9,
+    "new_halfgrid_hashes_present": false,
+    "path": "artifacts/goal046_execution/production65536/all-adoption-remote-check.json",
+    "sha256": "798028d7211c6ca5ab2668cb18dbd53e27a13da37e59eba7f48937cf278eae94"
+  },
+  "scientific_acceptance": false,
+  "scope": "K65536 selected to K131072 reference all-nine ensemble return verification",
+  "selected_bank_size": 65536,
+  "source_recheck": {
+    "path": "artifacts/goal046_execution/production65536/source-recheck-20260911.json",
+    "sha256": "19ebc76e8852386949c105f464a61db2e10c972522591b6308adb0e88b14a2af",
+    "verified_campaign_files_per_snapshot": 82,
+    "verified_review_files": 11
+  },
+  "source_snapshot_sha256": "6ee147ed17b3324bc2c432b9a1ce7f686f527417f9abb9fa290cea05c53e4c87",
+  "status_counts": {
+    "ensemble_numerical_checks_passed": 5,
+    "numerical_review_failed": 4
+  }
+}

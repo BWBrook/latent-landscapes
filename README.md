@@ -73,20 +73,151 @@ Under the current landscape and observation designs:
 - across 32 prespecified prey-process truths, simple maps learned from the
   first 16 predicted all five operating-performance outcomes in the untouched
   second 16 better than a first-block mean;
-- prey-effect recovery nevertheless remains selective: only 3/32 truths met
-  every strict recovery gate, while all 16 truths below a threefold effect were
-  not reliably detected;
+- prey-effect recovery remains selective: 3/32 truths met the historical
+  full-recovery rule; the reviewed rule separating calibration checks from
+  recovery gives 4/32, changing only S08. All 16 truths below a threefold
+  effect remain not reliably detected;
 - jointly fitted spread and prey-effect point estimates remain centred near
   truth, but one shared simultaneous uncertainty envelope is too blunt;
   parameter-specific calibration gives informative marginal intervals; and
 - the process-based models outperform their fitted neutral baselines on held-out
   observations in the evaluated benchmarks.
 
+The [Goal 049 interpretation amendment](docs/goals/049-operational-calibration/interpretation-amendments.md)
+retains historical results alongside the revised classification. Same-truth
+coverage and null-truth false exclusion are calibration checks. Historical
+support widths and non-null exclusions remain conditional on truth-specific
+calibration, and cannot be presented as an analyst-usable confidence procedure.
+The [completed known-nuisance bridge](docs/goals/049-operational-calibration/synthesis.md)
+supplies candidate-wise calibration on the fixed effect grid. All registered
+matched-bank endpoint tolerances pass; interior cutoffs are near chi-square,
+with lower boundary cutoffs. The realised table has 7.4% null false exclusion
+(calibration-aware 95% interval 5.6–9.7%), retained as a quality-control flag.
+The marginal rank guarantee is not conditional 95% coverage for this table.
+
 These are conditional results, not universal thresholds. They describe one
 landscape family, sampling design, survey schedule, process formulation, and
 set of generating values.
 
 ## Current Scientific Boundary
+
+The first registered robustness screen is complete:
+[Goal 051](docs/goals/051-misspecification-screen/synthesis.md) nominates aligned
+background prey-loss variation at the null for independent confirmation.
+Primary unflagged estimation failures rise from 19.3% to 42.3% on the accepted
+landscape, while the adequacy detector rejects 2.7% of histories. This is a
+fixed-table, fixed-bank, known-nuisance result; competing-model discrimination
+and independent confirmation remain uncompleted. Strict false effects remain
+unflagged in 21.2% of aligned-background histories versus 6.1% at baseline.
+Following [Fable's critique and the archive checks](docs/goals/051-misspecification-screen/fable-response-2026-09-24.md),
+Astra recommended an adjusted-background pilot instead of standalone
+confirmation, and Barry approved that sequence change. The completed
+[Goal 052 pilot](docs/goals/052-adjusted-background-pilot/synthesis.md) shows
+that adjustment is feasible but does not establish a repair: broad parameter
+trade-offs persist, and reduced mean inflation does not consistently improve
+multiplicative estimation error or held-out prediction. The
+[completed Goal 053 comparison](docs/goals/053-prospective-background/synthesis.md)
+uses 1,000 fresh paired blocks under exact and incomplete background models,
+with known-beta controls and direct held-out prediction. Adjustment improves
+effect estimation under spatially varying background but worsens it under
+constant background; predictive gains are smaller than forecast. A
+[finite-grid null-effect calibration](docs/goals/054-null-effect-calibration/synthesis.md)
+is now complete. The adjusted rule gives 4.2% and 3.2% exact-null declarations
+at beta0/.60 and 76.1% and 93.0% threefold sensitivity. It sharply reduces
+false declarations in the tested aligned fields, while costing sensitivity
+and estimation accuracy under constant background. Its guarantee averages
+over reference and evaluation generation at the registered beta nodes; it is
+not conditional 5% control for the realised table. The nonlinear stress did
+not locate a failure boundary, and Berger–Boos recovered no sensitivity.
+[Goal 055 is complete](docs/goals/055-arc4-synthesis/synthesis.md). Its registered
+archive checks locate two failures of the frozen procedure: a supplied mean
+20% below truth raises adjusted null declarations to 7.8%/10.8%, and persistent
+prey-detection SD .20 raises them to 19.8%, versus 3.8% in its paired baseline.
+The Arc 4 claim audit, paper draft and three reusable figures are complete.
+The [proposed capstone](docs/goals/055-arc4-synthesis/capstone-protocol.md)
+therefore selects 60 pre-invasion days and requires shared site-detection
+modelling, with observed-data feasibility and new calibration before any truth
+draw. [Astra's response to Fable's review](docs/goals/055-arc4-synthesis/fable-response-2026-10-03.md)
+recommends adding a scalable calibration route to that feasibility study,
+four sealed histories and private key/draw custody outside both agents' access.
+On 3 October Barry approved [Goal 056 feasibility](docs/goals/056-observed-nuisance-feasibility/registration-2026-10-03.md),
+including scalable calibration as a deliverable, four future sealed histories,
+simple protection against accidental exposure and password-manager custody
+of his private key. [Goal 056 is complete](docs/goals/056-observed-nuisance-feasibility/synthesis.md):
+all 64 main fits and 7,088 profile nodes converged, and independent raw-bank
+replay agrees to about 1e-12. A profile-only boundary-rounding repair preserved
+all histories and main fits. Effect magnitudes remain variable; this is
+numerical feasibility, not recovery or calibrated error-rate evidence.
+Goal 056 generated no sealed truth or private key. On 4 October Barry supplied
+the public recipient. The [revised pilot proposal](docs/goals/056-observed-nuisance-feasibility/calibration-proposal.md)
+includes Fable's two diagnostics. Barry approved the one-hour tranche on
+4 October; [Goal 057 is complete](docs/goals/057-screening-retention/synthesis.md).
+Its 360,855 pre-only references and 792 diagnostic fits took 6 min 37 s on eight
+workers, with independent reconstruction passing. The screen retains 420–990
+nodes per public fixture; four-fixture unions contain 577–1,901 nodes, median
+1,266. All sixteen known true nodes are retained, a descriptive result rather
+than a coverage estimate. The median union projects to 32–39 hours at 64
+workers for a later 999-reference effect table. The
+[next proposal](docs/goals/057-screening-retention/next-stage-proposal.md)
+recommends reviewing one fixed coarser global screen before large calibration.
+The early registered-stream preview and postprocessing repairs are disclosed.
+Barry subsequently approved [Goal 058](docs/goals/058-effect-reference-micro-pilot/registration-2026-10-04.md):
+use beta spacing .25 (765 reference nodes), defer the global-screen change,
+and test the complete effect-reference path at four fixed nodes with 999
+histories each. [Goal 058 is complete](docs/goals/058-effect-reference-micro-pilot/synthesis.md):
+all 3,996 pairs and independent direct-bank checks passed, making all four
+tables usable. Production and audit took 29.64 minutes with 7.461 GiB sampled
+peak RSS. Linux 209 tests and the independent final review pass. The lower-rate
+corner still put 73/999 null effect estimates at the h=10 boundary; numerical
+success does not establish effect recovery or calibrated error rates.
+Continuous fitting remains unchanged. The
+[next proposal](docs/goals/058-effect-reference-micro-pilot/next-stage-proposal.md)
+is a bounded 765-node recalibration of the existing local screen; its actual
+retention remains unmeasured. Large confirmatory work, the final sealed truth
+law and a new map remained separate decisions at that closeout.
+Barry subsequently approved [Goal 059 public preparation](docs/goals/059-capstone-preparation/registration-2026-10-04.md):
+skip the old-map pilot, allow the complete 765-node union, adopt Fable's public
+truth law and prepare a new connected map. The eight-fixture numerical check
+and independent review precede Fable's sealed generation.
+[Goal 059 closed with a negative map qualification](docs/goals/059-capstone-preparation/synthesis.md):
+the first structurally valid candidate's conservative certificate gave 5.350,
+above the fixed 5.0 domain. Independent reconstruction reproduced the failure;
+no registered bank, public fixture or sealed history was generated. The map and
+approved design remain fixed. Post-stop diagnosis places the actual maximum at
+4.894, inside the domain. Barry approved
+[Goal 060](docs/goals/060-capstone-certificate-recovery/registration-2026-10-04.md)
+to refine the certificate to 1,024 intervals on that same map, complete the
+unchanged public qualification and prepare a tested sealing script for Fable.
+[Goal 060 completed public qualification](docs/goals/060-capstone-certificate-recovery/synthesis.md)
+on 5 October: the refined bound is 4.92854, and the 131,072-history bank and
+eight-fixture panel passed the complete independent numerical audit. A narrow
+audit-interface repair preserved the original failed audit, all generated
+outputs and every scientific gate. The tested sealing script's public
+preflight passed, enabling Fable's final leak review and sealed generation.
+Earlier development deviations remain disclosed and excluded from qualification.
+The original nominee remains unconfirmed; earlier numerical failures and
+calibration flags remain.
+
+Fable completed the leak review and sealed four histories once on 5 October.
+Barry then authorized [Goal 061's blinded training analysis](docs/goals/061-blinded-capstone-training/analysis-plan-2026-10-05.md).
+The training adapters and independent audit passed locked-runtime mechanical
+qualification on 5 October, including 59 tests, all direct score audits and
+checkpoint resumption. Blinded production launched at 13:20 AEDT with 51
+workers and finished at 04:51 AEDT on 6 October. All four training audits,
+75,735 screening references and 298,701 effect references at 299 nodes passed
+their independent numerical audits. The
+[completed training report](docs/goals/061-blinded-capstone-training/training-report.md)
+records four valid non-declarations, with p_BB values 1, 1, 0.422 and 1, and
+no abstentions. This does not establish absence of an effect or generating-value
+recovery. The [training lock](docs/goals/061-blinded-capstone-training/training-lock.md)
+binds the returned evidence, independent claims review, figures and unchanged
+prereveal commitments. Claude (historically Fable) accepted the exact lock in
+thread-53 message 1054 on 6 October after independently verifying all 3,734
+bound files. Three mechanical
+interface failures are preserved in the
+[execution record](docs/goals/061-blinded-capstone-training/execution.md).
+The blinded training endpoint is complete. Holdout observations and truth remain
+encrypted until their separate human release gates.
 
 The single-landscape reference laboratory and its Arc 1 synthesis are frozen
 and accepted. They supply understood positive controls, reference-case
@@ -140,9 +271,33 @@ earlier numerical failures and the grid/bank amendments remain documented.
 See the [scientific synthesis](docs/goals/045-spread-prey-oracle-bridge/synthesis.md)
 for the six-case table, figures, uncertainty, numerical evidence and limits.
 
-Later paper stages must test generality across process and observation
-conditions, landscape and sampling families, alternative generating models,
-and one synthetic-realistic capstone.
+Arc 3's bounded comparison is complete as a
+[conditional scientific synthesis](docs/goals/046-landscape-sampling-generality/synthesis.md)
+under [Goal 046](docs/goals/046-landscape-sampling-generality/Goal.md).
+Across nine maps in three seed-matched archetype triplets, balanced versus
+access-constrained sampling shows no general effect resolved at this
+replication. The barrier fivefold condition is the principal candidate
+exception: lower point error but wider truth-calibrated supports. Coverage and
+null-truth false exclusion are calibration checks, not sampling-benefit
+endpoints; see the [interpretation correction](docs/goals/046-landscape-sampling-generality/calibration-interpretation-correction-2026-09-18.md).
+This is not an equivalence claim or a blanket ecological null.
+The bootstrap intervals condition on the supplied maps and truth-specific
+calibration; they do not establish generality to a landscape population.
+
+The [18 September amendment](docs/goals/046-landscape-sampling-generality/endpoint-amendment-2026-09-18.md)
+and [independent review](docs/goals/046-landscape-sampling-generality/endpoint-final-review-2026-09-18.md)
+permit this conditional archival reporting. The original K65536/131072
+numerical qualification still fails four maps, despite small endpoint
+movements relative to bootstrap SE and passing sampled local grid checks.
+Exact integration accuracy remains unresolved. The
+[original diagnosis](docs/goals/046-landscape-sampling-generality/final-bank-diagnosis.md),
+[Goal 047 regulariser sensitivity](docs/goals/047-integration-validation/results.md)
+and [Goal 048 failed corridor qualification](docs/goals/048-integration-redesign/results.md)
+remain visible. No replacement integrator is adopted and no expanded campaign
+is launched by this closeout.
+
+Later paper stages include alternative generating models and one
+synthetic-realistic capstone.
 
 No result in this repository is yet a claim about real mink, water voles,
 Australian murids, cats, or foxes.

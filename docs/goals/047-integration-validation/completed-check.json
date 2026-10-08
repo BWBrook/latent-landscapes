@@ -1,0 +1,37 @@
+{
+  "all_raw_connected_reductions_exact": true,
+  "all_reported_comparison_metrics_exact": true,
+  "comparisons_verified": 16,
+  "files": {
+    "full-exit.json": "206f62b06098b52e5e0a3d55ddbf1b99a217d36069919cb02459a293d2019785",
+    "full-launch-receipt.json": "f25740d2fb18069623d8c73baa778f6f666b5c13544bceba010161e03cc138cd",
+    "full-output/diagnostic-arrays.npz": "bb29664ec8197bfd1811c4ca23271b2f8801d485f2b3c6be3070f73e70259967",
+    "full-output/diagnostic-report.json": "cc7d407b8f4c908961ee3145ad35793eee8076f9e9f963b0724009d2f165580a",
+    "preflight.json": "92054d3454ba81db4d5d4a9ebd94596c42af36e945f26217183032b0cd570ea8",
+    "stage-a-decision.json": "78ea87520fcb48b2b8a9a30265b6f37c76053d2fda67f41bd9e178928d2d0a3e"
+  },
+  "heartbeat_status": "PAUSED",
+  "independent_terminal_review_sha256": "9686a2dd3284342eb4265c2c24470d8e6a67269a332a493492c2ee80ce9d281e",
+  "independent_verifier_sha256": "e6a7aa756560bff83da6f9aa63a7dd1c505eed5795a87240a7c7fbd02807034b",
+  "input_files_verified": 22,
+  "local_and_remote_checks_identical": true,
+  "peak_rss_gib": 3.1011734008789062,
+  "preflight_files_verified": 76,
+  "runtime_seconds": 1594.921081212,
+  "saved_replay_max_abs": {
+    "connected_combined": 1.8189894035458565e-12,
+    "connected_half0": 0.0,
+    "corridor_combined": 4.547473508864641e-13,
+    "corridor_half0": 0.0
+  },
+  "scientific_acceptance": false,
+  "source_snapshot_files_verified": {
+    "new": 82,
+    "old": 82
+  },
+  "stage_b_run": false,
+  "status": "pseudocount_sensitive",
+  "window_inconclusive_labels": [],
+  "within_bank_alpha_comparisons_failed": 6,
+  "within_bank_alpha_comparisons_total": 9
+}

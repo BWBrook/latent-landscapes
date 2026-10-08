@@ -120,6 +120,16 @@ classified by the prospective surface. The only calibrated-coverage Wilson
 interval not containing 0.95 was the previously identified `S20` flag. Neither
 finding justifies local enrichment under the prespecified stop rule.
 
+Goal 049's retrospective interpretation separates those observations by
+estimand. `S20` is a realised finite calibration check for the truth-specific
+rank-239-of-250 joint three-parameter region; it is not evidence that the
+ecological condition causes weak coverage. The point-error, projected-width,
+support-topology, resistance-exclusion, and prediction results retain their
+original roles. The 1,000-resample synthesis intervals resampled validation
+histories while holding the calibration cutoffs fixed, so they quantify
+evaluation-history Monte Carlo variation conditional on the realised
+calibration tables and do not include calibration-table variation.
+
 The outcome is `arc2a_ready_for_closeout_with_topology_limit`. This is a
 conditional result for the accepted landscape, access network, observation
 schedule, likelihood, and process model. The next tranche, after Barry's

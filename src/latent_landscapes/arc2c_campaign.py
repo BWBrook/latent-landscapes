@@ -290,6 +290,7 @@ def _assemble_profiles(
     config: BridgeConfig,
     calibration: tuple[DatasetBlock, ...],
     validation: tuple[DatasetBlock, ...],
+    truths: tuple[BridgeTruth, ...] = TRUTHS,
 ) -> ProfileBundle:
     def training_prefix(blocks: tuple[DatasetBlock, ...]) -> NDArray[np.float64]:
         surfaces = []
@@ -304,7 +305,7 @@ def _assemble_profiles(
     return {
         "rhos": np.asarray(config.rhos, dtype=np.float64),
         "effects": np.asarray(config.effects, dtype=np.float64),
-        "condition_ids": np.asarray([truth.condition_id for truth in TRUTHS]),
+        "condition_ids": np.asarray([truth.condition_id for truth in truths]),
         "lanes": np.asarray(LANES),
         "calibration_effect_lr": np.stack(
             [np.stack([row.effect_truth_lr for row in block.profiles]) for block in calibration],

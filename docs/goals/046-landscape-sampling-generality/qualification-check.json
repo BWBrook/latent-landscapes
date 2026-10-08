@@ -1,0 +1,66 @@
+{
+  "checked_utc": "2026-09-08T04:47:02.834076+00:00",
+  "status": "all_three_sacrificial_pilots_numerically_qualified",
+  "selected_bank_size": 16384,
+  "reference_bank_size": 32768,
+  "scope": "initializes the global bank; every production map still requires full-ensemble and selected-bank half-grid qualification",
+  "maps": [
+    {
+      "archetype": "connected",
+      "report_sha256": "4ba0422c1b5c086befde95411d7311282892b7b9657af5d964eca7e47870c00e",
+      "diagnostic_sha256": "997965c9515d2c9b76cb0ab3dcbaba1c9fc38bafaaad5172f3f566f93f0f3e94",
+      "profile_sha256": "8e73a29c7c12e4cce83fc098098108fcc422fd2f9118d34f2bbc586fe196670e",
+      "bank_sha256": "7a7d88a073a1d58ab1a2a445f9897d59246db98c52b0bc8703086e99f103d973",
+      "rows_verified": 24,
+      "maxima": {
+        "effect_mle_shift": 0.04999999999999982,
+        "rho_log_mle_shift": 0.0,
+        "known_effect_profile_lr": 0.02170356797387285,
+        "estimated_effect_profile_lr": 0.05605384970021987,
+        "rho_profile_lr": 0.34758419569743637,
+        "truth_lr_shift": 0.17261956564288994,
+        "rho_halfgrid_ll_gain": 0.1233272105348533,
+        "effect_halfgrid_ll_gain": 0.0008316372661738569
+      },
+      "numerical_review_seconds": 10718.321278901014
+    },
+    {
+      "archetype": "corridor",
+      "report_sha256": "c6467f94008c1b96c9b8ca41dbaf5708b0a4851c1625eb6417f7a62732c236a0",
+      "diagnostic_sha256": "4b92bce17673e9e6c621d43f6879f8a68298d1354c9c4b08df4dd1e41a401457",
+      "profile_sha256": "a92ffd5b468ff827b53d465b0061b83aecebe934334d6475e4eb849e3f7b64b9",
+      "bank_sha256": "03cd60df9260a5b38d059978a2a9f9bba12b4944e4e1d13f87b8c9e7117ffbed",
+      "rows_verified": 24,
+      "maxima": {
+        "effect_mle_shift": 0.050000000000000044,
+        "rho_log_mle_shift": 0.013862943611199082,
+        "known_effect_profile_lr": 0.008152443856033642,
+        "estimated_effect_profile_lr": 0.05972896271987338,
+        "rho_profile_lr": 0.28235842708454584,
+        "truth_lr_shift": 0.19588511125402874,
+        "rho_halfgrid_ll_gain": 0.1594719152462858,
+        "effect_halfgrid_ll_gain": 0.0007106691309672897
+      },
+      "numerical_review_seconds": 10286.152488346997
+    },
+    {
+      "archetype": "barrier",
+      "report_sha256": "533c6f4af530f3803e8ceb0cf56fa4dbdd8d11ac31ae629e9441b646e9f066a1",
+      "diagnostic_sha256": "99c62278512ffa9a106ede71ed8aac60e6f53c2a822f9c28a44c749df304d4b6",
+      "profile_sha256": "df8a2fba972a1e9a45bc64249fed4af8d81c7da0038bc8398fb30460f9fb9796",
+      "bank_sha256": "d9020f010cbbf5c32dc5c45f4e7c52bb1b8c239bf721675691171e2ce39b8bd8",
+      "rows_verified": 24,
+      "maxima": {
+        "effect_mle_shift": 0.0,
+        "rho_log_mle_shift": 0.0,
+        "known_effect_profile_lr": 0.12107962322647836,
+        "estimated_effect_profile_lr": 0.11577846523368862,
+        "rho_profile_lr": 0.20313456754729486,
+        "truth_lr_shift": 0.21340987940311607,
+        "rho_halfgrid_ll_gain": 0.0681977589881626,
+        "effect_halfgrid_ll_gain": 0.0003852098985817065
+      },
+      "numerical_review_seconds": 9000.780320991995
+    }
+  ]
+}

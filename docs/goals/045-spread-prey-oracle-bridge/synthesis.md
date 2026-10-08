@@ -5,17 +5,22 @@
 
 Across the six frozen synthetic conditions, estimating predator spread speed
 produced no detected systematic deterioration in prey-effect recovery relative
-to supplying the true speed. All 30 paired 95% bootstrap intervals include zero.
-The estimated changes are small, but this is not an equivalence test: the
-intervals still allow modest costs, and the comparison conditions on known
-detection, known background hazard and one fixed landscape and survey design.
+to supplying the true speed. All 22 substantive paired contrasts and eight
+calibration-quality-control contrasts have 95% bootstrap intervals that include
+zero. The substantive contrasts comprise six point-error, six oracle-width,
+four non-null-exclusion, and six conditional-prediction comparisons. The six
+coverage and two null-truth false-exclusion contrasts check calibration rather
+than biological recoverability. The estimated changes are small, but this is
+not an equivalence test: the intervals still allow modest costs, and the
+comparison conditions on known detection, known background hazard and one
+fixed landscape and survey design.
 
 This completes the intended process-oracle comparison. It does not establish
 that prey effects are always recoverable.
 Both analyses are weak for the threefold cases and the slow fivefold case.
 The usual-speed fivefold case meets the descriptive effect-error, width and
-exclusion benchmarks, while its interval coverage is below nominal in both
-analyses. That shared limitation is distinct from a cost of estimating speed.
+exclusion benchmarks. Its 91.6% truth inclusion in both analyses is a realised
+finite calibration check, not an ecological weakness shared by the two lanes.
 
 ## Paired result
 
@@ -30,9 +35,10 @@ slow null is unchanged. Conditional prey prediction changes range from
 
 The most adverse marginal 95% bounds across the relevant case/metric contrasts
 still allow an added 0.00314 log-error units, 0.05376 log-width units, a 3.2-point
-loss of coverage or non-null exclusion, a 2.4-point increase in false exclusion,
-or a 0.000223 nats/site loss of conditional prey score. These are distinct
-intervals, not a simultaneous region or a prespecified equivalence margin.
+loss of non-null exclusion, or a 0.000223 nats/site loss of conditional prey
+score. The calibration checks separately allow a 3.2-point loss of coverage and
+a 2.4-point increase in null false exclusion. These are distinct intervals, not
+a simultaneous region or a prespecified equivalence margin.
 
 ![Paired recovery changes and true event yield](results/paired_recovery.svg)
 
@@ -62,12 +68,14 @@ contains bootstrap intervals, Wilson intervals and support-topology diagnostics.
 The usual fivefold case covers truth in 229/250 datasets in each analysis:
 91.6%, with a 95% Wilson interval of 87.5–94.4%. When calibration-sample
 variation is included, bootstrap coverage intervals widen to 86.4–97.6% with
-supplied speed and 85.2–98.0% with estimated speed. This observed undercoverage is
-reported, not removed by retuning; the goal did not require every descriptive
-coverage interval to contain 95%. False-exclusion rates in the no-effect
-controls are 4.0% / 5.2% at usual speed and 4.4% / 4.4% at half speed. Their
-Wilson intervals are in the detailed report. Null boundary contact at effect=1
-is expected, and exclusion there is a false alarm.
+supplied speed and 85.2–98.0% with estimated speed. This realised finite
+calibration result is reported without retuning and is not used as evidence of
+weak ecological recovery. False-exclusion rates in the no-effect controls are
+4.0% / 5.2% at usual speed and 4.4% / 4.4% at half speed. These are the
+complements of truth inclusion at the null, so they are calibration checks rather
+than independent recovery outcomes. Their Wilson intervals are in the detailed
+report. Null boundary contact at effect=1 is expected, and exclusion there is a
+false alarm.
 
 True post-arrival losses average 17.66 versus 8.39 sites for usual versus slow
 spread at a threefold effect, and 27.52 versus 12.83 at fivefold. These totals
@@ -180,3 +188,8 @@ results. Twenty-four focused Arc 2C and shared Arc 2B kernel tests passed, as di
 scoped formatting, Ruff, strict mypy and package build. Both rendered figures,
 raw profile hashes, copied review artefacts and document links were checked.
 Goal 045 is scientifically closed within its original six-case scope.
+
+Goal 049 subsequently amended only the interpretation of these retained
+results: 22 contrasts address accuracy, oracle resolution, non-null power, or
+prediction, while eight are calibration quality control. The historical table,
+bootstrap output, numerical evidence, and closeout decision remain unchanged.

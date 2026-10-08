@@ -1,0 +1,51 @@
+{
+  "address_space_gib_per_process": 10,
+  "aggregate_rss_gib": 96,
+  "design_sha256": "68988ad5794d3d7311fb943e327f2e017f15d7b59cad87d692fff5ddb0319610",
+  "fresh_bank_and_history_seeds_disjoint": true,
+  "fresh_bank_seeds_disjoint_from_prior": true,
+  "fresh_bank_seeds_unique": 393216,
+  "fresh_history_seeds_unique": 4000,
+  "input_hashes_sha256": "bfb10715365d97194f61dca9c32bad41592ccaa74fc6ebd67b8943fb2c1b1107",
+  "native_threads": 1,
+  "primary_alpha": 0.5,
+  "prior_goal046_bank_seeds_checked": 1179648,
+  "registered_seeds_npz_sha256": "835925789404075b69d8974a6661ddedab3603329a76605cbfbd46cde8fb0cdc",
+  "registered_utc": "2026-09-11T11:13:17.160388+00:00",
+  "root_seed": 2026091147,
+  "schedules": {
+    "connected": {
+      "bank_masters": [
+        3601440426550850330,
+        11651118097552831154,
+        13290793667067844025
+      ],
+      "history_master": 1583491067288872631
+    },
+    "corridor": {
+      "bank_masters": [
+        11665640418403590756,
+        16187956828646708561,
+        17954444234867233391
+      ],
+      "history_master": 9521341156732209215
+    }
+  },
+  "scientific_acceptance": false,
+  "stage_a_alphas": [
+    0.25,
+    0.5,
+    1.0
+  ],
+  "stage_a_banks": [
+    "half0",
+    "half1",
+    "combined"
+  ],
+  "stage_a_timeout_seconds": 7200,
+  "stage_b_bank_size": 65536,
+  "stage_b_banks_per_map": 3,
+  "stage_b_max_jobs": 6,
+  "stage_b_timeout_seconds": 36000,
+  "workers_per_job": 4
+}

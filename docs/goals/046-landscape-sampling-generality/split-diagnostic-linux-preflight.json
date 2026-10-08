@@ -1,0 +1,104 @@
+{
+  "source_and_input_preflight": {
+    "checked_utc": "2026-09-10T19:19:14.404615+00:00",
+    "source_files_verified": {
+      "old": 82,
+      "new": 82
+    },
+    "prepared_code_verified": {
+      "USAGE.md": "ef171e375fbe69616812949e71adf81f25cbca8f8f1c17fa41c5a7754bcd3e62",
+      "run_split_diagnostic.py": "c92736d3bbe6e504076e8e3efbe5561c91b9b47fc23cda4e1528b01dd5001362",
+      "smoke_split_diagnostic.py": "ec82f4d04886072cf3dae9f02447295ebded43f6f9adb7db8ba5a518a7091f91",
+      "test_split_diagnostic.py": "a0c48251542605410cd5a452314f4d54ade8ef0ad9871d4276dcd6f34fbe5224"
+    },
+    "input_hash_manifest_sha256": "bfb10715365d97194f61dca9c32bad41592ccaa74fc6ebd67b8943fb2c1b1107",
+    "input_files_verified": 22,
+    "full_diagnostic_launched": false
+  },
+  "linux_smoke": {
+    "diagnostic_only": true,
+    "full_diagnostic_launched": false,
+    "input_hashes": "/data/codex/scratch/goal046-split-diagnostic-20260911/input-hashes.json",
+    "maps": {
+      "connected-2026090812": {
+        "bank_rows": 16,
+        "combined_vs_direct16_max_abs": {
+          "category_mass": 1.1102230246251565e-16,
+          "survival_moments": 4.440892098500626e-16
+        },
+        "dataset_task_training_shapes": {
+          "combined": [
+            6,
+            1,
+            181
+          ],
+          "half0": [
+            6,
+            1,
+            181
+          ],
+          "half1": [
+            6,
+            1,
+            181
+          ]
+        },
+        "effect_candidates": 181,
+        "half_rows": [
+          8,
+          8
+        ],
+        "rho_candidates": [
+          1.0
+        ]
+      },
+      "corridor-2026090812": {
+        "bank_rows": 16,
+        "combined_vs_direct16_max_abs": {
+          "category_mass": 1.1102230246251565e-16,
+          "survival_moments": 4.440892098500626e-16
+        },
+        "dataset_task_training_shapes": {
+          "combined": [
+            6,
+            8,
+            181
+          ],
+          "half0": [
+            6,
+            8,
+            181
+          ],
+          "half1": [
+            6,
+            8,
+            181
+          ]
+        },
+        "effect_candidates": 181,
+        "half_rows": [
+          8,
+          8
+        ],
+        "rho_candidates": [
+          1.0,
+          1.0570180405613805,
+          1.0717734625362931,
+          1.0867348625260582,
+          1.1019051158766109,
+          1.11728713807222,
+          1.1328838852957988,
+          1.148698354997035
+        ]
+      }
+    },
+    "runtime_seconds": 20.874271943001077,
+    "schema_version": 1,
+    "source_root": "/data/codex/scratch/goal046-production-20260910-k65536/source/src"
+  },
+  "tests": "5 passed in 1.45s",
+  "test_exit": 0,
+  "smoke_exit": 0,
+  "remote_root": "/data/codex/scratch/goal046-split-diagnostic-20260911",
+  "full_diagnostic_launched": false
+}

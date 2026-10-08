@@ -206,7 +206,7 @@ def evaluate_dataset(
     training = np.asarray([row.split == "training" for row in ordered])
     holdout = np.asarray([row.split == "holdout" for row in ordered])
     if (
-        len(ordered) != len(integration.site_ids)
+        len(ordered) != 160
         or int(training.sum()) != 120
         or int(holdout.sum()) != 40
         or {row.cluster_id for row in ordered if row.split == "training"}.intersection(

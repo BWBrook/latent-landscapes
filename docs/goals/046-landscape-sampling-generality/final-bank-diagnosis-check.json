@@ -1,0 +1,647 @@
+{
+  "local_remote_diagnosis_exact": true,
+  "diagnosis": {
+    "scientific_acceptance": false,
+    "method": "Bounded numerical diagnosis from saved profiles; no scientific acceptance.",
+    "maps": [
+      {
+        "map": "barrier-2026090811",
+        "selected_profile_sha256": "59ae376846c4b1520cb3e60c6476956655e0cf041e6a59d49a546c0b11bb331d",
+        "reference_profile_sha256": "dc81daa4c94148464f591d0caca3cb5ac749483a8a9486abf54dba9af17d09ca",
+        "boundary_flips": [
+          {
+            "condition": "access_1",
+            "lane": "estimated_speed",
+            "history_index_zero_based": 198,
+            "boundary": "lower",
+            "selected_includes": false,
+            "reference_includes": true,
+            "selected_cutoff": 2.7478819027107875,
+            "reference_cutoff": 2.7518702242616655,
+            "selected_boundary_lr": 2.750917809485827,
+            "reference_boundary_lr": 2.750670951793154,
+            "selected_lr_minus_cutoff": 0.0030359067750396207,
+            "reference_lr_minus_cutoff": -0.0011992724685114808
+          }
+        ],
+        "largest_mean_log_width_contrast_change": {
+          "effect": 1.0,
+          "lane": "known_speed",
+          "signed_change": -0.0017903183523279129,
+          "top_history_contributions": [
+            {
+              "history_index_zero_based": 118,
+              "contribution_to_mean": -0.00018608006253957132,
+              "access_selected_endpoints": [
+                1.0,
+                3.0500000000000003
+              ],
+              "access_reference_endpoints": [
+                1.0,
+                3.0500000000000003
+              ],
+              "balanced_selected_endpoints": [
+                1.05,
+                3.6
+              ],
+              "balanced_reference_endpoints": [
+                1.1,
+                3.6
+              ]
+            },
+            {
+              "history_index_zero_based": 209,
+              "contribution_to_mean": -0.0001702384576751843,
+              "access_selected_endpoints": [
+                1.2,
+                4.050000000000001
+              ],
+              "access_reference_endpoints": [
+                1.15,
+                4.050000000000001
+              ],
+              "balanced_selected_endpoints": [
+                1.0,
+                1.45
+              ],
+              "balanced_reference_endpoints": [
+                1.0,
+                1.45
+              ]
+            },
+            {
+              "history_index_zero_based": 150,
+              "contribution_to_mean": -0.00014547057668349894,
+              "access_selected_endpoints": [
+                1.0,
+                1.35
+              ],
+              "access_reference_endpoints": [
+                1.0,
+                1.4
+              ],
+              "balanced_selected_endpoints": [
+                1.0,
+                1.5
+              ],
+              "balanced_reference_endpoints": [
+                1.0,
+                1.5
+              ]
+            },
+            {
+              "history_index_zero_based": 1,
+              "contribution_to_mean": -0.00011941185259872533,
+              "access_selected_endpoints": [
+                1.0,
+                1.65
+              ],
+              "access_reference_endpoints": [
+                1.0,
+                1.7000000000000002
+              ],
+              "balanced_selected_endpoints": [
+                1.0,
+                3.2
+              ],
+              "balanced_reference_endpoints": [
+                1.0,
+                3.2
+              ]
+            },
+            {
+              "history_index_zero_based": 38,
+              "contribution_to_mean": -0.00011941185259872533,
+              "access_selected_endpoints": [
+                1.0,
+                1.65
+              ],
+              "access_reference_endpoints": [
+                1.0,
+                1.7000000000000002
+              ],
+              "balanced_selected_endpoints": [
+                1.0,
+                1.35
+              ],
+              "balanced_reference_endpoints": [
+                1.0,
+                1.35
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "map": "barrier-2026090812",
+        "selected_profile_sha256": "cecd36a4aa120ec3acd1a134f4685fc4ff3f552856be12fcc9205db7773a6df8",
+        "reference_profile_sha256": "87e0e0891dd533b758ce2057f095eb699fe256d7260e1a2c3532475ef935eb30",
+        "boundary_flips": [
+          {
+            "condition": "access_5",
+            "lane": "estimated_speed",
+            "history_index_zero_based": 166,
+            "boundary": "upper",
+            "selected_includes": true,
+            "reference_includes": false,
+            "selected_cutoff": 3.2678543599788554,
+            "reference_cutoff": 3.268619587136982,
+            "selected_boundary_lr": 3.252089662294793,
+            "reference_boundary_lr": 3.2695205884099323,
+            "selected_lr_minus_cutoff": -0.015764697684062412,
+            "reference_lr_minus_cutoff": 0.0009010012729504524
+          }
+        ],
+        "largest_mean_log_width_contrast_change": {
+          "effect": 1.0,
+          "lane": "known_speed",
+          "signed_change": -0.00040219208595621404,
+          "top_history_contributions": [
+            {
+              "history_index_zero_based": 81,
+              "contribution_to_mean": -0.0001066729883286448,
+              "access_selected_endpoints": [
+                1.15,
+                3.6
+              ],
+              "access_reference_endpoints": [
+                1.15,
+                3.6
+              ],
+              "balanced_selected_endpoints": [
+                1.0,
+                1.9
+              ],
+              "balanced_reference_endpoints": [
+                1.0,
+                1.85
+              ]
+            },
+            {
+              "history_index_zero_based": 157,
+              "contribution_to_mean": -8.421363679132998e-05,
+              "access_selected_endpoints": [
+                1.0,
+                2.4000000000000004
+              ],
+              "access_reference_endpoints": [
+                1.0,
+                2.4000000000000004
+              ],
+              "balanced_selected_endpoints": [
+                1.0,
+                2.4000000000000004
+              ],
+              "balanced_reference_endpoints": [
+                1.0,
+                2.35
+              ]
+            },
+            {
+              "history_index_zero_based": 225,
+              "contribution_to_mean": -7.921050918471861e-05,
+              "access_selected_endpoints": [
+                1.0,
+                1.45
+              ],
+              "access_reference_endpoints": [
+                1.0,
+                1.45
+              ],
+              "balanced_selected_endpoints": [
+                1.0,
+                2.55
+              ],
+              "balanced_reference_endpoints": [
+                1.0,
+                2.5
+              ]
+            },
+            {
+              "history_index_zero_based": 24,
+              "contribution_to_mean": -7.767234342840634e-05,
+              "access_selected_endpoints": [
+                1.0,
+                3.1
+              ],
+              "access_reference_endpoints": [
+                1.0,
+                3.1
+              ],
+              "balanced_selected_endpoints": [
+                1.0,
+                2.6
+              ],
+              "balanced_reference_endpoints": [
+                1.0,
+                2.55
+              ]
+            },
+            {
+              "history_index_zero_based": 195,
+              "contribution_to_mean": -5.442260822311429e-05,
+              "access_selected_endpoints": [
+                1.0,
+                2.5
+              ],
+              "access_reference_endpoints": [
+                1.0,
+                2.5
+              ],
+              "balanced_selected_endpoints": [
+                1.0,
+                3.7
+              ],
+              "balanced_reference_endpoints": [
+                1.0,
+                3.6500000000000004
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "map": "connected-2026090812",
+        "selected_profile_sha256": "9152c1ad13df05e14d4b44d6d25514c804d7eff3c8c8e6496dbe4136a4e7f809",
+        "reference_profile_sha256": "e374457c53ca8d8ce59214c5d93790458e653823c08d7ea57324a1199d1ea91b",
+        "boundary_flips": [
+          {
+            "condition": "balanced_1",
+            "lane": "known_speed",
+            "history_index_zero_based": 231,
+            "boundary": "lower",
+            "selected_includes": false,
+            "reference_includes": true,
+            "selected_cutoff": 2.2995031822397323,
+            "reference_cutoff": 2.3941334564274257,
+            "selected_boundary_lr": 2.3032016934912463,
+            "reference_boundary_lr": 2.3023919758679767,
+            "selected_lr_minus_cutoff": 0.0036985112515139917,
+            "reference_lr_minus_cutoff": -0.09174148055944897
+          }
+        ],
+        "largest_mean_log_width_contrast_change": {
+          "effect": 1.0,
+          "lane": "known_speed",
+          "signed_change": 0.01204080813912666,
+          "top_history_contributions": [
+            {
+              "history_index_zero_based": 139,
+              "contribution_to_mean": 0.0002490734904121279,
+              "access_selected_endpoints": [
+                1.0,
+                1.5
+              ],
+              "access_reference_endpoints": [
+                1.0,
+                1.5
+              ],
+              "balanced_selected_endpoints": [
+                1.1,
+                3.15
+              ],
+              "balanced_reference_endpoints": [
+                1.05,
+                3.2
+              ]
+            },
+            {
+              "history_index_zero_based": 152,
+              "contribution_to_mean": 0.0002408004781558919,
+              "access_selected_endpoints": [
+                1.0,
+                1.6
+              ],
+              "access_reference_endpoints": [
+                1.0,
+                1.6
+              ],
+              "balanced_selected_endpoints": [
+                1.15,
+                3.15
+              ],
+              "balanced_reference_endpoints": [
+                1.1,
+                3.2
+              ]
+            },
+            {
+              "history_index_zero_based": 118,
+              "contribution_to_mean": 0.00023536200009173402,
+              "access_selected_endpoints": [
+                1.0,
+                1.75
+              ],
+              "access_reference_endpoints": [
+                1.0,
+                1.7000000000000002
+              ],
+              "balanced_selected_endpoints": [
+                1.0,
+                1.65
+              ],
+              "balanced_reference_endpoints": [
+                1.0,
+                1.7000000000000002
+              ]
+            },
+            {
+              "history_index_zero_based": 109,
+              "contribution_to_mean": 0.00022949880081574658,
+              "access_selected_endpoints": [
+                1.0,
+                1.4
+              ],
+              "access_reference_endpoints": [
+                1.0,
+                1.4
+              ],
+              "balanced_selected_endpoints": [
+                1.2,
+                3.35
+              ],
+              "balanced_reference_endpoints": [
+                1.15,
+                3.4000000000000004
+              ]
+            },
+            {
+              "history_index_zero_based": 231,
+              "contribution_to_mean": 0.00019516065667772776,
+              "access_selected_endpoints": [
+                1.0,
+                1.6
+              ],
+              "access_reference_endpoints": [
+                1.0,
+                1.6
+              ],
+              "balanced_selected_endpoints": [
+                1.05,
+                3.1
+              ],
+              "balanced_reference_endpoints": [
+                1.0,
+                3.1
+              ]
+            }
+          ]
+        },
+        "balanced_null_known_calibration_rank": {
+          "selected": [
+            {
+              "rank_one_based": 237,
+              "history_index_zero_based": 94,
+              "lr": 2.260511795671391
+            },
+            {
+              "rank_one_based": 238,
+              "history_index_zero_based": 131,
+              "lr": 2.2885674566964553
+            },
+            {
+              "rank_one_based": 239,
+              "history_index_zero_based": 124,
+              "lr": 2.2995031822397323
+            },
+            {
+              "rank_one_based": 240,
+              "history_index_zero_based": 141,
+              "lr": 2.5198282741830553
+            },
+            {
+              "rank_one_based": 241,
+              "history_index_zero_based": 72,
+              "lr": 2.647575786033485
+            }
+          ],
+          "reference": [
+            {
+              "rank_one_based": 237,
+              "history_index_zero_based": 94,
+              "lr": 2.2616785313757646
+            },
+            {
+              "rank_one_based": 238,
+              "history_index_zero_based": 124,
+              "lr": 2.299811866622804
+            },
+            {
+              "rank_one_based": 239,
+              "history_index_zero_based": 131,
+              "lr": 2.3941334564274257
+            },
+            {
+              "rank_one_based": 240,
+              "history_index_zero_based": 141,
+              "lr": 2.518607337476624
+            },
+            {
+              "rank_one_based": 241,
+              "history_index_zero_based": 72,
+              "lr": 2.6469532992718996
+            }
+          ]
+        },
+        "width_decomposition_diagnostic_only": {
+          "profile_change_at_selected_cutoffs": -0.0003701249022407538,
+          "then_recalibration_at_reference_profiles": 0.012410933041367408,
+          "balanced_null_known_histories_with_width_change": 116
+        }
+      },
+      {
+        "map": "corridor-2026090812",
+        "selected_profile_sha256": "d9fe949f4d55ad1cd945753be2c7c99db8af4f879ddd8a4ea81e21801cdeeb55",
+        "reference_profile_sha256": "56fed6bcc288d7fe026c6bb19b35908d645a2b958ff932ebb0489627ce21f294",
+        "boundary_flips": [],
+        "largest_mean_log_width_contrast_change": {
+          "effect": 3.0,
+          "lane": "known_speed",
+          "signed_change": -0.0004992617661098526,
+          "top_history_contributions": [
+            {
+              "history_index_zero_based": 36,
+              "contribution_to_mean": -0.0001568828526131254,
+              "access_selected_endpoints": [
+                1.3,
+                4.1
+              ],
+              "access_reference_endpoints": [
+                1.25,
+                4.1
+              ],
+              "balanced_selected_endpoints": [
+                2.35,
+                5.4
+              ],
+              "balanced_reference_endpoints": [
+                2.35,
+                5.4
+              ]
+            },
+            {
+              "history_index_zero_based": 71,
+              "contribution_to_mean": -0.0001126835078667856,
+              "access_selected_endpoints": [
+                2.1500000000000004,
+                5.65
+              ],
+              "access_reference_endpoints": [
+                2.1500000000000004,
+                5.65
+              ],
+              "balanced_selected_endpoints": [
+                1.75,
+                4.7
+              ],
+              "balanced_reference_endpoints": [
+                1.8,
+                4.7
+              ]
+            },
+            {
+              "history_index_zero_based": 82,
+              "contribution_to_mean": -7.339655467278616e-05,
+              "access_selected_endpoints": [
+                1.0,
+                3.25
+              ],
+              "access_reference_endpoints": [
+                1.0,
+                3.25
+              ],
+              "balanced_selected_endpoints": [
+                2.7,
+                6.15
+              ],
+              "balanced_reference_endpoints": [
+                2.75,
+                6.15
+              ]
+            },
+            {
+              "history_index_zero_based": 30,
+              "contribution_to_mean": -7.339655467278527e-05,
+              "access_selected_endpoints": [
+                2.75,
+                6.65
+              ],
+              "access_reference_endpoints": [
+                2.7,
+                6.65
+              ],
+              "balanced_selected_endpoints": [
+                1.35,
+                3.85
+              ],
+              "balanced_reference_endpoints": [
+                1.35,
+                3.85
+              ]
+            },
+            {
+              "history_index_zero_based": 148,
+              "contribution_to_mean": -4.145114814218509e-05,
+              "access_selected_endpoints": [
+                1.7000000000000002,
+                4.800000000000001
+              ],
+              "access_reference_endpoints": [
+                1.7000000000000002,
+                4.85
+              ],
+              "balanced_selected_endpoints": [
+                2.3,
+                5.4
+              ],
+              "balanced_reference_endpoints": [
+                2.3,
+                5.4
+              ]
+            }
+          ]
+        },
+        "rho_truth_lr_by_bank": {
+          "32768": {
+            "profile_sha256": "c6901f7618613008b1d75e0aebd91ab112f3f7075ce6c21a35fda3612daa42a3",
+            "rows": [
+              {
+                "condition": "access_1",
+                "history_index_zero_based": 0,
+                "rho_truth_lr": 38.3062895752696,
+                "rho_mle": 1.1019051158766109,
+                "truth_inside_lr10": false
+              },
+              {
+                "condition": "access_3",
+                "history_index_zero_based": 0,
+                "rho_truth_lr": 38.35239407164772,
+                "rho_mle": 1.1019051158766109,
+                "truth_inside_lr10": false
+              },
+              {
+                "condition": "access_5",
+                "history_index_zero_based": 0,
+                "rho_truth_lr": 39.56891682249807,
+                "rho_mle": 1.1019051158766109,
+                "truth_inside_lr10": false
+              }
+            ]
+          },
+          "65536": {
+            "profile_sha256": "d9fe949f4d55ad1cd945753be2c7c99db8af4f879ddd8a4ea81e21801cdeeb55",
+            "rows": [
+              {
+                "condition": "access_1",
+                "history_index_zero_based": 0,
+                "rho_truth_lr": 38.484579438043056,
+                "rho_mle": 1.1019051158766109,
+                "truth_inside_lr10": false
+              },
+              {
+                "condition": "access_3",
+                "history_index_zero_based": 0,
+                "rho_truth_lr": 38.52769936904815,
+                "rho_mle": 1.1019051158766109,
+                "truth_inside_lr10": false
+              },
+              {
+                "condition": "access_5",
+                "history_index_zero_based": 0,
+                "rho_truth_lr": 39.773086778413926,
+                "rho_mle": 1.1019051158766109,
+                "truth_inside_lr10": false
+              }
+            ]
+          },
+          "131072": {
+            "profile_sha256": "56fed6bcc288d7fe026c6bb19b35908d645a2b958ff932ebb0489627ce21f294",
+            "rows": [
+              {
+                "condition": "access_1",
+                "history_index_zero_based": 0,
+                "rho_truth_lr": 39.37284411002747,
+                "rho_mle": 1.1019051158766109,
+                "truth_inside_lr10": false
+              },
+              {
+                "condition": "access_3",
+                "history_index_zero_based": 0,
+                "rho_truth_lr": 39.415006888602875,
+                "rho_mle": 1.1019051158766109,
+                "truth_inside_lr10": false
+              },
+              {
+                "condition": "access_5",
+                "history_index_zero_based": 0,
+                "rho_truth_lr": 40.65279698832683,
+                "rho_mle": 1.1019051158766109,
+                "truth_inside_lr10": false
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

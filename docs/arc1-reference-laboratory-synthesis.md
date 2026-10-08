@@ -60,6 +60,24 @@ before its Arc 2 domain is frozen.
 | Parameter-specific uncertainty | Separate central-case prey-effect profiles achieved 0.946 coverage, 994/1000 connected interior supports, 1000/1000 null exclusions, and median log width 0.693. | The prey effect remains marginally recoverable when spread rate is profiled out and uncertainty is calibrated for that parameter. | These are marginal 95% intervals, not a simultaneous 95% region for all parameters. |
 | Prediction | Process models beat fitted full-support neutral comparators on held-out observations in the accepted predator and prey benchmarks. | The mechanistic structure contributes predictive information beyond time-only or nonspatial baselines in these cases. | Predictive advantage does not by itself establish parameter identifiability or model uniqueness. |
 
+### Retrospective evidence interpretation (Goal 049)
+
+The evidence ladder distinguishes procedure calibration from ecological
+recoverability. Same-truth coverage checks whether each locally calibrated
+support procedure attained its repeated-sampling target in the realised finite
+experiment; it is calibration quality control, not independent evidence that a
+parameter is learnable. Recovery claims instead rest on point accuracy,
+support resolution and topology, non-null exclusion, and held-out prediction,
+each interpreted under its stated oracle-calibration design.
+
+This distinction does not flatten the Arc 1 results. The threefold prey-effect
+case failed the width criterion as well as its realised coverage check, and the
+low-background fivefold case retained topology and width failures. Conversely,
+Goal 005's transported central-speed cutoff failed at flank truths; that is
+direct evidence that the cutoff did not transport, not a same-truth calibration
+result. These independent width, topology, prediction, and transport findings
+remain part of the frozen reference ladder.
+
 ## Frozen uncertainty language
 
 ### Parameter-specific uncertainty
@@ -81,6 +99,10 @@ leading reason the common cutoff was uninformative.
 The Wilson bounds shown around empirical coverage quantify Monte Carlo
 uncertainty in the estimated coverage frequency. They are not Bayesian
 credible intervals and are not the parameter-support intervals themselves.
+Because the local cutoff was generated at the same truth used for validation,
+these coverage frequencies diagnose the calibrated procedure. They do not add
+a separate biological-recovery success to the accuracy, resolution, topology,
+power, or prediction evidence.
 
 ## Standard evaluation surface
 

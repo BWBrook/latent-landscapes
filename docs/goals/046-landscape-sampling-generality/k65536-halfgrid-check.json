@@ -1,0 +1,176 @@
+{
+  "all_216_rows_recomputed_exact": true,
+  "all_216_rows_within_pilot_limits": false,
+  "all_nine_maps_verified": true,
+  "checked_utc": "2026-09-10T23:26:47.326304+00:00",
+  "ensemble_return_receipt": {
+    "all_returned_files_and_metrics_verified": true,
+    "path": "artifacts/goal046_execution/production65536/all-reference-return-check.json",
+    "sha256": "dc26eaa603f91d51da69ed660ba7b7b710f336876ae16ff5035163be60f059c0"
+  },
+  "failed_halfgrid_map": "corridor-2026090812",
+  "goal": "046",
+  "halfgrid_return_receipt": {
+    "path": "artifacts/goal046_execution/production65536/all-halfgrid-return-check.json",
+    "sha256": "2363ea8c53816d5a24e5447a14d0e3b5514844dd3a0cfc62fcb0b12de12df114"
+  },
+  "maps": [
+    {
+      "adoption_receipt_sha256": "5b69da4ebc90f897f4a064726884ec2546fe0a60b3cdf151d06fc2b63247401e",
+      "all_24_pass": true,
+      "map": "connected-2026090811",
+      "remote_report_path": "/data/codex/scratch/goal046-production-20260910-k65536/connected-2026090811/halfgrid-review.json",
+      "remote_sidecar_path": "/data/codex/scratch/goal046-production-20260910-k65536/connected-2026090811/halfgrid-review.npz",
+      "report_sha256": "42ec45144ae5f7bd9d1cf4ea10f5614805db80f1e334aa967e234e99f375a7b7",
+      "reported_and_recomputed_metrics_exact": true,
+      "retained_grid_nodes_exact": true,
+      "rows_verified": 24,
+      "runtime_seconds": 26151.043787942035,
+      "saved_and_replayed_surfaces_exact": true,
+      "sidecar_sha256": "f197c03f3b77e091cfab574307ec9cf99c2fdf65ee2cd9c09382b7cbe1a7e3a3"
+    },
+    {
+      "adoption_receipt_sha256": "ed98f9cf28c07260b9311c0cf38109a7b4e033b64d6a0441fbd4ea93a30b4fdd",
+      "all_24_pass": true,
+      "map": "connected-2026090812",
+      "remote_report_path": "/data/codex/scratch/goal046-production-20260910-k65536/connected-2026090812/halfgrid-review.json",
+      "remote_sidecar_path": "/data/codex/scratch/goal046-production-20260910-k65536/connected-2026090812/halfgrid-review.npz",
+      "report_sha256": "bd54ddb7065082c15d606d4cf699d6bd917ecd545166a3d8b163b0f95c8962b9",
+      "reported_and_recomputed_metrics_exact": true,
+      "retained_grid_nodes_exact": true,
+      "rows_verified": 24,
+      "runtime_seconds": 25746.836988543044,
+      "saved_and_replayed_surfaces_exact": true,
+      "sidecar_sha256": "787cbe18503b2b472dc057b3b2c986d21446593440cc284c49a4dfe70038adb5"
+    },
+    {
+      "adoption_receipt_sha256": "e43050df4c6b98146cda5b80004f91520213de85c5b1d88f2cf41a63f51de59c",
+      "all_24_pass": true,
+      "map": "connected-2026090813",
+      "remote_report_path": "/data/codex/scratch/goal046-production-20260910-k65536/connected-2026090813/halfgrid-review.json",
+      "remote_sidecar_path": "/data/codex/scratch/goal046-production-20260910-k65536/connected-2026090813/halfgrid-review.npz",
+      "report_sha256": "0931f0ecf5d08e1d78cdb5dc8047c90b05e099905ba3d4f11a871422489a376a",
+      "reported_and_recomputed_metrics_exact": true,
+      "retained_grid_nodes_exact": true,
+      "rows_verified": 24,
+      "runtime_seconds": 23114.35206831002,
+      "saved_and_replayed_surfaces_exact": true,
+      "sidecar_sha256": "6f450e5e1b075233a5968b04a7625381f7808e4dd3ce610897680a68cebe1644"
+    },
+    {
+      "adoption_receipt_sha256": "d70a2dd14eef47d047ddd33d55b2038c7bb907db6dacc0c7c67f0e98afb9d610",
+      "all_24_pass": true,
+      "map": "corridor-2026090811",
+      "remote_report_path": "/data/codex/scratch/goal046-production-20260910-k65536/corridor-2026090811/halfgrid-review.json",
+      "remote_sidecar_path": "/data/codex/scratch/goal046-production-20260910-k65536/corridor-2026090811/halfgrid-review.npz",
+      "report_sha256": "8bffeb6a0b067e0cdc8a0ede5dcb9948bd47b16f87ae813e668e0d87d5aa2983",
+      "reported_and_recomputed_metrics_exact": true,
+      "retained_grid_nodes_exact": true,
+      "rows_verified": 24,
+      "runtime_seconds": 24258.087729919003,
+      "saved_and_replayed_surfaces_exact": true,
+      "sidecar_sha256": "37eb5b24b44d4407da8a8ee344b4becf52d4c86d1ed90a520e6daed8989a882e"
+    },
+    {
+      "adoption_receipt_sha256": "12d7c15df0cb802114c84e828ef285a6b2bedd690c14ff90e9871d1d83f80f3d",
+      "all_24_pass": false,
+      "map": "corridor-2026090812",
+      "remote_report_path": "/data/codex/scratch/goal046-production-20260910-k65536/corridor-2026090812/halfgrid-review.json",
+      "remote_sidecar_path": "/data/codex/scratch/goal046-production-20260910-k65536/corridor-2026090812/halfgrid-review.npz",
+      "report_sha256": "173f31caa01459a5130193ac8cfe8f6fa85dcaa3d013f832792f1c7411f102e3",
+      "reported_and_recomputed_metrics_exact": true,
+      "retained_grid_nodes_exact": true,
+      "rows_verified": 24,
+      "runtime_seconds": 28567.90254277701,
+      "saved_and_replayed_surfaces_exact": true,
+      "sidecar_sha256": "a9d66b44124117768e8c5354024e01f2872373ad206091b4179793a6a093b5cf"
+    },
+    {
+      "adoption_receipt_sha256": "e025c48fa2cc4a0e52b3d9311afdca531512ab36b7a6516ff2dace3c138f3508",
+      "all_24_pass": true,
+      "map": "corridor-2026090813",
+      "remote_report_path": "/data/codex/scratch/goal046-production-20260910-k65536/corridor-2026090813/halfgrid-review.json",
+      "remote_sidecar_path": "/data/codex/scratch/goal046-production-20260910-k65536/corridor-2026090813/halfgrid-review.npz",
+      "report_sha256": "0138c9336f7bedde99c21b06d6e14d180c03d9ad057884bc7ca0e6bd12528c4c",
+      "reported_and_recomputed_metrics_exact": true,
+      "retained_grid_nodes_exact": true,
+      "rows_verified": 24,
+      "runtime_seconds": 25844.029410260962,
+      "saved_and_replayed_surfaces_exact": true,
+      "sidecar_sha256": "65d6b0b9e98529569f52f26556ef02ed0863e0e587222cba04ab7d06feba45b1"
+    },
+    {
+      "adoption_receipt_sha256": "566e0565ac7ad8e78000f96290e73842e559bd8c32f4bd9b63851781de83f86a",
+      "all_24_pass": true,
+      "map": "barrier-2026090811",
+      "remote_report_path": "/data/codex/scratch/goal046-production-20260910-k65536/barrier-2026090811/halfgrid-review.json",
+      "remote_sidecar_path": "/data/codex/scratch/goal046-production-20260910-k65536/barrier-2026090811/halfgrid-review.npz",
+      "report_sha256": "f684408c23e26937fd0928acd8bc0a6022530d952326c4c0f598bd3353376635",
+      "reported_and_recomputed_metrics_exact": true,
+      "retained_grid_nodes_exact": true,
+      "rows_verified": 24,
+      "runtime_seconds": 25587.30254881404,
+      "saved_and_replayed_surfaces_exact": true,
+      "sidecar_sha256": "d1c94639e327a2b89f3eee5b19d29893f9d39d4709050f66153c3b8cfd194139"
+    },
+    {
+      "adoption_receipt_sha256": "d6a47b2ce7f16ae938dba7377f2fca00d20e0e37c7d3531f52c7b1ab6ce3f3cd",
+      "all_24_pass": true,
+      "map": "barrier-2026090812",
+      "remote_report_path": "/data/codex/scratch/goal046-production-20260910-k65536/barrier-2026090812/halfgrid-review.json",
+      "remote_sidecar_path": "/data/codex/scratch/goal046-production-20260910-k65536/barrier-2026090812/halfgrid-review.npz",
+      "report_sha256": "7c4a08497e258dbd43e0e583ce6e9f57364ef1083d5d8ed4c8b684f1bb030915",
+      "reported_and_recomputed_metrics_exact": true,
+      "retained_grid_nodes_exact": true,
+      "rows_verified": 24,
+      "runtime_seconds": 22790.125429896987,
+      "saved_and_replayed_surfaces_exact": true,
+      "sidecar_sha256": "10b04c960446b1a681927464583d49ae783e88a69abbcdbf6366b2569c3602a9"
+    },
+    {
+      "adoption_receipt_sha256": "b590137e587d23ac58046d0808a157e22c3e40fe40d3d7a38846fe79a28d9f3f",
+      "all_24_pass": true,
+      "map": "barrier-2026090813",
+      "remote_report_path": "/data/codex/scratch/goal046-production-20260910-k65536/barrier-2026090813/halfgrid-review.json",
+      "remote_sidecar_path": "/data/codex/scratch/goal046-production-20260910-k65536/barrier-2026090813/halfgrid-review.npz",
+      "report_sha256": "ef3183a3ee58692e8691efb59b44e26ce9d110f45295ea85b437f4b4f81641cd",
+      "reported_and_recomputed_metrics_exact": true,
+      "retained_grid_nodes_exact": true,
+      "rows_verified": 24,
+      "runtime_seconds": 22085.73821683001,
+      "saved_and_replayed_surfaces_exact": true,
+      "sidecar_sha256": "a86e233cb73a0a8b77bfc27ec634fb56b756bf63ea4b41e566a43c3e2d984b26"
+    }
+  ],
+  "maps_verified": 9,
+  "reference_bank_size": 131072,
+  "remote_adoption_receipt": {
+    "all_nine_adoptions_verified": true,
+    "path": "artifacts/goal046_execution/production65536/all-adoption-remote-check.json",
+    "sha256": "798028d7211c6ca5ab2668cb18dbd53e27a13da37e59eba7f48937cf278eae94"
+  },
+  "remote_hash_binding": {
+    "all_report_and_sidecar_hashes_match_remote": true,
+    "checked_utc": "2026-09-10T23:26:47Z",
+    "host": "deep-server-ts",
+    "method": "sha256sum of every remote halfgrid-review.json and halfgrid-review.npz, matched to the recorded per-map hashes",
+    "remote_root": "/data/codex/scratch/goal046-production-20260910-k65536"
+  },
+  "rows_verified": 216,
+  "scientific_acceptance": false,
+  "scope": "K65536 selected to K131072 reference all-nine half-grid return verification",
+  "selected_bank_size": 65536,
+  "source_recheck": {
+    "path": "artifacts/goal046_execution/production65536/source-recheck-20260911.json",
+    "sha256": "19ebc76e8852386949c105f464a61db2e10c972522591b6308adb0e88b14a2af",
+    "verified_campaign_files_per_snapshot": [
+      82,
+      82
+    ],
+    "verified_review_files": 11
+  },
+  "status_counts": {
+    "all_24_rows_within_pilot_limits": 8,
+    "one_or_more_rows_outside_pilot_limits": 1
+  }
+}

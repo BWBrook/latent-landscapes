@@ -1,0 +1,105 @@
+{
+  "verified_utc": "2026-09-09T23:06:18.448467+00:00",
+  "maps": [
+    {
+      "map": "barrier-2026090811",
+      "rows_verified": 24,
+      "all_24_pass": true,
+      "reported_and_recomputed_metrics_exact": true,
+      "saved_and_replayed_surfaces_exact": true,
+      "retained_grid_nodes_exact": true,
+      "report_sha256": "e11e4617a93b454dba7a45b24579aefc61929311c810e26db345e1cfc3fd7360",
+      "sidecar_sha256": "dd97442be9667379be3d4fa10d1fbc030ac15ae1b00beec6b79ccc9e995c3364",
+      "runtime_seconds": 11628.938707142952
+    },
+    {
+      "map": "barrier-2026090812",
+      "rows_verified": 24,
+      "all_24_pass": true,
+      "reported_and_recomputed_metrics_exact": true,
+      "saved_and_replayed_surfaces_exact": true,
+      "retained_grid_nodes_exact": true,
+      "report_sha256": "472ef248ddd09a9ceb66218425241a8d5f41fce3fc79a6a7eb6733e5a31a4cde",
+      "sidecar_sha256": "006ee4a7980499932cf3bc4b603554c9f1aa474c8f5c90faa2337ca2bf5f551f",
+      "runtime_seconds": 10320.557393530995
+    },
+    {
+      "map": "barrier-2026090813",
+      "rows_verified": 24,
+      "all_24_pass": true,
+      "reported_and_recomputed_metrics_exact": true,
+      "saved_and_replayed_surfaces_exact": true,
+      "retained_grid_nodes_exact": true,
+      "report_sha256": "014dbb199a2709f5804953426a7800fe0a47ebadef1e58a850926ae4864755c2",
+      "sidecar_sha256": "073f9ac9a04a43684112aafebbe5a40178647284d7c8be7249485ee1e7db3a6d",
+      "runtime_seconds": 10126.880429753975
+    },
+    {
+      "map": "connected-2026090811",
+      "rows_verified": 24,
+      "all_24_pass": true,
+      "reported_and_recomputed_metrics_exact": true,
+      "saved_and_replayed_surfaces_exact": true,
+      "retained_grid_nodes_exact": true,
+      "report_sha256": "577de5bd67d7d7acf04a4eff282e0795cab5466c4d2ddcd1bf1a130685eb6e55",
+      "sidecar_sha256": "a15ed37bb27b6cd20f153d974920d09a40df77c3e247efb1ed5ba5f2752af6a4",
+      "runtime_seconds": 11123.52898204705
+    },
+    {
+      "map": "connected-2026090812",
+      "rows_verified": 24,
+      "all_24_pass": true,
+      "reported_and_recomputed_metrics_exact": true,
+      "saved_and_replayed_surfaces_exact": true,
+      "retained_grid_nodes_exact": true,
+      "report_sha256": "18c7366697e5b333ebee96e66bce766a22178e70abd924a89aec7a92d8827382",
+      "sidecar_sha256": "f6eb21e1f39cb3f2087fbf53b6939d81a08ec2bd5ccb70df458fd5f42b33fca2",
+      "runtime_seconds": 11021.627599104017
+    },
+    {
+      "map": "connected-2026090813",
+      "rows_verified": 24,
+      "all_24_pass": true,
+      "reported_and_recomputed_metrics_exact": true,
+      "saved_and_replayed_surfaces_exact": true,
+      "retained_grid_nodes_exact": true,
+      "report_sha256": "9d479dd812a4c128100cfe2f983c92d0e05b230a56ecc2492a487a43215e0da7",
+      "sidecar_sha256": "1b7be4bedbda3fcef87fc41b890a28096a52b1ee6b95891a19f1fff40d7481e8",
+      "runtime_seconds": 10102.21183761704
+    },
+    {
+      "map": "corridor-2026090811",
+      "rows_verified": 24,
+      "all_24_pass": true,
+      "reported_and_recomputed_metrics_exact": true,
+      "saved_and_replayed_surfaces_exact": true,
+      "retained_grid_nodes_exact": true,
+      "report_sha256": "fc8dd23f664842c1a4d3f4aa0c2054b71bcc60877ff5697b0d002ed44345a4ad",
+      "sidecar_sha256": "ca299a02a5021e46967bb658744f2af62974e3790941a033c0c543458e803610",
+      "runtime_seconds": 10592.642519810004
+    },
+    {
+      "map": "corridor-2026090812",
+      "rows_verified": 24,
+      "all_24_pass": true,
+      "reported_and_recomputed_metrics_exact": true,
+      "saved_and_replayed_surfaces_exact": true,
+      "retained_grid_nodes_exact": true,
+      "report_sha256": "0ba7d1be14e2fc707e231215fb72e40dc4e3b7812eeaa5a035408fb9ded54c58",
+      "sidecar_sha256": "1e202f752371e4d7a53e5fddf66a3baaee9f392b491889810499c8bc95518e85",
+      "runtime_seconds": 11687.475414875022
+    },
+    {
+      "map": "corridor-2026090813",
+      "rows_verified": 24,
+      "all_24_pass": true,
+      "reported_and_recomputed_metrics_exact": true,
+      "saved_and_replayed_surfaces_exact": true,
+      "retained_grid_nodes_exact": true,
+      "report_sha256": "a5557a4d825de115f8b1c970bdde56e1a90d9baaeb03816d4ac973a35487dca1",
+      "sidecar_sha256": "eb9f80684917a9ffdcb7a36a149481ea8b23aa9945284ce479a13869daea33c4",
+      "runtime_seconds": 11115.313440700993
+    }
+  ],
+  "scientific_acceptance": false
+}

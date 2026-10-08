@@ -1,0 +1,61 @@
+{
+  "checked_utc": "2026-09-10T23:30:17Z",
+  "host": "deep-server-ts",
+  "remote_root": "/data/codex/scratch/goal046-split-diagnostic-20260911",
+  "launch": {
+    "launched_utc": "2026-09-10T23:28:34.630686+00:00",
+    "timeout_seconds": 3600,
+    "deadline_epoch": 1789102800,
+    "workers": 4,
+    "maps_serial": true,
+    "native_threads": 1,
+    "address_space_gib": 10,
+    "aggregate_rss_gib": 96,
+    "source_files_verified": {
+      "old": 82,
+      "new": 82
+    },
+    "input_files_verified": 22,
+    "all_halfgrid_check_sha256": "2363ea8c53816d5a24e5447a14d0e3b5514844dd3a0cfc62fcb0b12de12df114",
+    "runner_sha256": "c92736d3bbe6e504076e8e3efbe5561c91b9b47fc23cda4e1528b01dd5001362",
+    "launcher_sha256": "933863b8c6aa91aaa2cbbdf1b2357c8c56f954dfb5b89085bf422cce5c926375",
+    "scientific_acceptance": false
+  },
+  "process": {
+    "pid": 84386,
+    "pgid": 84386,
+    "command": [
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=10s",
+      "3600",
+      "/data/codex/scratch/goal046-pilot-20260908/source/.venv/bin/python",
+      "-u",
+      "/data/codex/scratch/goal046-split-diagnostic-20260911/run_split_diagnostic.py",
+      "--old-root",
+      "/data/codex/scratch/goal046-production-20260908-k32768",
+      "--new-root",
+      "/data/codex/scratch/goal046-production-20260910-k65536",
+      "--source-root",
+      "/data/codex/scratch/goal046-production-20260910-k65536/source/src",
+      "--input-hashes",
+      "/data/codex/scratch/goal046-split-diagnostic-20260911/input-hashes.json",
+      "--output",
+      "/data/codex/scratch/goal046-split-diagnostic-20260911/full-output",
+      "--workers",
+      "4"
+    ],
+    "timeout_seconds": 3600
+  },
+  "startup_observed": {
+    "calculation_running": true,
+    "exit_receipt_present": false,
+    "supervisor_log_empty": true,
+    "native_omp_openblas_mkl_threads": 1,
+    "max_address_space_bytes": 10737418240,
+    "latest_sample_rss_kib": 1600112,
+    "sampled_peak_rss_kib": 1600112
+  },
+  "local_launch_runner_launcher_and_halfgrid_hashes_verified": true,
+  "scientific_acceptance": false
+}
