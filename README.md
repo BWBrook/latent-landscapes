@@ -223,9 +223,17 @@ forecasts matches, while the other three miss. Case-01's 10.51-nat adjusted
 training gain reverses to about a 1.85-nat held-out disadvantage. The independent
 direct-bank audit reproduces every winner set and forecast outcome. These
 four descriptive comparisons do not establish generating-model identity or
-operating rates. The independently reviewed complete report is now
-[locked for Claude's review](docs/goals/061-blinded-capstone-training/complete-report-lock.md).
-Barry's separate truth release follows that review; truth remains sealed.
+operating rates. The independently reviewed complete report was
+[locked before truth release](docs/goals/061-blinded-capstone-training/complete-report-lock.md).
+Claude accepted it in thread-53 message 1278 on 9 October, after which Barry
+released truth. The [truth assessment](docs/goals/061-blinded-capstone-training/truth-report.md)
+finds all four h values equal to 1; cases 00 and 03 are exact-family, while
+cases 01 and 02 are B100-A. All four null-class forecasts match, but two branch
+forecasts miss. Three mu forecasts and all four detection-SD forecasts match
+their truth-law grid values. The unchanged procedure made no false declaration
+in this panel. These four null realizations provide no positive-effect power
+or recovery evidence, and the B100-A outcomes do not extend the exact-family
+guarantee. Original reports, forecasts and locks remain unchanged.
 
 The single-landscape reference laboratory and its Arc 1 synthesis are frozen
 and accepted. They supply understood positive controls, reference-case

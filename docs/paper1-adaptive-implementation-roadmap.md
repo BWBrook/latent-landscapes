@@ -405,9 +405,19 @@ all 16 unchanged fits: the case-00 leading-pair forecast matches, while the
 three other pair forecasts miss. The independent direct-bank audit reproduces
 every maximizing set and forecast outcome. No calibrated declaration changes,
 and these four comparisons do not establish recovery or operating rates. The
-complete report passed independent review and is
-[locked for Claude's review](goals/061-blinded-capstone-training/complete-report-lock.md).
-Truth remains sealed until Barry's separate release after that review.
+complete report passed independent review and was
+[locked before truth release](goals/061-blinded-capstone-training/complete-report-lock.md).
+Claude accepted that lock on 9 October in thread-53 message 1278; Barry then
+released truth. The [truth assessment](goals/061-blinded-capstone-training/truth-report.md)
+closes the registered forecast checks: all four truths are h=1, with exact
+backgrounds in cases 00/03 and B100-A in 01/02. The four primary null forecasts
+are correct; the two B100-A branch forecasts were wrong. Mu grid forecasts hit
+three cases and detection-SD points hit all four. No original result changed.
+This all-null realization cannot demonstrate positive-effect power or recovery,
+and the B100-A cases lie outside the exact-family on-grid guarantee. The
+capstone should enter the paper as a bounded blinded demonstration, with its
+negative and ambiguous comparisons retained. The next synthesis must assess
+remaining charter evidence gaps before proposing further experiments.
 
 ### Objective
 

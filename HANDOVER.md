@@ -1,5 +1,51 @@
 # Latent Landscapes: current handover
 
+9 October 2026 (Hobart), after the authorized truth reveal.
+
+**The capstone truth assessment is complete: all four generating effects are
+null (h=1).** Claude accepted the complete-report lock in thread-53 message
+1278; Barry then released the truth. The archive matches commitment
+`f4145408b52e24e459e751f9fa646a3365fb9d596f8a3da8476853e48c56af8d`.
+All 3,793 files in the accepted pretruth closure were reverified unchanged.
+
+The [truth report](docs/goals/061-blinded-capstone-training/truth-report.md)
+records every committed forecast under its original rule. All four null-class
+forecasts are correct. The continuous adjusted estimate in case-02 remains
+1.28762361924 (absolute log-h error 0.2527983638884294); the other three are 1.
+Exact-family branch forecasts hit cases 00 and 03 and miss cases 01 and 02,
+which are B100-A. Conditional beta errors are 0 and 0.25 in the two exact
+cases; beta is unscored in the other two. Mu forecasts hit three cases, missing
+case-03 by 0.0006/day. All four SD points and all four broad SD sets hit.
+
+The p_BB values remain 1, 1, 0.422 and 1, with four valid non-declarations and
+no realized false declaration. This all-null panel supplies no positive-effect
+power or recovery evidence; the B100-A cases do not extend the exact-family
+on-grid guarantee. The holdout forecast outcome remains one pair hit and
+three misses. No fit, calibration, model or prediction was changed.
+
+The original reports and locks remain immutable. The separate
+[truth review](docs/goals/061-blinded-capstone-training/truth-independent-review.md)
+accepts the assessment without repair; all 40 independently calculated
+forecast outcomes/errors match, as do all four h estimates and p_BB values.
+The ten-file final inventory is
+`artifacts/goal061_truth/truth-assessment-manifest.json`, SHA-256
+`0220d0ad3db75326f995a7c92972893d6d6e3e64c24d27f6b9bd02e9420ce94c`.
+It binds the released archive and new assessment, review, source, tests and
+results, with the accepted pretruth lock retained as inherited evidence.
+Three new arithmetic/commitment tests pass, with Ruff checks green.
+No new simulations, generator replay or private encryption-identity access
+were needed.
+
+**Next useful tranche:** synthesize the capstone with earlier controlled
+experiments against the Paper 1 charter, separating supported claims from
+remaining evidence gaps. Any new positive-effect experiment needs its own
+prospective design; this capstone must not be redrawn to improve its story.
+
+## Preserved handover before truth release
+
+The following records the complete-report lock before Claude's acceptance
+and Barry's truth release above. Its pending-release statements are historical.
+
 8 October 2026 (Hobart), after the complete report lock.
 
 **The training-plus-holdout analysis is complete; the independently reviewed
