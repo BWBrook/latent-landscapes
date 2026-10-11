@@ -19,13 +19,18 @@ bounded run and audit are one approved tranche; scientific changes or envelope
 increases return for a decision. B100-A rates remain descriptive outside the
 nominal guarantee; beta error and true-node retention are not applicable.
 
-Implementation and independent audit adapters are in preparation. No Goal 062
-production history or reference has been drawn. A live check confirmed the
+Implementation and the independent audit adapter have passed
+[source review](docs/goals/062-final-procedure-evaluation/implementation-review-2026-10-11.md).
+[Qualification 2](docs/goals/062-final-procedure-evaluation/execution.md) is
+running on Deep after a final integrity-check repair; its custody and all 65
+focused Linux tests have passed. Qualification 1 was stopped and preserved as
+superseded evidence. No Goal 062 production history or reference has been
+drawn. A live check confirmed the
 accepted remote packages and numerical versions, with ample capacity, but the
 Linux kernel changed from 6.8.0-142 to 6.8.0-146 relative to the locked runtime
 receipt. Preserve the original receipt and document nonproduction compatibility
 checks; resolve the registered runtime-mismatch boundary before production.
-Current execution details belong in the Goal 062 directory and
+Current execution details are in the linked execution record and
 `artifacts/goal062_execution/`.
 
 ## Preserved handover after the initial Goal 062 proposal

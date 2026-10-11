@@ -105,14 +105,17 @@ Goal 062 is now [approved with a B100-A amendment](docs/goals/062-final-procedur
 ten cells and 5,000 independent histories, with a
 [46–57-hour estimate](docs/goals/062-final-procedure-evaluation/compute-estimate-amended-2026-10-11.md)
 and completed [independent amendment review](docs/goals/062-final-procedure-evaluation/amendment-review-2026-10-11.md).
-Implementation and qualification are underway; production awaits the registered
-preflight gates. The six-cell documents below remain the original proposal.
+Implementation has passed [independent source review](docs/goals/062-final-procedure-evaluation/implementation-review-2026-10-11.md).
+[Nonproduction qualification](docs/goals/062-final-procedure-evaluation/execution.md)
+is running on Deep; production awaits qualification and resolution of the
+registered runtime mismatch. The six-cell documents below remain the original
+proposal.
 
 The proposed [Goal 062 six-cell evaluation](docs/goals/062-final-procedure-evaluation/registration-2026-10-11.md)
 now specifies 500 independent histories per cell for the final procedure,
 with a [reference-inclusive compute estimate](docs/goals/062-final-procedure-evaluation/compute-estimate.md)
 and [independent design review](docs/goals/062-final-procedure-evaluation/design-review-2026-10-11.md).
-It is prepared for a launch decision; no new experiment or benchmark has run.
+That original proposal preceded the ten-cell approval and current qualification.
 
 The [11 October Paper 1 evidence synthesis](docs/paper1-evidence-synthesis-2026-10-11.md)
 assesses all six charter pillars after the capstone truth reveal. Reference
