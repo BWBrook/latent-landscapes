@@ -101,6 +101,12 @@ set of generating values.
 
 ## Current Scientific Boundary
 
+The proposed [Goal 062 six-cell evaluation](docs/goals/062-final-procedure-evaluation/registration-2026-10-11.md)
+now specifies 500 independent histories per cell for the final procedure,
+with a [reference-inclusive compute estimate](docs/goals/062-final-procedure-evaluation/compute-estimate.md)
+and [independent design review](docs/goals/062-final-procedure-evaluation/design-review-2026-10-11.md).
+It is prepared for a launch decision; no new experiment or benchmark has run.
+
 The [11 October Paper 1 evidence synthesis](docs/paper1-evidence-synthesis-2026-10-11.md)
 assesses all six charter pillars after the capstone truth reveal. Reference
 recovery and earlier known-nuisance power are well evidenced; replicated

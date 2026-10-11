@@ -1,5 +1,39 @@
 # Latent Landscapes: current handover
 
+11 October 2026 (Hobart), after preparation of Goal 062.
+
+**The [six-cell prospective design](docs/goals/062-final-procedure-evaluation/registration-2026-10-11.md)
+and [compute estimate](docs/goals/062-final-procedure-evaluation/compute-estimate.md)
+are prepared for a launch decision.** Barry requested design/cost preparation
+and independent review before launch. No new histories, reference tables,
+benchmarks or production source changes have been made.
+
+The panel has 500 independent histories in each of h={1,3,5} crossed with
+mu={.001,.004}/day, holding beta=.50 and detection SD=.20 fixed. It measures
+conditional declaration, abstention, point recovery and prediction on the
+unchanged capstone map/bank and one realised reference panel. The proposed
+design completes the 466 missing effect-reference tables first: 465,534 new
+references, with the existing screen and 299 effect tables reused after
+verification. Planning allowance is 42–50 hours at up to 51 deep-server
+workers, 64 GiB RSS, 50 GiB free scratch and a 72-hour checkpointing ceiling.
+These are proposed resources; current capacity and new-adapter throughput
+have not been measured.
+
+The [independent design review](docs/goals/062-final-procedure-evaluation/design-review-2026-10-11.md)
+conditionally supports this design and cost envelope. Its bootstrap and
+full-grid clarifications are incorporated, including fixed secondary error
+quantiles. Implementation must qualify a new panel adapter around the unchanged
+scientific kernels before production;
+the existing four-case runner cannot be used unchanged. The all-null capstone
+remains intact, and this panel does not resolve the separate landscape,
+competing-model or magnitude-interval questions.
+
+**Next boundary:** Barry's launch decision on this concrete proposal. Approval
+can cover implementation, mechanical qualification, the bounded run and audit
+as one tranche; scientific changes or resource increases return for review.
+
+## Preserved handover after the Paper 1 evidence synthesis
+
 11 October 2026 (Hobart), after the Paper 1 evidence synthesis.
 
 **The [charter-level evidence synthesis](docs/paper1-evidence-synthesis-2026-10-11.md)

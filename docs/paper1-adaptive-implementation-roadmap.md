@@ -23,6 +23,11 @@ calibration evidence, but those operating properties cannot be
 transferred to the final method. Landscape numerical qualification and the
 common competing-model ambition also remain material charter decisions.
 No new experiment or change to the charter is authorized by this synthesis.
+Barry subsequently requested preparation of
+[Goal 062's six-cell prospective design](goals/062-final-procedure-evaluation/registration-2026-10-11.md),
+with 500 histories per cell, calibration-reference costing and independent
+review before launch. That proposal is prepared; implementation, benchmarking
+and production remain unlaunched.
 
 Arc 1 is frozen. Arc 2A and Arc 2B have completed prospectively tested
 32-truth recoverability syntheses on one accepted landscape and observation
@@ -566,11 +571,15 @@ run.
 
 The completed reference arcs and staged capstone remain closed. The
 [Paper 1 synthesis](paper1-evidence-synthesis-2026-10-11.md) now supplies the
-decision basis: review whether the paper retains the full landscape-generality
-and competing-process-model ambitions, and whether to register a modest
-replicated panel for the final observed-nuisance method. That panel should
-measure null declarations, positive-effect sensitivity, estimation error and
-prediction, with calibration-reference cost and uncertainty targets specified.
+decision basis. The immediate proposal is
+[Goal 062](goals/062-final-procedure-evaluation/registration-2026-10-11.md):
+six fixed cells, 500 independent histories each, and a complete fixed reference
+panel. The [compute estimate](goals/062-final-procedure-evaluation/compute-estimate.md)
+includes 465,534 new effect references and an estimated 42–50 hours on the
+previously used 51-worker allocation. It is prepared for Barry's launch
+decision after independent review, with implementation qualification required
+before production. The broader landscape-generality and competing-process
+model ambitions remain separate scientific decisions.
 Narrow final-method claims about exact-grid null control, feasibility and the
 blinded demonstration do not strictly require another simulation.
 
