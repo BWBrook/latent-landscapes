@@ -1,5 +1,35 @@
 # Latent Landscapes: current handover
 
+11 October 2026 (Hobart), Goal 062 approved with the B100-A amendment.
+
+Barry selected **amend, independently review, then launch without returning**
+in [Decision Inbox](docs/decisions/1c886620-8524-4d69-8585-3b5ef960bea3.md)
+and confirmed the approval in chat. The [amendment](docs/goals/062-final-procedure-evaluation/amendment-2026-10-11.md)
+adds B100-A h=1/3 at both mu levels: **ten cells, 500 independent histories
+per cell, 5,000 total**. No h=2 cells are authorized. The
+[independent amendment review](docs/goals/062-final-procedure-evaluation/amendment-review-2026-10-11.md)
+conditionally supports the design with no outstanding document correction.
+The original registration, estimate and review are preserved unchanged.
+
+The [amended compute estimate](docs/goals/062-final-procedure-evaluation/compute-estimate-amended-2026-10-11.md)
+is **46–57 hours**, including the unchanged 465,534 new effect-reference
+histories, at up to 51 deep-server workers. The 64 GiB RSS, 50 GiB free scratch
+and **72-hour ceiling** remain binding. Implementation, qualification, the
+bounded run and audit are one approved tranche; scientific changes or envelope
+increases return for a decision. B100-A rates remain descriptive outside the
+nominal guarantee; beta error and true-node retention are not applicable.
+
+Implementation and independent audit adapters are in preparation. No Goal 062
+production history or reference has been drawn. A live check confirmed the
+accepted remote packages and numerical versions, with ample capacity, but the
+Linux kernel changed from 6.8.0-142 to 6.8.0-146 relative to the locked runtime
+receipt. Preserve the original receipt and document nonproduction compatibility
+checks; resolve the registered runtime-mismatch boundary before production.
+Current execution details belong in the Goal 062 directory and
+`artifacts/goal062_execution/`.
+
+## Preserved handover after the initial Goal 062 proposal
+
 11 October 2026 (Hobart), after preparation of Goal 062.
 
 **The [six-cell prospective design](docs/goals/062-final-procedure-evaluation/registration-2026-10-11.md)

@@ -26,8 +26,13 @@ No new experiment or change to the charter is authorized by this synthesis.
 Barry subsequently requested preparation of
 [Goal 062's six-cell prospective design](goals/062-final-procedure-evaluation/registration-2026-10-11.md),
 with 500 histories per cell, calibration-reference costing and independent
-review before launch. That proposal is prepared; implementation, benchmarking
-and production remain unlaunched.
+review before launch. Barry then approved the
+[ten-cell B100-A amendment](goals/062-final-procedure-evaluation/amendment-2026-10-11.md)
+with independent review followed by implementation, qualification, the bounded
+run and audit without another routine approval. The amendment review is complete;
+implementation is underway. The current estimate is 46–57 hours within the
+unchanged 72-hour ceiling. Production remains behind the registered preflight
+gates, including the observed Linux-kernel runtime-receipt mismatch.
 
 Arc 1 is frozen. Arc 2A and Arc 2B have completed prospectively tested
 32-truth recoverability syntheses on one accepted landscape and observation
@@ -571,14 +576,16 @@ run.
 
 The completed reference arcs and staged capstone remain closed. The
 [Paper 1 synthesis](paper1-evidence-synthesis-2026-10-11.md) now supplies the
-decision basis. The immediate proposal is
-[Goal 062](goals/062-final-procedure-evaluation/registration-2026-10-11.md):
-six fixed cells, 500 independent histories each, and a complete fixed reference
-panel. The [compute estimate](goals/062-final-procedure-evaluation/compute-estimate.md)
-includes 465,534 new effect references and an estimated 42–50 hours on the
-previously used 51-worker allocation. It is prepared for Barry's launch
-decision after independent review, with implementation qualification required
-before production. The broader landscape-generality and competing-process
+decision basis. The approved work is
+[Goal 062 with the B100-A amendment](goals/062-final-procedure-evaluation/amendment-2026-10-11.md):
+ten fixed cells, 500 independent histories each, and a complete fixed reference
+panel. The [amended estimate](goals/062-final-procedure-evaluation/compute-estimate-amended-2026-10-11.md)
+includes 465,534 new effect references and an estimated 46–57 hours on up to
+51 workers, within the 72-hour ceiling. Independent amendment review is
+complete; the approved implementation, qualification, run and audit proceed
+under the registered preflight gates. The observed kernel change relative
+to the locked runtime receipt must be resolved before production.
+The broader landscape-generality and competing-process
 model ambitions remain separate scientific decisions.
 Narrow final-method claims about exact-grid null control, feasibility and the
 blinded demonstration do not strictly require another simulation.
@@ -588,4 +595,4 @@ before adding maps. Formal generating-family discrimination needs a common
 candidate set capable of representing the chosen alternative. Final-method
 magnitude coverage needs a defined interval method before an evaluation can
 test it. None of these requirements is met by another four-case blinded panel.
-No new design, model, computation or claim amendment is authorized here.
+Those broader changes remain outside the approved Goal 062 amendment.

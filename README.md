@@ -101,6 +101,13 @@ set of generating values.
 
 ## Current Scientific Boundary
 
+Goal 062 is now [approved with a B100-A amendment](docs/goals/062-final-procedure-evaluation/amendment-2026-10-11.md):
+ten cells and 5,000 independent histories, with a
+[46–57-hour estimate](docs/goals/062-final-procedure-evaluation/compute-estimate-amended-2026-10-11.md)
+and completed [independent amendment review](docs/goals/062-final-procedure-evaluation/amendment-review-2026-10-11.md).
+Implementation and qualification are underway; production awaits the registered
+preflight gates. The six-cell documents below remain the original proposal.
+
 The proposed [Goal 062 six-cell evaluation](docs/goals/062-final-procedure-evaluation/registration-2026-10-11.md)
 now specifies 500 independent histories per cell for the final procedure,
 with a [reference-inclusive compute estimate](docs/goals/062-final-procedure-evaluation/compute-estimate.md)
