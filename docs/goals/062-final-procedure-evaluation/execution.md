@@ -12,17 +12,19 @@ or the resource envelope retain their explicit decision boundary.
 ## Current status
 
 Implementation and [independent source review](implementation-review-2026-10-11.md)
-are complete. Nonproduction
-qualification 2 started on deep-server at **2026-10-11 02:56:29 UTC**
-(13:56:29 AEDT), with up to 51 workers and a three-hour qualification guard.
-Its custody checks and all 65 focused tests have passed on the frozen Linux
-environment. Remaining qualification stages are in progress. No new
-production reference row or evaluation history has been generated.
+are complete. **Nonproduction qualification 2 passed** on deep-server, running
+from **2026-10-11 02:56:29 to 03:21:33 UTC** (13:56:29–14:21:33 AEDT).
+All numerical, audit, workload and 51-worker memory checks passed within the
+three-hour qualification guard. [Independent receipt review](qualification-review-2026-10-11.md)
+supports presenting the exact runtime amendment to Barry, with no required
+repair or repeat qualification. No new production reference row or evaluation
+history has been generated.
 
 The accepted receipt records Linux `6.8.0-142-generic`; the current host runs
 `6.8.0-146-generic`. Python 3.14.5, NumPy 2.5.1, SciPy 1.18.0 and PCG64 match
-the original version fields. Compatibility measurements and independent
-receipt review precede an additive runtime decision. A successful numerical
+the original version fields. The compatibility measurements support a
+[proposed additive runtime amendment](runtime-amendment-2026-10-11.md), pending
+Barry's decision after independent review. A successful numerical
 qualification alone cannot authorize production under the changed runtime.
 
 ## Source and evidence identity
@@ -33,9 +35,26 @@ qualification alone cannot authorize production under the changed runtime.
 | Original Goal 061 source-manifest SHA-256 | `5879fbdaf7b3880151358319a7b7c7c0837463b06ba06f1a34fb80a3fbc2e36a` |
 | Qualification 2 source-manifest SHA-256 | `f8653edeca65c4ddfc5c3433ee6d199897b8ee41de1d0dcd6b4ead15346ceefe` |
 | Qualification 2 archive SHA-256 | `c41abbb56b104f62238b164c8177f731e8b4aeca60fb89bdf250aeb04e8647eb` |
+| Qualification 2 receipt SHA-256 | `01952a5aaf2b027db06e40726172e35d6fefab265b147169110aa581c83fab65` |
+| Complete current runtime canonical SHA-256 | `acd43764a5d0c2ee574007912a90236f669548a512c460cceb7768bb044e854a` |
 | Frozen files / compressed bytes | 354 / 44,842,041 |
 | Local evidence root | `artifacts/goal062_execution/qualification2/` |
 | Remote execution root | `/data/codex/scratch/goal062-final-procedure-20261011-qualification2` |
+
+The implementation is committed and pushed as `2d4a04b`. Its new source/test
+bytes match the frozen manifest; that manifest records the preceding approved
+design commit as the export's repository HEAD and binds all additions by hash.
+All 165 files listed by the qualification receipt were returned locally and
+rehashed with zero mismatches. The supervisor exited zero, with no remaining
+process-group members and no resource stop.
+
+A postqualification check on Deep rehashed all 354 frozen files, three input
+receipts, 3,220 accepted reference-closure files, 97 public-package files and
+165 qualification files with zero mismatches. Its additive receipt is
+`postqualification-custody.json`, SHA-256
+`4a050294181c021164d50cd160bccc45809c0d18c7b8db354c30be3fefe6006f`.
+It also confirms that neither a production directory nor a runtime-approval
+record existed at 03:25:48 UTC. Original qualification evidence is unchanged.
 
 All 258 inherited scientific source, script and test files, together with
 `pyproject.toml` and `uv.lock`, were verified byte-identical to the accepted
@@ -108,6 +127,35 @@ process-group members. It cannot qualify the repaired source. Qualification 2
 is a new directory and freeze; no failed receipt was overwritten.
 
 ## Resource and release boundary
+
+The completed qualification provides the following numerical evidence. These
+are mechanical checks, not estimates of scientific operating characteristics.
+
+| Check | Observed result |
+| --- | --- |
+| Inherited reference compatibility | Nine effect tables ×999 rows and three screen tables ×99 rows re-audited; reconstructed arrays match accepted arrays exactly; maximum direct-score discrepancy `2.047e-12` nats |
+| New mechanical references | Three nodes ×3 rows generated and independently audited using root `987654321` |
+| Accepted public fixtures | Eight four-model full-bank refits; parameters, scores and numerical statuses match exactly |
+| Ten-cell generator replay | All generator arrays match bitwise, including the four B100-A fields |
+| Main fits and screening | 40 fits and 7,650 screen nodes independently scored; maximum discrepancies `6.822e-13` and `2.047e-12` nats |
+| Cached decisions | 1,500 retained-node effect ranks independently rebuilt; rank probabilities agree exactly |
+| Held-out scores | All four models and six contrasts per history audited; maximum discrepancy `1.137e-13` nats |
+| Diagnostics | 886 profile and 2,700 lattice points reconstructed; maximum discrepancy `3.638e-12` nats; both cases pass the registered profile/lattice diagnostics |
+| Memory | All 51 requested workers initialized; probe peak 30,690,643,968 bytes (28.58 GiB), 35.73 GiB with 25% headroom; whole-run supervisor peak 28.78 GiB |
+| Qualification duration | 1,501.299 seconds within the qualifier, 1,503.778 seconds under the supervisor |
+
+The concurrency probe measures loaded producer/auditor resources and
+representative scoring. A simultaneous 51-optimizer peak remains unmeasured;
+the supervisor enforces the production memory cap throughout execution.
+
+The timing model gives 0.463 evaluation hours and 8.411 reference-generation
+hours under ideal worker scaling. Those small-sample extrapolations are not
+campaign forecasts. The qualifying gate instead retains the historical
+36–40-hour reference allowance and uses the greater projection, **40.579 hours**
+including its evaluation margin. This is below 72 hours. Retain the approved
+**46–57-hour planning allowance** to cover timing variation, scheduling tails,
+extra anomaly diagnosis, transfers and reporting. No resource reduction or
+increase is being proposed.
 
 Immediately before the second qualification, Deep had 121.15 GB available
 memory and 4.499 TB free scratch. These are launch-time observations, not a

@@ -21,15 +21,22 @@ nominal guarantee; beta error and true-node retention are not applicable.
 
 Implementation and the independent audit adapter have passed
 [source review](docs/goals/062-final-procedure-evaluation/implementation-review-2026-10-11.md).
-[Qualification 2](docs/goals/062-final-procedure-evaluation/execution.md) is
-running on Deep after a final integrity-check repair; its custody and all 65
-focused Linux tests have passed. Qualification 1 was stopped and preserved as
-superseded evidence. No Goal 062 production history or reference has been
-drawn. A live check confirmed the
+[Qualification 2](docs/goals/062-final-procedure-evaluation/execution.md)
+passed on Deep in 25 minutes: 65 focused Linux tests, inherited-reference and
+public-fixture comparisons, all ten mechanical cells, diagnostics, the workload
+projection and the 51-worker memory probe. Qualification 1 was stopped and
+preserved as superseded evidence. [Independent receipt review](docs/goals/062-final-procedure-evaluation/qualification-review-2026-10-11.md)
+supports acceptance with no required repair or repeat qualification. Barry's
+decision on the [proposed runtime amendment](docs/goals/062-final-procedure-evaluation/runtime-amendment-2026-10-11.md)
+remains pending.
+No Goal 062 production history or reference has been drawn. A live check confirmed the
 accepted remote packages and numerical versions, with ample capacity, but the
 Linux kernel changed from 6.8.0-142 to 6.8.0-146 relative to the locked runtime
 receipt. Preserve the original receipt and document nonproduction compatibility
 checks; resolve the registered runtime-mismatch boundary before production.
+The measured workload gate is 40.579 hours and the whole-qualification RSS
+peak is 28.78 GiB. Retain the approved 46–57-hour planning allowance and the
+unchanged 72-hour ceiling. Implementation is committed and pushed as `2d4a04b`.
 Current execution details are in the linked execution record and
 `artifacts/goal062_execution/`.
 
