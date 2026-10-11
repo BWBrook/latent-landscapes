@@ -1,5 +1,37 @@
 # Latent Landscapes: current handover
 
+11 October 2026 (Hobart), after the Paper 1 evidence synthesis.
+
+**The [charter-level evidence synthesis](docs/paper1-evidence-synthesis-2026-10-11.md)
+is complete. Further experiments are recommended selectively; none has been
+authorized or launched by this assessment.** The controlled recovery maps and
+earlier known-nuisance power results remain substantial evidence. The final
+observed-nuisance procedure has no replicated positive-effect evaluation or
+calibrated magnitude interval. Its all-null capstone remains a valid blinded
+demonstration and is not to be redrawn.
+
+The principal recommendation, if the final procedure is presented as a
+practical positive-effect method, is a prospectively registered evaluation
+with independent null and positive-effect histories. Narrow claims about
+exact-grid null control, feasibility and the blinded demonstration do not
+strictly require another simulation. Reference completion and fixed-table
+versus repeated-table uncertainty need explicit costing and definition.
+The unchanged charter also leaves numerical
+qualification of landscape generality and a common competing-process-model
+comparison unresolved. These need bounded further work or an explicitly
+reviewed claim boundary. A new power panel alone would not complete the charter.
+
+The [independent review](docs/paper1-evidence-synthesis-review-2026-10-11.md)
+records its assessment. The roadmap now reports both historical Arc 2B
+classes (3/10/19) and the previously accepted coverage-free interpretation
+(4/9/19); only S08 changes. Historical outputs and the charter are unchanged.
+No simulations, refits or code cleanup were performed.
+
+**Next scientific decision:** review the synthesis recommendations and the
+intended Paper 1 claim boundary before registering further work.
+
+## Preserved handover after truth release
+
 9 October 2026 (Hobart), after the authorized truth reveal.
 
 **The capstone truth assessment is complete: all four generating effects are

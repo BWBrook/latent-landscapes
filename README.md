@@ -101,6 +101,20 @@ set of generating values.
 
 ## Current Scientific Boundary
 
+The [11 October Paper 1 evidence synthesis](docs/paper1-evidence-synthesis-2026-10-11.md)
+assesses all six charter pillars after the capstone truth reveal. Reference
+recovery and earlier known-nuisance power are well evidenced; replicated
+recovery and power of the final observed-nuisance procedure remain unmeasured.
+The synthesis recommends one bounded operating-performance panel, with null
+and positive effects, if the paper presents the final procedure as a practical
+positive-effect method, subject to prospective design and resource review.
+Numerical qualification of landscape generality and common competing-process
+model assessment also require further work or an explicit review of the paper's
+claim boundary. The full charter is not yet complete. No new experiment has
+been launched; the all-null capstone and its forecast misses remain unchanged.
+
+### Evidence progression
+
 The first registered robustness screen is complete:
 [Goal 051](docs/goals/051-misspecification-screen/synthesis.md) nominates aligned
 background prey-loss variation at the null for independent confirmation.

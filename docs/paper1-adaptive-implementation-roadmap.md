@@ -14,6 +14,16 @@ review.
 
 ## Current Position
 
+The [11 October charter-level evidence synthesis](paper1-evidence-synthesis-2026-10-11.md)
+is complete after the capstone truth assessment. The main proposed experiment
+is a replicated evaluation of the final observed-nuisance procedure at null
+and positive effects, if it is presented as a practical positive-effect method.
+Earlier procedure generations supply substantial recovery, power and
+calibration evidence, but those operating properties cannot be
+transferred to the final method. Landscape numerical qualification and the
+common competing-model ambition also remain material charter decisions.
+No new experiment or change to the charter is authorized by this synthesis.
+
 Arc 1 is frozen. Arc 2A and Arc 2B have completed prospectively tested
 32-truth recoverability syntheses on one accepted landscape and observation
 design. The working
@@ -43,9 +53,11 @@ The prey-effect map varied the true predator-effect multiplier, counterfactual
 60-day background prey-loss risk, and known prey detection. All five low-order
 surfaces learned from the first 16 truths predicted the untouched second 16
 better than the frozen pilot mean. The map is informative precisely because
-recovery is not universal: 3/32 truths were fully recovered, 10/32 detected
-the effect without passing every strict gate, and 19/32 were not reliably
-detected. Every tested effect below threefold fell in the latter class. Event
+recovery is not universal. The historical classifier gives 3/32 fully recovered,
+10/32 detected but incomplete, and 19/32 not reliably detected. The accepted
+[coverage-free interpretation](goals/049-operational-calibration/interpretation-amendments.md)
+gives 4/9/19, changing only S08; the historical table remains unchanged.
+Every tested effect below threefold fell in the weak-detection class. Event
 yield and observation quality help explain this transition, but remain
 conditional associations within the synthetic experiment.
 
@@ -416,8 +428,11 @@ three cases and detection-SD points hit all four. No original result changed.
 This all-null realization cannot demonstrate positive-effect power or recovery,
 and the B100-A cases lie outside the exact-family on-grid guarantee. The
 capstone should enter the paper as a bounded blinded demonstration, with its
-negative and ambiguous comparisons retained. The next synthesis must assess
-remaining charter evidence gaps before proposing further experiments.
+negative and ambiguous comparisons retained. The
+[completed charter synthesis](paper1-evidence-synthesis-2026-10-11.md)
+separates earlier operating evidence from unmeasured final-procedure recovery,
+power and magnitude coverage, and recommends bounded prospective follow-up
+subject to scientific review.
 
 ### Objective
 
@@ -549,15 +564,19 @@ run.
 
 ## Immediate Decision Boundary
 
-Arc 2A, Arc 2B and Goal 045's six-case Arc 2C comparison are scientifically
-complete, with numerical acceptance and independent final review recorded.
-The paired result isolates the cost of estimating spread speed with detection,
-background and resistance known. The evidence supports no detected systematic
-added cost in these cases, while preserving weak absolute recovery and the
-usual-speed fivefold coverage limitation.
+The completed reference arcs and staged capstone remain closed. The
+[Paper 1 synthesis](paper1-evidence-synthesis-2026-10-11.md) now supplies the
+decision basis: review whether the paper retains the full landscape-generality
+and competing-process-model ambitions, and whether to register a modest
+replicated panel for the final observed-nuisance method. That panel should
+measure null declarations, positive-effect sensitivity, estimation error and
+prediction, with calibration-reference cost and uncertainty targets specified.
+Narrow final-method claims about exact-grid null control, feasibility and the
+blinded demonstration do not strictly require another simulation.
 
-The bounded bridge is closed. The next substantive programme decision concerns
-generality beyond this reference model and design;
-it requires a separate bounded scientific question. No new conditions,
-landscapes, calibration method, response surface or later arc is authorized by
-Goal 045. Its null result does not reopen the completed recoverability maps.
+Numerically qualified landscape claims need an accepted integration method
+before adding maps. Formal generating-family discrimination needs a common
+candidate set capable of representing the chosen alternative. Final-method
+magnitude coverage needs a defined interval method before an evaluation can
+test it. None of these requirements is met by another four-case blinded panel.
+No new design, model, computation or claim amendment is authorized here.
