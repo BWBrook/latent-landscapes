@@ -109,8 +109,11 @@ Implementation has passed [independent source review](docs/goals/062-final-proce
 [Nonproduction qualification](docs/goals/062-final-procedure-evaluation/execution.md)
 passed on Deep, including all 51 workers, and
 [independent receipt review](docs/goals/062-final-procedure-evaluation/qualification-review-2026-10-11.md)
-requires no repair or repeat qualification. Production awaits the
-[registered runtime decision](docs/goals/062-final-procedure-evaluation/runtime-amendment-2026-10-11.md).
+requires no repair or repeat qualification. Barry
+[accepted the qualified runtime and launch](docs/decisions/2026-10-13-goal062-runtime-approval.md)
+on 13 October. Production is running on Deep with 51 workers; its persistent
+72-hour deadline is 22:51 AEDT on 16 October. Reference completion and audit
+precede all 5,000 evaluation histories. Scientific results remain pending.
 The six-cell documents below remain the original proposal.
 
 The proposed [Goal 062 six-cell evaluation](docs/goals/062-final-procedure-evaluation/registration-2026-10-11.md)

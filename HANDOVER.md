@@ -1,6 +1,6 @@
 # Latent Landscapes: current handover
 
-11 October 2026 (Hobart), Goal 062 approved with the B100-A amendment.
+13 October 2026 (Hobart), Goal 062 production running on Deep.
 
 Barry selected **amend, independently review, then launch without returning**
 in [Decision Inbox](docs/decisions/1c886620-8524-4d69-8585-3b5ef960bea3.md)
@@ -26,18 +26,31 @@ passed on Deep in 25 minutes: 65 focused Linux tests, inherited-reference and
 public-fixture comparisons, all ten mechanical cells, diagnostics, the workload
 projection and the 51-worker memory probe. Qualification 1 was stopped and
 preserved as superseded evidence. [Independent receipt review](docs/goals/062-final-procedure-evaluation/qualification-review-2026-10-11.md)
-supports acceptance with no required repair or repeat qualification. Barry's
-decision on the [proposed runtime amendment](docs/goals/062-final-procedure-evaluation/runtime-amendment-2026-10-11.md)
-remains pending.
-No Goal 062 production history or reference has been drawn. A live check confirmed the
-accepted remote packages and numerical versions, with ample capacity, but the
-Linux kernel changed from 6.8.0-142 to 6.8.0-146 relative to the locked runtime
-receipt. Preserve the original receipt and document nonproduction compatibility
-checks; resolve the registered runtime-mismatch boundary before production.
+supports acceptance with no required repair or repeat qualification. Barry
+[approved the exact runtime and launch](docs/decisions/2026-10-13-goal062-runtime-approval.md)
+in this chat on 13 October: “Approved, proceed.” That direct approval is
+authoritative; the unsubmitted Decision Inbox form is not a remaining gate.
+The kernel remains 6.8.0-146, and the complete runtime, source, qualification
+and inherited custody were reverified unchanged before launch.
+
+Production started at **22:51 AEDT on 13 October** (11:51 UTC), with 51 workers
+on Deep under the qualified process-group supervisor. Its persistent deadline
+is **22:51 AEDT on 16 October**. The 27,000 evaluation-stage and 20,000 bootstrap
+addresses are frozen and all 47,000 seeds are unique. The first 51 reference
+databases are active; evaluation histories wait until all 765 reference tables
+are complete and independently audited. No operating-rate result is available.
+
+The remote root is
+`/data/codex/scratch/goal062-final-procedure-20261011-qualification2`,
+production attempt `001`. Initial supervisor PID is `280990`, process group
+`280991`; verify current identities before acting. The hourly thread heartbeat
+`goal-062-campaign-follow-through` continues monitoring, audit and reporting
+within the approved envelope, with notifications only for meaningful changes
+or required action. Do not launch a duplicate campaign or reset its deadline.
 The measured workload gate is 40.579 hours and the whole-qualification RSS
 peak is 28.78 GiB. Retain the approved 46–57-hour planning allowance and the
 unchanged 72-hour ceiling. Implementation is committed and pushed as `2d4a04b`.
-Current execution details are in the linked execution record and
+Current execution and approval details are in the linked records and
 `artifacts/goal062_execution/`.
 
 ## Preserved handover after the initial Goal 062 proposal

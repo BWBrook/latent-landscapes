@@ -1,6 +1,6 @@
 # Goal 062 execution record
 
-11 October 2026 (Hobart). This record implements the approved
+Updated 13 October 2026 (Hobart). This record implements the approved
 [ten-cell amendment](amendment-2026-10-11.md) to the
 [prospective registration](registration-2026-10-11.md). It advances the
 final-procedure operating-characteristics gap identified in the
@@ -10,6 +10,49 @@ and independent audit. Changes to scientific methods, the registered runtime
 or the resource envelope retain their explicit decision boundary.
 
 ## Current status
+
+**Production is running.** Barry accepted the exact runtime amendment and
+launch in this chat on 13 October: “Approved, proceed.” The
+[approval record](../../decisions/2026-10-13-goal062-runtime-approval.md)
+and its JSON preserve the authority and exact three bindings. The related
+Decision Inbox form has no submitted answer; it is not a remaining approval
+gate. The reviewed 11 October proposal and qualification remain unchanged.
+
+The final preflight at 11:49:52 UTC reverified the approved source/runtime,
+all 165 qualification files and original reference/public custody. Deep had
+118.77 GB available memory, 4.482 TB free scratch and 64 logical CPUs. No
+existing production directory or run attempt was present. The installed
+approval JSON has SHA-256
+`c4a9f1902295de547583a26480345c05ae0e58395487b4e879b74ac9b5238f6c`.
+
+| Production launch | Observed value |
+| --- | --- |
+| Start | 2026-10-13 11:51:16.785553 UTC / 22:51 AEDT |
+| Persistent deadline | 2026-10-16 11:51:16.785553 UTC / 22:51 AEDT |
+| Root | `/data/codex/scratch/goal062-final-procedure-20261011-qualification2` |
+| Attempt | `run` / `001` |
+| Initial supervisor / process group | 280990 / 280991 |
+| Worker allocation | 51, one numerical-library thread each |
+| Seed ledgers | 27,000 evaluation and 20,000 bootstrap addresses; 47,000 distinct derived seeds |
+| Initial active work | 51 effect-reference databases; 53 process-group members |
+| Process-group RSS at 11:53:57 UTC | 22,741,749,760 bytes, below 64 GiB |
+
+The registered bootstrap and evaluation ledgers were frozen before reference
+generation. Their SHA-256 values are
+`f739fd639b9cc26bfad0c24de4375c519038bc185fec5d8825ece9a84eab8eee`
+and `b91fede6a82ec872c48cfc1a265c6d4ee8bebc520cfd70577ad603417326a28a`,
+respectively. The seed-audit receipt binds both to the unchanged source.
+
+The campaign first generates and audits the remaining 466 effect tables,
+then completes the registered 5,000-history evaluation, scoring, diagnostics
+and synthesis. Completion and scientific results are not yet available.
+The hourly thread heartbeat `goal-062-campaign-follow-through` monitors this
+same run and continues the already approved audit/reporting work. It stays
+quiet while state is unchanged or non-actionable and pauses at verified
+terminal reporting, a hard resource stop or a decision requiring Barry.
+The 46–57-hour planning allowance and all registered scope limits remain.
+
+## Qualification before runtime acceptance (11 October)
 
 Implementation and [independent source review](implementation-review-2026-10-11.md)
 are complete. **Nonproduction qualification 2 passed** on deep-server, running

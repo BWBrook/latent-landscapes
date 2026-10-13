@@ -1,0 +1,30 @@
+{
+  "schema": "goal062-production-runtime-approval-v1",
+  "approved": true,
+  "binding_sha256": "f8653edeca65c4ddfc5c3433ee6d199897b8ee41de1d0dcd6b4ead15346ceefe",
+  "runtime_sha256": "acd43764a5d0c2ee574007912a90236f669548a512c460cceb7768bb044e854a",
+  "qualification_sha256": "01952a5aaf2b027db06e40726172e35d6fefab265b147169110aa581c83fab65",
+  "authority": {
+    "person": "Barry W. Brook",
+    "source": "direct user message in the Latent Landscapes Codex chat",
+    "received_utc": "2026-10-13T11:47:03.768433Z",
+    "verbatim": "Approved, proceed.",
+    "approved_proposal_commit": "d15fa5f9b97b9e62804402a8aa1a3da75de41660",
+    "runtime_amendment_sha256": "382324b86b9f2a7d1e666c4874f0efe545329e4748f140c7af663eadbfb55add",
+    "qualification_review_sha256": "707573d8bd7200698d27d8125377c087469d72a9243cdc1c8997ec54444f7d04",
+    "related_questionnaire_id": "51301e27-b9ec-4d36-9fce-ff8f218b2ca8",
+    "questionnaire_answer_submitted": false
+  },
+  "scope": {
+    "cells": 10,
+    "histories_per_cell": 500,
+    "new_effect_reference_histories": 465534,
+    "maximum_workers": 51,
+    "numerical_library_threads_per_worker": 1,
+    "rss_cap_bytes": 68719476736,
+    "minimum_free_scratch_bytes": 53687091200,
+    "production_wall_seconds": 259200,
+    "scientific_method_changes": false,
+    "preserve_original_reference_receipts": true
+  }
+}

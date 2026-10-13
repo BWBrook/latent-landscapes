@@ -33,10 +33,11 @@ run and audit without another routine approval. Amendment and
 [implementation reviews](goals/062-final-procedure-evaluation/implementation-review-2026-10-11.md)
 are complete; [nonproduction qualification](goals/062-final-procedure-evaluation/execution.md)
 passed on Deep, with [independent receipt review](goals/062-final-procedure-evaluation/qualification-review-2026-10-11.md)
-supporting acceptance. The [registered runtime decision](goals/062-final-procedure-evaluation/runtime-amendment-2026-10-11.md)
-remains before production. The planning estimate remains 46–57 hours within the
-unchanged 72-hour ceiling. Production remains behind the registered preflight
-gates, including the observed Linux-kernel runtime-receipt mismatch.
+supporting acceptance. Barry [approved the qualified runtime and launch](decisions/2026-10-13-goal062-runtime-approval.md)
+on 13 October; production began at 22:51 AEDT on Deep with 51 workers after
+the runtime and custody checks passed again. The planning estimate remains
+46–57 hours, with the unchanged persistent deadline at 22:51 AEDT on
+16 October. The campaign is completing references before evaluating histories.
 
 Arc 1 is frozen. Arc 2A and Arc 2B have completed prospectively tested
 32-truth recoverability syntheses on one accepted landscape and observation
@@ -587,9 +588,9 @@ panel. The [amended estimate](goals/062-final-procedure-evaluation/compute-estim
 includes 465,534 new effect references and an estimated 46–57 hours on up to
 51 workers, within the 72-hour ceiling. Independent amendment review is
 complete, as is independent source review; nonproduction qualification has
-passed and its independent review requires no repair. Acceptance of the
-observed kernel change relative to the locked runtime receipt remains the
-decision before production.
+passed and its independent review requires no repair. Barry accepted the exact
+qualified runtime on 13 October and the bounded campaign is now running.
+Completion, independent scientific audit and interpretation remain pending.
 The broader landscape-generality and competing-process
 model ambitions remain separate scientific decisions.
 Narrow final-method claims about exact-grid null control, feasibility and the
