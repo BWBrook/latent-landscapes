@@ -79,11 +79,77 @@ All 46,768 manifest hashes passed after extraction. Raw reference databases
 remain on Deep and are checked against the cache receipt before reuse.
 
 The repaired canonical-statistic and main-audit binding checks passed for
-all 5,000 stored main records, without generation or refitting. The local
-focused auditor and runner tests currently pass (38 tests). Final frozen-source
-qualification, exact incident replay on Deep and integrated independent review
-will be recorded here before seeking approval.
+all 5,000 stored main records, without generation or refitting. The complete local focused suite passes (85 tests); scoped Ruff, strict mypy
+and the diff whitespace check also pass. The [independent source/provenance
+review](rank-audit-review-2026-10-15.md) found no blocker to nonproduction
+qualification and independently passed all 63 tests in the changed modules.
+
+The repair is committed as `465ee23`. Its frozen 354-file manifest is
+`a4f3515f396457130286fb6294f57c32db210f4dff659da1a14e780268b0cb35`, with
+exactly seven permitted source/test changes and all other source files
+unchanged. The new remote root is
+`/data/codex/scratch/goal062-final-procedure-20261015-rank-repair1`.
+All **46,676 copied payloads / 9,227,058,106 bytes** passed remote checksum
+verification, including all 466 raw SQLite databases. No old decision audit
+or completion was copied. The exact failed history and three existing controls pass both independent
+continuous reconstruction and canonical-rank checks on Deep, with no new
+histories/fits or production-file changes. Full nonproduction qualification
+also passed, as detailed below.
+
+An attempted local direct replay stopped at the frozen public-input
+reconstruction guard before reaching a history audit. The direct incident
+replay evidence above therefore comes from the qualified Deep environment;
+the local 5,000-record check concerns stored arithmetic and bindings only.
 
 Deep remains on qualified kernel 6.8.0-146. Barry's authorised reboot remains
 conditional on successful campaign/audit completion, verified output return
 and a host clear of other active work.
+
+
+## Completed qualification and requested decision
+
+The frozen repair completed qualification on Deep from **05:37:43 to 06:02:16
+AEDT on 15 October** (18:37:43–19:02:16 UTC on 14 October), in 24 minutes
+33 seconds including supervision. All **85 Linux tests**, inherited-reference
+checks, mechanical reference generation, eight public-fixture refits, all ten
+mechanical histories, held-out/diagnostic checks and the 51-worker memory probe
+passed. The runtime fingerprint exactly matches the 13 October approved run.
+Peak process-group RSS was **30,943,731,712 bytes (28.82 GiB)**. The supervisor
+exited zero, with no resource stop or remaining process-group members.
+
+The measured full-workload budget gate is 40.548 hours, below 72 hours. This
+is the same qualification projection rule; the approved **46–57-hour planning
+allowance** remains the planning reference. The original production deadline
+continues to run while this source amendment is awaiting approval.
+
+| Binding | SHA-256 |
+| --- | --- |
+| Frozen repair source manifest | `a4f3515f396457130286fb6294f57c32db210f4dff659da1a14e780268b0cb35` |
+| Unchanged runtime | `acd43764a5d0c2ee574007912a90236f669548a512c460cceb7768bb044e854a` |
+| Successful qualification receipt | `824c9ccb00f9ebd4f57a9e533a078748f9a566d2f23198762753db65beff90d4` |
+| Returned qualification archive | `51cbb0ac2b36b8dc828d4e10fbc923a2081f2beec5d0c47fbc8304456f724b6f` |
+| Return manifest | `aaea2ea8dfb7b5c773a9d21a6d826a51ec2eaf02c37258802847a48a11ba53bb` |
+
+The final independent review supports seeking approval: all 42 numerical
+audits passed without release blocks, and all eight public-fixture refits
+matched their accepted scores, parameters and statuses exactly.
+All 186 returned-file hashes and all 354 frozen-source hashes passed locally.
+Before return, Deep reverified all 46,676 carried payloads and the qualification
+file bindings. The continuation contains no production decision audit or
+completion, declaration lock, held-out score, or production approval file.
+The exact incident replay is a separate diagnostic receipt and did not alter
+these production files.
+
+**Requested approval:** accept the source amendment bound to the source,
+runtime and qualification identities above, and continue the registered
+campaign from the preserved checkpoints. Re-audit all 5,000 decisions, then
+complete the already authorised declaration lock, held-out scoring,
+diagnostics, synthesis, independent scientific closure and output return.
+Keep the original absolute deadline, resource limits and interpretation.
+This approval would authorise the changed audit/continuation source; it would
+not approve a changed statistical procedure, replacement histories, rerunning
+their main fits, or an extension of the deadline.
+
+The existing heartbeat is **paused** at this material decision. The 13 October
+approval binds the predecessor source and does not itself approve this new
+source manifest. No new production attempt or reboot has been made.

@@ -42,6 +42,35 @@ all 46,768 manifest file hashes were verified after extraction. Raw reference
 databases remain on Deep. No reboot has occurred: the successful-campaign
 condition for Barry's reboot authority has not yet been met.
 
+The [repair proposal](rank-audit-repair-2026-10-15.md) and
+[independent source/provenance review](rank-audit-review-2026-10-15.md) are
+prepared. The frozen repair source at commit `465ee23` has manifest SHA-256
+`a4f3515f396457130286fb6294f57c32db210f4dff659da1a14e780268b0cb35`.
+It changes exactly seven repair/test files; the other 347 frozen files match
+the predecessor. The continuation root is
+`/data/codex/scratch/goal062-final-procedure-20261015-rank-repair1`.
+All 46,676 carried files / 9,227,058,106 bytes passed remote checksum checks,
+including all 466 raw databases. The repaired direct audit passes for the
+failed history and three existing controls, with unchanged original artifacts.
+Full nonproduction qualification ran from 18:37:43 to 19:02:16 UTC on
+14 October (05:37:43–06:02:16 AEDT on 15 October). All 85 Linux tests and
+scientific/resource checks passed; 51 workers were qualified, peak RSS was
+28.82 GiB, and the supervisor exited zero with no remaining workers. Runtime
+SHA-256 remains `acd43764a5d0c2ee574007912a90236f669548a512c460cceb7768bb044e854a`.
+The new successful qualification receipt has SHA-256
+`824c9ccb00f9ebd4f57a9e533a078748f9a566d2f23198762753db65beff90d4`.
+All 186 returned-file hashes and all 354 frozen-source hashes passed locally;
+Deep reverified all 46,676 carry payloads before return.
+
+The final independent receipt review supports seeking approval: all source,
+qualification and return-file hashes pass, as do all 42 numerical audits.
+
+**Awaiting Barry's source-amendment approval.** The heartbeat is paused at
+this material decision. No new production attempt or approval file exists,
+and the original absolute deadline remains unchanged. The approval request
+and exact bindings are in the repair proposal; the post-run reboot remains
+deferred until successful completion and the authorised safety checks.
+
 ## Preserved launch record (13 October)
 
 Barry accepted the exact runtime amendment and

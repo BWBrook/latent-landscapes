@@ -10,9 +10,15 @@ accepted decision checkpoints and one failed decision audit; no declaration
 lock, holdout or diagnostic stage exists. The failure is exact rank comparison
 after floating-point reconstruction near the registered tie boundary.
 The original source and failed receipts remain intact, and the returned
-incident snapshot has passed all 46,768 file checksums. A canonical-rank audit
-repair and source-bound continuation are being prepared for independent
-review and a narrow source-amendment decision. The absolute deadline remains
+incident snapshot has passed all 46,768 file checksums. The [canonical-rank
+repair](docs/goals/062-final-procedure-evaluation/rank-audit-repair-2026-10-15.md)
+has passed independent source/provenance review, all 85 focused local tests,
+and an exact replay of the failed case plus three controls on Deep. All
+46,676 continuation payloads are copied and verified in a separate root.
+Frozen-source qualification also passed on Deep (85 Linux tests, 51 workers,
+28.82 GiB peak RSS, unchanged runtime), and its final independent receipt
+review supports acceptance. Production requires a narrow
+source-amendment decision; the heartbeat is paused for that decision. The absolute deadline remains
 22:51 AEDT on 16 October. Details are in the execution record below.
 
 The following launch and 14 October progress record is preserved history;
