@@ -1,6 +1,6 @@
 # Goal 062 execution record
 
-Updated 13 October 2026 (Hobart). This record implements the approved
+Updated 15 October 2026 (Hobart). This record implements the approved
 [ten-cell amendment](amendment-2026-10-11.md) to the
 [prospective registration](registration-2026-10-11.md). It advances the
 final-procedure operating-characteristics gap identified in the
@@ -11,7 +11,40 @@ or the resource envelope retain their explicit decision boundary.
 
 ## Current status
 
-**Production is running.** Barry accepted the exact runtime amendment and
+**Release held; production stopped.** At the 15 October heartbeat, the
+supervisor receipt showed exit code 1 at 2026-10-14 07:56:01 UTC
+(18:56 AEDT), after 72,284.482 seconds. Peak aggregate RSS was
+39,943,323,648 bytes, with no resource stop and no remaining process-group
+members. The source, runtime and approval bindings remain unchanged.
+
+All 466 new effect tables and their independent audits, all 765 cached tables,
+and all 5,000 history inputs/main fits passed. There are 274 persisted decision
+records, 273 accepted decision completions and one failed audit at
+`production/evaluation/cell-00/rep-263`. No declaration lock, holdout or
+diagnostic output exists. The failure was `cached node p-values changed`:
+124 reference scores crossed a tie cutoff when independently reconstructed
+scores replaced canonical stored scores, changing 67 node p-values. The
+largest reference-statistic difference was 4.093e-12. The failed case's final
+p-value remains 0.602 under both calculations; that observation does not
+establish equivalence across the full panel.
+
+The proposed repair retains independent continuous-score checks and computes
+the separate exact rank audit from the verified canonical stored values.
+It does not widen the tie tolerance or change production scientific kernels.
+Continuation requires a new frozen source, qualification and explicit source
+amendment approval. All existing results, seeds and the absolute original
+deadline must be preserved; the old failed audit is not relabelled.
+
+The interrupted snapshot is local at
+`artifacts/goal062_execution/incident-20261015/`. Its 291,148,364-byte archive
+has SHA-256 `2ec0ff3b6ce5490c421f9af8ca3ec0461a6c43ef4bd512c9c2c10a91765d633a`;
+all 46,768 manifest file hashes were verified after extraction. Raw reference
+databases remain on Deep. No reboot has occurred: the successful-campaign
+condition for Barry's reboot authority has not yet been met.
+
+## Preserved launch record (13 October)
+
+Barry accepted the exact runtime amendment and
 launch in this chat on 13 October: “Approved, proceed.” The
 [approval record](../../decisions/2026-10-13-goal062-runtime-approval.md)
 and its JSON preserve the authority and exact three bindings. The related
@@ -46,11 +79,46 @@ respectively. The seed-audit receipt binds both to the unchanged source.
 The campaign first generates and audits the remaining 466 effect tables,
 then completes the registered 5,000-history evaluation, scoring, diagnostics
 and synthesis. Completion and scientific results are not yet available.
-The hourly thread heartbeat `goal-062-campaign-follow-through` monitors this
+The thread heartbeat `goal-062-campaign-follow-through` runs every 15 hours and monitors this
 same run and continues the already approved audit/reporting work. It stays
-quiet while state is unchanged or non-actionable and pauses at verified
-terminal reporting, a hard resource stop or a decision requiring Barry.
+quiet while state is unchanged or non-actionable and pauses after verified
+terminal reporting and the authorised safe reboot, a hard resource stop or
+a decision requiring Barry.
 The 46–57-hour planning allowance and all registered scope limits remain.
+
+## On-demand progress and post-run reboot (14 October)
+
+At **03:27:04 UTC / 14:27 AEDT**, live process identity and the source,
+qualification and approval-file hashes matched the launch records. The
+supervisor and its 53-member process group were alive; all 51 workers were
+running, with 21.13 GiB aggregate RSS and 4,163.67 GiB free scratch.
+Checkpoint receipts reported **441,510 / 465,534 new reference histories
+(94.8%)**, **415 / 466 complete new tables**, and zero invalid reference rows.
+The remaining 51 tables were underway. No new-reference audit or evaluation
+stage had completed; 94.8% describes generation alone, not the full campaign.
+The persistent deadline remains unchanged. These are progress observations,
+not independently accepted scientific results.
+
+Barry authorised rebooting Deep after the jobs finish in his 14 October chat
+message. The existing heartbeat now carries this instruction. Before reboot,
+finish the complete campaign and remote numerical audits, return and checksum
+required outputs, retain the qualified runtime evidence, and verify that no
+unrelated active work would be interrupted. Do not reboot on reference-only
+completion or a resource stop. Once safe, perform one clean reboot and verify
+SSH/Tailscale access, `/data`, the new running kernel, reboot-marker state and
+the essential services that were active beforehand. No further routine
+permission request is needed; package upgrades and unrelated maintenance are
+outside this instruction.
+
+Deep still runs kernel 6.8.0-146; the reboot marker names 6.8.0-147 and
+`linux-base`. The earlier 11:31 AEDT check found automatic reboot disabled
+and no scheduled shutdown. No reboot or host-setting change has occurred.
+Routine monitoring remains every 15 hours; these additional checks were
+directly requested by Barry.
+
+For future Kunanyi use, Barry permits Jumpbox control after advance notice
+so he can sign into the TPAC console in Chrome. This does not migrate or
+expand the current Deep allocation.
 
 ## Qualification before runtime acceptance (11 October)
 

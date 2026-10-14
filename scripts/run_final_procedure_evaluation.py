@@ -11,13 +11,14 @@ import shutil
 import tempfile
 import time
 from concurrent.futures import ProcessPoolExecutor, as_completed
+from functools import lru_cache
 from pathlib import Path
 from typing import Any, cast
 
 import audit_capstone_training as reference_audit
 import audit_final_procedure_evaluation as audit
 import numpy as np
-from supervise_final_procedure_evaluation import verify_source
+from supervise_final_procedure_evaluation import load_carry_forward, verify_source
 
 from latent_landscapes import capstone_calibration as calibration
 from latent_landscapes import capstone_qualification as qualification
@@ -81,8 +82,34 @@ def check_files(base: Path, files: dict[str, str]) -> None:
             raise ValueError(f"artifact checksum changed: {base / relative}")
 
 
+@lru_cache(maxsize=2)
+def _carry_forward(root: Path, binding: str) -> dict[str, Any] | None:
+    if not (root / "carry-forward.json").exists():
+        return None
+    if references.sha256(root / "source-manifest.json") != binding:
+        raise ValueError("carry-forward source binding changed")
+    return load_carry_forward(root)
+
+
+def _record_binding_matches(root: Path, path: Path, record: dict[str, Any], binding: str) -> bool:
+    if record.get("binding_sha256") == binding:
+        return True
+    carried = _carry_forward(root, binding)
+    if carried is None or record.get("binding_sha256") != carried["predecessor_binding_sha256"]:
+        return False
+    relative = str(path.relative_to(root))
+    allowed = relative == "reference-cache.json" or (
+        relative.startswith("production/evaluation/")
+        and path.name in {"inputs-complete.json", "main-complete.json"}
+    )
+    return allowed and carried["files"].get(relative) == references.sha256(path)
+
+
 def verify_custody(root: Path) -> tuple[dict[str, Any], str]:
     manifest, binding = verify_source(root)
+    carried = load_carry_forward(root, manifest)
+    if carried is not None:
+        check_files(root, carried["files"])
     prior = Path(manifest["prior_reference_root"])
     completion = read(root / "original-completion.json")
     if (
@@ -103,6 +130,7 @@ def verify_custody(root: Path) -> tuple[dict[str, Any], str]:
             "prior_files": len(completion["files"]),
             "public_files": len(read(package / "public-ready.json")["files"]),
             "old_receipts_preserved": True,
+            "carry_forward_files": len(carried["files"]) if carried else 0,
         },
     )
     return manifest, binding
@@ -119,7 +147,7 @@ def require_production_approval(root: Path) -> dict[str, Any]:
     runtime = runtime_record()
     if audit.canonical_sha256(runtime) != qualified["runtime_sha256"]:
         raise ValueError("runtime differs from the measured qualification")
-    if qualified.get("runtime_changed"):
+    if qualified.get("runtime_changed") or _carry_forward(root, binding) is not None:
         approval = read(root / "production-runtime-approval.json")
         if (
             approval.get("approved") is not True
@@ -144,8 +172,8 @@ def _initialize(package: str, cache_path: str | None) -> None:
         with np.load(path, allow_pickle=False) as stored:
             _CACHE = {name: stored[name] for name in stored.files}
         _CACHE_AUDIT = audit.make_reference_cache(
-            _CACHE.get("screen_audit", _CACHE["screen"]),
-            _CACHE.get("effect_audit", _CACHE["effect"]),
+            _CACHE["screen"],
+            _CACHE["effect"],
             screen_usable=_CACHE["screen_usable"],
             effect_usable=_CACHE["valid"],
             binding=record,
@@ -163,7 +191,8 @@ def _existing_stage(directory: Path, stage: str, binding: str) -> dict[str, Any]
         return None
     record = read(path)
     if (
-        record.get("binding_sha256") != binding
+        not _record_binding_matches(directory.parents[3], path, record, binding)
+        or record.get("schema") != "goal062-stage-complete-v1"
         or record.get("passed") is not True
         or record.get("stage") != stage
         or record.get("phase") != directory.parents[2].name
@@ -172,6 +201,10 @@ def _existing_stage(directory: Path, stage: str, binding: str) -> dict[str, Any]
     ):
         raise ValueError(f"unaccepted or stale {stage} checkpoint")
     check_files(directory, record["files"])
+    if record["binding_sha256"] != binding:
+        # Preserve the old receipt bytes and source identity; subsequent stages
+        # must read the verified copy in this continuation root.
+        record = {**record, "path": str(directory)}
     return cast(dict[str, Any], record)
 
 
@@ -230,7 +263,7 @@ def _history_worker(task: tuple[str, str, int, int, str, str]) -> dict[str, Any]
         ):
             raise ValueError("declarations must be persisted and audited first")
     inputs = read(directory / "inputs-complete.json")
-    if inputs["binding_sha256"] != binding:
+    if not _record_binding_matches(root, directory / "inputs-complete.json", inputs, binding):
         raise ValueError("history input source binding changed")
     check_files(directory, inputs["files"])
     metadata = read(directory / "evaluator.json")
@@ -311,6 +344,7 @@ def _history_worker(task: tuple[str, str, int, int, str, str]) -> dict[str, Any]
                 read(directory / "main-audit.json"),
                 _CACHE_AUDIT,
                 _RESOURCES,
+                main_record=main,
             )
             timings["screen_and_rank_audit"] = time.perf_counter() - component_started
         elif stage == "holdout":
@@ -405,9 +439,8 @@ def run_history_stage(
     if phase == "production":
         require_production_approval(root)
         cache_record = read(root / "reference-cache.json")
-        if (
-            cache_record.get("scope") != "production-complete-765"
-            or cache_record.get("binding_sha256") != binding
+        if cache_record.get("scope") != "production-complete-765" or not _record_binding_matches(
+            root, root / "reference-cache.json", cache_record, binding
         ):
             raise ValueError("all 765 reference tables must finish before evaluation")
         if stage in {"holdout", "diagnostics"}:
@@ -418,7 +451,9 @@ def run_history_stage(
     if reference_cache_path is not None:
         record = read(reference_cache_path.with_suffix(".json"))
         scope = "mechanical-synthetic-only" if phase == "benchmark" else "production-complete-765"
-        if record.get("scope") != scope or record.get("binding_sha256") != binding:
+        if record.get("scope") != scope or not _record_binding_matches(
+            root, reference_cache_path.with_suffix(".json"), record, binding
+        ):
             raise ValueError("reference cache scope or source binding changed")
     tasks = [(str(root), phase, cell, replicate, stage, binding) for cell, replicate in cases]
     results = _pool(
@@ -469,7 +504,7 @@ def prepare_reference_cache(root: Path, workers: int) -> Path:
     if receipt_path.exists():
         receipt = read(receipt_path)
         if (
-            receipt.get("binding_sha256") != binding
+            not _record_binding_matches(root, receipt_path, receipt, binding)
             or receipt.get("scope") != "production-complete-765"
         ):
             raise ValueError("reference cache binding changed")

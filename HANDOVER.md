@@ -1,6 +1,22 @@
 # Latent Landscapes: current handover
 
-13 October 2026 (Hobart), Goal 062 production running on Deep.
+15 October 2026 (Hobart), Goal 062 release held after a decision-audit failure.
+
+**The production process has stopped; do not resume or reboot Deep yet.**
+Attempt 001 exited at 18:56 AEDT on 14 October without a resource stop.
+All 466 new reference tables and their audits, the complete 765-table cache,
+and all 5,000 input/main-fit bundles finished successfully. There are 273
+accepted decision checkpoints and one failed decision audit; no declaration
+lock, holdout or diagnostic stage exists. The failure is exact rank comparison
+after floating-point reconstruction near the registered tie boundary.
+The original source and failed receipts remain intact, and the returned
+incident snapshot has passed all 46,768 file checksums. A canonical-rank audit
+repair and source-bound continuation are being prepared for independent
+review and a narrow source-amendment decision. The absolute deadline remains
+22:51 AEDT on 16 October. Details are in the execution record below.
+
+The following launch and 14 October progress record is preserved history;
+its running status is superseded by the release hold above.
 
 Barry selected **amend, independently review, then launch without returning**
 in [Decision Inbox](docs/decisions/1c886620-8524-4d69-8585-3b5ef960bea3.md)
@@ -36,14 +52,17 @@ and inherited custody were reverified unchanged before launch.
 Production started at **22:51 AEDT on 13 October** (11:51 UTC), with 51 workers
 on Deep under the qualified process-group supervisor. Its persistent deadline
 is **22:51 AEDT on 16 October**. The 27,000 evaluation-stage and 20,000 bootstrap
-addresses are frozen and all 47,000 seeds are unique. The first 51 reference
-databases are active; evaluation histories wait until all 765 reference tables
-are complete and independently audited. No operating-rate result is available.
+addresses are frozen and all 47,000 seeds are unique. At **14:27 AEDT on
+14 October**, 441,510 of 465,534 new reference histories were checkpointed
+(94.8%); 415 of 466 new tables were complete and the final 51 were underway.
+Reference audits and evaluation had not started. All 51 workers were active,
+using 21.13 GiB aggregate RSS. Evaluation histories wait until all 765 reference
+tables are complete and independently audited. No operating-rate result is available.
 
 The remote root is
 `/data/codex/scratch/goal062-final-procedure-20261011-qualification2`,
 production attempt `001`. Initial supervisor PID is `280990`, process group
-`280991`; verify current identities before acting. The hourly thread heartbeat
+`280991`; verify current identities before acting. The thread heartbeat runs every 15 hours;
 `goal-062-campaign-follow-through` continues monitoring, audit and reporting
 within the approved envelope, with notifications only for meaningful changes
 or required action. Do not launch a duplicate campaign or reset its deadline.
@@ -52,6 +71,19 @@ peak is 28.78 GiB. Retain the approved 46–57-hour planning allowance and the
 unchanged 72-hour ceiling. Implementation is committed and pushed as `2d4a04b`.
 Current execution and approval details are in the linked records and
 `artifacts/goal062_execution/`.
+
+Barry authorised a **post-run Deep reboot** in chat on 14 October. Complete
+the campaign and remote audits, return and checksum the required outputs,
+and confirm no other active work would be interrupted before rebooting.
+Preserve the original runtime evidence and verify access, `/data`, the running
+kernel, reboot-marker state and essential services afterward. The pending
+update is kernel 6.8.0-147; the campaign still runs under qualified 6.8.0-146.
+This authorises a reboot, not broader package maintenance or interruption of
+unrelated work. The existing 15-hour heartbeat carries this follow-through.
+
+For future Kunanyi work, notify Barry before Jumpbox access so he can sign
+into the TPAC console in Chrome; he then permits control of Jumpbox access.
+The current campaign remains on Deep.
 
 ## Preserved handover after the initial Goal 062 proposal
 

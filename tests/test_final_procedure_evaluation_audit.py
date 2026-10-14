@@ -496,16 +496,35 @@ def _decision(
     *,
     effect_bad: bool = False,
     perturb_rank: bool = False,
+    surface: Any | None = None,
+    observed_effect: float = 2.0,
+    screen_reference: Any | None = None,
+    effect_reference: Any | None = None,
 ) -> dict[str, Any]:
     valid = np.ones(765, dtype=bool)
     if effect_bad:
         valid[17] = False
+    observed_surface = (
+        np.zeros((1, 765), dtype=np.float64)
+        if surface is None
+        else np.asarray(surface)[None, :]
+    )
+    screen = (
+        np.zeros((99, 765), dtype=np.float64)
+        if screen_reference is None
+        else np.asarray(screen_reference)
+    )
+    effect = (
+        np.zeros((765, 999), dtype=np.float64)
+        if effect_reference is None
+        else np.asarray(effect_reference)
+    )
     result = producer.decide_cached(
         ["history-0000"],
-        np.zeros((1, 765), dtype=np.float64),
-        [2.0],
-        np.zeros((99, 765), dtype=np.float64),
-        np.zeros((765, 999), dtype=np.float64),
+        observed_surface,
+        [observed_effect],
+        screen,
+        effect,
         valid,
         computation_complete=True,
     )
@@ -522,11 +541,9 @@ def test_screen_rank_audit_handles_bad_rows_and_rejects_rank_substitution(
     arrays = _arrays(resources)
     surface = np.zeros(765, dtype=np.float64)
     monkeypatch.setattr(audit, "_observed_surface", lambda *_args: surface.copy())
-    main_audit = {
-        "release_blocked": False,
-        "declaration_pair_valid": True,
-        "adjusted_statistic": 2.0,
-    }
+    monkeypatch.setattr(audit, "direct_point_score", _fake_direct)
+    main_record = _main(metadata)
+    main_audit = audit.audit_history_main(metadata, arrays, main_record, resources)
     screen = np.zeros((765, 99), dtype=np.float64)
     effect = np.zeros((765, 999), dtype=np.float64)
     references = audit.make_reference_cache(screen, effect)
@@ -539,6 +556,7 @@ def test_screen_rank_audit_handles_bad_rows_and_rejects_rank_substitution(
         main_audit,
         references,
         resources,
+        main_record=main_record,
     )
     assert accepted["release_blocked"] is False
     assert accepted["declared"] is True
@@ -559,6 +577,7 @@ def test_screen_rank_audit_handles_bad_rows_and_rejects_rank_substitution(
         main_audit,
         bad_cache,
         resources,
+        main_record=main_record,
     )
     assert abstained["release_blocked"] is False
     assert abstained["numerical_status"] == "terminal_invalid"
@@ -572,6 +591,7 @@ def test_screen_rank_audit_handles_bad_rows_and_rejects_rank_substitution(
         main_audit,
         references,
         resources,
+        main_record=main_record,
     )
     assert substituted["release_blocked"] is True
     assert "node p-values" in substituted["reason"]
@@ -585,11 +605,9 @@ def test_screen_audit_rejects_wrong_single_case_identity(
     arrays = _arrays(resources)
     surface = np.zeros(765, dtype=np.float64)
     monkeypatch.setattr(audit, "_observed_surface", lambda *_args: surface.copy())
-    main_audit = {
-        "release_blocked": False,
-        "declaration_pair_valid": True,
-        "adjusted_statistic": 2.0,
-    }
+    monkeypatch.setattr(audit, "direct_point_score", _fake_direct)
+    main_record = _main(metadata)
+    main_audit = audit.audit_history_main(metadata, arrays, main_record, resources)
     references = audit.make_reference_cache(
         np.zeros((765, 99), dtype=np.float64),
         np.zeros((765, 999), dtype=np.float64),
@@ -607,10 +625,187 @@ def test_screen_audit_rejects_wrong_single_case_identity(
         main_audit,
         references,
         resources,
+        main_record=main_record,
     )
 
     assert receipt["release_blocked"] is True
     assert "cannot identify this history" in receipt["reason"]
+
+
+def test_screen_rank_uses_canonical_persisted_effect_statistic_at_near_tie(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    resources = _resources()
+    metadata = _metadata()
+    arrays = _arrays(resources)
+    surface = np.zeros(765, dtype=np.float64)
+    monkeypatch.setattr(audit, "_observed_surface", lambda *_args: surface.copy())
+
+    def direct_with_nearby_t(*args: Any, **kwargs: Any) -> dict[str, Any]:
+        result = _fake_direct(*args, **kwargs)
+        point = args[-1]
+        if float(point["h"]) == 2.0 and float(point["beta"]) == 0.2:
+            result["training_logjoint"] += 5e-9
+        return result
+
+    monkeypatch.setattr(audit, "direct_point_score", direct_with_nearby_t)
+    main_record = _main(metadata)
+    main_audit = audit.audit_history_main(metadata, arrays, main_record, resources)
+    assert main_audit["release_blocked"] is False
+    effect = np.zeros((765, 999), dtype=np.float64)
+    effect[:, 0] = 2.0 + 5e-9
+    references = audit.make_reference_cache(
+        np.zeros((765, 99), dtype=np.float64), effect
+    )
+    cached = _decision(effect_reference=effect)
+
+    receipt = audit.audit_history_screen_decision(
+        metadata,
+        arrays,
+        surface,
+        cached,
+        main_audit,
+        references,
+        resources,
+        main_record=main_record,
+    )
+
+    assert receipt["release_blocked"] is False
+    assert cached["decisions"][0]["node_pvalues"][0][1] == pytest.approx(0.002)
+
+
+def test_screen_rank_uses_stored_surface_after_independent_validation(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    resources = _resources()
+    metadata = _metadata()
+    arrays = _arrays(resources)
+    direct_surface = np.zeros(765, dtype=np.float64)
+    stored_surface = direct_surface.copy()
+    stored_surface[0] = 5e-9
+    monkeypatch.setattr(audit, "_observed_surface", lambda *_args: direct_surface.copy())
+    monkeypatch.setattr(audit, "direct_point_score", _fake_direct)
+    main_record = _main(metadata)
+    main_audit = audit.audit_history_main(metadata, arrays, main_record, resources)
+    references = audit.make_reference_cache(
+        np.zeros((765, 99), dtype=np.float64), np.zeros((765, 999), dtype=np.float64)
+    )
+    cached = _decision(surface=stored_surface)
+
+    receipt = audit.audit_history_screen_decision(
+        metadata,
+        arrays,
+        stored_surface,
+        cached,
+        main_audit,
+        references,
+        resources,
+        main_record=main_record,
+    )
+
+    assert receipt["release_blocked"] is False
+    assert receipt["max_abs_discrepancy"]["observed_surface_nats"] == pytest.approx(5e-9)
+
+
+def test_screen_audit_preserves_nonconverged_finite_score_abstention(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    resources = _resources()
+    metadata = _metadata()
+    arrays = _arrays(resources)
+    surface = np.zeros(765, dtype=np.float64)
+    monkeypatch.setattr(audit, "_observed_surface", lambda *_args: surface.copy())
+    monkeypatch.setattr(audit, "direct_point_score", _fake_direct)
+    main_record = _main(metadata, adjusted_status="failed_optimizer")
+    main_audit = audit.audit_history_main(metadata, arrays, main_record, resources)
+    assert main_audit["release_blocked"] is False
+    assert main_audit["declaration_pair_valid"] is False
+    assert main_audit["adjusted_statistic"] == pytest.approx(2.0)
+    references = audit.make_reference_cache(
+        np.zeros((765, 99), dtype=np.float64), np.zeros((765, 999), dtype=np.float64)
+    )
+    cached = _decision(observed_effect=float("nan"))
+
+    receipt = audit.audit_history_screen_decision(
+        metadata,
+        arrays,
+        surface,
+        cached,
+        main_audit,
+        references,
+        resources,
+        main_record=main_record,
+    )
+
+    assert receipt["release_blocked"] is False
+    assert receipt["decision_status"] == "abstain_no_fit"
+    assert receipt["numerical_status"] == "terminal_invalid"
+
+
+def test_screen_audit_blocks_tampered_main_binding_identity_and_redundant_statistic(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    resources = _resources()
+    metadata = _metadata()
+    arrays = _arrays(resources)
+    surface = np.zeros(765, dtype=np.float64)
+    monkeypatch.setattr(audit, "_observed_surface", lambda *_args: surface.copy())
+    monkeypatch.setattr(audit, "direct_point_score", _fake_direct)
+    main_record = _main(metadata)
+    main_audit = audit.audit_history_main(metadata, arrays, main_record, resources)
+    references = audit.make_reference_cache(
+        np.zeros((765, 99), dtype=np.float64), np.zeros((765, 999), dtype=np.float64)
+    )
+    cached = _decision()
+
+    bad_binding = copy.deepcopy(main_audit)
+    bad_binding["artifact_binding"]["main_sha256"] = "0" * 64
+    blocked_binding = audit.audit_history_screen_decision(
+        metadata,
+        arrays,
+        surface,
+        cached,
+        bad_binding,
+        references,
+        resources,
+        main_record=main_record,
+    )
+    assert blocked_binding["release_blocked"] is True
+    assert "artifact main binding" in blocked_binding["reason"]
+
+    bad_identity = copy.deepcopy(main_record)
+    bad_identity["history_index"] += 1
+    blocked_identity = audit.audit_history_screen_decision(
+        metadata,
+        arrays,
+        surface,
+        cached,
+        main_audit,
+        references,
+        resources,
+        main_record=bad_identity,
+    )
+    assert blocked_identity["release_blocked"] is True
+    assert "record identity" in blocked_identity["reason"]
+
+    bad_stat = copy.deepcopy(main_record)
+    bad_stat["observed_effect_statistic"] += 1e-8
+    forged_audit = copy.deepcopy(main_audit)
+    bad_sha = audit.canonical_sha256(bad_stat)
+    forged_audit["main_record_sha256"] = bad_sha
+    forged_audit["artifact_binding"]["main_sha256"] = bad_sha
+    blocked_stat = audit.audit_history_screen_decision(
+        metadata,
+        arrays,
+        surface,
+        cached,
+        forged_audit,
+        references,
+        resources,
+        main_record=bad_stat,
+    )
+    assert blocked_stat["release_blocked"] is True
+    assert "not redundant" in blocked_stat["reason"]
 
 
 def test_inclusive_rank_retains_ties_at_the_frozen_tolerance() -> None:

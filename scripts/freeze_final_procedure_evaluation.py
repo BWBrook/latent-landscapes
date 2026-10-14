@@ -13,6 +13,8 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+from supervise_final_procedure_evaluation import load_carry_forward
+
 REPOSITORY = Path(__file__).resolve().parents[1]
 BASELINE = REPOSITORY / "artifacts/goal061_execution/qualification-repair3"
 BASELINE_SHA = "5879fbdaf7b3880151358319a7b7c7c0837463b06ba06f1a34fb80a3fbc2e36a"
@@ -53,7 +55,9 @@ def write_new(path: Path, data: object) -> None:
         handle.write("\n")
 
 
-def freeze(output: Path, remote_root: Path) -> dict[str, Any]:
+def freeze(
+    output: Path, remote_root: Path, carry_forward: Path | None = None
+) -> dict[str, Any]:
     baseline_manifest = BASELINE / "source-manifest.json"
     if digest(baseline_manifest) != BASELINE_SHA:
         raise ValueError("original Goal 061 source manifest changed")
@@ -69,6 +73,12 @@ def freeze(output: Path, remote_root: Path) -> dict[str, Any]:
     for name in ADDITIONS:
         if not (REPOSITORY / name).is_file():
             raise FileNotFoundError(name)
+    carry_path = carry_forward.resolve() if carry_forward is not None else None
+    predecessor_path = (
+        carry_path.with_name("predecessor-source-manifest.json")
+        if carry_path is not None
+        else None
+    )
     output.mkdir(parents=True, exist_ok=False)
     with tarfile.open(BASELINE / "source.tar.gz") as archive:
         archive.extractall(output, filter="data")
@@ -85,7 +95,26 @@ def freeze(output: Path, remote_root: Path) -> dict[str, Any]:
     shutil.copy2(
         BASELINE / "analysis/computation-complete.json", output / "original-completion.json"
     )
+    if carry_path is not None and predecessor_path is not None:
+        shutil.copy2(carry_path, output / "carry-forward.json")
+        shutil.copy2(predecessor_path, output / "predecessor-source-manifest.json")
+    input_names = [
+        "original-runtime.json",
+        "original-source-manifest.json",
+        "original-completion.json",
+    ]
+    if carry_path is not None:
+        input_names.extend(("carry-forward.json", "predecessor-source-manifest.json"))
     new_files = sorted(set(baseline_files) | set(ADDITIONS))
+    source_hashes = {name: digest(source / name) for name in new_files}
+    input_hashes = {name: digest(output / name) for name in input_names}
+    preliminary_manifest = {
+        "remote_root": str(remote_root),
+        "source_hashes": source_hashes,
+        "input_hashes": input_hashes,
+    }
+    if carry_path is not None:
+        load_carry_forward(output, preliminary_manifest)
     manifest = {
         "schema": "goal062-source-freeze-v1",
         "created_utc": datetime.now(UTC).isoformat(),
@@ -100,15 +129,8 @@ def freeze(output: Path, remote_root: Path) -> dict[str, Any]:
             name.startswith(("src/", "scripts/", "tests/")) for name in baseline_files
         ),
         "scientific_source_changes": [],
-        "source_hashes": {name: digest(source / name) for name in new_files},
-        "input_hashes": {
-            name: digest(output / name)
-            for name in (
-                "original-runtime.json",
-                "original-source-manifest.json",
-                "original-completion.json",
-            )
-        },
+        "source_hashes": source_hashes,
+        "input_hashes": input_hashes,
         "maximum_workers": 51,
         "rss_cap_bytes": 64 * 1024**3,
         "minimum_scratch_bytes": 50 * 1024**3,
@@ -136,8 +158,13 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--remote-root", type=Path, required=True)
+    parser.add_argument("--carry-forward", type=Path)
     args = parser.parse_args()
-    print(json.dumps(freeze(args.output.resolve(), args.remote_root), sort_keys=True))
+    print(
+        json.dumps(
+            freeze(args.output.resolve(), args.remote_root, args.carry_forward), sort_keys=True
+        )
+    )
 
 
 if __name__ == "__main__":

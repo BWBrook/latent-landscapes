@@ -201,3 +201,99 @@ def test_complete_seed_ledgers_are_frozen_before_generation(tmp_path):
     assert {row["address"][2] for row in bootstrap} == {2}
     assert runner.freeze_seed_ledgers(tmp_path, "a" * 64) == receipt
     assert not (tmp_path / "production/evaluation").exists()
+
+
+def test_rank_cache_uses_canonical_values_at_tie_boundary(tmp_path, monkeypatch):
+    monkeypatch.setattr(runner.references, "load_context", lambda *args, **kwargs: None)
+    monkeypatch.setattr(runner.audit, "load_audit_resources", lambda *args: None)
+    effect = np.full((765, 999), 2.51e-11)
+    path = tmp_path / "reference-cache.npz"
+    runner.save_arrays(
+        path,
+        {
+            "screen": np.zeros((99, 765)),
+            "screen_audit": np.full((99, 765), 1e-12),
+            "effect": effect,
+            "effect_audit": np.full((765, 999), 2.36e-11),
+            "screen_usable": np.ones(765, dtype=bool),
+            "valid": np.ones(765, dtype=bool),
+        },
+    )
+    runner.write(path.with_suffix(".json"), {"npz_sha256": runner.references.sha256(path)})
+    runner._initialize(str(tmp_path), str(path))
+    statistic = 1.2596501619555056e-10
+    assert runner.audit.inclusive_rank(statistic, runner._CACHE_AUDIT.effect_statistics[0]) == 1.0
+    assert runner.audit.inclusive_rank(statistic, np.full(999, 2.36e-11)) == 0.001
+    assert np.array_equal(
+        runner._CACHE_AUDIT.screen_statistics,
+        runner.audit.make_reference_cache(np.zeros((99, 765)), effect).screen_statistics,
+    )
+
+
+def test_decision_audit_receives_the_persisted_main_record(staged, monkeypatch):
+    task, directory, _ = staged
+    runner._history_worker(task)
+    monkeypatch.setattr(
+        runner,
+        "_CACHE",
+        {
+            "screen": np.zeros((99, 765)),
+            "effect": np.zeros((765, 999)),
+            "screen_usable": np.ones(765, dtype=bool),
+            "valid": np.ones(765, dtype=bool),
+        },
+    )
+    monkeypatch.setattr(runner, "_CACHE_AUDIT", object())
+    monkeypatch.setattr(runner.evaluation, "decide_cached", lambda *args, **kwargs: {"test": True})
+    checked = []
+
+    def check(*args, main_record):
+        checked.append(main_record)
+        return {"passed": True, "release_blocked": False}
+
+    monkeypatch.setattr(runner.audit, "audit_history_screen_decision", check)
+    runner._history_worker((*task[:4], "decision", task[5]))
+    assert checked == [runner.read(directory / "main.json")]
+
+
+def test_carried_main_keeps_original_bytes_and_uses_new_root(tmp_path, monkeypatch):
+    directory = tmp_path / "production/evaluation/cell-00/rep-000"
+    runner.write(directory / "main.json", {"existing": True})
+    receipt = {
+        "schema": "goal062-stage-complete-v1",
+        "binding_sha256": "old",
+        "passed": True,
+        "stage": "main",
+        "phase": "production",
+        "cell": 0,
+        "replicate": 0,
+        "path": "/old/production/evaluation/cell-00/rep-000",
+        "files": runner.hashes(directory, ["main.json"]),
+    }
+    path = directory / "main-complete.json"
+    runner.write(path, receipt)
+    before = path.read_bytes()
+    carry = {
+        "predecessor_binding_sha256": "old",
+        "files": {str(path.relative_to(tmp_path)): runner.references.sha256(path)},
+    }
+    monkeypatch.setattr(runner, "_carry_forward", lambda *args: carry)
+    saved = runner._existing_stage(directory, "main", "new")
+    assert saved == {**receipt, "path": str(directory)}
+    assert path.read_bytes() == before
+    decision = directory / "decision-complete.json"
+    runner.write(decision, {**receipt, "stage": "decision"})
+    carry["files"][str(decision.relative_to(tmp_path))] = runner.references.sha256(decision)
+    with pytest.raises(ValueError, match="stale decision"):
+        runner._existing_stage(directory, "decision", "new")
+    runner.write(directory / "main.json", {"existing": False})
+    with pytest.raises(ValueError, match="checksum"):
+        runner._existing_stage(directory, "main", "new")
+
+
+def test_carried_receipt_hash_must_match_explicit_inventory(tmp_path, monkeypatch):
+    path = tmp_path / "reference-cache.json"
+    runner.write(path, {"binding_sha256": "old"})
+    carry = {"predecessor_binding_sha256": "old", "files": {"reference-cache.json": "wrong"}}
+    monkeypatch.setattr(runner, "_carry_forward", lambda *args: carry)
+    assert not runner._record_binding_matches(tmp_path, path, runner.read(path), "new")

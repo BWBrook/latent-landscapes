@@ -1331,6 +1331,61 @@ def _compare_float_vector(stored: Any, expected: FloatArray, label: str) -> None
         raise AuditStopError(f"{label} differs from reconstruction")
 
 
+def _canonical_adjusted_statistic(
+    main_record: Mapping[str, Any],
+    metadata: Mapping[str, Any],
+) -> float | None:
+    """Recover the exact decision statistic from the persisted main record."""
+    _validate_identity_record(main_record, metadata, schema=MAIN_SCHEMA)
+    if main_record.get("representation") != "full" or main_record.get("bank_size") != BANK_SIZE:
+        raise AuditStopError("main fit did not use the full frozen bank")
+    fits = _require_mapping(main_record.get("fits"), "main fits")
+    if set(fits) != set(MODEL_NAMES):
+        raise AuditStopError("main fit model set changed")
+    free = _require_mapping(fits.get("adjusted_free_h"), "main fit adjusted_free_h")
+    null = _require_mapping(fits.get("adjusted_h1"), "main fit adjusted_h1")
+    free_score = _finite(free.get("raw_logjoint"))
+    null_score = _finite(null.get("raw_logjoint"))
+    delta = free_score - null_score if free_score is not None and null_score is not None else None
+    valid = bool(
+        delta is not None
+        and _fit_status(free) == "converged"
+        and _fit_status(null) == "converged"
+        and delta >= -STATISTIC_TOLERANCE
+    )
+    canonical = 2.0 * max(0.0, delta) if valid and delta is not None else None
+    stored = main_record.get("observed_effect_statistic")
+    if canonical is None:
+        if stored is not None:
+            raise AuditStopError("canonical observed effect statistic is not redundant")
+    elif (
+        isinstance(stored, bool)
+        or not isinstance(stored, (int, float, np.integer, np.floating))
+        or _finite(stored) is None
+        or float(stored) != canonical
+    ):
+        raise AuditStopError("canonical observed effect statistic is not redundant")
+    return canonical
+
+
+def _validate_main_screen_binding(
+    main_audit: Mapping[str, Any],
+    main_record: Mapping[str, Any],
+    metadata: Mapping[str, Any],
+) -> str:
+    """Require the screen audit and persisted main record to be the same artifact."""
+    if main_audit.get("passed") is not True or main_audit.get("release_blocked") is not False:
+        raise AuditStopError("main audit is not a passed nonblocked audit")
+    _validate_identity_record(main_record, metadata, schema=MAIN_SCHEMA)
+    main_sha = canonical_sha256(main_record)
+    if main_audit.get("main_record_sha256") != main_sha:
+        raise AuditStopError("main audit main-record binding changed")
+    binding = _require_mapping(main_audit.get("artifact_binding"), "main audit artifact binding")
+    if binding.get("main_sha256") != main_sha:
+        raise AuditStopError("main audit artifact main binding changed")
+    return main_sha
+
+
 def _audit_history_screen_decision(
     metadata: Mapping[str, Any],
     arrays: Mapping[str, Any],
@@ -1339,9 +1394,24 @@ def _audit_history_screen_decision(
     main_audit: Mapping[str, Any],
     references: ReferenceCache,
     resources: AuditResources,
+    *,
+    main_record: Mapping[str, Any],
 ) -> dict[str, Any]:
     history, _cell, _replicate = _identity(metadata)
     _validate_truth_and_seeds(metadata)
+    main_sha = _validate_main_screen_binding(main_audit, main_record, metadata)
+    canonical_t = _canonical_adjusted_statistic(main_record, metadata)
+    declaration_pair_valid = main_audit.get("declaration_pair_valid")
+    if declaration_pair_valid not in (True, False):
+        raise AuditStopError("main declaration-pair validity is malformed")
+    if declaration_pair_valid is not (canonical_t is not None):
+        raise AuditStopError("main declaration-pair validity disagrees with canonical statistic")
+    if declaration_pair_valid:
+        _compare_optional_numeric(
+            main_audit.get("adjusted_statistic"),
+            canonical_t,
+            "canonical adjusted statistic",
+        )
     direct_surface = _observed_surface(arrays, resources)
     surface = np.asarray(stored_surface, dtype=np.float64)
     if surface.shape != (765,):
@@ -1350,7 +1420,7 @@ def _audit_history_screen_decision(
         np.isposinf(surface), np.isposinf(direct_surface)
     ) or not np.array_equal(np.isneginf(surface), np.isneginf(direct_surface)):
         raise AuditStopError("observed score surface nonfinite pattern changed")
-    finite = np.isfinite(direct_surface)
+    finite = np.isfinite(surface)
     surface_error = (
         float(np.max(np.abs(surface[finite] - direct_surface[finite]))) if finite.any() else 0.0
     )
@@ -1396,7 +1466,7 @@ def _audit_history_screen_decision(
         q_values = np.asarray(
             [
                 inclusive_rank(
-                    local_discrepancy(cast(Sequence[float], direct_surface), node),
+                    local_discrepancy(cast(Sequence[float], surface), node),
                     references.screen_statistics[node],
                 )
                 for node in range(765)
@@ -1409,22 +1479,19 @@ def _audit_history_screen_decision(
         if not candidates:
             decision_status = "abstain_empty"
             decision_reason = screen_reason
-        elif main_audit.get("release_blocked") is True:
-            raise AuditStopError("main audit is release-blocked")
-        elif main_audit.get("declaration_pair_valid") is not True:
+        elif main_audit.get("declaration_pair_valid") is not True or canonical_t is None:
             decision_status = "abstain_no_fit"
             decision_reason = "a required fit failed"
         elif any(not references.effect_usable[node] for node in candidates):
             decision_status = "abstain_no_fit"
             decision_reason = "an effect reference fit failed"
         else:
-            observed_t = _finite(main_audit.get("adjusted_statistic"))
-            if observed_t is None or observed_t < -1e-10:
+            if canonical_t < -1e-10:
                 decision_status = "abstain_no_fit"
                 decision_reason = "a required fit failed"
             else:
                 node_p = {
-                    node: inclusive_rank(observed_t, references.effect_statistics[node])
+                    node: inclusive_rank(canonical_t, references.effect_statistics[node])
                     for node in candidates
                 }
                 p_bb = min(1.0, 0.01 + max(node_p.values()))
@@ -1484,7 +1551,7 @@ def _audit_history_screen_decision(
             "observed_surface": array_binding(surface),
             "cached_decision_sha256": canonical_sha256(cached_decision),
             "reference_cache_sha256": canonical_sha256(references.binding),
-            "main_record_sha256": main_audit.get("main_record_sha256"),
+            "main_record_sha256": main_sha,
         },
         details={
             "history_index": history,
@@ -1506,6 +1573,8 @@ def audit_history_screen_decision(
     main_audit: Mapping[str, Any],
     references: ReferenceCache,
     resources: AuditResources,
+    *,
+    main_record: Mapping[str, Any],
 ) -> dict[str, Any]:
     try:
         return _audit_history_screen_decision(
@@ -1516,6 +1585,7 @@ def audit_history_screen_decision(
             main_audit,
             references,
             resources,
+            main_record=main_record,
         )
     except Exception as error:
         return _blocked_receipt(
@@ -1526,7 +1596,7 @@ def audit_history_screen_decision(
                 "observed_surface": array_binding(stored_surface),
                 "cached_decision_sha256": canonical_sha256(cached_decision),
                 "reference_cache_sha256": canonical_sha256(references.binding),
-                "main_record_sha256": main_audit.get("main_record_sha256"),
+                "main_record_sha256": canonical_sha256(main_record),
             },
         )
 
@@ -1826,6 +1896,7 @@ def audit_history(
             or cached_decision is None
             or references is None
             or main_receipt is None
+            or main is None
         ):
             phases["screen_decision"] = _blocked_receipt(
                 "history_screen_decision",
@@ -1840,6 +1911,7 @@ def audit_history(
                 main_receipt,
                 references,
                 resources,
+                main_record=main,
             )
     if diagnostics is not None:
         if main is None:

@@ -24,6 +24,20 @@ sys.modules[SPEC.name] = qualification
 SPEC.loader.exec_module(qualification)
 
 
+def _load_script(name: str) -> Any:
+    path = Path(__file__).resolve().parents[1] / "scripts" / f"{name}.py"
+    spec = importlib.util.spec_from_file_location(name, path)
+    assert spec is not None and spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+supervisor = _load_script("supervise_final_procedure_evaluation")
+freezer = _load_script("freeze_final_procedure_evaluation")
+
+
 def _runtime(
     platform_value: str = "Linux-6.8.0-142-generic-x86_64-with-glibc2.39",
 ) -> dict[str, Any]:
@@ -507,3 +521,154 @@ def test_existing_qualification_is_reused_only_with_unchanged_binding_and_files(
     evidence.write_text('{"changed":true}\n', encoding="utf-8")
     with pytest.raises(ValueError, match="evidence changed"):
         qualification.qualify(tmp_path, 51)
+
+
+def _carry_fixture(
+    tmp_path: Path,
+    *,
+    changed_names: list[str] | None = None,
+    files: dict[str, str] | None = None,
+) -> tuple[Path, dict[str, Any], dict[str, Any]]:
+    root = tmp_path / "new-root"
+    root.mkdir()
+    changed = sorted(changed_names or [supervisor.REPAIR_ALLOWLIST[0]])
+    source_names = sorted(set(supervisor.REPAIR_ALLOWLIST) | set(changed))
+    predecessor_hashes = {name: "a" * 64 for name in source_names}
+    source_hashes = {
+        name: ("b" * 64 if name in changed else value)
+        for name, value in predecessor_hashes.items()
+    }
+    predecessor = {
+        "schema": "goal062-source-freeze-v1",
+        "source_hashes": predecessor_hashes,
+        "production_wall_seconds": 72 * 3600,
+    }
+    predecessor_bytes = (json.dumps(predecessor, indent=2, sort_keys=True) + "\n").encode()
+    predecessor_path = root / "predecessor-source-manifest.json"
+    predecessor_path.write_bytes(predecessor_bytes)
+    predecessor_binding = qualification.sha256_file(predecessor_path)
+    predecessor_deadline = {
+        "binding_sha256": predecessor_binding,
+        "started_utc": "2026-10-13T11:51:16.785553+00:00",
+        "deadline_utc": "2026-10-16T11:51:16.785553+00:00",
+        "wall_seconds": 72 * 3600,
+    }
+    carry = {
+        "schema": supervisor.CARRY_SCHEMA,
+        "predecessor_binding_sha256": predecessor_binding,
+        "predecessor_root": "/old-goal062-root",
+        "predecessor_deadline": predecessor_deadline,
+        "files": files or {},
+        "allowed_source_changes": changed,
+    }
+    carry_path = root / "carry-forward.json"
+    carry_path.write_text(json.dumps(carry, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    manifest = {
+        "schema": "goal062-source-freeze-v1",
+        "source_hashes": source_hashes,
+        "input_hashes": {
+            "carry-forward.json": qualification.sha256_file(carry_path),
+            "predecessor-source-manifest.json": qualification.sha256_file(predecessor_path),
+        },
+        "production_wall_seconds": 72 * 3600,
+    }
+    (root / "source-manifest.json").write_text(
+        json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    return root, manifest, carry
+
+
+def test_carry_forward_recreates_the_original_deadline_exactly_after_deletion(
+    tmp_path: Path,
+) -> None:
+    root, manifest, _ = _carry_fixture(tmp_path)
+    carry = supervisor.load_carry_forward(root, manifest)
+    assert carry is not None
+    first_deadline, first_record = supervisor.production_deadline(
+        root, supervisor.datetime.now(supervisor.UTC), "c" * 64, manifest, carry
+    )
+    (root / "production-deadline.json").unlink()
+    second_deadline, second_record = supervisor.production_deadline(
+        root, supervisor.datetime.now(supervisor.UTC), "c" * 64, manifest, carry
+    )
+    assert second_deadline == first_deadline
+    assert second_record == first_record
+    assert second_record["predecessor_binding_sha256"] == carry["predecessor_binding_sha256"]
+
+
+def test_carry_forward_rejects_an_altered_new_deadline(tmp_path: Path) -> None:
+    root, manifest, _ = _carry_fixture(tmp_path)
+    carry = supervisor.load_carry_forward(root, manifest)
+    assert carry is not None
+    supervisor.production_deadline(
+        root, supervisor.datetime.now(supervisor.UTC), "c" * 64, manifest, carry
+    )
+    changed = json.loads((root / "production-deadline.json").read_text())
+    changed["deadline_utc"] = "2026-10-16T11:51:16.785554+00:00"
+    (root / "production-deadline.json").write_text(json.dumps(changed) + "\n")
+    with pytest.raises(ValueError, match="production deadline binding changed"):
+        supervisor.production_deadline(
+            root, supervisor.datetime.now(supervisor.UTC), "c" * 64, manifest, carry
+        )
+
+
+@pytest.mark.parametrize(
+    ("case", "expected"),
+    [
+        ("unbound", "not hash-bound"),
+        ("unsafe", "outside the permitted"),
+        ("scientific", "explicit repair allowlist"),
+    ],
+)
+def test_carry_forward_rejects_unbound_unsafe_and_scientific_changes(
+    tmp_path: Path, case: str, expected: str
+) -> None:
+    if case == "scientific":
+        root, manifest, _ = _carry_fixture(tmp_path, changed_names=["src/changed-science.py"])
+    elif case == "unsafe":
+        root, manifest, carry = _carry_fixture(
+            tmp_path, files={"production/evaluation/cell-00/rep-000/decision-audit.json": "a" * 64}
+        )
+        carry_path = root / "carry-forward.json"
+        carry_path.write_text(json.dumps(carry, indent=2, sort_keys=True) + "\n")
+        manifest["input_hashes"]["carry-forward.json"] = qualification.sha256_file(carry_path)
+    else:
+        root, manifest, _ = _carry_fixture(tmp_path)
+        manifest["input_hashes"].pop("carry-forward.json")
+    with pytest.raises(ValueError, match=expected):
+        supervisor.load_carry_forward(root, manifest)
+
+
+@pytest.mark.parametrize(
+    "relative",
+    [
+        "production/seed-ledger.json",
+        "production/bootstrap-seed-ledger.json",
+        "references/effect/node-0000.sqlite",
+        "references/effect/node-0000-complete.json",
+        "references/audits/node-0000.json",
+        "production/evaluation/cell-00/rep-000/main.json",
+    ],
+)
+def test_carry_forward_accepts_registered_artifact_paths(tmp_path: Path, relative: str) -> None:
+    root, manifest, carry = _carry_fixture(tmp_path)
+    artifact = root / relative
+    artifact.parent.mkdir(parents=True, exist_ok=True)
+    artifact.write_bytes(b"frozen-ledger\n")
+    carry["files"] = {relative: qualification.sha256_file(artifact)}
+    carry_path = root / "carry-forward.json"
+    carry_path.write_text(json.dumps(carry, indent=2, sort_keys=True) + "\n")
+    manifest["input_hashes"]["carry-forward.json"] = qualification.sha256_file(carry_path)
+    loaded = supervisor.load_carry_forward(root, manifest)
+    assert loaded is not None
+    assert loaded["files"] == carry["files"]
+
+
+def test_carry_forward_accepts_prospective_inventory_before_payload_copy(tmp_path: Path) -> None:
+    root, manifest, _ = _carry_fixture(
+        tmp_path,
+        files={"production/evaluation/cell-00/rep-000/main.json": "a" * 64},
+    )
+    loaded = supervisor.load_carry_forward(root, manifest)
+    assert loaded is not None
+    assert loaded["files"] == {"production/evaluation/cell-00/rep-000/main.json": "a" * 64}
