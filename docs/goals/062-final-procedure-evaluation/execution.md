@@ -41,6 +41,50 @@ Final numerical completion, independent scientific review, output return and
 the conditionally authorised reboot remain outstanding. Other active work
 must not be interrupted by a reboot.
 
+### Continuation progress and closure preparation
+
+At **05:15 UTC / 16:15 AEDT on 15 October**, all 5,000 main checkpoints had
+been reused, all 5,000 fresh decision audits had passed, the declaration lock
+bound all 5,000 decisions, and all 5,000 held-out score audits had passed.
+The original failed history (cell 00, replicate 263) passed with unchanged
+p_BB=0.602, zero rank discrepancy and 4.547e-13-nat observed-screen discrepancy.
+The fixed 50 diagnostic histories were still running, with no additional
+failure-category examples selected. No computation-completion receipt exists
+yet. Live process-group RSS was 26.89 GB at 05:08 UTC; the running supervisor
+receipt publishes its final peak only on termination.
+
+An independent local reconstruction verified all 27,000 evaluation addresses
+and all 20,000 bootstrap addresses and their derived seeds, including 47,000
+unique addresses and seeds. The ledgers retain their original hashes. The
+receipt is `artifacts/goal062_execution/rank-repair-preparation/independent-seed-check.json`;
+its two input hashes must also match the eventual returned production files.
+
+The detached campaign and 15-hour heartbeat retain all completion work. After
+successful supervisor termination, the prepared `return_completed.py` in the
+new remote root verifies the full receipt chain, carried payloads, approval,
+qualification, seeds, cache and raw-database hashes, and packages compact
+outputs while leaving raw SQLite databases remotely. Return its archive and
+receipt to `artifacts/goal062_execution/completed-20261015/` and use the local
+`rank-repair-preparation/extract_completed.py` to verify and extract into a
+fresh snapshot. Neither helper has yet processed a completed campaign.
+
+The independent checker at
+`artifacts/goal062_execution/closure-review/check_arithmetic.py` is ready for
+returned `production/summary/{histories,summary}.json` and the bootstrap ledger.
+It reconstructs counts, Wilson intervals, log-error summaries, paired score
+contrasts, all 20,000 bootstrap streams and the registered independent-cell
+contrasts without importing the production summarizer. Its mechanical smoke
+passed 2,150 comparisons; actual scientific results remain unchecked until
+those files exist. A draft `report.md` and figure renderer under `results/`
+are prepared locally and remain uncommitted pending real results and review.
+
+Separate audit integrity from optimizer geometry at closure: a diagnostic
+audit can pass score reconstruction while reporting `terminal_invalid` or a
+failed profile/lattice diagnostic. Enumerate those cases and preserve the
+original fits and operating outcomes; do not infer that all geometry checks
+passed merely from the computation-completion marker. Complete one bounded
+independent scientific review of the actual result tables and final prose.
+
 ## Preserved interruption and repair qualification (14–15 October)
 
 **Release held; production stopped.** At the 15 October heartbeat, the

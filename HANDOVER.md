@@ -25,7 +25,11 @@ passed independent review, 85 Linux tests, exact failed-case replay and full
 The absolute deadline remains **22:51 AEDT on 16 October**, with the existing
 64 GiB RSS cap, one library thread per worker and 50 GiB scratch check. The
 15-hour heartbeat is active again with the continuation and broader authority.
-Final scientific review and verified output return remain outstanding.
+As of **16:15 AEDT**, all **5,000 fresh decision audits** and **5,000 held-out
+score audits** have passed, and the declaration lock is present. The 50 fixed
+diagnostic histories are running; no main-fit failure triggered extra cases.
+Final synthesis, scientific review and verified output return remain outstanding.
+Closure tools and a draft report are prepared; see the execution record.
 Deep's post-campaign reboot is authorised only after successful completion,
 verified return and a host clear of unrelated active work. Current unrelated
 jobs must not be interrupted. Details are in the [execution record](docs/goals/062-final-procedure-evaluation/execution.md).
