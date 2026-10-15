@@ -1,6 +1,8 @@
 # Goal 062 canonical-rank audit repair
 
-Prepared 15 October 2026. **Proposed source amendment; production is held.**
+Prepared 15 October 2026. **Approved at 15:48 AEDT; continuation launched at
+15:51 AEDT.** The proposal and pre-approval evidence below are preserved.
+See the [approval and operational discretion record](../../decisions/2026-10-15-goal062-source-amendment-approval.md).
 This addresses the final-procedure operating-characteristics evidence gap in
 Paper 1. It changes audit plumbing and continuation custody, with no change
 to the registered statistical procedure or resource envelope.
@@ -153,3 +155,18 @@ their main fits, or an extension of the deadline.
 The existing heartbeat is **paused** at this material decision. The 13 October
 approval binds the predecessor source and does not itself approve this new
 source manifest. No new production attempt or reboot has been made.
+
+## Acceptance and continuation
+
+Barry approved this source amendment in chat on 15 October and explicitly
+delegated routine operational repairs and sensible compute decisions. Earlier
+wording requiring renewed approval for every source/runtime adjustment is
+superseded by that authority; proportionate verification and preservation of
+prior evidence remain necessary. The exact accepted proposal is preserved at
+commit `13e8abf` and hashed in the approval JSON.
+
+After successful custody/runtime preflight, continuation `run/001` launched
+at 04:51:58 UTC / 15:51:58 AEDT with 40 workers to leave headroom for unrelated
+jobs. The source/runtime/qualification identities and original absolute
+deadline above are unchanged. The heartbeat is active. Completion, scientific
+closure, verified output return and the authorised safe reboot remain pending.

@@ -6,10 +6,42 @@ Updated 15 October 2026 (Hobart). This record implements the approved
 final-procedure operating-characteristics gap identified in the
 [Paper 1 evidence synthesis](../../paper1-evidence-synthesis-2026-10-11.md).
 The approval includes implementation, qualification, the bounded campaign
-and independent audit. Changes to scientific methods, the registered runtime
-or the resource envelope retain their explicit decision boundary.
+and independent audit. Barry subsequently delegated routine operational
+repairs and sensible compute choices on 15 October; material scientific,
+scope or external-commitment changes retain review.
 
 ## Current status
+
+**Approved continuation running.** Barry accepted the reviewed repair at
+15:48 AEDT on 15 October and delegated routine operational repairs and
+sensible compute decisions. The [approval record](../../decisions/2026-10-15-goal062-source-amendment-approval.md)
+and JSON preserve that authority. This supersedes earlier requirements for
+renewed human approval of every source/runtime/resource adjustment; preserve
+prior evidence and perform proportionate numerical and provenance checks.
+
+Preflight at **04:51:54 UTC / 15:51 AEDT** reverified all 46,676 carried files,
+354 frozen source files, 165 qualification files and the unchanged qualified
+runtime. It found 5,000 input/main bundles and 274 decision records, with no
+new decision audits or held-out scores. Available memory was 119.03 GB and
+free scratch 4.452 TB. The bound approval JSON has SHA-256
+`6180df55a6be34dd13cbb6dae8c73cb9dc5d3d5425bf7d34129e199750eb8563`.
+
+Continuation `run/001` began at **2026-10-15 04:51:58.922132 UTC** in
+`/data/codex/scratch/goal062-final-procedure-20261015-rank-repair1`, supervisor
+PID `448604`, process group `448615`. It uses **40 workers**, leaving headroom
+for about 16 cores of unrelated work, within the qualified maximum of 51.
+The exact source/runtime/qualification identities are in the repair record.
+All previous reference tables and main fits are reused; all 5,000 decisions
+must receive fresh audits before declaration lock, holdout and diagnostics.
+
+The supervisor inherited the original **2026-10-16 11:51:16.785553 UTC**
+deadline, 64 GiB RSS cap and one library thread per worker. The 15-hour
+heartbeat is active again with this root and delegated operational authority.
+Final numerical completion, independent scientific review, output return and
+the conditionally authorised reboot remain outstanding. Other active work
+must not be interrupted by a reboot.
+
+## Preserved interruption and repair qualification (14–15 October)
 
 **Release held; production stopped.** At the 15 October heartbeat, the
 supervisor receipt showed exit code 1 at 2026-10-14 07:56:01 UTC
@@ -65,8 +97,9 @@ Deep reverified all 46,676 carry payloads before return.
 The final independent receipt review supports seeking approval: all source,
 qualification and return-file hashes pass, as do all 42 numerical audits.
 
-**Awaiting Barry's source-amendment approval.** The heartbeat is paused at
-this material decision. No new production attempt or approval file exists,
+**Status at completion of qualification, now superseded by the approval above:**
+the heartbeat was paused for the source-amendment decision. No new production
+attempt or approval file existed,
 and the original absolute deadline remains unchanged. The approval request
 and exact bindings are in the repair proposal; the post-run reboot remains
 deferred until successful completion and the authorised safety checks.

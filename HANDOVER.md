@@ -1,28 +1,37 @@
 # Latent Landscapes: current handover
 
-15 October 2026 (Hobart), Goal 062 release held after a decision-audit failure.
+15 October 2026 (Hobart), Goal 062 continuation running after approved repair.
 
-**The production process has stopped; do not resume or reboot Deep yet.**
-Attempt 001 exited at 18:56 AEDT on 14 October without a resource stop.
-All 466 new reference tables and their audits, the complete 765-table cache,
-and all 5,000 input/main-fit bundles finished successfully. There are 273
-accepted decision checkpoints and one failed decision audit; no declaration
-lock, holdout or diagnostic stage exists. The failure is exact rank comparison
-after floating-point reconstruction near the registered tie boundary.
-The original source and failed receipts remain intact, and the returned
-incident snapshot has passed all 46,768 file checksums. The [canonical-rank
-repair](docs/goals/062-final-procedure-evaluation/rank-audit-repair-2026-10-15.md)
-has passed independent source/provenance review, all 85 focused local tests,
-and an exact replay of the failed case plus three controls on Deep. All
-46,676 continuation payloads are copied and verified in a separate root.
-Frozen-source qualification also passed on Deep (85 Linux tests, 51 workers,
-28.82 GiB peak RSS, unchanged runtime), and its final independent receipt
-review supports acceptance. Production requires a narrow
-source-amendment decision; the heartbeat is paused for that decision. The absolute deadline remains
-22:51 AEDT on 16 October. Details are in the execution record below.
+**Barry approved the qualified source repair and continuation at 15:48 AEDT.**
+He also delegated routine operational repairs and sensible compute decisions;
+do not seek another rubber stamp for incidental identity changes. Preserve
+provenance and verify repairs proportionately. Material scientific, scope or
+external-commitment changes retain review. The [approval record](docs/decisions/2026-10-15-goal062-source-amendment-approval.md)
+and JSON preserve his words and the exact accepted bindings.
+
+The continuation started at **15:51:59 AEDT on 15 October** with **40 workers**,
+allowing for about 16 cores of unrelated Deep work. Its root is
+`/data/codex/scratch/goal062-final-procedure-20261015-rank-repair1`, attempt
+`run/001`, supervisor PID `448604`, process group `448615`. Verify live
+identities before acting. All 46,676 carried files, 354 frozen source files,
+165 qualification files and the unchanged runtime passed preflight. All
+765 reference tables, 5,000 main-fit bundles and 274 existing decision records
+are preserved. Fresh audits of all 5,000 decisions precede the declaration
+lock, held-out scoring, diagnostics and synthesis. The old root and its failed
+rank audit remain intact. The [repair](docs/goals/062-final-procedure-evaluation/rank-audit-repair-2026-10-15.md)
+passed independent review, 85 Linux tests, exact failed-case replay and full
+51-worker qualification before this approval.
+
+The absolute deadline remains **22:51 AEDT on 16 October**, with the existing
+64 GiB RSS cap, one library thread per worker and 50 GiB scratch check. The
+15-hour heartbeat is active again with the continuation and broader authority.
+Final scientific review and verified output return remain outstanding.
+Deep's post-campaign reboot is authorised only after successful completion,
+verified return and a host clear of unrelated active work. Current unrelated
+jobs must not be interrupted. Details are in the [execution record](docs/goals/062-final-procedure-evaluation/execution.md).
 
 The following launch and 14 October progress record is preserved history;
-its running status is superseded by the release hold above.
+its original running status is superseded by the continuation above.
 
 Barry selected **amend, independently review, then launch without returning**
 in [Decision Inbox](docs/decisions/1c886620-8524-4d69-8585-3b5ef960bea3.md)

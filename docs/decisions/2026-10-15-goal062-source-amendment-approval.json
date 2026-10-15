@@ -1,0 +1,33 @@
+{
+  "schema": "goal062-source-amendment-approval-v1",
+  "approved": true,
+  "binding_sha256": "a4f3515f396457130286fb6294f57c32db210f4dff659da1a14e780268b0cb35",
+  "runtime_sha256": "acd43764a5d0c2ee574007912a90236f669548a512c460cceb7768bb044e854a",
+  "qualification_sha256": "824c9ccb00f9ebd4f57a9e533a078748f9a566d2f23198762753db65beff90d4",
+  "authority": {
+    "person": "Barry W. Brook",
+    "source": "direct user message in the Latent Landscapes Codex chat",
+    "received_utc": "2026-10-15T04:48:31.264572Z",
+    "verbatim": "Approved. And you don't need to solicit my re-approval for every minor hash discrepancy (talking metaphorically). Use your own judgement, you have approval to leverage the compute as you deem sensible. I don't want to be micromanaging this and having long-blockers whilst you await a rubber stamp from me.",
+    "approved_proposal_commit": "13e8abf7991d5b5299a592e15d9bbb5d63631847",
+    "source_amendment_sha256": "511bfa0c2e23df8d15a070df546381b41fb66f77a7b28bca77b6b952e02fdfce",
+    "qualification_review_sha256": "577d80fde6795ff3582a686054f7c56ff10f5c1571fc018537b6edeaddfbfa05"
+  },
+  "scope": {
+    "cells": 10,
+    "histories_per_cell": 500,
+    "new_effect_reference_histories": 465534,
+    "maximum_workers": 51,
+    "numerical_library_threads_per_worker": 1,
+    "rss_cap_bytes": 68719476736,
+    "minimum_free_scratch_bytes": 53687091200,
+    "production_wall_seconds": 259200,
+    "scientific_method_changes": false,
+    "preserve_original_reference_receipts": true,
+    "production_deadline_utc": "2026-10-16T11:51:16.785553+00:00",
+    "routine_operational_repairs_authorized": true,
+    "sensible_compute_discretion_authorized": true,
+    "preserve_original_artifacts_and_random_addresses": true,
+    "material_scientific_or_scope_changes_require_review": true
+  }
+}
