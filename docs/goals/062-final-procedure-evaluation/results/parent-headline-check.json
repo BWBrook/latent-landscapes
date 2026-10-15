@@ -1,0 +1,67 @@
+{
+  "passed": true,
+  "scope": "Parent direct count and Wilson reconstruction from accepted history records",
+  "cells": [
+    {
+      "cell": "L1",
+      "n": 500,
+      "declarations": 12,
+      "recovery": 349
+    },
+    {
+      "cell": "L3",
+      "n": 500,
+      "declarations": 222,
+      "recovery": 275
+    },
+    {
+      "cell": "L5",
+      "n": 500,
+      "declarations": 458,
+      "recovery": 309
+    },
+    {
+      "cell": "H1",
+      "n": 500,
+      "declarations": 13,
+      "recovery": 415
+    },
+    {
+      "cell": "H3",
+      "n": 500,
+      "declarations": 454,
+      "recovery": 416
+    },
+    {
+      "cell": "H5",
+      "n": 500,
+      "declarations": 498,
+      "recovery": 424
+    },
+    {
+      "cell": "B_L1",
+      "n": 500,
+      "declarations": 13,
+      "recovery": 354
+    },
+    {
+      "cell": "B_L3",
+      "n": 500,
+      "declarations": 228,
+      "recovery": 245
+    },
+    {
+      "cell": "B_H1",
+      "n": 500,
+      "declarations": 3,
+      "recovery": 447
+    },
+    {
+      "cell": "B_H3",
+      "n": 500,
+      "declarations": 388,
+      "recovery": 380
+    }
+  ],
+  "histories_sha256": "9b62327dd546e37035bb2ecb5cecd884472bbe54e390b1e107f28cbdbd7a1796"
+}

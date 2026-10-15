@@ -1,0 +1,16 @@
+{
+  "bootstrap_addresses_reconstructed": 20000,
+  "checked_utc": "2026-10-15T05:11:21.722486+00:00",
+  "evaluation_addresses_reconstructed": 27000,
+  "input_files": {
+    "bootstrap-seed-ledger.json": "f739fd639b9cc26bfad0c24de4375c519038bc185fec5d8825ece9a84eab8eee",
+    "seed-ledger.json": "b91fede6a82ec872c48cfc1a265c6d4ee8bebc520cfd70577ad603417326a28a"
+  },
+  "input_source": "Preserved interrupted snapshot; bytes pinned unchanged in approved continuation carry manifest. Reconfirm these two hashes against final return.",
+  "numpy_version": "2.5.1",
+  "passed": true,
+  "production_imports": false,
+  "schema": "goal062-independent-seed-check-v1",
+  "unique_addresses": 47000,
+  "unique_seeds": 47000
+}

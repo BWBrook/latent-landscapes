@@ -1,0 +1,68 @@
+{
+  "authority": "Barry 14 October post-campaign reboot; confirmed in scheduler instruction; no package upgrades",
+  "boot_id_after": "6dc797e9-d6bb-4560-aa64-807de672dd75",
+  "boot_id_before": "bdc2681b-b653-446b-bb07-c93cd98d3165",
+  "campaign_file_hashes_after_reboot": {
+    "computation-complete.json": "81c72e24da361b3afc5fd03375711b93dc19426469a2811f92d7ed3e073c1bba",
+    "source-manifest.json": "a4f3515f396457130286fb6294f57c32db210f4dff659da1a14e780268b0cb35"
+  },
+  "command_exit_code": 0,
+  "container_restart_policies_unchanged": true,
+  "data_mount": "systemd-1 /data autofs\n/dev/sdb /data ext4",
+  "essential_services_running": [
+    "ssh.service",
+    "snap.tailscale.tailscaled.service",
+    "systemd-networkd.service",
+    "systemd-resolved.service",
+    "docker.service",
+    "containerd.service",
+    "nginx.service",
+    "rstudio-server.service",
+    "shinyproxy.service",
+    "chrony.service",
+    "cron.service",
+    "fail2ban.service",
+    "smartmontools.service",
+    "systemd-journald.service",
+    "rsyslog.service"
+  ],
+  "full_local_receipts": {
+    "artifacts/goal062_execution/reboot-20261016/postboot-data-services.txt": "91b653ad16aea0b4128b9b3b6c40e6801ad1e872b9858f2348de934d95581e9a",
+    "artifacts/goal062_execution/reboot-20261016/postboot.json": "a0462b6626717ade0c2874a91ea87970160373a1b51d6631886e816e48888457",
+    "artifacts/goal062_execution/reboot-20261016/preboot-final.json": "7bcfa427362d6f1c943acdb7a06b7d17c858406b42b686389fd14a18282f9bc3"
+  },
+  "heartbeat": {
+    "id": "goal-062-campaign-follow-through",
+    "rrule": "FREQ=HOURLY;INTERVAL=15",
+    "status": "PAUSED"
+  },
+  "host": "deep-server",
+  "idle_containers_restored": [
+    "geb-revision-claude-r46",
+    "geb-revision-codex-r46"
+  ],
+  "kernel_after": "6.8.0-147-generic",
+  "kernel_before": "6.8.0-146-generic",
+  "optional_service_note": "fwupd is static and upower disabled; both are inactive with Result=success. No maintenance or forced starts performed.",
+  "passed": true,
+  "preboot_checked_utc": "2026-10-15T20:03:05.868323+00:00",
+  "previously_running_optional_services_now_inactive": [
+    "fwupd.service",
+    "upower.service"
+  ],
+  "reboot_command": "sudo -n systemctl reboot",
+  "reboot_packages": null,
+  "reboot_required": false,
+  "runtime_note": "Original scientific execution runtime retained in archived receipts. No science was rerun under the new kernel.",
+  "safe_to_reboot_basis": [
+    "Campaign, all remote audits, required output return and independent scientific review complete",
+    "No active compute or detached work; no login, tmux or screen session found",
+    "Two running development containers each had only sleep infinity; completed R process zombies were not active work",
+    "ShinyProxy Java process was an existing system service"
+  ],
+  "schema": "goal062-authorised-postrun-reboot-receipt-v1",
+  "ssh_access_restored": true,
+  "systemd_failed_services": [],
+  "tailscale_ipv4": "100.96.185.60",
+  "verified_utc": "2026-10-15T20:06:01.166366+00:00"
+}

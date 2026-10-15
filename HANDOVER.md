@@ -1,41 +1,55 @@
 # Latent Landscapes: current handover
 
-15 October 2026 (Hobart), Goal 062 continuation running after approved repair.
+16 October 2026 (Hobart), Goal 062 complete, independently reviewed and returned.
 
-**Barry approved the qualified source repair and continuation at 15:48 AEDT.**
-He also delegated routine operational repairs and sensible compute decisions;
-do not seek another rubber stamp for incidental identity changes. Preserve
-provenance and verify repairs proportionately. Material scientific, scope or
-external-commitment changes retain review. The [approval record](docs/decisions/2026-10-15-goal062-source-amendment-approval.md)
-and JSON preserve his words and the exact accepted bindings.
+**The ten-cell final-procedure campaign is complete:** 5,000 histories,
+20,000 main fits, 5,000 audited declarations, 5,000 audited held-out scores,
+and all 50 prespecified diagnostics. The [report](docs/goals/062-final-procedure-evaluation/report.md)
+records all cells and uncertainty; the [independent closure review](docs/goals/062-final-procedure-evaluation/final-review.md)
+records the arithmetic and interpretation checks. Exact-family h=3 declaration
+rates are 44.4% and 90.8% at mu=.001 and .004/day, with within-1.5-fold recovery
+55.0% and 83.2%. B100-A h=3 declaration rates are 45.6% and 77.6%, alongside
+matched null rates 2.6% and 0.6%. These are conditional, fixed-design results.
+No abstentions, unavailable h estimates or registered main-fit warnings occurred.
 
-The continuation started at **15:51:59 AEDT on 15 October** with **40 workers**,
-allowing for about 16 cores of unrelated Deep work. Its root is
-`/data/codex/scratch/goal062-final-procedure-20261015-rank-repair1`, attempt
-`run/001`, supervisor PID `448604`, process group `448615`. Verify live
-identities before acting. All 46,676 carried files, 354 frozen source files,
-165 qualification files and the unchanged runtime passed preflight. All
-765 reference tables, 5,000 main-fit bundles and 274 existing decision records
-are preserved. Fresh audits of all 5,000 decisions precede the declaration
-lock, held-out scoring, diagnostics and synthesis. The old root and its failed
-rank audit remain intact. The [repair](docs/goals/062-final-procedure-evaluation/rank-audit-repair-2026-10-15.md)
-passed independent review, 85 Linux tests, exact failed-case replay and full
-51-worker qualification before this approval.
+The approved repair continuation finished at **16:37:31 AEDT on 15 October**,
+exit zero with no resource stop or remaining workers. It used 40 workers,
+45 minutes 33 seconds and peak aggregate RSS 25.05 GiB. The original production
+attempt had already completed the 466 missing reference tables and 5,000 main
+bundles; its failed rank-audit receipt is preserved. The complete 765-table
+cache and all seed addresses are unchanged. The continuation root is
+`/data/codex/scratch/goal062-final-procedure-20261015-rank-repair1`.
+Do not relaunch completed work.
 
-The absolute deadline remains **22:51 AEDT on 16 October**, with the existing
-64 GiB RSS cap, one library thread per worker and 50 GiB scratch check. The
-15-hour heartbeat is active again with the continuation and broader authority.
-As of **16:15 AEDT**, all **5,000 fresh decision audits** and **5,000 held-out
-score audits** have passed, and the declaration lock is present. The 50 fixed
-diagnostic histories are running; no main-fit failure triggered extra cases.
-Final synthesis, scientific review and verified output return remain outstanding.
-Closure tools and a draft report are prepared; see the execution record.
-Deep's post-campaign reboot is authorised only after successful completion,
-verified return and a host clear of unrelated active work. Current unrelated
-jobs must not be interrupted. Details are in the [execution record](docs/goals/062-final-procedure-evaluation/execution.md).
+All **76,283 returned files** passed checksum verification on the Mac mini;
+all 466 new raw reference databases were rechecked and remain on Deep.
+Local raw return: `artifacts/goal062_execution/completed-20261015/snapshot/`.
+[Closure provenance](docs/goals/062-final-procedure-evaluation/results/closure-provenance.json)
+links source, runtime, approval, qualification, archive and result hashes.
+Independent reconstruction reproduced all 2,150 summary comparisons and
+20,000 bootstrap streams, with no discrepancies; the parent separately
+reconstructed headline counts and Wilson intervals.
+
+Deep rebooted safely and was verified at **07:06 AEDT on 16 October**, now on
+kernel **6.8.0-147**. SSH/Tailscale, `/data`, campaign hashes and essential
+services recovered; both idle development containers were restored. Reboot
+markers are clear. The 15-hour heartbeat is **paused**. The
+[reboot receipt](docs/goals/062-final-procedure-evaluation/results/reboot-receipt.json)
+and [execution record](docs/goals/062-final-procedure-evaluation/execution.md)
+preserve the checks.
+Barry's [15 October authority](docs/decisions/2026-10-15-goal062-source-amendment-approval.md)
+continues to cover proportionate operational fixes and sensible compute
+choices. Material science, scope and external commitments retain review.
+
+**Next scientific boundary:** this closes the registered fixed-design
+operating-performance experiment, not the full Paper 1 charter. Landscape
+generality, a common competing-process candidate set, and effect-magnitude
+interval coverage remain separate decisions in the
+[roadmap](docs/paper1-adaptive-implementation-roadmap.md). No new experiment is
+launched by this handover.
 
 The following launch and 14 October progress record is preserved history;
-its original running status is superseded by the continuation above.
+its original running status is superseded by the completed campaign above.
 
 Barry selected **amend, independently review, then launch without returning**
 in [Decision Inbox](docs/decisions/1c886620-8524-4d69-8585-3b5ef960bea3.md)

@@ -14,30 +14,28 @@ review.
 
 ## Current Position
 
-The [11 October charter-level evidence synthesis](paper1-evidence-synthesis-2026-10-11.md)
-is complete after the capstone truth assessment. The main proposed experiment
-is a replicated evaluation of the final observed-nuisance procedure at null
-and positive effects, if it is presented as a practical positive-effect method.
-Earlier procedure generations supply substantial recovery, power and
-calibration evidence, but those operating properties cannot be
-transferred to the final method. Landscape numerical qualification and the
-common competing-model ambition also remain material charter decisions.
-No new experiment or change to the charter is authorized by this synthesis.
-Barry subsequently requested preparation of
-[Goal 062's six-cell prospective design](goals/062-final-procedure-evaluation/registration-2026-10-11.md),
-with 500 histories per cell, calibration-reference costing and independent
-review before launch. Barry then approved the
-[ten-cell B100-A amendment](goals/062-final-procedure-evaluation/amendment-2026-10-11.md)
-with independent review followed by implementation, qualification, the bounded
-run and audit without another routine approval. Amendment and
-[implementation reviews](goals/062-final-procedure-evaluation/implementation-review-2026-10-11.md)
-are complete; [nonproduction qualification](goals/062-final-procedure-evaluation/execution.md)
-passed on Deep, with [independent receipt review](goals/062-final-procedure-evaluation/qualification-review-2026-10-11.md)
-supporting acceptance. Barry [approved the qualified runtime and launch](decisions/2026-10-13-goal062-runtime-approval.md)
-on 13 October; production began at 22:51 AEDT on Deep with 51 workers after
-the runtime and custody checks passed again. The planning estimate remains
-46–57 hours, with the unchanged persistent deadline at 22:51 AEDT on
-16 October. The campaign is completing references before evaluating histories.
+The [11 October charter-level synthesis](paper1-evidence-synthesis-2026-10-11.md)
+is now supplemented by the completed and audited
+[Goal 062 final-procedure evaluation](goals/062-final-procedure-evaluation/report.md).
+The prospectively registered ten-cell campaign contains 500 independent
+histories per cell and the complete fixed 765-node reference panel. Exact-family
+h=3 declaration rates are 44.4% at mu=.001/day and 90.8% at mu=.004/day;
+within-1.5-fold recovery is 55.0% and 83.2%. Matched exact h=1 declaration rates
+are 2.4% and 2.6%. B100-A supplies descriptive misspecification results under
+its specified generating law, with h=3 declaration rates 45.6% and 77.6% and
+matched null rates 2.6% and 0.6%. No abstentions or unavailable h estimates
+occurred in any cell. The report preserves pointwise Monte Carlo uncertainty
+and all ten outcomes, including weaker recovery at low hazard.
+
+This closes the registered operating-performance gap for the final method
+conditional on one map, design, bank and realised reference panel. It does
+not establish general nuisance-surface performance, new-landscape prediction,
+misspecification control or effect-magnitude interval coverage. The source
+rank-audit repair, approved continuation and verified return are documented in
+the [execution record](goals/062-final-procedure-evaluation/execution.md).
+Landscape numerical qualification and the common competing-process-model
+ambition remain material charter decisions. No new experiment is authorised
+by this update.
 
 Arc 1 is frozen. Arc 2A and Arc 2B have completed prospectively tested
 32-truth recoverability syntheses on one accepted landscape and observation
@@ -580,21 +578,21 @@ run.
 ## Immediate Decision Boundary
 
 The completed reference arcs and staged capstone remain closed. The
-[Paper 1 synthesis](paper1-evidence-synthesis-2026-10-11.md) now supplies the
-decision basis. The approved work is
-[Goal 062 with the B100-A amendment](goals/062-final-procedure-evaluation/amendment-2026-10-11.md):
-ten fixed cells, 500 independent histories each, and a complete fixed reference
-panel. The [amended estimate](goals/062-final-procedure-evaluation/compute-estimate-amended-2026-10-11.md)
-includes 465,534 new effect references and an estimated 46–57 hours on up to
-51 workers, within the 72-hour ceiling. Independent amendment review is
-complete, as is independent source review; nonproduction qualification has
-passed and its independent review requires no repair. Barry accepted the exact
-qualified runtime on 13 October and the bounded campaign is now running.
-Completion, independent scientific audit and interpretation remain pending.
-The broader landscape-generality and competing-process
-model ambitions remain separate scientific decisions.
-Narrow final-method claims about exact-grid null control, feasibility and the
-blinded demonstration do not strictly require another simulation.
+[Paper 1 synthesis](paper1-evidence-synthesis-2026-10-11.md), supplemented by
+[Goal 062's ten-cell report](goals/062-final-procedure-evaluation/report.md),
+provides the current decision basis. The final algorithm now has direct
+replicated evidence for conditional null declaration, positive-effect
+sensitivity, point recovery and within-history prediction at the registered
+truths. High detection rates do not imply comparably accurate effect sizes.
+The full-method operating-performance campaign is complete; no continuation
+or duplicate run is needed.
+
+The next scientific choice concerns the intended breadth of Paper 1:
+retain its fixed-design claims or authorise a bounded tranche addressing
+landscape generality, common competing-process models or magnitude intervals.
+These require distinct methodological choices, not automatic expansion of
+Goal 062. Narrow final-method claims about exact-grid null control, feasibility
+and the blinded demonstration remain supported within their existing limits.
 
 Numerically qualified landscape claims need an accepted integration method
 before adding maps. Formal generating-family discrimination needs a common

@@ -1,6 +1,6 @@
 # Goal 062 execution record
 
-Updated 15 October 2026 (Hobart). This record implements the approved
+Updated 16 October 2026 (Hobart). This record implements the approved
 [ten-cell amendment](amendment-2026-10-11.md) to the
 [prospective registration](registration-2026-10-11.md). It advances the
 final-procedure operating-characteristics gap identified in the
@@ -12,78 +12,85 @@ scope or external-commitment changes retain review.
 
 ## Current status
 
-**Approved continuation running.** Barry accepted the reviewed repair at
-15:48 AEDT on 15 October and delegated routine operational repairs and
-sensible compute decisions. The [approval record](../../decisions/2026-10-15-goal062-source-amendment-approval.md)
-and JSON preserve that authority. This supersedes earlier requirements for
-renewed human approval of every source/runtime/resource adjustment; preserve
-prior evidence and perform proportionate numerical and provenance checks.
+**Campaign complete, independently reviewed and returned.** The approved repair
+continuation ended at **2026-10-15 05:37:31.500683 UTC / 16:37:31 AEDT**,
+exit code zero, with no resource stop or remaining process-group members.
+All 5,000 main bundles, 5,000 fresh decision audits, 5,000 held-out score audits
+and 50 fixed diagnostic histories are complete. The declaration lock preceded
+held-out scoring. Every profile/lattice diagnostic passed its geometry checks
+as well as its independent score audit. The [report](report.md) retains the
+full registered outcomes and their interpretation boundaries.
 
-Preflight at **04:51:54 UTC / 15:51 AEDT** reverified all 46,676 carried files,
-354 frozen source files, 165 qualification files and the unchanged qualified
-runtime. It found 5,000 input/main bundles and 274 decision records, with no
-new decision audits or held-out scores. Available memory was 119.03 GB and
-free scratch 4.452 TB. The bound approval JSON has SHA-256
-`6180df55a6be34dd13cbb6dae8c73cb9dc5d3d5425bf7d34129e199750eb8563`.
+The continuation used **40 workers**, **2,732.576943 seconds** and peak aggregate
+RSS **26,895,228,928 bytes (25.05 GiB)**, within the 64 GiB limit. The original
+absolute deadline, **2026-10-16 11:51:16.785553 UTC**, was preserved. This cost
+excludes the original 72,284-second production attempt and repair qualification.
+Neither sample sizes nor scientific kernels, thresholds or seeds changed.
 
-Continuation `run/001` began at **2026-10-15 04:51:58.922132 UTC** in
-`/data/codex/scratch/goal062-final-procedure-20261015-rank-repair1`, supervisor
-PID `448604`, process group `448615`. It uses **40 workers**, leaving headroom
-for about 16 cores of unrelated work, within the qualified maximum of 51.
-The exact source/runtime/qualification identities are in the repair record.
-All previous reference tables and main fits are reused; all 5,000 decisions
-must receive fresh audits before declaration lock, holdout and diagnostics.
+Barry accepted the independently reviewed repair on 15 October and delegated
+routine operational repairs and sensible compute decisions; the
+[approval record](../../decisions/2026-10-15-goal062-source-amendment-approval.md)
+and JSON preserve his words. Preflight verified 46,676 carry files, 354 frozen
+source files, 165 qualification files and the original runtime. Continuation
+`run/001` started at 04:51:58.922132 UTC in
+`/data/codex/scratch/goal062-final-procedure-20261015-rank-repair1`. Its original
+supervisor PID 448604 and group 448615 are historical identities, not active jobs.
+All 5,000 main bundles and 274 prior decision records were preserved. All
+5,000 decisions received fresh audits under the approved repaired auditor.
 
-The supervisor inherited the original **2026-10-16 11:51:16.785553 UTC**
-deadline, 64 GiB RSS cap and one library thread per worker. The 15-hour
-heartbeat is active again with this root and delegated operational authority.
-Final numerical completion, independent scientific review, output return and
-the conditionally authorised reboot remain outstanding. Other active work
-must not be interrupted by a reboot.
+### Verified return and independent closure
 
-### Continuation progress and closure preparation
+The return helper verified the full source/carry/approval/qualification chain,
+completion and stage receipts, seeds and cache, and all 466 new raw database
+hashes. Raw SQLite remains on Deep. It returned **76,283 files** in a
+347,687,978-byte archive with SHA-256
+`a79def387225709ab727d34b4b304cdfd865027d2e5d5cc1dc373336e4452d24`.
+Manifest SHA-256 is
+`9d614e08e0a8024b79579f4700494785ad81f6b08401a989484a92d2f1bca140`.
+Local extraction verified every returned file and all identity bindings in a
+fresh snapshot: `artifacts/goal062_execution/completed-20261015/snapshot/`.
+The receipt is `completed-20261015/local-return-verification.json` under the
+same execution-artifact directory. This leaves the interrupted snapshot intact.
 
-At **05:15 UTC / 16:15 AEDT on 15 October**, all 5,000 main checkpoints had
-been reused, all 5,000 fresh decision audits had passed, the declaration lock
-bound all 5,000 decisions, and all 5,000 held-out score audits had passed.
-The original failed history (cell 00, replicate 263) passed with unchanged
-p_BB=0.602, zero rank discrepancy and 4.547e-13-nat observed-screen discrepancy.
-The fixed 50 diagnostic histories were still running, with no additional
-failure-category examples selected. No computation-completion receipt exists
-yet. Live process-group RSS was 26.89 GB at 05:08 UTC; the running supervisor
-receipt publishes its final peak only on termination.
+Independent evaluation/bootstrap seed regeneration matches both returned
+ledgers: 27,000 evaluation and 20,000 bootstrap addresses, all 47,000 seeds
+unique. The [independent arithmetic checker](results/check_arithmetic.py)
+reconstructed rates, Wilson intervals, errors, paired score means, 20,000
+bootstrap streams and eight independent-cell contrasts across 18 metrics.
+All **2,150 comparisons passed**, maximum absolute difference 8.674e-19;
+there were no internal-history or stream discrepancies. The parent separately
+recomputed all ten headline declaration/recovery counts and Wilson intervals.
+[Final review](final-review.md) supplies the interpretation verdict, distinct
+from the retained original computation marker's `scientific_review_pending` flag.
+[Closure provenance](results/closure-provenance.json) links the accepted outputs
+and receipts without rewriting historical evidence.
 
-An independent local reconstruction verified all 27,000 evaluation addresses
-and all 20,000 bootstrap addresses and their derived seeds, including 47,000
-unique addresses and seeds. The ledgers retain their original hashes. The
-receipt is `artifacts/goal062_execution/rank-repair-preparation/independent-seed-check.json`;
-its two input hashes must also match the eventual returned production files.
+The registered final-procedure operating-performance report is complete.
+Broader landscape, competing-process-model and magnitude-coverage questions
+remain outside this experiment.
 
-The detached campaign and 15-hour heartbeat retain all completion work. After
-successful supervisor termination, the prepared `return_completed.py` in the
-new remote root verifies the full receipt chain, carried payloads, approval,
-qualification, seeds, cache and raw-database hashes, and packages compact
-outputs while leaving raw SQLite databases remotely. Return its archive and
-receipt to `artifacts/goal062_execution/completed-20261015/` and use the local
-`rank-repair-preparation/extract_completed.py` to verify and extract into a
-fresh snapshot. Neither helper has yet processed a completed campaign.
+### Authorised reboot and scheduler closure
 
-The independent checker at
-`artifacts/goal062_execution/closure-review/check_arithmetic.py` is ready for
-returned `production/summary/{histories,summary}.json` and the bootstrap ledger.
-It reconstructs counts, Wilson intervals, log-error summaries, paired score
-contrasts, all 20,000 bootstrap streams and the registered independent-cell
-contrasts without importing the production summarizer. Its mechanical smoke
-passed 2,150 comparisons; actual scientific results remain unchecked until
-those files exist. A draft `report.md` and figure renderer under `results/`
-are prepared locally and remain uncommitted pending real results and review.
+After the campaign, remote numerical audits, verified local return and
+independent review were complete, Deep was checked clear of active compute,
+logins, tmux and screen sessions. Both running development containers contained
+only `sleep infinity`; residual completed R zombies were not active jobs.
+One clean reboot was issued under Barry's 14 October authority. No packages
+were upgraded and no unrelated job was terminated.
 
-Separate audit integrity from optimizer geometry at closure: a diagnostic
-audit can pass score reconstruction while reporting `terminal_invalid` or a
-failed profile/lattice diagnostic. Enumerate those cases and preserve the
-original fits and operating outcomes; do not infer that all geometry checks
-passed merely from the computation-completion marker. Complete one bounded
-independent scientific review of the actual result tables and final prose.
+Recovery was verified at **2026-10-15 20:06:01 UTC / 07:06 AEDT on 16 October**.
+The boot ID changed and kernel **6.8.0-147-generic** replaced 6.8.0-146.
+SSH over Tailscale, `/data` on `/dev/sdb`, the frozen source/completion hashes
+and all essential previously active services recovered. Both idle development
+containers were restored with their existing restart policies. Reboot markers
+were cleared and systemd reported no failed services. The optional fwupd and
+upower services were inactive with successful status and were left alone.
+[The compact reboot receipt](results/reboot-receipt.json) links full local
+pre/post checks. Original runtime evidence remains intact; no science was
+rerun after the kernel change.
+
+The `goal-062-campaign-follow-through` heartbeat is **PAUSED**, verified after
+terminal reporting and reboot recovery. Do not relaunch completed work.
 
 ## Preserved interruption and repair qualification (14–15 October)
 

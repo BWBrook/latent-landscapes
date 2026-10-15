@@ -1,0 +1,48 @@
+{
+  "bootstrap_stream_checks": {
+    "mismatch_count": 0,
+    "mismatches": []
+  },
+  "comparison": {
+    "comparisons": 2150,
+    "discrepancies": [],
+    "discrepancy_count": 0,
+    "max_absolute_difference": 8.673617379884035e-19,
+    "tolerances": {
+      "absolute": 5e-12,
+      "relative": 5e-13
+    }
+  },
+  "created_utc": "2026-10-15T19:57:46.423774+00:00",
+  "inputs": {
+    "bootstrap_ledger_path": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/bootstrap-seed-ledger.json",
+    "bootstrap_ledger_sha256": "f739fd639b9cc26bfad0c24de4375c519038bc185fec5d8825ece9a84eab8eee",
+    "histories_path": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/summary/histories.json",
+    "histories_sha256": "9b62327dd546e37035bb2ecb5cecd884472bbe54e390b1e107f28cbdbd7a1796",
+    "summary_path": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/summary/summary.json",
+    "summary_sha256": "b9a2e9705277ae622421b3746b79e644a17b42d5ef5425ecf5250e31ffba65f0"
+  },
+  "internal_history_checks": {
+    "discrepancies": [],
+    "discrepancy_count": 0
+  },
+  "limitations": [
+    "Arithmetic verification is not scientific interpretation or campaign closure.",
+    "Intervals retain the registered conditioning on one map and one reference panel.",
+    "Recovery among declarations is a selected-subset diagnostic.",
+    "Between-cell contrasts compare independent generating regimes and are not causal effects."
+  ],
+  "passed": true,
+  "registered_scope": {
+    "between_cell_contrasts": 8,
+    "between_cell_metrics_each": 18,
+    "bootstrap_streams_reconstructed": 20000,
+    "cells": 10,
+    "histories": 5000,
+    "histories_per_cell": 500,
+    "inference": "conditional on fixed map, design, bank, algorithm, and one reference panel",
+    "unique_bootstrap_seeds": 20000
+  },
+  "schema": "goal062-independent-arithmetic-check-v1",
+  "scientific_review_pending": true
+}

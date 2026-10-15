@@ -1,0 +1,11 @@
+cell_index,cell_label,background,n_histories,declaration_probability,valid_non_declaration_probability,abstention_probability,recovery_within_1_5_fold_probability,valid_outside_1_5_fold_probability,h_unavailable_probability
+0,L1,exact,500,0.024,0.976,0.0,0.698,0.302,0.0
+1,L3,exact,500,0.444,0.556,0.0,0.55,0.45,0.0
+2,L5,exact,500,0.916,0.084,0.0,0.618,0.382,0.0
+3,H1,exact,500,0.026,0.974,0.0,0.83,0.17,0.0
+4,H3,exact,500,0.908,0.092,0.0,0.832,0.168,0.0
+5,H5,exact,500,0.996,0.004,0.0,0.848,0.152,0.0
+6,B_L1,B100-A,500,0.026,0.974,0.0,0.708,0.292,0.0
+7,B_L3,B100-A,500,0.456,0.544,0.0,0.49,0.51,0.0
+8,B_H1,B100-A,500,0.006,0.994,0.0,0.894,0.106,0.0
+9,B_H3,B100-A,500,0.776,0.224,0.0,0.76,0.24,0.0

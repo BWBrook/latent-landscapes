@@ -1,0 +1,19 @@
+{
+  "archive_sha256": "a79def387225709ab727d34b4b304cdfd865027d2e5d5cc1dc373336e4452d24",
+  "binding_sha256": "a4f3515f396457130286fb6294f57c32db210f4dff659da1a14e780268b0cb35",
+  "checked_utc": "2026-10-15T19:56:54.012513+00:00",
+  "independent_seed_ledgers_match": true,
+  "manifest_sha256": "9d614e08e0a8024b79579f4700494785ad81f6b08401a989484a92d2f1bca140",
+  "passed": true,
+  "raw_databases_verified_remotely": 466,
+  "schema": "goal062-local-completed-return-verification-v1",
+  "scientific_review_pending": true,
+  "snapshot": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot",
+  "stage_counts": {
+    "decision": 5000,
+    "diagnostics": 50,
+    "holdout": 5000,
+    "main": 5000
+  },
+  "verified_files": 76283
+}
