@@ -17,8 +17,14 @@ remains in `docs/programme.md`. Provenance and legacy reuse are governed by
 
 - Work from an explicit, bounded goal.
 - Keep methods modular and preserve independently testable scientific units.
-- Require human review at scientific gates, including changes to estimands,
-  observation design, model comparisons, or inferential claims.
+- Put scientific gates through independent review before acting on them. A
+  change to an estimand, observation design, model comparison or inferential
+  claim needs review by the other AI collaborator (Claude or Codex) or an
+  independent subagent, recorded in the goal or on Correspondence. Bring a
+  gate to Barry only when it turns on scientific taste or priorities that only
+  he can judge, with a recommendation. Registered and blinded work stays
+  fixed: a change after outcomes are seen is a recorded deviation, not a
+  revision.
 - Treat negative results as valid results. Failure triggers diagnosis, not
   unrecorded retuning.
 - Apply Pareto discipline: add machinery only when it materially improves
@@ -28,8 +34,11 @@ remains in `docs/programme.md`. Provenance and legacy reuse are governed by
   scientific decision, or planned manuscript evidence it advances.
 - Perform bounded code consolidation at major scientific arc boundaries rather
   than preserving goal-specific developmental machinery indefinitely.
-- Do not commit, push, publish, create remotes, or expose the repository
-  externally without explicit goal authority.
+- Commits and pushes to this repository's existing GitHub remote are two-way
+  doors: make them when work reaches a coherent state, and report them.
+  One-way doors need Barry's explicit approval: publication or submission,
+  making the repository public or exposing it outside Barry's own accounts,
+  and force-pushes or history rewrites on shared branches.
 
 ## Legacy Material
 
