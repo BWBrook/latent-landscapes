@@ -1,0 +1,214 @@
+{
+  "schema": "paper1-profile-engine-development-evidence-v1",
+  "scope": "Development evidence only; profile_certified=false; no calibration or validation campaign",
+  "snapshots": [
+    {
+      "path": "bank/prepare-wide-series-bank.py",
+      "original_path": "artifacts/paper1_profile_development_20261018/prepare-wide-series-bank.py",
+      "sha256": "adea117ed9a4d7c5c1d09d9b87ea2ef06cf29266324c043a8ac830ff4de3c8f4",
+      "bytes": 6512
+    },
+    {
+      "path": "bank/arrival-bank-order192.json",
+      "original_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.json",
+      "sha256": "8637c25afa56f45df560d9f23181e8cd79c1d6ad8f292eaefe5e107ba429b5ee",
+      "bytes": 1950
+    },
+    {
+      "path": "bank/prepare-wide-series-bank-order816-max290.py",
+      "original_path": "artifacts/paper1_profile_development_20261018/prepare-wide-series-bank-order816-max290.py",
+      "sha256": "c7e860d3068434d38392eb9e03d755a3b057c34d7c8a64ce3423d4c9ead0b9c0",
+      "bytes": 7624
+    },
+    {
+      "path": "bank/arrival-bank-order816-max290.json",
+      "original_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order816-max290.json",
+      "sha256": "8717690a4e8173c8d19538183b745dce7fcae33be69a2c389c5ff84f3b7598ce",
+      "bytes": 2511
+    },
+    {
+      "path": "bank/arrival-bank-order816-initial-metadata.json",
+      "original_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order816-max290-initial-x159.json",
+      "sha256": "5ae9ac32906749d290c787f8b3da057a092bcd4ba78a13ccc6d33eb33c24985c",
+      "bytes": 1931
+    },
+    {
+      "path": "sampling/original-frame-check.py",
+      "original_path": "artifacts/paper1_profile_development_20261018/sampling-capacity-check.py",
+      "sha256": "cf3168ee9909c140aafb562364cace3421fbdaca5b42e8d28864ff6892c75dd5",
+      "bytes": 5062
+    },
+    {
+      "path": "sampling/original-fixed-holdout.json",
+      "original_path": "artifacts/paper1_profile_development_20261018/sampling-buffer0-fixed-holdout.json",
+      "sha256": "0d33515a58bbe79a8814fb7a585e3ba7d1acd1ac147bea4c95d474ccefc6aa55",
+      "bytes": 3090
+    },
+    {
+      "path": "sampling/original-joint.json",
+      "original_path": "artifacts/paper1_profile_development_20261018/sampling-buffer0-joint.json",
+      "sha256": "f03d7e25a81353b0a909cb68ad74e3934b2541017b7dacfb159c02e3d2a926d0",
+      "bytes": 4254
+    },
+    {
+      "path": "sampling/capacity-30map.json",
+      "original_path": "artifacts/paper1_profile_development_20261018/sampling/capacity-30map-buffer2-joint-feasibility.json",
+      "sha256": "007608a68744ef5969475b93698fa92216b8b6b0130dcebcda78a2a7d75c8d61",
+      "bytes": 56206
+    },
+    {
+      "path": "sampling/check-master-selector.py",
+      "original_path": "artifacts/paper1_profile_development_20261018/check-master-selector.py",
+      "sha256": "4f055b7e7c112c781d8354d9b744c9d246fac35ec67ee35e4a8e3541c0ada245",
+      "bytes": 2045
+    },
+    {
+      "path": "sampling/master-selector-three-map.json",
+      "original_path": "artifacts/paper1_profile_development_20261018/master-selector-three-map.json",
+      "sha256": "ff66f4084676d62f533355b8e5a7f344e58d42c06673fe489ea1467b4f0586b9",
+      "bytes": 76181
+    },
+    {
+      "path": "kernel/initial-relative-step.py",
+      "original_path": "artifacts/paper1_profile_development_20261018/engine/check_engine_kernel-initial-step1e-4.py",
+      "sha256": "d92e48cebb6b567d1a5c816bc2b303b504c859fa57424c68ff6916a64bd3701e",
+      "bytes": 13279
+    },
+    {
+      "path": "kernel/initial-relative-step.json",
+      "original_path": "artifacts/paper1_profile_development_20261018/engine/kernel-check-initial-step1e-4.json",
+      "sha256": "3ca4c114e2af9ec67d92487407afecb6b18619268652d7f4c87d86a6b9e31b83",
+      "bytes": 8543
+    },
+    {
+      "path": "kernel/local-step-v1.py",
+      "original_path": "artifacts/paper1_profile_development_20261018/engine/kernel-check-local-step-v1.py",
+      "sha256": "fb20a2e521372bc4511a7be479d3be54b388cf595c912d266b47ae084eaec0d9",
+      "bytes": 19652
+    },
+    {
+      "path": "kernel/local-step-v1.json",
+      "original_path": "artifacts/paper1_profile_development_20261018/engine/kernel-check-local-step-v1.json",
+      "sha256": "5f5154ffa262859a175d763d34783ba077e7d9f1c352da416bd8797fff349c3a",
+      "bytes": 46881
+    },
+    {
+      "path": "kernel/check-engine-kernel.py",
+      "original_path": "artifacts/paper1_profile_development_20261018/engine/check_engine_kernel.py",
+      "sha256": "5def74b97e71f79441d781f6c184059dd84c7e9c5e0788eb66b87e8dae963c94",
+      "bytes": 19719
+    },
+    {
+      "path": "kernel/kernel-check.json",
+      "original_path": "artifacts/paper1_profile_development_20261018/engine/kernel-check.json",
+      "sha256": "098add9a62391afa1f2046bea5adcf35893175f9d907c76b6a66c03b4bf9eea0",
+      "bytes": 46883
+    },
+    {
+      "path": "benchmark/executed-driver.py",
+      "original_path": "artifacts/paper1_profile_development_20261018/benchmark-executed-source/benchmark_spatial_profile.py",
+      "sha256": "a23900e1f572c0a83ccc7080dc44018ef95d6cf92ff2d32fa89961cbd26d14e9",
+      "bytes": 41713
+    },
+    {
+      "path": "benchmark/kernel-canary-driver.py",
+      "original_path": "artifacts/paper1_profile_development_20261018/benchmark-executed-source/benchmark_spatial_profile-clean.py",
+      "sha256": "6dbbbf2d91e93e4f95bd5f76528928a4da5ce8760f87e07305b287864965ffa7",
+      "bytes": 43102
+    },
+    {
+      "path": "benchmark/executed-engine.py",
+      "original_path": "artifacts/paper1_profile_development_20261018/benchmark-executed-source/spatial_profile.py",
+      "sha256": "b41dd4edd116a6b88b30209544a900b5a086afa0c0e07d4c476a8a710dcf8f49",
+      "bytes": 53514
+    },
+    {
+      "path": "benchmark/B_H3-training120.json",
+      "original_path": "artifacts/paper1_profile_development_20261018/benchmark/B_H3-training120/receipt.json",
+      "sha256": "0ac23e62153e3f8d21458b11305f4ea4ce4dcd61a69bc2714e1bb8055c3edc64",
+      "bytes": 841674
+    },
+    {
+      "path": "canary/initial-upper0.py",
+      "original_path": "artifacts/paper1_profile_development_20261018/run-wide-grid-canary-initial-upper0.py",
+      "sha256": "cdbbcb4eebc38617901a31fc9813de3585e23b4cc0501991913edf948a919808",
+      "bytes": 12258
+    },
+    {
+      "path": "canary/diagnose-upper0-underflow.py",
+      "original_path": "artifacts/paper1_profile_development_20261018/diagnose-upper0-underflow.py",
+      "sha256": "b05dfb1f02aa2a5c8e2b719d55fe968467125864b626b1a6fc718c283426efd4",
+      "bytes": 10442
+    },
+    {
+      "path": "canary/upper0-underflow-diagnostic.json",
+      "original_path": "artifacts/paper1_profile_development_20261018/upper0-underflow-diagnostic.json",
+      "sha256": "b2ec817ec1a20088767c147aee6730c32fdfba436457eccb1a89886605d33eae",
+      "bytes": 10568
+    },
+    {
+      "path": "canary/first-fit-v1.py",
+      "original_path": "artifacts/paper1_profile_development_20261018/run-wide-grid-canary-first-fit-v1.py",
+      "sha256": "ecc6670e8b00a03a5a718643fca827456e5f60e5b2ad963217c4aca85a2fb353",
+      "bytes": 16094
+    },
+    {
+      "path": "canary/first-fit-v1.json",
+      "original_path": "artifacts/paper1_profile_development_20261018/wide-grid-canary-first-fit-v1.json",
+      "sha256": "5ddc51157a1666be364f771aba4c2e3b7ce3d5d0b000c38669c2cb962dabd689",
+      "bytes": 41200
+    },
+    {
+      "path": "canary/run-wide-grid-canary.py",
+      "original_path": "artifacts/paper1_profile_development_20261018/run-wide-grid-canary.py",
+      "sha256": "375aaefb399dc245ede2eddef4a1623939dfab5f091f2af6469a70298bd63b5d",
+      "bytes": 18292
+    },
+    {
+      "path": "canary/wide-grid-canary.json",
+      "original_path": "artifacts/paper1_profile_development_20261018/wide-grid-canary.json",
+      "sha256": "23b120fda9327df2acb3069d1b1b7295e3f329e21ba80f847ed3c0fd78089cdf",
+      "bytes": 44836
+    },
+    {
+      "path": "checks/final-focused-tests.txt",
+      "original_path": "artifacts/paper1_profile_development_20261018/final-focused-tests.txt",
+      "sha256": "fb3a4fedb45da8283ef2f49b87d716cce056380cdc3e7c69aeb676291075d90d",
+      "bytes": 261
+    }
+  ],
+  "source_dependencies": {
+    "src/latent_landscapes/spatial_profile.py": "b41dd4edd116a6b88b30209544a900b5a086afa0c0e07d4c476a8a710dcf8f49",
+    "src/latent_landscapes/monitoring_design.py": "3aa7926892abeb2f900ebfdff9b1d5e1660fdf9fe14b539a27eaa7e7818ae26f",
+    "src/latent_landscapes/preinvasion_likelihood.py": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
+    "src/latent_landscapes/capstone_qualification.py": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
+    "src/latent_landscapes/preinvasion_execution.py": "2dcf03b992beab3ac700b78c67e49d249a0a7993fcfe5d7d24e207c6aa72c533",
+    "src/latent_landscapes/arc3_landscapes.py": "0491b263ec73a145de321d933db7b4e9276c142e2dcc84a5f8f146615ecf8547",
+    "src/latent_landscapes/goal001/design.py": "44d8971821cd0f2019049f9970893b4c277a1a1c25c352c2b5fe6cdda71f44db",
+    "src/latent_landscapes/goal001/landscape.py": "4d17ba892b94ed112c992812874e6a03afd63a63a34bdb4f4de83491dc778920",
+    "scripts/check_monitoring_capacity.py": "426394211363c3af0d477b2ec52f6d13b7c7cb21d5af74b16b1cc87cc646aaec",
+    "scripts/benchmark_spatial_profile.py": "70aeced69484be05f42ca0afe5602c1fcb6ae7c9b38d77ba47d24a13d368a108"
+  },
+  "local_payloads": [
+    {
+      "path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz",
+      "sha256": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b",
+      "bytes": 697853
+    },
+    {
+      "path": "artifacts/paper1_profile_development_20261018/arrival-bank-order816-max290.npz",
+      "sha256": "8cf2a16a01fc50ac9801a37801a752a9c15bc6ff17f1f6c3fab6d572463bbf8b",
+      "bytes": 2947083
+    },
+    {
+      "path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "bytes": 167772288
+    },
+    {
+      "path": "artifacts/goal060_execution/audit-repair/mechanical/compressed-bank.npz",
+      "sha256": "5850f45c73dbd8344c4988acfb52f8d89ea74f93aa23790a887e7374b30acfc1",
+      "bytes": 185039
+    }
+  ]
+}

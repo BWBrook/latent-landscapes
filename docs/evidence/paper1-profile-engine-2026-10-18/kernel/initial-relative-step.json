@@ -1,0 +1,209 @@
+{
+  "acceptance": {
+    "all_four_endpoints_successful": true,
+    "archived_new_curve_max_abs_difference": 2.6290081223123707e-12,
+    "max_abs_analytic_core_vs_central": 0.0004980311066146361,
+    "max_abs_criterion_minus_archived": 3.8089638110250235e-09,
+    "scalar_vector_max_abs_difference": 2.6290081223123707e-12
+  },
+  "cases": {
+    "B_H3": {
+      "endpoints": {
+        "free_h": {
+          "analytic_core_gradient": [
+            -0.00018658660120163262,
+            2.0334398226906636e-05,
+            4.023389228724472e-05
+          ],
+          "analytic_core_indices": [
+            0,
+            1,
+            2
+          ],
+          "archived_criterion": -1716.4470354983664,
+          "cached_endpoint_seconds": 0.003687500022351742,
+          "central_gradient_all_coordinates": [
+            0.0003114445054130035,
+            2.033175405813381e-05,
+            4.0221266317530535e-05,
+            -1.2354926432033951e-05,
+            -9.023665370477829e-05
+          ],
+          "cold_endpoint_seconds": 0.09270420810207725,
+          "criterion": -1716.4470354945574,
+          "criterion_minus_archived": 3.8089638110250235e-09,
+          "family": "positive_sigma",
+          "max_abs_analytic_core_vs_central": 0.0004980311066146361,
+          "mode": {
+            "branch_count": 1,
+            "newton_decrement": 4.691218998158294e-11,
+            "newton_step_inf": 1.5843077042030058e-11,
+            "proposal_eta_max": -2.3806466157297157,
+            "proposal_eta_min": -8.865284578516313,
+            "raw_score_inf": 3.3570979329766715e-11
+          },
+          "parameters": [
+            -5.8910751570842645,
+            0.5927353972582021,
+            -0.5072038442067918,
+            1.4330792015772178,
+            0.19721486397675794
+          ],
+          "success": true
+        },
+        "h1": {
+          "analytic_core_gradient": [
+            0.00012462614652264392,
+            0.00035111590148662053,
+            4.514438973052953e-06
+          ],
+          "analytic_core_indices": [
+            0,
+            1,
+            2
+          ],
+          "archived_criterion": -1724.6023731471155,
+          "cached_endpoint_seconds": 0.003846290986984968,
+          "central_gradient_all_coordinates": [
+            -1.1131725408288502e-05,
+            -0.00012286136552575044,
+            4.56015008377362e-06,
+            3.406626092328224e-05
+          ],
+          "cold_endpoint_seconds": 0.0968612500000745,
+          "criterion": -1724.602373146939,
+          "criterion_minus_archived": 1.7644197214394808e-10,
+          "family": "positive_sigma",
+          "max_abs_analytic_core_vs_central": 0.000473977267012371,
+          "mode": {
+            "branch_count": 1,
+            "newton_decrement": 1.7203356515356623e-11,
+            "newton_step_inf": 2.6034881608325864e-12,
+            "proposal_eta_max": -3.3226331466402095,
+            "proposal_eta_min": -7.345013774383853,
+            "raw_score_inf": 9.453771099288133e-12
+          },
+          "parameters": [
+            -5.522608153107129,
+            0.7030942454770028,
+            -1.3195715513875312,
+            0.1982867055362149
+          ],
+          "success": true
+        }
+      },
+      "site_count": 120,
+      "site_ids_sha256": "3abbb11854489f6c1bf2d8e1d961a745fd85f7b19b5e68b2836ed3b30f76337a"
+    },
+    "H3": {
+      "endpoints": {
+        "free_h": {
+          "analytic_core_gradient": [
+            0.0003424869584158774,
+            -0.0005368363029425449,
+            3.886597445862741e-05
+          ],
+          "analytic_core_indices": [
+            0,
+            1,
+            2
+          ],
+          "archived_criterion": -1737.3253004122323,
+          "cached_endpoint_seconds": 0.003268708009272814,
+          "central_gradient_all_coordinates": [
+            5.825574949263902e-05,
+            -0.0005368679012462962,
+            3.88595741198565e-05,
+            -3.285549610154703e-07,
+            3.331251718918793e-05
+          ],
+          "cold_endpoint_seconds": 0.09380420902743936,
+          "criterion": -1737.325300411071,
+          "criterion_minus_archived": 1.1611973604885861e-09,
+          "family": "positive_sigma",
+          "max_abs_analytic_core_vs_central": 0.0002842312089232384,
+          "mode": {
+            "branch_count": 1,
+            "newton_decrement": 7.250354241149935e-11,
+            "newton_step_inf": 1.3973590891892904e-11,
+            "proposal_eta_max": -3.6214575657927264,
+            "proposal_eta_min": -7.819238553553673,
+            "raw_score_inf": 4.790468022264349e-11
+          },
+          "parameters": [
+            -5.8906607419828365,
+            0.5528306111374389,
+            -1.0463926115729794,
+            0.8528482412103277,
+            0.20536916684632386
+          ],
+          "success": true
+        },
+        "h1": {
+          "analytic_core_gradient": [
+            -8.505804374614456e-06,
+            -1.8218396710123486e-05
+          ],
+          "analytic_core_indices": [
+            0,
+            1
+          ],
+          "archived_criterion": -1739.713285031734,
+          "cached_endpoint_seconds": 2.9499875381588936e-05,
+          "central_gradient_all_coordinates": [
+            -1.1084833935866295e-05,
+            -1.8300170268048532e-05,
+            -4.689582056016661e-05
+          ],
+          "cold_endpoint_seconds": 0.08797758398577571,
+          "criterion": -1739.7132850317337,
+          "criterion_minus_archived": 2.2737367544323206e-13,
+          "family": "sigma_zero",
+          "max_abs_analytic_core_vs_central": 2.5790295612518383e-06,
+          "mode": null,
+          "parameters": [
+            -5.709554416944676,
+            0.6480316477778277,
+            0.2053176642443464
+          ],
+          "success": true
+        }
+      },
+      "site_count": 120,
+      "site_ids_sha256": "3abbb11854489f6c1bf2d8e1d961a745fd85f7b19b5e68b2836ed3b30f76337a"
+    }
+  },
+  "curve_scoring": {
+    "archived_cold_curve_seconds": 0.15238379198126495,
+    "archived_new_curve_max_abs_difference": 2.6290081223123707e-12,
+    "cold_curve_speedup": 1.6419841498022862,
+    "grid_node_count": 161,
+    "integration_build_seconds": 0.08739937515929341,
+    "new_cold_curve_seconds": 0.09280466684140265,
+    "scalar_score_seconds": 0.04716175002977252,
+    "scalar_vector_max_abs_difference": 2.6290081223123707e-12,
+    "score_speedup": 20.421867605500324,
+    "site_count": 120,
+    "timing_scope": "local development timing for one B_H3 curve only; excludes endpoint fitting, profile traversal and the six-model analysis",
+    "vector_score_seconds": 0.0023093749769032
+  },
+  "generated_utc": "2026-10-18T09:53:54.922747+00:00",
+  "inputs": {
+    "artifacts/goal060_execution/audit-repair/public_inputs/exposure.npz": "b74004fc9ecf03499cfdc9ecca4919b0e17987eba405709f4e3f95f9bc9c0831",
+    "artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2",
+    "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-04/rep-000/observations.npz": "ed8675556be861c5600de44bfe22ab1fea73c6c805512e07f6445e0b2eb35189",
+    "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+    "artifacts/paper1_planning_20261018/gp-prototype/results.json": "c2d392318d16ce5b1ff8a336951541e9be1256047b0a51a802a2dacc0dd92e86",
+    "artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b"
+  },
+  "schema": "paper1-spatial-profile-kernel-check-v1",
+  "scope": "post-hoc development check on two archived history-000 cases and stored endpoints; no profile optimization or qualification inference",
+  "sources": {
+    "artifacts/paper1_planning_20261018/gp-prototype/run_gp_prototype.py": "075b9e265eafd17c60dc6cb12b274e4def61ffcd355a1cadc2cce80b3ea44aed",
+    "artifacts/paper1_profile_development_20261018/engine/check_engine_kernel.py": "d92e48cebb6b567d1a5c816bc2b303b504c859fa57424c68ff6916a64bd3701e",
+    "scripts/benchmark_spatial_profile.py": "a23900e1f572c0a83ccc7080dc44018ef95d6cf92ff2d32fa89961cbd26d14e9",
+    "src/latent_landscapes/preinvasion_likelihood.py": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
+    "src/latent_landscapes/spatial_profile.py": "b41dd4edd116a6b88b30209544a900b5a086afa0c0e07d4c476a8a710dcf8f49"
+  },
+  "status": "passed"
+}

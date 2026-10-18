@@ -1,0 +1,118 @@
+{
+  "rows": [
+    {
+      "archetype": "connected",
+      "map_seed": 2026101801,
+      "sampling_seed": 2026101811,
+      "access_buffer_cells": 0,
+      "fixed_holdout": true,
+      "minimum_centre_separation": 8,
+      "requested_clusters_per_stratum": 13,
+      "frame_centres_by_stratum": [
+        192,
+        140,
+        139,
+        164
+      ],
+      "remaining_centres_by_stratum": [
+        163,
+        106,
+        104,
+        103
+      ],
+      "status": 2,
+      "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "elapsed_seconds": 0.02286620787344873,
+      "selected_frame_indices": [],
+      "holdout_frame_indices": [
+        292,
+        233,
+        530,
+        176,
+        13,
+        393,
+        360,
+        55
+      ],
+      "frame_sha256": "b5bb2d08c81d12cc662a3175b7359e325a3dab7ead2a8e033c27ef4284dfb739",
+      "objective": "zero; feasibility diagnostic only, not a sampling distribution"
+    },
+    {
+      "archetype": "corridor",
+      "map_seed": 2026101802,
+      "sampling_seed": 2026101812,
+      "access_buffer_cells": 0,
+      "fixed_holdout": true,
+      "minimum_centre_separation": 8,
+      "requested_clusters_per_stratum": 13,
+      "frame_centres_by_stratum": [
+        167,
+        131,
+        178,
+        157
+      ],
+      "remaining_centres_by_stratum": [
+        128,
+        69,
+        130,
+        107
+      ],
+      "status": 2,
+      "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "elapsed_seconds": 0.017489332938566804,
+      "selected_frame_indices": [],
+      "holdout_frame_indices": [
+        144,
+        310,
+        153,
+        288,
+        353,
+        518,
+        255,
+        429
+      ],
+      "frame_sha256": "fbf3f2ab33a46826a84ecc2cb72c55b85d10a3335f0dd7db13b94d537661120a",
+      "objective": "zero; feasibility diagnostic only, not a sampling distribution"
+    },
+    {
+      "archetype": "barrier",
+      "map_seed": 2026101803,
+      "sampling_seed": 2026101813,
+      "access_buffer_cells": 0,
+      "fixed_holdout": true,
+      "minimum_centre_separation": 8,
+      "requested_clusters_per_stratum": 13,
+      "frame_centres_by_stratum": [
+        244,
+        140,
+        68,
+        140
+      ],
+      "remaining_centres_by_stratum": [
+        201,
+        88,
+        45,
+        83
+      ],
+      "status": 2,
+      "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "elapsed_seconds": 0.013173666782677174,
+      "selected_frame_indices": [],
+      "holdout_frame_indices": [
+        558,
+        519,
+        372,
+        25,
+        447,
+        195,
+        206,
+        112
+      ],
+      "frame_sha256": "8368f1acca4956da7de9bed900435cd797a4da24f2bd4678b61f0f858c587eb6",
+      "objective": "zero; feasibility diagnostic only, not a sampling distribution"
+    }
+  ],
+  "scipy": "1.18.0",
+  "numpy": "2.5.1",
+  "source_sha256": "cf3168ee9909c140aafb562364cace3421fbdaca5b42e8d28864ff6892c75dd5"
+}

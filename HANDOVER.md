@@ -22,10 +22,33 @@ gradient, direct-likelihood and grid-refinement checks. The repaired local fit
 pairs took 313 and 440 seconds; full-profile accuracy, Laplace approximation
 and campaign efficiency still need qualification.
 
+The new [profile-engine development record](docs/paper1-profile-engine-development-2026-10-18.md)
+adds analytic Laplace derivatives, a bidirectional profile search, explicit
+predator-visit missingness and a nested monitoring-panel sampler. Independent
+review found and prompted repairs to training-site selection, calendar checks,
+near-stationary mode convergence and profile reporting. The first 35-node
+spatial mesh traversal took 190.73 seconds on one Mac mini thread and recovered
+the earlier optimum, but positive variance resolved at only 18 nodes because
+the interpolation support was too narrow. It is not a qualified full profile
+or evidence that the six-model 20-second target is achievable.
+Wider-grid canaries then exposed probability underflow, reproduced by direct
+integration. The single reviewed intermediate grid also failed: h=30 could
+not retain the required support margin, and h=6.05348 missed the gradient
+threshold. **Stable log-domain likelihood scoring is the next prerequisite**;
+no second full mesh or 600-case qualification run was launched. The exact
+failures, source snapshots and independent review are archived with the record.
+
+The amended two-cell access buffer and joint 300-site master-panel selection
+passed all 30 prespecified map-capacity checks. The seeded selector also passed
+on all three pilot archetypes; biological histories have not yet been generated
+on those new panels. The 600-case plan is now a finite challenge suite with
+separate numerical and integration-sensitivity checks, not a population-level
+99% subgroup-agreement guarantee.
+
 The immediate work is to qualify the spatial criterion and whole effect
 profiles across difficult cases and both site counts, then freeze the
-executable design before rule training and untouched validation. Two fit
-pairs do not price the campaign. The 90-map scenario is a minimum-count
+executable design before rule training and untouched validation. The 90-map
+scenario is a minimum-count
 illustration; precision, rather than an arbitrary resource ceiling, sets the
 final allocation. The [initial plan](docs/paper1-integrated-tranche-planning-2026-10-18.md)
 and [iteration-2 review](docs/paper1-design-model-review-2026-10-18.md) preserve

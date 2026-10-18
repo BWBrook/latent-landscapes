@@ -1,0 +1,1243 @@
+{
+  "acceptance": {
+    "best_finite_base_and_nuisance_fd_probability_headroom_valid": true,
+    "both_fit_grid_fits_resolved": false,
+    "both_positive_fits_eligible": false,
+    "both_positive_kkt_le_1e-3": false,
+    "both_positive_proposals_have_ge_0.25_support_slack": false,
+    "both_positive_proposals_strictly_supported": false,
+    "h30_numerically_valid_proposal_overlap_ge_0.25": false,
+    "h6_old_grid_fd_failure_reproduced": true,
+    "old_free_abs_criterion_shift_le_1e-6": true,
+    "old_free_point_success_on_both_grids": true
+  },
+  "canaries": {
+    "h=30": {
+      "fit_grid_best_finite_probability_headroom": {
+        "parameters": [
+          -7.063525870897292,
+          0.36186611525912266,
+          -0.12840700083592602,
+          0.2013292938847899
+        ],
+        "probabilities": {
+          "base": {
+            "all_finite": true,
+            "detection_sd": 0.2013292938847899,
+            "eta": -1.0,
+            "h": 30.0,
+            "min_log_positive": -663.521883707514,
+            "min_positive": 6.856575835416993e-289,
+            "negative_count": 0,
+            "nonfinite_count": 0,
+            "x": 106.68503793971827,
+            "zero_count": 0
+          },
+          "minus_sd": {
+            "all_finite": true,
+            "detection_sd": 0.2012292938847899,
+            "eta": -1.0,
+            "h": 30.0,
+            "min_log_positive": -663.5213765371838,
+            "min_positive": 6.860054169227256e-289,
+            "negative_count": 0,
+            "nonfinite_count": 0,
+            "x": 106.68503793971827,
+            "zero_count": 0
+          },
+          "plus_sd": {
+            "all_finite": true,
+            "detection_sd": 0.2014292938847899,
+            "eta": -1.0,
+            "h": 30.0,
+            "min_log_positive": -663.5223909739778,
+            "min_positive": 6.853098606454464e-289,
+            "negative_count": 0,
+            "nonfinite_count": 0,
+            "x": 106.68503793971827,
+            "zero_count": 0
+          }
+        },
+        "projected_gradient_inf": 6.171694869847967,
+        "source": "fixed_h_30_start_0"
+      },
+      "fit_grid_fit": {
+        "best_positive": null,
+        "best_sigma_zero": {
+          "eligible": true,
+          "evaluation": {
+            "criterion": -1740.3011662783406,
+            "criterion_gradient": [
+              -1.2307190974780724e-05,
+              -9.884320459452312e-06,
+              -6.366462912410498e-08
+            ],
+            "detection_sd": 0.20268283879826102,
+            "h": 30.0,
+            "message": "ok",
+            "mode": null,
+            "parameters": [
+              -6.87279790784254,
+              0.05166615599164734,
+              0.20268283879826102
+            ],
+            "success": true
+          },
+          "evaluations": 1,
+          "family": "sigma_zero",
+          "iterations": 0,
+          "optimizer_message": "retained incumbent",
+          "optimizer_success": true,
+          "parameters": [
+            -6.87279790784254,
+            0.05166615599164734,
+            0.20268283879826102
+          ],
+          "projected_gradient_inf": 1.2307190974780724e-05,
+          "source": "fixed_h_30_start_0"
+        },
+        "candidates": [
+          {
+            "eligible": false,
+            "evaluation": {
+              "criterion": -1734.337167415844,
+              "criterion_gradient": [
+                0.813595333662275,
+                0.6132949300381205,
+                6.171694869847967,
+                -0.03279062866567983
+              ],
+              "detection_sd": 0.2013292938847899,
+              "h": 30.0,
+              "message": "ok",
+              "mode": {
+                "bound_touch": false,
+                "branch_count": 1,
+                "eta_max": -4.692283016038189,
+                "eta_min": -7.697016997242952,
+                "lower_support_slack": 3.274831378698698,
+                "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+                "newton_decrement": 2.1158102881210202e-10,
+                "newton_step_inf": 6.752283576260248e-11,
+                "proposal_eta_max": -2.0000006713296226,
+                "proposal_eta_min": -10.725168621301302,
+                "proposal_grid_supported": true,
+                "score_inf": 6.456046808267502e-11,
+                "success": true,
+                "upper_support_slack": 1.0000006713296226
+              },
+              "parameters": [
+                -7.063525870897292,
+                0.36186611525912266,
+                -0.12840700083592602,
+                0.2013292938847899
+              ],
+              "success": true
+            },
+            "evaluations": 1,
+            "family": "positive_sigma",
+            "iterations": 0,
+            "optimizer_message": "retained incumbent",
+            "optimizer_success": true,
+            "parameters": [
+              -7.063525870897292,
+              0.36186611525912266,
+              -0.12840700083592602,
+              0.2013292938847899
+            ],
+            "projected_gradient_inf": 6.171694869847967,
+            "source": "fixed_h_30_start_0"
+          },
+          {
+            "eligible": false,
+            "evaluation": {
+              "criterion": -1734.337167415844,
+              "criterion_gradient": [
+                0.813595333662275,
+                0.6132949300381205,
+                6.171694869847967,
+                -0.03279062866567983
+              ],
+              "detection_sd": 0.2013292938847899,
+              "h": 30.0,
+              "message": "ok",
+              "mode": {
+                "bound_touch": false,
+                "branch_count": 2,
+                "eta_max": -4.692283016038189,
+                "eta_min": -7.697016997242952,
+                "lower_support_slack": 3.274831378698698,
+                "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+                "newton_decrement": 2.1158102881210202e-10,
+                "newton_step_inf": 6.752283576260248e-11,
+                "proposal_eta_max": -2.0000006713296226,
+                "proposal_eta_min": -10.725168621301302,
+                "proposal_grid_supported": true,
+                "score_inf": 6.456046808267502e-11,
+                "success": true,
+                "upper_support_slack": 1.0000006713296226
+              },
+              "parameters": [
+                -7.063525870897292,
+                0.36186611525912266,
+                -0.12840700083592602,
+                0.2013292938847899
+              ],
+              "success": true
+            },
+            "evaluations": 3,
+            "family": "positive_sigma",
+            "iterations": 1,
+            "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "optimizer_success": true,
+            "parameters": [
+              -7.063525870897292,
+              0.36186611525912266,
+              -0.12840700083592602,
+              0.2013292938847899
+            ],
+            "projected_gradient_inf": 6.171694869847967,
+            "source": "fixed_h_30_fit_0"
+          },
+          {
+            "eligible": false,
+            "evaluation": {
+              "criterion": null,
+              "criterion_gradient": [
+                null,
+                null,
+                null,
+                null
+              ],
+              "detection_sd": 0.47696549462042004,
+              "h": 30.0,
+              "message": "4-SD Laplace proposal range [-11.8438, -0.986191] is outside the fixed curve grid [-14, -1]",
+              "mode": {
+                "bound_touch": false,
+                "branch_count": 1,
+                "eta_max": -4.139088148230966,
+                "eta_min": -7.8921115744396975,
+                "lower_support_slack": 2.156238056559074,
+                "message": "4-SD Laplace proposal range [-11.8438, -0.986191] is outside the fixed curve grid [-14, -1]",
+                "newton_decrement": 2.081805739039954e-10,
+                "newton_step_inf": 1.3628211537262362e-10,
+                "proposal_eta_max": -0.9861911142551305,
+                "proposal_eta_min": -11.843761943440926,
+                "proposal_grid_supported": false,
+                "score_inf": 7.558531578411021e-11,
+                "success": false,
+                "upper_support_slack": -0.013808885744869492
+              },
+              "parameters": [
+                -6.988752017953091,
+                0.4019324043180749,
+                0.13521525158937084,
+                0.47696549462042004
+              ],
+              "success": false
+            },
+            "evaluations": 74,
+            "family": "positive_sigma",
+            "iterations": 1,
+            "optimizer_message": "Optimization terminated successfully.",
+            "optimizer_success": true,
+            "parameters": [
+              -6.988752017953091,
+              0.4019324043180749,
+              0.13521525158937084,
+              0.47696549462042004
+            ],
+            "projected_gradient_inf": null,
+            "source": "fixed_h_30_powell_0"
+          },
+          {
+            "eligible": false,
+            "evaluation": {
+              "criterion": null,
+              "criterion_gradient": [
+                null,
+                null,
+                null,
+                null
+              ],
+              "detection_sd": 0.47696549462042004,
+              "h": 30.0,
+              "message": "4-SD Laplace proposal range [-11.8438, -0.986191] is outside the fixed curve grid [-14, -1]",
+              "mode": {
+                "bound_touch": false,
+                "branch_count": 2,
+                "eta_max": -4.139088148230966,
+                "eta_min": -7.8921115744396975,
+                "lower_support_slack": 2.156238056559074,
+                "message": "4-SD Laplace proposal range [-11.8438, -0.986191] is outside the fixed curve grid [-14, -1]",
+                "newton_decrement": 2.081805739039954e-10,
+                "newton_step_inf": 1.3628211537262362e-10,
+                "proposal_eta_max": -0.9861911142551305,
+                "proposal_eta_min": -11.843761943440926,
+                "proposal_grid_supported": false,
+                "score_inf": 7.558531578411021e-11,
+                "success": false,
+                "upper_support_slack": -0.013808885744869492
+              },
+              "parameters": [
+                -6.988752017953091,
+                0.4019324043180749,
+                0.13521525158937084,
+                0.47696549462042004
+              ],
+              "success": false
+            },
+            "evaluations": 1,
+            "family": "positive_sigma",
+            "iterations": 0,
+            "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+            "optimizer_success": true,
+            "parameters": [
+              -6.988752017953091,
+              0.4019324043180749,
+              0.13521525158937084,
+              0.47696549462042004
+            ],
+            "projected_gradient_inf": null,
+            "source": "fixed_h_30_polish_0"
+          },
+          {
+            "eligible": true,
+            "evaluation": {
+              "criterion": -1740.3011662783406,
+              "criterion_gradient": [
+                -1.2307190974780724e-05,
+                -9.884320459452312e-06,
+                -6.366462912410498e-08
+              ],
+              "detection_sd": 0.20268283879826102,
+              "h": 30.0,
+              "message": "ok",
+              "mode": null,
+              "parameters": [
+                -6.87279790784254,
+                0.05166615599164734,
+                0.20268283879826102
+              ],
+              "success": true
+            },
+            "evaluations": 1,
+            "family": "sigma_zero",
+            "iterations": 0,
+            "optimizer_message": "retained incumbent",
+            "optimizer_success": true,
+            "parameters": [
+              -6.87279790784254,
+              0.05166615599164734,
+              0.20268283879826102
+            ],
+            "projected_gradient_inf": 1.2307190974780724e-05,
+            "source": "fixed_h_30_start_0"
+          },
+          {
+            "eligible": true,
+            "evaluation": {
+              "criterion": -1740.3011662783406,
+              "criterion_gradient": [
+                -1.2307190974780724e-05,
+                -9.884320459452312e-06,
+                -6.366462912410498e-08
+              ],
+              "detection_sd": 0.20268283879826102,
+              "h": 30.0,
+              "message": "ok",
+              "mode": null,
+              "parameters": [
+                -6.87279790784254,
+                0.05166615599164734,
+                0.20268283879826102
+              ],
+              "success": true
+            },
+            "evaluations": 1,
+            "family": "sigma_zero",
+            "iterations": 0,
+            "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+            "optimizer_success": true,
+            "parameters": [
+              -6.87279790784254,
+              0.05166615599164734,
+              0.20268283879826102
+            ],
+            "projected_gradient_inf": 1.2307190974780724e-05,
+            "source": "fixed_h_30_fit_0"
+          }
+        ],
+        "elapsed_seconds": 0.3177675830665976,
+        "resolved": false
+      },
+      "fit_grid_fit_wall_seconds": 0.31777391699142754,
+      "fit_grid_start_probability_headroom": {
+        "base": {
+          "all_finite": true,
+          "detection_sd": 0.2013292938847899,
+          "eta": -1.0,
+          "h": 30.0,
+          "min_log_positive": -663.521883707514,
+          "min_positive": 6.856575835416993e-289,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "x": 106.68503793971827,
+          "zero_count": 0
+        },
+        "minus_sd": {
+          "all_finite": true,
+          "detection_sd": 0.2012292938847899,
+          "eta": -1.0,
+          "h": 30.0,
+          "min_log_positive": -663.5213765371838,
+          "min_positive": 6.860054169227256e-289,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "x": 106.68503793971827,
+          "zero_count": 0
+        },
+        "plus_sd": {
+          "all_finite": true,
+          "detection_sd": 0.2014292938847899,
+          "eta": -1.0,
+          "h": 30.0,
+          "min_log_positive": -663.5223909739778,
+          "min_positive": 6.853098606454464e-289,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "x": 106.68503793971827,
+          "zero_count": 0
+        }
+      },
+      "old_grid_base": {
+        "criterion": -1734.337167415844,
+        "criterion_gradient": [
+          0.813595333662275,
+          0.6132949300381205,
+          6.171694869847967,
+          0.0
+        ],
+        "detection_sd": 0.2013292938847899,
+        "h": 30.0,
+        "message": "ok",
+        "mode": {
+          "bound_touch": false,
+          "branch_count": 1,
+          "eta_max": -4.692283016038189,
+          "eta_min": -7.697016997242952,
+          "lower_support_slack": 1.274831378698698,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "newton_decrement": 2.1158102881210202e-10,
+          "newton_step_inf": 6.752283576260248e-11,
+          "proposal_eta_max": -2.0000006713296226,
+          "proposal_eta_min": -10.725168621301302,
+          "proposal_grid_supported": true,
+          "score_inf": 6.456046808267502e-11,
+          "success": true,
+          "upper_support_slack": 6.713296225591137e-07
+        },
+        "parameters": [
+          -7.063525870897292,
+          0.36186611525912266,
+          -0.12840700083592602,
+          0.2013292938847899
+        ],
+        "success": true
+      },
+      "old_grid_ordinary_nuisance_fd": {
+        "criterion": -1734.337167415844,
+        "criterion_gradient": [
+          0.813595333662275,
+          0.6132949300381205,
+          6.171694869847967,
+          null
+        ],
+        "detection_sd": 0.2013292938847899,
+        "h": 30.0,
+        "message": "nuisance finite difference failed",
+        "mode": {
+          "bound_touch": false,
+          "branch_count": 1,
+          "eta_max": -4.692283016038189,
+          "eta_min": -7.697016997242952,
+          "lower_support_slack": 1.274831378698698,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "newton_decrement": 2.1158102881210202e-10,
+          "newton_step_inf": 6.752283576260248e-11,
+          "proposal_eta_max": -2.0000006713296226,
+          "proposal_eta_min": -10.725168621301302,
+          "proposal_grid_supported": true,
+          "score_inf": 6.456046808267502e-11,
+          "success": true,
+          "upper_support_slack": 6.713296225591137e-07
+        },
+        "parameters": [
+          -7.063525870897292,
+          0.36186611525912266,
+          -0.12840700083592602,
+          0.2013292938847899
+        ],
+        "success": false
+      },
+      "old_grid_sd_perturbations": {
+        "minus_sd": {
+          "criterion": null,
+          "criterion_gradient": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "detection_sd": 0.2012292938847899,
+          "h": 30.0,
+          "message": "4-SD Laplace proposal range [-10.7251, -1.99999] is outside the fixed curve grid [-12, -2]",
+          "mode": {
+            "bound_touch": false,
+            "branch_count": 1,
+            "eta_max": -4.692243171628305,
+            "eta_min": -7.697012823950776,
+            "lower_support_slack": 1.2749005988451394,
+            "message": "4-SD Laplace proposal range [-10.7251, -1.99999] is outside the fixed curve grid [-12, -2]",
+            "newton_decrement": 2.1126934138387833e-10,
+            "newton_step_inf": 6.73650115748001e-11,
+            "proposal_eta_max": -1.9999874308873489,
+            "proposal_eta_min": -10.72509940115486,
+            "proposal_grid_supported": false,
+            "score_inf": 6.453493295310864e-11,
+            "success": false,
+            "upper_support_slack": -1.2569112651128478e-05
+          },
+          "parameters": [
+            -7.063525870897292,
+            0.36186611525912266,
+            -0.12840700083592602,
+            0.2012292938847899
+          ],
+          "success": false
+        },
+        "plus_sd": {
+          "criterion": -1734.337192682883,
+          "criterion_gradient": [
+            0.8124988701970093,
+            0.6135177053299463,
+            6.170584672005961,
+            0.0
+          ],
+          "detection_sd": 0.2014292938847899,
+          "h": 30.0,
+          "message": "ok",
+          "mode": {
+            "bound_touch": false,
+            "branch_count": 1,
+            "eta_max": -4.692322854986642,
+            "eta_min": -7.697021171187871,
+            "lower_support_slack": 1.2747620679034597,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "newton_decrement": 2.118977520311258e-10,
+            "newton_step_inf": 6.768126575067791e-11,
+            "proposal_eta_max": -2.0000139040805944,
+            "proposal_eta_min": -10.72523793209654,
+            "proposal_grid_supported": true,
+            "score_inf": 6.458622525684632e-11,
+            "success": true,
+            "upper_support_slack": 1.3904080594429047e-05
+          },
+          "parameters": [
+            -7.063525870897292,
+            0.36186611525912266,
+            -0.12840700083592602,
+            0.2014292938847899
+          ],
+          "success": true
+        }
+      },
+      "positive_start": [
+        -7.063525870897292,
+        0.36186611525912266,
+        -0.12840700083592602,
+        0.2013292938847899
+      ],
+      "sigma_zero_start": [
+        -6.87279790784254,
+        0.05166615599164734,
+        0.20268283879826102
+      ]
+    },
+    "h=6.05348359971736": {
+      "fit_grid_best_finite_probability_headroom": {
+        "parameters": [
+          -6.07217997291163,
+          0.588487523176221,
+          -0.28460179667866714,
+          0.19737232855335843
+        ],
+        "probabilities": {
+          "base": {
+            "all_finite": true,
+            "detection_sd": 0.19737232855335843,
+            "eta": -1.0,
+            "h": 6.053483599717359,
+            "min_log_positive": -174.8405959736616,
+            "min_positive": 1.1686755439565689e-76,
+            "negative_count": 0,
+            "nonfinite_count": 0,
+            "x": 18.59072722633071,
+            "zero_count": 0
+          },
+          "minus_sd": {
+            "all_finite": true,
+            "detection_sd": 0.19727232855335844,
+            "eta": -1.0,
+            "h": 6.053483599717359,
+            "min_log_positive": -174.84009259044433,
+            "min_positive": 1.1692639837047638e-76,
+            "negative_count": 0,
+            "nonfinite_count": 0,
+            "x": 18.59072722633071,
+            "zero_count": 0
+          },
+          "plus_sd": {
+            "all_finite": true,
+            "detection_sd": 0.19747232855335842,
+            "eta": -1.0,
+            "h": 6.053483599717359,
+            "min_log_positive": -174.84109945226163,
+            "min_positive": 1.1680872889291592e-76,
+            "negative_count": 0,
+            "nonfinite_count": 0,
+            "x": 18.59072722633071,
+            "zero_count": 0
+          }
+        },
+        "projected_gradient_inf": 0.0018032468289650438,
+        "source": "fixed_h_6.05348_polish_0"
+      },
+      "fit_grid_fit": {
+        "best_positive": null,
+        "best_sigma_zero": {
+          "eligible": true,
+          "evaluation": {
+            "criterion": -1718.9007268647772,
+            "criterion_gradient": [
+              1.2729011724665895e-05,
+              1.645095802516039e-05,
+              -8.208189683500677e-07
+            ],
+            "detection_sd": 0.1973775076835775,
+            "h": 6.053483599717359,
+            "message": "ok",
+            "mode": null,
+            "parameters": [
+              -5.886167430880306,
+              0.3295531627774903,
+              0.1973775076835775
+            ],
+            "success": true
+          },
+          "evaluations": 3,
+          "family": "sigma_zero",
+          "iterations": 1,
+          "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "optimizer_success": true,
+          "parameters": [
+            -5.886167430880306,
+            0.3295531627774903,
+            0.1973775076835775
+          ],
+          "projected_gradient_inf": 1.645095802516039e-05,
+          "source": "fixed_h_6.05348_fit_0"
+        },
+        "candidates": [
+          {
+            "eligible": false,
+            "evaluation": {
+              "criterion": -1717.0576794624126,
+              "criterion_gradient": [
+                0.0019586744852366778,
+                2.8388850680238775e-06,
+                0.21175144774297272,
+                -0.0002930039499915438
+              ],
+              "detection_sd": 0.19735718980197914,
+              "h": 6.053483599717359,
+              "message": "ok",
+              "mode": {
+                "bound_touch": false,
+                "branch_count": 1,
+                "eta_max": -4.286113386889133,
+                "eta_min": -6.845114104937396,
+                "lower_support_slack": 4.55446673828429,
+                "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+                "newton_decrement": 1.6572537848731217e-10,
+                "newton_step_inf": 4.5041652657446444e-11,
+                "proposal_eta_max": -2.000009749329325,
+                "proposal_eta_min": -9.44553326171571,
+                "proposal_grid_supported": true,
+                "score_inf": 1.0352707580096876e-10,
+                "success": true,
+                "upper_support_slack": 1.0000097493293252
+              },
+              "parameters": [
+                -6.0607144643956,
+                0.5755741934145506,
+                -0.3229617315442745,
+                0.19735718980197914
+              ],
+              "success": true
+            },
+            "evaluations": 1,
+            "family": "positive_sigma",
+            "iterations": 0,
+            "optimizer_message": "retained incumbent",
+            "optimizer_success": true,
+            "parameters": [
+              -6.0607144643956,
+              0.5755741934145506,
+              -0.3229617315442745,
+              0.19735718980197914
+            ],
+            "projected_gradient_inf": 0.21175144774297272,
+            "source": "fixed_h_6.05348_start_0"
+          },
+          {
+            "eligible": false,
+            "evaluation": {
+              "criterion": -1717.0535702930624,
+              "criterion_gradient": [
+                0.0014260125530052292,
+                0.0020821635368761804,
+                0.0016505448267815082,
+                0.0014990666841185885
+              ],
+              "detection_sd": 0.1973722814236637,
+              "h": 6.053483599717359,
+              "message": "ok",
+              "mode": {
+                "bound_touch": false,
+                "branch_count": 2,
+                "eta_max": -4.230573888712016,
+                "eta_min": -6.874423162034394,
+                "lower_support_slack": 4.432545248580075,
+                "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+                "newton_decrement": 1.3522713491158524e-10,
+                "newton_step_inf": 4.543784759693055e-11,
+                "proposal_eta_max": -1.8906353684039638,
+                "proposal_eta_min": -9.567454751419925,
+                "proposal_grid_supported": true,
+                "score_inf": 7.789591194296008e-11,
+                "success": true,
+                "upper_support_slack": 0.8906353684039638
+              },
+              "parameters": [
+                -6.072181458279826,
+                0.5884412403198103,
+                -0.2845919425237614,
+                0.1973722814236637
+              ],
+              "success": true
+            },
+            "evaluations": 37,
+            "family": "positive_sigma",
+            "iterations": 9,
+            "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "optimizer_success": true,
+            "parameters": [
+              -6.072181458279826,
+              0.5884412403198103,
+              -0.2845919425237614,
+              0.1973722814236637
+            ],
+            "projected_gradient_inf": 0.0020821635368761804,
+            "source": "fixed_h_6.05348_fit_0"
+          },
+          {
+            "eligible": false,
+            "evaluation": {
+              "criterion": -1717.0535702323104,
+              "criterion_gradient": [
+                -0.0004921610188262093,
+                -1.82580545750044e-05,
+                -0.005989709237292917,
+                0.002076842520182254
+              ],
+              "detection_sd": 0.1973721777252814,
+              "h": 6.053483599717359,
+              "message": "ok",
+              "mode": {
+                "bound_touch": false,
+                "branch_count": 1,
+                "eta_max": -4.2305676362445785,
+                "eta_min": -6.874448346777116,
+                "lower_support_slack": 4.432533242918815,
+                "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+                "newton_decrement": 1.3512042634452806e-10,
+                "newton_step_inf": 4.5390155001579576e-11,
+                "proposal_eta_max": -1.8906450583103953,
+                "proposal_eta_min": -9.567466757081185,
+                "proposal_grid_supported": true,
+                "score_inf": 7.781864042044617e-11,
+                "success": true,
+                "upper_support_slack": 0.8906450583103953
+              },
+              "parameters": [
+                -6.072180344522284,
+                0.5884867903243076,
+                -0.2846003412140031,
+                0.1973721777252814
+              ],
+              "success": true
+            },
+            "evaluations": 59,
+            "family": "positive_sigma",
+            "iterations": 1,
+            "optimizer_message": "Optimization terminated successfully.",
+            "optimizer_success": true,
+            "parameters": [
+              -6.072180344522284,
+              0.5884867903243076,
+              -0.2846003412140031,
+              0.1973721777252814
+            ],
+            "projected_gradient_inf": 0.005989709237292917,
+            "source": "fixed_h_6.05348_powell_0"
+          },
+          {
+            "eligible": false,
+            "evaluation": {
+              "criterion": -1717.053570223516,
+              "criterion_gradient": [
+                0.0011911517296647745,
+                0.0015727790314588042,
+                0.0018032468289650438,
+                0.0013104613572068047
+              ],
+              "detection_sd": 0.19737232855335843,
+              "h": 6.053483599717359,
+              "message": "ok",
+              "mode": {
+                "bound_touch": false,
+                "branch_count": 2,
+                "eta_max": -4.230569321755592,
+                "eta_min": -6.874448102290969,
+                "lower_support_slack": 4.432536874650708,
+                "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+                "newton_decrement": 1.351075542991383e-10,
+                "newton_step_inf": 4.538346867910852e-11,
+                "proposal_eta_max": -1.8906488652605913,
+                "proposal_eta_min": -9.567463125349292,
+                "proposal_grid_supported": true,
+                "score_inf": 7.779021871101577e-11,
+                "success": true,
+                "upper_support_slack": 0.8906488652605913
+              },
+              "parameters": [
+                -6.07217997291163,
+                0.588487523176221,
+                -0.28460179667866714,
+                0.19737232855335843
+              ],
+              "success": true
+            },
+            "evaluations": 26,
+            "family": "positive_sigma",
+            "iterations": 5,
+            "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "optimizer_success": true,
+            "parameters": [
+              -6.07217997291163,
+              0.588487523176221,
+              -0.28460179667866714,
+              0.19737232855335843
+            ],
+            "projected_gradient_inf": 0.0018032468289650438,
+            "source": "fixed_h_6.05348_polish_0"
+          },
+          {
+            "eligible": true,
+            "evaluation": {
+              "criterion": -1718.900726864803,
+              "criterion_gradient": [
+                1.6235494795679983e-05,
+                1.7714936514146018e-05,
+                0.0005561673788179178
+              ],
+              "detection_sd": 0.19737739079509248,
+              "h": 6.053483599717359,
+              "message": "ok",
+              "mode": null,
+              "parameters": [
+                -5.886167434292484,
+                0.3295531590543807,
+                0.19737739079509248
+              ],
+              "success": true
+            },
+            "evaluations": 1,
+            "family": "sigma_zero",
+            "iterations": 0,
+            "optimizer_message": "retained incumbent",
+            "optimizer_success": true,
+            "parameters": [
+              -5.886167434292484,
+              0.3295531590543807,
+              0.19737739079509248
+            ],
+            "projected_gradient_inf": 0.0005561673788179178,
+            "source": "fixed_h_6.05348_start_0"
+          },
+          {
+            "eligible": true,
+            "evaluation": {
+              "criterion": -1718.9007268647772,
+              "criterion_gradient": [
+                1.2729011724665895e-05,
+                1.645095802516039e-05,
+                -8.208189683500677e-07
+              ],
+              "detection_sd": 0.1973775076835775,
+              "h": 6.053483599717359,
+              "message": "ok",
+              "mode": null,
+              "parameters": [
+                -5.886167430880306,
+                0.3295531627774903,
+                0.1973775076835775
+              ],
+              "success": true
+            },
+            "evaluations": 3,
+            "family": "sigma_zero",
+            "iterations": 1,
+            "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+            "optimizer_success": true,
+            "parameters": [
+              -5.886167430880306,
+              0.3295531627774903,
+              0.1973775076835775
+            ],
+            "projected_gradient_inf": 1.645095802516039e-05,
+            "source": "fixed_h_6.05348_fit_0"
+          }
+        ],
+        "elapsed_seconds": 1.3287401250563562,
+        "resolved": false
+      },
+      "fit_grid_fit_wall_seconds": 1.328745791921392,
+      "fit_grid_start_probability_headroom": {
+        "base": {
+          "all_finite": true,
+          "detection_sd": 0.19735718980197914,
+          "eta": -1.0,
+          "h": 6.053483599717359,
+          "min_log_positive": -174.8405197616013,
+          "min_positive": 1.1687646145216972e-76,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "x": 18.59072722633071,
+          "zero_count": 0
+        },
+        "minus_sd": {
+          "all_finite": true,
+          "detection_sd": 0.19725718980197915,
+          "eta": -1.0,
+          "h": 6.053483599717359,
+          "min_log_positive": -174.84001639282266,
+          "min_positive": 1.169353082233921e-76,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "x": 18.59072722633071,
+          "zero_count": 0
+        },
+        "plus_sd": {
+          "all_finite": true,
+          "detection_sd": 0.19745718980197913,
+          "eta": -1.0,
+          "h": 6.053483599717359,
+          "min_log_positive": -174.84102322576075,
+          "min_positive": 1.1681763315295913e-76,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "x": 18.59072722633071,
+          "zero_count": 0
+        }
+      },
+      "old_grid_base": {
+        "criterion": -1717.0576794624126,
+        "criterion_gradient": [
+          0.0019586744852366778,
+          2.8388850680238775e-06,
+          0.21175144774297272,
+          0.0
+        ],
+        "detection_sd": 0.19735718980197914,
+        "h": 6.053483599717359,
+        "message": "ok",
+        "mode": {
+          "bound_touch": false,
+          "branch_count": 1,
+          "eta_max": -4.286113386889133,
+          "eta_min": -6.845114104937396,
+          "lower_support_slack": 2.5544667382842903,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "newton_decrement": 1.6572537848731217e-10,
+          "newton_step_inf": 4.5041652657446444e-11,
+          "proposal_eta_max": -2.000009749329325,
+          "proposal_eta_min": -9.44553326171571,
+          "proposal_grid_supported": true,
+          "score_inf": 1.0352707580096876e-10,
+          "success": true,
+          "upper_support_slack": 9.749329325181577e-06
+        },
+        "parameters": [
+          -6.0607144643956,
+          0.5755741934145506,
+          -0.3229617315442745,
+          0.19735718980197914
+        ],
+        "success": true
+      },
+      "old_grid_ordinary_nuisance_fd": {
+        "criterion": -1717.0576794624126,
+        "criterion_gradient": [
+          0.0019586744852366778,
+          2.8388850680238775e-06,
+          0.21175144774297272,
+          null
+        ],
+        "detection_sd": 0.19735718980197914,
+        "h": 6.053483599717359,
+        "message": "nuisance finite difference failed",
+        "mode": {
+          "bound_touch": false,
+          "branch_count": 1,
+          "eta_max": -4.286113386889133,
+          "eta_min": -6.845114104937396,
+          "lower_support_slack": 2.5544667382842903,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "newton_decrement": 1.6572537848731217e-10,
+          "newton_step_inf": 4.5041652657446444e-11,
+          "proposal_eta_max": -2.000009749329325,
+          "proposal_eta_min": -9.44553326171571,
+          "proposal_grid_supported": true,
+          "score_inf": 1.0352707580096876e-10,
+          "success": true,
+          "upper_support_slack": 9.749329325181577e-06
+        },
+        "parameters": [
+          -6.0607144643956,
+          0.5755741934145506,
+          -0.3229617315442745,
+          0.19735718980197914
+        ],
+        "success": false
+      },
+      "old_grid_sd_perturbations": {
+        "minus_sd": {
+          "criterion": null,
+          "criterion_gradient": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "detection_sd": 0.19725718980197915,
+          "h": 6.053483599717359,
+          "message": "4-SD Laplace proposal range [-9.4455, -2] is outside the fixed curve grid [-12, -2]",
+          "mode": {
+            "bound_touch": false,
+            "branch_count": 1,
+            "eta_max": -4.2860951054508805,
+            "eta_min": -6.84507790902367,
+            "lower_support_slack": 2.5544993356346986,
+            "message": "4-SD Laplace proposal range [-9.4455, -2] is outside the fixed curve grid [-12, -2]",
+            "newton_decrement": 1.659037994891487e-10,
+            "newton_step_inf": 4.509430583466719e-11,
+            "proposal_eta_max": -1.9999998983405058,
+            "proposal_eta_min": -9.445500664365301,
+            "proposal_grid_supported": false,
+            "score_inf": 1.0361922431201265e-10,
+            "success": false,
+            "upper_support_slack": -1.0165949415608111e-07
+          },
+          "parameters": [
+            -6.0607144643956,
+            0.5755741934145506,
+            -0.3229617315442745,
+            0.19725718980197915
+          ],
+          "success": false
+        },
+        "plus_sd": {
+          "criterion": -1717.0577033094337,
+          "criterion_gradient": [
+            0.0010230836637910024,
+            5.9262085548517085e-05,
+            0.21157073030504936,
+            0.0
+          ],
+          "detection_sd": 0.19745718980197913,
+          "h": 6.053483599717359,
+          "message": "ok",
+          "mode": {
+            "bound_touch": false,
+            "branch_count": 1,
+            "eta_max": -4.286131663152647,
+            "eta_min": -6.845150322210706,
+            "lower_support_slack": 2.554434100852987,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "newton_decrement": 1.6554569278046508e-10,
+            "newton_step_inf": 4.4988780965046325e-11,
+            "proposal_eta_max": -2.0000195943504506,
+            "proposal_eta_min": -9.445565899147013,
+            "proposal_grid_supported": true,
+            "score_inf": 1.0343592649064703e-10,
+            "success": true,
+            "upper_support_slack": 1.959435045062463e-05
+          },
+          "parameters": [
+            -6.0607144643956,
+            0.5755741934145506,
+            -0.3229617315442745,
+            0.19745718980197913
+          ],
+          "success": true
+        }
+      },
+      "positive_start": [
+        -6.0607144643956,
+        0.5755741934145506,
+        -0.3229617315442745,
+        0.19735718980197914
+      ],
+      "sigma_zero_start": [
+        -5.886167434292484,
+        0.3295531590543807,
+        0.19737739079509248
+      ]
+    }
+  },
+  "generated_utc": "2026-10-18T10:16:24.099234+00:00",
+  "grids": {
+    "fit": {
+      "max": -1.0,
+      "min": -14.0,
+      "nodes": 209,
+      "spacing": 0.0625
+    },
+    "old": {
+      "max": -2.0,
+      "min": -12.0,
+      "nodes": 161,
+      "spacing": 0.0625
+    },
+    "stress": {
+      "max": 0.0,
+      "min": -14.0,
+      "nodes": 225,
+      "spacing": 0.0625
+    }
+  },
+  "h30_support_overlap": {
+    "last_numerically_valid_eta": -0.9375,
+    "material_slack_met": false,
+    "maximum_recorded_proposal_eta": -0.9861911142551305,
+    "overlap": 0.04869111425513051,
+    "prespecified_material_slack": 0.25
+  },
+  "inputs": {
+    "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+    "artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b",
+    "artifacts/paper1_profile_development_20261018/arrival-bank-order816-max290.npz": "8cf2a16a01fc50ac9801a37801a752a9c15bc6ff17f1f6c3fab6d572463bbf8b",
+    "artifacts/paper1_profile_development_20261018/benchmark/B_H3-training120/receipt.json": "0ac23e62153e3f8d21458b11305f4ea4ce4dcd61a69bc2714e1bb8055c3edc64",
+    "artifacts/paper1_profile_development_20261018/upper0-underflow-diagnostic.json": "b2ec817ec1a20088767c147aee6730c32fdfba436457eccb1a89886605d33eae"
+  },
+  "interpretive_limit": "Projected-gradient eligibility is evaluated together with ordinary central nuisance finite differences and proposal support. A pointwise projected gradient alone is not a smooth KKT certificate at or arbitrarily near a cubic-spline knot surface.",
+  "old_free_point": {
+    "criterion_shift_wide_minus_old": 0.0,
+    "old_grid": {
+      "criterion": -1716.4470354911864,
+      "criterion_gradient": [
+        8.517862415402533e-09,
+        -2.3044871301225456e-06,
+        5.532060448398823e-06,
+        2.304527149522851e-06,
+        -2.4874680093489587e-06
+      ],
+      "detection_sd": 0.19721489196155234,
+      "h": 4.1916455715273715,
+      "message": "ok",
+      "mode": {
+        "bound_touch": false,
+        "branch_count": 1,
+        "eta_max": -4.385205627959477,
+        "eta_min": -6.680268098906725,
+        "lower_support_slack": 3.134603300446173,
+        "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+        "newton_decrement": 4.689726898383243e-11,
+        "newton_step_inf": 1.5838571180156172e-11,
+        "proposal_eta_max": -2.380562577765869,
+        "proposal_eta_min": -8.865396699553827,
+        "proposal_grid_supported": true,
+        "score_inf": 3.356470656967758e-11,
+        "success": true,
+        "upper_support_slack": 0.3805625777658692
+      },
+      "parameters": [
+        -5.891102107450253,
+        0.5927505090642953,
+        -0.5071691324825311,
+        1.4330933946674242,
+        0.19721489196155234
+      ],
+      "success": true
+    },
+    "stress_grid": {
+      "criterion": -1716.4470354911864,
+      "criterion_gradient": [
+        8.517862415402533e-09,
+        -2.3044871301225456e-06,
+        5.532060448398823e-06,
+        2.304527149522851e-06,
+        -2.4874680093489587e-06
+      ],
+      "detection_sd": 0.19721489196155234,
+      "h": 4.1916455715273715,
+      "message": "ok",
+      "mode": {
+        "bound_touch": false,
+        "branch_count": 1,
+        "eta_max": -4.385205627959477,
+        "eta_min": -6.680268098906725,
+        "lower_support_slack": 5.134603300446173,
+        "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+        "newton_decrement": 4.689726898383243e-11,
+        "newton_step_inf": 1.5838571180156172e-11,
+        "proposal_eta_max": -2.380562577765869,
+        "proposal_eta_min": -8.865396699553827,
+        "proposal_grid_supported": true,
+        "score_inf": 3.356470656967758e-11,
+        "success": true,
+        "upper_support_slack": 2.380562577765869
+      },
+      "parameters": [
+        -5.891102107450253,
+        0.5927505090642953,
+        -0.5071691324825311,
+        1.4330933946674242,
+        0.19721489196155234
+      ],
+      "success": true
+    }
+  },
+  "recommendation": "Stop the fixed-grid profile here. The h=30 positive family has no material overlap between required 4-SD proposal support and numerically valid probability arithmetic. Implement and verify log-domain likelihood scoring before attempting the complete 35-point profile.",
+  "schema": "paper1-wide-grid-canary-v1",
+  "scope": "reviewed development canary only: nested-grid shift at the recorded free point and fixed-h fits at the first failed and maximum h; the [-14,0] stress-grid underflow is recorded separately; not a full profile",
+  "sources": {
+    "artifacts/paper1_profile_development_20261018/benchmark-executed-source/benchmark_spatial_profile-clean.py": "6dbbbf2d91e93e4f95bd5f76528928a4da5ce8760f87e07305b287864965ffa7",
+    "artifacts/paper1_profile_development_20261018/benchmark-executed-source/spatial_profile.py": "b41dd4edd116a6b88b30209544a900b5a086afa0c0e07d4c476a8a710dcf8f49",
+    "artifacts/paper1_profile_development_20261018/run-wide-grid-canary.py": "375aaefb399dc245ede2eddef4a1623939dfab5f091f2af6469a70298bd63b5d",
+    "src/latent_landscapes/preinvasion_likelihood.py": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12"
+  },
+  "status": "diagnostic_complete"
+}

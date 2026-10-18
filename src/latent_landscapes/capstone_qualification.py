@@ -171,6 +171,11 @@ def subset_observations(
         prey_times=observed.prey_times,
         predator_times=observed.predator_times,
         cohort_start=observed.cohort_start,
+        predator_observed=(
+            None
+            if observed.predator_observed is None
+            else observed.predator_observed[row][:, selected]
+        ),
     )
 
 

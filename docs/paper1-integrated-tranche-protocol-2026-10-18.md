@@ -1,7 +1,8 @@
 # Paper 1: reviewed protocol and numerical development
 
 18 October 2026. Codex consolidation of Correspondence thread 87 through
-Claude's messages 2009–2010 and Codex's replies 2012 and 2028. This is the current
+Claude's messages 2009–2010 and 2037, Codex's replies 2012, 2028 and 2051,
+and independent numerical/design review. This is the current
 development protocol; the
 [first plan](paper1-integrated-tranche-planning-2026-10-18.md) and
 [iteration-2 review](paper1-design-model-review-2026-10-18.md) preserve its
@@ -10,6 +11,8 @@ rule. The new fitted effect domain is [1,30], R3 is dropped, and bootstrap
 coverage is assessed by truth inclusion without bootstrap endpoint inversion.
 The [first numerical development record](paper1-numerical-development-2026-10-18.md)
 reports the frailty recheck, prototype repairs and computational checks.
+The [profile-engine record](paper1-profile-engine-development-2026-10-18.md)
+records the subsequent engine, monitoring geometry and qualification review.
 Numerical implementation and qualification are under way. The final executable
 design must still be frozen and independently reviewed before validation.
 
@@ -171,8 +174,30 @@ alternative additive predator-plus-prey ledger
 development-only sensitivity, not another version of the fixed-network claim.
 Travel, shared trips and holdout-survey costs are not monetised by either ledger.
 
-Reserve 40 common holdout sites from a prespecified accessible-site sampling
-frame before drawing the training union. Score identical post-release prey
+The original narrow access frame cannot accommodate the requested training
+union on all three pilot archetypes. Following independent geometry review,
+the development design instead selects a 300-site master panel jointly: 15
+five-site clusters in each of four source-distance strata, with centres at
+least eight grid cells apart across all strata. Eligible centres lie within
+two Euclidean grid cells of the fixed road/transect network; every satellite
+site must be passable and source-reachable. This is a centre-access rule:
+satellites can lie farther than two cells from the network.
+
+A seeded random-priority mixed-integer programme selects the master panel.
+This is not uniform sampling over feasible panels. Record solver, objective,
+input hashes and selected site identities. Independently seeded labels then
+reserve two clusters per stratum as the 40 common holdout sites. The remaining
+13 clusters per stratum supply C's 260 training sites; an independently seeded
+six-cluster subset per stratum supplies the nested 120-site A/B panel and its
+fixed predator network. All selection and labels precede biological histories.
+Retain every map failure, infeasible geometry and unresolved solver result;
+do not replace failed seeds. Broader capacity checks precede design freeze.
+The first prespecified 30-map feasibility scan passed on all maps; the seeded
+priority selector also passed on the three pilot maps. These checks establish
+sampling capacity, not statistical performance or coverage of all possible
+geometries.
+
+Score identical post-release prey
 observations, conditioning on the same predator observations at prediction
 sites. This targets conditional prediction at new sites on the same realised
 map. It is neither joint predator–prey prediction nor prediction to a new
@@ -200,9 +225,45 @@ Laplace integration over the latent site effects. Grid density is a numerical
 choice to qualify through criterion/profile checks, not an accepted setting
 from a small count of interpolation points. Qualify at both 120 and 260 sites.
 
-Compare interpolation/Laplace with direct evaluation and higher-accuracy
-importance integration on difficult development cases and untouched numerical
-challenges. Check profile statistics and interval endpoints as well as estimates;
+Separate two numerical questions. First, qualify computation of the specified
+interpolated Laplace criterion against tighter optimisation, direct site
+likelihoods and refined integration grids. Second, assess sensitivity to
+higher-accuracy importance integration with reoptimised profiles. A successful
+Laplace computation does not establish equivalence to that integral. The
+operational criterion can be empirically calibrated, with its approximation
+defined as part of the procedure rather than described as exact integration.
+
+Use a 600-case development challenge suite, provisionally 360 base cases and
+240 enriched difficult cases across the six site-count-by-archetype cells.
+Keep their denominators separate. This is a finite challenge suite, not
+evidence for 99% agreement in every regime: even zero discordances among 100
+independent cases gives a one-sided 95% upper discordance bound of about 2.95%.
+At least 299 independent zero-discordance cases would be needed for a 1%
+bound in one prespecified regime, before multiple-regime adjustments.
+
+Check profile statistics and complete confidence sets as well as estimates:
+component counts, every boundary, contact with h=1 or h=30, and empty, full or
+unavailable sets. A 35-point logarithmic h mesh is a starting search. Sweep
+in both directions, include the exact variance-zero family at each h, propagate
+better branches, and refine peaks and cutoff crossings. Every retained point
+must lie below the selected free maximum within 1e-4 criterion units, or force
+refitting/failure. The projected gradient tolerance is 1e-3. Assess curve
+support using posterior curvature and tail mass, not mode position alone;
+unsupported proposals require a recorded grid expansion and recomputation.
+
+For an importance reference, require independent random streams, common draws
+across compared profile points, draw doubling and stable confidence-set topology.
+Proposed precision targets are paired 95% Monte Carlo half-widths at most .01
+for the LR difference and .005 for each log boundary. Report ESS and tail
+diagnostics; an insufficiently precise reference is indeterminate. Agreement
+targets (99% observed declaration/truth-inclusion agreement, 95th-percentile
+absolute LR difference at most .10 and log-boundary difference at most .05)
+are descriptive development targets. They do not excuse unresolved tail cases.
+Any integration fallback must have a frozen observable trigger, and the entire
+hybrid procedure must be calibrated. Development outcomes cannot retrospectively
+choose the procedure applied to a validation case.
+
+The difficult cases must
 include variance zero, weak information and corridor rare-arrival orderings.
 Measure free-intercept versus full-normaliser discrepancies using the exact
 generator. Range 5 and 20, plus an explicit iid-lognormal `K=I` candidate, are

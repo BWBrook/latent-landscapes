@@ -64,8 +64,13 @@ class PreInvasionObservations:
     predator_times: tuple[float, ...] = DEFAULT_PREDATOR_TIMES
     cohort_start: float = -60.0
     predator_emissions: FloatArray | None = None
+    predator_observed: NDArray[np.bool_] | None = None
 
     def __post_init__(self) -> None:
+        if tuple(self.predator_times) != DEFAULT_PREDATOR_TIMES:
+            raise ValueError(
+                "predator_times must match the canonical arrival-category survey calendar"
+            )
         if self.prey_counts.shape[:2] != self.predator_counts.shape[:2]:
             raise ValueError("prey and predator history/site dimensions must agree")
         if self.prey_counts.shape[2] != len(self.prey_times) or self.predator_counts.shape[
@@ -82,6 +87,15 @@ class PreInvasionObservations:
             arc2b.CATEGORY_COUNT,
         ):
             raise ValueError("predator_emissions shape does not match observations")
+        if self.predator_observed is not None:
+            observed = np.asarray(self.predator_observed)
+            if observed.shape != self.predator_counts.shape:
+                raise ValueError("predator_observed must match predator_counts shape")
+            if observed.dtype != np.dtype(bool):
+                raise ValueError("predator_observed must be boolean")
+            observed = np.array(observed, dtype=bool, copy=True, order="C")
+            observed.setflags(write=False)
+            object.__setattr__(self, "predator_observed", observed)
 
 
 def prepare_observations(
@@ -94,8 +108,15 @@ def prepare_observations(
     prey_times: Sequence[float] = DEFAULT_PREY_TIMES,
     predator_times: Sequence[float] = DEFAULT_PREDATOR_TIMES,
     cohort_start: float = -60.0,
+    predator_observed: NDArray[Any] | Sequence[bool] | None = None,
 ) -> PreInvasionObservations:
-    """Validate and return counts with sites in deterministic identifier order."""
+    """Validate and return counts with sites in deterministic identifier order.
+
+    ``predator_observed`` is an optional history-by-site-by-occasion boolean
+    mask.  False entries are unavailable visits: their count values are
+    placeholders and contribute neutral emissions.  Omitting the mask keeps
+    the historical all-visits-observed behaviour.
+    """
     prey = _as_counts(prey_counts, "prey_counts", (len(tuple(prey_times)),))
     predator = _as_counts(predator_counts, "predator_counts", (len(tuple(predator_times)),))
     ids = tuple(str(value) for value in site_ids)
@@ -103,6 +124,17 @@ def prepare_observations(
         raise ValueError("site_ids must be unique nonempty identifiers matching the arrays")
     order = np.argsort(np.asarray(ids), kind="stable")
     sorted_ids = tuple(ids[index] for index in order)
+    if predator_observed is None:
+        predator_available = None
+    else:
+        predator_available = np.asarray(predator_observed)
+        if predator_available.shape != predator.shape:
+            raise ValueError("predator_observed must match predator_counts shape")
+        if predator_available.dtype != np.dtype(bool):
+            raise ValueError("predator_observed must be boolean")
+        predator_available = np.array(
+            predator_available[:, order], dtype=bool, copy=True, order="C"
+        )
     mask = np.asarray(training_mask, dtype=bool)
     if mask.shape == prey.shape[:2]:
         if not np.all(mask == mask[0]):
@@ -124,18 +156,21 @@ def prepare_observations(
         raise ValueError("cohort_start must be finite")
     if prey_times_tuple[0] < cohort_start:
         raise ValueError("prey_times cannot precede cohort_start")
-    predator_emissions = _predator_emissions(predator)
+    sorted_prey = np.ascontiguousarray(prey[:, order])
+    sorted_predator = np.ascontiguousarray(predator[:, order])
+    predator_emissions = _predator_emissions(sorted_predator, observed=predator_available)
     predator_emissions.setflags(write=False)
     result = PreInvasionObservations(
         sorted_ids,
-        np.ascontiguousarray(prey[:, order]),
-        np.ascontiguousarray(predator[:, order]),
+        sorted_prey,
+        sorted_predator,
         np.ascontiguousarray(mask),
         np.ascontiguousarray(initial),
         prey_times_tuple,
         predator_times_tuple,
         float(cohort_start),
         predator_emissions,
+        predator_available,
     )
     for array in (
         result.prey_counts,
@@ -564,18 +599,37 @@ def _apply_initial_state(
     events[dead, :] = all_zero[dead, None].astype(np.float64)
 
 
-def _predator_emissions(counts: IntArray, p: float = DETECTION_PROBABILITY) -> FloatArray:
+def _predator_emissions(
+    counts: IntArray,
+    p: float = DETECTION_PROBABILITY,
+    *,
+    observed: NDArray[np.bool_] | None = None,
+) -> FloatArray:
+    """Return predator-history emissions by latent arrival category.
+
+    Unavailable visits are neutral: their placeholder counts are excluded from
+    binomial probabilities and from the before-arrival zero-detection check.
+    """
     n, sites, occasions = counts.shape
+    if observed is None:
+        available = np.ones(counts.shape, dtype=bool)
+    else:
+        available = np.asarray(observed)
+        if available.shape != counts.shape or available.dtype != np.dtype(bool):
+            raise ValueError("predator_observed must be boolean and match predator_counts shape")
     log_prob = np.log(np.asarray([(1.0 - p) ** 2, p * (1.0 - p) * 2.0, p**2]))
-    occasion_log = log_prob[counts]
+    occasion_log = np.where(available, log_prob[counts], 0.0)
     cumulative = np.cumsum(occasion_log, axis=2)
     result = np.empty((n, sites, arc2b.CATEGORY_COUNT), dtype=np.float64)
     for category in range(arc2b.CATEGORY_COUNT):
-        occupied = cumulative[:, :, -1] if category == 0 else cumulative[:, :, category:]
         if category == 0:
-            result[:, :, category] = np.exp(occupied)
+            result[:, :, category] = np.exp(cumulative[:, :, -1])
         else:
-            valid = np.all(counts[:, :, : min(category, occasions)] == 0, axis=2)
+            before = min(category, occasions)
+            valid = np.all(
+                (~available[:, :, :before]) | (counts[:, :, :before] == 0),
+                axis=2,
+            )
             result[:, :, category] = (
                 np.exp(cumulative[:, :, -1] - cumulative[:, :, category - 1]) * valid
             )
@@ -704,7 +758,11 @@ def score_observations(
         observations.predator_emissions
         if detection_probability == DETECTION_PROBABILITY
         and observations.predator_emissions is not None
-        else _predator_emissions(observations.predator_counts, detection_probability)
+        else _predator_emissions(
+            observations.predator_counts,
+            detection_probability,
+            observed=observations.predator_observed,
+        )
     )
     events, alive = _prey_emissions(observations.prey_counts, detection_probability, detection_sd)
     _apply_initial_state(events, alive, observations.prey_counts, observations.initial_alive)
@@ -863,16 +921,26 @@ def oracle_arrival_scores(
         pred_prob = np.empty_like(event_probability)
         for i in range(pred_prob.shape[0]):
             for site, time_arrival in enumerate(arrival[i]):
+                observed = (
+                    np.ones(len(observations.predator_times), dtype=bool)
+                    if observations.predator_observed is None
+                    else observations.predator_observed[i, site]
+                )
                 pred_prob[i, site] = np.prod(
                     [
                         (
-                            math.comb(2, int(count))
-                            * detection_probability ** int(count)
-                            * (1.0 - detection_probability) ** (2 - int(count))
-                            if time_arrival <= time
-                            else float(count == 0)
+                            1.0
+                            if not available
+                            else (
+                                math.comb(2, int(count))
+                                * detection_probability ** int(count)
+                                * (1.0 - detection_probability) ** (2 - int(count))
+                                if time_arrival <= time
+                                else float(count == 0)
+                            )
                         )
-                        for time, count in zip(
+                        for available, time, count in zip(
+                            observed,
                             observations.predator_times,
                             observations.predator_counts[i, site],
                             strict=True,

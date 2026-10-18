@@ -1,0 +1,351 @@
+{
+  "compressed_vs_direct": {
+    "first_invalid_node": {
+      "bad_details": [
+        {
+          "compressed_per_occasion_terms": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "compressed_probability": 0.0,
+          "compressed_terminal_term": 0.0,
+          "compressed_weighted_survival": [
+            0.0019125779391739128,
+            0.0019125779391739128,
+            2.959445819307041e-05,
+            4.5793268750118736e-07,
+            7.085865364183704e-09,
+            1.096438173769982e-10,
+            1.6965841250337458e-12,
+            2.625225719220881e-14,
+            4.3257506455304984e-47,
+            2.1076525721185568e-101,
+            1.0269198871524485e-155,
+            5.003502325666829e-210,
+            2.4378762000969444e-264,
+            1.18782e-318
+          ],
+          "direct_per_occasion_terms": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "direct_probability": 0.0,
+          "direct_terminal_term": 0.0,
+          "direct_weighted_survival": [
+            0.0019125779391739128,
+            0.0019125779391739128,
+            2.959445819307041e-05,
+            4.5793268750118736e-07,
+            7.085865364183704e-09,
+            1.096438173769982e-10,
+            1.6965841250337458e-12,
+            2.625225719220881e-14,
+            4.3257506455305003e-47,
+            2.1076525721185574e-101,
+            1.0269198871524489e-155,
+            5.003502325666831e-210,
+            2.4378762000969453e-264,
+            1.18782e-318
+          ],
+          "effect_index": 0,
+          "history_index": 0,
+          "predator_counts": [
+            2,
+            1,
+            2,
+            0,
+            2,
+            1
+          ],
+          "predator_observed": null,
+          "predator_times": [
+            10.0,
+            20.0,
+            30.0,
+            40.0,
+            50.0,
+            60.0
+          ],
+          "prey_counts": [
+            2,
+            2,
+            1,
+            0,
+            2,
+            2,
+            0,
+            2,
+            2,
+            0,
+            2,
+            2,
+            2
+          ],
+          "prey_times": [
+            -60.0,
+            -50.0,
+            -40.0,
+            -30.0,
+            -20.0,
+            -10.0,
+            0.0,
+            10.0,
+            20.0,
+            30.0,
+            40.0,
+            50.0,
+            60.0
+          ],
+          "site_id": "cell_35_04",
+          "site_index": 51
+        }
+      ],
+      "bad_indices_identical": true,
+      "compressed": {
+        "all_finite": true,
+        "min_log_positive": -719.634019333248,
+        "min_positive": 2.9303292065e-313,
+        "negative_count": 0,
+        "nonfinite_count": 0,
+        "zero_count": 1
+      },
+      "direct": {
+        "all_finite": true,
+        "min_log_positive": -719.634019333248,
+        "min_positive": 2.9303292065e-313,
+        "negative_count": 0,
+        "nonfinite_count": 0,
+        "zero_count": 1
+      },
+      "eta": -0.875,
+      "h": 30.0,
+      "max_abs_probability_difference": 2.82118644197349e-37,
+      "max_relative_probability_difference": 6.647050965211299e-15,
+      "x": 120.88998570676743
+    },
+    "last_valid_node": {
+      "bad_details": [],
+      "bad_indices_identical": true,
+      "compressed": {
+        "all_finite": true,
+        "min_log_positive": -704.1993010226582,
+        "min_positive": 1.4795491803762372e-306,
+        "negative_count": 0,
+        "nonfinite_count": 0,
+        "zero_count": 0
+      },
+      "direct": {
+        "all_finite": true,
+        "min_log_positive": -704.1993010226582,
+        "min_positive": 1.4795491803762382e-306,
+        "negative_count": 0,
+        "nonfinite_count": 0,
+        "zero_count": 0
+      },
+      "eta": -0.9375,
+      "h": 30.0,
+      "max_abs_probability_difference": 7.52316384526264e-37,
+      "max_relative_probability_difference": 5.9424565942437874e-15,
+      "x": 113.56563173627171
+    }
+  },
+  "generated_utc": "2026-10-18T10:13:29.240989+00:00",
+  "grid": {
+    "max": 0.0,
+    "min": -14.0,
+    "nodes": 225,
+    "spacing": 0.0625
+  },
+  "inputs": {
+    "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+    "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+    "artifacts/paper1_profile_development_20261018/arrival-bank-order816-max290.npz": "8cf2a16a01fc50ac9801a37801a752a9c15bc6ff17f1f6c3fab6d572463bbf8b",
+    "artifacts/paper1_profile_development_20261018/benchmark/B_H3-training120/receipt.json": "0ac23e62153e3f8d21458b11305f4ea4ce4dcd61a69bc2714e1bb8055c3edc64"
+  },
+  "interpretation": "At h=30 the full observed-history probability underflows to exact zero from eta=-0.875 upward. Direct raw-arrival scoring reproduces the first zero at the same site; this is floating-point probability arithmetic, not compressed-bank error.",
+  "scans": {
+    "h=30": {
+      "detection_sd": 0.2013292938847899,
+      "first_invalid_eta": -0.875,
+      "h": 30.0,
+      "invalid_node_count": 15,
+      "invalid_nodes": [
+        {
+          "all_finite": true,
+          "eta": -0.875,
+          "min_log_positive": -719.634019333248,
+          "min_positive": 2.9303292065e-313,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "zero_count": 1
+        },
+        {
+          "all_finite": true,
+          "eta": -0.8125,
+          "min_log_positive": -722.6618152721962,
+          "min_positive": 1.4189312224e-314,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "zero_count": 2
+        },
+        {
+          "all_finite": true,
+          "eta": -0.75,
+          "min_log_positive": -651.0989776184891,
+          "min_positive": 1.703361580418199e-283,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "zero_count": 4
+        },
+        {
+          "all_finite": true,
+          "eta": -0.6875,
+          "min_log_positive": -691.6339009927073,
+          "min_positive": 4.238510873606884e-301,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "zero_count": 4
+        },
+        {
+          "all_finite": true,
+          "eta": -0.625,
+          "min_log_positive": -734.782420970707,
+          "min_positive": 7.7277e-320,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "zero_count": 4
+        },
+        {
+          "all_finite": true,
+          "eta": -0.5625,
+          "min_log_positive": -620.6333020753042,
+          "min_positive": 2.8998906607389855e-270,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "zero_count": 7
+        },
+        {
+          "all_finite": true,
+          "eta": -0.5,
+          "min_log_positive": -658.6920950526712,
+          "min_positive": 8.583370226109516e-287,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "zero_count": 7
+        },
+        {
+          "all_finite": true,
+          "eta": -0.4375,
+          "min_log_positive": -699.2052931754503,
+          "min_positive": 2.182727179535286e-304,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "zero_count": 7
+        },
+        {
+          "all_finite": true,
+          "eta": -0.375,
+          "min_log_positive": -742.3606303797014,
+          "min_positive": 4e-323,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "zero_count": 7
+        },
+        {
+          "all_finite": true,
+          "eta": -0.3125,
+          "min_log_positive": -741.4443396478273,
+          "min_positive": 1e-322,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "zero_count": 9
+        },
+        {
+          "all_finite": true,
+          "eta": -0.25,
+          "min_log_positive": -682.0854389166111,
+          "min_positive": 5.943711100119293e-297,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "zero_count": 13
+        },
+        {
+          "all_finite": true,
+          "eta": -0.1875,
+          "min_log_positive": -724.2551114069433,
+          "min_positive": 2.8840423e-315,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "zero_count": 13
+        },
+        {
+          "all_finite": true,
+          "eta": -0.125,
+          "min_log_positive": -702.2573200221428,
+          "min_positive": 1.0316230524076943e-305,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "zero_count": 14
+        },
+        {
+          "all_finite": true,
+          "eta": -0.0625,
+          "min_log_positive": -744.4400719213812,
+          "min_positive": 5e-324,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "zero_count": 15
+        },
+        {
+          "all_finite": true,
+          "eta": 0.0,
+          "min_log_positive": -726.7381723390275,
+          "min_positive": 2.4078086e-316,
+          "negative_count": 0,
+          "nonfinite_count": 0,
+          "zero_count": 17
+        }
+      ],
+      "largest_valid_eta": -0.9375
+    },
+    "h=6.05348359971736": {
+      "detection_sd": 0.19735718980197914,
+      "first_invalid_eta": null,
+      "h": 6.053483599717359,
+      "invalid_node_count": 0,
+      "invalid_nodes": [],
+      "largest_valid_eta": 0.0
+    }
+  },
+  "schema": "paper1-upper0-underflow-diagnostic-v1",
+  "scope": "localize the failed [-14,0] canary and compare compressed with direct raw scoring",
+  "sources": {
+    "artifacts/paper1_profile_development_20261018/benchmark-executed-source/spatial_profile.py": "b41dd4edd116a6b88b30209544a900b5a086afa0c0e07d4c476a8a710dcf8f49",
+    "artifacts/paper1_profile_development_20261018/diagnose-upper0-underflow.py": "b05dfb1f02aa2a5c8e2b719d55fe968467125864b626b1a6fc718c283426efd4",
+    "artifacts/paper1_profile_development_20261018/run-wide-grid-canary-initial-upper0.py": "cdbbcb4eebc38617901a31fc9813de3585e23b4cc0501991913edf948a919808",
+    "src/latent_landscapes/preinvasion_likelihood.py": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12"
+  },
+  "status": "diagnostic_complete"
+}

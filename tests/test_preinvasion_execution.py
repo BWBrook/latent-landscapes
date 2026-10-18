@@ -72,3 +72,26 @@ def test_subsets_align_bank_and_observations_and_grid_bounds() -> None:
                 assert parameters["h"] == 1
             if model.startswith("constant"):
                 assert parameters["beta"] == 0
+
+
+def test_subset_observations_preserves_predator_missingness() -> None:
+    data = _data()
+    source_mask = np.ones_like(data.observations.predator_counts, dtype=bool)
+    source_mask[:, 1, ::2] = False
+    observed = likelihood.prepare_observations(
+        data.observations.prey_counts,
+        data.observations.predator_counts,
+        data.observations.site_ids,
+        data.observations.training_mask,
+        predator_observed=source_mask,
+    )
+    selected = execution.subset_observations(observed, np.asarray([True, True, False]), history=1)
+    expected_mask = source_mask[1:2, :2]
+    np.testing.assert_array_equal(selected.predator_observed, expected_mask)
+    np.testing.assert_array_equal(
+        selected.predator_emissions,
+        likelihood._predator_emissions(
+            selected.predator_counts,
+            observed=selected.predator_observed,
+        ),
+    )
