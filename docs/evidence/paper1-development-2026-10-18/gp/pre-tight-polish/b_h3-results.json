@@ -1,0 +1,1808 @@
+{
+  "fits": {
+    "free_h": {
+      "accepted_start_count": 2,
+      "best": null,
+      "best_positive": {
+        "criterion": -1716.4470354983664,
+        "kind": "positive_sigma",
+        "laplace_pd": true,
+        "mode_evaluations": 39,
+        "mode_gradient_inf": 7.825640135905587e-09,
+        "mode_iterations": 34,
+        "mode_success": true,
+        "optimizer": "powell_lbfgsb_polish",
+        "outer_fd": {
+          "gradient": [
+            -0.00031147711928239516,
+            -2.034653334703762e-05,
+            -4.0236045606434345e-05,
+            1.2343820167102111e-05,
+            9.025029612530489e-05
+          ],
+          "gradient_inf": 0.00031147711928239516,
+          "projected_gradient": [
+            -0.00031147711928239516,
+            -2.034653334703762e-05,
+            -4.0236045606434345e-05,
+            1.2343820167102111e-05,
+            9.025029612530489e-05
+          ],
+          "projected_gradient_inf": 0.00031147711928239516,
+          "schemes": [
+            "central",
+            "central",
+            "central",
+            "central",
+            "central"
+          ],
+          "status": "ok",
+          "step": 0.0001
+        },
+        "parameters": {
+          "alpha": -5.8910751570842645,
+          "beta": 0.5927353972582021,
+          "detection_sd": 0.19721486397675794,
+          "h": 4.19158607954585,
+          "sigma": 0.602177007676769
+        }
+      },
+      "best_sigma_zero": null,
+      "candidate_count": 12,
+      "curve_cache": {
+        "count": 554,
+        "seconds": 368.4868694646284
+      },
+      "elapsed_seconds": 401.99897300009616,
+      "eligible_candidate_count": 2,
+      "eligible_start_count": 1,
+      "failures": [
+        "Newton line search failed",
+        "Newton line search failed",
+        "Newton line search failed",
+        "mode touched interpolation bounds: [-12.6172, -11.4729] outside [-12, -2]",
+        "mode touched interpolation bounds: [-12.6184, -11.4741] outside [-12, -2]",
+        "mode touched interpolation bounds: [-12.616, -11.4717] outside [-12, -2]",
+        "mode touched interpolation bounds: [-12.6173, -11.4729] outside [-12, -2]",
+        "mode touched interpolation bounds: [-12.6171, -11.473] outside [-12, -2]",
+        "mode touched interpolation bounds: [-12.6172, -11.4729] outside [-12, -2]",
+        "mode touched interpolation bounds: [-12.6172, -11.4729] outside [-12, -2]",
+        "mode touched interpolation bounds: [-12.6172, -11.4729] outside [-12, -2]",
+        "mode touched interpolation bounds: [-12.6172, -11.4729] outside [-12, -2]",
+        "Newton line search failed"
+      ],
+      "family_resolution": {
+        "positive_sigma": {
+          "eligible_candidate_count": 2,
+          "fallback_triggered": true,
+          "lower_unqualified_candidate_count": 0,
+          "rejected_candidate_count": 6,
+          "resolved": true
+        },
+        "sigma_zero": {
+          "eligible_candidate_count": 0,
+          "fallback_triggered": true,
+          "lower_unqualified_candidate_count": 4,
+          "rejected_candidate_count": 4,
+          "resolved": false
+        }
+      },
+      "fixed_h": null,
+      "kkt_threshold": 0.001,
+      "mode_calls": 1197,
+      "pd_failures": 4,
+      "rejected_candidate_count": 10,
+      "rejected_start_count": 3,
+      "start_count": 4,
+      "starts": [
+        {
+          "eligible": false,
+          "final": [
+            -5.5,
+            0.4,
+            -1.0498221244986778,
+            1.0986122886681098,
+            0.2
+          ],
+          "kind": "positive_sigma",
+          "message": "retained incumbent",
+          "nfev": 1,
+          "nit": 0,
+          "objective": 1717.7011568471412,
+          "optimizer": "incumbent",
+          "outer_fd": {
+            "gradient": [
+              4.914793864620812,
+              -1.162173692819124,
+              -0.2861708519418179,
+              -1.504786504888619,
+              16.49756793653978
+            ],
+            "gradient_inf": 16.49756793653978,
+            "projected_gradient": [
+              4.914793864620812,
+              -1.162173692819124,
+              -0.2861708519418179,
+              -1.504786504888619,
+              16.49756793653978
+            ],
+            "projected_gradient_inf": 16.49756793653978,
+            "schemes": [
+              "central",
+              "central",
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.5,
+            "beta": 0.4,
+            "detection_sd": 0.2,
+            "h": 3.0000000000000004,
+            "sigma": 0.3499999999999999
+          },
+          "rejection_reasons": [
+            "outer_kkt_failed"
+          ],
+          "sigma_zero": false,
+          "start": [
+            -5.5,
+            0.4,
+            -1.0498221244986778,
+            1.0986122886681098,
+            0.2
+          ],
+          "start_id": "positive_0",
+          "success": true
+        },
+        {
+          "eligible": false,
+          "final": [
+            -5.762706999474671,
+            0.527827835841866,
+            -0.9542585889007238,
+            1.3258056076683475,
+            0.1987557488456562
+          ],
+          "kind": "positive_sigma",
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "nfev": 209,
+          "nit": 13,
+          "objective": 1716.70348000713,
+          "optimizer": "lbfgsb",
+          "outer_fd": {
+            "gradient": [
+              0.7453477864446718,
+              0.352658282736229,
+              -0.745577127645447,
+              null,
+              8.179370914831452
+            ],
+            "gradient_inf": 8.179370914831452,
+            "projected_gradient": [
+              0.7453477864446718,
+              0.352658282736229,
+              -0.745577127645447,
+              null,
+              8.179370914831452
+            ],
+            "projected_gradient_inf": 8.179370914831452,
+            "schemes": [
+              "central",
+              "central",
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "failed_support",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.762706999474671,
+            "beta": 0.527827835841866,
+            "detection_sd": 0.1987557488456562,
+            "h": 3.765217421535684,
+            "sigma": 0.3850975543380037
+          },
+          "rejection_reasons": [
+            "outer_fd_failed"
+          ],
+          "sigma_zero": false,
+          "start": [
+            -5.5,
+            0.4,
+            -1.0498221244986778,
+            1.0986122886681098,
+            0.2
+          ],
+          "start_id": "positive_0",
+          "success": true
+        },
+        {
+          "eligible": false,
+          "final": [
+            -5.5,
+            0.0,
+            -1.6094379124341003,
+            0.1823215567939546,
+            0.1
+          ],
+          "kind": "positive_sigma",
+          "message": "retained incumbent",
+          "nfev": 1,
+          "nit": 0,
+          "objective": 1761.792930920246,
+          "optimizer": "incumbent",
+          "outer_fd": {
+            "gradient": [
+              -11.891883734320302,
+              -20.90303888053313,
+              -2.1081643096831715,
+              -14.018657550423086,
+              -733.377813808147
+            ],
+            "gradient_inf": 733.377813808147,
+            "projected_gradient": [
+              -11.891883734320302,
+              -20.90303888053313,
+              -2.1081643096831715,
+              -14.018657550423086,
+              -733.377813808147
+            ],
+            "projected_gradient_inf": 733.377813808147,
+            "schemes": [
+              "central",
+              "central",
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.5,
+            "beta": 0.0,
+            "detection_sd": 0.1,
+            "h": 1.2,
+            "sigma": 0.2
+          },
+          "rejection_reasons": [
+            "outer_kkt_failed"
+          ],
+          "sigma_zero": false,
+          "start": [
+            -5.5,
+            0.0,
+            -1.6094379124341003,
+            0.1823215567939546,
+            0.1
+          ],
+          "start_id": "positive_1",
+          "success": true
+        },
+        {
+          "eligible": false,
+          "final": [
+            -5.891060849653367,
+            0.5927539515070729,
+            -0.5072647039177046,
+            1.4330596715584625,
+            0.1972106459392395
+          ],
+          "kind": "positive_sigma",
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "nfev": 451,
+          "nit": 34,
+          "objective": 1716.4470355554208,
+          "optimizer": "lbfgsb",
+          "outer_fd": {
+            "gradient": [
+              -0.00010990418223308384,
+              0.00036935261960024945,
+              -0.000278710103884805,
+              8.860698916321935e-05,
+              -0.02009898480537231
+            ],
+            "gradient_inf": 0.02009898480537231,
+            "projected_gradient": [
+              -0.00010990418223308384,
+              0.00036935261960024945,
+              -0.000278710103884805,
+              8.860698916321935e-05,
+              -0.02009898480537231
+            ],
+            "projected_gradient_inf": 0.02009898480537231,
+            "schemes": [
+              "central",
+              "central",
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.891060849653367,
+            "beta": 0.5927539515070729,
+            "detection_sd": 0.1972106459392395,
+            "h": 4.191504218590477,
+            "sigma": 0.6021403604733437
+          },
+          "rejection_reasons": [
+            "outer_kkt_failed"
+          ],
+          "sigma_zero": false,
+          "start": [
+            -5.5,
+            0.0,
+            -1.6094379124341003,
+            0.1823215567939546,
+            0.1
+          ],
+          "start_id": "positive_1",
+          "success": true
+        },
+        {
+          "eligible": false,
+          "final": [
+            -5.891168849651824,
+            0.5928625884694861,
+            -0.5087074038966557,
+            1.4324643281325615,
+            0.19722001165208683
+          ],
+          "kind": "legacy_warmstart",
+          "message": "retained incumbent",
+          "nfev": 1,
+          "nit": 0,
+          "objective": 1716.4470419408024,
+          "optimizer": "incumbent",
+          "outer_fd": {
+            "gradient": [
+              -0.009434599280214173,
+              0.001800284508135519,
+              -0.007252601790241897,
+              -0.00466061452082484,
+              0.022252266944633448
+            ],
+            "gradient_inf": 0.022252266944633448,
+            "projected_gradient": [
+              -0.009434599280214173,
+              0.001800284508135519,
+              -0.007252601790241897,
+              -0.00466061452082484,
+              0.022252266944633448
+            ],
+            "projected_gradient_inf": 0.022252266944633448,
+            "schemes": [
+              "central",
+              "central",
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.891168849651824,
+            "beta": 0.5928625884694861,
+            "detection_sd": 0.19722001165208683,
+            "h": 4.18900957676729,
+            "sigma": 0.6012722789291436
+          },
+          "rejection_reasons": [
+            "outer_kkt_failed"
+          ],
+          "sigma_zero": false,
+          "start": [
+            -5.891168849651824,
+            0.5928625884694861,
+            -0.5087074038966557,
+            1.4324643281325615,
+            0.19722001165208683
+          ],
+          "start_id": "positive_2",
+          "success": true
+        },
+        {
+          "eligible": false,
+          "final": [
+            -5.891166297134154,
+            0.5928621014054258,
+            -0.5087054328856936,
+            1.4324655890553166,
+            0.19721395155653274
+          ],
+          "kind": "legacy_warmstart",
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "nfev": 33,
+          "nit": 1,
+          "objective": 1716.4470418454923,
+          "optimizer": "lbfgsb",
+          "outer_fd": {
+            "gradient": [
+              -0.009430178371247325,
+              0.0018132448076357832,
+              -0.0071529336764797335,
+              -0.004649002574480611,
+              -0.006887444214953575
+            ],
+            "gradient_inf": 0.009430178371247325,
+            "projected_gradient": [
+              -0.009430178371247325,
+              0.0018132448076357832,
+              -0.0071529336764797335,
+              -0.004649002574480611,
+              -0.006887444214953575
+            ],
+            "projected_gradient_inf": 0.009430178371247325,
+            "schemes": [
+              "central",
+              "central",
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.891166297134154,
+            "beta": 0.5928621014054258,
+            "detection_sd": 0.19721395155653274,
+            "h": 4.189014858788117,
+            "sigma": 0.6012734640445645
+          },
+          "rejection_reasons": [
+            "outer_kkt_failed"
+          ],
+          "sigma_zero": false,
+          "start": [
+            -5.891168849651824,
+            0.5928625884694861,
+            -0.5087074038966557,
+            1.4324643281325615,
+            0.19722001165208683
+          ],
+          "start_id": "positive_2",
+          "success": true
+        },
+        {
+          "eligible": false,
+          "final": [
+            -5.5,
+            0.4,
+            1.0986122886681098,
+            0.2
+          ],
+          "kind": "sigma_zero",
+          "message": "retained incumbent",
+          "nfev": 1,
+          "nit": 0,
+          "objective": 1718.1263364927759,
+          "optimizer": "incumbent",
+          "outer_fd": {
+            "gradient": [
+              6.350044619797369,
+              0.7699653963300079,
+              -0.1296141121924892,
+              16.89729689132946
+            ],
+            "gradient_inf": 16.89729689132946,
+            "projected_gradient": [
+              6.350044619797369,
+              0.7699653963300079,
+              -0.1296141121924892,
+              16.89729689132946
+            ],
+            "projected_gradient_inf": 16.89729689132946,
+            "schemes": [
+              "central",
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.5,
+            "beta": 0.4,
+            "detection_sd": 0.2,
+            "h": 3.0000000000000004,
+            "sigma": 0.0
+          },
+          "rejection_reasons": [
+            "outer_kkt_failed"
+          ],
+          "sigma_zero": true,
+          "start": [
+            -5.5,
+            0.4,
+            1.0986122886681098,
+            0.2
+          ],
+          "start_id": "sigma_zero_0",
+          "success": true
+        },
+        {
+          "eligible": false,
+          "final": [
+            -5.5,
+            0.4,
+            1.0986122886681098,
+            0.2
+          ],
+          "kind": "sigma_zero",
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "nfev": 27,
+          "nit": 1,
+          "objective": 1718.1263364927759,
+          "optimizer": "lbfgsb",
+          "outer_fd": {
+            "gradient": [
+              6.350044619797369,
+              0.7699653963300079,
+              -0.1296141121924892,
+              16.89729689132946
+            ],
+            "gradient_inf": 16.89729689132946,
+            "projected_gradient": [
+              6.350044619797369,
+              0.7699653963300079,
+              -0.1296141121924892,
+              16.89729689132946
+            ],
+            "projected_gradient_inf": 16.89729689132946,
+            "schemes": [
+              "central",
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.5,
+            "beta": 0.4,
+            "detection_sd": 0.2,
+            "h": 3.0000000000000004,
+            "sigma": 0.0
+          },
+          "rejection_reasons": [
+            "outer_kkt_failed"
+          ],
+          "sigma_zero": true,
+          "start": [
+            -5.5,
+            0.4,
+            1.0986122886681098,
+            0.2
+          ],
+          "start_id": "sigma_zero_0",
+          "success": true
+        },
+        {
+          "eligible": true,
+          "final": [
+            -5.891075237131052,
+            0.592735391916217,
+            -0.5072038545307582,
+            1.4330792044464975,
+            0.19721469308093162
+          ],
+          "kind": "positive_sigma",
+          "message": "Optimization terminated successfully.",
+          "nfev": 60,
+          "nit": 1,
+          "objective": 1716.4470354983969,
+          "optimizer": "powell",
+          "outer_fd": {
+            "gradient": [
+              -0.0003148207120524812,
+              -2.1008190742577426e-05,
+              -4.059529601363465e-05,
+              1.1284758452793277e-05,
+              -0.000730722149455687
+            ],
+            "gradient_inf": 0.000730722149455687,
+            "projected_gradient": [
+              -0.0003148207120524812,
+              -2.1008190742577426e-05,
+              -4.059529601363465e-05,
+              1.1284758452793277e-05,
+              -0.000730722149455687
+            ],
+            "projected_gradient_inf": 0.000730722149455687,
+            "schemes": [
+              "central",
+              "central",
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.891075237131052,
+            "beta": 0.592735391916217,
+            "detection_sd": 0.19721469308093162,
+            "h": 4.191586091572683,
+            "sigma": 0.6021770014599137
+          },
+          "rejection_reasons": [],
+          "sigma_zero": false,
+          "start": [
+            -5.891060849653367,
+            0.5927539515070729,
+            -0.5072647039177046,
+            1.4330596715584625,
+            0.1972106459392395
+          ],
+          "start_id": "positive_1",
+          "success": true
+        },
+        {
+          "eligible": true,
+          "final": [
+            -5.8910751570842645,
+            0.5927353972582021,
+            -0.5072038442067917,
+            1.4330792015772178,
+            0.19721486397675794
+          ],
+          "kind": "positive_sigma",
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "nfev": 33,
+          "nit": 1,
+          "objective": 1716.4470354983664,
+          "optimizer": "powell_lbfgsb_polish",
+          "outer_fd": {
+            "gradient": [
+              -0.00031147711928239516,
+              -2.034653334703762e-05,
+              -4.0236045606434345e-05,
+              1.2343820167102111e-05,
+              9.025029612530489e-05
+            ],
+            "gradient_inf": 0.00031147711928239516,
+            "projected_gradient": [
+              -0.00031147711928239516,
+              -2.034653334703762e-05,
+              -4.0236045606434345e-05,
+              1.2343820167102111e-05,
+              9.025029612530489e-05
+            ],
+            "projected_gradient_inf": 0.00031147711928239516,
+            "schemes": [
+              "central",
+              "central",
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.8910751570842645,
+            "beta": 0.5927353972582021,
+            "detection_sd": 0.19721486397675794,
+            "h": 4.19158607954585,
+            "sigma": 0.602177007676769
+          },
+          "rejection_reasons": [],
+          "sigma_zero": false,
+          "start": [
+            -5.891075237131052,
+            0.592735391916217,
+            -0.5072038545307582,
+            1.4330792044464975,
+            0.19721469308093162
+          ],
+          "start_id": "positive_1",
+          "success": true
+        },
+        {
+          "eligible": false,
+          "final": [
+            -5.702203550976396,
+            0.4371848289615917,
+            1.2882417387701615,
+            0.19713685985607338
+          ],
+          "kind": "sigma_zero",
+          "message": "Optimization terminated successfully.",
+          "nfev": 212,
+          "nit": 4,
+          "objective": 1717.483660587735,
+          "optimizer": "powell",
+          "outer_fd": {
+            "gradient": [
+              -0.0011756322609235861,
+              0.002811809736158466,
+              -0.00020253463185950497,
+              0.07704212521275622
+            ],
+            "gradient_inf": 0.07704212521275622,
+            "projected_gradient": [
+              -0.0011756322609235861,
+              0.002811809736158466,
+              -0.00020253463185950497,
+              0.07704212521275622
+            ],
+            "projected_gradient_inf": 0.07704212521275622,
+            "schemes": [
+              "central",
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.702203550976396,
+            "beta": 0.4371848289615917,
+            "detection_sd": 0.19713685985607338,
+            "h": 3.62640478005404,
+            "sigma": 0.0
+          },
+          "rejection_reasons": [
+            "outer_kkt_failed"
+          ],
+          "sigma_zero": true,
+          "start": [
+            -5.5,
+            0.4,
+            1.0986122886681098,
+            0.2
+          ],
+          "start_id": "sigma_zero_0",
+          "success": true
+        },
+        {
+          "eligible": false,
+          "final": [
+            -5.702202973966019,
+            0.4371836934145211,
+            1.2882418553726702,
+            0.19712084321076506
+          ],
+          "kind": "sigma_zero",
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "nfev": 36,
+          "nit": 2,
+          "objective": 1717.483659967286,
+          "optimizer": "powell_lbfgsb_polish",
+          "outer_fd": {
+            "gradient": [
+              -0.0016001951375508921,
+              0.0026380678264104063,
+              -0.0003609073586175135,
+              -0.00018027435544354375
+            ],
+            "gradient_inf": 0.0026380678264104063,
+            "projected_gradient": [
+              -0.0016001951375508921,
+              0.0026380678264104063,
+              -0.0003609073586175135,
+              -0.00018027435544354375
+            ],
+            "projected_gradient_inf": 0.0026380678264104063,
+            "schemes": [
+              "central",
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.702202973966019,
+            "beta": 0.4371836934145211,
+            "detection_sd": 0.19712084321076506,
+            "h": 3.62640520290196,
+            "sigma": 0.0
+          },
+          "rejection_reasons": [
+            "outer_kkt_failed"
+          ],
+          "sigma_zero": true,
+          "start": [
+            -5.702203550976396,
+            0.4371848289615917,
+            1.2882417387701615,
+            0.19713685985607338
+          ],
+          "start_id": "sigma_zero_0",
+          "success": true
+        }
+      ],
+      "status": "unresolved"
+    },
+    "h1": {
+      "accepted_start_count": 3,
+      "best": {
+        "criterion": -1724.6023731471155,
+        "curve_check": {
+          "errors": [
+            4.4204557458016325e-05,
+            5.0046402577663684e-09,
+            4.887134252840042e-09,
+            5.196135077767394e-09,
+            5.879048359247463e-09,
+            6.4629688267814345e-09,
+            1.02478772134873e-08,
+            1.9534621031880306e-08,
+            4.304429879198324e-08,
+            1.020061830558916e-07,
+            2.4470775628060437e-07,
+            0.0029009393206074208
+          ],
+          "exact_grid_nodes": [],
+          "max_abs_loglik_error": 0.0029009393206074208,
+          "max_series_remainder_bound": 0.0,
+          "midpoint_count": 12
+        },
+        "kind": "positive_sigma",
+        "laplace_pd": true,
+        "mode_curve_bound_touch": false,
+        "mode_eta_max": -4.246722099741838,
+        "mode_eta_min": -6.309528963574979,
+        "mode_evaluations": 46,
+        "mode_gradient_inf": 9.744527962318728e-10,
+        "mode_iterations": 40,
+        "mode_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+        "mode_success": true,
+        "mode_value": -1722.9399750436892,
+        "optimizer": "lbfgsb",
+        "outer_fd": {
+          "gradient": [
+            1.1133372265491763e-05,
+            0.00012286250239412766,
+            -4.505011295683405e-06,
+            -3.409354576433543e-05
+          ],
+          "gradient_inf": 0.00012286250239412766,
+          "projected_gradient": [
+            1.1133372265491763e-05,
+            0.00012286250239412766,
+            -4.505011295683405e-06,
+            -3.409354576433543e-05
+          ],
+          "projected_gradient_inf": 0.00012286250239412766,
+          "schemes": [
+            "central",
+            "central",
+            "central",
+            "central"
+          ],
+          "status": "ok",
+          "step": 0.0001
+        },
+        "parameters": {
+          "alpha": -5.522608153107129,
+          "beta": 0.7030942454770028,
+          "detection_sd": 0.1982867055362149,
+          "h": 1.0,
+          "sigma": 0.2672497802375962
+        },
+        "sigma_zero": false
+      },
+      "best_positive": {
+        "criterion": -1724.6023731471155,
+        "kind": "positive_sigma",
+        "laplace_pd": true,
+        "mode_evaluations": 46,
+        "mode_gradient_inf": 9.744527962318728e-10,
+        "mode_iterations": 40,
+        "mode_success": true,
+        "optimizer": "lbfgsb",
+        "outer_fd": {
+          "gradient": [
+            1.1133372265491763e-05,
+            0.00012286250239412766,
+            -4.505011295683405e-06,
+            -3.409354576433543e-05
+          ],
+          "gradient_inf": 0.00012286250239412766,
+          "projected_gradient": [
+            1.1133372265491763e-05,
+            0.00012286250239412766,
+            -4.505011295683405e-06,
+            -3.409354576433543e-05
+          ],
+          "projected_gradient_inf": 0.00012286250239412766,
+          "schemes": [
+            "central",
+            "central",
+            "central",
+            "central"
+          ],
+          "status": "ok",
+          "step": 0.0001
+        },
+        "parameters": {
+          "alpha": -5.522608153107129,
+          "beta": 0.7030942454770028,
+          "detection_sd": 0.1982867055362149,
+          "h": 1.0,
+          "sigma": 0.2672497802375962
+        }
+      },
+      "best_sigma_zero": {
+        "criterion": -1724.698498785358,
+        "kind": "sigma_zero",
+        "laplace_pd": true,
+        "mode_success": true,
+        "optimizer": "powell_lbfgsb_polish",
+        "outer_fd": {
+          "gradient": [
+            1.4316427978425992e-07,
+            -3.1377567211166024e-06,
+            -5.7539182307664305e-05
+          ],
+          "gradient_inf": 5.7539182307664305e-05,
+          "projected_gradient": [
+            1.4316427978425992e-07,
+            -3.1377567211166024e-06,
+            -5.7539182307664305e-05
+          ],
+          "projected_gradient_inf": 5.7539182307664305e-05,
+          "schemes": [
+            "central",
+            "central",
+            "central"
+          ],
+          "status": "ok",
+          "step": 0.0001
+        },
+        "parameters": {
+          "alpha": -5.479294007284875,
+          "beta": 0.6568608207231277,
+          "detection_sd": 0.1982125245657082,
+          "h": 1.0,
+          "sigma": 0.0
+        }
+      },
+      "candidate_count": 10,
+      "curve_cache": {
+        "count": 203,
+        "seconds": 16.499829173786566
+      },
+      "elapsed_seconds": 32.590373166138306,
+      "eligible_candidate_count": 3,
+      "eligible_start_count": 2,
+      "failures": [
+        "mode touched interpolation bounds: [-5.03865, 1.14719] outside [-12, -2]",
+        "mode touched interpolation bounds: [-5.03895, 1.14689] outside [-12, -2]",
+        "mode touched interpolation bounds: [-5.03925, 1.14659] outside [-12, -2]",
+        "mode touched interpolation bounds: [-5.03845, 1.14678] outside [-12, -2]",
+        "mode touched interpolation bounds: [-5.03824, 1.14636] outside [-12, -2]",
+        "mode touched interpolation bounds: [-5.03865, 1.14719] outside [-12, -2]",
+        "mode touched interpolation bounds: [-5.03865, 1.14719] outside [-12, -2]"
+      ],
+      "family_resolution": {
+        "positive_sigma": {
+          "eligible_candidate_count": 1,
+          "fallback_triggered": false,
+          "lower_unqualified_candidate_count": 0,
+          "rejected_candidate_count": 5,
+          "resolved": true
+        },
+        "sigma_zero": {
+          "eligible_candidate_count": 2,
+          "fallback_triggered": true,
+          "lower_unqualified_candidate_count": 0,
+          "rejected_candidate_count": 2,
+          "resolved": true
+        }
+      },
+      "fixed_h": 1.0,
+      "kkt_threshold": 0.001,
+      "mode_calls": 620,
+      "pd_failures": 0,
+      "rejected_candidate_count": 7,
+      "rejected_start_count": 2,
+      "start_count": 4,
+      "starts": [
+        {
+          "eligible": false,
+          "final": [
+            -5.5,
+            0.4,
+            -1.0498221244986778,
+            0.2
+          ],
+          "kind": "positive_sigma",
+          "message": "retained incumbent",
+          "nfev": 1,
+          "nit": 0,
+          "objective": 1725.8427782202969,
+          "optimizer": "incumbent",
+          "outer_fd": {
+            "gradient": [
+              -2.8183266681480745,
+              -7.631758314801118,
+              -0.13794427612590401,
+              7.414891790631373
+            ],
+            "gradient_inf": 7.631758314801118,
+            "projected_gradient": [
+              -2.8183266681480745,
+              -7.631758314801118,
+              -0.13794427612590401,
+              7.414891790631373
+            ],
+            "projected_gradient_inf": 7.631758314801118,
+            "schemes": [
+              "central",
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.5,
+            "beta": 0.4,
+            "detection_sd": 0.2,
+            "h": 1.0,
+            "sigma": 0.3499999999999999
+          },
+          "rejection_reasons": [
+            "outer_kkt_failed"
+          ],
+          "sigma_zero": false,
+          "start": [
+            -5.5,
+            0.4,
+            -1.0498221244986778,
+            0.2
+          ],
+          "start_id": "positive_0",
+          "success": true
+        },
+        {
+          "eligible": true,
+          "final": [
+            -5.522608153107129,
+            0.7030942454770028,
+            -1.3195715513875312,
+            0.1982867055362149
+          ],
+          "kind": "positive_sigma",
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "nfev": 198,
+          "nit": 19,
+          "objective": 1724.6023731471155,
+          "optimizer": "lbfgsb",
+          "outer_fd": {
+            "gradient": [
+              1.1133372265491763e-05,
+              0.00012286250239412766,
+              -4.505011295683405e-06,
+              -3.409354576433543e-05
+            ],
+            "gradient_inf": 0.00012286250239412766,
+            "projected_gradient": [
+              1.1133372265491763e-05,
+              0.00012286250239412766,
+              -4.505011295683405e-06,
+              -3.409354576433543e-05
+            ],
+            "projected_gradient_inf": 0.00012286250239412766,
+            "schemes": [
+              "central",
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.522608153107129,
+            "beta": 0.7030942454770028,
+            "detection_sd": 0.1982867055362149,
+            "h": 1.0,
+            "sigma": 0.2672497802375962
+          },
+          "rejection_reasons": [],
+          "sigma_zero": false,
+          "start": [
+            -5.5,
+            0.4,
+            -1.0498221244986778,
+            0.2
+          ],
+          "start_id": "positive_0",
+          "success": true
+        },
+        {
+          "eligible": false,
+          "final": [
+            -5.5,
+            0.0,
+            -1.6094379124341003,
+            0.1
+          ],
+          "kind": "positive_sigma",
+          "message": "retained incumbent",
+          "nfev": 1,
+          "nit": 0,
+          "objective": 1764.3876357035872,
+          "optimizer": "incumbent",
+          "outer_fd": {
+            "gradient": [
+              -12.571177821469476,
+              -21.412996619574187,
+              -2.2242050479021245,
+              -737.804792370298
+            ],
+            "gradient_inf": 737.804792370298,
+            "projected_gradient": [
+              -12.571177821469476,
+              -21.412996619574187,
+              -2.2242050479021245,
+              -737.804792370298
+            ],
+            "projected_gradient_inf": 737.804792370298,
+            "schemes": [
+              "central",
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.5,
+            "beta": 0.0,
+            "detection_sd": 0.1,
+            "h": 1.0,
+            "sigma": 0.2
+          },
+          "rejection_reasons": [
+            "outer_kkt_failed"
+          ],
+          "sigma_zero": false,
+          "start": [
+            -5.5,
+            0.0,
+            -1.6094379124341003,
+            0.1
+          ],
+          "start_id": "positive_1",
+          "success": true
+        },
+        {
+          "eligible": false,
+          "final": [
+            -5.524457682927909,
+            0.7047695279448513,
+            -1.2993003288052436,
+            0.19829126278948672
+          ],
+          "kind": "positive_sigma",
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "nfev": 135,
+          "nit": 11,
+          "objective": 1724.6025032388984,
+          "optimizer": "lbfgsb",
+          "outer_fd": {
+            "gradient": [
+              -0.007677920645042669,
+              -0.005238059657131089,
+              0.013717619415219647,
+              -0.0008597419309808174
+            ],
+            "gradient_inf": 0.013717619415219647,
+            "projected_gradient": [
+              -0.007677920645042669,
+              -0.005238059657131089,
+              0.013717619415219647,
+              -0.0008597419309808174
+            ],
+            "projected_gradient_inf": 0.013717619415219647,
+            "schemes": [
+              "central",
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.524457682927909,
+            "beta": 0.7047695279448513,
+            "detection_sd": 0.19829126278948672,
+            "h": 1.0,
+            "sigma": 0.2727225424023914
+          },
+          "rejection_reasons": [
+            "outer_kkt_failed"
+          ],
+          "sigma_zero": false,
+          "start": [
+            -5.5,
+            0.0,
+            -1.6094379124341003,
+            0.1
+          ],
+          "start_id": "positive_1",
+          "success": true
+        },
+        {
+          "eligible": false,
+          "final": [
+            -5.522294957771277,
+            0.7029353517539787,
+            -1.320153999478824,
+            0.19827443215494037
+          ],
+          "kind": "legacy_warmstart",
+          "message": "retained incumbent",
+          "nfev": 1,
+          "nit": 0,
+          "objective": 1724.6023746409373,
+          "optimizer": "incumbent",
+          "outer_fd": {
+            "gradient": [
+              0.008016149767937526,
+              0.0018023376924247714,
+              -0.0001335905641996409,
+              -0.05487090675160289
+            ],
+            "gradient_inf": 0.05487090675160289,
+            "projected_gradient": [
+              0.008016149767937526,
+              0.0018023376924247714,
+              -0.0001335905641996409,
+              -0.05487090675160289
+            ],
+            "projected_gradient_inf": 0.05487090675160289,
+            "schemes": [
+              "central",
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.522294957771277,
+            "beta": 0.7029353517539787,
+            "detection_sd": 0.19827443215494037,
+            "h": 1.0,
+            "sigma": 0.2670941664360785
+          },
+          "rejection_reasons": [
+            "outer_kkt_failed"
+          ],
+          "sigma_zero": false,
+          "start": [
+            -5.522294957771277,
+            0.7029353517539787,
+            -1.320153999478824,
+            0.19827443215494037
+          ],
+          "start_id": "positive_2",
+          "success": true
+        },
+        {
+          "eligible": false,
+          "final": [
+            -5.522296696780315,
+            0.7029349274040604,
+            -1.3201539704979286,
+            0.19828632313039055
+          ],
+          "kind": "legacy_warmstart",
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "nfev": 27,
+          "nit": 1,
+          "objective": 1724.6023743183684,
+          "optimizer": "lbfgsb",
+          "outer_fd": {
+            "gradient": [
+              0.008174620486475707,
+              0.0018058824480249314,
+              -0.0001326424261492976,
+              0.0031555350687995087
+            ],
+            "gradient_inf": 0.008174620486475707,
+            "projected_gradient": [
+              0.008174620486475707,
+              0.0018058824480249314,
+              -0.0001326424261492976,
+              0.0031555350687995087
+            ],
+            "projected_gradient_inf": 0.008174620486475707,
+            "schemes": [
+              "central",
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.522296696780315,
+            "beta": 0.7029349274040604,
+            "detection_sd": 0.19828632313039055,
+            "h": 1.0,
+            "sigma": 0.2670941741767067
+          },
+          "rejection_reasons": [
+            "outer_kkt_failed"
+          ],
+          "sigma_zero": false,
+          "start": [
+            -5.522294957771277,
+            0.7029353517539787,
+            -1.320153999478824,
+            0.19827443215494037
+          ],
+          "start_id": "positive_2",
+          "success": true
+        },
+        {
+          "eligible": false,
+          "final": [
+            -5.5,
+            0.4,
+            0.2
+          ],
+          "kind": "sigma_zero",
+          "message": "retained incumbent",
+          "nfev": 1,
+          "nit": 0,
+          "objective": 1726.3012686519796,
+          "optimizer": "incumbent",
+          "outer_fd": {
+            "gradient": [
+              -6.9731273325404874,
+              -11.146557297934123,
+              5.581024583989347
+            ],
+            "gradient_inf": 11.146557297934123,
+            "projected_gradient": [
+              -6.9731273325404874,
+              -11.146557297934123,
+              5.581024583989347
+            ],
+            "projected_gradient_inf": 11.146557297934123,
+            "schemes": [
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.5,
+            "beta": 0.4,
+            "detection_sd": 0.2,
+            "h": 1.0,
+            "sigma": 0.0
+          },
+          "rejection_reasons": [
+            "outer_kkt_failed"
+          ],
+          "sigma_zero": true,
+          "start": [
+            -5.5,
+            0.4,
+            0.2
+          ],
+          "start_id": "sigma_zero_0",
+          "success": true
+        },
+        {
+          "eligible": false,
+          "final": [
+            -5.5,
+            0.4,
+            0.2
+          ],
+          "kind": "sigma_zero",
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "nfev": 21,
+          "nit": 1,
+          "objective": 1726.3012686519796,
+          "optimizer": "lbfgsb",
+          "outer_fd": {
+            "gradient": [
+              -6.9731273325404874,
+              -11.146557297934123,
+              5.581024583989347
+            ],
+            "gradient_inf": 11.146557297934123,
+            "projected_gradient": [
+              -6.9731273325404874,
+              -11.146557297934123,
+              5.581024583989347
+            ],
+            "projected_gradient_inf": 11.146557297934123,
+            "schemes": [
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.5,
+            "beta": 0.4,
+            "detection_sd": 0.2,
+            "h": 1.0,
+            "sigma": 0.0
+          },
+          "rejection_reasons": [
+            "outer_kkt_failed"
+          ],
+          "sigma_zero": true,
+          "start": [
+            -5.5,
+            0.4,
+            0.2
+          ],
+          "start_id": "sigma_zero_0",
+          "success": true
+        },
+        {
+          "eligible": true,
+          "final": [
+            -5.47929400642883,
+            0.656860820366122,
+            0.19821267422046707
+          ],
+          "kind": "sigma_zero",
+          "message": "Optimization terminated successfully.",
+          "nfev": 126,
+          "nit": 3,
+          "objective": 1724.698498785413,
+          "optimizer": "powell",
+          "outer_fd": {
+            "gradient": [
+              4.191601131381849e-06,
+              -1.680291461525485e-06,
+              0.0006745881364622619
+            ],
+            "gradient_inf": 0.0006745881364622619,
+            "projected_gradient": [
+              4.191601131381849e-06,
+              -1.680291461525485e-06,
+              0.0006745881364622619
+            ],
+            "projected_gradient_inf": 0.0006745881364622619,
+            "schemes": [
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.47929400642883,
+            "beta": 0.656860820366122,
+            "detection_sd": 0.19821267422046707,
+            "h": 1.0,
+            "sigma": 0.0
+          },
+          "rejection_reasons": [],
+          "sigma_zero": true,
+          "start": [
+            -5.5,
+            0.4,
+            0.2
+          ],
+          "start_id": "sigma_zero_0",
+          "success": true
+        },
+        {
+          "eligible": true,
+          "final": [
+            -5.479294007284875,
+            0.6568608207231277,
+            0.1982125245657082
+          ],
+          "kind": "sigma_zero",
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "nfev": 21,
+          "nit": 1,
+          "objective": 1724.698498785358,
+          "optimizer": "powell_lbfgsb_polish",
+          "outer_fd": {
+            "gradient": [
+              1.4316427978425992e-07,
+              -3.1377567211166024e-06,
+              -5.7539182307664305e-05
+            ],
+            "gradient_inf": 5.7539182307664305e-05,
+            "projected_gradient": [
+              1.4316427978425992e-07,
+              -3.1377567211166024e-06,
+              -5.7539182307664305e-05
+            ],
+            "projected_gradient_inf": 5.7539182307664305e-05,
+            "schemes": [
+              "central",
+              "central",
+              "central"
+            ],
+            "status": "ok",
+            "step": 0.0001
+          },
+          "parameters": {
+            "alpha": -5.479294007284875,
+            "beta": 0.6568608207231277,
+            "detection_sd": 0.1982125245657082,
+            "h": 1.0,
+            "sigma": 0.0
+          },
+          "rejection_reasons": [],
+          "sigma_zero": true,
+          "start": [
+            -5.47929400642883,
+            0.656860820366122,
+            0.19821267422046707
+          ],
+          "start_id": "sigma_zero_0",
+          "success": true
+        }
+      ],
+      "status": "resolved"
+    }
+  },
+  "h30_domain_stress": {
+    "errors": [
+      4.438902791292776e-05,
+      5.116501000657081e-09,
+      5.682750270352699e-09,
+      9.546532453441614e-09,
+      1.6238846711758015e-08,
+      4.145198673199957e-08,
+      9.935143197026264e-08,
+      2.530756475493945e-07,
+      6.030943140444833e-07,
+      1.6900806990349793e-05,
+      4.52438898435048e-06,
+      0.039618802778022655
+    ],
+    "exact_grid_nodes": [
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154,
+      155,
+      156,
+      157,
+      158,
+      159,
+      160
+    ],
+    "max_abs_loglik_error": 0.039618802778022655,
+    "max_series_remainder_bound": 2.932286207668769e-29,
+    "midpoint_count": 12
+  },
+  "importance": {
+    "free_h": {
+      "reason": "outer optimization or sigma-zero comparison unresolved",
+      "status": "blocked"
+    },
+    "h1": {
+      "curve_check": {
+        "errors": [
+          4.4204557458016325e-05,
+          5.0046402577663684e-09,
+          4.887134252840042e-09,
+          5.196135077767394e-09,
+          5.879048359247463e-09,
+          6.4629688267814345e-09,
+          1.02478772134873e-08,
+          1.9534621031880306e-08,
+          4.304429879198324e-08,
+          1.020061830558916e-07,
+          2.4470775628060437e-07,
+          0.0029009393206074208
+        ],
+        "exact_grid_nodes": [],
+        "max_abs_loglik_error": 0.0029009393206074208,
+        "max_series_remainder_bound": 0.0,
+        "midpoint_count": 12
+      },
+      "difference_importance_minus_laplace": -0.018470242186367614,
+      "draws": 4096,
+      "ess": 4020.026519233845,
+      "importance_logmean": -1724.6208433893019,
+      "laplace_logcriterion": -1724.6023731471155,
+      "max_log_weight_minus_mean": 0.600988760266091,
+      "mcse_log_importance": 0.002148273642627415,
+      "parameters": {
+        "alpha": -5.522608153107129,
+        "beta": 0.7030942454770028,
+        "detection_sd": 0.1982867055362149,
+        "h": 1.0,
+        "sigma": 0.2672497802375962
+      },
+      "seed": 20261018,
+      "status": "ok"
+    }
+  },
+  "pair_elapsed_seconds": 459.9847780407872,
+  "profile": {
+    "reason": "one or both endpoint optimizations failed the complete positive-sigma and sigma-zero comparison",
+    "status": "unresolved"
+  },
+  "site_count": 120,
+  "timing": {
+    "h30_stress_seconds": 19.83929349994287,
+    "load_seconds": 5.483198375208303,
+    "pure_fit_seconds": 434.6622819160111
+  },
+  "training_site_ids": [
+    "cell_03_24",
+    "cell_03_52",
+    "cell_05_22",
+    "cell_05_24",
+    "cell_05_26",
+    "cell_05_50",
+    "cell_05_52",
+    "cell_05_54",
+    "cell_07_24",
+    "cell_07_52",
+    "cell_15_12",
+    "cell_15_65",
+    "cell_15_77",
+    "cell_17_10",
+    "cell_17_12",
+    "cell_17_14",
+    "cell_17_34",
+    "cell_17_63",
+    "cell_17_65",
+    "cell_17_67",
+    "cell_17_75",
+    "cell_17_77",
+    "cell_17_79",
+    "cell_19_12",
+    "cell_19_32",
+    "cell_19_34",
+    "cell_19_36",
+    "cell_19_65",
+    "cell_19_77",
+    "cell_21_34",
+    "cell_23_48",
+    "cell_24_06",
+    "cell_25_46",
+    "cell_25_48",
+    "cell_25_50",
+    "cell_26_04",
+    "cell_26_06",
+    "cell_26_08",
+    "cell_27_48",
+    "cell_27_75",
+    "cell_28_06",
+    "cell_28_34",
+    "cell_29_73",
+    "cell_29_75",
+    "cell_29_77",
+    "cell_30_32",
+    "cell_30_34",
+    "cell_30_36",
+    "cell_31_75",
+    "cell_32_34",
+    "cell_33_06",
+    "cell_35_04",
+    "cell_35_06",
+    "cell_35_08",
+    "cell_37_06",
+    "cell_39_70",
+    "cell_41_68",
+    "cell_41_70",
+    "cell_41_72",
+    "cell_43_06",
+    "cell_43_70",
+    "cell_45_04",
+    "cell_45_06",
+    "cell_45_08",
+    "cell_47_06",
+    "cell_51_20",
+    "cell_51_37",
+    "cell_51_56",
+    "cell_51_64",
+    "cell_51_80",
+    "cell_53_18",
+    "cell_53_20",
+    "cell_53_22",
+    "cell_53_35",
+    "cell_53_37",
+    "cell_53_39",
+    "cell_53_54",
+    "cell_53_56",
+    "cell_53_58",
+    "cell_53_62",
+    "cell_53_64",
+    "cell_53_66",
+    "cell_53_78",
+    "cell_53_80",
+    "cell_53_82",
+    "cell_55_20",
+    "cell_55_37",
+    "cell_55_56",
+    "cell_55_64",
+    "cell_55_80",
+    "cell_57_48",
+    "cell_59_46",
+    "cell_59_48",
+    "cell_59_50",
+    "cell_61_48",
+    "cell_63_15",
+    "cell_63_25",
+    "cell_63_35",
+    "cell_63_79",
+    "cell_65_13",
+    "cell_65_15",
+    "cell_65_17",
+    "cell_65_23",
+    "cell_65_25",
+    "cell_65_27",
+    "cell_65_33",
+    "cell_65_35",
+    "cell_65_37",
+    "cell_65_77",
+    "cell_65_79",
+    "cell_65_81",
+    "cell_66_48",
+    "cell_67_15",
+    "cell_67_25",
+    "cell_67_35",
+    "cell_67_79",
+    "cell_68_46",
+    "cell_68_48",
+    "cell_68_50",
+    "cell_70_48"
+  ]
+}

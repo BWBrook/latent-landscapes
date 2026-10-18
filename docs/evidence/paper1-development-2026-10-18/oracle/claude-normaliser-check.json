@@ -1,0 +1,9 @@
+{
+ "seed": 1,
+ "draws": 4000,
+ "sd_log_normaliser": 0.17124053049808413,
+ "corr_log_normaliser_mean_site_field": 0.8634058774840997,
+ "r_squared": 0.7454697092740882,
+ "numpy": "2.5.1",
+ "python": "3.12.13"
+}

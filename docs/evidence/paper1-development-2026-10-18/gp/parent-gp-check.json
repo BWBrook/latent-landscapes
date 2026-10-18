@@ -1,0 +1,79 @@
+{
+  "checks": {
+    "B_H3": {
+      "free_h": {
+        "status": "checked",
+        "independent_absolute_step_gradient": [
+          0.00018654873201739974,
+          -2.034994395216927e-05,
+          -4.024968802696094e-05,
+          1.232592694577761e-05,
+          0.00013598310033557937
+        ],
+        "independent_gradient_max": 0.00018654873201739974,
+        "independent_projected_gradient_max": 0.00018654873201739974,
+        "direct_site_max_error": 5.9107492234034e-08,
+        "direct_sum_error": 1.1317348143080608e-06,
+        "criterion_change_on_grid_doubling": -7.742707134639204e-05,
+        "recorded_grid_points": 161,
+        "check_grid_points": 321
+      },
+      "h1": {
+        "status": "checked",
+        "independent_absolute_step_gradient": [
+          -0.00010508529157959856,
+          -0.00016821786630316637,
+          -4.513367457548156e-06,
+          1.1302745406283066e-05
+        ],
+        "independent_gradient_max": 0.00016821786630316637,
+        "independent_projected_gradient_max": 0.00016821786630316637,
+        "direct_site_max_error": 4.960618937843719e-08,
+        "direct_sum_error": 1.0087069428621476e-06,
+        "criterion_change_on_grid_doubling": -4.7901569814712275e-05,
+        "recorded_grid_points": 161,
+        "check_grid_points": 321
+      },
+      "independently_reconstructed_LR": 16.310675297498165
+    },
+    "H3": {
+      "free_h": {
+        "status": "checked",
+        "independent_absolute_step_gradient": [
+          -0.0003424975147936493,
+          0.0005368360689317342,
+          -3.8853613659739494e-05,
+          6.912159733474255e-07,
+          1.1448264558566734e-05
+        ],
+        "independent_gradient_max": 0.0005368360689317342,
+        "independent_projected_gradient_max": 0.0005368360689317342,
+        "direct_site_max_error": 3.816323257410659e-08,
+        "direct_sum_error": 1.0225745210590276e-06,
+        "criterion_change_on_grid_doubling": 1.2886638614872936e-05,
+        "recorded_grid_points": 161,
+        "check_grid_points": 321
+      },
+      "h1": {
+        "status": "checked",
+        "independent_absolute_step_gradient": [
+          8.526512829121202e-06,
+          1.8237642507301643e-05,
+          9.191353456117213e-05
+        ],
+        "independent_gradient_max": 9.191353456117213e-05,
+        "independent_projected_gradient_max": 9.191353456117213e-05,
+        "direct_site_max_error": 3.259888892159779e-08,
+        "direct_sum_error": 8.219493512484632e-07,
+        "criterion_change_on_grid_doubling": -7.565522537333891e-07,
+        "recorded_grid_points": 161,
+        "check_grid_points": 321
+      },
+      "independently_reconstructed_LR": 4.775969239003189
+    }
+  },
+  "source_sha256": "075b9e265eafd17c60dc6cb12b274e4def61ffcd355a1cadc2cce80b3ea44aed",
+  "results_sha256": "c2d392318d16ce5b1ff8a336951541e9be1256047b0a51a802a2dacc0dd92e86",
+  "check_script_sha256": "cc62e6bfb9580fdf1019afb07eb3822db34f02d15a8a852937e2646e29982b9c",
+  "limits": "Two development histories and fixed fitted endpoints; no global optimum proof, profile endpoint coverage or statistical calibration."
+}

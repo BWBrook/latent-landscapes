@@ -33,9 +33,19 @@ not establish general nuisance-surface performance, new-landscape prediction,
 misspecification control or effect-magnitude interval coverage. The source
 rank-audit repair, approved continuation and verified return are documented in
 the [execution record](goals/062-final-procedure-evaluation/execution.md).
-Landscape numerical qualification and the common competing-process-model
-ambition remain material charter decisions. No new experiment is authorised
-by this update.
+On 18 October, Barry selected **broader first**: landscape generality and
+common competing background models in one substantial Paper 1. The
+[reviewed protocol](paper1-integrated-tranche-protocol-2026-10-18.md) now
+specifies the mean error target, precision rule, six-point truth grid, fitted
+h domain [1,30], and bootstrap declaration/truth-inclusion audit. The
+[numerical development record](paper1-numerical-development-2026-10-18.md)
+records a 4,000-history complete-data frailty recheck, the first sampled-site
+GP prototype and its numerical repairs, and verified fixed-cap bootstrap
+stopping. These are development checks on archived data. Numerical
+qualification, measured full-profile cost and a frozen executable design
+remain necessary before rule training and untouched validation. Updated
+repository authority permits reversible development with independent scientific
+review; no production campaign has started.
 
 Arc 1 is frozen. Arc 2A and Arc 2B have completed prospectively tested
 32-truth recoverability syntheses on one accepted landscape and observation
@@ -587,16 +597,24 @@ truths. High detection rates do not imply comparably accurate effect sizes.
 The full-method operating-performance campaign is complete; no continuation
 or duplicate run is needed.
 
-The next scientific choice concerns the intended breadth of Paper 1:
-retain its fixed-design claims or authorise a bounded tranche addressing
-landscape generality, common competing-process models or magnitude intervals.
-These require distinct methodological choices, not automatic expansion of
-Goal 062. Narrow final-method claims about exact-grid null control, feasibility
-and the blinded demonstration remain supported within their existing limits.
+Barry's 18 October decision sets the intended breadth: one integrated Paper 1
+addressing landscape generality and common competing-process models, with
+uncertainty methods and observation-design comparisons developed as part of
+that argument. The [planning proposal](paper1-integrated-tranche-planning-2026-10-18.md)
+records falsifiable claims, replication units, competing methods, manuscript
+figures and compute scenarios. It does not impose a time or compute ceiling.
+The next decision is on a concrete, reviewed design after Claude–Codex
+iteration, not whether to narrow the paper to the existing fixed-map results.
+Those results remain supported within their existing limits.
 
 Numerically qualified landscape claims need an accepted integration method
 before adding maps. Formal generating-family discrimination needs a common
 candidate set capable of representing the chosen alternative. Final-method
 magnitude coverage needs a defined interval method before an evaluation can
 test it. None of these requirements is met by another four-case blinded panel.
-Those broader changes remain outside the approved Goal 062 amendment.
+Those broader changes remain outside the completed Goal 062 amendment.
+Reversible numerical development is now underway under the updated repository
+authority, with independent scientific review recorded in the
+[development report](paper1-numerical-development-2026-10-18.md). The original
+planning-only status is preserved in the first proposal. No new production
+campaign has started.

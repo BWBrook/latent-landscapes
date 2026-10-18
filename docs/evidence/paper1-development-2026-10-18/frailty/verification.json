@@ -1,0 +1,281 @@
+{
+  "labels_and_inputs": {
+    "all_cells": true,
+    "histories_per_cell": 500,
+    "labels_verified": true,
+    "site_ids_verified": true,
+    "total_histories": 4000
+  },
+  "numerical": {
+    "checks_pass": true,
+    "gamma_to_homogeneous_k1e12_abs_error": 1.3734791082242737e-11,
+    "identity_examples": [
+      {
+        "D": 0,
+        "error": 0.0,
+        "k": 0.05
+      },
+      {
+        "D": 1,
+        "error": 4.440892098500626e-16,
+        "k": 0.05
+      },
+      {
+        "D": 2,
+        "error": 4.440892098500626e-16,
+        "k": 0.05
+      },
+      {
+        "D": 3,
+        "error": 8.881784197001252e-16,
+        "k": 0.05
+      },
+      {
+        "D": 4,
+        "error": 8.881784197001252e-16,
+        "k": 0.05
+      },
+      {
+        "D": 5,
+        "error": 2.6645352591003757e-15,
+        "k": 0.05
+      },
+      {
+        "D": 6,
+        "error": 8.881784197001252e-16,
+        "k": 0.05
+      },
+      {
+        "D": 0,
+        "error": 0.0,
+        "k": 1.65
+      },
+      {
+        "D": 1,
+        "error": 1.1102230246251565e-16,
+        "k": 1.65
+      },
+      {
+        "D": 2,
+        "error": 0.0,
+        "k": 1.65
+      },
+      {
+        "D": 3,
+        "error": 4.440892098500626e-16,
+        "k": 1.65
+      },
+      {
+        "D": 4,
+        "error": 8.881784197001252e-16,
+        "k": 1.65
+      },
+      {
+        "D": 5,
+        "error": 8.881784197001252e-16,
+        "k": 1.65
+      },
+      {
+        "D": 6,
+        "error": 0.0,
+        "k": 1.65
+      },
+      {
+        "D": 0,
+        "error": 0.0,
+        "k": 20.0
+      },
+      {
+        "D": 1,
+        "error": 4.440892098500626e-16,
+        "k": 20.0
+      },
+      {
+        "D": 2,
+        "error": 6.217248937900877e-15,
+        "k": 20.0
+      },
+      {
+        "D": 3,
+        "error": 3.552713678800501e-15,
+        "k": 20.0
+      },
+      {
+        "D": 4,
+        "error": 3.552713678800501e-15,
+        "k": 20.0
+      },
+      {
+        "D": 5,
+        "error": 0.0,
+        "k": 20.0
+      },
+      {
+        "D": 6,
+        "error": 3.552713678800501e-15,
+        "k": 20.0
+      },
+      {
+        "D": 0,
+        "error": 0.0,
+        "k": 1000.0
+      },
+      {
+        "D": 1,
+        "error": 9.947598300641403e-13,
+        "k": 1000.0
+      },
+      {
+        "D": 2,
+        "error": 9.059419880941277e-13,
+        "k": 1000.0
+      },
+      {
+        "D": 3,
+        "error": 1.3855583347321954e-13,
+        "k": 1000.0
+      },
+      {
+        "D": 4,
+        "error": 1.3500311979441904e-13,
+        "k": 1000.0
+      },
+      {
+        "D": 5,
+        "error": 2.2026824808563106e-13,
+        "k": 1000.0
+      },
+      {
+        "D": 6,
+        "error": 4.121147867408581e-13,
+        "k": 1000.0
+      }
+    ],
+    "stable_loggamma_ratio_max_abs_error": 9.947598300641403e-13,
+    "stable_vs_scipy_nll_max_abs_error": 1.9113599591946695e-12
+  },
+  "source_input_hashes": {
+    "design": {
+      "cells": {
+        "00": [
+          "L1",
+          0.5
+        ],
+        "01": [
+          "L3",
+          0.5
+        ],
+        "03": [
+          "H1",
+          0.5
+        ],
+        "04": [
+          "H3",
+          0.5
+        ],
+        "06": [
+          "B_L1",
+          0.5827882278103883
+        ],
+        "07": [
+          "B_L3",
+          0.5827882278103883
+        ],
+        "08": [
+          "B_H1",
+          0.5827882278103883
+        ],
+        "09": [
+          "B_H3",
+          0.5827882278103883
+        ]
+      },
+      "families": [
+        "homogeneous",
+        "iid_gamma",
+        "cluster_gamma"
+      ],
+      "h_bounds": [
+        1,
+        10
+      ],
+      "histories_per_cell": 500,
+      "k_bounds": [
+        0.05,
+        10000
+      ],
+      "no_new_histories": true,
+      "total_histories": 4000,
+      "training_sites": 120,
+      "window": [
+        -60,
+        60
+      ]
+    },
+    "history_data_manifest": {
+      "cells": {
+        "00": 500,
+        "01": 500,
+        "03": 500,
+        "04": 500,
+        "06": 500,
+        "07": 500,
+        "08": 500,
+        "09": 500
+      },
+      "files": 12000,
+      "sha256": "f1cd04a3e1978b52fbd782f3ea79759e65d4ac38610a304de3c6b45c5c29fe78"
+    },
+    "input_hashes": {
+      "exposure.npz": "b74004fc9ecf03499cfdc9ecca4919b0e17987eba405709f4e3f95f9bc9c0831",
+      "public_inputs.npz": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2"
+    },
+    "runtime": {
+      "numpy": "2.5.1",
+      "platform": "macOS-27.0.1-arm64-arm-64bit",
+      "python": "3.12.13 (main, May 10 2026, 19:20:41) [Clang 22.1.3 ]"
+    },
+    "script": "artifacts/paper1_planning_20261018/frailty-repair/run_frailty_repair.py",
+    "site_cluster_identity": {
+      "exposure": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs/exposure.npz",
+      "public_inputs": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz",
+      "site_order": "public_inputs.npz site order, checked against every observations.npz",
+      "training_cluster_labels_sha256": "8a71275e844ddfaf82f18a426f1ef72b62264ca94864702e7eb8e9fe78f95414",
+      "training_cluster_sizes": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "training_clusters": 24,
+      "training_site_ids_sha256": "3abbb11854489f6c1bf2d8e1d961a745fd85f7b19b5e68b2836ed3b30f76337a",
+      "training_sites": 120
+    },
+    "source_hashes": {
+      "artifacts/paper1_planning_20261018/claude-cluster-frailty-check.py": "e50063861ca7daa3a5454eb60cbc3d917dde7ac43edb43b16b3f1fbc8217ea32",
+      "artifacts/paper1_planning_20261018/claude-frailty-check.py": "57cb02e53d8025f0d76944be261506c3fbe974c5fd08ac7cc5be726ee48dfffd",
+      "artifacts/paper1_planning_20261018/frailty-repair/run_frailty_repair.py": "2834703e90ca6eef2549c34d3705322f0c3dcb1f035e2baa90b1ec0a13dac928",
+      "artifacts/paper1_planning_20261018/protocol-at-frailty-run.md": "a52dbcfc44e9325a9a42a0be21ecd6e7bc1d2869e1ec5d74cb0e93a128cc3cf0"
+    }
+  }
+}

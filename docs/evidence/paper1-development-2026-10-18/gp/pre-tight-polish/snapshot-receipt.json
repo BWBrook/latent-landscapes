@@ -1,0 +1,21 @@
+{
+  "created_at": "2026-10-18T18:29:00+11:00",
+  "purpose": "Completed bounded run preserved before the single targeted tight-polish repair.",
+  "files": {
+    "run_gp_prototype.py": "d4accf811911160cb27f71dc6eb2360163d4d7a54ed58b1a035766fba7c71148",
+    "manifest.json": "12ad0acfc3595d7b308181dc4abb256539e905ae0b1e55c4b21de3093c2cbbf6",
+    "b_h3-results.json": "10f3fc3db2097f6206ecedf63c5f85cd8b58a881c5a88e2f95c501245794bc87",
+    "h3-results.json": "e36f3639c598418e17d0a1bd3f4a26963d9de322c57c6baf4c5106ab2ce9483d",
+    "results.json": "a0d15ddc1b2ed60405155b69e3df87b2163cf8ddecc35f8c1b914513776d7e59"
+  },
+  "scientific_status": {
+    "B_H3": {
+      "h1": "resolved",
+      "free_h": "unresolved: exact sigma=0 fallback projected KKT 0.002638 exceeds 0.001"
+    },
+    "H3": {
+      "h1": "resolved",
+      "free_h": "resolved"
+    }
+  }
+}

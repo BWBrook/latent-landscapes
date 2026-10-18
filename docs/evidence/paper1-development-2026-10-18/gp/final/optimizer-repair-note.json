@@ -1,0 +1,139 @@
+{
+  "candidate_provenance": {
+    "positive_sigma": {
+      "eligible_in_prior_receipt": true,
+      "objective": 1716.4470354983664,
+      "optimizer": "powell_lbfgsb_polish",
+      "point": [
+        -5.8910751570842645,
+        0.5927353972582021,
+        -0.5072038442067917,
+        1.4330792015772178,
+        0.19721486397675794
+      ],
+      "prior_outer_fd": {
+        "gradient": [
+          -0.00031147711928239516,
+          -2.034653334703762e-05,
+          -4.0236045606434345e-05,
+          1.2343820167102111e-05,
+          9.025029612530489e-05
+        ],
+        "gradient_inf": 0.00031147711928239516,
+        "projected_gradient": [
+          -0.00031147711928239516,
+          -2.034653334703762e-05,
+          -4.0236045606434345e-05,
+          1.2343820167102111e-05,
+          9.025029612530489e-05
+        ],
+        "projected_gradient_inf": 0.00031147711928239516,
+        "schemes": [
+          "central",
+          "central",
+          "central",
+          "central",
+          "central"
+        ],
+        "status": "ok",
+        "step": 0.0001
+      },
+      "prior_rejection_reasons": [],
+      "receipt_sha256": "10f3fc3db2097f6206ecedf63c5f85cd8b58a881c5a88e2f95c501245794bc87",
+      "start_id": "positive_1"
+    },
+    "sigma_zero": {
+      "eligible_in_prior_receipt": false,
+      "objective": 1717.483659967286,
+      "optimizer": "powell_lbfgsb_polish",
+      "point": [
+        -5.702202973966019,
+        0.4371836934145211,
+        1.2882418553726702,
+        0.19712084321076506
+      ],
+      "prior_outer_fd": {
+        "gradient": [
+          -0.0016001951375508921,
+          0.0026380678264104063,
+          -0.0003609073586175135,
+          -0.00018027435544354375
+        ],
+        "gradient_inf": 0.0026380678264104063,
+        "projected_gradient": [
+          -0.0016001951375508921,
+          0.0026380678264104063,
+          -0.0003609073586175135,
+          -0.00018027435544354375
+        ],
+        "projected_gradient_inf": 0.0026380678264104063,
+        "schemes": [
+          "central",
+          "central",
+          "central",
+          "central"
+        ],
+        "status": "ok",
+        "step": 0.0001
+      },
+      "prior_rejection_reasons": [
+        "outer_kkt_failed"
+      ],
+      "receipt_sha256": "10f3fc3db2097f6206ecedf63c5f85cd8b58a881c5a88e2f95c501245794bc87",
+      "start_id": "sigma_zero_0"
+    }
+  },
+  "development_only": true,
+  "failure_cause": "The prior Powell plus L-BFGS-B fallback stopped on relative function tolerance with projected KKT 0.0026380678264104063 above the fixed 0.001 gate.",
+  "final_sigma_zero": {
+    "criterion": -1717.483659748024,
+    "kind": "receipt_warmstart",
+    "laplace_pd": true,
+    "mode_success": true,
+    "optimizer": "lbfgsb",
+    "outer_fd": {
+      "gradient": [
+        3.6266538419003025e-06,
+        2.651177055668086e-06,
+        1.4401880897937021e-06,
+        -5.50062395632267e-05
+      ],
+      "gradient_inf": 5.50062395632267e-05,
+      "projected_gradient": [
+        3.6266538419003025e-06,
+        2.651177055668086e-06,
+        1.4401880897937021e-06,
+        -5.50062395632267e-05
+      ],
+      "projected_gradient_inf": 5.50062395632267e-05,
+      "schemes": [
+        "central",
+        "central",
+        "central",
+        "central"
+      ],
+      "status": "ok",
+      "step": 0.0001
+    },
+    "parameters": {
+      "alpha": -5.702125618563637,
+      "beta": 0.4370701121914483,
+      "detection_sd": 0.19712056473151005,
+      "h": 3.6265527982807955,
+      "sigma": 0.0
+    }
+  },
+  "final_source_sha256": "075b9e265eafd17c60dc6cb12b274e4def61ffcd355a1cadc2cce80b3ea44aed",
+  "prior_results_sha256": "a0d15ddc1b2ed60405155b69e3df87b2163cf8ddecc35f8c1b914513776d7e59",
+  "prior_source_sha256": "d4accf811911160cb27f71dc6eb2360163d4d7a54ed58b1a035766fba7c71148",
+  "residual_numerical_limits": {
+    "B_H3_free_h_curve_midpoint_max_abs_loglik_error": 0.007430999422062712,
+    "B_H3_free_h_refined_importance_mcse": 0.007459315018352683,
+    "importance_check": "Fixed at the Laplace optimum, not reoptimized; endpoint MCSEs must be interpreted separately because the common random stream couples them.",
+    "scope": "Two archived histories; development diagnostic, not calibration or qualification evidence."
+  },
+  "scope": "B_H3 free_h exact-sigma-zero targeted polish only",
+  "status": "resolved",
+  "targeted_repair_pure_fit_seconds": 5.286855666199699,
+  "unresolved_optimizer_issues": []
+}

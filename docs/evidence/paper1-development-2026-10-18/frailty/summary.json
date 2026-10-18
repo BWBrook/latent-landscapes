@@ -1,0 +1,861 @@
+{
+  "cells": {
+    "00": {
+      "models": {
+        "cluster_gamma": {
+          "boundary_rate": 0.502,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.014545819305781282,
+          "mean_absolute_log_error": 0.22934825921995414,
+          "mean_signed_log_error": 0.22934825921995414,
+          "nested_limit_selection_rate": 0.616,
+          "optimizer_failed_start_count": 1,
+          "optimizer_failed_start_rate": 0.0005,
+          "optimizer_start_count": 2000,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 26,
+          "raw_T_gt_2_71_rate": 0.052,
+          "selected_finite_estimate_n": 500
+        },
+        "homogeneous": {
+          "boundary_rate": 0.508,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.014205154035953365,
+          "mean_absolute_log_error": 0.21864491870640632,
+          "mean_signed_log_error": 0.21864491870640632,
+          "nested_limit_selection_rate": 0.0,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": null,
+          "optimizer_start_count": 0,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 24,
+          "raw_T_gt_2_71_rate": 0.048,
+          "selected_finite_estimate_n": 500
+        },
+        "iid_gamma": {
+          "boundary_rate": 0.39,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.02329415731801548,
+          "mean_absolute_log_error": 0.41502130784388125,
+          "mean_signed_log_error": 0.41502130784388125,
+          "nested_limit_selection_rate": 0.366,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": 0.0,
+          "optimizer_start_count": 2000,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 40,
+          "raw_T_gt_2_71_rate": 0.08,
+          "selected_finite_estimate_n": 500
+        }
+      },
+      "n_histories": 500
+    },
+    "01": {
+      "models": {
+        "cluster_gamma": {
+          "boundary_rate": 0.016,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.019501436116022428,
+          "mean_absolute_log_error": 0.35327087396755924,
+          "mean_signed_log_error": -0.002396343419640914,
+          "nested_limit_selection_rate": 0.568,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": 0.0,
+          "optimizer_start_count": 2000,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 387,
+          "raw_T_gt_2_71_rate": 0.774,
+          "selected_finite_estimate_n": 500
+        },
+        "homogeneous": {
+          "boundary_rate": 0.016,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.019399515942699834,
+          "mean_absolute_log_error": 0.35165437557945756,
+          "mean_signed_log_error": -0.020282928627290742,
+          "nested_limit_selection_rate": 0.0,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": null,
+          "optimizer_start_count": 0,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 384,
+          "raw_T_gt_2_71_rate": 0.768,
+          "selected_finite_estimate_n": 500
+        },
+        "iid_gamma": {
+          "boundary_rate": 0.046,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.022070212500326467,
+          "mean_absolute_log_error": 0.427974343261757,
+          "mean_signed_log_error": 0.18773305479276933,
+          "nested_limit_selection_rate": 0.516,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": 0.0,
+          "optimizer_start_count": 2000,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 405,
+          "raw_T_gt_2_71_rate": 0.81,
+          "selected_finite_estimate_n": 500
+        }
+      },
+      "n_histories": 500
+    },
+    "03": {
+      "models": {
+        "cluster_gamma": {
+          "boundary_rate": 0.514,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.008672293902826084,
+          "mean_absolute_log_error": 0.13356154825214672,
+          "mean_signed_log_error": 0.13356154825214672,
+          "nested_limit_selection_rate": 0.592,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": 0.0,
+          "optimizer_start_count": 2000,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 25,
+          "raw_T_gt_2_71_rate": 0.05,
+          "selected_finite_estimate_n": 500
+        },
+        "homogeneous": {
+          "boundary_rate": 0.53,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.008245551245692173,
+          "mean_absolute_log_error": 0.12388523702818009,
+          "mean_signed_log_error": 0.12388523702818009,
+          "nested_limit_selection_rate": 0.0,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": null,
+          "optimizer_start_count": 0,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 21,
+          "raw_T_gt_2_71_rate": 0.042,
+          "selected_finite_estimate_n": 500
+        },
+        "iid_gamma": {
+          "boundary_rate": 0.39,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.014346669178669174,
+          "mean_absolute_log_error": 0.24678101282938433,
+          "mean_signed_log_error": 0.24678101282938433,
+          "nested_limit_selection_rate": 0.328,
+          "optimizer_failed_start_count": 1,
+          "optimizer_failed_start_rate": 0.0005,
+          "optimizer_start_count": 2000,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 41,
+          "raw_T_gt_2_71_rate": 0.082,
+          "selected_finite_estimate_n": 500
+        }
+      },
+      "n_histories": 500
+    },
+    "04": {
+      "models": {
+        "cluster_gamma": {
+          "boundary_rate": 0.0,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.011086593334183412,
+          "mean_absolute_log_error": 0.19568141228695332,
+          "mean_signed_log_error": 0.01973362203342409,
+          "nested_limit_selection_rate": 0.622,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": 0.0,
+          "optimizer_start_count": 2000,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 494,
+          "raw_T_gt_2_71_rate": 0.988,
+          "selected_finite_estimate_n": 500
+        },
+        "homogeneous": {
+          "boundary_rate": 0.0,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.011037943021866966,
+          "mean_absolute_log_error": 0.19425467896131635,
+          "mean_signed_log_error": -0.0002587787722742938,
+          "nested_limit_selection_rate": 0.0,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": null,
+          "optimizer_start_count": 0,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 494,
+          "raw_T_gt_2_71_rate": 0.988,
+          "selected_finite_estimate_n": 500
+        },
+        "iid_gamma": {
+          "boundary_rate": 0.0,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.013151849128134668,
+          "mean_absolute_log_error": 0.25675789728005965,
+          "mean_signed_log_error": 0.1292895657091226,
+          "nested_limit_selection_rate": 0.506,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": 0.0,
+          "optimizer_start_count": 2000,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 496,
+          "raw_T_gt_2_71_rate": 0.992,
+          "selected_finite_estimate_n": 500
+        }
+      },
+      "n_histories": 500
+    },
+    "06": {
+      "models": {
+        "cluster_gamma": {
+          "boundary_rate": 0.518,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.014994244931267454,
+          "mean_absolute_log_error": 0.22523489480695513,
+          "mean_signed_log_error": 0.22523489480695513,
+          "nested_limit_selection_rate": 0.412,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": 0.0,
+          "optimizer_start_count": 2000,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 22,
+          "raw_T_gt_2_71_rate": 0.044,
+          "selected_finite_estimate_n": 500
+        },
+        "homogeneous": {
+          "boundary_rate": 0.538,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.014591273370659108,
+          "mean_absolute_log_error": 0.2123128774951025,
+          "mean_signed_log_error": 0.2123128774951025,
+          "nested_limit_selection_rate": 0.0,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": null,
+          "optimizer_start_count": 0,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 21,
+          "raw_T_gt_2_71_rate": 0.042,
+          "selected_finite_estimate_n": 500
+        },
+        "iid_gamma": {
+          "boundary_rate": 0.42,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.023702113824866176,
+          "mean_absolute_log_error": 0.41040037257785605,
+          "mean_signed_log_error": 0.41040037257785605,
+          "nested_limit_selection_rate": 0.328,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": 0.0,
+          "optimizer_start_count": 2000,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 37,
+          "raw_T_gt_2_71_rate": 0.074,
+          "selected_finite_estimate_n": 500
+        }
+      },
+      "n_histories": 500
+    },
+    "07": {
+      "models": {
+        "cluster_gamma": {
+          "boundary_rate": 0.03,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.02114054684775636,
+          "mean_absolute_log_error": 0.37455018426010744,
+          "mean_signed_log_error": 0.03442565131524491,
+          "nested_limit_selection_rate": 0.356,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": 0.0,
+          "optimizer_start_count": 2000,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 388,
+          "raw_T_gt_2_71_rate": 0.776,
+          "selected_finite_estimate_n": 500
+        },
+        "homogeneous": {
+          "boundary_rate": 0.032,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.02115833797067393,
+          "mean_absolute_log_error": 0.3743128675397826,
+          "mean_signed_log_error": -0.013481766115957404,
+          "nested_limit_selection_rate": 0.0,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": null,
+          "optimizer_start_count": 0,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 378,
+          "raw_T_gt_2_71_rate": 0.756,
+          "selected_finite_estimate_n": 500
+        },
+        "iid_gamma": {
+          "boundary_rate": 0.074,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.02366043580155977,
+          "mean_absolute_log_error": 0.45872515713777,
+          "mean_signed_log_error": 0.20849331289866102,
+          "nested_limit_selection_rate": 0.476,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": 0.0,
+          "optimizer_start_count": 2000,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 395,
+          "raw_T_gt_2_71_rate": 0.79,
+          "selected_finite_estimate_n": 500
+        }
+      },
+      "n_histories": 500
+    },
+    "08": {
+      "models": {
+        "cluster_gamma": {
+          "boundary_rate": 0.544,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.007942686493895162,
+          "mean_absolute_log_error": 0.11631153726260485,
+          "mean_signed_log_error": 0.11631153726260485,
+          "nested_limit_selection_rate": 0.196,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": 0.0,
+          "optimizer_start_count": 2000,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 15,
+          "raw_T_gt_2_71_rate": 0.03,
+          "selected_finite_estimate_n": 500
+        },
+        "homogeneous": {
+          "boundary_rate": 0.636,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.006827594626954613,
+          "mean_absolute_log_error": 0.0844662624846935,
+          "mean_signed_log_error": 0.0844662624846935,
+          "nested_limit_selection_rate": 0.0,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": null,
+          "optimizer_start_count": 0,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 10,
+          "raw_T_gt_2_71_rate": 0.02,
+          "selected_finite_estimate_n": 500
+        },
+        "iid_gamma": {
+          "boundary_rate": 0.412,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.014988222424834143,
+          "mean_absolute_log_error": 0.25292721425503356,
+          "mean_signed_log_error": 0.25292721425503356,
+          "nested_limit_selection_rate": 0.286,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": 0.0,
+          "optimizer_start_count": 2000,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 35,
+          "raw_T_gt_2_71_rate": 0.07,
+          "selected_finite_estimate_n": 500
+        }
+      },
+      "n_histories": 500
+    },
+    "09": {
+      "models": {
+        "cluster_gamma": {
+          "boundary_rate": 0.0,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.013193075196515323,
+          "mean_absolute_log_error": 0.23409728851536202,
+          "mean_signed_log_error": -0.033185842191635,
+          "nested_limit_selection_rate": 0.144,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": 0.0,
+          "optimizer_start_count": 2000,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 480,
+          "raw_T_gt_2_71_rate": 0.96,
+          "selected_finite_estimate_n": 500
+        },
+        "homogeneous": {
+          "boundary_rate": 0.0,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.012867204153074645,
+          "mean_absolute_log_error": 0.2522175311157339,
+          "mean_signed_log_error": -0.1419241041362324,
+          "nested_limit_selection_rate": 0.0,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": null,
+          "optimizer_start_count": 0,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 472,
+          "raw_T_gt_2_71_rate": 0.944,
+          "selected_finite_estimate_n": 500
+        },
+        "iid_gamma": {
+          "boundary_rate": 0.002,
+          "denominator": 500,
+          "failure_or_unresolved_rate": 0.0,
+          "mcse_signed_log_error": 0.017154427339303883,
+          "mean_absolute_log_error": 0.30793722405803214,
+          "mean_signed_log_error": 0.09224652678992991,
+          "nested_limit_selection_rate": 0.404,
+          "optimizer_failed_start_count": 0,
+          "optimizer_failed_start_rate": 0.0,
+          "optimizer_start_count": 2000,
+          "raw_T_available_n": 500,
+          "raw_T_gt_2_71_count": 477,
+          "raw_T_gt_2_71_rate": 0.954,
+          "selected_finite_estimate_n": 500
+        }
+      },
+      "n_histories": 500
+    }
+  },
+  "input_labels": {
+    "all_cells": true,
+    "histories_per_cell": 500,
+    "labels_verified": true,
+    "site_ids_verified": true,
+    "total_histories": 4000
+  },
+  "models": {
+    "cluster_gamma": {
+      "denominator": 4000,
+      "failure_or_unresolved_rate": 0.0,
+      "mcse_signed_log_error": 0.005361945872085273,
+      "mean_absolute_log_error": 0.23275699982145537,
+      "mean_signed_log_error": 0.09037916590988175,
+      "nested_limit_selection_rate": 0.43825,
+      "optimizer_failed_start_count": 1,
+      "optimizer_failed_start_rate": 6.25e-05,
+      "optimizer_start_count": 16000,
+      "raw_T_gt_2_71_count": 1837,
+      "raw_T_gt_2_71_rate": 0.45925,
+      "selected_bound_contact_counts": {
+        "": 2938,
+        "h_lower": 1050,
+        "h_upper": 12
+      },
+      "selected_candidate_source_counts": {
+        "exact_homogeneous_limit": 1753,
+        "finite_k_optimizer": 2247
+      },
+      "selected_finite_estimate_n": 4000,
+      "selected_raw_gradient_interior_quantiles": {
+        "n": 1666,
+        "q50": 2.8421709603136124e-06,
+        "q95": 1.136868384125445e-05
+      },
+      "selected_raw_gradient_max_abs_quantiles": {
+        "n": 2247,
+        "q50": 5.684341920627225e-06,
+        "q95": 2.6533763275438034
+      },
+      "uniqueness_certified": false,
+      "uniqueness_note": "multi-start optimizer agreement and stationarity receipts do not certify a unique or global MLE; nonlocal ambiguity remains untested"
+    },
+    "homogeneous": {
+      "denominator": 4000,
+      "failure_or_unresolved_rate": 0.0,
+      "mcse_signed_log_error": 0.005385776057802463,
+      "mean_absolute_log_error": 0.22646859361383412,
+      "mean_signed_log_error": 0.057920214757828443,
+      "nested_limit_selection_rate": 0.0,
+      "optimizer_failed_start_count": 0,
+      "optimizer_failed_start_rate": null,
+      "optimizer_start_count": 0,
+      "raw_T_gt_2_71_count": 1804,
+      "raw_T_gt_2_71_rate": 0.451,
+      "selected_bound_contact_counts": {
+        "": 2870,
+        "h_lower": 1119,
+        "h_upper": 11
+      },
+      "selected_candidate_source_counts": {
+        "analytic_ratio_clipped": 4000
+      },
+      "selected_finite_estimate_n": 4000,
+      "selected_raw_gradient_interior_quantiles": null,
+      "selected_raw_gradient_max_abs_quantiles": null,
+      "uniqueness_certified": false,
+      "uniqueness_note": "multi-start optimizer agreement and stationarity receipts do not certify a unique or global MLE; nonlocal ambiguity remains untested"
+    },
+    "iid_gamma": {
+      "denominator": 4000,
+      "failure_or_unresolved_rate": 0.0,
+      "mcse_signed_log_error": 0.007114034146257419,
+      "mean_absolute_log_error": 0.34706556615547174,
+      "mean_signed_log_error": 0.24286154596207973,
+      "nested_limit_selection_rate": 0.40125,
+      "optimizer_failed_start_count": 1,
+      "optimizer_failed_start_rate": 6.25e-05,
+      "optimizer_start_count": 16000,
+      "raw_T_gt_2_71_count": 1926,
+      "raw_T_gt_2_71_rate": 0.4815,
+      "selected_bound_contact_counts": {
+        "": 3090,
+        "h_lower": 802,
+        "h_lower;k_lower": 8,
+        "h_upper": 55,
+        "h_upper;k_lower": 2,
+        "k_lower": 43
+      },
+      "selected_candidate_source_counts": {
+        "exact_homogeneous_limit": 1605,
+        "finite_k_optimizer": 2395
+      },
+      "selected_finite_estimate_n": 4000,
+      "selected_raw_gradient_interior_quantiles": {
+        "n": 1726,
+        "q50": 2.8421709603136124e-06,
+        "q95": 1.136868384125445e-05
+      },
+      "selected_raw_gradient_max_abs_quantiles": {
+        "n": 2395,
+        "q50": 5.684341920627225e-06,
+        "q95": 1.5793037277944668
+      },
+      "uniqueness_certified": false,
+      "uniqueness_note": "multi-start optimizer agreement and stationarity receipts do not certify a unique or global MLE; nonlocal ambiguity remains untested"
+    }
+  },
+  "numerical_checks": {
+    "checks_pass": true,
+    "gamma_to_homogeneous_k1e12_abs_error": 1.3734791082242737e-11,
+    "identity_examples": [
+      {
+        "D": 0,
+        "error": 0.0,
+        "k": 0.05
+      },
+      {
+        "D": 1,
+        "error": 4.440892098500626e-16,
+        "k": 0.05
+      },
+      {
+        "D": 2,
+        "error": 4.440892098500626e-16,
+        "k": 0.05
+      },
+      {
+        "D": 3,
+        "error": 8.881784197001252e-16,
+        "k": 0.05
+      },
+      {
+        "D": 4,
+        "error": 8.881784197001252e-16,
+        "k": 0.05
+      },
+      {
+        "D": 5,
+        "error": 2.6645352591003757e-15,
+        "k": 0.05
+      },
+      {
+        "D": 6,
+        "error": 8.881784197001252e-16,
+        "k": 0.05
+      },
+      {
+        "D": 0,
+        "error": 0.0,
+        "k": 1.65
+      },
+      {
+        "D": 1,
+        "error": 1.1102230246251565e-16,
+        "k": 1.65
+      },
+      {
+        "D": 2,
+        "error": 0.0,
+        "k": 1.65
+      },
+      {
+        "D": 3,
+        "error": 4.440892098500626e-16,
+        "k": 1.65
+      },
+      {
+        "D": 4,
+        "error": 8.881784197001252e-16,
+        "k": 1.65
+      },
+      {
+        "D": 5,
+        "error": 8.881784197001252e-16,
+        "k": 1.65
+      },
+      {
+        "D": 6,
+        "error": 0.0,
+        "k": 1.65
+      },
+      {
+        "D": 0,
+        "error": 0.0,
+        "k": 20.0
+      },
+      {
+        "D": 1,
+        "error": 4.440892098500626e-16,
+        "k": 20.0
+      },
+      {
+        "D": 2,
+        "error": 6.217248937900877e-15,
+        "k": 20.0
+      },
+      {
+        "D": 3,
+        "error": 3.552713678800501e-15,
+        "k": 20.0
+      },
+      {
+        "D": 4,
+        "error": 3.552713678800501e-15,
+        "k": 20.0
+      },
+      {
+        "D": 5,
+        "error": 0.0,
+        "k": 20.0
+      },
+      {
+        "D": 6,
+        "error": 3.552713678800501e-15,
+        "k": 20.0
+      },
+      {
+        "D": 0,
+        "error": 0.0,
+        "k": 1000.0
+      },
+      {
+        "D": 1,
+        "error": 9.947598300641403e-13,
+        "k": 1000.0
+      },
+      {
+        "D": 2,
+        "error": 9.059419880941277e-13,
+        "k": 1000.0
+      },
+      {
+        "D": 3,
+        "error": 1.3855583347321954e-13,
+        "k": 1000.0
+      },
+      {
+        "D": 4,
+        "error": 1.3500311979441904e-13,
+        "k": 1000.0
+      },
+      {
+        "D": 5,
+        "error": 2.2026824808563106e-13,
+        "k": 1000.0
+      },
+      {
+        "D": 6,
+        "error": 4.121147867408581e-13,
+        "k": 1000.0
+      }
+    ],
+    "stable_loggamma_ratio_max_abs_error": 9.947598300641403e-13,
+    "stable_vs_scipy_nll_max_abs_error": 1.9113599591946695e-12
+  },
+  "paired_contrasts": {
+    "cluster_gamma_minus_homogeneous_log_h": {
+      "all_cells": {
+        "mcse": 0.0010542277704799566,
+        "mean": 0.03245895115205331,
+        "n": 4000
+      },
+      "by_cell": {
+        "00": {
+          "mcse": 0.0018751852264087673,
+          "mean": 0.010703340513547868,
+          "n": 500
+        },
+        "01": {
+          "mcse": 0.0017825741778068672,
+          "mean": 0.017886585207649835,
+          "n": 500
+        },
+        "03": {
+          "mcse": 0.0012639934101475441,
+          "mean": 0.009676311223966658,
+          "n": 500
+        },
+        "04": {
+          "mcse": 0.0016938118303440155,
+          "mean": 0.019992400805698387,
+          "n": 500
+        },
+        "06": {
+          "mcse": 0.0019694982174932856,
+          "mean": 0.012922017311852628,
+          "n": 500
+        },
+        "07": {
+          "mcse": 0.003498217450965345,
+          "mean": 0.047907417431202304,
+          "n": 500
+        },
+        "08": {
+          "mcse": 0.002812080067179735,
+          "mean": 0.031845274777911374,
+          "n": 500
+        },
+        "09": {
+          "mcse": 0.004520978822540544,
+          "mean": 0.10873826194459743,
+          "n": 500
+        }
+      }
+    },
+    "cluster_gamma_minus_iid_gamma_log_h": {
+      "all_cells": {
+        "mcse": 0.004595877158495821,
+        "mean": -0.152482380052198,
+        "n": 4000
+      },
+      "by_cell": {
+        "00": {
+          "mcse": 0.01598490992319002,
+          "mean": -0.18567304862392706,
+          "n": 500
+        },
+        "01": {
+          "mcse": 0.014677254695601749,
+          "mean": -0.19012939821241026,
+          "n": 500
+        },
+        "03": {
+          "mcse": 0.009913732986001947,
+          "mean": -0.1132194645772376,
+          "n": 500
+        },
+        "04": {
+          "mcse": 0.008375906145850395,
+          "mean": -0.10955594367569853,
+          "n": 500
+        },
+        "06": {
+          "mcse": 0.01511113512918654,
+          "mean": -0.18516547777090092,
+          "n": 500
+        },
+        "07": {
+          "mcse": 0.013869753781155054,
+          "mean": -0.17406766158341613,
+          "n": 500
+        },
+        "08": {
+          "mcse": 0.011508984551837312,
+          "mean": -0.13661567699242871,
+          "n": 500
+        },
+        "09": {
+          "mcse": 0.012031562217658769,
+          "mean": -0.1254323689815649,
+          "n": 500
+        }
+      }
+    },
+    "iid_gamma_minus_homogeneous_log_h": {
+      "all_cells": {
+        "mcse": 0.0047977040200603985,
+        "mean": 0.1849413312042513,
+        "n": 4000
+      },
+      "by_cell": {
+        "00": {
+          "mcse": 0.016179488891633103,
+          "mean": 0.1963763891374749,
+          "n": 500
+        },
+        "01": {
+          "mcse": 0.014934233909109968,
+          "mean": 0.20801598342006009,
+          "n": 500
+        },
+        "03": {
+          "mcse": 0.01015289473764625,
+          "mean": 0.12289577580120425,
+          "n": 500
+        },
+        "04": {
+          "mcse": 0.008568576531678886,
+          "mean": 0.1295483444813969,
+          "n": 500
+        },
+        "06": {
+          "mcse": 0.015675944767264288,
+          "mean": 0.19808749508275356,
+          "n": 500
+        },
+        "07": {
+          "mcse": 0.01491838223796952,
+          "mean": 0.2219750790146184,
+          "n": 500
+        },
+        "08": {
+          "mcse": 0.01238855590687303,
+          "mean": 0.1684609517703401,
+          "n": 500
+        },
+        "09": {
+          "mcse": 0.012998671360453065,
+          "mean": 0.2341706309261623,
+          "n": 500
+        }
+      }
+    }
+  },
+  "raw_T_checks": {
+    "minimum_T": 0.0,
+    "negative_T_count_after_clipping": 0,
+    "nonnegative_after_clipping": true,
+    "numerical_clipping_count": 442,
+    "severe_negative_failure": false,
+    "severe_negative_failure_count": 0,
+    "severe_negative_threshold": -1e-07,
+    "unclipped_minimum_T": -4.05466380470898e-08
+  },
+  "raw_T_label": "uncalibrated diagnostic; not a formal false-positive guarantee",
+  "raw_T_threshold": 2.71,
+  "runtime_seconds": 200.28044390678406,
+  "source_manifest": {
+    "cells": {
+      "00": 500,
+      "01": 500,
+      "03": 500,
+      "04": 500,
+      "06": 500,
+      "07": 500,
+      "08": 500,
+      "09": 500
+    },
+    "files": 12000,
+    "sha256": "f1cd04a3e1978b52fbd782f3ea79759e65d4ac38610a304de3c6b45c5c29fe78"
+  },
+  "total_histories": 4000
+}

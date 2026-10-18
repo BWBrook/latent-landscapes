@@ -1,0 +1,912 @@
+{
+  "cases": {
+    "B_H3": {
+      "fits": {
+        "free_h": {
+          "best": {
+            "criterion": -1716.4471755998447,
+            "curve_check": {
+              "errors": [
+                0.0002567691827941587,
+                1.708889101337263e-07,
+                2.046460707560982e-07,
+                5.097901869532961e-07,
+                3.0804040171972247e-06,
+                0.015729849902236026
+              ],
+              "exact_grid_nodes": [],
+              "max_abs_loglik_error": 0.015729849902236026,
+              "max_series_remainder_bound": 1.1688180864696698e-53,
+              "midpoint_count": 6
+            },
+            "laplace_pd": true,
+            "mode_curve_bound_touch": false,
+            "mode_eta_max": -4.386888819843746,
+            "mode_eta_min": -6.68002455940298,
+            "mode_evaluations": 39,
+            "mode_gradient_inf": 0.000355675094635851,
+            "mode_iterations": 33,
+            "mode_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "mode_success": true,
+            "mode_value": -1709.2815068593386,
+            "parameters": {
+              "alpha": -5.891168849651824,
+              "beta": 0.5928625884694861,
+              "detection_sd": 0.19722001165208683,
+              "h": 4.18900957676729,
+              "sigma": 0.6012722789291436
+            }
+          },
+          "curve_cache": {
+            "count": 109,
+            "seconds": 12.196808209177107
+          },
+          "elapsed_seconds": 20.404308249941096,
+          "failures": [],
+          "fixed_h": null,
+          "mode_calls": 225,
+          "pd_failures": 0,
+          "starts": [
+            {
+              "final": [
+                -5.891168849651824,
+                0.5928625884694861,
+                -0.5087074038966557,
+                1.4324643281325615,
+                0.19722001165208683
+              ],
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "nfev": 210,
+              "nit": 28,
+              "objective": 1716.4471755998447,
+              "parameters": {
+                "alpha": -5.891168849651824,
+                "beta": 0.5928625884694861,
+                "detection_sd": 0.19722001165208683,
+                "h": 4.18900957676729,
+                "sigma": 0.6012722789291436
+              },
+              "start": [
+                -5.5,
+                0.4,
+                -1.0498221244986778,
+                1.0986122886681098,
+                0.2
+              ],
+              "success": true
+            },
+            {
+              "final": [
+                -5.5,
+                0.0,
+                -1.6094379124341003,
+                0.1823215567939546,
+                0.1
+              ],
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "nfev": 18,
+              "nit": 1,
+              "objective": 1761.7928562320371,
+              "parameters": {
+                "alpha": -5.5,
+                "beta": 0.0,
+                "detection_sd": 0.1,
+                "h": 1.2,
+                "sigma": 0.2
+              },
+              "start": [
+                -5.5,
+                0.0,
+                -1.6094379124341003,
+                0.1823215567939546,
+                0.1
+              ],
+              "success": true
+            }
+          ]
+        },
+        "h1": {
+          "best": {
+            "criterion": -1724.6024216879869,
+            "curve_check": {
+              "errors": [
+                0.0002549319065838773,
+                1.6619738829604103e-07,
+                1.9544255636105845e-07,
+                3.3262469045780563e-07,
+                1.3107261445099994e-06,
+                0.0061315848833523035
+              ],
+              "exact_grid_nodes": [],
+              "max_abs_loglik_error": 0.0061315848833523035,
+              "max_series_remainder_bound": 0.0,
+              "midpoint_count": 6
+            },
+            "laplace_pd": true,
+            "mode_curve_bound_touch": false,
+            "mode_eta_max": -4.246577653206536,
+            "mode_eta_min": -6.30910033500162,
+            "mode_evaluations": 46,
+            "mode_gradient_inf": 0.0009700858777597077,
+            "mode_iterations": 39,
+            "mode_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "mode_success": true,
+            "mode_value": -1722.9414415012263,
+            "parameters": {
+              "alpha": -5.522294957771277,
+              "beta": 0.7029353517539787,
+              "detection_sd": 0.19827443215494037,
+              "h": 1.0,
+              "sigma": 0.2670941664360785
+            }
+          },
+          "curve_cache": {
+            "count": 64,
+            "seconds": 2.4033039540518075
+          },
+          "elapsed_seconds": 8.225438249995932,
+          "failures": [],
+          "fixed_h": 1.0,
+          "mode_calls": 162,
+          "pd_failures": 0,
+          "starts": [
+            {
+              "final": [
+                -5.522294957771277,
+                0.7029353517539787,
+                -1.320153999478824,
+                0.19827443215494037
+              ],
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "nfev": 90,
+              "nit": 15,
+              "objective": 1724.6024216879869,
+              "parameters": {
+                "alpha": -5.522294957771277,
+                "beta": 0.7029353517539787,
+                "detection_sd": 0.19827443215494037,
+                "h": 1.0,
+                "sigma": 0.2670941664360785
+              },
+              "start": [
+                -5.5,
+                0.4,
+                -1.0498221244986778,
+                0.2
+              ],
+              "success": true
+            },
+            {
+              "final": [
+                -5.524575437995369,
+                0.7051221655952643,
+                -1.2982608478001936,
+                0.19827799713370442
+              ],
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "nfev": 70,
+              "nit": 10,
+              "objective": 1724.6025909428024,
+              "parameters": {
+                "alpha": -5.524575437995369,
+                "beta": 0.7051221655952643,
+                "detection_sd": 0.19827799713370442,
+                "h": 1.0,
+                "sigma": 0.2730061796971181
+              },
+              "start": [
+                -5.5,
+                0.0,
+                -1.6094379124341003,
+                0.1
+              ],
+              "success": true
+            }
+          ]
+        }
+      },
+      "h30_domain_stress": {
+        "errors": [
+          0.0002560216114737557,
+          1.8968529857943395e-07,
+          5.00644524947802e-07,
+          3.0253225062892852e-06,
+          1.8144636207750864e-05,
+          0.09146771221330141
+        ],
+        "exact_grid_nodes": [
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60
+        ],
+        "max_abs_loglik_error": 0.09146771221330141,
+        "max_series_remainder_bound": 3.427938259762839e-32,
+        "midpoint_count": 6
+      },
+      "pair_elapsed_seconds": 39.82152041699737,
+      "site_count": 120,
+      "training_site_ids": [
+        "cell_03_24",
+        "cell_03_52",
+        "cell_05_22",
+        "cell_05_24",
+        "cell_05_26",
+        "cell_05_50",
+        "cell_05_52",
+        "cell_05_54",
+        "cell_07_24",
+        "cell_07_52",
+        "cell_15_12",
+        "cell_15_65",
+        "cell_15_77",
+        "cell_17_10",
+        "cell_17_12",
+        "cell_17_14",
+        "cell_17_34",
+        "cell_17_63",
+        "cell_17_65",
+        "cell_17_67",
+        "cell_17_75",
+        "cell_17_77",
+        "cell_17_79",
+        "cell_19_12",
+        "cell_19_32",
+        "cell_19_34",
+        "cell_19_36",
+        "cell_19_65",
+        "cell_19_77",
+        "cell_21_34",
+        "cell_23_48",
+        "cell_24_06",
+        "cell_25_46",
+        "cell_25_48",
+        "cell_25_50",
+        "cell_26_04",
+        "cell_26_06",
+        "cell_26_08",
+        "cell_27_48",
+        "cell_27_75",
+        "cell_28_06",
+        "cell_28_34",
+        "cell_29_73",
+        "cell_29_75",
+        "cell_29_77",
+        "cell_30_32",
+        "cell_30_34",
+        "cell_30_36",
+        "cell_31_75",
+        "cell_32_34",
+        "cell_33_06",
+        "cell_35_04",
+        "cell_35_06",
+        "cell_35_08",
+        "cell_37_06",
+        "cell_39_70",
+        "cell_41_68",
+        "cell_41_70",
+        "cell_41_72",
+        "cell_43_06",
+        "cell_43_70",
+        "cell_45_04",
+        "cell_45_06",
+        "cell_45_08",
+        "cell_47_06",
+        "cell_51_20",
+        "cell_51_37",
+        "cell_51_56",
+        "cell_51_64",
+        "cell_51_80",
+        "cell_53_18",
+        "cell_53_20",
+        "cell_53_22",
+        "cell_53_35",
+        "cell_53_37",
+        "cell_53_39",
+        "cell_53_54",
+        "cell_53_56",
+        "cell_53_58",
+        "cell_53_62",
+        "cell_53_64",
+        "cell_53_66",
+        "cell_53_78",
+        "cell_53_80",
+        "cell_53_82",
+        "cell_55_20",
+        "cell_55_37",
+        "cell_55_56",
+        "cell_55_64",
+        "cell_55_80",
+        "cell_57_48",
+        "cell_59_46",
+        "cell_59_48",
+        "cell_59_50",
+        "cell_61_48",
+        "cell_63_15",
+        "cell_63_25",
+        "cell_63_35",
+        "cell_63_79",
+        "cell_65_13",
+        "cell_65_15",
+        "cell_65_17",
+        "cell_65_23",
+        "cell_65_25",
+        "cell_65_27",
+        "cell_65_33",
+        "cell_65_35",
+        "cell_65_37",
+        "cell_65_77",
+        "cell_65_79",
+        "cell_65_81",
+        "cell_66_48",
+        "cell_67_15",
+        "cell_67_25",
+        "cell_67_35",
+        "cell_67_79",
+        "cell_68_46",
+        "cell_68_48",
+        "cell_68_50",
+        "cell_70_48"
+      ]
+    },
+    "H3": {
+      "fits": {
+        "free_h": {
+          "best": {
+            "criterion": -1737.3276146821154,
+            "curve_check": {
+              "errors": [
+                0.0002566892380642116,
+                1.687763031554823e-07,
+                1.9826976327408374e-07,
+                4.110693936354437e-07,
+                1.9422047170536416e-06,
+                0.009917399898863977
+              ],
+              "exact_grid_nodes": [],
+              "max_abs_loglik_error": 0.009917399898863977,
+              "max_series_remainder_bound": 7.50561894531982e-72,
+              "midpoint_count": 6
+            },
+            "laplace_pd": true,
+            "mode_curve_bound_touch": false,
+            "mode_eta_max": -4.829742661530113,
+            "mode_eta_min": -6.479609972017897,
+            "mode_evaluations": 36,
+            "mode_gradient_inf": 0.00030827078580708545,
+            "mode_iterations": 33,
+            "mode_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "mode_success": true,
+            "mode_value": -1734.5930942955647,
+            "parameters": {
+              "alpha": -5.894856300558282,
+              "beta": 0.5558264966017219,
+              "detection_sd": 0.2053027834150842,
+              "h": 2.356901892406757,
+              "sigma": 0.37586623301808036
+            }
+          },
+          "curve_cache": {
+            "count": 55,
+            "seconds": 6.839759660651907
+          },
+          "elapsed_seconds": 11.078997584059834,
+          "failures": [],
+          "fixed_h": null,
+          "mode_calls": 117,
+          "pd_failures": 0,
+          "starts": [
+            {
+              "final": [
+                -5.894856300558282,
+                0.5558264966017219,
+                -0.9785219621407871,
+                0.8573479991618382,
+                0.2053027834150842
+              ],
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "nfev": 102,
+              "nit": 13,
+              "objective": 1737.3276146821154,
+              "parameters": {
+                "alpha": -5.894856300558282,
+                "beta": 0.5558264966017219,
+                "detection_sd": 0.2053027834150842,
+                "h": 2.356901892406757,
+                "sigma": 0.37586623301808036
+              },
+              "start": [
+                -5.5,
+                0.4,
+                -1.0498221244986778,
+                1.0986122886681098,
+                0.2
+              ],
+              "success": true
+            },
+            {
+              "final": [
+                -5.5,
+                0.0,
+                -1.6094379124341003,
+                0.1823215567939546,
+                0.1
+              ],
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "nfev": 18,
+              "nit": 1,
+              "objective": 1782.0089849735143,
+              "parameters": {
+                "alpha": -5.5,
+                "beta": 0.0,
+                "detection_sd": 0.1,
+                "h": 1.2,
+                "sigma": 0.2
+              },
+              "start": [
+                -5.5,
+                0.0,
+                -1.6094379124341003,
+                0.1823215567939546,
+                0.1
+              ],
+              "success": true
+            }
+          ]
+        },
+        "h1": {
+          "best": {
+            "criterion": -1739.743990034487,
+            "curve_check": {
+              "errors": [
+                0.00025670085458529,
+                1.687745267986429e-07,
+                1.6800578706011038e-07,
+                3.363616691842708e-07,
+                1.3108604619560538e-06,
+                0.0061315848833523035
+              ],
+              "exact_grid_nodes": [],
+              "max_abs_loglik_error": 0.0061315848833523035,
+              "max_series_remainder_bound": 0.0,
+              "midpoint_count": 6
+            },
+            "laplace_pd": true,
+            "mode_curve_bound_touch": false,
+            "mode_eta_max": -4.399965327475917,
+            "mode_eta_min": -6.414930730918798,
+            "mode_evaluations": 40,
+            "mode_gradient_inf": 0.0015049803885458513,
+            "mode_iterations": 36,
+            "mode_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "mode_success": true,
+            "mode_value": -1738.7527598431932,
+            "parameters": {
+              "alpha": -5.728056229619878,
+              "beta": 0.6643779499678889,
+              "detection_sd": 0.20523494652879626,
+              "h": 1.0,
+              "sigma": 0.22023641356667592
+            }
+          },
+          "curve_cache": {
+            "count": 48,
+            "seconds": 1.857101202243939
+          },
+          "elapsed_seconds": 6.384812457952648,
+          "failures": [],
+          "fixed_h": 1.0,
+          "mode_calls": 127,
+          "pd_failures": 0,
+          "starts": [
+            {
+              "final": [
+                -5.750225091772568,
+                0.6834094136622973,
+                -1.1011304167849731,
+                0.20525650188908914
+              ],
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "nfev": 65,
+              "nit": 10,
+              "objective": 1739.8266222658785,
+              "parameters": {
+                "alpha": -5.750225091772568,
+                "beta": 0.6834094136622973,
+                "detection_sd": 0.20525650188908914,
+                "h": 1.0,
+                "sigma": 0.3324950132360629
+              },
+              "start": [
+                -5.5,
+                0.4,
+                -1.0498221244986778,
+                0.2
+              ],
+              "success": true
+            },
+            {
+              "final": [
+                -5.728056229619878,
+                0.6643779499678889,
+                -1.5130537024854418,
+                0.20523494652879626
+              ],
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "nfev": 60,
+              "nit": 10,
+              "objective": 1739.743990034487,
+              "parameters": {
+                "alpha": -5.728056229619878,
+                "beta": 0.6643779499678889,
+                "detection_sd": 0.20523494652879626,
+                "h": 1.0,
+                "sigma": 0.22023641356667592
+              },
+              "start": [
+                -5.5,
+                0.0,
+                -1.6094379124341003,
+                0.1
+              ],
+              "success": true
+            }
+          ]
+        }
+      },
+      "h30_domain_stress": {
+        "errors": [
+          0.0002560142432166401,
+          1.8006590352115381e-07,
+          4.940708002720839e-07,
+          2.80974509969667e-06,
+          1.957540274943881e-05,
+          0.0814232593642572
+        ],
+        "exact_grid_nodes": [
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60
+        ],
+        "max_abs_loglik_error": 0.0814232593642572,
+        "max_series_remainder_bound": 3.427938259762839e-32,
+        "midpoint_count": 6
+      },
+      "pair_elapsed_seconds": 28.81891829194501,
+      "site_count": 120,
+      "training_site_ids": [
+        "cell_03_24",
+        "cell_03_52",
+        "cell_05_22",
+        "cell_05_24",
+        "cell_05_26",
+        "cell_05_50",
+        "cell_05_52",
+        "cell_05_54",
+        "cell_07_24",
+        "cell_07_52",
+        "cell_15_12",
+        "cell_15_65",
+        "cell_15_77",
+        "cell_17_10",
+        "cell_17_12",
+        "cell_17_14",
+        "cell_17_34",
+        "cell_17_63",
+        "cell_17_65",
+        "cell_17_67",
+        "cell_17_75",
+        "cell_17_77",
+        "cell_17_79",
+        "cell_19_12",
+        "cell_19_32",
+        "cell_19_34",
+        "cell_19_36",
+        "cell_19_65",
+        "cell_19_77",
+        "cell_21_34",
+        "cell_23_48",
+        "cell_24_06",
+        "cell_25_46",
+        "cell_25_48",
+        "cell_25_50",
+        "cell_26_04",
+        "cell_26_06",
+        "cell_26_08",
+        "cell_27_48",
+        "cell_27_75",
+        "cell_28_06",
+        "cell_28_34",
+        "cell_29_73",
+        "cell_29_75",
+        "cell_29_77",
+        "cell_30_32",
+        "cell_30_34",
+        "cell_30_36",
+        "cell_31_75",
+        "cell_32_34",
+        "cell_33_06",
+        "cell_35_04",
+        "cell_35_06",
+        "cell_35_08",
+        "cell_37_06",
+        "cell_39_70",
+        "cell_41_68",
+        "cell_41_70",
+        "cell_41_72",
+        "cell_43_06",
+        "cell_43_70",
+        "cell_45_04",
+        "cell_45_06",
+        "cell_45_08",
+        "cell_47_06",
+        "cell_51_20",
+        "cell_51_37",
+        "cell_51_56",
+        "cell_51_64",
+        "cell_51_80",
+        "cell_53_18",
+        "cell_53_20",
+        "cell_53_22",
+        "cell_53_35",
+        "cell_53_37",
+        "cell_53_39",
+        "cell_53_54",
+        "cell_53_56",
+        "cell_53_58",
+        "cell_53_62",
+        "cell_53_64",
+        "cell_53_66",
+        "cell_53_78",
+        "cell_53_80",
+        "cell_53_82",
+        "cell_55_20",
+        "cell_55_37",
+        "cell_55_56",
+        "cell_55_64",
+        "cell_55_80",
+        "cell_57_48",
+        "cell_59_46",
+        "cell_59_48",
+        "cell_59_50",
+        "cell_61_48",
+        "cell_63_15",
+        "cell_63_25",
+        "cell_63_35",
+        "cell_63_79",
+        "cell_65_13",
+        "cell_65_15",
+        "cell_65_17",
+        "cell_65_23",
+        "cell_65_25",
+        "cell_65_27",
+        "cell_65_33",
+        "cell_65_35",
+        "cell_65_37",
+        "cell_65_77",
+        "cell_65_79",
+        "cell_65_81",
+        "cell_66_48",
+        "cell_67_15",
+        "cell_67_25",
+        "cell_67_35",
+        "cell_67_79",
+        "cell_68_46",
+        "cell_68_48",
+        "cell_68_50",
+        "cell_70_48"
+      ]
+    }
+  },
+  "importance": {
+    "B_H3": {
+      "alpha": -5.5,
+      "beta": 0.5,
+      "curve_check": {
+        "errors": [
+          0.0002568876804609488,
+          1.7072246194516083e-07,
+          1.8193808415389867e-07,
+          4.626474670033076e-07,
+          2.3798248314221837e-06,
+          0.0121549026316643
+        ],
+        "exact_grid_nodes": [],
+        "max_abs_loglik_error": 0.0121549026316643,
+        "max_series_remainder_bound": 1.360845276765652e-63,
+        "midpoint_count": 6
+      },
+      "detection_sd": 0.2,
+      "difference_importance_minus_laplace": -0.04389438654220612,
+      "draws": 4096,
+      "ess": 3557.3365890846203,
+      "h": 3.0,
+      "importance_logmean": -1369.5292645559705,
+      "laplace_logcriterion": -1369.4853701694283,
+      "max_log_weight_minus_mean": 1.608700725365452,
+      "refinement": {
+        "alpha": -5.5,
+        "beta": 0.5,
+        "curve_check": {
+          "errors": [
+            0.0002568876804609488,
+            1.7072246194516083e-07,
+            1.8193808415389867e-07,
+            4.626474670033076e-07,
+            2.3798248314221837e-06,
+            0.0121549026316643
+          ],
+          "exact_grid_nodes": [],
+          "max_abs_loglik_error": 0.0121549026316643,
+          "max_series_remainder_bound": 1.360845276765652e-63,
+          "midpoint_count": 6
+        },
+        "detection_sd": 0.2,
+        "difference_importance_minus_laplace": -0.036906614345980415,
+        "draws": 16384,
+        "ess": 14203.280377580044,
+        "h": 3.0,
+        "importance_logmean": -1369.5222767837743,
+        "laplace_logcriterion": -1369.4853701694283,
+        "max_log_weight_minus_mean": 1.8683888825571557,
+        "seed": 20261018,
+        "sigma": 0.4,
+        "status": "ok"
+      },
+      "seed": 20261018,
+      "sigma": 0.4,
+      "status": "ok"
+    },
+    "H3": {
+      "alpha": -5.5,
+      "beta": 0.5,
+      "curve_check": {
+        "errors": [
+          0.0002558827738425862,
+          1.6712148998010434e-07,
+          2.1416776618821132e-07,
+          4.198486607265295e-07,
+          2.292933347192161e-06,
+          0.011703898974012361
+        ],
+        "exact_grid_nodes": [],
+        "max_abs_loglik_error": 0.011703898974012361,
+        "max_series_remainder_bound": 1.360845276765652e-63,
+        "midpoint_count": 6
+      },
+      "detection_sd": 0.2,
+      "difference_importance_minus_laplace": -0.04553144285569033,
+      "draws": 4096,
+      "ess": 3574.4162802788887,
+      "h": 3.0,
+      "importance_logmean": -1392.5060264337737,
+      "laplace_logcriterion": -1392.460494990918,
+      "max_log_weight_minus_mean": 1.5357671840411058,
+      "refinement": {
+        "alpha": -5.5,
+        "beta": 0.5,
+        "curve_check": {
+          "errors": [
+            0.0002558827738425862,
+            1.6712148998010434e-07,
+            2.1416776618821132e-07,
+            4.198486607265295e-07,
+            2.292933347192161e-06,
+            0.011703898974012361
+          ],
+          "exact_grid_nodes": [],
+          "max_abs_loglik_error": 0.011703898974012361,
+          "max_series_remainder_bound": 1.360845276765652e-63,
+          "midpoint_count": 6
+        },
+        "detection_sd": 0.2,
+        "difference_importance_minus_laplace": -0.040128285811533715,
+        "draws": 16384,
+        "ess": 14303.248338966436,
+        "h": 3.0,
+        "importance_logmean": -1392.5006232767296,
+        "laplace_logcriterion": -1392.460494990918,
+        "max_log_weight_minus_mean": 1.9435946090634388,
+        "seed": 20261018,
+        "sigma": 0.4,
+        "status": "ok"
+      },
+      "seed": 20261018,
+      "sigma": 0.4,
+      "status": "ok"
+    }
+  },
+  "manifest": {
+    "grid": [
+      -12.0,
+      -11.85,
+      -11.7,
+      -11.55,
+      -11.4,
+      -11.25,
+      -11.1,
+      -10.95,
+      -10.8,
+      -10.65,
+      -10.5,
+      -10.35,
+      -10.2,
+      -10.05,
+      -9.9,
+      -9.75,
+      -9.6,
+      -9.45,
+      -9.3,
+      -9.15,
+      -9.0,
+      -8.85,
+      -8.7,
+      -8.55,
+      -8.4,
+      -8.25,
+      -8.1,
+      -7.95,
+      -7.8,
+      -7.65,
+      -7.5,
+      -7.3500000000000005,
+      -7.2,
+      -7.05,
+      -6.9,
+      -6.75,
+      -6.6000000000000005,
+      -6.45,
+      -6.3,
+      -6.15,
+      -6.0,
+      -5.8500000000000005,
+      -5.7,
+      -5.55,
+      -5.4,
+      -5.25,
+      -5.1000000000000005,
+      -4.95,
+      -4.800000000000001,
+      -4.65,
+      -4.5,
+      -4.3500000000000005,
+      -4.2,
+      -4.050000000000001,
+      -3.9000000000000004,
+      -3.75,
+      -3.5999999999999996,
+      -3.450000000000001,
+      -3.3000000000000007,
+      -3.1500000000000004,
+      -3.0
+    ],
+    "inputs": {
+      "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "artifacts/goal060_execution/audit-repair/mechanical/compressed-bank.npz": "5850f45c73dbd8344c4988acfb52f8d89ea74f93aa23790a887e7374b30acfc1",
+      "artifacts/goal060_execution/audit-repair/public_inputs/exposure.npz": "b74004fc9ecf03499cfdc9ecca4919b0e17987eba405709f4e3f95f9bc9c0831",
+      "artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2",
+      "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-04/rep-000/observations.npz": "ed8675556be861c5600de44bfe22ab1fea73c6c805512e07f6445e0b2eb35189",
+      "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef"
+    },
+    "runtime": {
+      "machine": "arm64",
+      "numpy": "2.5.1",
+      "platform": "macOS-27.0.1-arm64-arm-64bit",
+      "python": "3.12.13 (main, May 10 2026, 19:20:41) [Clang 22.1.3 ]"
+    },
+    "script_sha256": "8fc0fb391b0d32d6ed67871a7680051a35ca2c1da8fdfc099da4344d1f318d61",
+    "seed": 20261018,
+    "series_domain": 5.0,
+    "series_order": 48,
+    "thread_policy": "single-process; BLAS thread count inherited"
+  }
+}

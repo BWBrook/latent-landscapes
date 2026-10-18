@@ -1,5 +1,45 @@
 # Latent Landscapes: current handover
 
+18 October 2026 (Hobart), integrated Paper 1 protocol and numerical development.
+
+Barry selected **broader first**: landscape generality and common competing
+background models belong in one substantial Paper 1. The
+[reviewed protocol](docs/paper1-integrated-tranche-protocol-2026-10-18.md)
+combines six backgrounds, three paired monitoring arms and common fitted
+models. Claude–Codex review has settled the map-stratum mean error target,
+precision rule, six-point effect truth grid, fitted h domain [1,30], and the
+bootstrap declaration/truth-inclusion comparison. R3 is dropped. The protocol
+is a development specification, **not a registered production experiment**.
+
+The [numerical development record](docs/paper1-numerical-development-2026-10-18.md)
+reports the corrected complete-data frailty check on 4,000 archived histories,
+the first observed-data spatial prototype, and a verified stopping rule for
+fixed-cap bootstrap decisions. The frailty result is selective: cluster
+frailty helps in the high-hazard heterogeneous cell, while independent Gamma
+frailty inflates effects. A survivor-selected pilot cannot establish the
+baseline-monitoring comparison. All four spatial endpoints now pass independent
+gradient, direct-likelihood and grid-refinement checks. The repaired local fit
+pairs took 313 and 440 seconds; full-profile accuracy, Laplace approximation
+and campaign efficiency still need qualification.
+
+The immediate work is to qualify the spatial criterion and whole effect
+profiles across difficult cases and both site counts, then freeze the
+executable design before rule training and untouched validation. Two fit
+pairs do not price the campaign. The 90-map scenario is a minimum-count
+illustration; precision, rather than an arbitrary resource ceiling, sets the
+final allocation. The [initial plan](docs/paper1-integrated-tranche-planning-2026-10-18.md)
+and [iteration-2 review](docs/paper1-design-model-review-2026-10-18.md) preserve
+the earlier recommendations and authority state.
+
+Current repository guidance routes scientific gates through independent AI
+review and permits coherent commits/pushes to the existing private remote.
+Barry's standing two-way-door instructions support this reversible numerical
+work. Publication and other one-way doors retain explicit human review.
+Goal 062 and the original blinded capstone remain complete and closed.
+The following closure and operational records are preserved history.
+
+## Preserved Goal 062 closure
+
 16 October 2026 (Hobart), Goal 062 complete, independently reviewed and returned.
 
 **The ten-cell final-procedure campaign is complete:** 5,000 histories,

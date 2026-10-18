@@ -1,0 +1,37 @@
+{
+  "meaning": "exact binary equivalence to fixed B=999 rank decision; not an exact plug-in bootstrap inference",
+  "rank_convention": "p=(1+count(T_star>=T_observed))/(B+1); reject p<=.05",
+  "cap": 999,
+  "nonrejection_boundary": "50 exceedances",
+  "rejection_boundary": "950 non-exceedances",
+  "exhaustive_small_cap_sequences_checked": 49146,
+  "fixed_cap_test": {
+    "all_exceedances": [
+      false,
+      50
+    ],
+    "no_exceedances": [
+      true,
+      950
+    ]
+  },
+  "expected_replicates_given_exceedance_probability": {
+    "0.0": 950.0,
+    "0.01": 959.5959595959596,
+    "0.025": 974.3587966100386,
+    "0.05": 942.212016285893,
+    "0.1": 499.9999999439437,
+    "0.2": 250.0,
+    "0.5": 100.0,
+    "0.9": 55.55555555555556,
+    "1.0": 50.0
+  },
+  "ideal_continuous_simple_null_expected_replicates": 198.01691433184877,
+  "limitations": [
+    "Uniform-q result does not apply automatically to a fitted-nuisance bootstrap.",
+    "Early stopping gives a p-value interval and decision, not the uncomputed numerical fixed-cap p-value.",
+    "Failed fits are not non-exceedances; repair or mark an unresolved comparator.",
+    "Actual wall time also depends on statistic-dependent refit cost, batching and failures."
+  ],
+  "source_sha256": "e6bac86060b6f77717360e9bbfa1d476f29675efd28b94deed9d19a97963f00f"
+}

@@ -1,0 +1,240 @@
+{
+  "status": "complete development evidence; production numerical qualification remains open",
+  "snapshots": [
+    {
+      "snapshot": "oracle/check.py",
+      "original": "artifacts/paper1_planning_20261018/codex-oracle-rate-ratio-check.py",
+      "sha256": "b8846b37b15a8f7f8ab100c25412a39e2fd829e9328300dd06b89f7928d1f21a",
+      "bytes": 3250
+    },
+    {
+      "snapshot": "oracle/summary.json",
+      "original": "artifacts/paper1_planning_20261018/codex-oracle-rate-ratio-check.json",
+      "sha256": "1b810e176bc0de096b76735beb45a2d033e34ad3645749e6c3e246e630941827",
+      "bytes": 5069
+    },
+    {
+      "snapshot": "oracle/claude-normaliser-check.py",
+      "original": "artifacts/paper1_planning_20261018/claude-normaliser-check.py",
+      "sha256": "131d31284d3d5c71031d0721e48709b17606f0c7f4260f9c441c23df3b096200",
+      "bytes": 1363
+    },
+    {
+      "snapshot": "oracle/claude-normaliser-check.json",
+      "original": "artifacts/paper1_planning_20261018/claude-normaliser-check.json",
+      "sha256": "1ecb8772dbbb621971307dc12c6675e179eb0c621fbd2d4bf8d6c2c55386279e",
+      "bytes": 209
+    },
+    {
+      "snapshot": "sequential/check.py",
+      "original": "artifacts/paper1_planning_20261018/sequential-rank-check.py",
+      "sha256": "e6bac86060b6f77717360e9bbfa1d476f29675efd28b94deed9d19a97963f00f",
+      "bytes": 3407
+    },
+    {
+      "snapshot": "sequential/summary.json",
+      "original": "artifacts/paper1_planning_20261018/sequential-rank-check.json",
+      "sha256": "6228fed2195c08c69ef87e40266fd203356962e031422fbb7d6f6ac33e127718",
+      "bytes": 1324
+    },
+    {
+      "snapshot": "reviews/gp-initial.md",
+      "original": "artifacts/paper1_planning_20261018/gp-prototype-audit-initial.md",
+      "sha256": "fa9ea799bbd96a24661396045323f5f7df71fb3758a0ab3bcf370b9fa1fd4c35",
+      "bytes": 9326
+    },
+    {
+      "snapshot": "protocol-at-frailty-run.md",
+      "original": "artifacts/paper1_planning_20261018/protocol-at-frailty-run.md",
+      "sha256": "a52dbcfc44e9325a9a42a0be21ecd6e7bc1d2869e1ec5d74cb0e93a128cc3cf0",
+      "bytes": 28251
+    },
+    {
+      "snapshot": "frailty/claude-frailty-check.py",
+      "original": "artifacts/paper1_planning_20261018/claude-frailty-check.py",
+      "sha256": "57cb02e53d8025f0d76944be261506c3fbe974c5fd08ac7cc5be726ee48dfffd",
+      "bytes": 3212
+    },
+    {
+      "snapshot": "frailty/claude-cluster-frailty-check.py",
+      "original": "artifacts/paper1_planning_20261018/claude-cluster-frailty-check.py",
+      "sha256": "e50063861ca7daa3a5454eb60cbc3d917dde7ac43edb43b16b3f1fbc8217ea32",
+      "bytes": 3533
+    },
+    {
+      "snapshot": "gp/initial/run_gp_prototype.py",
+      "original": "artifacts/paper1_planning_20261018/gp-prototype/initial/run_gp_prototype.py",
+      "sha256": "8fc0fb391b0d32d6ed67871a7680051a35ca2c1da8fdfc099da4344d1f318d61",
+      "bytes": 21082
+    },
+    {
+      "snapshot": "gp/initial/results.json",
+      "original": "artifacts/paper1_planning_20261018/gp-prototype/initial/results.json",
+      "sha256": "382d320a7cbfe2c741a2786c3b69a4e02bffeb970aa6671e907bc6a7d86ce3d2",
+      "bytes": 26031
+    },
+    {
+      "snapshot": "gp/initial/manifest.json",
+      "original": "artifacts/paper1_planning_20261018/gp-prototype/initial/manifest.json",
+      "sha256": "e4dcb8909295d021823952c7ce5ba6299c948db013acb591859bf60bee801085",
+      "bytes": 2217
+    },
+    {
+      "snapshot": "frailty/run_frailty_repair.py",
+      "original": "artifacts/paper1_planning_20261018/frailty-repair/run_frailty_repair.py",
+      "sha256": "2834703e90ca6eef2549c34d3705322f0c3dcb1f035e2baa90b1ec0a13dac928",
+      "bytes": 35804
+    },
+    {
+      "snapshot": "frailty/summary.json",
+      "original": "artifacts/paper1_planning_20261018/frailty-repair/summary.json",
+      "sha256": "3f01b4d697c3006e776869e0a87857cb51cfe4eae0d0ab02884cea3554160d59",
+      "bytes": 27233
+    },
+    {
+      "snapshot": "frailty/verification.json",
+      "original": "artifacts/paper1_planning_20261018/frailty-repair/verification.json",
+      "sha256": "5a0eeb67d96b631fd86a51cd0ca6deac9bff5df9129313719b35854d8f3125a9",
+      "bytes": 6239
+    },
+    {
+      "snapshot": "frailty/source_input_hashes.json",
+      "original": "artifacts/paper1_planning_20261018/frailty-repair/source_input_hashes.json",
+      "sha256": "f65f626ac5e21f9208284ccbc27d90ed2884d8f8b4c1a5eae6d431cb8e6ae90d",
+      "bytes": 3073
+    },
+    {
+      "snapshot": "frailty/parent-check.py",
+      "original": "artifacts/paper1_planning_20261018/parent-frailty-check.py",
+      "sha256": "6125ffd235002e2607f5a59679a4781b5a0d9b5415704a2b984788214a79ca5b",
+      "bytes": 3163
+    },
+    {
+      "snapshot": "frailty/parent-check.json",
+      "original": "artifacts/paper1_planning_20261018/parent-frailty-check.json",
+      "sha256": "2209ec1c90cbf3e0b0d55c01930c1734981227bad272fe7c699108fc76956938",
+      "bytes": 3751
+    },
+    {
+      "snapshot": "gp/final/run_gp_prototype.py",
+      "original": "artifacts/paper1_planning_20261018/gp-prototype/run_gp_prototype.py",
+      "sha256": "075b9e265eafd17c60dc6cb12b274e4def61ffcd355a1cadc2cce80b3ea44aed",
+      "bytes": 57098
+    },
+    {
+      "snapshot": "gp/final/results.json",
+      "original": "artifacts/paper1_planning_20261018/gp-prototype/results.json",
+      "sha256": "c2d392318d16ce5b1ff8a336951541e9be1256047b0a51a802a2dacc0dd92e86",
+      "bytes": 120412
+    },
+    {
+      "snapshot": "gp/final/manifest.json",
+      "original": "artifacts/paper1_planning_20261018/gp-prototype/manifest.json",
+      "sha256": "3a1f693deb1b013462330cd368f5a17a8d99b031e1468f6eb2c0e6697a62bb69",
+      "bytes": 5707
+    },
+    {
+      "snapshot": "gp/final/b_h3-results.json",
+      "original": "artifacts/paper1_planning_20261018/gp-prototype/b_h3-results.json",
+      "sha256": "2edc91a0927ff16eb1e6b4ec4c488d2053f5fe02b5039152b070a9ae05738270",
+      "bytes": 43714
+    },
+    {
+      "snapshot": "gp/final/h3-results.json",
+      "original": "artifacts/paper1_planning_20261018/gp-prototype/h3-results.json",
+      "sha256": "e36f3639c598418e17d0a1bd3f4a26963d9de322c57c6baf4c5106ab2ce9483d",
+      "bytes": 55595
+    },
+    {
+      "snapshot": "gp/final/optimizer-repair-note.json",
+      "original": "artifacts/paper1_planning_20261018/gp-prototype/optimizer-repair-note.json",
+      "sha256": "902ad3819770c8f8b686f76e05b373426b7e0ee418b72bdf1cd9b3041c6d386f",
+      "bytes": 4452
+    },
+    {
+      "snapshot": "gp/pre-tight-polish/run_gp_prototype.py",
+      "original": "artifacts/paper1_planning_20261018/gp-prototype/intermediate-pre-tight-polish/run_gp_prototype.py",
+      "sha256": "d4accf811911160cb27f71dc6eb2360163d4d7a54ed58b1a035766fba7c71148",
+      "bytes": 44642
+    },
+    {
+      "snapshot": "gp/pre-tight-polish/results.json",
+      "original": "artifacts/paper1_planning_20261018/gp-prototype/intermediate-pre-tight-polish/results.json",
+      "sha256": "a0d15ddc1b2ed60405155b69e3df87b2163cf8ddecc35f8c1b914513776d7e59",
+      "bytes": 125599
+    },
+    {
+      "snapshot": "gp/pre-tight-polish/manifest.json",
+      "original": "artifacts/paper1_planning_20261018/gp-prototype/intermediate-pre-tight-polish/manifest.json",
+      "sha256": "12ad0acfc3595d7b308181dc4abb256539e905ae0b1e55c4b21de3093c2cbbf6",
+      "bytes": 3776
+    },
+    {
+      "snapshot": "gp/pre-tight-polish/b_h3-results.json",
+      "original": "artifacts/paper1_planning_20261018/gp-prototype/intermediate-pre-tight-polish/b_h3-results.json",
+      "sha256": "10f3fc3db2097f6206ecedf63c5f85cd8b58a881c5a88e2f95c501245794bc87",
+      "bytes": 51007
+    },
+    {
+      "snapshot": "gp/pre-tight-polish/h3-results.json",
+      "original": "artifacts/paper1_planning_20261018/gp-prototype/intermediate-pre-tight-polish/h3-results.json",
+      "sha256": "e36f3639c598418e17d0a1bd3f4a26963d9de322c57c6baf4c5106ab2ce9483d",
+      "bytes": 55595
+    },
+    {
+      "snapshot": "gp/pre-tight-polish/snapshot-receipt.json",
+      "original": "artifacts/paper1_planning_20261018/gp-prototype/intermediate-pre-tight-polish/snapshot-receipt.json",
+      "sha256": "7d27b99c7cda3345686b77376d3885d93e02d1dde1e72c64bdaaf17393024936",
+      "bytes": 851
+    },
+    {
+      "snapshot": "gp/parent-gp-check.py",
+      "original": "artifacts/paper1_planning_20261018/parent-gp-check.py",
+      "sha256": "cc62e6bfb9580fdf1019afb07eb3822db34f02d15a8a852937e2646e29982b9c",
+      "bytes": 5804
+    },
+    {
+      "snapshot": "gp/parent-gp-check.json",
+      "original": "artifacts/paper1_planning_20261018/parent-gp-check.json",
+      "sha256": "311a7a172dcf286bc84d6356606a2ab04384ea3103fb704765e63820884f605e",
+      "bytes": 3120
+    }
+  ],
+  "local_payloads": [
+    {
+      "path": "artifacts/paper1_planning_20261018/frailty-repair/per_history.csv",
+      "sha256": "aa586a085f81e24afae098f218c0ef53690dc42d52afeff89547dc7dceacecbb",
+      "bytes": 3478898
+    },
+    {
+      "path": "artifacts/paper1_planning_20261018/frailty-repair/optimizer_receipts.jsonl",
+      "sha256": "b32b17dc0528beddc4885c85057d0cb8ece487cd921ce54dc55c3f98888f83ab",
+      "bytes": 57348700
+    },
+    {
+      "path": "artifacts/paper1_planning_20261018/frailty-repair/first20_published_comparison.csv",
+      "sha256": "57765c6aa13a821b666e7d4f3b395c63382342e2159306c69fb8a019ced159e2",
+      "bytes": 131888
+    },
+    {
+      "path": "artifacts/paper1_planning_20261018/codex-oracle-rate-ratio-check.csv",
+      "sha256": "752afd297474f50bfd73ea2aa0f2f16315d76a813490e6c857c18a865514f6e9",
+      "bytes": 495531
+    }
+  ],
+  "environment": {
+    "python": "3.12.13",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "host": "Mac mini M4",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "base_commit": "5dda09a"
+  },
+  "repository_dependencies_sha256": {
+    "pyproject.toml": "b3d9edff7ff4fa2214270b82fce2fb3a5731bdbfdc155b74944abe311a01e5d0",
+    "uv.lock": "125b7b3def76b1e927b05e6419581d438cad4281762101039099df4cc502695d",
+    "src/latent_landscapes/preinvasion_likelihood.py": "10a6198b25c526bc0ddfc92887a8c186087bea629e9d364b15dc3533f459d9aa",
+    "src/latent_landscapes/capstone_qualification.py": "af21af620a0a3804b39ca42db782c013ee847a3274a71e2d6fde8779c264f578"
+  },
+  "scope": "Archived-history mechanism diagnostics, two-history spatial prototype repair, and exact fixed-cap decision arithmetic; no new validation campaign."
+}
