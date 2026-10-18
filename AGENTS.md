@@ -34,8 +34,11 @@ remains in `docs/programme.md`. Provenance and legacy reuse are governed by
   scientific decision, or planned manuscript evidence it advances.
 - Perform bounded code consolidation at major scientific arc boundaries rather
   than preserving goal-specific developmental machinery indefinitely.
-- Commits and pushes to this repository's existing GitHub remote are two-way
-  doors: make them when work reaches a coherent state, and report them.
+- Barry's standing authority covers commits and pushes for authorised work
+  to this repository's existing private GitHub remote. Make them when work
+  reaches a coherent state, and report them; no separate goal-specific commit
+  or push approval is required. This explicitly supersedes the former
+  instruction forbidding commits or pushes without explicit goal authority.
   One-way doors need Barry's explicit approval: publication or submission,
   making the repository public or exposing it outside Barry's own accounts,
   and force-pushes or history rewrites on shared branches.
