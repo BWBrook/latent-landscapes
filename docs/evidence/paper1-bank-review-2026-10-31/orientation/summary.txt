@@ -1,0 +1,16 @@
+Paired arrival-position Laplace replay (same16sites, seed 0)
+selected sites: [45, 92, 75, 6, 116, 95, 125, 142, 123, 11, 154, 39, 79, 2, 26, 100]
+included site/category pairs: 35; excluded (<200): 61
+orientation rows: 2800; production-series rows: 576
+u orientation:
+  x 0–5: half median 0.000107531, p95 0.00435231; 64-bin median/p95 1.09841e-05/0.000319004; 256-bin median/p95 1.56378e-06/6.03437e-05
+  x 5–20: half median 0.00628261, p95 0.11308; 64-bin median/p95 0.000862322/0.00515707; 256-bin median/p95 0.000124865/0.00111818
+  x 20–50: half median 0.0247035, p95 1.12892; 64-bin median/p95 0.00511821/0.0808818; 256-bin median/p95 0.000884742/0.0274101
+  x 50–200: half median 0.0400943, p95 5.1235; 64-bin median/p95 0.0277878/0.673992; 256-bin median/p95 0.00797051/0.169343
+v orientation:
+  x 0–5: half median 0.000111749, p95 0.00457299; 64-bin median/p95 9.84014e-06/0.000331543; 256-bin median/p95 1.4914e-06/5.05466e-05
+  x 5–20: half median 0.0067517, p95 0.116559; 64-bin median/p95 0.00100095/0.00733658; 256-bin median/p95 7.81665e-05/0.00148128
+  x 20–50: half median 0.027116, p95 1.07745; 64-bin median/p95 0.00611421/0.0975758; 256-bin median/p95 0.000898462/0.0227479
+  x 50–200: half median 0.0514304, p95 5.00955; 64-bin median/p95 0.0302103/0.743702; 256-bin median/p95 0.00562591/0.156108
+production order 192: max abs error 1.66533e-16; max relative error 1.33429e-15
+production order 816: max abs error 1.66533e-16; max relative error 1.33429e-15

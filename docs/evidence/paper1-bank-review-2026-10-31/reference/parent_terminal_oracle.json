@@ -1,0 +1,38 @@
+{
+  "site_id": "cell_35_04",
+  "h": 30.0,
+  "detection_sd": 0.2013292938847899,
+  "cohort_start": -60,
+  "terminal_time": 60,
+  "prey_log_emission": -15.449967030232377,
+  "predator_log_emission": -6.259257465614454,
+  "results": [
+    {
+      "eta": -2.0,
+      "log_survival": -242.71193462782233,
+      "joint_loglikelihood": -264.42115912366916
+    },
+    {
+      "eta": -0.9375,
+      "log_survival": -682.4900765268114,
+      "joint_loglikelihood": -704.1993010226583
+    },
+    {
+      "eta": -0.875,
+      "log_survival": -725.790685737884,
+      "joint_loglikelihood": -747.4999102337309
+    },
+    {
+      "eta": 0.0,
+      "log_survival": -1725.5056067529774,
+      "joint_loglikelihood": -1747.214831248824
+    }
+  ],
+  "method": "terminal detection forces survival; first predator detection forces category zero; independent beta-function emission",
+  "source_sha256": "0cc77b022df9b8dd50d6337d7a5bfa47652fc48b28fc4e8f5960e60bb5eea570",
+  "inputs": {
+    "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+    "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+    "artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2"
+  }
+}

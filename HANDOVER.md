@@ -1,6 +1,17 @@
 # Latent Landscapes: current handover
 
-18 October 2026 (Hobart), integrated Paper 1 protocol and numerical development.
+31 October 2026 (Hobart), arrival-bank review and stable reference likelihood.
+
+The [31 October review](docs/paper1-bank-review-2026-10-31.md) implements an
+exact raw-bank log-domain reference and independently reproduces the formerly
+underflowing history with finite log likelihoods. It preserves the existing
+empirical and point-pseudo-arrival law. The production profile engine is
+unchanged. Claude's proposed .05/day hazard cap and 256-bin smoothed law have
+not been adopted. Correcting the transform orientation leaves his large-x
+bank-sampling concern intact; current positive-series compression agrees with
+direct sums over the tested range. The next work is to use the reference to
+qualify an efficient kernel and its derivatives, then rerun full profiles and
+evaluate bank adequacy on an independent bank before the challenge suite.
 
 Barry selected **broader first**: landscape generality and common competing
 background models belong in one substantial Paper 1. The
@@ -34,7 +45,7 @@ or evidence that the six-model 20-second target is achievable.
 Wider-grid canaries then exposed probability underflow, reproduced by direct
 integration. The single reviewed intermediate grid also failed: h=30 could
 not retain the required support margin, and h=6.05348 missed the gradient
-threshold. **Stable log-domain likelihood scoring is the next prerequisite**;
+threshold. **Integrating stable scoring into the profile engine remains necessary**;
 no second full mesh or 600-case qualification run was launched. The exact
 failures, source snapshots and independent review are archived with the record.
 

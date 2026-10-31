@@ -1,0 +1,74 @@
+{
+  "schema": "paper1-bank-review-evidence-v1",
+  "snapshots": [
+    {
+      "original_path": "artifacts/paper1_bank_review_20261031/replay_arrival_orientations.py",
+      "path": "orientation/replay_arrival_orientations.py",
+      "sha256": "9fb48453e4e7836da7c6392242bfed3eda9d7d8fc6ae356f644fb927129a6019",
+      "bytes": 17866
+    },
+    {
+      "original_path": "artifacts/paper1_bank_review_20261031/orientation_rows.csv",
+      "path": "orientation/orientation_rows.csv",
+      "sha256": "3931e811fa3af4f291d5b833663fd6ffcb8846fd43ebcbf613c062c6aec5a60b",
+      "bytes": 588302
+    },
+    {
+      "original_path": "artifacts/paper1_bank_review_20261031/production_series_rows.csv",
+      "path": "orientation/production_series_rows.csv",
+      "sha256": "b11f6bf0d852a201e4550628630dbde12065e65723ca7bdb87694d3d434f1691",
+      "bytes": 60353
+    },
+    {
+      "original_path": "artifacts/paper1_bank_review_20261031/summary.json",
+      "path": "orientation/summary.json",
+      "sha256": "cccb82c2d991b878c8cdda515edeb62d56ca3ca75e3815846fdfad73d621c1c2",
+      "bytes": 37524
+    },
+    {
+      "original_path": "artifacts/paper1_bank_review_20261031/summary.txt",
+      "path": "orientation/summary.txt",
+      "sha256": "70559a44aacbda99be2e5379c3b6caac30dfcc072096c14b4ddcb461a6c0a2ce",
+      "bytes": 1494
+    },
+    {
+      "original_path": "artifacts/paper1_log_kernel_20261031/parent_terminal_oracle.py",
+      "path": "reference/parent_terminal_oracle.py",
+      "sha256": "0cc77b022df9b8dd50d6337d7a5bfa47652fc48b28fc4e8f5960e60bb5eea570",
+      "bytes": 2143
+    },
+    {
+      "original_path": "artifacts/paper1_log_kernel_20261031/parent_terminal_oracle.json",
+      "path": "reference/parent_terminal_oracle.json",
+      "sha256": "5625385ced308ded551f168b058f0f211736b4ddff1e607acd5c2942d48c23f7",
+      "bytes": 1445
+    },
+    {
+      "original_path": "artifacts/paper1_log_kernel_20261031/run_reference_kernel.py",
+      "path": "reference/run_reference_kernel.py",
+      "sha256": "e318cd07ddaeb51aad245307c9a3581360dd839942f7ff265071f4fa39c2c7f0",
+      "bytes": 7643
+    },
+    {
+      "original_path": "artifacts/paper1_log_kernel_20261031/reference-kernel-receipt.json",
+      "path": "reference/reference-kernel-receipt.json",
+      "sha256": "6271520d49532b73f4b0b2b7fb8820ed1c8965b2ce22c1a56eb9a7d34ae9a247",
+      "bytes": 3982
+    }
+  ],
+  "source_dependencies": {
+    "src/latent_landscapes/log_domain_likelihood.py": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
+    "src/latent_landscapes/preinvasion_likelihood.py": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
+    "src/latent_landscapes/arc2b_campaign.py": "95abe42be7044d65a965f9c5a154a8530016f30dfa9e53bdad9b488cfecee94f"
+  },
+  "independent_review": {
+    "path": "review.md",
+    "sha256": "5f42bb8e09c8ab6a9870a0c3e85c6884a0a39ba63d021f1c00634efe9353ccf4"
+  },
+  "verification": {
+    "focused_tests": 131,
+    "elapsed_seconds": 0.58,
+    "ruff": "passed",
+    "mypy": "passed"
+  }
+}
