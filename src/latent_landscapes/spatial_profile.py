@@ -51,6 +51,19 @@ class CurveBuilder(Protocol):
     def __call__(self, h: float, detection_sd: float, grid: FloatArray) -> FloatArray: ...
 
 
+class SiteEvaluator(Protocol):
+    @property
+    def numerical_domain(self) -> tuple[float, float]: ...
+
+    def evaluate(
+        self, eta: NDArray[Any]
+    ) -> tuple[FloatArray, FloatArray, FloatArray, FloatArray]: ...
+
+
+class EvaluatorFactory(Protocol):
+    def __call__(self, h: float, detection_sd: float) -> SiteEvaluator: ...
+
+
 @dataclass(frozen=True, slots=True)
 class SpatialProfileData:
     """Inputs for one history already subset to sampled training sites.
@@ -97,6 +110,10 @@ class SiteCurves:
     build_seconds: float = 0.0
     exact_nodes: tuple[int, ...] = ()
     max_series_bound: float = 0.0
+
+    @property
+    def numerical_domain(self) -> tuple[float, float]:
+        return float(self.grid[0]), float(self.grid[-1])
 
     @classmethod
     def from_values(
@@ -241,6 +258,7 @@ class SpatialProfileCriterion:
         *,
         grid: NDArray[Any] = DEFAULT_GRID,
         curve_builder: CurveBuilder | None = None,
+        evaluator_factory: EvaluatorFactory | None = None,
         mode_tolerance: float = 1e-8,
         curve_cache_size: int = 24,
         integration_cache_size: int = 3,
@@ -248,6 +266,9 @@ class SpatialProfileCriterion:
         series_error_tolerance: float = 1e-10,
     ) -> None:
         self.data = data
+        if curve_builder is not None and evaluator_factory is not None:
+            raise ValueError("choose either a curve builder or a direct evaluator")
+        self._evaluator_factory = evaluator_factory
         self.grid = np.asarray(grid, dtype=np.float64)
         if (
             self.grid.ndim != 1
@@ -267,14 +288,15 @@ class SpatialProfileCriterion:
         if not math.isfinite(series_error_tolerance) or series_error_tolerance <= 0.0:
             raise ValueError("series_error_tolerance must be finite and positive")
         self.series_error_tolerance = float(series_error_tolerance)
-        bank_bound = likelihood.series_remainder_bound(
-            data.bank.max_x, order=data.bank.series_order
-        )
-        if bank_bound > self.series_error_tolerance:
-            raise ValueError(
-                "compressed bank max_x is unsupported by its series order: "
-                f"remainder bound {bank_bound:g} exceeds {self.series_error_tolerance:g}"
+        if evaluator_factory is None:
+            bank_bound = likelihood.series_remainder_bound(
+                data.bank.max_x, order=data.bank.series_order
             )
+            if bank_bound > self.series_error_tolerance:
+                raise ValueError(
+                    "compressed bank max_x is unsupported by its series order: "
+                    f"remainder bound {bank_bound:g} exceeds {self.series_error_tolerance:g}"
+                )
         try:
             self._k_factor = cho_factor(data.covariance, lower=True, check_finite=True)
         except np.linalg.LinAlgError as exc:
@@ -298,7 +320,7 @@ class SpatialProfileCriterion:
         self._prey_emission_cache: OrderedDict[float, tuple[FloatArray, FloatArray]] = (
             OrderedDict()
         )
-        self.curve_cache: OrderedDict[tuple[float, float], SiteCurves] = OrderedDict()
+        self.curve_cache: OrderedDict[tuple[float, float], SiteEvaluator] = OrderedDict()
         self._integration_cache: OrderedDict[
             float, tuple[likelihood.PreInvasionIntegration, ...]
         ] = OrderedDict()
@@ -307,6 +329,18 @@ class SpatialProfileCriterion:
             "curve_seconds": 0.0,
             "mode_calls": 0,
             "mode_branches": 0,
+            "mode_newton_first_successes": 0,
+            "mode_newton_first_fallbacks": 0,
+            "mode_newton_first_fallback_non_pd": 0,
+            "mode_newton_first_fallback_line_search": 0,
+            "mode_newton_first_fallback_exhausted": 0,
+            "mode_newton_first_fallback_numerical": 0,
+            "mode_newton_first_evaluations": 0,
+            "mode_newton_first_accepted_steps": 0,
+            "mode_newton_first_bounded_steps": 0,
+            "mode_newton_first_polish_attempts": 0,
+            "mode_newton_first_polish_acceptances": 0,
+            "mode_lbfgs_fallback_evaluations": 0,
             "pd_failures": 0,
             "curve_cache_evictions": 0,
             "integration_cache_evictions": 0,
@@ -414,7 +448,7 @@ class SpatialProfileCriterion:
             values[:, start:stop] = np.log(event_probability[:, 0, :]).T
         return values
 
-    def curves(self, h: float, detection_sd: float) -> SiteCurves:
+    def curves(self, h: float, detection_sd: float) -> SiteEvaluator:
         """Return exactly-keyed cached site curves for ``(h, detection_sd)``."""
         if not math.isfinite(h) or not 1.0 <= h <= 30.0:
             raise ValueError("h must be finite and in [1, 30]")
@@ -430,6 +464,20 @@ class SpatialProfileCriterion:
             self.curve_cache.move_to_end(key)
             return cached
         started = time.perf_counter()
+        if self._evaluator_factory is not None:
+            result = self._evaluator_factory(float(h), float(detection_sd))
+            lower, upper = result.numerical_domain
+            if math.isnan(lower) or math.isnan(upper) or lower >= upper:
+                raise ValueError("direct evaluator numerical domain must be increasing")
+            self.curve_cache[key] = result
+            if len(self.curve_cache) > self._curve_cache_size:
+                self.curve_cache.popitem(last=False)
+                self.stats["curve_cache_evictions"] = int(self.stats["curve_cache_evictions"]) + 1
+            self.stats["curve_builds"] = int(self.stats["curve_builds"]) + 1
+            self.stats["curve_seconds"] = (
+                float(self.stats["curve_seconds"]) + time.perf_counter() - started
+            )
+            return result
         if self._curve_builder is not None:
             values = self._curve_builder(float(h), float(detection_sd), self.grid.copy())
             exact_nodes: tuple[int, ...] = ()
@@ -465,19 +513,231 @@ class SpatialProfileCriterion:
         self,
         eta0: FloatArray,
         precision: FloatArray,
-        curves: SiteCurves,
+        curves: SiteEvaluator,
         start: FloatArray,
     ) -> tuple[FloatArray, float, float, float, float, int, int, str] | None:
-        lower = curves.grid[0] - eta0 + 1e-10
-        upper = curves.grid[-1] - eta0 - 1e-10
+        lower = curves.numerical_domain[0] - eta0 + 1e-10
+        upper = curves.numerical_domain[1] - eta0 - 1e-10
         point = np.clip(np.asarray(start, dtype=np.float64), lower, upper)
+        evaluation_count = 0
+
+        def evaluate_at(u: FloatArray) -> tuple[FloatArray, FloatArray, FloatArray, FloatArray]:
+            nonlocal evaluation_count
+            evaluation_count += 1
+            return curves.evaluate(eta0 + u)
 
         def objective(u: FloatArray) -> tuple[float, FloatArray]:
-            ell, score, _, _ = curves.evaluate(eta0 + u)
+            ell, score, _, _ = evaluate_at(u)
             gradient = score - precision @ u
             value = float(np.sum(ell) - 0.5 * u @ precision @ u)
             return -value, -gradient
 
+        def stationary_metrics(
+            u: FloatArray,
+            gradient: FloatArray,
+            curvature: FloatArray,
+        ) -> tuple[FloatArray, float, float, float, bool]:
+            hessian = precision - np.diag(curvature)
+            factor = cho_factor(hessian, lower=True, check_finite=True)
+            step = cho_solve(factor, gradient, check_finite=True)
+            score_inf = float(np.max(np.abs(gradient)))
+            step_inf = float(np.max(np.abs(step)))
+            decrement = math.sqrt(max(float(np.dot(gradient, step)), 0.0))
+            numerically_stationary = bool(
+                score_inf <= 10.0 * self.mode_tolerance
+                and step_inf
+                <= self.mode_tolerance * max(1.0, float(np.max(np.abs(u))))
+                and decrement <= self.mode_tolerance
+            )
+            success = bool(score_inf <= self.mode_tolerance or numerically_stationary)
+            return step, score_inf, step_inf, decrement, success
+
+        def newton_first(
+            initial: FloatArray,
+        ) -> tuple[
+            tuple[FloatArray, float, float, float, float, int, int, str] | None,
+            str | None,
+            int,
+        ]:
+            started_evaluations = evaluation_count
+            u = np.array(initial, dtype=np.float64, copy=True)
+            accepted_steps = 0
+
+            def converged_result(
+                ell: FloatArray,
+                step: FloatArray,
+                score_inf: float,
+                step_inf: float,
+                decrement: float,
+            ) -> tuple[FloatArray, float, float, float, float, int, int, str]:
+                nonlocal accepted_steps
+                value = float(np.sum(ell) - 0.5 * u @ precision @ u)
+                message = (
+                    "Newton-first converged"
+                    if score_inf <= self.mode_tolerance
+                    else "Newton-first met numerical stationarity"
+                )
+                self.stats["mode_newton_first_polish_attempts"] = int(
+                    self.stats["mode_newton_first_polish_attempts"]
+                ) + 1
+                direction = step / max(1.0, step_inf)
+                if step_inf > 1.0:
+                    self.stats["mode_newton_first_bounded_steps"] = int(
+                        self.stats["mode_newton_first_bounded_steps"]
+                    ) + 1
+                candidate = u + direction
+                if np.all(candidate > lower) and np.all(candidate < upper):
+                    try:
+                        candidate_ell, candidate_score, candidate_curvature, _ = evaluate_at(
+                            candidate
+                        )
+                        candidate_gradient = candidate_score - precision @ candidate
+                        (
+                            _,
+                            candidate_score_inf,
+                            candidate_step_inf,
+                            candidate_decrement,
+                            candidate_converged,
+                        ) = stationary_metrics(
+                            candidate, candidate_gradient, candidate_curvature
+                        )
+                        candidate_value = float(
+                            np.sum(candidate_ell) - 0.5 * candidate @ precision @ candidate
+                        )
+                        objective_slack = 64.0 * np.finfo(np.float64).eps * max(
+                            1.0, abs(value), abs(candidate_value)
+                        )
+                        if (
+                            candidate_value >= value - objective_slack
+                            and candidate_score_inf < score_inf
+                            and candidate_converged
+                        ):
+                            accepted_steps += 1
+                            self.stats["mode_newton_first_polish_acceptances"] = int(
+                                self.stats["mode_newton_first_polish_acceptances"]
+                            ) + 1
+                            return (
+                                candidate,
+                                candidate_value,
+                                candidate_score_inf,
+                                candidate_step_inf,
+                                candidate_decrement,
+                                accepted_steps,
+                                evaluation_count - started_evaluations,
+                                f"{message}; guarded polish accepted",
+                            )
+                    except (
+                        CurveDomainError,
+                        FloatingPointError,
+                        np.linalg.LinAlgError,
+                        ValueError,
+                    ):
+                        pass
+                return (
+                    u,
+                    value,
+                    score_inf,
+                    step_inf,
+                    decrement,
+                    accepted_steps,
+                    evaluation_count - started_evaluations,
+                    f"{message}; valid incumbent retained",
+                )
+
+            try:
+                for _ in range(12):
+                    ell, score, curvature, _ = evaluate_at(u)
+                    gradient = score - precision @ u
+                    try:
+                        step, score_inf, step_inf, decrement, converged = stationary_metrics(
+                            u, gradient, curvature
+                        )
+                    except np.linalg.LinAlgError:
+                        return None, "non_pd", accepted_steps
+                    if converged:
+                        result = converged_result(
+                            ell,
+                            step,
+                            score_inf,
+                            step_inf,
+                            decrement,
+                        )
+                        return result, None, accepted_steps
+                    current = float(np.sum(ell) - 0.5 * u @ precision @ u)
+                    direction = step / max(1.0, step_inf)
+                    if step_inf > 1.0:
+                        self.stats["mode_newton_first_bounded_steps"] = int(
+                            self.stats["mode_newton_first_bounded_steps"]
+                        ) + 1
+                    scale = 1.0
+                    accepted = False
+                    while scale >= 2.0**-14:
+                        candidate = u + scale * direction
+                        if np.all(candidate > lower) and np.all(candidate < upper):
+                            candidate_ell, candidate_score, _, _ = evaluate_at(candidate)
+                            candidate_value = float(
+                                np.sum(candidate_ell)
+                                - 0.5 * candidate @ precision @ candidate
+                            )
+                            candidate_residual = float(
+                                np.max(np.abs(candidate_score - precision @ candidate))
+                            )
+                            objective_slack = 64.0 * np.finfo(np.float64).eps * max(
+                                1.0, abs(current), abs(candidate_value)
+                            )
+                            if candidate_value >= current - objective_slack and (
+                                candidate_value >= current or candidate_residual < score_inf
+                            ):
+                                u = candidate
+                                accepted = True
+                                accepted_steps += 1
+                                break
+                        scale *= 0.5
+                    if not accepted:
+                        return None, "line_search", accepted_steps
+                ell, score, curvature, _ = evaluate_at(u)
+                gradient = score - precision @ u
+                try:
+                    step, score_inf, step_inf, decrement, converged = stationary_metrics(
+                        u, gradient, curvature
+                    )
+                except np.linalg.LinAlgError:
+                    return None, "non_pd", accepted_steps
+                if converged:
+                    result = converged_result(
+                        ell,
+                        step,
+                        score_inf,
+                        step_inf,
+                        decrement,
+                    )
+                    return result, None, accepted_steps
+                return None, "exhausted", accepted_steps
+            except (CurveDomainError, FloatingPointError, ValueError):
+                return None, "numerical", accepted_steps
+
+        newton_started = evaluation_count
+        fast, fallback_reason, accepted_steps = newton_first(point)
+        newton_evaluations = evaluation_count - newton_started
+        self.stats["mode_newton_first_evaluations"] = int(
+            self.stats["mode_newton_first_evaluations"]
+        ) + newton_evaluations
+        self.stats["mode_newton_first_accepted_steps"] = int(
+            self.stats["mode_newton_first_accepted_steps"]
+        ) + accepted_steps
+        if fast is not None:
+            self.stats["mode_newton_first_successes"] = int(
+                self.stats["mode_newton_first_successes"]
+            ) + 1
+            return fast
+        assert fallback_reason is not None
+        self.stats["mode_newton_first_fallbacks"] = int(
+            self.stats["mode_newton_first_fallbacks"]
+        ) + 1
+        fallback_key = f"mode_newton_first_fallback_{fallback_reason}"
+        self.stats[fallback_key] = int(self.stats[fallback_key]) + 1
+
+        fallback_started = evaluation_count
         try:
             fit = minimize(
                 objective,
@@ -490,7 +750,7 @@ class SpatialProfileCriterion:
             u = np.asarray(fit.x, dtype=np.float64)
             newton_iterations = 0
             for _ in range(12):
-                ell, score, curvature, _ = curves.evaluate(eta0 + u)
+                ell, score, curvature, _ = evaluate_at(u)
                 gradient = score - precision @ u
                 score_inf = float(np.max(np.abs(gradient)))
                 if score_inf <= self.mode_tolerance:
@@ -511,7 +771,7 @@ class SpatialProfileCriterion:
                 while scale >= 2.0**-14:
                     candidate = u + scale * step
                     if np.all(candidate > lower) and np.all(candidate < upper):
-                        candidate_ell, candidate_score, _, _ = curves.evaluate(eta0 + candidate)
+                        candidate_ell, candidate_score, _, _ = evaluate_at(candidate)
                         candidate_value = float(
                             np.sum(candidate_ell) - 0.5 * candidate @ precision @ candidate
                         )
@@ -533,9 +793,9 @@ class SpatialProfileCriterion:
                         break
                     return None
                 newton_iterations += 1
-            ell, score, _, _ = curves.evaluate(eta0 + u)
+            ell, score, _, _ = evaluate_at(u)
             gradient = score - precision @ u
-            _, _, curvature, _ = curves.evaluate(eta0 + u)
+            _, _, curvature, _ = evaluate_at(u)
             hessian = precision - np.diag(curvature)
             factor = cho_factor(hessian, lower=True, check_finite=True)
             final_step = cho_solve(factor, gradient, check_finite=True)
@@ -549,11 +809,15 @@ class SpatialProfileCriterion:
                 step_inf,
                 decrement,
                 int(fit.nit) + newton_iterations,
-                int(fit.nfev) + newton_iterations,
+                evaluation_count,
                 str(fit.message),
             )
         except (CurveDomainError, FloatingPointError, np.linalg.LinAlgError, ValueError):
             return None
+        finally:
+            self.stats["mode_lbfgs_fallback_evaluations"] = int(
+                self.stats["mode_lbfgs_fallback_evaluations"]
+            ) + (evaluation_count - fallback_started)
 
     def mode(
         self,
@@ -633,13 +897,15 @@ class SpatialProfileCriterion:
             )
         logdet_c = 2.0 * self.site_count * math.log(sigma) + self._logdet_k
         bound_touch = bool(
-            np.any(eta <= curves.grid[0] + 1e-8) or np.any(eta >= curves.grid[-1] - 1e-8)
+            np.any(eta <= curves.numerical_domain[0] + 1e-8)
+            or np.any(eta >= curves.numerical_domain[1] - 1e-8)
         )
         marginal_sd = np.sqrt(np.maximum(np.diag(hessian_inverse), 0.0))
         proposal_eta_min = float(np.min(eta - self.proposal_guard_sd * marginal_sd))
         proposal_eta_max = float(np.max(eta + self.proposal_guard_sd * marginal_sd))
         proposal_grid_supported = bool(
-            proposal_eta_min >= curves.grid[0] and proposal_eta_max <= curves.grid[-1]
+            proposal_eta_min >= curves.numerical_domain[0]
+            and proposal_eta_max <= curves.numerical_domain[1]
         )
         numerically_stationary = bool(
             score_inf <= 10.0 * self.mode_tolerance
@@ -657,7 +923,7 @@ class SpatialProfileCriterion:
             message = (
                 f"{self.proposal_guard_sd:g}-SD Laplace proposal range "
                 f"[{proposal_eta_min:g}, {proposal_eta_max:g}] is outside the fixed curve grid "
-                f"[{float(curves.grid[0]):g}, {float(curves.grid[-1]):g}]"
+                f"[{curves.numerical_domain[0]:g}, {curves.numerical_domain[1]:g}]"
             )
         elif score_inf > self.mode_tolerance and not numerically_stationary:
             message = f"latent mode score {score_inf:g} exceeds tolerance"

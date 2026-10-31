@@ -3,12 +3,15 @@ from __future__ import annotations
 import math
 from collections.abc import Callable
 from dataclasses import replace
+from types import SimpleNamespace
+from typing import cast
 
 import numpy as np
 import pytest
-from scipy.interpolate import CubicSpline
+from scipy.interpolate import CubicSpline  # type: ignore[import-untyped]
 
 from latent_landscapes import preinvasion_likelihood as likelihood
+from latent_landscapes import spatial_profile
 from latent_landscapes.spatial_profile import (
     DETECTION_SD_MAX,
     CurveDomainError,
@@ -33,7 +36,7 @@ def _data(site_count: int = 5) -> SpatialProfileData:
     return SpatialProfileData(bank, observations, exposure, covariance)
 
 
-def _curve_builder(data: SpatialProfileData) -> Callable[[float, float, np.ndarray], np.ndarray]:
+def _curve_builder(data: SpatialProfileData) -> spatial_profile.CurveBuilder:
     site = np.arange(len(data.exposure), dtype=float)
     observed = 0.18 + 0.025 * site
     weight = 0.75 + 0.08 * site
@@ -43,7 +46,7 @@ def _curve_builder(data: SpatialProfileData) -> Callable[[float, float, np.ndarr
         shifted = grid[None, :] + 0.045 * math.log(h) - 0.12 * detection_sd
         return observed[:, None] * shifted - weight[:, None] * np.exp(shifted)
 
-    return build
+    return cast(spatial_profile.CurveBuilder, build)
 
 
 def _criterion(site_count: int = 5) -> SpatialProfileCriterion:
@@ -63,6 +66,45 @@ def _central_difference(
     plus[index] += step
     minus[index] -= step
     return (function(plus) - function(minus)) / (2.0 * step)
+
+
+class _RoutingEvaluator:
+    numerical_domain = (-math.inf, math.inf)
+
+    def __init__(self, route: str) -> None:
+        self.route = route
+
+    def evaluate(
+        self, eta: np.ndarray
+    ) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+        if self.route == "non_pd":
+            curvature = np.where(np.abs(eta) < 0.5, 2.0, -1.0)
+            ell = eta.copy()
+        elif self.route == "line_search":
+            curvature = np.full_like(eta, -1.0)
+            ell = np.zeros_like(eta)
+        elif self.route == "exhausted":
+            curvature = np.full_like(eta, -99.0)
+            ell = eta.copy()
+        else:
+            raise AssertionError(self.route)
+        return ell, np.ones_like(eta), curvature, np.zeros_like(eta)
+
+
+class _QuadraticEvaluator:
+    numerical_domain = (-math.inf, math.inf)
+
+    def __init__(self, optimum: float) -> None:
+        self.optimum = optimum
+        self.points: list[np.ndarray] = []
+
+    def evaluate(
+        self, eta: np.ndarray
+    ) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+        self.points.append(eta.copy())
+        linear = 2.0 * self.optimum
+        ell = linear * eta - 0.5 * eta**2
+        return ell, linear - eta, -np.ones_like(eta), np.zeros_like(eta)
 
 
 def test_vectorized_spline_derivatives_match_individual_scipy_splines() -> None:
@@ -165,6 +207,125 @@ def test_exact_cache_keys_and_warm_mode_branch_preserve_best_mode() -> None:
     assert warm.mode.branch_count == 2
     assert warm.criterion >= cold.criterion - 1e-11
     np.testing.assert_allclose(warm.mode.u, cold.mode.u, rtol=1e-8, atol=1e-9)
+
+
+def test_newton_first_converges_without_lbfgs_on_concave_site_curves() -> None:
+    criterion = _criterion(3)
+    point = np.array([-1.35, 0.22, math.log(0.45), 0.18])
+
+    result = criterion.evaluate_positive(point, fixed_h=3.0)
+
+    assert result.success and result.mode is not None
+    assert result.mode.message.startswith("Newton-first")
+    assert criterion.stats["mode_newton_first_successes"] == 1
+    assert criterion.stats["mode_newton_first_fallbacks"] == 0
+    assert criterion.stats["mode_lbfgs_fallback_evaluations"] == 0
+    assert int(criterion.stats["mode_newton_first_evaluations"]) < 20
+
+
+def test_newton_first_caps_extreme_trial_direction_without_changing_stationarity() -> None:
+    criterion = _criterion(1)
+    evaluator = _QuadraticEvaluator(optimum=3.5)
+
+    branch = criterion._mode_branch(
+        np.zeros(1),
+        np.eye(1),
+        evaluator,
+        np.zeros(1),
+    )
+
+    assert branch is not None
+    np.testing.assert_allclose(branch[0], [3.5], rtol=0.0, atol=1e-14)
+    trials = np.array([point[0] for point in evaluator.points])
+    assert np.max(np.abs(np.diff(trials))) <= 1.0
+    assert criterion.stats["mode_newton_first_bounded_steps"] == 3
+    assert criterion.stats["mode_newton_first_fallbacks"] == 0
+    assert branch[3] == pytest.approx(0.0, abs=1e-14)
+
+
+def test_newton_first_accepts_one_guarded_polish_when_residual_improves() -> None:
+    criterion = _criterion(1)
+    evaluator = _QuadraticEvaluator(optimum=1.0)
+    start = np.array([1.0 + 4e-9])
+
+    branch = criterion._mode_branch(
+        np.zeros(1),
+        np.eye(1),
+        evaluator,
+        start,
+    )
+
+    assert branch is not None
+    np.testing.assert_allclose(branch[0], [1.0], rtol=0.0, atol=0.0)
+    assert branch[2] == pytest.approx(0.0, abs=0.0)
+    assert "guarded polish accepted" in branch[-1]
+    assert criterion.stats["mode_newton_first_polish_attempts"] == 1
+    assert criterion.stats["mode_newton_first_polish_acceptances"] == 1
+    assert len(evaluator.points) == 2
+
+
+def test_newton_first_retains_valid_incumbent_when_polish_does_not_improve() -> None:
+    criterion = _criterion(1)
+    evaluator = _QuadraticEvaluator(optimum=1.0)
+    start = np.array([1.0])
+
+    branch = criterion._mode_branch(
+        np.zeros(1),
+        np.eye(1),
+        evaluator,
+        start,
+    )
+
+    assert branch is not None
+    np.testing.assert_array_equal(branch[0], start)
+    assert "valid incumbent retained" in branch[-1]
+    assert criterion.stats["mode_newton_first_polish_attempts"] == 1
+    assert criterion.stats["mode_newton_first_polish_acceptances"] == 0
+    assert len(evaluator.points) == 2
+
+
+@pytest.mark.parametrize(
+    ("route", "reason", "start"),
+    [
+        ("non_pd", "non_pd", np.array([0.2, -0.2])),
+        ("line_search", "line_search", np.zeros(2)),
+        ("exhausted", "exhausted", np.zeros(2)),
+    ],
+)
+def test_newton_first_failures_route_to_lbfgs_from_original_start(
+    monkeypatch: pytest.MonkeyPatch,
+    route: str,
+    reason: str,
+    start: np.ndarray,
+) -> None:
+    criterion = _criterion(2)
+    seen_starts: list[np.ndarray] = []
+
+    def fake_minimize(
+        function: object,
+        x0: np.ndarray,
+        **kwargs: object,
+    ) -> object:
+        del function, kwargs
+        seen_starts.append(np.asarray(x0).copy())
+        return SimpleNamespace(x=np.ones_like(x0), nit=1, nfev=0, message="fake fallback")
+
+    monkeypatch.setattr(spatial_profile, "minimize", fake_minimize)
+    branch = criterion._mode_branch(
+        np.zeros(2),
+        np.eye(2),
+        _RoutingEvaluator(route),
+        start,
+    )
+
+    assert branch is not None
+    np.testing.assert_array_equal(seen_starts, [start])
+    np.testing.assert_allclose(branch[0], np.ones(2), rtol=0.0, atol=0.0)
+    assert branch[-1] == "fake fallback"
+    assert criterion.stats["mode_newton_first_successes"] == 0
+    assert criterion.stats["mode_newton_first_fallbacks"] == 1
+    assert criterion.stats[f"mode_newton_first_fallback_{reason}"] == 1
+    assert int(criterion.stats["mode_lbfgs_fallback_evaluations"]) >= 2
 
 
 def test_correlated_small_sigma_mode_is_continuous_under_outer_finite_differences() -> None:
@@ -338,7 +499,7 @@ def test_vectorized_curve_scoring_matches_scalar_likelihood_with_missing_visits_
     monkeypatch.setattr(likelihood, "_prey_emissions", counted_prey)
     monkeypatch.setattr(likelihood, "_predator_emissions", counted_predator)
     engine = SpatialProfileCriterion(data, grid=grid)
-    actual = engine.curves(2.0, 0.12).values
+    actual = cast(SiteCurves, engine.curves(2.0, 0.12)).values
     engine.curves(3.0, 0.12)
 
     np.testing.assert_allclose(actual, expected, rtol=2e-15, atol=2e-15)
@@ -407,3 +568,39 @@ def test_free_profile_sweeps_both_directions_and_both_families() -> None:
             rows = [row for row in result.candidates if row.source.startswith(prefix)]
             assert {row.family for row in rows} == {"positive_sigma", "sigma_zero"}
     assert any(row.source.startswith("free") for row in result.candidates)
+
+
+def test_direct_evaluator_removes_only_interpolation_domain_constraints() -> None:
+    data = _data()
+    data = replace(data, bank=replace(data.bank, max_x=10000.0))
+    observed = 0.18 + 0.025 * np.arange(5)
+    weight = 0.75 + 0.08 * np.arange(5)
+
+    class DirectPoisson:
+        numerical_domain = (-math.inf, math.inf)
+
+        def evaluate(self, eta: np.ndarray) -> tuple[np.ndarray, ...]:
+            rate = weight * np.exp(eta)
+            return observed * eta - rate, observed - rate, -rate, -rate
+
+    def factory(h: float, detection_sd: float) -> spatial_profile.SiteEvaluator:
+        del h, detection_sd
+        return cast(spatial_profile.SiteEvaluator, DirectPoisson())
+
+    criterion = SpatialProfileCriterion(data, evaluator_factory=factory)
+    point = np.array([-1.35, 0.22, math.log(0.45), 0.18])
+    result = criterion.evaluate_positive(point, fixed_h=3.0)
+    assert result.success, result.message
+    assert result.mode is not None
+    assert result.mode.proposal_eta_max > criterion.grid[-1]
+    assert result.mode.proposal_grid_supported
+    assert not result.mode.bound_touch
+
+    def value(candidate: np.ndarray) -> float:
+        evaluation = criterion.evaluate_positive(candidate, fixed_h=3.0)
+        assert evaluation.success, evaluation.message
+        return evaluation.criterion
+
+    numerical = np.array([_central_difference(value, point, i) for i in range(3)])
+    np.testing.assert_allclose(result.criterion_gradient[:3], numerical, atol=1e-7, rtol=1e-6)
+    assert criterion.stats["curve_builds"] == 1

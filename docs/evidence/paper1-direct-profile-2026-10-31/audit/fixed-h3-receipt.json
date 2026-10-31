@@ -1,0 +1,555 @@
+{
+  "backend": "direct",
+  "backend_diagnostics": {
+    "criterion": {
+      "curve_builds": 124,
+      "curve_cache_evictions": 100,
+      "curve_seconds": 0.5397122499962279,
+      "integration_cache_evictions": 0,
+      "mode_branches": 171,
+      "mode_calls": 86,
+      "pd_failures": 0
+    },
+    "direct_evaluator": {
+      "domain_errors": 0,
+      "evaluate_calls": 6786,
+      "evaluator_instances": 124,
+      "exact_site_evaluations": 0,
+      "max_observed_x": 0.6427149124045389,
+      "max_relative_tail_bound": 0.0,
+      "series_site_evaluations": 718320
+    },
+    "likelihood_backend": "direct"
+  },
+  "criterion_stats": {
+    "curve_builds": 124,
+    "curve_cache_evictions": 100,
+    "curve_seconds": 0.5397122499962279,
+    "integration_cache_evictions": 0,
+    "mode_branches": 171,
+    "mode_calls": 86,
+    "pd_failures": 0
+  },
+  "development_only": true,
+  "endpoint_families_resolved": true,
+  "fit_dimension": "fixed_h",
+  "fixed_h": 3.0,
+  "git": {
+    "commit": "a165b741d09b537bd2b4ca7ec74d35d3a3d8a2b1",
+    "working_tree_changes": [
+      " M scripts/benchmark_spatial_profile.py",
+      " M src/latent_landscapes/spatial_profile.py",
+      " M tests/test_spatial_profile.py",
+      "?? src/latent_landscapes/differentiable_likelihood.py",
+      "?? tests/test_differentiable_likelihood.py"
+    ]
+  },
+  "inputs": {
+    "bank_checksum": "ebea5bb220958376d1aed871a5994cbbcc5c262b292da5f2d23f853a93e78e80:sites:0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159:sites:8,10,13,14,15,19,20,21,22,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,55,56,57,61,62,63,64,65,66,68,69,70,71,72,73,75,79,81,82,83,85,86,90,91,92,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,143,144,145,147,148,149,150,157",
+    "bank_has_raw_arrivals": true,
+    "bank_kind": "compressed_plus_raw",
+    "bank_max_x": 290.0,
+    "bank_series_order": 816,
+    "bank_size": 131072,
+    "cohort_start": -60.0,
+    "covariance": "exponential_grid_distance",
+    "covariance_range_cells": 10.0,
+    "criterion_site_count": 120,
+    "direct_requires_full_raw_arrivals": true,
+    "full_input_site_count": 160,
+    "history_index": 0,
+    "holdout_site_count": 40,
+    "observation_site_count": 160,
+    "predator_times": [
+      10.0,
+      20.0,
+      30.0,
+      40.0,
+      50.0,
+      60.0
+    ],
+    "prey_times": [
+      -60.0,
+      -50.0,
+      -40.0,
+      -30.0,
+      -20.0,
+      -10.0,
+      0.0,
+      10.0,
+      20.0,
+      30.0,
+      40.0,
+      50.0,
+      60.0
+    ],
+    "site_count": 160,
+    "site_ids_sha256": "2b80dcda1a7071b97c625b287c253634982c9d82de09b645acd86f74b8d5a6eb",
+    "training_site_count": 120,
+    "training_site_ids_sha256": "3abbb11854489f6c1bf2d8e1d961a745fd85f7b19b5e68b2836ed3b30f76337a"
+  },
+  "integration_support": {
+    "backend": "direct",
+    "curve_grid_active": false,
+    "numerical_domain_source": "direct_evaluator",
+    "raw_arrivals_required": true
+  },
+  "label": "development",
+  "likelihood_backend": "direct",
+  "peak_rss": {
+    "unit": "bytes",
+    "value": 796721152
+  },
+  "profile": {
+    "best": {
+      "criterion": -1716.9520139290332,
+      "detection_sd": 0.19723967127807054,
+      "eligible": true,
+      "evaluation_message": "ok",
+      "evaluation_success": true,
+      "evaluations": 27,
+      "family": "positive_sigma",
+      "h": 3.0,
+      "iterations": 21,
+      "mode": {
+        "bound_touch": false,
+        "branch_count": 2,
+        "evaluations": 49,
+        "iterations": 44,
+        "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+        "newton_decrement": 2.8282461953457573e-10,
+        "newton_step_inf": 7.325686321383621e-11,
+        "proposal_grid_supported": true,
+        "score_inf": 1.0240153169860378e-10,
+        "success": true
+      },
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "optimizer_success": true,
+      "parameters": {
+        "alpha": -5.762367093010204,
+        "beta": 0.6127040451747089,
+        "detection_sd": 0.19723967127807054,
+        "log_sigma": -0.7014055065467
+      },
+      "profile_lr_from_family_max": 0.0,
+      "profile_lr_from_global_max": 0.0,
+      "projected_gradient_inf": 1.7269030649913475e-06,
+      "source": "fixed_h_3_fit_0"
+    },
+    "best_positive": {
+      "criterion": -1716.9520139290332,
+      "detection_sd": 0.19723967127807054,
+      "eligible": true,
+      "evaluation_message": "ok",
+      "evaluation_success": true,
+      "evaluations": 27,
+      "family": "positive_sigma",
+      "h": 3.0,
+      "iterations": 21,
+      "mode": {
+        "bound_touch": false,
+        "branch_count": 2,
+        "evaluations": 49,
+        "iterations": 44,
+        "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+        "newton_decrement": 2.8282461953457573e-10,
+        "newton_step_inf": 7.325686321383621e-11,
+        "proposal_grid_supported": true,
+        "score_inf": 1.0240153169860378e-10,
+        "success": true
+      },
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "optimizer_success": true,
+      "parameters": {
+        "alpha": -5.762367093010204,
+        "beta": 0.6127040451747089,
+        "detection_sd": 0.19723967127807054,
+        "log_sigma": -0.7014055065467
+      },
+      "profile_lr_from_family_max": 0.0,
+      "profile_lr_from_global_max": 0.0,
+      "projected_gradient_inf": 1.7269030649913475e-06,
+      "source": "fixed_h_3_fit_0"
+    },
+    "best_sigma_zero": {
+      "criterion": -1717.6687391441164,
+      "detection_sd": 0.1971430124609939,
+      "eligible": true,
+      "evaluation_message": "ok",
+      "evaluation_success": true,
+      "evaluations": 15,
+      "family": "sigma_zero",
+      "h": 3.0,
+      "iterations": 12,
+      "mode": null,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "optimizer_success": true,
+      "parameters": {
+        "alpha": -5.6495762341527715,
+        "beta": 0.4754997300702055,
+        "detection_sd": 0.1971430124609939
+      },
+      "profile_lr_from_family_max": 0.0,
+      "profile_lr_from_global_max": 1.433450430166431,
+      "projected_gradient_inf": 5.4649262892780825e-06,
+      "source": "fixed_h_3_fit_0"
+    },
+    "branches": {
+      "positive_sigma": [
+        1,
+        2
+      ],
+      "sigma_zero": []
+    },
+    "candidate_count": 4,
+    "elapsed_seconds": 87.36037399999987,
+    "eligible_envelope": {
+      "positive_sigma": -1716.9520139290332,
+      "sigma_zero": -1717.6687391441164
+    },
+    "eligible_envelope_tolerance": {
+      "positive_sigma": 1.7169520139290333e-05,
+      "sigma_zero": 1.7176687391441164e-05
+    },
+    "endpoint_families_resolved": true,
+    "envelope_check_passed": true,
+    "family_resolution": {
+      "positive_sigma": {
+        "eligible_candidate_count": 1,
+        "eligible_envelope": -1716.9520139290332,
+        "grid_points_requested": 1,
+        "grid_points_resolved": 1,
+        "resolved": true
+      },
+      "sigma_zero": {
+        "eligible_candidate_count": 1,
+        "eligible_envelope": -1717.6687391441164,
+        "grid_points_requested": 1,
+        "grid_points_resolved": 1,
+        "resolved": true
+      }
+    },
+    "fit_dimension": "fixed_h",
+    "fixed_h": 3.0,
+    "fixed_point_above_free_endpoint_flag": false,
+    "fixed_points_above_free_endpoint": [],
+    "free_endpoint_dominates_retained_points": true,
+    "grid_statuses": [
+      {
+        "branch_count": 2,
+        "criterion": -1716.9520139290332,
+        "family": "positive_sigma",
+        "h": 3.0,
+        "parameters": {
+          "alpha": -5.762367093010204,
+          "beta": 0.6127040451747089,
+          "detection_sd": 0.19723967127807054,
+          "log_sigma": -0.7014055065467
+        },
+        "profile_lr_from_family_max": 0.0,
+        "profile_lr_from_global_max": 0.0,
+        "profile_lr_from_h_envelope": null,
+        "source": "fixed_h_3_fit_0",
+        "status": "resolved"
+      },
+      {
+        "branch_count": null,
+        "criterion": -1717.6687391441164,
+        "family": "sigma_zero",
+        "h": 3.0,
+        "parameters": {
+          "alpha": -5.6495762341527715,
+          "beta": 0.4754997300702055,
+          "detection_sd": 0.1971430124609939
+        },
+        "profile_lr_from_family_max": 0.0,
+        "profile_lr_from_global_max": 1.433450430166431,
+        "profile_lr_from_h_envelope": null,
+        "source": "fixed_h_3_fit_0",
+        "status": "resolved"
+      },
+      {
+        "available_envelope": true,
+        "available_family_count": 2,
+        "branch_count": 2,
+        "complete": true,
+        "criterion": -1716.9520139290332,
+        "diagnostic": false,
+        "family": "all_families",
+        "h": 3.0,
+        "parameters": {
+          "alpha": -5.762367093010204,
+          "beta": 0.6127040451747089,
+          "detection_sd": 0.19723967127807054,
+          "log_sigma": -0.7014055065467
+        },
+        "profile_lr_from_family_max": null,
+        "profile_lr_from_global_max": 0.0,
+        "profile_lr_from_h_envelope": 0.0,
+        "source": "fixed_h_3_fit_0",
+        "status": "resolved"
+      }
+    ],
+    "h_grid": [
+      3.0
+    ],
+    "likelihood_ratio_scope": "fixed_h_family_comparison",
+    "null_likelihood_ratio_available": false,
+    "profile_h_grid": [
+      3.0
+    ],
+    "profile_h_grid_count": 1,
+    "profile_lr": [
+      {
+        "branch_count": 2,
+        "criterion": -1716.9520139290332,
+        "family": "positive_sigma",
+        "h": 3.0,
+        "parameters": {
+          "alpha": -5.762367093010204,
+          "beta": 0.6127040451747089,
+          "detection_sd": 0.19723967127807054,
+          "log_sigma": -0.7014055065467
+        },
+        "profile_lr_from_family_max": 0.0,
+        "profile_lr_from_global_max": 0.0,
+        "profile_lr_from_h_envelope": null,
+        "source": "fixed_h_3_fit_0",
+        "status": "resolved"
+      },
+      {
+        "branch_count": null,
+        "criterion": -1717.6687391441164,
+        "family": "sigma_zero",
+        "h": 3.0,
+        "parameters": {
+          "alpha": -5.6495762341527715,
+          "beta": 0.4754997300702055,
+          "detection_sd": 0.1971430124609939
+        },
+        "profile_lr_from_family_max": 0.0,
+        "profile_lr_from_global_max": 1.433450430166431,
+        "profile_lr_from_h_envelope": null,
+        "source": "fixed_h_3_fit_0",
+        "status": "resolved"
+      },
+      {
+        "available_envelope": true,
+        "available_family_count": 2,
+        "branch_count": 2,
+        "complete": true,
+        "criterion": -1716.9520139290332,
+        "diagnostic": false,
+        "family": "all_families",
+        "h": 3.0,
+        "parameters": {
+          "alpha": -5.762367093010204,
+          "beta": 0.6127040451747089,
+          "detection_sd": 0.19723967127807054,
+          "log_sigma": -0.7014055065467
+        },
+        "profile_lr_from_family_max": null,
+        "profile_lr_from_global_max": 0.0,
+        "profile_lr_from_h_envelope": 0.0,
+        "source": "fixed_h_3_fit_0",
+        "status": "resolved"
+      }
+    ],
+    "raw_start_receipts": [
+      {
+        "criterion": -1717.7011948130832,
+        "detection_sd": 0.2,
+        "eligible": false,
+        "evaluation_message": "ok",
+        "evaluation_success": true,
+        "evaluations": 1,
+        "family": "positive_sigma",
+        "h": 3.0,
+        "iterations": 0,
+        "mode": {
+          "bound_touch": false,
+          "branch_count": 1,
+          "evaluations": 50,
+          "iterations": 44,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "newton_decrement": 3.056258765224011e-11,
+          "newton_step_inf": 4.9340666909854385e-12,
+          "proposal_grid_supported": true,
+          "score_inf": 1.3714251956287171e-11,
+          "success": true
+        },
+        "optimizer_message": "retained incumbent",
+        "optimizer_success": true,
+        "parameters": {
+          "alpha": -5.5,
+          "beta": 0.4,
+          "detection_sd": 0.2,
+          "log_sigma": -1.0498221244986778
+        },
+        "profile_lr_from_family_max": 1.4983617681000396,
+        "profile_lr_from_global_max": 1.4983617681000396,
+        "projected_gradient_inf": 16.497252104272775,
+        "source": "fixed_h_3_start_0"
+      },
+      {
+        "criterion": -1716.9520139290332,
+        "detection_sd": 0.19723967127807054,
+        "eligible": true,
+        "evaluation_message": "ok",
+        "evaluation_success": true,
+        "evaluations": 27,
+        "family": "positive_sigma",
+        "h": 3.0,
+        "iterations": 21,
+        "mode": {
+          "bound_touch": false,
+          "branch_count": 2,
+          "evaluations": 49,
+          "iterations": 44,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "newton_decrement": 2.8282461953457573e-10,
+          "newton_step_inf": 7.325686321383621e-11,
+          "proposal_grid_supported": true,
+          "score_inf": 1.0240153169860378e-10,
+          "success": true
+        },
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "optimizer_success": true,
+        "parameters": {
+          "alpha": -5.762367093010204,
+          "beta": 0.6127040451747089,
+          "detection_sd": 0.19723967127807054,
+          "log_sigma": -0.7014055065467
+        },
+        "profile_lr_from_family_max": 0.0,
+        "profile_lr_from_global_max": 0.0,
+        "projected_gradient_inf": 1.7269030649913475e-06,
+        "source": "fixed_h_3_fit_0"
+      },
+      {
+        "criterion": -1718.1263378067379,
+        "detection_sd": 0.2,
+        "eligible": false,
+        "evaluation_message": "ok",
+        "evaluation_success": true,
+        "evaluations": 1,
+        "family": "sigma_zero",
+        "h": 3.0,
+        "iterations": 0,
+        "mode": null,
+        "optimizer_message": "retained incumbent",
+        "optimizer_success": true,
+        "parameters": {
+          "alpha": -5.5,
+          "beta": 0.4,
+          "detection_sd": 0.2
+        },
+        "profile_lr_from_family_max": 0.9151973252428434,
+        "profile_lr_from_global_max": 2.3486477554092744,
+        "projected_gradient_inf": 16.897296837896647,
+        "source": "fixed_h_3_start_0"
+      },
+      {
+        "criterion": -1717.6687391441164,
+        "detection_sd": 0.1971430124609939,
+        "eligible": true,
+        "evaluation_message": "ok",
+        "evaluation_success": true,
+        "evaluations": 15,
+        "family": "sigma_zero",
+        "h": 3.0,
+        "iterations": 12,
+        "mode": null,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "optimizer_success": true,
+        "parameters": {
+          "alpha": -5.6495762341527715,
+          "beta": 0.4754997300702055,
+          "detection_sd": 0.1971430124609939
+        },
+        "profile_lr_from_family_max": 0.0,
+        "profile_lr_from_global_max": 1.433450430166431,
+        "projected_gradient_inf": 5.4649262892780825e-06,
+        "source": "fixed_h_3_fit_0"
+      }
+    ],
+    "unresolved_candidates_above_eligible_envelope": []
+  },
+  "profile_certified": false,
+  "runtime": {
+    "numpy": "2.5.1",
+    "platform": "macOS-27.2-arm64-arm-64bit",
+    "python": "3.12.13 (main, May 10 2026, 19:20:41) [Clang 22.1.3 ]",
+    "scipy": "1.18.0",
+    "single_thread_timing_contract": true,
+    "threads": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    }
+  },
+  "schema": "spatial-profile-benchmark-v2",
+  "source_identity": {
+    "arrival_bank": {
+      "path": "artifacts/paper1_profile_development_20261018/arrival-bank-order816-max290.npz",
+      "sha256": "8cf2a16a01fc50ac9801a37801a752a9c15bc6ff17f1f6c3fab6d572463bbf8b"
+    },
+    "bank_preparation_script": {
+      "path": "artifacts/paper1_profile_development_20261018/prepare-wide-series-bank.py",
+      "sha256": "adea117ed9a4d7c5c1d09d9b87ea2ef06cf29266324c043a8ac830ff4de3c8f4"
+    },
+    "bank_receipt": {
+      "path": "artifacts/paper1_profile_development_20261018/arrival-bank-order816-max290.json",
+      "sha256": "8717690a4e8173c8d19538183b745dce7fcae33be69a2c389c5ff84f3b7598ce"
+    },
+    "capstone_qualification_module": {
+      "path": "src/latent_landscapes/capstone_qualification.py",
+      "sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5"
+    },
+    "differentiable_likelihood_module": {
+      "path": "src/latent_landscapes/differentiable_likelihood.py",
+      "sha256": "19157fbec179b82e1e42a1e856ddf8fd9d2fd970f3825bb55b8a98f9f0d6ac62"
+    },
+    "exposure": {
+      "path": "artifacts/goal060_execution/audit-repair/public_inputs/exposure.npz",
+      "sha256": "b74004fc9ecf03499cfdc9ecca4919b0e17987eba405709f4e3f95f9bc9c0831"
+    },
+    "log_domain_likelihood_module": {
+      "path": "src/latent_landscapes/log_domain_likelihood.py",
+      "sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4"
+    },
+    "observations": {
+      "path": "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz",
+      "sha256": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef"
+    },
+    "preinvasion_likelihood_module": {
+      "path": "src/latent_landscapes/preinvasion_likelihood.py",
+      "sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12"
+    },
+    "public_inputs": {
+      "path": "artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz",
+      "sha256": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2"
+    },
+    "raw_arrival_bank": {
+      "path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc"
+    },
+    "script": {
+      "path": "scripts/benchmark_spatial_profile.py",
+      "sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b"
+    },
+    "spatial_profile_module": {
+      "path": "src/latent_landscapes/spatial_profile.py",
+      "sha256": "5fac48e1bbf9e6bc7b6ad9bd1111f6be6ec7786615f383f4867da1ee78b2fece"
+    }
+  },
+  "status": "run_completed",
+  "timing": {
+    "elapsed_seconds": 88.05950354200104,
+    "fit_seconds": 87.36038608400122,
+    "kernel_seconds": 0.0005487499984155875,
+    "load_seconds": 0.5713482499995735,
+    "profile_seconds": 87.36037399999987
+  },
+  "truth_accessed": false
+}

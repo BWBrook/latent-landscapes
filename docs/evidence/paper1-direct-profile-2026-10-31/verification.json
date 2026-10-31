@@ -1,0 +1,2217 @@
+{
+  "schema": "paper1-direct-profile-evidence-verification-v1",
+  "generated_utc": "2026-10-31T12:27:35.139389+00:00",
+  "bindings": [
+    {
+      "receipt": "audit/cell35-high-order-series-replay.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "expected_sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "audit/cell35-high-order-series-replay.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz",
+      "expected_sha256": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "audit/cell35-high-order-series-replay.json",
+      "bound_path": "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz",
+      "expected_sha256": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "audit/cell35-high-order-series-replay.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order816-max290.npz",
+      "expected_sha256": "8cf2a16a01fc50ac9801a37801a752a9c15bc6ff17f1f6c3fab6d572463bbf8b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "audit/cell35-high-order-series-replay.json",
+      "bound_path": "src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "audit/fixed-h3-receipt.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order816-max290.npz",
+      "expected_sha256": "8cf2a16a01fc50ac9801a37801a752a9c15bc6ff17f1f6c3fab6d572463bbf8b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "audit/fixed-h3-receipt.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/prepare-wide-series-bank.py",
+      "expected_sha256": "adea117ed9a4d7c5c1d09d9b87ea2ef06cf29266324c043a8ac830ff4de3c8f4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "audit/fixed-h3-receipt.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order816-max290.json",
+      "expected_sha256": "8717690a4e8173c8d19538183b745dce7fcae33be69a2c389c5ff84f3b7598ce",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "audit/fixed-h3-receipt.json",
+      "bound_path": "src/latent_landscapes/capstone_qualification.py",
+      "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "audit/fixed-h3-receipt.json",
+      "bound_path": "src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "19157fbec179b82e1e42a1e856ddf8fd9d2fd970f3825bb55b8a98f9f0d6ac62",
+      "verified": true,
+      "historical_source_snapshot": "kernel/differentiable_likelihood-19157fbe.py"
+    },
+    {
+      "receipt": "audit/fixed-h3-receipt.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/exposure.npz",
+      "expected_sha256": "b74004fc9ecf03499cfdc9ecca4919b0e17987eba405709f4e3f95f9bc9c0831",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "audit/fixed-h3-receipt.json",
+      "bound_path": "src/latent_landscapes/log_domain_likelihood.py",
+      "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "audit/fixed-h3-receipt.json",
+      "bound_path": "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz",
+      "expected_sha256": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "audit/fixed-h3-receipt.json",
+      "bound_path": "src/latent_landscapes/preinvasion_likelihood.py",
+      "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "audit/fixed-h3-receipt.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz",
+      "expected_sha256": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "audit/fixed-h3-receipt.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "expected_sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "audit/fixed-h3-receipt.json",
+      "bound_path": "scripts/benchmark_spatial_profile.py",
+      "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "audit/fixed-h3-receipt.json",
+      "bound_path": "src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "5fac48e1bbf9e6bc7b6ad9bd1111f6be6ec7786615f383f4867da1ee78b2fece",
+      "verified": true,
+      "historical_source_snapshot": "source/spatial_profile-lbfgs.py"
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h30.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz",
+      "expected_sha256": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h30.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/prepare-wide-series-bank.py",
+      "expected_sha256": "adea117ed9a4d7c5c1d09d9b87ea2ef06cf29266324c043a8ac830ff4de3c8f4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h30.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.json",
+      "expected_sha256": "8637c25afa56f45df560d9f23181e8cd79c1d6ad8f292eaefe5e107ba429b5ee",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h30.json",
+      "bound_path": "src/latent_landscapes/capstone_qualification.py",
+      "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h30.json",
+      "bound_path": "src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h30.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/exposure.npz",
+      "expected_sha256": "b74004fc9ecf03499cfdc9ecca4919b0e17987eba405709f4e3f95f9bc9c0831",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h30.json",
+      "bound_path": "src/latent_landscapes/log_domain_likelihood.py",
+      "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h30.json",
+      "bound_path": "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz",
+      "expected_sha256": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h30.json",
+      "bound_path": "src/latent_landscapes/preinvasion_likelihood.py",
+      "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h30.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz",
+      "expected_sha256": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h30.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "expected_sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h30.json",
+      "bound_path": "scripts/benchmark_spatial_profile.py",
+      "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h30.json",
+      "bound_path": "src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "5fac48e1bbf9e6bc7b6ad9bd1111f6be6ec7786615f383f4867da1ee78b2fece",
+      "verified": true,
+      "historical_source_snapshot": "source/spatial_profile-lbfgs.py"
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h6.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz",
+      "expected_sha256": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h6.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/prepare-wide-series-bank.py",
+      "expected_sha256": "adea117ed9a4d7c5c1d09d9b87ea2ef06cf29266324c043a8ac830ff4de3c8f4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h6.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.json",
+      "expected_sha256": "8637c25afa56f45df560d9f23181e8cd79c1d6ad8f292eaefe5e107ba429b5ee",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h6.json",
+      "bound_path": "src/latent_landscapes/capstone_qualification.py",
+      "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h6.json",
+      "bound_path": "src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h6.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/exposure.npz",
+      "expected_sha256": "b74004fc9ecf03499cfdc9ecca4919b0e17987eba405709f4e3f95f9bc9c0831",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h6.json",
+      "bound_path": "src/latent_landscapes/log_domain_likelihood.py",
+      "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h6.json",
+      "bound_path": "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz",
+      "expected_sha256": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h6.json",
+      "bound_path": "src/latent_landscapes/preinvasion_likelihood.py",
+      "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h6.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz",
+      "expected_sha256": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h6.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "expected_sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h6.json",
+      "bound_path": "scripts/benchmark_spatial_profile.py",
+      "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h6.json",
+      "bound_path": "src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "5fac48e1bbf9e6bc7b6ad9bd1111f6be6ec7786615f383f4867da1ee78b2fece",
+      "verified": true,
+      "historical_source_snapshot": "source/spatial_profile-lbfgs.py"
+    },
+    {
+      "receipt": "benchmark/BH3-free-3h-lbfgs.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz",
+      "expected_sha256": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-free-3h-lbfgs.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/prepare-wide-series-bank.py",
+      "expected_sha256": "adea117ed9a4d7c5c1d09d9b87ea2ef06cf29266324c043a8ac830ff4de3c8f4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-free-3h-lbfgs.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.json",
+      "expected_sha256": "8637c25afa56f45df560d9f23181e8cd79c1d6ad8f292eaefe5e107ba429b5ee",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-free-3h-lbfgs.json",
+      "bound_path": "src/latent_landscapes/capstone_qualification.py",
+      "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-free-3h-lbfgs.json",
+      "bound_path": "src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-free-3h-lbfgs.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/exposure.npz",
+      "expected_sha256": "b74004fc9ecf03499cfdc9ecca4919b0e17987eba405709f4e3f95f9bc9c0831",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-free-3h-lbfgs.json",
+      "bound_path": "src/latent_landscapes/log_domain_likelihood.py",
+      "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-free-3h-lbfgs.json",
+      "bound_path": "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz",
+      "expected_sha256": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-free-3h-lbfgs.json",
+      "bound_path": "src/latent_landscapes/preinvasion_likelihood.py",
+      "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-free-3h-lbfgs.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz",
+      "expected_sha256": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-free-3h-lbfgs.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "expected_sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-free-3h-lbfgs.json",
+      "bound_path": "scripts/benchmark_spatial_profile.py",
+      "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-free-3h-lbfgs.json",
+      "bound_path": "src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "5fac48e1bbf9e6bc7b6ad9bd1111f6be6ec7786615f383f4867da1ee78b2fece",
+      "verified": true,
+      "historical_source_snapshot": "source/spatial_profile-lbfgs.py"
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h3-order816.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order816-max290.npz",
+      "expected_sha256": "8cf2a16a01fc50ac9801a37801a752a9c15bc6ff17f1f6c3fab6d572463bbf8b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h3-order816.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/prepare-wide-series-bank.py",
+      "expected_sha256": "adea117ed9a4d7c5c1d09d9b87ea2ef06cf29266324c043a8ac830ff4de3c8f4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h3-order816.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order816-max290.json",
+      "expected_sha256": "8717690a4e8173c8d19538183b745dce7fcae33be69a2c389c5ff84f3b7598ce",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h3-order816.json",
+      "bound_path": "src/latent_landscapes/capstone_qualification.py",
+      "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h3-order816.json",
+      "bound_path": "src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h3-order816.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/exposure.npz",
+      "expected_sha256": "b74004fc9ecf03499cfdc9ecca4919b0e17987eba405709f4e3f95f9bc9c0831",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h3-order816.json",
+      "bound_path": "src/latent_landscapes/log_domain_likelihood.py",
+      "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h3-order816.json",
+      "bound_path": "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz",
+      "expected_sha256": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h3-order816.json",
+      "bound_path": "src/latent_landscapes/preinvasion_likelihood.py",
+      "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h3-order816.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz",
+      "expected_sha256": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h3-order816.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "expected_sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h3-order816.json",
+      "bound_path": "scripts/benchmark_spatial_profile.py",
+      "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h3-order816.json",
+      "bound_path": "src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "888ab4d9f4bfb592ff06512af7bfa2e3303037c87615acaee0306037a3f7d9de",
+      "verified": true,
+      "historical_source_snapshot": "source/spatial_profile-newton-888ab4d9.py"
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h30-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz",
+      "expected_sha256": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h30-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/prepare-wide-series-bank.py",
+      "expected_sha256": "adea117ed9a4d7c5c1d09d9b87ea2ef06cf29266324c043a8ac830ff4de3c8f4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h30-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.json",
+      "expected_sha256": "8637c25afa56f45df560d9f23181e8cd79c1d6ad8f292eaefe5e107ba429b5ee",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h30-order192.json",
+      "bound_path": "src/latent_landscapes/capstone_qualification.py",
+      "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h30-order192.json",
+      "bound_path": "src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h30-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/exposure.npz",
+      "expected_sha256": "b74004fc9ecf03499cfdc9ecca4919b0e17987eba405709f4e3f95f9bc9c0831",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h30-order192.json",
+      "bound_path": "src/latent_landscapes/log_domain_likelihood.py",
+      "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h30-order192.json",
+      "bound_path": "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz",
+      "expected_sha256": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h30-order192.json",
+      "bound_path": "src/latent_landscapes/preinvasion_likelihood.py",
+      "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h30-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz",
+      "expected_sha256": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h30-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "expected_sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h30-order192.json",
+      "bound_path": "scripts/benchmark_spatial_profile.py",
+      "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h30-order192.json",
+      "bound_path": "src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "888ab4d9f4bfb592ff06512af7bfa2e3303037c87615acaee0306037a3f7d9de",
+      "verified": true,
+      "historical_source_snapshot": "source/spatial_profile-newton-888ab4d9.py"
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h6.053483599717359-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz",
+      "expected_sha256": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h6.053483599717359-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/prepare-wide-series-bank.py",
+      "expected_sha256": "adea117ed9a4d7c5c1d09d9b87ea2ef06cf29266324c043a8ac830ff4de3c8f4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h6.053483599717359-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.json",
+      "expected_sha256": "8637c25afa56f45df560d9f23181e8cd79c1d6ad8f292eaefe5e107ba429b5ee",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h6.053483599717359-order192.json",
+      "bound_path": "src/latent_landscapes/capstone_qualification.py",
+      "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h6.053483599717359-order192.json",
+      "bound_path": "src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h6.053483599717359-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/exposure.npz",
+      "expected_sha256": "b74004fc9ecf03499cfdc9ecca4919b0e17987eba405709f4e3f95f9bc9c0831",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h6.053483599717359-order192.json",
+      "bound_path": "src/latent_landscapes/log_domain_likelihood.py",
+      "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h6.053483599717359-order192.json",
+      "bound_path": "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz",
+      "expected_sha256": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h6.053483599717359-order192.json",
+      "bound_path": "src/latent_landscapes/preinvasion_likelihood.py",
+      "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h6.053483599717359-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz",
+      "expected_sha256": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h6.053483599717359-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "expected_sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h6.053483599717359-order192.json",
+      "bound_path": "scripts/benchmark_spatial_profile.py",
+      "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h6.053483599717359-order192.json",
+      "bound_path": "src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "888ab4d9f4bfb592ff06512af7bfa2e3303037c87615acaee0306037a3f7d9de",
+      "verified": true,
+      "historical_source_snapshot": "source/spatial_profile-newton-888ab4d9.py"
+    },
+    {
+      "receipt": "benchmark/BH3-newton-free3-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz",
+      "expected_sha256": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-free3-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/prepare-wide-series-bank.py",
+      "expected_sha256": "adea117ed9a4d7c5c1d09d9b87ea2ef06cf29266324c043a8ac830ff4de3c8f4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-free3-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.json",
+      "expected_sha256": "8637c25afa56f45df560d9f23181e8cd79c1d6ad8f292eaefe5e107ba429b5ee",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-free3-order192.json",
+      "bound_path": "src/latent_landscapes/capstone_qualification.py",
+      "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-free3-order192.json",
+      "bound_path": "src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-free3-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/exposure.npz",
+      "expected_sha256": "b74004fc9ecf03499cfdc9ecca4919b0e17987eba405709f4e3f95f9bc9c0831",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-free3-order192.json",
+      "bound_path": "src/latent_landscapes/log_domain_likelihood.py",
+      "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-free3-order192.json",
+      "bound_path": "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz",
+      "expected_sha256": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-free3-order192.json",
+      "bound_path": "src/latent_landscapes/preinvasion_likelihood.py",
+      "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-free3-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz",
+      "expected_sha256": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-free3-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "expected_sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-free3-order192.json",
+      "bound_path": "scripts/benchmark_spatial_profile.py",
+      "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-newton-free3-order192.json",
+      "bound_path": "src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "888ab4d9f4bfb592ff06512af7bfa2e3303037c87615acaee0306037a3f7d9de",
+      "verified": true,
+      "historical_source_snapshot": "source/spatial_profile-newton-888ab4d9.py"
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h3-order816.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order816-max290.npz",
+      "expected_sha256": "8cf2a16a01fc50ac9801a37801a752a9c15bc6ff17f1f6c3fab6d572463bbf8b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h3-order816.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/prepare-wide-series-bank.py",
+      "expected_sha256": "adea117ed9a4d7c5c1d09d9b87ea2ef06cf29266324c043a8ac830ff4de3c8f4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h3-order816.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order816-max290.json",
+      "expected_sha256": "8717690a4e8173c8d19538183b745dce7fcae33be69a2c389c5ff84f3b7598ce",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h3-order816.json",
+      "bound_path": "src/latent_landscapes/capstone_qualification.py",
+      "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h3-order816.json",
+      "bound_path": "src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h3-order816.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/exposure.npz",
+      "expected_sha256": "b74004fc9ecf03499cfdc9ecca4919b0e17987eba405709f4e3f95f9bc9c0831",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h3-order816.json",
+      "bound_path": "src/latent_landscapes/log_domain_likelihood.py",
+      "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h3-order816.json",
+      "bound_path": "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz",
+      "expected_sha256": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h3-order816.json",
+      "bound_path": "src/latent_landscapes/preinvasion_likelihood.py",
+      "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h3-order816.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz",
+      "expected_sha256": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h3-order816.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "expected_sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h3-order816.json",
+      "bound_path": "scripts/benchmark_spatial_profile.py",
+      "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h3-order816.json",
+      "bound_path": "src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "3716ac2d9b61e84180f37fc7da2c68f22edefe1a50f0c07ec0616a293fcb82f5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h30-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz",
+      "expected_sha256": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h30-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/prepare-wide-series-bank.py",
+      "expected_sha256": "adea117ed9a4d7c5c1d09d9b87ea2ef06cf29266324c043a8ac830ff4de3c8f4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h30-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.json",
+      "expected_sha256": "8637c25afa56f45df560d9f23181e8cd79c1d6ad8f292eaefe5e107ba429b5ee",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h30-order192.json",
+      "bound_path": "src/latent_landscapes/capstone_qualification.py",
+      "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h30-order192.json",
+      "bound_path": "src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h30-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/exposure.npz",
+      "expected_sha256": "b74004fc9ecf03499cfdc9ecca4919b0e17987eba405709f4e3f95f9bc9c0831",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h30-order192.json",
+      "bound_path": "src/latent_landscapes/log_domain_likelihood.py",
+      "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h30-order192.json",
+      "bound_path": "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz",
+      "expected_sha256": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h30-order192.json",
+      "bound_path": "src/latent_landscapes/preinvasion_likelihood.py",
+      "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h30-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz",
+      "expected_sha256": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h30-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "expected_sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h30-order192.json",
+      "bound_path": "scripts/benchmark_spatial_profile.py",
+      "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h30-order192.json",
+      "bound_path": "src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "3716ac2d9b61e84180f37fc7da2c68f22edefe1a50f0c07ec0616a293fcb82f5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h6.053483599717359-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz",
+      "expected_sha256": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h6.053483599717359-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/prepare-wide-series-bank.py",
+      "expected_sha256": "adea117ed9a4d7c5c1d09d9b87ea2ef06cf29266324c043a8ac830ff4de3c8f4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h6.053483599717359-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.json",
+      "expected_sha256": "8637c25afa56f45df560d9f23181e8cd79c1d6ad8f292eaefe5e107ba429b5ee",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h6.053483599717359-order192.json",
+      "bound_path": "src/latent_landscapes/capstone_qualification.py",
+      "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h6.053483599717359-order192.json",
+      "bound_path": "src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h6.053483599717359-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/exposure.npz",
+      "expected_sha256": "b74004fc9ecf03499cfdc9ecca4919b0e17987eba405709f4e3f95f9bc9c0831",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h6.053483599717359-order192.json",
+      "bound_path": "src/latent_landscapes/log_domain_likelihood.py",
+      "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h6.053483599717359-order192.json",
+      "bound_path": "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz",
+      "expected_sha256": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h6.053483599717359-order192.json",
+      "bound_path": "src/latent_landscapes/preinvasion_likelihood.py",
+      "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h6.053483599717359-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz",
+      "expected_sha256": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h6.053483599717359-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "expected_sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h6.053483599717359-order192.json",
+      "bound_path": "scripts/benchmark_spatial_profile.py",
+      "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h6.053483599717359-order192.json",
+      "bound_path": "src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "3716ac2d9b61e84180f37fc7da2c68f22edefe1a50f0c07ec0616a293fcb82f5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-free3-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz",
+      "expected_sha256": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-free3-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/prepare-wide-series-bank.py",
+      "expected_sha256": "adea117ed9a4d7c5c1d09d9b87ea2ef06cf29266324c043a8ac830ff4de3c8f4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-free3-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.json",
+      "expected_sha256": "8637c25afa56f45df560d9f23181e8cd79c1d6ad8f292eaefe5e107ba429b5ee",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-free3-order192.json",
+      "bound_path": "src/latent_landscapes/capstone_qualification.py",
+      "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-free3-order192.json",
+      "bound_path": "src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-free3-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/exposure.npz",
+      "expected_sha256": "b74004fc9ecf03499cfdc9ecca4919b0e17987eba405709f4e3f95f9bc9c0831",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-free3-order192.json",
+      "bound_path": "src/latent_landscapes/log_domain_likelihood.py",
+      "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-free3-order192.json",
+      "bound_path": "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz",
+      "expected_sha256": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-free3-order192.json",
+      "bound_path": "src/latent_landscapes/preinvasion_likelihood.py",
+      "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-free3-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz",
+      "expected_sha256": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-free3-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "expected_sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-free3-order192.json",
+      "bound_path": "scripts/benchmark_spatial_profile.py",
+      "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-free3-order192.json",
+      "bound_path": "src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "3716ac2d9b61e84180f37fc7da2c68f22edefe1a50f0c07ec0616a293fcb82f5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-full35-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz",
+      "expected_sha256": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-full35-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/prepare-wide-series-bank.py",
+      "expected_sha256": "adea117ed9a4d7c5c1d09d9b87ea2ef06cf29266324c043a8ac830ff4de3c8f4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-full35-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.json",
+      "expected_sha256": "8637c25afa56f45df560d9f23181e8cd79c1d6ad8f292eaefe5e107ba429b5ee",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-full35-order192.json",
+      "bound_path": "src/latent_landscapes/capstone_qualification.py",
+      "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-full35-order192.json",
+      "bound_path": "src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-full35-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/exposure.npz",
+      "expected_sha256": "b74004fc9ecf03499cfdc9ecca4919b0e17987eba405709f4e3f95f9bc9c0831",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-full35-order192.json",
+      "bound_path": "src/latent_landscapes/log_domain_likelihood.py",
+      "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-full35-order192.json",
+      "bound_path": "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz",
+      "expected_sha256": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-full35-order192.json",
+      "bound_path": "src/latent_landscapes/preinvasion_likelihood.py",
+      "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-full35-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz",
+      "expected_sha256": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-full35-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "expected_sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-full35-order192.json",
+      "bound_path": "scripts/benchmark_spatial_profile.py",
+      "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/BH3-trust-full35-order192.json",
+      "bound_path": "src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "3716ac2d9b61e84180f37fc7da2c68f22edefe1a50f0c07ec0616a293fcb82f5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/H3-trust-full35-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz",
+      "expected_sha256": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/H3-trust-full35-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/prepare-wide-series-bank.py",
+      "expected_sha256": "adea117ed9a4d7c5c1d09d9b87ea2ef06cf29266324c043a8ac830ff4de3c8f4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/H3-trust-full35-order192.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.json",
+      "expected_sha256": "8637c25afa56f45df560d9f23181e8cd79c1d6ad8f292eaefe5e107ba429b5ee",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/H3-trust-full35-order192.json",
+      "bound_path": "src/latent_landscapes/capstone_qualification.py",
+      "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/H3-trust-full35-order192.json",
+      "bound_path": "src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/H3-trust-full35-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/exposure.npz",
+      "expected_sha256": "b74004fc9ecf03499cfdc9ecca4919b0e17987eba405709f4e3f95f9bc9c0831",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/H3-trust-full35-order192.json",
+      "bound_path": "src/latent_landscapes/log_domain_likelihood.py",
+      "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/H3-trust-full35-order192.json",
+      "bound_path": "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-04/rep-000/observations.npz",
+      "expected_sha256": "ed8675556be861c5600de44bfe22ab1fea73c6c805512e07f6445e0b2eb35189",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/H3-trust-full35-order192.json",
+      "bound_path": "src/latent_landscapes/preinvasion_likelihood.py",
+      "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/H3-trust-full35-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz",
+      "expected_sha256": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/H3-trust-full35-order192.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "expected_sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/H3-trust-full35-order192.json",
+      "bound_path": "scripts/benchmark_spatial_profile.py",
+      "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "benchmark/H3-trust-full35-order192.json",
+      "bound_path": "src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "3716ac2d9b61e84180f37fc7da2c68f22edefe1a50f0c07ec0616a293fcb82f5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/kernel-receipt.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "expected_sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/kernel-receipt.json",
+      "bound_path": "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz",
+      "expected_sha256": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/kernel-receipt.json",
+      "bound_path": "artifacts/paper1_fast_likelihood_20261031/kernel/differentiable_likelihood-19157fbe.py",
+      "expected_sha256": "19157fbec179b82e1e42a1e856ddf8fd9d2fd970f3825bb55b8a98f9f0d6ac62",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/kernel-receipt.json",
+      "bound_path": "artifacts/paper1_fast_likelihood_20261031/kernel/fixed-h3-independent-audit-receipt.json",
+      "expected_sha256": "5a65e665564debcdf6d0cb13f160ac76deebd9a9a57a8f96f082da139bca1f4b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/kernel-receipt.json",
+      "bound_path": "artifacts/paper1_fast_likelihood_20261031/kernel/qualify_kernel.py",
+      "expected_sha256": "17477a20bb1b6c44f09e500a3487c3ffdb1c25de563d77a791322980493d9155",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/kernel-receipt.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz",
+      "expected_sha256": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/kernel-receipt.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order816-max290.npz",
+      "expected_sha256": "8cf2a16a01fc50ac9801a37801a752a9c15bc6ff17f1f6c3fab6d572463bbf8b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/kernel-receipt.json",
+      "bound_path": "scripts/benchmark_spatial_profile.py",
+      "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/kernel-receipt.json",
+      "bound_path": "src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/kernel-receipt.json",
+      "bound_path": "src/latent_landscapes/log_domain_likelihood.py",
+      "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/kernel-receipt.json",
+      "bound_path": "tests/test_differentiable_likelihood.py",
+      "expected_sha256": "9f142c80856b515b533df7d6e187097203e7fea02a9e7631351337058a4c4649",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt-lbfgs.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "expected_sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt-lbfgs.json",
+      "bound_path": "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz",
+      "expected_sha256": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt-lbfgs.json",
+      "bound_path": "artifacts/paper1_fast_likelihood_20261031/kernel/check_laplace_gradient.py",
+      "expected_sha256": "118adca1369a027f8ca72fb721f0207c0a14a32994c67342f3ab8d962610e8fd",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt-lbfgs.json",
+      "bound_path": "artifacts/paper1_planning_20261018/gp-prototype/results.json",
+      "expected_sha256": "c2d392318d16ce5b1ff8a336951541e9be1256047b0a51a802a2dacc0dd92e86",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt-lbfgs.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz",
+      "expected_sha256": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt-lbfgs.json",
+      "bound_path": "scripts/benchmark_spatial_profile.py",
+      "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt-lbfgs.json",
+      "bound_path": "src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt-lbfgs.json",
+      "bound_path": "src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "5fac48e1bbf9e6bc7b6ad9bd1111f6be6ec7786615f383f4867da1ee78b2fece",
+      "verified": true,
+      "historical_source_snapshot": "source/spatial_profile-lbfgs.py"
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt-newton-888ab4d9.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "expected_sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt-newton-888ab4d9.json",
+      "bound_path": "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz",
+      "expected_sha256": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt-newton-888ab4d9.json",
+      "bound_path": "artifacts/paper1_fast_likelihood_20261031/kernel/check_laplace_gradient.py",
+      "expected_sha256": "118adca1369a027f8ca72fb721f0207c0a14a32994c67342f3ab8d962610e8fd",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt-newton-888ab4d9.json",
+      "bound_path": "artifacts/paper1_planning_20261018/gp-prototype/results.json",
+      "expected_sha256": "c2d392318d16ce5b1ff8a336951541e9be1256047b0a51a802a2dacc0dd92e86",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt-newton-888ab4d9.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz",
+      "expected_sha256": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt-newton-888ab4d9.json",
+      "bound_path": "scripts/benchmark_spatial_profile.py",
+      "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt-newton-888ab4d9.json",
+      "bound_path": "src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt-newton-888ab4d9.json",
+      "bound_path": "src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "888ab4d9f4bfb592ff06512af7bfa2e3303037c87615acaee0306037a3f7d9de",
+      "verified": true,
+      "historical_source_snapshot": "source/spatial_profile-newton-888ab4d9.py"
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt.json",
+      "bound_path": "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy",
+      "expected_sha256": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt.json",
+      "bound_path": "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz",
+      "expected_sha256": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt.json",
+      "bound_path": "artifacts/paper1_fast_likelihood_20261031/kernel/check_laplace_gradient.py",
+      "expected_sha256": "118adca1369a027f8ca72fb721f0207c0a14a32994c67342f3ab8d962610e8fd",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt.json",
+      "bound_path": "artifacts/paper1_planning_20261018/gp-prototype/results.json",
+      "expected_sha256": "c2d392318d16ce5b1ff8a336951541e9be1256047b0a51a802a2dacc0dd92e86",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt.json",
+      "bound_path": "artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz",
+      "expected_sha256": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt.json",
+      "bound_path": "scripts/benchmark_spatial_profile.py",
+      "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt.json",
+      "bound_path": "src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "kernel/laplace-gradient-receipt.json",
+      "bound_path": "src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "3716ac2d9b61e84180f37fc7da2c68f22edefe1a50f0c07ec0616a293fcb82f5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/BH3-full35-old-solver-comparison.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_fast_likelihood_20261031/mode_solver/compare_profile_solvers.py",
+      "expected_sha256": "e9ee4268ac63d1b1a6bc847a75e801f5cd87e8c336fd460faa4b053c4b21b601",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/BH3-full35-old-solver-comparison.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_fast_likelihood_20261031/mode_solver/spatial_profile-lbfgs.py",
+      "expected_sha256": "5fac48e1bbf9e6bc7b6ad9bd1111f6be6ec7786615f383f4867da1ee78b2fece",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/BH3-full35-old-solver-comparison.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "3716ac2d9b61e84180f37fc7da2c68f22edefe1a50f0c07ec0616a293fcb82f5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/BH3-full35-old-solver-comparison.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/BH3-full35-old-solver-comparison.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_fast_likelihood_20261031/kernel/check_laplace_gradient.py",
+      "expected_sha256": "118adca1369a027f8ca72fb721f0207c0a14a32994c67342f3ab8d962610e8fd",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/BH3-full35-old-solver-comparison.json",
+      "bound_path": "artifacts/paper1_fast_likelihood_20261031/benchmark/BH3-trust-full35-order192/receipt.json",
+      "expected_sha256": "8a83af46a36295fe73a3840611f2b5c717b68ed4277820c0f5892b3a09317db1",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/BH3-full35-old-solver-comparison.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz",
+      "expected_sha256": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/H3-full35-old-solver-comparison.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_fast_likelihood_20261031/mode_solver/compare_profile_solvers.py",
+      "expected_sha256": "e9ee4268ac63d1b1a6bc847a75e801f5cd87e8c336fd460faa4b053c4b21b601",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/H3-full35-old-solver-comparison.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_fast_likelihood_20261031/mode_solver/spatial_profile-lbfgs.py",
+      "expected_sha256": "5fac48e1bbf9e6bc7b6ad9bd1111f6be6ec7786615f383f4867da1ee78b2fece",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/H3-full35-old-solver-comparison.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "3716ac2d9b61e84180f37fc7da2c68f22edefe1a50f0c07ec0616a293fcb82f5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/H3-full35-old-solver-comparison.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/H3-full35-old-solver-comparison.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_fast_likelihood_20261031/kernel/check_laplace_gradient.py",
+      "expected_sha256": "118adca1369a027f8ca72fb721f0207c0a14a32994c67342f3ab8d962610e8fd",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/H3-full35-old-solver-comparison.json",
+      "bound_path": "artifacts/paper1_fast_likelihood_20261031/benchmark/H3-trust-full35-order192/receipt.json",
+      "expected_sha256": "31334d5827f793e7caa07e4acf54ecfb06393057d51f6f3aa5db7428b0ca3f9b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/H3-full35-old-solver-comparison.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-04/rep-000/observations.npz",
+      "expected_sha256": "ed8675556be861c5600de44bfe22ab1fea73c6c805512e07f6445e0b2eb35189",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/new-parameter-comparison-trust.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_fast_likelihood_20261031/mode_solver/compare_solvers.py",
+      "expected_sha256": "4bb1bd3bcdd1df08c3f5216b3ca2aeb0c596fbe0aff5b4c1112308111c53477f",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/new-parameter-comparison-trust.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_fast_likelihood_20261031/mode_solver/spatial_profile-lbfgs.py",
+      "expected_sha256": "5fac48e1bbf9e6bc7b6ad9bd1111f6be6ec7786615f383f4867da1ee78b2fece",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/new-parameter-comparison-trust.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "3716ac2d9b61e84180f37fc7da2c68f22edefe1a50f0c07ec0616a293fcb82f5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/new-parameter-comparison-trust.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/new-parameter-comparison-trust.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_fast_likelihood_20261031/kernel/check_laplace_gradient.py",
+      "expected_sha256": "118adca1369a027f8ca72fb721f0207c0a14a32994c67342f3ab8d962610e8fd",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/new-parameter-comparison-trust.json",
+      "bound_path": "artifacts/paper1_fast_likelihood_20261031/benchmark/BH3-trust-fixed-h3-order816/receipt.json",
+      "expected_sha256": "3df3b18fcbb857a9ded78e6a8257558b9bc19fdbc8e9bae6d0f550beb783410c",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/new-parameter-comparison-trust.json",
+      "bound_path": "artifacts/paper1_fast_likelihood_20261031/benchmark/BH3-trust-fixed-h6.053483599717359-order192/receipt.json",
+      "expected_sha256": "5e8b3fc926eccd50a8b6476a1021c74a45a7f76bce2085b7530af3bfff72823f",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/new-parameter-comparison-trust.json",
+      "bound_path": "artifacts/paper1_fast_likelihood_20261031/benchmark/BH3-trust-fixed-h30-order192/receipt.json",
+      "expected_sha256": "7d87ec38aaf4c57b7a15577348acae361bbf772cd19d6adf7db7dcdf924f413e",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/new-parameter-comparison-trust.json",
+      "bound_path": "artifacts/paper1_fast_likelihood_20261031/benchmark/BH3-trust-free3-order192/receipt.json",
+      "expected_sha256": "c659eabeeceb696eba57f6d2c23d14954e0950d5bbe2d160f8fc3aa25d58b5ef",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/old-parameter-comparison-newton-888ab4d9.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_fast_likelihood_20261031/mode_solver/compare_solvers.py",
+      "expected_sha256": "4bb1bd3bcdd1df08c3f5216b3ca2aeb0c596fbe0aff5b4c1112308111c53477f",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/old-parameter-comparison-newton-888ab4d9.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_fast_likelihood_20261031/mode_solver/spatial_profile-lbfgs.py",
+      "expected_sha256": "5fac48e1bbf9e6bc7b6ad9bd1111f6be6ec7786615f383f4867da1ee78b2fece",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/old-parameter-comparison-newton-888ab4d9.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "888ab4d9f4bfb592ff06512af7bfa2e3303037c87615acaee0306037a3f7d9de",
+      "verified": true,
+      "historical_source_snapshot": "source/spatial_profile-newton-888ab4d9.py"
+    },
+    {
+      "receipt": "mode_solver/old-parameter-comparison-newton-888ab4d9.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/old-parameter-comparison-newton-888ab4d9.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_fast_likelihood_20261031/kernel/check_laplace_gradient.py",
+      "expected_sha256": "118adca1369a027f8ca72fb721f0207c0a14a32994c67342f3ab8d962610e8fd",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/old-parameter-comparison-newton-888ab4d9.json",
+      "bound_path": "artifacts/paper1_fast_likelihood_20261031/audit/fixed-h3-receipt.json",
+      "expected_sha256": "5a65e665564debcdf6d0cb13f160ac76deebd9a9a57a8f96f082da139bca1f4b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/old-parameter-comparison-newton-888ab4d9.json",
+      "bound_path": "artifacts/paper1_fast_likelihood_20261031/benchmark/BH3-direct-fixed-h6-parent/receipt.json",
+      "expected_sha256": "efbcb21ba204c5690ea27201e74e48001793ec594399bfe913f1023929ced260",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/old-parameter-comparison-newton-888ab4d9.json",
+      "bound_path": "artifacts/paper1_fast_likelihood_20261031/benchmark/BH3-direct-fixed-h30-v2/receipt.json",
+      "expected_sha256": "603ec1dddb7f58b58df60560475575d600b142cbcc8f472d63aabb7c0643e103",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/old-parameter-comparison-newton-888ab4d9.json",
+      "bound_path": "artifacts/paper1_fast_likelihood_20261031/benchmark/BH3-direct-free-incumbent-3h/receipt.json",
+      "expected_sha256": "e917bfc13bb318632ce65eecda7a0b4461038e40d672bbf25bd4b65ffa4ad44d",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/old-parameter-comparison-trust.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_fast_likelihood_20261031/mode_solver/compare_solvers.py",
+      "expected_sha256": "4bb1bd3bcdd1df08c3f5216b3ca2aeb0c596fbe0aff5b4c1112308111c53477f",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/old-parameter-comparison-trust.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_fast_likelihood_20261031/mode_solver/spatial_profile-lbfgs.py",
+      "expected_sha256": "5fac48e1bbf9e6bc7b6ad9bd1111f6be6ec7786615f383f4867da1ee78b2fece",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/old-parameter-comparison-trust.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
+      "expected_sha256": "3716ac2d9b61e84180f37fc7da2c68f22edefe1a50f0c07ec0616a293fcb82f5",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/old-parameter-comparison-trust.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
+      "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/old-parameter-comparison-trust.json",
+      "bound_path": "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_fast_likelihood_20261031/kernel/check_laplace_gradient.py",
+      "expected_sha256": "118adca1369a027f8ca72fb721f0207c0a14a32994c67342f3ab8d962610e8fd",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/old-parameter-comparison-trust.json",
+      "bound_path": "artifacts/paper1_fast_likelihood_20261031/audit/fixed-h3-receipt.json",
+      "expected_sha256": "5a65e665564debcdf6d0cb13f160ac76deebd9a9a57a8f96f082da139bca1f4b",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/old-parameter-comparison-trust.json",
+      "bound_path": "artifacts/paper1_fast_likelihood_20261031/benchmark/BH3-direct-fixed-h6-parent/receipt.json",
+      "expected_sha256": "efbcb21ba204c5690ea27201e74e48001793ec594399bfe913f1023929ced260",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/old-parameter-comparison-trust.json",
+      "bound_path": "artifacts/paper1_fast_likelihood_20261031/benchmark/BH3-direct-fixed-h30-v2/receipt.json",
+      "expected_sha256": "603ec1dddb7f58b58df60560475575d600b142cbcc8f472d63aabb7c0643e103",
+      "verified": true,
+      "historical_source_snapshot": null
+    },
+    {
+      "receipt": "mode_solver/old-parameter-comparison-trust.json",
+      "bound_path": "artifacts/paper1_fast_likelihood_20261031/benchmark/BH3-direct-free-incumbent-3h/receipt.json",
+      "expected_sha256": "e917bfc13bb318632ce65eecda7a0b4461038e40d672bbf25bd4b65ffa4ad44d",
+      "verified": true,
+      "historical_source_snapshot": null
+    }
+  ],
+  "profile_checks": [
+    {
+      "receipt": "audit/fixed-h3-receipt.json",
+      "scope_valid": true,
+      "families_resolved": true,
+      "envelope_passed": true,
+      "grid_resolution": {
+        "positive_sigma": {
+          "eligible_candidate_count": 1,
+          "eligible_envelope": -1716.9520139290332,
+          "grid_points_requested": 1,
+          "grid_points_resolved": 1,
+          "resolved": true
+        },
+        "sigma_zero": {
+          "eligible_candidate_count": 1,
+          "eligible_envelope": -1717.6687391441164,
+          "grid_points_requested": 1,
+          "grid_points_resolved": 1,
+          "resolved": true
+        }
+      },
+      "source_sha256": "5fac48e1bbf9e6bc7b6ad9bd1111f6be6ec7786615f383f4867da1ee78b2fece"
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h30.json",
+      "scope_valid": true,
+      "families_resolved": true,
+      "envelope_passed": true,
+      "grid_resolution": {
+        "positive_sigma": {
+          "eligible_candidate_count": 1,
+          "eligible_envelope": -1730.1484125824468,
+          "grid_points_requested": 1,
+          "grid_points_resolved": 1,
+          "resolved": true
+        },
+        "sigma_zero": {
+          "eligible_candidate_count": 1,
+          "eligible_envelope": -1740.3011674216723,
+          "grid_points_requested": 1,
+          "grid_points_resolved": 1,
+          "resolved": true
+        }
+      },
+      "source_sha256": "5fac48e1bbf9e6bc7b6ad9bd1111f6be6ec7786615f383f4867da1ee78b2fece"
+    },
+    {
+      "receipt": "benchmark/BH3-fixed-h6.json",
+      "scope_valid": true,
+      "families_resolved": true,
+      "envelope_passed": true,
+      "grid_resolution": {
+        "positive_sigma": {
+          "eligible_candidate_count": 1,
+          "eligible_envelope": -1717.0535770207514,
+          "grid_points_requested": 1,
+          "grid_points_resolved": 1,
+          "resolved": true
+        },
+        "sigma_zero": {
+          "eligible_candidate_count": 1,
+          "eligible_envelope": -1718.9007280882545,
+          "grid_points_requested": 1,
+          "grid_points_resolved": 1,
+          "resolved": true
+        }
+      },
+      "source_sha256": "5fac48e1bbf9e6bc7b6ad9bd1111f6be6ec7786615f383f4867da1ee78b2fece"
+    },
+    {
+      "receipt": "benchmark/BH3-free-3h-lbfgs.json",
+      "scope_valid": true,
+      "families_resolved": true,
+      "envelope_passed": true,
+      "grid_resolution": {
+        "positive_sigma": {
+          "eligible_candidate_count": 2,
+          "eligible_envelope": -1716.4471196633235,
+          "grid_points_requested": 3,
+          "grid_points_resolved": 3,
+          "resolved": true
+        },
+        "sigma_zero": {
+          "eligible_candidate_count": 2,
+          "eligible_envelope": -1717.4836610129973,
+          "grid_points_requested": 3,
+          "grid_points_resolved": 3,
+          "resolved": true
+        }
+      },
+      "source_sha256": "5fac48e1bbf9e6bc7b6ad9bd1111f6be6ec7786615f383f4867da1ee78b2fece"
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h3-order816.json",
+      "scope_valid": true,
+      "families_resolved": true,
+      "envelope_passed": true,
+      "grid_resolution": {
+        "positive_sigma": {
+          "eligible_candidate_count": 1,
+          "eligible_envelope": -1716.9520139289436,
+          "grid_points_requested": 1,
+          "grid_points_resolved": 1,
+          "resolved": true
+        },
+        "sigma_zero": {
+          "eligible_candidate_count": 1,
+          "eligible_envelope": -1717.6687391441164,
+          "grid_points_requested": 1,
+          "grid_points_resolved": 1,
+          "resolved": true
+        }
+      },
+      "source_sha256": "888ab4d9f4bfb592ff06512af7bfa2e3303037c87615acaee0306037a3f7d9de"
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h30-order192.json",
+      "scope_valid": true,
+      "families_resolved": true,
+      "envelope_passed": true,
+      "grid_resolution": {
+        "positive_sigma": {
+          "eligible_candidate_count": 1,
+          "eligible_envelope": -1730.148412582249,
+          "grid_points_requested": 1,
+          "grid_points_resolved": 1,
+          "resolved": true
+        },
+        "sigma_zero": {
+          "eligible_candidate_count": 1,
+          "eligible_envelope": -1740.3011674216723,
+          "grid_points_requested": 1,
+          "grid_points_resolved": 1,
+          "resolved": true
+        }
+      },
+      "source_sha256": "888ab4d9f4bfb592ff06512af7bfa2e3303037c87615acaee0306037a3f7d9de"
+    },
+    {
+      "receipt": "benchmark/BH3-newton-fixed-h6.053483599717359-order192.json",
+      "scope_valid": true,
+      "families_resolved": true,
+      "envelope_passed": true,
+      "grid_resolution": {
+        "positive_sigma": {
+          "eligible_candidate_count": 1,
+          "eligible_envelope": -1717.053577020525,
+          "grid_points_requested": 1,
+          "grid_points_resolved": 1,
+          "resolved": true
+        },
+        "sigma_zero": {
+          "eligible_candidate_count": 1,
+          "eligible_envelope": -1718.9007280882545,
+          "grid_points_requested": 1,
+          "grid_points_resolved": 1,
+          "resolved": true
+        }
+      },
+      "source_sha256": "888ab4d9f4bfb592ff06512af7bfa2e3303037c87615acaee0306037a3f7d9de"
+    },
+    {
+      "receipt": "benchmark/BH3-newton-free3-order192.json",
+      "scope_valid": true,
+      "families_resolved": true,
+      "envelope_passed": true,
+      "grid_resolution": {
+        "positive_sigma": {
+          "eligible_candidate_count": 2,
+          "eligible_envelope": -1716.4471196630827,
+          "grid_points_requested": 3,
+          "grid_points_resolved": 3,
+          "resolved": true
+        },
+        "sigma_zero": {
+          "eligible_candidate_count": 2,
+          "eligible_envelope": -1717.4836610129973,
+          "grid_points_requested": 3,
+          "grid_points_resolved": 3,
+          "resolved": true
+        }
+      },
+      "source_sha256": "888ab4d9f4bfb592ff06512af7bfa2e3303037c87615acaee0306037a3f7d9de"
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h3-order816.json",
+      "scope_valid": true,
+      "families_resolved": true,
+      "envelope_passed": true,
+      "grid_resolution": {
+        "positive_sigma": {
+          "eligible_candidate_count": 1,
+          "eligible_envelope": -1716.9520139289439,
+          "grid_points_requested": 1,
+          "grid_points_resolved": 1,
+          "resolved": true
+        },
+        "sigma_zero": {
+          "eligible_candidate_count": 1,
+          "eligible_envelope": -1717.6687391441164,
+          "grid_points_requested": 1,
+          "grid_points_resolved": 1,
+          "resolved": true
+        }
+      },
+      "source_sha256": "3716ac2d9b61e84180f37fc7da2c68f22edefe1a50f0c07ec0616a293fcb82f5"
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h30-order192.json",
+      "scope_valid": true,
+      "families_resolved": true,
+      "envelope_passed": true,
+      "grid_resolution": {
+        "positive_sigma": {
+          "eligible_candidate_count": 1,
+          "eligible_envelope": -1730.1484125820464,
+          "grid_points_requested": 1,
+          "grid_points_resolved": 1,
+          "resolved": true
+        },
+        "sigma_zero": {
+          "eligible_candidate_count": 1,
+          "eligible_envelope": -1740.3011674216723,
+          "grid_points_requested": 1,
+          "grid_points_resolved": 1,
+          "resolved": true
+        }
+      },
+      "source_sha256": "3716ac2d9b61e84180f37fc7da2c68f22edefe1a50f0c07ec0616a293fcb82f5"
+    },
+    {
+      "receipt": "benchmark/BH3-trust-fixed-h6.053483599717359-order192.json",
+      "scope_valid": true,
+      "families_resolved": true,
+      "envelope_passed": true,
+      "grid_resolution": {
+        "positive_sigma": {
+          "eligible_candidate_count": 1,
+          "eligible_envelope": -1717.0535770204897,
+          "grid_points_requested": 1,
+          "grid_points_resolved": 1,
+          "resolved": true
+        },
+        "sigma_zero": {
+          "eligible_candidate_count": 1,
+          "eligible_envelope": -1718.9007280882545,
+          "grid_points_requested": 1,
+          "grid_points_resolved": 1,
+          "resolved": true
+        }
+      },
+      "source_sha256": "3716ac2d9b61e84180f37fc7da2c68f22edefe1a50f0c07ec0616a293fcb82f5"
+    },
+    {
+      "receipt": "benchmark/BH3-trust-free3-order192.json",
+      "scope_valid": true,
+      "families_resolved": true,
+      "envelope_passed": true,
+      "grid_resolution": {
+        "positive_sigma": {
+          "eligible_candidate_count": 2,
+          "eligible_envelope": -1716.4471196633062,
+          "grid_points_requested": 3,
+          "grid_points_resolved": 3,
+          "resolved": true
+        },
+        "sigma_zero": {
+          "eligible_candidate_count": 2,
+          "eligible_envelope": -1717.4836610129973,
+          "grid_points_requested": 3,
+          "grid_points_resolved": 3,
+          "resolved": true
+        }
+      },
+      "source_sha256": "3716ac2d9b61e84180f37fc7da2c68f22edefe1a50f0c07ec0616a293fcb82f5"
+    },
+    {
+      "receipt": "benchmark/BH3-trust-full35-order192.json",
+      "scope_valid": true,
+      "families_resolved": true,
+      "envelope_passed": true,
+      "grid_resolution": {
+        "positive_sigma": {
+          "eligible_candidate_count": 2,
+          "eligible_envelope": -1716.447119663119,
+          "grid_points_requested": 35,
+          "grid_points_resolved": 35,
+          "resolved": true
+        },
+        "sigma_zero": {
+          "eligible_candidate_count": 2,
+          "eligible_envelope": -1717.4836610129973,
+          "grid_points_requested": 35,
+          "grid_points_resolved": 35,
+          "resolved": true
+        }
+      },
+      "source_sha256": "3716ac2d9b61e84180f37fc7da2c68f22edefe1a50f0c07ec0616a293fcb82f5"
+    },
+    {
+      "receipt": "benchmark/H3-trust-full35-order192.json",
+      "scope_valid": true,
+      "families_resolved": true,
+      "envelope_passed": true,
+      "grid_resolution": {
+        "positive_sigma": {
+          "eligible_candidate_count": 2,
+          "eligible_envelope": -1737.3252746715953,
+          "grid_points_requested": 35,
+          "grid_points_resolved": 35,
+          "resolved": true
+        },
+        "sigma_zero": {
+          "eligible_candidate_count": 2,
+          "eligible_envelope": -1737.4546551665653,
+          "grid_points_requested": 35,
+          "grid_points_resolved": 35,
+          "resolved": true
+        }
+      },
+      "source_sha256": "3716ac2d9b61e84180f37fc7da2c68f22edefe1a50f0c07ec0616a293fcb82f5"
+    }
+  ],
+  "all_bindings_verified": true,
+  "all_profile_scopes_valid": true,
+  "payload_sha256": {
+    "README.md": "98cceb245e2b7cb5bdce187ccc47d2e2315f83827b700807ac2b355a867f3cdb",
+    "audit/cell35-high-order-series-replay.json": "e585f708aabaaab742f780ec5f8da67b088d8e536299ec3533231bdab69b6f0c",
+    "audit/fixed-h3-receipt.json": "5a65e665564debcdf6d0cb13f160ac76deebd9a9a57a8f96f082da139bca1f4b",
+    "audit/replay_cell35_high_order_series.py": "73a6d816e043b87e7db16fcea4fa2dc5f6cee444491d52fc73d509100903ff07",
+    "benchmark/BH3-fixed-h30.json": "603ec1dddb7f58b58df60560475575d600b142cbcc8f472d63aabb7c0643e103",
+    "benchmark/BH3-fixed-h6.json": "efbcb21ba204c5690ea27201e74e48001793ec594399bfe913f1023929ced260",
+    "benchmark/BH3-free-3h-lbfgs.json": "e917bfc13bb318632ce65eecda7a0b4461038e40d672bbf25bd4b65ffa4ad44d",
+    "benchmark/BH3-newton-fixed-h3-order816.json": "67ee68877e1b4fc860cd6d0a9ae09ae06b93ca16eb044c436b33f526be7affbc",
+    "benchmark/BH3-newton-fixed-h30-order192.json": "cece00697f08dc189d325420f60824fc58c4e08f8d3535d2d4f023ffbf2e2819",
+    "benchmark/BH3-newton-fixed-h6.053483599717359-order192.json": "cdb815606fc859cd94996904e126c38ab5d3e88db1b2e3e2851c2e230a4ad462",
+    "benchmark/BH3-newton-free3-order192.json": "b33e1b69d19985e66eb61da761622bb2725059cb88983d4521cf23dd4107a17b",
+    "benchmark/BH3-trust-fixed-h3-order816.json": "3df3b18fcbb857a9ded78e6a8257558b9bc19fdbc8e9bae6d0f550beb783410c",
+    "benchmark/BH3-trust-fixed-h30-order192.json": "7d87ec38aaf4c57b7a15577348acae361bbf772cd19d6adf7db7dcdf924f413e",
+    "benchmark/BH3-trust-fixed-h6.053483599717359-order192.json": "5e8b3fc926eccd50a8b6476a1021c74a45a7f76bce2085b7530af3bfff72823f",
+    "benchmark/BH3-trust-free3-order192.json": "c659eabeeceb696eba57f6d2c23d14954e0950d5bbe2d160f8fc3aa25d58b5ef",
+    "benchmark/BH3-trust-full35-order192.json": "8a83af46a36295fe73a3840611f2b5c717b68ed4277820c0f5892b3a09317db1",
+    "benchmark/H3-trust-full35-order192.json": "31334d5827f793e7caa07e4acf54ecfb06393057d51f6f3aa5db7428b0ca3f9b",
+    "final-tests.log": "21cf9711ea6a99a90e95ca1ab9228fee2c7068b858fcf44b9618b6ca8a525e10",
+    "kernel/check_laplace_gradient.py": "118adca1369a027f8ca72fb721f0207c0a14a32994c67342f3ab8d962610e8fd",
+    "kernel/differentiable_likelihood-19157fbe.py": "19157fbec179b82e1e42a1e856ddf8fd9d2fd970f3825bb55b8a98f9f0d6ac62",
+    "kernel/kernel-receipt.json": "7ce188e06cb6f6ef115ab49c6107e8a938de21e63a34d0359aaba5ac7b7975aa",
+    "kernel/laplace-gradient-receipt-lbfgs.json": "551f10752729a90b16652f06044a8cdee779496b1e3bd71e313bb9c4cc63f044",
+    "kernel/laplace-gradient-receipt-newton-888ab4d9.json": "d54c12f72a1a08b2c418cafc772430b150ab0a2cc247eac129b8a5c797cb692c",
+    "kernel/laplace-gradient-receipt.json": "79794aade55fe7ea8ae9a4276a0e6170bdbd7768423f2b14381d87c15e16673a",
+    "kernel/qualify_kernel.py": "17477a20bb1b6c44f09e500a3487c3ffdb1c25de563d77a791322980493d9155",
+    "mode_solver/BH3-full35-old-solver-comparison.json": "0fff95b528754bd66373bb9a25b42f0a10680fc0bb045102767198d93b795e40",
+    "mode_solver/H3-full35-old-solver-comparison.json": "bf6ac8e21485e39fdc052df58a14a993b1c040436a807d2591fb5f9270f5f842",
+    "mode_solver/compare_profile_solvers.py": "e9ee4268ac63d1b1a6bc847a75e801f5cd87e8c336fd460faa4b053c4b21b601",
+    "mode_solver/compare_solvers.py": "4bb1bd3bcdd1df08c3f5216b3ca2aeb0c596fbe0aff5b4c1112308111c53477f",
+    "mode_solver/new-parameter-comparison-trust.json": "5c83cedfa559601948924631a8502ad4a985b47e9177a78c9b2e5d72d8489a5c",
+    "mode_solver/old-parameter-comparison-newton-888ab4d9.json": "0fedf7bee231f235857cef82376d0f96898e34df65f34deddee232ac31e7856e",
+    "mode_solver/old-parameter-comparison-trust.json": "babc558f834b836a206d2fe3a3473b06d587f34ab8c119f65ad7fdfe62cb90a3",
+    "plot_profiles.py": "42019bf398a2c3fef641ceb0d7f10bbac2064fe31a8b262c00222ce45fe566a4",
+    "profile-meshes.pdf": "236f5e483f2469700f44e00771124c268281451b8c825a709d8be1d312d81e06",
+    "profile-meshes.png": "0856e7e764e7253aac5263a5b345b13499c3ffb4bcc58680197d19c9f7372de2",
+    "review.md": "6dcceff56ae2c09fe25cdbcc81329cdf41d13d93625df626175bac5f07641a63",
+    "source/benchmark_spatial_profile.py": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+    "source/differentiable_likelihood.py": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+    "source/spatial_profile-lbfgs.py": "5fac48e1bbf9e6bc7b6ad9bd1111f6be6ec7786615f383f4867da1ee78b2fece",
+    "source/spatial_profile-newton-888ab4d9.py": "888ab4d9f4bfb592ff06512af7bfa2e3303037c87615acaee0306037a3f7d9de",
+    "source/spatial_profile.py": "3716ac2d9b61e84180f37fc7da2c68f22edefe1a50f0c07ec0616a293fcb82f5",
+    "verify_receipts.py": "858b51aa43512c02acc521163e4f8790dbb2401fdcad71792c312437d3851bb9"
+  }
+}

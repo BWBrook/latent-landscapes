@@ -13,6 +13,10 @@ The [first numerical development record](paper1-numerical-development-2026-10-18
 reports the frailty recheck, prototype repairs and computational checks.
 The [profile-engine record](paper1-profile-engine-development-2026-10-18.md)
 records the subsequent engine, monitoring geometry and qualification review.
+The [31 October direct-evaluator record](paper1-direct-profile-development-2026-10-31.md)
+continues numerical qualification with stable empirical-bank scoring and
+analytic site derivatives. It preserves the fitted model and records
+whole-profile checks separately from bank adequacy and integration accuracy.
 Numerical implementation and qualification are under way. The final executable
 design must still be frozen and independently reviewed before validation.
 
@@ -219,15 +223,20 @@ cutoff or protection claim.
 The proposed spatial working criterion integrates a sampled-site GP with
 `log lambda=alpha+beta A+u`, exponential range 10 and estimated residual SD.
 It retains site-marginal arrival contributions, so it remains a composite
-criterion. For each outer h and detection-SD evaluation, refresh site curves
-over log lambda; optimization of alpha, beta and spatial SD uses
-Laplace integration over the latent site effects. Grid density is a numerical
-choice to qualify through criterion/profile checks, not an accepted setting
-from a small count of interpolation points. Qualify at both 120 and 260 sites.
+criterion. The 31 October development implementation prepares a differentiable
+site evaluator for each outer h and detection-SD value, using positive power
+moments within their checked domain and the same empirical-plus-pseudo raw
+arrival sum elsewhere. Optimisation of alpha, beta and spatial SD uses
+Laplace integration over the latent site effects. The earlier spline grid
+remains a numerical comparator; it does not bound the direct evaluator's
+latent field. Qualify at both 120 and 260 sites.
 
 Separate two numerical questions. First, qualify computation of the specified
-interpolated Laplace criterion against tighter optimisation, direct site
-likelihoods and refined integration grids. Second, assess sensitivity to
+Laplace criterion against tighter optimisation, independent raw site
+likelihoods and derivative checks (and refined grids for a spline comparator).
+Matching compressed and raw evaluation does not establish arrival-bank
+sampling precision; independent-bank sensitivity is a separate requirement.
+Second, assess sensitivity to
 higher-accuracy importance integration with reoptimised profiles. A successful
 Laplace computation does not establish equivalence to that integral. The
 operational criterion can be empirically calibrated, with its approximation
@@ -248,8 +257,10 @@ in both directions, include the exact variance-zero family at each h, propagate
 better branches, and refine peaks and cutoff crossings. Every retained point
 must lie below the selected free maximum within 1e-4 criterion units, or force
 refitting/failure. The projected gradient tolerance is 1e-3. Assess curve
-support using posterior curvature and tail mass, not mode position alone;
-unsupported proposals require a recorded grid expansion and recomputation.
+support using posterior curvature and tail mass, not mode position alone.
+For a finite-grid evaluator, unsupported proposals require a recorded grid
+expansion and recomputation. Direct scoring removes that grid boundary but
+does not certify joint-tail behaviour or Laplace integration accuracy.
 
 For an importance reference, require independent random streams, common draws
 across compared profile points, draw doubling and stable confidence-set topology.

@@ -1,0 +1,324 @@
+{
+  "generated_utc": "2026-10-31T11:38:51.851320+00:00",
+  "rows": [
+    {
+      "all_perturbations_successful": true,
+      "analytic_core_gradient": [
+        -0.0041275861034715255,
+        -0.0020033279782467606,
+        0.0020093721233180317
+      ],
+      "base_message": "ok",
+      "base_seconds": 0.03134712500104797,
+      "base_success": true,
+      "checks": [
+        {
+          "analytic": -0.0041275861034715255,
+          "centered": -0.0041757425606192555,
+          "centered_minus_analytic": -4.815645714772998e-05,
+          "coordinate": "alpha",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 0.0001
+        },
+        {
+          "analytic": -0.0041275861034715255,
+          "centered": -0.004127593911107397,
+          "centered_minus_analytic": -7.807635871159846e-09,
+          "coordinate": "alpha",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 1e-05
+        },
+        {
+          "analytic": -0.0020033279782467606,
+          "centered": -0.002003322379096062,
+          "centered_minus_analytic": 5.5991506986430295e-09,
+          "coordinate": "beta",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 0.0001
+        },
+        {
+          "analytic": -0.0020033279782467606,
+          "centered": -0.002003332610911457,
+          "centered_minus_analytic": -4.632664696302413e-09,
+          "coordinate": "beta",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 1e-05
+        },
+        {
+          "analytic": 0.0020093721233180317,
+          "centered": 0.002009350055232062,
+          "centered_minus_analytic": -2.2068085969717544e-08,
+          "coordinate": "log_sigma",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 0.0001
+        },
+        {
+          "analytic": 0.0020093721233180317,
+          "centered": 0.0020081415641470812,
+          "centered_minus_analytic": -1.230559170950496e-06,
+          "coordinate": "log_sigma",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 1e-05
+        }
+      ],
+      "criterion": -1716.4471241528902,
+      "effect": 4.19158607954585,
+      "evaluator_stats": {
+        "curve_builds": 1,
+        "curve_seconds": 0.001299999999901047,
+        "mode_calls": 13
+      },
+      "max_abs_centered_minus_analytic": 4.815645714772998e-05,
+      "mode": {
+        "newton_decrement": 4.176535161132861e-12,
+        "newton_step_inf": 1.0232840645061557e-12,
+        "proposal_eta_max": -2.38063624974888,
+        "proposal_eta_min": -8.865283189409055,
+        "score_inf": 2.787547970228843e-12
+      },
+      "parameters": [
+        -5.8910751570842645,
+        0.5927353972582021,
+        -0.5072038442067918,
+        0.19721486397675794
+      ]
+    },
+    {
+      "all_perturbations_successful": true,
+      "analytic_core_gradient": [
+        -2.9156757187429916,
+        -1.9805396703056217,
+        1.261429497880558
+      ],
+      "base_message": "ok",
+      "base_seconds": 0.029138707999663893,
+      "base_success": true,
+      "checks": [
+        {
+          "analytic": -2.9156757187429916,
+          "centered": -2.9156757250348164,
+          "centered_minus_analytic": -6.291824838910998e-09,
+          "coordinate": "alpha",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 0.0001
+        },
+        {
+          "analytic": -2.9156757187429916,
+          "centered": -2.915675713666132,
+          "centered_minus_analytic": 5.076859377339815e-09,
+          "coordinate": "alpha",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 1e-05
+        },
+        {
+          "analytic": -1.9805396703056217,
+          "centered": -1.9805396698302502,
+          "centered_minus_analytic": 4.753715199257158e-10,
+          "coordinate": "beta",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 0.0001
+        },
+        {
+          "analytic": -1.9805396703056217,
+          "centered": -1.9805424813057468,
+          "centered_minus_analytic": -2.811000125113594e-06,
+          "coordinate": "beta",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 1e-05
+        },
+        {
+          "analytic": 1.261429497880558,
+          "centered": 1.261429475789555,
+          "centered_minus_analytic": -2.2091003026858402e-08,
+          "coordinate": "log_sigma",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 0.0001
+        },
+        {
+          "analytic": 1.261429497880558,
+          "centered": 1.2614294973900542,
+          "centered_minus_analytic": -4.905038597513567e-10,
+          "coordinate": "log_sigma",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 1e-05
+        }
+      ],
+      "criterion": -1717.4285796060576,
+      "effect": 6.05348,
+      "evaluator_stats": {
+        "curve_builds": 1,
+        "curve_seconds": 0.0010067909970530309,
+        "mode_calls": 13
+      },
+      "max_abs_centered_minus_analytic": 2.811000125113594e-06,
+      "mode": {
+        "newton_decrement": 5.745801821457927e-10,
+        "newton_step_inf": 1.8613627439635039e-10,
+        "proposal_eta_max": -2.4459625631120003,
+        "proposal_eta_min": -8.881553970310703,
+        "score_inf": 5.589466667288434e-10
+      },
+      "parameters": [
+        -5.8910751570842645,
+        0.5927353972582021,
+        -0.5072038442067918,
+        0.19721486397675794
+      ]
+    },
+    {
+      "all_perturbations_successful": true,
+      "analytic_core_gradient": [
+        -23.33825193927513,
+        -12.917296002968579,
+        27.07884663066299
+      ],
+      "base_message": "ok",
+      "base_seconds": 0.04243312499966123,
+      "base_success": true,
+      "checks": [
+        {
+          "analytic": -23.33825193927513,
+          "centered": -23.33832157660254,
+          "centered_minus_analytic": -6.963732741027684e-05,
+          "coordinate": "alpha",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 0.0001
+        },
+        {
+          "analytic": -23.33825193927513,
+          "centered": -23.338251935456352,
+          "centered_minus_analytic": 3.8187764062058704e-09,
+          "coordinate": "alpha",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 1e-05
+        },
+        {
+          "analytic": -12.917296002968579,
+          "centered": -12.917296004388845,
+          "centered_minus_analytic": -1.4202665710172369e-09,
+          "coordinate": "beta",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 0.0001
+        },
+        {
+          "analytic": -12.917296002968579,
+          "centered": -12.917296010073185,
+          "centered_minus_analytic": -7.104606680741199e-09,
+          "coordinate": "beta",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 1e-05
+        },
+        {
+          "analytic": 27.07884663066299,
+          "centered": 27.078846630956832,
+          "centered_minus_analytic": 2.9384139565991063e-10,
+          "coordinate": "log_sigma",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 0.0001
+        },
+        {
+          "analytic": 27.07884663066299,
+          "centered": 27.078850689576935,
+          "centered_minus_analytic": 4.0589139445046385e-06,
+          "coordinate": "log_sigma",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 1e-05
+        }
+      ],
+      "criterion": -1750.7007251924679,
+      "effect": 30.0,
+      "evaluator_stats": {
+        "curve_builds": 1,
+        "curve_seconds": 0.0013230840013420675,
+        "mode_calls": 13
+      },
+      "max_abs_centered_minus_analytic": 6.963732741027684e-05,
+      "mode": {
+        "newton_decrement": 1.180140459311804e-14,
+        "newton_step_inf": 2.6333218409254735e-15,
+        "proposal_eta_max": -2.763682786936826,
+        "proposal_eta_min": -9.058467523775407,
+        "score_inf": 1.2878587085651816e-14
+      },
+      "parameters": [
+        -5.8910751570842645,
+        0.5927353972582021,
+        -0.5072038442067918,
+        0.19721486397675794
+      ]
+    }
+  ],
+  "schema": "paper1-fast-likelihood-laplace-gradient-v1",
+  "scope": "actual 120-site B_H3 observed history at archived incumbent nuisance/core parameters; three fixed effects; no fitting, profile or retuning",
+  "site_count": 120,
+  "source_sha256": {
+    "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+    "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+    "artifacts/paper1_fast_likelihood_20261031/kernel/check_laplace_gradient.py": "118adca1369a027f8ca72fb721f0207c0a14a32994c67342f3ab8d962610e8fd",
+    "artifacts/paper1_planning_20261018/gp-prototype/results.json": "c2d392318d16ce5b1ff8a336951541e9be1256047b0a51a802a2dacc0dd92e86",
+    "artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b",
+    "scripts/benchmark_spatial_profile.py": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+    "src/latent_landscapes/differentiable_likelihood.py": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+    "src/latent_landscapes/spatial_profile.py": "888ab4d9f4bfb592ff06512af7bfa2e3303037c87615acaee0306037a3f7d9de"
+  },
+  "status": "bounded_gradient_replay_complete",
+  "summary": {
+    "effects_requested": 3,
+    "effects_with_complete_checks": 3,
+    "max_abs_centered_minus_analytic": 6.963732741027684e-05
+  }
+}

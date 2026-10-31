@@ -1,0 +1,324 @@
+{
+  "generated_utc": "2026-10-31T11:25:55.262464+00:00",
+  "rows": [
+    {
+      "all_perturbations_successful": true,
+      "analytic_core_gradient": [
+        -0.004127586221695623,
+        -0.00200332806311887,
+        0.002009372089037287
+      ],
+      "base_message": "ok",
+      "base_seconds": 0.2761412499967264,
+      "base_success": true,
+      "checks": [
+        {
+          "analytic": -0.004127586221695623,
+          "centered": -0.004127714419155382,
+          "centered_minus_analytic": -1.2819745975889418e-07,
+          "coordinate": "alpha",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 0.0001
+        },
+        {
+          "analytic": -0.004127586221695623,
+          "centered": -0.0041275825424236245,
+          "centered_minus_analytic": 3.679271998180411e-09,
+          "coordinate": "alpha",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 1e-05
+        },
+        {
+          "analytic": -0.00200332806311887,
+          "centered": -0.002003328063437948,
+          "centered_minus_analytic": -3.1907809727727e-13,
+          "coordinate": "beta",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 0.0001
+        },
+        {
+          "analytic": -0.00200332806311887,
+          "centered": -0.0020043103177158628,
+          "centered_minus_analytic": -9.822545969928598e-07,
+          "coordinate": "beta",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 1e-05
+        },
+        {
+          "analytic": 0.002009372089037287,
+          "centered": 0.002009908257605275,
+          "centered_minus_analytic": 5.361685679883266e-07,
+          "coordinate": "log_sigma",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 0.0001
+        },
+        {
+          "analytic": 0.002009372089037287,
+          "centered": 0.0020093693819944747,
+          "centered_minus_analytic": -2.707042812133409e-09,
+          "coordinate": "log_sigma",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 1e-05
+        }
+      ],
+      "criterion": -1716.4471241529043,
+      "effect": 4.19158607954585,
+      "evaluator_stats": {
+        "curve_builds": 1,
+        "curve_seconds": 0.0013746669974352699,
+        "mode_calls": 13
+      },
+      "max_abs_centered_minus_analytic": 9.822545969928598e-07,
+      "mode": {
+        "newton_decrement": 3.1644473749985666e-11,
+        "newton_step_inf": 7.151585345651528e-12,
+        "proposal_eta_max": -2.380636249748711,
+        "proposal_eta_min": -8.865283189406911,
+        "score_inf": 1.673727823003901e-11
+      },
+      "parameters": [
+        -5.8910751570842645,
+        0.5927353972582021,
+        -0.5072038442067918,
+        0.19721486397675794
+      ]
+    },
+    {
+      "all_perturbations_successful": true,
+      "analytic_core_gradient": [
+        -2.9156757176761943,
+        -1.9805396679929808,
+        1.2614294989635613
+      ],
+      "base_message": "ok",
+      "base_seconds": 0.2203000420013268,
+      "base_success": true,
+      "checks": [
+        {
+          "analytic": -2.9156757176761943,
+          "centered": -2.9156758193948917,
+          "centered_minus_analytic": -1.0171869746500306e-07,
+          "coordinate": "alpha",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 0.0001
+        },
+        {
+          "analytic": -2.9156757176761943,
+          "centered": -2.915675713666132,
+          "centered_minus_analytic": 4.010062060189057e-09,
+          "coordinate": "alpha",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 1e-05
+        },
+        {
+          "analytic": -1.9805396679929808,
+          "centered": -1.9805396698302502,
+          "centered_minus_analytic": -1.8372694476909146e-09,
+          "coordinate": "beta",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 0.0001
+        },
+        {
+          "analytic": -1.9805396679929808,
+          "centered": -1.9805396732408551,
+          "centered_minus_analytic": -5.2478743572947906e-09,
+          "coordinate": "beta",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 1e-05
+        },
+        {
+          "analytic": 1.2614294989635613,
+          "centered": 1.2614294780632918,
+          "centered_minus_analytic": -2.0900269515067293e-08,
+          "coordinate": "log_sigma",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 0.0001
+        },
+        {
+          "analytic": 1.2614294989635613,
+          "centered": 1.2614295201274217,
+          "centered_minus_analytic": 2.1163860441930638e-08,
+          "coordinate": "log_sigma",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 1e-05
+        }
+      ],
+      "criterion": -1717.4285796059814,
+      "effect": 6.05348,
+      "evaluator_stats": {
+        "curve_builds": 1,
+        "curve_seconds": 0.0010365410016675014,
+        "mode_calls": 13
+      },
+      "max_abs_centered_minus_analytic": 1.0171869746500306e-07,
+      "mode": {
+        "newton_decrement": 1.5982801559331512e-10,
+        "newton_step_inf": 5.56566125912169e-11,
+        "proposal_eta_max": -2.4459625631101938,
+        "proposal_eta_min": -8.881553970277453,
+        "score_inf": 7.047579186902908e-11
+      },
+      "parameters": [
+        -5.8910751570842645,
+        0.5927353972582021,
+        -0.5072038442067918,
+        0.19721486397675794
+      ]
+    },
+    {
+      "all_perturbations_successful": true,
+      "analytic_core_gradient": [
+        -23.33825193949901,
+        -12.917296003052218,
+        27.078846630529846
+      ],
+      "base_message": "ok",
+      "base_seconds": 0.24518204200285254,
+      "base_success": true,
+      "checks": [
+        {
+          "analytic": -23.33825193949901,
+          "centered": -23.338251942277566,
+          "centered_minus_analytic": -2.778556051907799e-09,
+          "coordinate": "alpha",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 0.0001
+        },
+        {
+          "analytic": -23.33825193949901,
+          "centered": -23.338251946825036,
+          "centered_minus_analytic": -7.326026008058761e-09,
+          "coordinate": "alpha",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 1e-05
+        },
+        {
+          "analytic": -12.917296003052218,
+          "centered": -12.917296002115108,
+          "centered_minus_analytic": 9.371099451982445e-10,
+          "coordinate": "beta",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 0.0001
+        },
+        {
+          "analytic": -12.917296003052218,
+          "centered": -12.917295998704502,
+          "centered_minus_analytic": 4.347716853203565e-09,
+          "coordinate": "beta",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 1e-05
+        },
+        {
+          "analytic": 27.078846630529846,
+          "centered": 27.078846634367437,
+          "centered_minus_analytic": 3.837591577848798e-09,
+          "coordinate": "log_sigma",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 0.0001
+        },
+        {
+          "analytic": 27.078846630529846,
+          "centered": 27.078846619588145,
+          "centered_minus_analytic": -1.0941700878674965e-08,
+          "coordinate": "log_sigma",
+          "minus_message": "ok",
+          "minus_success": true,
+          "plus_message": "ok",
+          "plus_success": true,
+          "step": 1e-05
+        }
+      ],
+      "criterion": -1750.700725192491,
+      "effect": 30.0,
+      "evaluator_stats": {
+        "curve_builds": 1,
+        "curve_seconds": 0.0011434160005592275,
+        "mode_calls": 13
+      },
+      "max_abs_centered_minus_analytic": 1.0941700878674965e-08,
+      "mode": {
+        "newton_decrement": 6.15843642552174e-11,
+        "newton_step_inf": 1.915958405401528e-11,
+        "proposal_eta_max": -2.763682786935096,
+        "proposal_eta_min": -9.05846752377036,
+        "score_inf": 3.483302535300936e-11
+      },
+      "parameters": [
+        -5.8910751570842645,
+        0.5927353972582021,
+        -0.5072038442067918,
+        0.19721486397675794
+      ]
+    }
+  ],
+  "schema": "paper1-fast-likelihood-laplace-gradient-v1",
+  "scope": "actual 120-site B_H3 observed history at archived incumbent nuisance/core parameters; three fixed effects; no fitting, profile or retuning",
+  "site_count": 120,
+  "source_sha256": {
+    "artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+    "artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-000/observations.npz": "04dfb3926570be0949b59283f627ecc15d8f129d276dbdfa6e8d4fca680811ef",
+    "artifacts/paper1_fast_likelihood_20261031/kernel/check_laplace_gradient.py": "118adca1369a027f8ca72fb721f0207c0a14a32994c67342f3ab8d962610e8fd",
+    "artifacts/paper1_planning_20261018/gp-prototype/results.json": "c2d392318d16ce5b1ff8a336951541e9be1256047b0a51a802a2dacc0dd92e86",
+    "artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b",
+    "scripts/benchmark_spatial_profile.py": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+    "src/latent_landscapes/differentiable_likelihood.py": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+    "src/latent_landscapes/spatial_profile.py": "5fac48e1bbf9e6bc7b6ad9bd1111f6be6ec7786615f383f4867da1ee78b2fece"
+  },
+  "status": "bounded_gradient_replay_complete",
+  "summary": {
+    "effects_requested": 3,
+    "effects_with_complete_checks": 3,
+    "max_abs_centered_minus_analytic": 9.822545969928598e-07
+  }
+}

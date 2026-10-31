@@ -1,17 +1,27 @@
 # Latent Landscapes: current handover
 
-31 October 2026 (Hobart), arrival-bank review and stable reference likelihood.
+31 October 2026 (Hobart), direct likelihood and completed numerical meshes.
 
-The [31 October review](docs/paper1-bank-review-2026-10-31.md) implements an
-exact raw-bank log-domain reference and independently reproduces the formerly
-underflowing history with finite log likelihoods. It preserves the existing
-empirical and point-pseudo-arrival law. The production profile engine is
-unchanged. Claude's proposed .05/day hazard cap and 256-bin smoothed law have
-not been adopted. Correcting the transform orientation leaves his large-x
-bank-sampling concern intact; current positive-series compression agrees with
-direct sums over the tested range. The next work is to use the reference to
-qualify an efficient kernel and its derivatives, then rerun full profiles and
-evaluate bank adequacy on an independent bank before the challenge suite.
+The [direct-profile record](docs/paper1-direct-profile-development-2026-10-31.md)
+reports stable differentiable scoring of the unchanged empirical-plus-seven-
+pseudo arrival law, with no hazard cap or smoothing. Independent review and
+167 focused tests support the kernel and guarded Newton-first mode solver.
+Both B_H3 and H3 now resolve all 35 mesh nodes in both variance families,
+with interior free optima h=4.19518 and 2.34622. All retained positive-profile
+points agree with the original solver under the recorded numerical gates.
+
+The traversals took 25.86 and 15.91 minutes on single-thread Mac mini processes.
+This clears the previous finite-mesh arithmetic/support failure; it does not
+qualify continuous confidence sets, independent-bank precision, global modes,
+Laplace accuracy, 260-site behaviour or campaign throughput. The evidence
+preserves an unsuccessful intermediate acceleration and an explicitly reviewed
+engineering call-target miss. A pre-existing free-h30 rounding defect remains
+recorded for a targeted fix before boundary-case qualification; fixed-h30
+nodes and these interior free optima are unaffected. Goal 062 stays closed.
+
+Next: repair that endpoint transform, qualify independent-bank sensitivity
+and continuous profiles, then assess higher-accuracy integration and the
+broader challenge suite. Further runtime work remains necessary.
 
 Barry selected **broader first**: landscape generality and common competing
 background models belong in one substantial Paper 1. The
@@ -45,8 +55,9 @@ or evidence that the six-model 20-second target is achievable.
 Wider-grid canaries then exposed probability underflow, reproduced by direct
 integration. The single reviewed intermediate grid also failed: h=30 could
 not retain the required support margin, and h=6.05348 missed the gradient
-threshold. **Integrating stable scoring into the profile engine remains necessary**;
-no second full mesh or 600-case qualification run was launched. The exact
+threshold. **This historical stopping point is superseded by the 31 October direct-profile
+record above.** Stable scoring and two full mesh traversals are now complete;
+the 600-case qualification suite remains unrun. The exact
 failures, source snapshots and independent review are archived with the record.
 
 The amended two-cell access buffer and joint 300-site master-panel selection

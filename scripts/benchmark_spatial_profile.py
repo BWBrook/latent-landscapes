@@ -3,7 +3,9 @@
 
 This driver is deliberately an observed-data adapter.  It reads the released
 public map inputs, an arrival-bank representation, and one observation package;
-it never opens evaluator or truth files.  The JSON receipt records compact
+it never opens evaluator or truth files.  The default spline backend preserves
+the existing comparison; the direct backend requires full raw arrivals and
+records cumulative evaluator diagnostics.  The JSON receipt records compact
 candidate and profile diagnostics rather than latent dense matrices.
 """
 
@@ -22,10 +24,11 @@ import sys
 import time
 from collections.abc import Mapping, Sequence
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 import numpy as np
 
+from latent_landscapes import differentiable_likelihood as direct_likelihood
 from latent_landscapes import preinvasion_likelihood as likelihood
 from latent_landscapes.spatial_profile import (
     DEFAULT_PROFILE_H_GRID,
@@ -36,7 +39,7 @@ from latent_landscapes.spatial_profile import (
 )
 
 THREAD_ENVIRONMENT = ("OPENBLAS_NUM_THREADS", "VECLIB_MAXIMUM_THREADS", "OMP_NUM_THREADS")
-SCHEMA = "spatial-profile-benchmark-v1"
+SCHEMA = "spatial-profile-benchmark-v2"
 
 
 def sha256_file(path: Path) -> str:
@@ -316,8 +319,25 @@ def load_bank(
         raise ValueError("one of --arrival-bank or --compressed-bank is required")
     if compressed_path is not None:
         full = load_compressed_bank(compressed_path)
+        if raw_path is not None:
+            raw = np.load(raw_path, mmap_mode="r", allow_pickle=False)
+            if raw.ndim != 2 or raw.shape[0] != full.bank_size or raw.shape[1] != len(public_ids):
+                raise ValueError(
+                    "raw arrival bank must have compressed bank_size rows and one column "
+                    "for every public site"
+                )
+            raw_positions = _site_index(public_ids, full.site_ids, name="raw bank/public inputs")
+            aligned_raw = np.ascontiguousarray(raw[:, raw_positions], dtype=np.float64)
+            raw_checksum = hashlib.sha256(aligned_raw.view(np.uint8)).hexdigest()
+            if raw_checksum != full.bank_checksum:
+                raise ValueError(
+                    "raw arrivals and compressed moments have different bank checksums"
+                )
+            full = dataclasses.replace(full, bank_arrivals=aligned_raw)
         positions = _site_index(full.site_ids, selected_ids, name="compressed bank")
-        return _subset_bank(full, positions), compressed_path, "compressed"
+        return _subset_bank(full, positions), compressed_path, (
+            "compressed_plus_raw" if raw_path is not None else "compressed"
+        )
     assert raw_path is not None
     raw = np.load(raw_path, mmap_mode="r", allow_pickle=False)
     if raw.ndim != 2 or raw.shape[1] != len(public_ids):
@@ -434,6 +454,53 @@ def _rss_bytes() -> dict[str, Any]:
     return {"value": value * 1024, "unit": "bytes", "raw_unit": "KiB"}
 
 
+class _CountingDirectEvaluator:
+    """Keep cumulative direct-kernel counters outside evictable evaluators."""
+
+    def __init__(self, evaluator: Any, aggregate: dict[str, Any]) -> None:
+        self._evaluator = evaluator
+        self._aggregate = aggregate
+        self.numerical_domain = evaluator.numerical_domain
+
+    def evaluate(
+        self, eta: np.ndarray
+    ) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+        self._aggregate["evaluate_calls"] += 1
+        try:
+            result = self._evaluator.evaluate(eta)
+        except direct_likelihood.LikelihoodDomainError:
+            self._aggregate["domain_errors"] += 1
+            raise
+        stats = self._evaluator.stats
+        self._aggregate["series_site_evaluations"] += int(
+            stats.get("last_series_site_count", 0)
+        )
+        self._aggregate["exact_site_evaluations"] += int(
+            stats.get("last_exact_site_count", 0)
+        )
+        self._aggregate["max_observed_x"] = max(
+            float(self._aggregate["max_observed_x"]),
+            float(stats.get("max_observed_x", 0.0)),
+        )
+        self._aggregate["max_relative_tail_bound"] = max(
+            float(self._aggregate["max_relative_tail_bound"]),
+            float(stats.get("last_max_relative_tail_bound", 0.0)),
+        )
+        return cast(tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray], result)
+
+
+def _direct_diagnostics() -> dict[str, Any]:
+    return {
+        "evaluator_instances": 0,
+        "evaluate_calls": 0,
+        "domain_errors": 0,
+        "series_site_evaluations": 0,
+        "exact_site_evaluations": 0,
+        "max_observed_x": 0.0,
+        "max_relative_tail_bound": 0.0,
+    }
+
+
 def _git_identity(root: Path) -> dict[str, Any]:
     try:
         commit = subprocess.run(
@@ -500,6 +567,7 @@ def _candidate_summary(
 
 
 def _profile_summary(fit: ProfileFit, h_grid: Sequence[float]) -> dict[str, Any]:
+    reported_h_grid = (float(fit.fixed_h),) if fit.fixed_h is not None else h_grid
     families = ("positive_sigma", "sigma_zero")
     family_candidates = {
         family: [row for row in fit.candidates if row.family == family]
@@ -604,10 +672,13 @@ def _profile_summary(fit: ProfileFit, h_grid: Sequence[float]) -> dict[str, Any]
                 )
 
     def best_grid_candidate(family: str, h: float) -> FitCandidate | None:
+        source_prefix = (
+            "profile_" if fit.fixed_h is None else f"fixed_h_{float(fit.fixed_h):g}"
+        )
         rows = [
             row
             for row in family_candidates[family]
-            if str(row.source).startswith("profile_")
+            if str(row.source).startswith(source_prefix)
             and math.isclose(row.evaluation.h, h, rel_tol=0.0, abs_tol=1e-13)
             and row.eligible
             and row.evaluation.success
@@ -617,7 +688,7 @@ def _profile_summary(fit: ProfileFit, h_grid: Sequence[float]) -> dict[str, Any]
         return max(rows, key=lambda row: row.evaluation.criterion, default=None)
 
     grid_envelope_rows: list[dict[str, Any]] = []
-    for h in h_grid:
+    for h in reported_h_grid:
         selected: dict[str, FitCandidate] = {}
         for family in families:
             grid_row = best_grid_candidate(family, float(h))
@@ -745,9 +816,15 @@ def _profile_summary(fit: ProfileFit, h_grid: Sequence[float]) -> dict[str, Any]
         )
     )
     return {
-        "profile_h_grid": [float(value) for value in h_grid],
-        "h_grid": [float(value) for value in h_grid],
-        "profile_h_grid_count": len(h_grid),
+        "fit_dimension": "fixed_h" if fit.fixed_h is not None else "free_h",
+        "fixed_h": None if fit.fixed_h is None else float(fit.fixed_h),
+        "likelihood_ratio_scope": (
+            "fixed_h_family_comparison" if fit.fixed_h is not None else "free_h_endpoint_comparison"
+        ),
+        "null_likelihood_ratio_available": False,
+        "profile_h_grid": [float(value) for value in reported_h_grid],
+        "h_grid": [float(value) for value in reported_h_grid],
+        "profile_h_grid_count": len(reported_h_grid),
         "grid_statuses": grid_envelope_rows,
         "branches": branch_counts,
         "profile_lr": grid_envelope_rows,
@@ -765,7 +842,7 @@ def _profile_summary(fit: ProfileFit, h_grid: Sequence[float]) -> dict[str, Any]
                     row["family"] == family and row["status"] == "resolved"
                     for row in grid_envelope_rows
                 ),
-                "grid_points_requested": len(h_grid),
+                "grid_points_requested": len(reported_h_grid),
                 "eligible_envelope": (
                     None
                     if not math.isfinite(family_max[family])
@@ -837,6 +914,17 @@ def run(args: argparse.Namespace) -> Path:
     )
     if bank.site_ids != selected_ids or observed.site_ids != selected_ids:
         raise ValueError("bank and observations are not aligned on canonical site identifiers")
+    if args.likelihood_backend == "direct":
+        if args.arrival_bank is None or args.compressed_bank is None:
+            raise ValueError(
+                "the direct likelihood backend requires --arrival-bank plus --compressed-bank"
+            )
+        expected_raw_shape = (bank.bank_size, len(bank.site_ids))
+        if bank.bank_arrivals.shape != expected_raw_shape:
+            raise ValueError(
+                "the direct likelihood backend requires raw arrivals retained for every "
+                "aligned site"
+            )
 
     # The spatial criterion is a training-site criterion.  Apply the shared
     # capstone subsetting helpers after all source arrays are aligned so that
@@ -868,22 +956,69 @@ def run(args: argparse.Namespace) -> Path:
         range_cells=float(args.covariance_range),
         covariance_path=covariance_path,
     )
-    criterion = SpatialProfileCriterion(
-        SpatialProfileData(bank, observed, site_a, covariance),
-        grid=np.linspace(args.curve_grid_min, args.curve_grid_max, args.curve_grid_points),
-    )
+    criterion_data = SpatialProfileData(bank, observed, site_a, covariance)
+    direct_stats = _direct_diagnostics()
+    if args.likelihood_backend == "direct":
+        def evaluator_factory(h: float, detection_sd: float) -> Any:
+            direct_stats["evaluator_instances"] += 1
+            evaluator = direct_likelihood.prepare_site_likelihood(
+                observed, bank, h, detection_sd=detection_sd
+            )
+            return _CountingDirectEvaluator(evaluator, direct_stats)
+
+        criterion = SpatialProfileCriterion(
+            criterion_data,
+            evaluator_factory=evaluator_factory,
+            grid=np.linspace(args.curve_grid_min, args.curve_grid_max, args.curve_grid_points),
+        )
+    else:
+        criterion = SpatialProfileCriterion(
+            criterion_data,
+            grid=np.linspace(args.curve_grid_min, args.curve_grid_max, args.curve_grid_points),
+        )
     kernel_seconds = time.perf_counter() - kernel_started
     h_grid = tuple(float(value) for value in np.geomspace(1.0, 30.0, args.profile_points))
-    requested_x_max = 10.0 * math.exp(float(criterion.grid[-1])) * (max(h_grid) - 1.0)
     has_raw_arrivals = bank.bank_arrivals.shape[0] == bank.bank_size
-    if requested_x_max > bank.max_x * (1.0 + 1e-14) and not has_raw_arrivals:
+    requested_x_max = (
+        10.0 * math.exp(float(criterion.grid[-1])) * (max(h_grid) - 1.0)
+        if args.likelihood_backend == "spline"
+        else None
+    )
+    if (
+        args.likelihood_backend == "spline"
+        and requested_x_max is not None
+        and requested_x_max > bank.max_x * (1.0 + 1e-14)
+        and not has_raw_arrivals
+    ):
         raise ValueError(
             "compressed bank max_x does not cover the requested profile grid and omits "
             f"raw arrivals (requested x={requested_x_max:g}, max_x={bank.max_x:g})"
         )
     fit_started = time.perf_counter()
-    fit = criterion.fit_profile(profile_h_grid=h_grid)
+    fit = criterion.fit_profile(fixed_h=args.fixed_h, profile_h_grid=h_grid)
     fit_seconds = time.perf_counter() - fit_started
+
+    if args.likelihood_backend == "spline":
+        assert requested_x_max is not None
+        integration_support = {
+            "backend": "spline",
+            "curve_grid_active": True,
+            "curve_grid_log_hazard_min": float(criterion.grid[0]),
+            "curve_grid_log_hazard_max": float(criterion.grid[-1]),
+            "curve_grid_point_count": len(criterion.grid),
+            "curve_grid": [float(value) for value in criterion.grid],
+            "requested_x_max": float(requested_x_max),
+            "compressed_series_supported": bool(
+                requested_x_max <= bank.max_x * (1.0 + 1e-14)
+            ),
+        }
+    else:
+        integration_support = {
+            "backend": "direct",
+            "curve_grid_active": False,
+            "numerical_domain_source": "direct_evaluator",
+            "raw_arrivals_required": True,
+        }
 
     output.mkdir(parents=True)
     source_paths = {
@@ -896,6 +1031,17 @@ def run(args: argparse.Namespace) -> Path:
         "observations": observations_path,
         "arrival_bank": bank_path,
     }
+    if args.likelihood_backend == "direct":
+        assert raw_path is not None
+        source_paths.update(
+            {
+                "raw_arrival_bank": raw_path,
+                "differentiable_likelihood_module": root
+                / "src/latent_landscapes/differentiable_likelihood.py",
+                "log_domain_likelihood_module": root
+                / "src/latent_landscapes/log_domain_likelihood.py",
+            }
+        )
     if covariance_path is not None:
         source_paths["covariance"] = covariance_path
     bank_receipt = bank_path.with_name(f"{bank_path.stem}.json")
@@ -917,6 +1063,10 @@ def run(args: argparse.Namespace) -> Path:
         "schema": SCHEMA,
         "status": "run_completed",
         "label": args.label,
+        "backend": args.likelihood_backend,
+        "likelihood_backend": args.likelihood_backend,
+        "fit_dimension": "fixed_h" if args.fixed_h is not None else "free_h",
+        "fixed_h": None if args.fixed_h is None else float(args.fixed_h),
         "development_only": True,
         "truth_accessed": False,
         "endpoint_families_resolved": bool(fit.resolved),
@@ -944,19 +1094,13 @@ def run(args: argparse.Namespace) -> Path:
             "bank_series_order": int(bank.series_order),
             "bank_max_x": float(bank.max_x),
             "bank_has_raw_arrivals": has_raw_arrivals,
+            "direct_requires_full_raw_arrivals": args.likelihood_backend == "direct",
             "covariance": (
                 "explicit" if covariance_path is not None else "exponential_grid_distance"
             ),
             "covariance_range_cells": float(args.covariance_range),
         },
-        "integration_support": {
-            "curve_grid_log_hazard_min": float(criterion.grid[0]),
-            "curve_grid_log_hazard_max": float(criterion.grid[-1]),
-            "curve_grid_point_count": len(criterion.grid),
-            "curve_grid": [float(value) for value in criterion.grid],
-            "requested_x_max": float(requested_x_max),
-            "compressed_series_supported": bool(requested_x_max <= bank.max_x * (1.0 + 1e-14)),
-        },
+        "integration_support": integration_support,
         "runtime": {
             "python": sys.version,
             "platform": platform.platform(),
@@ -976,6 +1120,13 @@ def run(args: argparse.Namespace) -> Path:
         },
         "peak_rss": _rss_bytes(),
         "profile": _profile_summary(fit, h_grid),
+        "backend_diagnostics": {
+            "likelihood_backend": args.likelihood_backend,
+            "criterion": _jsonable(dict(criterion.stats)),
+            "direct_evaluator": _jsonable(direct_stats)
+            if args.likelihood_backend == "direct"
+            else None,
+        },
         "criterion_stats": _jsonable(dict(criterion.stats)),
     }
     (output / "receipt.json").write_text(
@@ -998,12 +1149,18 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--arrival-bank", type=Path)
     parser.add_argument("--compressed-bank", type=Path)
     parser.add_argument("--observations", type=Path, required=True)
+    parser.add_argument(
+        "--likelihood-backend",
+        choices=("spline", "direct"),
+        default="spline",
+        help="site likelihood implementation (default: spline)",
+    )
     parser.add_argument("--label", default="development")
     parser.add_argument("--output-dir", "--output", dest="output_dir", type=Path)
     parser.add_argument(
         "--output-root",
         type=Path,
-        default=Path("artifacts/paper1_profile_development_20261018/benchmark"),
+        default=Path("artifacts/paper1_fast_likelihood_20261031/benchmark"),
     )
     parser.add_argument(
         "--profile-points",
@@ -1013,6 +1170,11 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         default=len(DEFAULT_PROFILE_H_GRID),
     )
     parser.add_argument("--history", type=int, default=0)
+    parser.add_argument(
+        "--fixed-h",
+        type=float,
+        help="fit a bounded fixed-h canary instead of the free-h profile",
+    )
     parser.add_argument("--curve-grid-min", type=float, default=-12.0)
     parser.add_argument("--curve-grid-max", type=float, default=-2.0)
     parser.add_argument("--curve-grid-points", type=int, default=161)
@@ -1036,8 +1198,18 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         parser.error("curve grid needs at least four nodes and finite increasing bounds")
     if args.history < 0:
         parser.error("--history must be nonnegative")
+    if args.fixed_h is not None and (
+        not math.isfinite(args.fixed_h) or not 1.0 <= args.fixed_h <= 30.0
+    ):
+        parser.error("--fixed-h must be finite and in [1, 30]")
     if args.arrival_bank is None and args.compressed_bank is None:
         parser.error("one of --arrival-bank or --compressed-bank is required")
+    if args.likelihood_backend == "direct" and (
+        args.arrival_bank is None or args.compressed_bank is None
+    ):
+        parser.error(
+            "--likelihood-backend direct requires both --arrival-bank and --compressed-bank"
+        )
     return args
 
 
