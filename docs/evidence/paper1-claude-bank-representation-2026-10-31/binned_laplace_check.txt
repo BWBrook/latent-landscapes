@@ -1,0 +1,4 @@
+x in (  0,  5]: bank half-split MC |dlog| median 1.1e-04 p95 4.4e-03 | 64-bin err median 1.1e-05 p95 3.2e-04 | 256-bin err p95 6.0e-05
+x in (  5, 20]: bank half-split MC |dlog| median 6.3e-03 p95 1.1e-01 | 64-bin err median 8.6e-04 p95 5.2e-03 | 256-bin err p95 1.1e-03
+x in ( 20, 50]: bank half-split MC |dlog| median 2.5e-02 p95 1.1e+00 | 64-bin err median 5.1e-03 p95 8.1e-02 | 256-bin err p95 2.7e-02
+x in ( 50,200]: bank half-split MC |dlog| median 4.0e-02 p95 5.1e+00 | 64-bin err median 2.8e-02 p95 6.7e-01 | 256-bin err p95 1.7e-01
