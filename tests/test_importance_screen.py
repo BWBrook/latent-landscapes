@@ -71,7 +71,7 @@ def test_envelope_uses_exact_zero_and_preserves_ambiguous_ownership(screen: Any)
 
 def test_unresolved_profile_cannot_feed_screen(screen: Any) -> None:
     with pytest.raises(ValueError, match="profile unresolved"):
-        screen.selected_fits({"status": "indeterminate"})
+        screen.selected_fits({"status": "indeterminate"}, 3.0)
 
 
 def test_material_ownership_reversal_cannot_cancel_out_of_w(screen: Any) -> None:
@@ -129,6 +129,7 @@ def test_input_substitution_and_modified_child_are_rejected(screen: Any, tmp_pat
     root = tmp_path / "run"
     (root / "dense").mkdir(parents=True)
     args = argparse.Namespace(
+        report_h=3.0,
         profile=root / "dense" / "receipt.json",
         observations=tmp_path / "obs.npz",
         arrival_bank=tmp_path / "raw.npy",
@@ -151,6 +152,14 @@ def test_input_substitution_and_modified_child_are_rejected(screen: Any, tmp_pat
         "source_input_sha256": {str(p.resolve()): screen.adapter.sha256_file(p) for p in files},
     }
     (root / "receipt.json").write_text(json.dumps(parent))
+    (root / "started.json").write_text(
+        json.dumps(
+            {
+                "source_input_sha256": parent["source_input_sha256"],
+                "report_h_used_only_after_search": [3.0],
+            }
+        )
+    )
     screen.verify_profile_binding(args)
     args.observations.write_text("other")
     with pytest.raises(ValueError, match="inputs differ"):
@@ -159,3 +168,43 @@ def test_input_substitution_and_modified_child_are_rejected(screen: Any, tmp_pat
     args.profile.write_text('{"modified":true}')
     with pytest.raises(ValueError, match="child receipt binding"):
         screen.verify_profile_binding(args)
+
+
+def anchor_receipt() -> dict[str, Any]:
+    import math
+
+    return {
+        "status": "profile_numerically_resolved",
+        "free": {"True": {"positive_sigma": {"h": 2.0}, "sigma_zero": {"h": 1.0}}},
+        "tight_level_sets": [
+            {
+                "cutoff": 3.84,
+                "status": "available",
+                "roots": [{"log_h": math.log(h)} for h in (1.5, 4.0)],
+            }
+        ],
+        "post_search_diagnostics": {
+            "status": "available",
+            "points": [
+                {"h": h, "log_h": math.log(h), "tight_fit": {"location": h}}
+                for h in (1.0, 1.5, 2.0, 3.0, 4.0, 7.0)
+            ],
+        },
+    }
+
+
+def test_screen_uses_required_dense_anchors_without_topology_only_points(screen: Any) -> None:
+    fits, anchors = screen.selected_fits(anchor_receipt(), 3.0)
+    assert list(fits) == ["free", "1", "1.5", "2", "3", "4"]
+    assert [row["h"] for row in anchors] == [1.0, 1.5, 2.0, 3.0, 4.0]
+    assert set(anchors[0]["roles"]) == {"null", "dense_free_sigma_zero"}
+    assert "7" not in fits
+
+
+def test_required_anchor_cannot_be_interpolated_or_silently_omitted(screen: Any) -> None:
+    receipt = anchor_receipt()
+    receipt["post_search_diagnostics"]["points"] = [
+        row for row in receipt["post_search_diagnostics"]["points"] if row["h"] != 3.0
+    ]
+    with pytest.raises(ValueError, match="required fixed-outer anchor missing"):
+        screen.selected_fits(receipt, 3.0)

@@ -1,6 +1,6 @@
 {
   "schema": "profile-bank-evidence-verification-v1",
-  "generated_utc": "2026-11-01T07:32:44.230857+00:00",
+  "generated_utc": "2026-11-01T11:16:47.995083+00:00",
   "bindings": [
     {
       "receipt": "Adup-manifest.json",
@@ -42,7 +42,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_likelihood.py",
       "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_likelihood.py"
     },
     {
       "receipt": "check_bank_inputs.json",
@@ -126,14 +126,14 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
       "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/differentiable_likelihood.py"
     },
     {
       "receipt": "check_endpoint.json",
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
       "expected_sha256": "e29858b020ba912e7fb7deaf85cabe878cec7b6c4d83cb35f390ef16a0d58d41",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/spatial_profile.py"
     },
     {
       "receipt": "comparison-BH3.json",
@@ -287,7 +287,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/benchmark_spatial_profile.py",
       "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/benchmark_spatial_profile.py"
     },
     {
       "receipt": "comparison-BH3.json",
@@ -315,7 +315,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/qualify_spatial_profiles.py",
       "expected_sha256": "ef484ba6e4db750e41ce5a5615283b03ef503c59f5e5ccc73ffca0c344f7446e",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/qualify_spatial_profiles_refinement_repair.py"
     },
     {
       "receipt": "comparison-BH3.json",
@@ -476,7 +476,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/capstone_qualification.py",
       "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/capstone_qualification.py"
     },
     {
       "receipt": "comparison-BH3.json",
@@ -518,7 +518,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
       "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/differentiable_likelihood.py"
     },
     {
       "receipt": "comparison-BH3.json",
@@ -875,7 +875,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/log_domain_likelihood.py",
       "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/log_domain_likelihood.py"
     },
     {
       "receipt": "comparison-BH3.json",
@@ -987,7 +987,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_execution.py",
       "expected_sha256": "2dcf03b992beab3ac700b78c67e49d249a0a7993fcfe5d7d24e207c6aa72c533",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_execution.py"
     },
     {
       "receipt": "comparison-BH3.json",
@@ -1008,7 +1008,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_likelihood.py",
       "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_likelihood.py"
     },
     {
       "receipt": "comparison-BH3.json",
@@ -1043,7 +1043,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
       "expected_sha256": "e29858b020ba912e7fb7deaf85cabe878cec7b6c4d83cb35f390ef16a0d58d41",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/spatial_profile.py"
     },
     {
       "receipt": "comparison-H3.json",
@@ -1197,7 +1197,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/benchmark_spatial_profile.py",
       "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/benchmark_spatial_profile.py"
     },
     {
       "receipt": "comparison-H3.json",
@@ -1225,7 +1225,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/qualify_spatial_profiles.py",
       "expected_sha256": "ef484ba6e4db750e41ce5a5615283b03ef503c59f5e5ccc73ffca0c344f7446e",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/qualify_spatial_profiles_refinement_repair.py"
     },
     {
       "receipt": "comparison-H3.json",
@@ -1386,7 +1386,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/capstone_qualification.py",
       "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/capstone_qualification.py"
     },
     {
       "receipt": "comparison-H3.json",
@@ -1428,7 +1428,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
       "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/differentiable_likelihood.py"
     },
     {
       "receipt": "comparison-H3.json",
@@ -1785,7 +1785,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/log_domain_likelihood.py",
       "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/log_domain_likelihood.py"
     },
     {
       "receipt": "comparison-H3.json",
@@ -1897,7 +1897,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_execution.py",
       "expected_sha256": "2dcf03b992beab3ac700b78c67e49d249a0a7993fcfe5d7d24e207c6aa72c533",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_execution.py"
     },
     {
       "receipt": "comparison-H3.json",
@@ -1918,7 +1918,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_likelihood.py",
       "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_likelihood.py"
     },
     {
       "receipt": "comparison-H3.json",
@@ -1953,7 +1953,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
       "expected_sha256": "e29858b020ba912e7fb7deaf85cabe878cec7b6c4d83cb35f390ef16a0d58d41",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/spatial_profile.py"
     },
     {
       "receipt": "completed-profiles/A-BH3.json",
@@ -2044,7 +2044,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/benchmark_spatial_profile.py",
       "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/benchmark_spatial_profile.py"
     },
     {
       "receipt": "completed-profiles/A-BH3.json",
@@ -2065,7 +2065,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/qualify_spatial_profiles.py",
       "expected_sha256": "ef484ba6e4db750e41ce5a5615283b03ef503c59f5e5ccc73ffca0c344f7446e",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/qualify_spatial_profiles_refinement_repair.py"
     },
     {
       "receipt": "completed-profiles/A-BH3.json",
@@ -2226,7 +2226,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/capstone_qualification.py",
       "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/capstone_qualification.py"
     },
     {
       "receipt": "completed-profiles/A-BH3.json",
@@ -2268,7 +2268,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
       "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/differentiable_likelihood.py"
     },
     {
       "receipt": "completed-profiles/A-BH3.json",
@@ -2625,7 +2625,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/log_domain_likelihood.py",
       "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/log_domain_likelihood.py"
     },
     {
       "receipt": "completed-profiles/A-BH3.json",
@@ -2737,7 +2737,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_execution.py",
       "expected_sha256": "2dcf03b992beab3ac700b78c67e49d249a0a7993fcfe5d7d24e207c6aa72c533",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_execution.py"
     },
     {
       "receipt": "completed-profiles/A-BH3.json",
@@ -2758,7 +2758,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_likelihood.py",
       "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_likelihood.py"
     },
     {
       "receipt": "completed-profiles/A-BH3.json",
@@ -2793,7 +2793,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
       "expected_sha256": "e29858b020ba912e7fb7deaf85cabe878cec7b6c4d83cb35f390ef16a0d58d41",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/spatial_profile.py"
     },
     {
       "receipt": "completed-profiles/A-H3.json",
@@ -2884,7 +2884,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/benchmark_spatial_profile.py",
       "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/benchmark_spatial_profile.py"
     },
     {
       "receipt": "completed-profiles/A-H3.json",
@@ -2905,7 +2905,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/qualify_spatial_profiles.py",
       "expected_sha256": "ef484ba6e4db750e41ce5a5615283b03ef503c59f5e5ccc73ffca0c344f7446e",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/qualify_spatial_profiles_refinement_repair.py"
     },
     {
       "receipt": "completed-profiles/A-H3.json",
@@ -3066,7 +3066,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/capstone_qualification.py",
       "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/capstone_qualification.py"
     },
     {
       "receipt": "completed-profiles/A-H3.json",
@@ -3108,7 +3108,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
       "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/differentiable_likelihood.py"
     },
     {
       "receipt": "completed-profiles/A-H3.json",
@@ -3465,7 +3465,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/log_domain_likelihood.py",
       "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/log_domain_likelihood.py"
     },
     {
       "receipt": "completed-profiles/A-H3.json",
@@ -3577,7 +3577,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_execution.py",
       "expected_sha256": "2dcf03b992beab3ac700b78c67e49d249a0a7993fcfe5d7d24e207c6aa72c533",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_execution.py"
     },
     {
       "receipt": "completed-profiles/A-H3.json",
@@ -3598,7 +3598,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_likelihood.py",
       "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_likelihood.py"
     },
     {
       "receipt": "completed-profiles/A-H3.json",
@@ -3633,7 +3633,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
       "expected_sha256": "e29858b020ba912e7fb7deaf85cabe878cec7b6c4d83cb35f390ef16a0d58d41",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/spatial_profile.py"
     },
     {
       "receipt": "completed-profiles/AB-BH3.json",
@@ -3724,7 +3724,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/benchmark_spatial_profile.py",
       "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/benchmark_spatial_profile.py"
     },
     {
       "receipt": "completed-profiles/AB-BH3.json",
@@ -3745,7 +3745,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/qualify_spatial_profiles.py",
       "expected_sha256": "ef484ba6e4db750e41ce5a5615283b03ef503c59f5e5ccc73ffca0c344f7446e",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/qualify_spatial_profiles_refinement_repair.py"
     },
     {
       "receipt": "completed-profiles/AB-BH3.json",
@@ -3906,7 +3906,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/capstone_qualification.py",
       "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/capstone_qualification.py"
     },
     {
       "receipt": "completed-profiles/AB-BH3.json",
@@ -3948,7 +3948,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
       "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/differentiable_likelihood.py"
     },
     {
       "receipt": "completed-profiles/AB-BH3.json",
@@ -4305,7 +4305,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/log_domain_likelihood.py",
       "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/log_domain_likelihood.py"
     },
     {
       "receipt": "completed-profiles/AB-BH3.json",
@@ -4417,7 +4417,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_execution.py",
       "expected_sha256": "2dcf03b992beab3ac700b78c67e49d249a0a7993fcfe5d7d24e207c6aa72c533",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_execution.py"
     },
     {
       "receipt": "completed-profiles/AB-BH3.json",
@@ -4438,7 +4438,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_likelihood.py",
       "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_likelihood.py"
     },
     {
       "receipt": "completed-profiles/AB-BH3.json",
@@ -4473,7 +4473,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
       "expected_sha256": "e29858b020ba912e7fb7deaf85cabe878cec7b6c4d83cb35f390ef16a0d58d41",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/spatial_profile.py"
     },
     {
       "receipt": "completed-profiles/AB-H3.json",
@@ -4564,7 +4564,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/benchmark_spatial_profile.py",
       "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/benchmark_spatial_profile.py"
     },
     {
       "receipt": "completed-profiles/AB-H3.json",
@@ -4585,7 +4585,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/qualify_spatial_profiles.py",
       "expected_sha256": "ef484ba6e4db750e41ce5a5615283b03ef503c59f5e5ccc73ffca0c344f7446e",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/qualify_spatial_profiles_refinement_repair.py"
     },
     {
       "receipt": "completed-profiles/AB-H3.json",
@@ -4746,7 +4746,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/capstone_qualification.py",
       "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/capstone_qualification.py"
     },
     {
       "receipt": "completed-profiles/AB-H3.json",
@@ -4788,7 +4788,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
       "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/differentiable_likelihood.py"
     },
     {
       "receipt": "completed-profiles/AB-H3.json",
@@ -5145,7 +5145,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/log_domain_likelihood.py",
       "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/log_domain_likelihood.py"
     },
     {
       "receipt": "completed-profiles/AB-H3.json",
@@ -5257,7 +5257,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_execution.py",
       "expected_sha256": "2dcf03b992beab3ac700b78c67e49d249a0a7993fcfe5d7d24e207c6aa72c533",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_execution.py"
     },
     {
       "receipt": "completed-profiles/AB-H3.json",
@@ -5278,7 +5278,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_likelihood.py",
       "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_likelihood.py"
     },
     {
       "receipt": "completed-profiles/AB-H3.json",
@@ -5313,7 +5313,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
       "expected_sha256": "e29858b020ba912e7fb7deaf85cabe878cec7b6c4d83cb35f390ef16a0d58d41",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/spatial_profile.py"
     },
     {
       "receipt": "completed-profiles/B-BH3.json",
@@ -5404,7 +5404,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/benchmark_spatial_profile.py",
       "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/benchmark_spatial_profile.py"
     },
     {
       "receipt": "completed-profiles/B-BH3.json",
@@ -5425,7 +5425,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/qualify_spatial_profiles.py",
       "expected_sha256": "ef484ba6e4db750e41ce5a5615283b03ef503c59f5e5ccc73ffca0c344f7446e",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/qualify_spatial_profiles_refinement_repair.py"
     },
     {
       "receipt": "completed-profiles/B-BH3.json",
@@ -5586,7 +5586,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/capstone_qualification.py",
       "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/capstone_qualification.py"
     },
     {
       "receipt": "completed-profiles/B-BH3.json",
@@ -5628,7 +5628,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
       "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/differentiable_likelihood.py"
     },
     {
       "receipt": "completed-profiles/B-BH3.json",
@@ -5985,7 +5985,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/log_domain_likelihood.py",
       "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/log_domain_likelihood.py"
     },
     {
       "receipt": "completed-profiles/B-BH3.json",
@@ -6097,7 +6097,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_execution.py",
       "expected_sha256": "2dcf03b992beab3ac700b78c67e49d249a0a7993fcfe5d7d24e207c6aa72c533",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_execution.py"
     },
     {
       "receipt": "completed-profiles/B-BH3.json",
@@ -6118,7 +6118,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_likelihood.py",
       "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_likelihood.py"
     },
     {
       "receipt": "completed-profiles/B-BH3.json",
@@ -6153,7 +6153,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
       "expected_sha256": "e29858b020ba912e7fb7deaf85cabe878cec7b6c4d83cb35f390ef16a0d58d41",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/spatial_profile.py"
     },
     {
       "receipt": "completed-profiles/B-H3.json",
@@ -6244,7 +6244,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/benchmark_spatial_profile.py",
       "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/benchmark_spatial_profile.py"
     },
     {
       "receipt": "completed-profiles/B-H3.json",
@@ -6265,7 +6265,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/qualify_spatial_profiles.py",
       "expected_sha256": "ef484ba6e4db750e41ce5a5615283b03ef503c59f5e5ccc73ffca0c344f7446e",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/qualify_spatial_profiles_refinement_repair.py"
     },
     {
       "receipt": "completed-profiles/B-H3.json",
@@ -6426,7 +6426,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/capstone_qualification.py",
       "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/capstone_qualification.py"
     },
     {
       "receipt": "completed-profiles/B-H3.json",
@@ -6468,7 +6468,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
       "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/differentiable_likelihood.py"
     },
     {
       "receipt": "completed-profiles/B-H3.json",
@@ -6825,7 +6825,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/log_domain_likelihood.py",
       "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/log_domain_likelihood.py"
     },
     {
       "receipt": "completed-profiles/B-H3.json",
@@ -6937,7 +6937,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_execution.py",
       "expected_sha256": "2dcf03b992beab3ac700b78c67e49d249a0a7993fcfe5d7d24e207c6aa72c533",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_execution.py"
     },
     {
       "receipt": "completed-profiles/B-H3.json",
@@ -6958,7 +6958,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_likelihood.py",
       "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_likelihood.py"
     },
     {
       "receipt": "completed-profiles/B-H3.json",
@@ -6993,7 +6993,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
       "expected_sha256": "e29858b020ba912e7fb7deaf85cabe878cec7b6c4d83cb35f390ef16a0d58d41",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/spatial_profile.py"
     },
     {
       "receipt": "completed-profiles/B0-BH3.json",
@@ -7049,7 +7049,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/benchmark_spatial_profile.py",
       "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/benchmark_spatial_profile.py"
     },
     {
       "receipt": "completed-profiles/B0-BH3.json",
@@ -7063,7 +7063,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/qualify_spatial_profiles.py",
       "expected_sha256": "ef484ba6e4db750e41ce5a5615283b03ef503c59f5e5ccc73ffca0c344f7446e",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/qualify_spatial_profiles_refinement_repair.py"
     },
     {
       "receipt": "completed-profiles/B0-BH3.json",
@@ -7224,7 +7224,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/capstone_qualification.py",
       "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/capstone_qualification.py"
     },
     {
       "receipt": "completed-profiles/B0-BH3.json",
@@ -7266,7 +7266,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
       "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/differentiable_likelihood.py"
     },
     {
       "receipt": "completed-profiles/B0-BH3.json",
@@ -7623,7 +7623,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/log_domain_likelihood.py",
       "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/log_domain_likelihood.py"
     },
     {
       "receipt": "completed-profiles/B0-BH3.json",
@@ -7735,7 +7735,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_execution.py",
       "expected_sha256": "2dcf03b992beab3ac700b78c67e49d249a0a7993fcfe5d7d24e207c6aa72c533",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_execution.py"
     },
     {
       "receipt": "completed-profiles/B0-BH3.json",
@@ -7756,7 +7756,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_likelihood.py",
       "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_likelihood.py"
     },
     {
       "receipt": "completed-profiles/B0-BH3.json",
@@ -7791,7 +7791,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
       "expected_sha256": "e29858b020ba912e7fb7deaf85cabe878cec7b6c4d83cb35f390ef16a0d58d41",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/spatial_profile.py"
     },
     {
       "receipt": "completed-profiles/B0-H3.json",
@@ -7847,7 +7847,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/benchmark_spatial_profile.py",
       "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/benchmark_spatial_profile.py"
     },
     {
       "receipt": "completed-profiles/B0-H3.json",
@@ -7861,7 +7861,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/qualify_spatial_profiles.py",
       "expected_sha256": "ef484ba6e4db750e41ce5a5615283b03ef503c59f5e5ccc73ffca0c344f7446e",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/qualify_spatial_profiles_refinement_repair.py"
     },
     {
       "receipt": "completed-profiles/B0-H3.json",
@@ -8022,7 +8022,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/capstone_qualification.py",
       "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/capstone_qualification.py"
     },
     {
       "receipt": "completed-profiles/B0-H3.json",
@@ -8064,7 +8064,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
       "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/differentiable_likelihood.py"
     },
     {
       "receipt": "completed-profiles/B0-H3.json",
@@ -8421,7 +8421,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/log_domain_likelihood.py",
       "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/log_domain_likelihood.py"
     },
     {
       "receipt": "completed-profiles/B0-H3.json",
@@ -8533,7 +8533,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_execution.py",
       "expected_sha256": "2dcf03b992beab3ac700b78c67e49d249a0a7993fcfe5d7d24e207c6aa72c533",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_execution.py"
     },
     {
       "receipt": "completed-profiles/B0-H3.json",
@@ -8554,7 +8554,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_likelihood.py",
       "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_likelihood.py"
     },
     {
       "receipt": "completed-profiles/B0-H3.json",
@@ -8589,7 +8589,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
       "expected_sha256": "e29858b020ba912e7fb7deaf85cabe878cec7b6c4d83cb35f390ef16a0d58d41",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/spatial_profile.py"
     },
     {
       "receipt": "initial-execution/B0-BH3-receipt.json",
@@ -8645,7 +8645,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/benchmark_spatial_profile.py",
       "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/benchmark_spatial_profile.py"
     },
     {
       "receipt": "initial-execution/B0-BH3-receipt.json",
@@ -8820,7 +8820,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/capstone_qualification.py",
       "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/capstone_qualification.py"
     },
     {
       "receipt": "initial-execution/B0-BH3-receipt.json",
@@ -8862,7 +8862,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
       "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/differentiable_likelihood.py"
     },
     {
       "receipt": "initial-execution/B0-BH3-receipt.json",
@@ -9219,7 +9219,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/log_domain_likelihood.py",
       "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/log_domain_likelihood.py"
     },
     {
       "receipt": "initial-execution/B0-BH3-receipt.json",
@@ -9331,7 +9331,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_execution.py",
       "expected_sha256": "2dcf03b992beab3ac700b78c67e49d249a0a7993fcfe5d7d24e207c6aa72c533",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_execution.py"
     },
     {
       "receipt": "initial-execution/B0-BH3-receipt.json",
@@ -9352,7 +9352,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_likelihood.py",
       "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_likelihood.py"
     },
     {
       "receipt": "initial-execution/B0-BH3-receipt.json",
@@ -9387,7 +9387,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
       "expected_sha256": "e29858b020ba912e7fb7deaf85cabe878cec7b6c4d83cb35f390ef16a0d58d41",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/spatial_profile.py"
     },
     {
       "receipt": "initial-execution/B0-H3-receipt.json",
@@ -9443,7 +9443,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/benchmark_spatial_profile.py",
       "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/benchmark_spatial_profile.py"
     },
     {
       "receipt": "initial-execution/B0-H3-receipt.json",
@@ -9618,7 +9618,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/capstone_qualification.py",
       "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/capstone_qualification.py"
     },
     {
       "receipt": "initial-execution/B0-H3-receipt.json",
@@ -9660,7 +9660,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
       "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/differentiable_likelihood.py"
     },
     {
       "receipt": "initial-execution/B0-H3-receipt.json",
@@ -10017,7 +10017,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/log_domain_likelihood.py",
       "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/log_domain_likelihood.py"
     },
     {
       "receipt": "initial-execution/B0-H3-receipt.json",
@@ -10129,7 +10129,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_execution.py",
       "expected_sha256": "2dcf03b992beab3ac700b78c67e49d249a0a7993fcfe5d7d24e207c6aa72c533",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_execution.py"
     },
     {
       "receipt": "initial-execution/B0-H3-receipt.json",
@@ -10150,7 +10150,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_likelihood.py",
       "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_likelihood.py"
     },
     {
       "receipt": "initial-execution/B0-H3-receipt.json",
@@ -10185,7 +10185,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
       "expected_sha256": "e29858b020ba912e7fb7deaf85cabe878cec7b6c4d83cb35f390ef16a0d58d41",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/spatial_profile.py"
     },
     {
       "receipt": "initial-execution/derived-banks-manifest.json",
@@ -10416,7 +10416,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/capstone_qualification.py",
       "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/capstone_qualification.py"
     },
     {
       "receipt": "initial-execution/derived-banks-manifest.json",
@@ -10458,7 +10458,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
       "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/differentiable_likelihood.py"
     },
     {
       "receipt": "initial-execution/derived-banks-manifest.json",
@@ -10815,7 +10815,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/log_domain_likelihood.py",
       "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/log_domain_likelihood.py"
     },
     {
       "receipt": "initial-execution/derived-banks-manifest.json",
@@ -10927,7 +10927,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_execution.py",
       "expected_sha256": "2dcf03b992beab3ac700b78c67e49d249a0a7993fcfe5d7d24e207c6aa72c533",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_execution.py"
     },
     {
       "receipt": "initial-execution/derived-banks-manifest.json",
@@ -10948,7 +10948,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_likelihood.py",
       "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_likelihood.py"
     },
     {
       "receipt": "initial-execution/derived-banks-manifest.json",
@@ -10983,7 +10983,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
       "expected_sha256": "e29858b020ba912e7fb7deaf85cabe878cec7b6c4d83cb35f390ef16a0d58d41",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/spatial_profile.py"
     },
     {
       "receipt": "initial-execution/fresh-bank-2K-manifest.json",
@@ -11179,7 +11179,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/capstone_qualification.py",
       "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/capstone_qualification.py"
     },
     {
       "receipt": "initial-execution/fresh-bank-2K-manifest.json",
@@ -11221,7 +11221,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
       "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/differentiable_likelihood.py"
     },
     {
       "receipt": "initial-execution/fresh-bank-2K-manifest.json",
@@ -11578,7 +11578,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/log_domain_likelihood.py",
       "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/log_domain_likelihood.py"
     },
     {
       "receipt": "initial-execution/fresh-bank-2K-manifest.json",
@@ -11690,7 +11690,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_execution.py",
       "expected_sha256": "2dcf03b992beab3ac700b78c67e49d249a0a7993fcfe5d7d24e207c6aa72c533",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_execution.py"
     },
     {
       "receipt": "initial-execution/fresh-bank-2K-manifest.json",
@@ -11711,7 +11711,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_likelihood.py",
       "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_likelihood.py"
     },
     {
       "receipt": "initial-execution/fresh-bank-2K-manifest.json",
@@ -11746,7 +11746,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
       "expected_sha256": "e29858b020ba912e7fb7deaf85cabe878cec7b6c4d83cb35f390ef16a0d58d41",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/spatial_profile.py"
     },
     {
       "receipt": "pseudo-BH3.json",
@@ -11872,7 +11872,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/benchmark_spatial_profile.py",
       "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/benchmark_spatial_profile.py"
     },
     {
       "receipt": "pseudo-BH3.json",
@@ -11893,7 +11893,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/qualify_spatial_profiles.py",
       "expected_sha256": "ef484ba6e4db750e41ce5a5615283b03ef503c59f5e5ccc73ffca0c344f7446e",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/qualify_spatial_profiles_refinement_repair.py"
     },
     {
       "receipt": "pseudo-BH3.json",
@@ -12054,7 +12054,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/capstone_qualification.py",
       "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/capstone_qualification.py"
     },
     {
       "receipt": "pseudo-BH3.json",
@@ -12096,7 +12096,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
       "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/differentiable_likelihood.py"
     },
     {
       "receipt": "pseudo-BH3.json",
@@ -12453,7 +12453,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/log_domain_likelihood.py",
       "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/log_domain_likelihood.py"
     },
     {
       "receipt": "pseudo-BH3.json",
@@ -12565,7 +12565,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_execution.py",
       "expected_sha256": "2dcf03b992beab3ac700b78c67e49d249a0a7993fcfe5d7d24e207c6aa72c533",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_execution.py"
     },
     {
       "receipt": "pseudo-BH3.json",
@@ -12586,7 +12586,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_likelihood.py",
       "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_likelihood.py"
     },
     {
       "receipt": "pseudo-BH3.json",
@@ -12621,7 +12621,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
       "expected_sha256": "e29858b020ba912e7fb7deaf85cabe878cec7b6c4d83cb35f390ef16a0d58d41",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/spatial_profile.py"
     },
     {
       "receipt": "pseudo-H3.json",
@@ -12747,7 +12747,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/benchmark_spatial_profile.py",
       "expected_sha256": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/benchmark_spatial_profile.py"
     },
     {
       "receipt": "pseudo-H3.json",
@@ -12768,7 +12768,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/scripts/qualify_spatial_profiles.py",
       "expected_sha256": "ef484ba6e4db750e41ce5a5615283b03ef503c59f5e5ccc73ffca0c344f7446e",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/qualify_spatial_profiles_refinement_repair.py"
     },
     {
       "receipt": "pseudo-H3.json",
@@ -12929,7 +12929,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/capstone_qualification.py",
       "expected_sha256": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/capstone_qualification.py"
     },
     {
       "receipt": "pseudo-H3.json",
@@ -12971,7 +12971,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/differentiable_likelihood.py",
       "expected_sha256": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/differentiable_likelihood.py"
     },
     {
       "receipt": "pseudo-H3.json",
@@ -13328,7 +13328,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/log_domain_likelihood.py",
       "expected_sha256": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/log_domain_likelihood.py"
     },
     {
       "receipt": "pseudo-H3.json",
@@ -13440,7 +13440,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_execution.py",
       "expected_sha256": "2dcf03b992beab3ac700b78c67e49d249a0a7993fcfe5d7d24e207c6aa72c533",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_execution.py"
     },
     {
       "receipt": "pseudo-H3.json",
@@ -13461,7 +13461,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_likelihood.py",
       "expected_sha256": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/preinvasion_likelihood.py"
     },
     {
       "receipt": "pseudo-H3.json",
@@ -13496,7 +13496,7 @@
       "path": "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/spatial_profile.py",
       "expected_sha256": "e29858b020ba912e7fb7deaf85cabe878cec7b6c4d83cb35f390ef16a0d58d41",
       "verified": true,
-      "historical_snapshot": null
+      "historical_snapshot": "source/spatial_profile.py"
     }
   ],
   "profile_scope_checks": [
@@ -13590,7 +13590,13 @@
     "pseudo-H3.json": "5a27e4b7ac65d2da85c4a9a931543046d999aea180868be1834819501747867b",
     "review.md": "98c890a46e0fcd9cc227e1ff43478552ffd3962250470b22e0dae258feb73e13",
     "source/assess_profile_pseudo_mass.py": "46a8e7469763224d3ccd59c173e5e3d55c445926657eb66337030ee244eb2660",
+    "source/benchmark_spatial_profile.py": "d6cf7754d9411da7f5e47af55f5ed7b9905d6882f4c779894a4f371a72b1ef0b",
+    "source/capstone_qualification.py": "5c4864985b1fc5a06a7659a19b058cadaf66d64a7b6c81271abbbfa2c79c91a5",
     "source/compare_profile_banks.py": "39613c0c4cde2b1fe81fe1f77e9356b1808f08c836e3d6d1249d7e37f7380cd9",
+    "source/differentiable_likelihood.py": "154dcb6f1352a4145642c915912ec1df06a4ef1bd7f84b31f1726ea056466172",
+    "source/log_domain_likelihood.py": "791a5f53938d3f046eaee57ed6ec40903ff8ec03e68588f9c5a3519dce9b55d4",
+    "source/preinvasion_execution.py": "2dcf03b992beab3ac700b78c67e49d249a0a7993fcfe5d7d24e207c6aa72c533",
+    "source/preinvasion_likelihood.py": "398ad59c301288b69e7f5cbe20375894c7bfe1d4b74490efb0991da880e09a12",
     "source/prepare_profile_sensitivity_banks.py": "0ab8f65d7fd8da84bbbc3af3383935486f7c251989ee73c7125fa65a81fc7030",
     "source/profile_level_sets.py": "098076b28b8a2d40fe8646d12d8b5a28af99779bca0e8b5d5334139bee17dbd3",
     "source/qualify_spatial_profiles.py": "838c50fe02aba4624174b7713a74cbc6b56d6d57e080d2acab919125f53d3c25",

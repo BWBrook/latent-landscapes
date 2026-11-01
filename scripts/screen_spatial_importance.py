@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import time
 from pathlib import Path
 from typing import Any
@@ -144,27 +145,60 @@ def decision(primary: dict[str, Any], confirmation: dict[str, Any], stable: bool
     return "pointwise_screen_passed" if contained else "indeterminate"
 
 
-def selected_fits(receipt: dict[str, Any]) -> dict[str, dict[str, Any]]:
+def selected_fits(
+    receipt: dict[str, Any], report_h: float
+) -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
     if receipt["status"] != "profile_numerically_resolved":
         raise ValueError("profile unresolved; fixed-outer screen unavailable")
     diagnostics = receipt["post_search_diagnostics"]
     if diagnostics["status"] != "available":
         raise ValueError("post-search reporting unresolved")
+    if not math.isfinite(report_h) or not 1 <= report_h <= 30:
+        raise ValueError("reporting h outside the frozen domain")
     fits = {"free": receipt["free"]["True"]}
-    for row in diagnostics["points"]:
-        fits[format(row["h"], ".17g")] = row["tight_fit"]
-    return fits
+    anchors: dict[float, list[str]] = {}
+
+    def add(x: float, role: str) -> None:
+        same = next((old for old in anchors if abs(old - x) <= 1e-12), x)
+        anchors.setdefault(same, []).append(role)
+
+    add(0.0, "null")
+    add(math.log(report_h), "generating_h_reported_after_search")
+    for family in ("positive_sigma", "sigma_zero"):
+        add(math.log(fits["free"][family]["h"]), f"dense_free_{family}")
+    levels = [level for level in receipt["tight_level_sets"] if level["cutoff"] == 3.84]
+    if len(levels) != 1 or levels[0]["status"] != "available":
+        raise ValueError("dense diagnostic roots unavailable")
+    for index, root in enumerate(levels[0]["roots"]):
+        add(root["log_h"], f"dense_tight_root_{index}")
+    retained = []
+    for x, roles in sorted(anchors.items()):
+        matching = [row for row in diagnostics["points"] if abs(row["log_h"] - x) <= 1e-10]
+        if not matching:
+            raise ValueError(f"required fixed-outer anchor missing: {roles}")
+        row = min(matching, key=lambda point: abs(point["log_h"] - x))
+        key = format(row["h"], ".17g")
+        fits[key] = row["tight_fit"]
+        retained.append({"key": key, "log_h": row["log_h"], "h": row["h"], "roles": roles})
+    return fits, retained
 
 
 def verify_profile_binding(args: argparse.Namespace) -> dict[str, str]:
     parent_path = args.profile.parent.parent / "receipt.json"
+    started_path = parent_path.with_name("started.json")
     parent = json.loads(parent_path.read_text())
+    started = json.loads(started_path.read_text())
     if parent.get("schema") != "development-profile-run-v1":
         raise ValueError("invalid profile parent receipt")
     search = parent["searches"].get(args.profile.parent.name)
     if search is None or search["sha256"] != adapter.sha256_file(args.profile):
         raise ValueError("profile child receipt binding failed")
     identities = parent["source_input_sha256"]
+    if (
+        started["source_input_sha256"] != identities
+        or args.report_h not in started["report_h_used_only_after_search"]
+    ):
+        raise ValueError("screen reporting h or inputs differ from the original run")
     required = [
         args.observations,
         args.arrival_bank,
@@ -178,7 +212,7 @@ def verify_profile_binding(args: argparse.Namespace) -> dict[str, str]:
     for name, expected in identities.items():
         if adapter.sha256_file(Path(name)) != expected:
             raise ValueError(f"profile source/input binding changed: {name}")
-    return {str(parent_path.resolve()): adapter.sha256_file(parent_path)}
+    return {str(path.resolve()): adapter.sha256_file(path) for path in (parent_path, started_path)}
 
 
 def main() -> None:
@@ -193,6 +227,7 @@ def main() -> None:
     ):
         parser.add_argument(f"--{name}", type=Path, required=True)
     parser.add_argument("--identity", required=True)
+    parser.add_argument("--report-h", type=float, required=True)
     parser.add_argument("--maximum-draws", type=int, default=262144)
     args = parser.parse_args()
     if args.maximum_draws not in (16384, 32768, 65536, 131072, 262144):
@@ -220,7 +255,7 @@ def main() -> None:
     )
     try:
         identities.update(verify_profile_binding(args))
-        fits = selected_fits(json.loads(args.profile.read_text()))
+        fits, anchors = selected_fits(json.loads(args.profile.read_text()), args.report_h)
         data, data_identity = load_panel_data(args)
         criterion = direct_criterion(data)
         targets = {}
@@ -288,6 +323,8 @@ def main() -> None:
                 "reoptimised_profile": False,
                 "optimized_root_movement_quantified": False,
                 "identity": args.identity,
+                "report_h": args.report_h,
+                "selected_anchors": anchors,
                 "source_input_sha256": identities,
                 "data_identity": data_identity,
                 "history": history,
