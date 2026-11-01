@@ -1,23 +1,28 @@
 # Latent Landscapes: current handover
 
-1 November 2026: the initial bank generation and B0 qualifications finished.
-The fresh 262144-row bank and its derived A/B/AB banks are complete. Initial
-H3 B0 passed its within-bank numerical checks; B_H3 stopped indeterminate at
-an implementation-only three-round midpoint cap while refining its known peak.
-Independent review accepted removal of that cap, retaining the prespecified
-160-point limit and every scientific/numerical threshold. The failed receipt
-and original source remain preserved. The
-[qualification record](docs/paper1-profile-bank-qualification-2026-11-01.md)
-and [review](docs/evidence/paper1-profile-bank-qualification-2026-11-01/review.md)
-record the post-outcome implementation deviation and observed results.
+1 November 2026: the h=30 endpoint repair and both B0 continuous-profile
+numerical checks are complete. H3 also passes all five prespecified bank
+comparisons (B0/A, B0/B, A/B, A/AB, B/AB) and its fixed-fit pseudo-mass screen,
+with independent review. Maximum common-anchor LR movement is 0.02161264
+against 0.10; maximum log-root movement is 0.000512974 against 0.05. This is
+one fixed development history, without a calibration or globality claim.
 
-The repaired B0 replays and fresh-bank profiles are the active next step.
-Both B0 histories will use the amended runner so the exact-source comparison
-contract remains intact. Current execution state and continuation instructions
-are in `artifacts/paper1_profile_qualification_20261101/execution-state.json`
-and `CONTINUATION.md`; inspect receipts and live jobs before launching work.
-Cross-bank qualification and pseudo-mass checks remain incomplete. Goal 062
-stays closed; no calibration, Laplace-accuracy or production claim is made.
+B_H3 B0 now passes after a reviewed implementation repair: the initial
+three-round midpoint cap had stopped on its already-known peak. Two additional
+midpoint checks resolved it under the unchanged 160-point limit and all
+original numerical thresholds. The failed receipt and old source remain
+preserved. B_H3 A, B and AB profiles are running; their bank and pseudo-mass
+checks remain unfinished. The
+[qualification record](docs/paper1-profile-bank-qualification-2026-11-01.md)
+and [independent review](docs/evidence/paper1-profile-bank-qualification-2026-11-01/review.md)
+record the evidence and post-outcome implementation deviation.
+
+Current execution state and continuation instructions are in
+`artifacts/paper1_profile_qualification_20261101/execution-state.json` and
+`CONTINUATION.md`; inspect live receipts before launching anything. All eight
+required B0/A/B/AB history profiles have been launched. Goal 062 stays closed.
+Higher-accuracy integration, calibration, the broader challenge suite and
+production throughput remain separate qualifications.
 
 31 October 2026 (Hobart), direct likelihood and completed numerical meshes.
 

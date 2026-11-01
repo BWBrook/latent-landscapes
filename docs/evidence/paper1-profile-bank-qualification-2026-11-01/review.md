@@ -117,3 +117,70 @@ actual point-budget exhaustion and non-representable-midpoint failure. Ruff,
 production-script strict mypy and diff whitespace checks pass. A strict mypy
 check of the test module additionally exposes three pre-existing dynamic-module
 `no-any-return` errors; these are outside this repair and remain unchanged.
+
+
+Fresh H3 A and B pass independent numerical receipt review. A retains 104
+standard / 83 tighter points; B retains 78 / 76. Maximum selected projected
+gradients are 4.17e-4 / 9.32e-5 for A and 5.23e-4 / 7.55e-5 for B. Complete
+discovery-mesh replays give maximum shared-point W differences 6.49e-10 and
+2.22e-8, respectively. Maximum root residuals are 7.63e-6 and 7.69e-6;
+standard/tighter log-root movements are 1.37e-11 and zero. Neither has a
+material free-envelope violation, domain error or final PD failure. The parent
+independently verified all 115 source/input bindings for each.
+
+Independent H3 pseudo-mass review reconstructs both families at both free
+optima, all 35 anchors and five tighter roots, verifies 120 bindings and the
+exact A-receipt hash, and reproduces maximum centred W shift 0.000400641,
+maximum projected gradient 0.000304479 and zero material ownership changes.
+No full Adup refit is triggered. This remains a fixed-outer-fit perturbation
+with reoptimised latent modes, not an optimised Adup profile certificate.
+
+Review also accepts an execution-sequencing amendment for fresh B_H3 A/B/AB:
+after repaired B0 B_H3 standard-root closure, run them as slots become available
+while B0's tighter replay continues, at no more than four single-thread
+processes. Every runner uses the frozen archived reference independently of
+the pending B0 receipt. All completed within-bank and cross-bank acceptance
+gates remain mandatory; no histories, banks, thresholds or sources change.
+
+
+The repaired H3 B0 replay also passes independent review. Every scientific
+result field is exactly identical to the original accepted H3 receipt,
+including standard/tighter points and candidates, free fits, level sets,
+roots, refinement trace, archived replay and outer diagnostics. The replay
+uses 100 standard and 99 tighter points and has no domain errors, final PD
+failures or candidate excess above family maxima. The parent reverified its
+114 source/input bindings. It supplies the common amended-source baseline
+for the final bank comparisons.
+
+
+The repaired B_H3 B0 receipt passes independent review. All 76 points shared
+with the failed run retain exactly the same selected family criteria; two
+additional depth-3 midpoint checks resolve the known-peak refinement. The
+completed run uses 108 standard / 109 tighter points. Maximum selected
+projected gradients are 1.24e-4 / 8.76e-5; maximum shared-point W movement is
+1.73e-11 and maximum log-root movement is 8.90e-6. Maximum standard/tighter
+root residuals are 6.88e-5 / 1.82e-5. All 219 selected positive-variance modes
+succeed (maximum latent score 8.99e-15), with no domain errors, final PD
+failures or free-envelope violations. All 72 archived parameter replays are
+exact; maximum archived W movement is 2.39e-10. The free maximum remains
+h=4.195183447. All three sets are connected, with no h-domain or nuisance-bound
+contacts inside them and no family switches. Parent verification confirms
+all 114 source/input bindings.
+
+
+The full H3 bank-sensitivity result is independently accepted within the
+prespecified gates. All five comparisons reconstruct exactly from retained
+fits: maximum absolute W differences B0/A=0.00407715, B0/B=0.01753549,
+A/B=0.02161264, A/AB=0.01120236 and B/AB=0.01041028. Corresponding maximum
+log-root movements are 0.000121939, 0.000512974, 0.000492061, 0.000254482 and
+0.000237579. Component counts and domain contacts agree throughout. Direct
+array checks confirm AB concatenates A then B with identical site ordering.
+
+AB-H3 passes independent numerical review: 78 standard / 76 tighter points,
+maximum projected gradients 4.95e-4 / 9.89e-5, maximum shared-point W movement
+2.52e-8, maximum root residual 7.66e-6 and zero root movement. There are no
+envelope, domain or final PD failures. All 131 unique live file bindings pass;
+the four H3 profiles share identical 107 Python-source bindings and data
+identities. The comparison embeds the exact audited pseudo-mass receipt and
+binds it to A. No full Adup refit is triggered. B_H3 and joint completion
+remain pending; this finding carries no calibration or globality claim.

@@ -194,3 +194,35 @@ replayed to retain the aggregator's exact-source comparison contract. Fresh
 H3 A/B profiles may run alongside these two B0 replays within the existing
 four-process resource amendment; joint acceptance still requires every
 corresponding profile and the final bank/pseudo-mass gates.
+
+
+Fresh H3 banks A and B completed their individual numerical checks in 63.40
+and 57.44 minutes, respectively; independent receipt review accepts both.
+The H3 fixed-fit pseudo-mass replay has maximum centred LR shift 0.000400641,
+maximum projected gradient 0.000304479, and no material family-ownership
+change. Independent reconstruction verifies all 120 bindings and the exact
+A-receipt identity. No full H3 Adup refit is triggered. This is a fixed-fit
+perturbation with latent modes reoptimised, not an optimised Adup profile
+certificate. Pooled AB and the final cross-bank comparisons remain pending.
+
+
+An independently reviewed execution-order amendment permits fresh B_H3 A,
+B and AB profiles after the repaired B0 B_H3 standard-root closure, while its
+tighter replay continues, as slots open within the four-process limit. Each
+runner consumes the frozen archived reference, not an unfinished B0 receipt;
+there is no computational dependency on B0 completion. This changes execution
+order only. Acceptance still requires all completed within-bank and cross-bank
+gates. Histories, sources, banks and numerical thresholds remain unchanged.
+
+
+## H3 completed bank comparison
+
+All five prespecified H3 comparisons pass: B0/A, B0/B, A/B, A/AB and B/AB.
+The largest common-anchor absolute W difference is 0.02161264 (A/B at h=30),
+against the 0.10 gate. The largest absolute log-root movement is 0.000512974
+(B0/B), against 0.05. Component counts and h-domain contacts agree throughout.
+The pseudo-mass screen does not require a full Adup refit. This is a result
+for one fixed development history; it neither estimates the distribution of
+bank errors nor validates calibrated confidence sets. The B_H3 fresh-bank
+comparisons remain in progress. Independent aggregate review accepts the H3 result after exact reconstruction
+of every comparison and verification of all 131 unique live file bindings.
