@@ -1,5 +1,24 @@
 # Latent Landscapes: current handover
 
+1 November 2026: the initial bank generation and B0 qualifications finished.
+The fresh 262144-row bank and its derived A/B/AB banks are complete. Initial
+H3 B0 passed its within-bank numerical checks; B_H3 stopped indeterminate at
+an implementation-only three-round midpoint cap while refining its known peak.
+Independent review accepted removal of that cap, retaining the prespecified
+160-point limit and every scientific/numerical threshold. The failed receipt
+and original source remain preserved. The
+[qualification record](docs/paper1-profile-bank-qualification-2026-11-01.md)
+and [review](docs/evidence/paper1-profile-bank-qualification-2026-11-01/review.md)
+record the post-outcome implementation deviation and observed results.
+
+The repaired B0 replays and fresh-bank profiles are the active next step.
+Both B0 histories will use the amended runner so the exact-source comparison
+contract remains intact. Current execution state and continuation instructions
+are in `artifacts/paper1_profile_qualification_20261101/execution-state.json`
+and `CONTINUATION.md`; inspect receipts and live jobs before launching work.
+Cross-bank qualification and pseudo-mass checks remain incomplete. Goal 062
+stays closed; no calibration, Laplace-accuracy or production claim is made.
+
 31 October 2026 (Hobart), direct likelihood and completed numerical meshes.
 
 The [direct-profile record](docs/paper1-direct-profile-development-2026-10-31.md)

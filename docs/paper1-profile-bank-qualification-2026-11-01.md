@@ -144,7 +144,12 @@ The repaired 256-row smoke (two workers) completed in 5.73 seconds. Independent
 replay of original rows 0, 1 and 131071 reproduced all 480 arrival values exactly.
 All 393216 seed values across B0/A/B were unique; pairwise intersections were
 empty. Fresh 2K generation uses four local workers and 256-row chunks, alongside
-at most two single-thread profile processes. The smoke suggests roughly 49
+at most two single-thread profile processes. An execution-only resource
+amendment permits up to four profile processes after generation finishes:
+this uses fewer concurrent CPU workers than the initial six, and the live
+Mac memory check showed 48% free during generation plus two profiles. All
+BLAS libraries remain single-threaded; scientific rules and source bytes are
+unchanged. The smoke suggests roughly 49
 minutes for generation; this is a forecast, not the completed runtime.
 
 The proposed Arm-B pre-period ablation is deferred: it changes observation
@@ -153,3 +158,39 @@ is consistent with depletion-mediated confounding but does not establish its
 cause. A later ablation needs an explicit masking and contrast specification.
 Kunanyi throughput, 260-site behaviour, the 600-case challenge suite,
 higher-accuracy integration and calibration remain separate work.
+
+
+## First execution and reviewed refinement repair
+
+The fresh 262144-row bank completed in 2484.88 seconds (41.41 minutes),
+using addresses 131072:393216. All 109 source/input bindings match the
+completed receipt. A, B and AB were derived and compressed separately at
+order 192, preserving their own K+7 normalization.
+
+The initial B0 H3 run completed in 4189.12 seconds (69.82 minutes), with
+100 standard and 99 tighter points. Independent receipt review accepts its
+within-bank numerical resolution: all three diagnostic sets have one detected
+component; the c=6.63 set touches h=1. The 72 archived parameter replays
+match exactly; maximum archived LR movement is 5.46e-12. The h estimate is
+2.34621715. This remains a finite-resolution numerical check, without a
+calibration or independent-bank precision claim.
+
+B0 B_H3 stopped after 3329.13 seconds (55.49 minutes), with 76 standard and
+no tighter points. Its preserved status is indeterminate. A hard-coded
+three-round midpoint-refinement limit fired while refining the already-known
+smooth peak near h=4.19518. The final midpoint h=4.21229 lies 7.51e-5 criterion
+units below the free optimum but exceeds its bracket endpoints by 2.47e-4.
+The remaining triggers contain only an interior peak, not a new crossing,
+family switch or nuisance-bound transition. This is an execution failure,
+not evidence of bank instability or an ecological result.
+
+After observing that failure, independent review accepted a recorded
+implementation deviation: remove the three-round limit and continue the
+unchanged feature checks until they resolve or the existing prespecified
+160-unique-point guard is exhausted. No fit, topology, root, bank-sensitivity
+or calibration threshold changes. Preserve the original receipts and source;
+run the amended implementation in new output directories. H3 B0 is also
+replayed to retain the aggregator's exact-source comparison contract. Fresh
+H3 A/B profiles may run alongside these two B0 replays within the existing
+four-process resource amendment; joint acceptance still requires every
+corresponding profile and the final bank/pseudo-mass gates.

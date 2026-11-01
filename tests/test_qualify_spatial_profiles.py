@@ -66,6 +66,68 @@ def bare_qualification(module: Any) -> Any:
     return q
 
 
+def parabolic_qualification(module: Any, monkeypatch: pytest.MonkeyPatch) -> Any:
+    q = bare_qualification(module)
+    q.args = SimpleNamespace(dense_baseline=True)
+    q.reference = {
+        "profile": {
+            "best_positive": candidate("positive_sigma", 0.0, free=True),
+            "best_sigma_zero": candidate("sigma_zero", -1.0, free=True),
+        }
+    }
+    q.free[False] = fit(module, 0.0, free=True)
+    q.direction_difference = lambda x: dict.fromkeys(module.FAMILIES, 0.0)
+
+    def family_fit(**kwargs: Any) -> list[dict[str, Any]]:
+        family = "sigma_zero" if kwargs["sigma_zero"] else "positive_sigma"
+        value = -10000 * (math.log(kwargs["fixed_h"]) - 1.434) ** 2
+        return [candidate(family, value - (family == "sigma_zero"), h=kwargs["fixed_h"])]
+
+    q.criterion = SimpleNamespace(_fit_family=family_fit)
+    monkeypatch.setattr(module.adapter, "_candidate_summary", lambda row, **kwargs: dict(row))
+    return q
+
+
+def test_midpoint_refines_smooth_peak_beyond_three_rounds(
+    module: Any, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    q = parabolic_qualification(module, monkeypatch)
+    mesh = np.linspace(0.0, module.LOG_MAX, 35).tolist()
+    refined = q.midpoint_mesh(mesh)
+    assert max(row["depth"] for row in q.midpoint_triggers) >= 3
+    assert set(mesh).issubset(refined)
+    assert len(refined) == len(q.points[False]) < 160
+    assert max(q.points[False][x]["criterion"] for x in refined) >= -1e-4
+
+
+def test_midpoint_refinement_stops_at_actual_unique_point_guard(
+    module: Any, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    q = parabolic_qualification(module, monkeypatch)
+    for x in np.linspace(0.0, 0.01, 158):
+        q.point(float(x))
+    q.point(module.LOG_MAX)
+    with pytest.raises(RuntimeError, match="prespecified unique-point limit exhausted"):
+        q.midpoint_mesh([0.0, module.LOG_MAX])
+    assert len(q.points[False]) == 160
+    assert max(row["depth"] for row in q.midpoint_triggers) == 1
+
+
+def test_midpoint_stagnation_is_reported_as_unresolved(
+    module: Any, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    q = parabolic_qualification(module, monkeypatch)
+    events: list[dict[str, Any]] = []
+    q.record = events.append
+    a = 1.0
+    b = math.nextafter(a, math.inf)
+    with pytest.raises(RuntimeError, match="no representable midpoint"):
+        q.midpoint_mesh([a, b])
+    assert events[-1]["kind"] == "midpoint_refinement_stagnation"
+    assert events[-1]["bracket_log_h"] == [a, b]
+    assert len(q.points[False]) == 2
+
+
 def test_up_and_down_candidates_are_preserved_and_best_is_not_overwritten(
     module: Any, monkeypatch: pytest.MonkeyPatch
 ) -> None:

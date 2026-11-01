@@ -81,5 +81,39 @@ Fourteen focused pseudo-mass/aggregate tests pass after those corrections.
 
 ## Execution receipt review
 
-B0, fresh-bank and final comparison reviews will be recorded after the
-corresponding runs complete. Pending work is not described as qualified.
+Independent receipt review accepted initial H3 B0 numerical resolution:
+100 standard / 99 tighter points, maximum selected projected gradients
+6.89549e-4 / 9.20295e-5, no retained candidate above its family maximum,
+maximum W discrepancy 2.43444e-8 across 89 common points, and maximum root
+residual 7.62144e-6. All 72 archived parameter replays are exact; maximum
+archived W movement is 5.45697e-12. All three detected sets are connected;
+the c=6.63 set contacts h=1. A positive-variance lower-bound contact at the
+lower c=3.84 root is tied with exact zero and is not interpreted as causal
+bound determination. The parent verified all 114 source/input bindings.
+
+B_H3's initial indeterminate receipt remains a failure. Independent review
+found the implementation's three-depth refinement cap was reached at 76
+standard points, with no tighter points. Only repeated interior-peak triggers
+near the already fitted h=4.195183447 maximum remain. No cutoff, switch or
+bound-contact novelty caused the stop. The parent verified its 114 bindings
+and all 109 generation source/input bindings.
+
+Review accepts a disclosed post-outcome implementation repair: retain every
+feature detector and threshold, replace the arbitrary three-depth cap with
+continuation until features resolve or the existing 160-point guard raises.
+Tests must cover refinement beyond three rounds and exhaustion. Preserve the
+old source and receipts; replay H3 B0 too so the existing exact-source bank
+comparison contract needs no exception. Fresh H3 A/B may run with both B0
+replays under the four-process amendment. Final receipt review and cross-bank
+acceptance remain pending.
+
+
+The amended runner hash is
+`ef484ba6e4db750e41ce5a5615283b03ef503c59f5e5ccc73ffca0c344f7446e`.
+Independent patch review accepts launch: feature predicates, tolerances,
+160-point guard, both-family fitting and downstream checks are unchanged.
+The regression suite passes 19 tests, including deeper smooth-peak refinement,
+actual point-budget exhaustion and non-representable-midpoint failure. Ruff,
+production-script strict mypy and diff whitespace checks pass. A strict mypy
+check of the test module additionally exposes three pre-existing dynamic-module
+`no-any-return` errors; these are outside this repair and remain unchanged.

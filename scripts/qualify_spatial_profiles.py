@@ -663,10 +663,21 @@ class Qualification:
             if reasons:
                 pending.append((a, b, sorted(set(reasons))))
         additions = []
-        for depth in range(3):
+        depth = 0
+        while True:
             next_pending = []
             for a, b, reasons in pending:
                 x = (a + b) / 2
+                if not a < x < b:
+                    self.record(
+                        {
+                            "kind": "midpoint_refinement_stagnation",
+                            "bracket_log_h": [a, b],
+                            "depth": depth,
+                            "reasons": reasons,
+                        }
+                    )
+                    raise RuntimeError("pending profile bracket has no representable midpoint")
                 self.midpoint_triggers.append(
                     {
                         "bracket_log_h": [a, b],
@@ -714,8 +725,7 @@ class Qualification:
             if not next_pending:
                 return sorted(set(mesh + additions))
             pending = next_pending
-        self.record({"kind": "midpoint_refinement_cap", "pending": pending})
-        raise RuntimeError("new profile features remain at the bounded midpoint-refinement cap")
+            depth += 1
 
     def switches(self, mesh: list[float], *, tight: bool = False) -> dict[str, Any]:
         switches, ties = [], []
