@@ -47,6 +47,13 @@ remain necessary before rule training and untouched validation. Updated
 repository authority permits reversible development with independent scientific
 review; no production campaign has started.
 
+The [1 November numerical qualification](paper1-profile-bank-qualification-2026-11-01.md)
+now resolves continuous diagnostic profiles and all five bank comparisons
+per history for two fixed 120-site development histories. All eight profiles
+and both pseudo-mass screens pass independent review. This closes that bounded
+numerical gate; higher-accuracy integration, broader numerical challenges,
+260-site behaviour, calibration and production throughput remain separate gates.
+
 Arc 1 is frozen. Arc 2A and Arc 2B have completed prospectively tested
 32-truth recoverability syntheses on one accepted landscape and observation
 design. The working

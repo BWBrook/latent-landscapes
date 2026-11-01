@@ -117,8 +117,11 @@ competing background models belong in one substantial Paper 1. The
 defines the next design. Current numerical development has completed two
 [direct-likelihood profile meshes](docs/paper1-direct-profile-development-2026-10-31.md);
 [independent-bank and continuous-profile qualification](docs/paper1-profile-bank-qualification-2026-11-01.md)
-is in progress. Calibration, higher-accuracy integration, the broader challenge
-suite and production throughput remain to be qualified. See the
+is complete on those two development histories: all eight profiles and all
+five bank comparisons per history pass, with independent review. This is
+bounded numerical qualification. Calibration, higher-accuracy integration,
+260-site behaviour, the broader challenge suite and production throughput
+remain to be qualified. See the
 [current handover](HANDOVER.md) for execution status.
 
 The [11 October evidence synthesis](docs/paper1-evidence-synthesis-2026-10-11.md)

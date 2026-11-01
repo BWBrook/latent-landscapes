@@ -184,3 +184,56 @@ the four H3 profiles share identical 107 Python-source bindings and data
 identities. The comparison embeds the exact audited pseudo-mass receipt and
 binds it to A. No full Adup refit is triggered. B_H3 and joint completion
 remain pending; this finding carries no calibration or globality claim.
+
+
+Fresh B_H3 A passes independent numerical review: 90 standard / 90 tighter
+points, maximum projected gradients 1.25e-4 / 6.84e-5, complete mesh replay
+with maximum shared-point W movement 4.09e-12, maximum root residual
+0.000144 and maximum log-root movement 0.0000242. All selected fits and
+latent modes qualify; there are no envelope violations, domain errors,
+final PD failures or root-bound contacts. All 115 bindings verify.
+
+B_H3 pseudo-mass screening independently reconstructs both free optima,
+35 anchors and six tighter roots, with maximum centred W shift 0.000141959,
+maximum projected gradient 0.000227746 and no material ownership reversal.
+All 120 bindings and the A-receipt, observation and bank identities verify.
+No full Adup refit is triggered. This remains a fixed-fit perturbation result.
+
+
+Fresh B_H3 B also passes independent review: 90 standard / 89 tighter points,
+maximum projected gradients 2.78e-4 / 8.11e-5, maximum shared-point W movement
+9.09e-12, maximum root residual 0.0000867 and maximum log-root movement
+0.0000146. There are no envelope, mode, domain or final PD failures; all
+115 bindings verify. Independent reconstruction accepts the three equal-K
+comparisons B0/A, B0/B and A/B. Their maximum absolute W differences are
+0.03291853, 0.02433087 and 0.00858765; maximum log-root movements are
+0.000828072, 0.000579195 and 0.000248877. All preserve topology and domain
+contacts, source/data identities match, and receipt/comparator hashes verify.
+The pooled B_H3 AB profile and its two nested comparisons remain pending.
+
+
+## Final joint acceptance
+
+The final AB B_H3 profile and complete five-pair B_H3 result pass independent
+native Codex review. AB retains 90 standard / 90 tighter points, with maximum
+projected gradients 6.51e-4 / 8.54e-5. Maximum shared-point W movement is
+7.19e-11, maximum root residual 0.000115 and maximum log-root movement
+0.0000193. All selected positive-variance modes resolve (maximum score
+8.44e-15), with no material envelope violation, domain error or final PD failure.
+
+Independent reconstruction reproduces all five comparisons. The final A/AB
+and B/AB maximum absolute W differences are 0.004419714 and 0.004167939;
+maximum log-root movements are 0.000128530 and 0.000120347. Every component
+count and domain-contact gate passes. All 131 unique live bindings across the
+B_H3 profiles, comparison and pseudo screen verify without conflicts; Python
+source and data identities agree, and the pseudo screen binds the exact A
+receipt. Parent checks confirm all eight archived profiles, two comparisons
+and two pseudo screens match their original receipts byte for byte.
+
+Every final report table reproduces the retained receipts: eight runtime/
+point-count/estimate rows, ten bank-comparison rows and six B0 diagnostic-set
+rows. All 32 outer diagnostics are available; maximum q=1.44333e-11. The
+review accepts the report's restriction to two fixed development histories
+and its exclusion of calibration, globality and Laplace-accuracy claims.
+No report correction is required. Together with the already accepted H3
+result, this completes the authorised bounded numerical qualification.

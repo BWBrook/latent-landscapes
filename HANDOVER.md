@@ -1,28 +1,30 @@
 # Latent Landscapes: current handover
 
-1 November 2026: the h=30 endpoint repair and both B0 continuous-profile
-numerical checks are complete. H3 also passes all five prespecified bank
-comparisons (B0/A, B0/B, A/B, A/AB, B/AB) and its fixed-fit pseudo-mass screen,
-with independent review. Maximum common-anchor LR movement is 0.02161264
-against 0.10; maximum log-root movement is 0.000512974 against 0.05. This is
-one fixed development history, without a calibration or globality claim.
+1 November 2026: the h=30 endpoint repair and bounded continuous-profile /
+independent-bank qualification are **complete and independently accepted**.
+All eight B0/A/B/AB profiles pass numerical checks. All five prespecified bank
+comparisons pass separately in B_H3 and H3, including both pooled-bank checks.
+Maximum common-anchor W differences are 0.03291853 and 0.02161264, respectively,
+against 0.10; maximum log-root movements are 0.000828072 and 0.000512974,
+against 0.05. Both fixed-fit pseudo-mass screens pass without a full Adup refit.
+These are two fixed development histories, without calibration, globality or
+Laplace-accuracy claims. H3's c=6.63 diagnostic set remains truncated at h=1.
 
-B_H3 B0 now passes after a reviewed implementation repair: the initial
-three-round midpoint cap had stopped on its already-known peak. Two additional
-midpoint checks resolved it under the unchanged 160-point limit and all
-original numerical thresholds. The failed receipt and old source remain
-preserved. B_H3 A, B and AB profiles are running; their bank and pseudo-mass
-checks remain unfinished. The
-[qualification record](docs/paper1-profile-bank-qualification-2026-11-01.md)
-and [independent review](docs/evidence/paper1-profile-bank-qualification-2026-11-01/review.md)
-record the evidence and post-outcome implementation deviation.
+B_H3 B0 initially stopped at a three-round midpoint cap while refining its
+known peak. The independently reviewed implementation repair continued the
+unchanged feature checks under the prespecified 160-point guard. The failed
+receipt, old source and post-outcome deviation remain preserved. Read the
+[completed qualification record](docs/paper1-profile-bank-qualification-2026-11-01.md),
+[independent review](docs/evidence/paper1-profile-bank-qualification-2026-11-01/review.md)
+and [figure](docs/evidence/paper1-profile-bank-qualification-2026-11-01/bank-profiles.png).
 
-Current execution state and continuation instructions are in
-`artifacts/paper1_profile_qualification_20261101/execution-state.json` and
-`CONTINUATION.md`; inspect live receipts before launching anything. All eight
-required B0/A/B/AB history profiles have been launched. Goal 062 stays closed.
-Higher-accuracy integration, calibration, the broader challenge suite and
-production throughput remain separate qualifications.
+All required fits have stopped. Completed execution state and continuation
+instructions are in `artifacts/paper1_profile_qualification_20261101/execution-state.json`
+and `CONTINUATION.md`. Goal 062 stays closed. The next useful tranche is a
+bounded higher-accuracy integration comparison, then broader numerical and
+site-count challenges before training and untouched validation. Calibration,
+260-site behaviour and production throughput remain unqualified; no new
+campaign is running.
 
 31 October 2026 (Hobart), direct likelihood and completed numerical meshes.
 
@@ -39,13 +41,13 @@ This clears the previous finite-mesh arithmetic/support failure; it does not
 qualify continuous confidence sets, independent-bank precision, global modes,
 Laplace accuracy, 260-site behaviour or campaign throughput. The evidence
 preserves an unsuccessful intermediate acceleration and an explicitly reviewed
-engineering call-target miss. A pre-existing free-h30 rounding defect remains
-recorded for a targeted fix before boundary-case qualification; fixed-h30
-nodes and these interior free optima are unaffected. Goal 062 stays closed.
+engineering call-target miss. The free-h30 rounding defect recorded at this
+stage is repaired in the 1 November qualification above; fixed-h30 nodes and
+these interior free optima were unaffected. Goal 062 stays closed.
 
-Next: repair that endpoint transform, qualify independent-bank sensitivity
-and continuous profiles, then assess higher-accuracy integration and the
-broader challenge suite. Further runtime work remains necessary.
+The endpoint and two-history bank/profile qualification proposed at this
+stage are now complete, as recorded above. Higher-accuracy integration, the
+broader challenge suite and further runtime work remain necessary.
 
 Barry selected **broader first**: landscape generality and common competing
 background models belong in one substantial Paper 1. The

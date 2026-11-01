@@ -6,6 +6,12 @@ independent-bank sensitivity and continuous-profile qualification. Goal 062
 remains closed. This record continues the
 [direct-profile development](paper1-direct-profile-development-2026-10-31.md).
 
+**Complete:** all eight profiles and all five bank comparisons per history pass,
+with independent review. The largest common-anchor W difference is 0.03291853
+(limit 0.10); the largest log-root movement is 0.000828072 (limit 0.05).
+Neither pseudo-mass screen triggers a full refit. This is bounded numerical
+qualification on two development histories, without a calibration claim.
+
 ## Prospective design and independent review
 
 Claude's Correspondence message 2754 accepts the direct evaluator and completed
@@ -129,7 +135,7 @@ preserved and is not relabelled as the adopted implementation.
 A local bank smoke test precedes the resource choice. BLAS threads are limited
 to one; independent histories can run in separate processes within Mac mini
 memory/CPU capacity. Receipts preserve failures, source hashes and partial
-progress. Execution findings will be added below without revising these gates.
+progress. Execution findings below retain these gates.
 
 The original public loader failed before generating any bank: reconstructing
 the frozen exposure differed by at most 8.88e-16 from the stored values.
@@ -149,8 +155,8 @@ amendment permits up to four profile processes after generation finishes:
 this uses fewer concurrent CPU workers than the initial six, and the live
 Mac memory check showed 48% free during generation plus two profiles. All
 BLAS libraries remain single-threaded; scientific rules and source bytes are
-unchanged. The smoke suggests roughly 49
-minutes for generation; this is a forecast, not the completed runtime.
+unchanged. The smoke forecast roughly 49 minutes for generation; the measured
+completed runtime is reported below.
 
 The proposed Arm-B pre-period ablation is deferred: it changes observation
 design and asks a separate mechanism question. The observed h–sigma trade-off
@@ -203,7 +209,7 @@ maximum projected gradient 0.000304479, and no material family-ownership
 change. Independent reconstruction verifies all 120 bindings and the exact
 A-receipt identity. No full H3 Adup refit is triggered. This is a fixed-fit
 perturbation with latent modes reoptimised, not an optimised Adup profile
-certificate. Pooled AB and the final cross-bank comparisons remain pending.
+certificate. Pooled AB and cross-bank acceptance followed, as reported below.
 
 
 An independently reviewed execution-order amendment permits fresh B_H3 A,
@@ -215,14 +221,107 @@ order only. Acceptance still requires all completed within-bank and cross-bank
 gates. Histories, sources, banks and numerical thresholds remain unchanged.
 
 
-## H3 completed bank comparison
+## Completed numerical and bank qualification
 
-All five prespecified H3 comparisons pass: B0/A, B0/B, A/B, A/AB and B/AB.
-The largest common-anchor absolute W difference is 0.02161264 (A/B at h=30),
-against the 0.10 gate. The largest absolute log-root movement is 0.000512974
-(B0/B), against 0.05. Component counts and h-domain contacts agree throughout.
-The pseudo-mass screen does not require a full Adup refit. This is a result
-for one fixed development history; it neither estimates the distribution of
-bank errors nor validates calibrated confidence sets. The B_H3 fresh-bank
-comparisons remain in progress. Independent aggregate review accepts the H3 result after exact reconstruction
-of every comparison and verification of all 131 unique live file bindings.
+All eight B0/A/B/AB profiles on the two fixed histories pass the within-bank
+numerical checks. All five prespecified comparisons pass separately in each
+history, including both pooled-bank comparisons. Independent result review
+accepts the bounded numerical conclusion. These development histories do not
+estimate the distribution of bank errors or validate calibrated confidence
+sets. The original failed run and post-outcome implementation deviation above
+remain part of this result.
+
+The table reports each successful run's elapsed time, including its standard
+refinement and tighter replay. Runs overlapped, so these are per-run times,
+not total campaign wall time. Concurrency varied between runs, so these are
+not controlled speed comparisons and do not establish production throughput.
+The fitted h is the tighter free-envelope maximiser.
+
+| History | Bank | Minutes | Standard points | Tighter points | Fitted h |
+|---|---|---:|---:|---:|---:|
+| B_H3 | B0 | 125.49 | 108 | 109 | 4.195183 |
+| B_H3 | A | 104.86 | 90 | 90 | 4.197436 |
+| B_H3 | B | 103.40 | 90 | 89 | 4.196760 |
+| B_H3 | AB | 121.40 | 90 | 90 | 4.197087 |
+| H3 | B0 | 72.06 | 100 | 99 | 2.346217 |
+| H3 | A | 63.40 | 104 | 83 | 2.346166 |
+| H3 | B | 57.44 | 78 | 76 | 2.345205 |
+| H3 | AB | 70.48 | 78 | 76 | 2.345673 |
+
+Every comparison preserves detected component counts and h-domain contacts.
+The gates are 0.10 for the maximum absolute W difference on the 35 common
+anchors and 0.05 for maximum absolute log-root movement. No averaging across
+histories is used.
+
+| History | Pair | Maximum absolute W difference | Maximum absolute log-root movement |
+|---|---|---:|---:|
+| B_H3 | B0/A | 0.03291853 | 0.000828072 |
+| B_H3 | B0/B | 0.02433087 | 0.000579195 |
+| B_H3 | A/B | 0.00858765 | 0.000248877 |
+| B_H3 | A/AB | 0.00441971 | 0.000128530 |
+| B_H3 | B/AB | 0.00416794 | 0.000120347 |
+| H3 | B0/A | 0.00407715 | 0.000121939 |
+| H3 | B0/B | 0.01753549 | 0.000512974 |
+| H3 | A/B | 0.02161264 | 0.000492061 |
+| H3 | A/AB | 0.01120236 | 0.000254482 |
+| H3 | B/AB | 0.01041028 | 0.000237579 |
+
+![Numerical profiles and bank differences](evidence/paper1-profile-bank-qualification-2026-11-01/bank-profiles.png)
+
+Lines connect evaluated points; lower panels show differences from B0 at the
+35 common anchors. The tables also retain A/B and both nested comparisons.
+AB doubles bank size and changes pseudo-arrival mass; its comparison is
+therefore interpreted alongside the duplicate-A screen.
+
+## Diagnostic sets, pseudo mass and remaining scope
+
+The original-bank B0 tighter diagnostic sets are:
+
+| History | Diagnostic c | Lower h | Upper h |
+|---|---:|---:|---:|
+| B_H3 | 1 | 3.004932 | 5.851539 |
+| B_H3 | 3.84 | 2.165471 | 8.098336 |
+| B_H3 | 6.63 | 1.742609 | 10.040189 |
+| H3 | 1 | 1.612250 | 3.367199 |
+| H3 | 3.84 | 1.099084 | 4.736331 |
+| H3 | 6.63 | 1.000000 | 5.895949 |
+
+All are single connected detected components. The H3 c=6.63 set is truncated
+at the h=1 domain boundary in every bank. No set reaches h=30. Nuisance-bound
+contacts are retained separately in each receipt; H3's lower c=3.84 crossing
+has a positive-variance lower-bound fit numerically tied with exact zero.
+That contact alone does not establish what determines the endpoint. These
+are uncalibrated diagnostic sets, with no nominal coverage interpretation.
+
+The duplicate-A screens give maximum centred W shifts 0.000141959 for B_H3
+and 0.000400641 for H3, against 0.05. Maximum projected gradients are
+0.000227746 and 0.000304479, against 0.001; neither has a material ownership
+reversal. Independent reconstruction accepts both screens. Neither triggers
+a full Adup refit. These are fixed-outer-fit perturbations with reoptimised
+latent modes, not optimised Adup profile certificates.
+
+All 32 outer-Hessian diagnostics (two families, two finite-difference scales,
+eight profiles) are available; the largest local quadratic one-fit LR
+contribution q is 1.44e-11. The corresponding estimated criterion deficit
+is q/2. These are local diagnostics, not error bounds or replacements for the
+projected-gradient and profile replay gates.
+
+The [completed receipts](evidence/paper1-profile-bank-qualification-2026-11-01/completed-profiles/),
+[H3 comparison](evidence/paper1-profile-bank-qualification-2026-11-01/comparison-H3.json),
+[B_H3 comparison](evidence/paper1-profile-bank-qualification-2026-11-01/comparison-BH3.json),
+[independent reviews](evidence/paper1-profile-bank-qualification-2026-11-01/review.md)
+and [evidence verification](evidence/paper1-profile-bank-qualification-2026-11-01/verification.json)
+retain the source/input identities, numerical checks and failed first execution.
+Individual run receipts remain unchanged; the comparison receipts contain
+the completed cross-bank verdicts. Larger raw banks and detailed evaluation
+logs remain under the recorded local artifact paths.
+
+This closes the authorised endpoint repair and bounded continuous-profile /
+independent-bank qualification. It does not prove global optimisation or
+absence of arbitrarily narrow missed features, quantify Laplace-integration
+error, qualify 260 sites or the broader challenge suite, or establish calibrated
+inference. The next useful tranche is a bounded higher-accuracy integration
+comparison, followed by broader numerical and site-count challenges before
+rule training and untouched validation. Arm-B ablation, remote throughput
+and a production campaign remain separate work. No R analysis or manuscript
+was changed by this qualification tranche.
