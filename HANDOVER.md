@@ -1,3 +1,12 @@
+## Active development challenge — 1 November 2026
+
+Barry authorised proceeding after Claude's review (Correspondence 2801).
+The 32 archived A/B dataset identities and six separate arm-C cases are
+fixed in `docs/paper1-development-challenge-panel-2026-11-01.md` and its
+pre-execution evidence archive. Independent review and 335 focused tests
+accepted preparation. Numerical panel execution is the current task; no
+calibration or production campaign is authorised by this development result.
+
 # Latent Landscapes: current handover
 
 1 November 2026: the h=30 endpoint repair and bounded continuous-profile /

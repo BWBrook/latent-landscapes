@@ -176,6 +176,9 @@ def subset_observations(
             if observed.predator_observed is None
             else observed.predator_observed[row][:, selected]
         ),
+        prey_observed=(
+            None if observed.prey_observed is None else observed.prey_observed[row][:, selected]
+        ),
     )
 
 

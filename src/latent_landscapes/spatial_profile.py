@@ -403,12 +403,14 @@ class SpatialProfileCriterion:
             self.data.observed.prey_counts,
             MEAN_DETECTION,
             key,
+            self.data.observed.prey_observed,
         )
         likelihood._apply_initial_state(
             events,
             alive,
             self.data.observed.prey_counts,
             self.data.observed.initial_alive,
+            self.data.observed.prey_observed,
         )
         result = (events, alive)
         self._prey_emission_cache[key] = result

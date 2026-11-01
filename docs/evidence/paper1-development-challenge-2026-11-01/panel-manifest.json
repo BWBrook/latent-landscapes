@@ -1,0 +1,1002 @@
+{
+  "banks": {
+    "A": {
+      "compressed": "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_profile_qualification_20261101/derived-banks/A/compressed.npz",
+      "manifest": "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_profile_qualification_20261101/derived-banks/manifest.json",
+      "raw": "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_profile_qualification_20261101/derived-banks/A/arrivals.npy"
+    },
+    "B0": {
+      "compressed": "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz",
+      "raw": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy"
+    }
+  },
+  "datasets": [
+    {
+      "arm": "A",
+      "bank_roles": [
+        "B0"
+      ],
+      "biological_history_id": "cell-00-rep-005",
+      "dataset_id": "cell-00-rep-005-arm-A",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-00/rep-005/observations.npz",
+      "source_observations_sha256": "a76741597fff940336612888369269a6156d7c0fe6638e902436a8447fa390fa",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "B",
+      "bank_roles": [
+        "B0"
+      ],
+      "biological_history_id": "cell-00-rep-005",
+      "dataset_id": "cell-00-rep-005-arm-B",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-00/rep-005/observations.npz",
+      "source_observations_sha256": "a76741597fff940336612888369269a6156d7c0fe6638e902436a8447fa390fa",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "A",
+      "bank_roles": [
+        "B0"
+      ],
+      "biological_history_id": "cell-00-rep-006",
+      "dataset_id": "cell-00-rep-006-arm-A",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-00/rep-006/observations.npz",
+      "source_observations_sha256": "be795b25b171f439c017d072acd436ca95e3bba20a8ca69d009d5418a7a45582",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "B",
+      "bank_roles": [
+        "B0"
+      ],
+      "biological_history_id": "cell-00-rep-006",
+      "dataset_id": "cell-00-rep-006-arm-B",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-00/rep-006/observations.npz",
+      "source_observations_sha256": "be795b25b171f439c017d072acd436ca95e3bba20a8ca69d009d5418a7a45582",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "A",
+      "bank_roles": [
+        "B0"
+      ],
+      "biological_history_id": "cell-01-rep-005",
+      "dataset_id": "cell-01-rep-005-arm-A",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-01/rep-005/observations.npz",
+      "source_observations_sha256": "9f89c767770735bef35ba47b3c35b923dccf31f4ec777faff5bc9b618d20e7e2",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "B",
+      "bank_roles": [
+        "B0"
+      ],
+      "biological_history_id": "cell-01-rep-005",
+      "dataset_id": "cell-01-rep-005-arm-B",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-01/rep-005/observations.npz",
+      "source_observations_sha256": "9f89c767770735bef35ba47b3c35b923dccf31f4ec777faff5bc9b618d20e7e2",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "A",
+      "bank_roles": [
+        "B0"
+      ],
+      "biological_history_id": "cell-01-rep-006",
+      "dataset_id": "cell-01-rep-006-arm-A",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-01/rep-006/observations.npz",
+      "source_observations_sha256": "3cd06fa8b3128cb1bb638c05a754459cbe86cf957970a39c61145297597fd2ec",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "B",
+      "bank_roles": [
+        "B0"
+      ],
+      "biological_history_id": "cell-01-rep-006",
+      "dataset_id": "cell-01-rep-006-arm-B",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-01/rep-006/observations.npz",
+      "source_observations_sha256": "3cd06fa8b3128cb1bb638c05a754459cbe86cf957970a39c61145297597fd2ec",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "A",
+      "bank_roles": [
+        "B0",
+        "A"
+      ],
+      "biological_history_id": "cell-03-rep-005",
+      "dataset_id": "cell-03-rep-005-arm-A",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-03/rep-005/observations.npz",
+      "source_observations_sha256": "8afaadd6f1faf5c8d76a91638ce232b37cdd6268e01e5570c80ceaa8f82db501",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "B",
+      "bank_roles": [
+        "B0",
+        "A"
+      ],
+      "biological_history_id": "cell-03-rep-005",
+      "dataset_id": "cell-03-rep-005-arm-B",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-03/rep-005/observations.npz",
+      "source_observations_sha256": "8afaadd6f1faf5c8d76a91638ce232b37cdd6268e01e5570c80ceaa8f82db501",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "A",
+      "bank_roles": [
+        "B0",
+        "A"
+      ],
+      "biological_history_id": "cell-03-rep-006",
+      "dataset_id": "cell-03-rep-006-arm-A",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-03/rep-006/observations.npz",
+      "source_observations_sha256": "e6fd5d5bf72201e49a6c43aaffc2e0b3cb26c2bcab5602144ea631116328c48e",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "B",
+      "bank_roles": [
+        "B0",
+        "A"
+      ],
+      "biological_history_id": "cell-03-rep-006",
+      "dataset_id": "cell-03-rep-006-arm-B",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-03/rep-006/observations.npz",
+      "source_observations_sha256": "e6fd5d5bf72201e49a6c43aaffc2e0b3cb26c2bcab5602144ea631116328c48e",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "A",
+      "bank_roles": [
+        "B0",
+        "A"
+      ],
+      "biological_history_id": "cell-04-rep-005",
+      "dataset_id": "cell-04-rep-005-arm-A",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-04/rep-005/observations.npz",
+      "source_observations_sha256": "3831b36001f7b21b72a894c5c2fddd81b2960c754cc26cd2f439d5487b45d0ad",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "B",
+      "bank_roles": [
+        "B0",
+        "A"
+      ],
+      "biological_history_id": "cell-04-rep-005",
+      "dataset_id": "cell-04-rep-005-arm-B",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-04/rep-005/observations.npz",
+      "source_observations_sha256": "3831b36001f7b21b72a894c5c2fddd81b2960c754cc26cd2f439d5487b45d0ad",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "A",
+      "bank_roles": [
+        "B0",
+        "A"
+      ],
+      "biological_history_id": "cell-04-rep-006",
+      "dataset_id": "cell-04-rep-006-arm-A",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-04/rep-006/observations.npz",
+      "source_observations_sha256": "c5607e040e46414474c5cce56b2dc226eb356d1990331ac5c9cb8903f9f31df9",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "B",
+      "bank_roles": [
+        "B0",
+        "A"
+      ],
+      "biological_history_id": "cell-04-rep-006",
+      "dataset_id": "cell-04-rep-006-arm-B",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-04/rep-006/observations.npz",
+      "source_observations_sha256": "c5607e040e46414474c5cce56b2dc226eb356d1990331ac5c9cb8903f9f31df9",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "A",
+      "bank_roles": [
+        "B0"
+      ],
+      "biological_history_id": "cell-06-rep-005",
+      "dataset_id": "cell-06-rep-005-arm-A",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-06/rep-005/observations.npz",
+      "source_observations_sha256": "fea5b63f809c103f7af4dd5a2c685aff1960df7ad00133c0d4cf527ab22a3bc2",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "B",
+      "bank_roles": [
+        "B0"
+      ],
+      "biological_history_id": "cell-06-rep-005",
+      "dataset_id": "cell-06-rep-005-arm-B",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-06/rep-005/observations.npz",
+      "source_observations_sha256": "fea5b63f809c103f7af4dd5a2c685aff1960df7ad00133c0d4cf527ab22a3bc2",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "A",
+      "bank_roles": [
+        "B0"
+      ],
+      "biological_history_id": "cell-06-rep-006",
+      "dataset_id": "cell-06-rep-006-arm-A",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-06/rep-006/observations.npz",
+      "source_observations_sha256": "55b5e74eafec472afdb23e159915579a4dabfabdb2586c56e69d6953c2b870c5",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "B",
+      "bank_roles": [
+        "B0"
+      ],
+      "biological_history_id": "cell-06-rep-006",
+      "dataset_id": "cell-06-rep-006-arm-B",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-06/rep-006/observations.npz",
+      "source_observations_sha256": "55b5e74eafec472afdb23e159915579a4dabfabdb2586c56e69d6953c2b870c5",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "A",
+      "bank_roles": [
+        "B0"
+      ],
+      "biological_history_id": "cell-07-rep-005",
+      "dataset_id": "cell-07-rep-005-arm-A",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-07/rep-005/observations.npz",
+      "source_observations_sha256": "8780712b89bdbf397bfc62b1bfd93f0f8c13f5ba120cb694f1459c4685dc8995",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "B",
+      "bank_roles": [
+        "B0"
+      ],
+      "biological_history_id": "cell-07-rep-005",
+      "dataset_id": "cell-07-rep-005-arm-B",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-07/rep-005/observations.npz",
+      "source_observations_sha256": "8780712b89bdbf397bfc62b1bfd93f0f8c13f5ba120cb694f1459c4685dc8995",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "A",
+      "bank_roles": [
+        "B0"
+      ],
+      "biological_history_id": "cell-07-rep-006",
+      "dataset_id": "cell-07-rep-006-arm-A",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-07/rep-006/observations.npz",
+      "source_observations_sha256": "50c7830b2f098b4ad42a79f3348595bce427bfaad30a3ae066df4693a769203b",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "B",
+      "bank_roles": [
+        "B0"
+      ],
+      "biological_history_id": "cell-07-rep-006",
+      "dataset_id": "cell-07-rep-006-arm-B",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-07/rep-006/observations.npz",
+      "source_observations_sha256": "50c7830b2f098b4ad42a79f3348595bce427bfaad30a3ae066df4693a769203b",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "A",
+      "bank_roles": [
+        "B0",
+        "A"
+      ],
+      "biological_history_id": "cell-08-rep-005",
+      "dataset_id": "cell-08-rep-005-arm-A",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-08/rep-005/observations.npz",
+      "source_observations_sha256": "7c04b757965f983322869d63fb877d1220632a2fb0e5a71984be06af4cd50963",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "B",
+      "bank_roles": [
+        "B0",
+        "A"
+      ],
+      "biological_history_id": "cell-08-rep-005",
+      "dataset_id": "cell-08-rep-005-arm-B",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-08/rep-005/observations.npz",
+      "source_observations_sha256": "7c04b757965f983322869d63fb877d1220632a2fb0e5a71984be06af4cd50963",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "A",
+      "bank_roles": [
+        "B0",
+        "A"
+      ],
+      "biological_history_id": "cell-08-rep-006",
+      "dataset_id": "cell-08-rep-006-arm-A",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-08/rep-006/observations.npz",
+      "source_observations_sha256": "dabcb7904408f2a8f80b15de32a98b7a70315b7674198d2398970e18a775169e",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "B",
+      "bank_roles": [
+        "B0",
+        "A"
+      ],
+      "biological_history_id": "cell-08-rep-006",
+      "dataset_id": "cell-08-rep-006-arm-B",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-08/rep-006/observations.npz",
+      "source_observations_sha256": "dabcb7904408f2a8f80b15de32a98b7a70315b7674198d2398970e18a775169e",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "A",
+      "bank_roles": [
+        "B0",
+        "A"
+      ],
+      "biological_history_id": "cell-09-rep-005",
+      "dataset_id": "cell-09-rep-005-arm-A",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-005/observations.npz",
+      "source_observations_sha256": "431f0c4050231d523b05e8fb410bc2843507dd82bf1181a15bf5d14ea5e87186",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "B",
+      "bank_roles": [
+        "B0",
+        "A"
+      ],
+      "biological_history_id": "cell-09-rep-005",
+      "dataset_id": "cell-09-rep-005-arm-B",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-005/observations.npz",
+      "source_observations_sha256": "431f0c4050231d523b05e8fb410bc2843507dd82bf1181a15bf5d14ea5e87186",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "A",
+      "bank_roles": [
+        "B0",
+        "A"
+      ],
+      "biological_history_id": "cell-09-rep-006",
+      "dataset_id": "cell-09-rep-006-arm-A",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-006/observations.npz",
+      "source_observations_sha256": "22052bdcabee890f71925888eec980cc729098f4a22f996c64cd7e6087aef3c3",
+      "stratum": "archived_reference_map"
+    },
+    {
+      "arm": "B",
+      "bank_roles": [
+        "B0",
+        "A"
+      ],
+      "biological_history_id": "cell-09-rep-006",
+      "dataset_id": "cell-09-rep-006-arm-B",
+      "input_dir": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs",
+      "site_count": 120,
+      "source_observations": "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-006/observations.npz",
+      "source_observations_sha256": "22052bdcabee890f71925888eec980cc729098f4a22f996c64cd7e6087aef3c3",
+      "stratum": "archived_reference_map"
+    }
+  ],
+  "geometry_source_sha256": {
+    "artifacts/paper1_profile_development_20261018/check-master-selector.py": "4f055b7e7c112c781d8354d9b744c9d246fac35ec67ee35e4a8e3541c0ada245",
+    "src/latent_landscapes/adjusted_background_likelihood.py": "40723669f89f4cdc4d47f0da76f6e2f24cf527d19dd9e5a98838131b18ec2e88",
+    "src/latent_landscapes/arc2b_campaign.py": "95abe42be7044d65a965f9c5a154a8530016f30dfa9e53bdad9b488cfecee94f",
+    "src/latent_landscapes/arc3_landscapes.py": "0491b263ec73a145de321d933db7b4e9276c142e2dcc84a5f8f146615ecf8547",
+    "src/latent_landscapes/capstone_public.py": "8841e398ddd3d58c0a340b5164958254df778eadcb1b3d74a72a856a4ef30f56",
+    "src/latent_landscapes/development_challenge_data.py": "63a1cc021d280d9c55bbc1d127f8453a545ec4c25b0f3bde8631ee699fd9cf86",
+    "src/latent_landscapes/final_procedure_evaluation.py": "8c7370a7c29f99fda5b175cc3efd34276a43d947414726a045c7515fa6c3d431",
+    "src/latent_landscapes/goal001/design.py": "44d8971821cd0f2019049f9970893b4c277a1a1c25c352c2b5fe6cdda71f44db",
+    "src/latent_landscapes/goal001/landscape.py": "4d17ba892b94ed112c992812874e6a03afd63a63a34bdb4f4de83491dc778920",
+    "src/latent_landscapes/goal001/spread.py": "6a607577301e3e36e3ca85a85d6eacef00adf61417cc3fbd494296bf46b94983",
+    "src/latent_landscapes/goal006/spread.py": "3c2eacb55944891f9a20ae9f8165544a180882f54fda5e91a3f8678aeb2145fc",
+    "src/latent_landscapes/misspecification_generator.py": "e323f7554b1a6b72cfbccdba664d12a094811c12108c4537b5fad3b0519ecfbb",
+    "src/latent_landscapes/monitoring_design.py": "3aa7926892abeb2f900ebfdff9b1d5e1660fdf9fe14b539a27eaa7e7818ae26f",
+    "src/latent_landscapes/preinvasion_campaign.py": "160e76fdb37b4a73deaa6802a61b94e1968badcc707e62478dd2f68ec3cf0351"
+  },
+  "independence": "16 biological histories; 32 paired-arm datasets, not 32 replicates",
+  "optional_c_cases": [
+    {
+      "archetype": "connected",
+      "arm": "C",
+      "bank_seed_policy": {
+        "address": [
+          2026110107,
+          711,
+          2,
+          0,
+          "row"
+        ],
+        "namespace": 711,
+        "root": 2026110107,
+        "stage": 2
+      },
+      "dataset_id": "C-map-00-case-00",
+      "map_index": 0,
+      "map_seed": 2026101801,
+      "reporting": {
+        "background": "exact",
+        "beta": 0.5,
+        "detection_sd": 0.2,
+        "h": 1.0,
+        "mu": 0.004
+      },
+      "sampling_seeds": [
+        2026101811,
+        2026101911,
+        2026102011
+      ],
+      "seeds": {
+        "address": [
+          2026110107,
+          711,
+          1,
+          0,
+          0
+        ],
+        "namespace": 711,
+        "root": 2026110107,
+        "stage": 1,
+        "streams": {
+          "predator_visits": 4719509067043781349,
+          "prey_loss": 6532400150235900155,
+          "prey_visits": 5724899578887305812,
+          "site_detection": 11519463525344194914,
+          "spread": 394973200840447397
+        }
+      },
+      "site_count": 260,
+      "stratum": "new_master_panel"
+    },
+    {
+      "archetype": "connected",
+      "arm": "C",
+      "bank_seed_policy": {
+        "address": [
+          2026110107,
+          711,
+          2,
+          0,
+          "row"
+        ],
+        "namespace": 711,
+        "root": 2026110107,
+        "stage": 2
+      },
+      "dataset_id": "C-map-00-case-01",
+      "map_index": 0,
+      "map_seed": 2026101801,
+      "reporting": {
+        "background": "exact",
+        "beta": 0.5,
+        "detection_sd": 0.2,
+        "h": 3.0,
+        "mu": 0.004
+      },
+      "sampling_seeds": [
+        2026101811,
+        2026101911,
+        2026102011
+      ],
+      "seeds": {
+        "address": [
+          2026110107,
+          711,
+          1,
+          0,
+          1
+        ],
+        "namespace": 711,
+        "root": 2026110107,
+        "stage": 1,
+        "streams": {
+          "predator_visits": 18352832765273478951,
+          "prey_loss": 14253185835869126069,
+          "prey_visits": 1436083801793646825,
+          "site_detection": 6718016956354848450,
+          "spread": 2241696910652826737
+        }
+      },
+      "site_count": 260,
+      "stratum": "new_master_panel"
+    },
+    {
+      "archetype": "corridor",
+      "arm": "C",
+      "bank_seed_policy": {
+        "address": [
+          2026110107,
+          711,
+          2,
+          1,
+          "row"
+        ],
+        "namespace": 711,
+        "root": 2026110107,
+        "stage": 2
+      },
+      "dataset_id": "C-map-01-case-00",
+      "map_index": 1,
+      "map_seed": 2026101802,
+      "reporting": {
+        "background": "exact",
+        "beta": 0.5,
+        "detection_sd": 0.2,
+        "h": 1.0,
+        "mu": 0.004
+      },
+      "sampling_seeds": [
+        2026101812,
+        2026101912,
+        2026102012
+      ],
+      "seeds": {
+        "address": [
+          2026110107,
+          711,
+          1,
+          1,
+          0
+        ],
+        "namespace": 711,
+        "root": 2026110107,
+        "stage": 1,
+        "streams": {
+          "predator_visits": 4844144794113258121,
+          "prey_loss": 4096154793647268184,
+          "prey_visits": 16651294427257373711,
+          "site_detection": 5914995791306844314,
+          "spread": 13773033871594068224
+        }
+      },
+      "site_count": 260,
+      "stratum": "new_master_panel"
+    },
+    {
+      "archetype": "corridor",
+      "arm": "C",
+      "bank_seed_policy": {
+        "address": [
+          2026110107,
+          711,
+          2,
+          1,
+          "row"
+        ],
+        "namespace": 711,
+        "root": 2026110107,
+        "stage": 2
+      },
+      "dataset_id": "C-map-01-case-01",
+      "map_index": 1,
+      "map_seed": 2026101802,
+      "reporting": {
+        "background": "exact",
+        "beta": 0.5,
+        "detection_sd": 0.2,
+        "h": 3.0,
+        "mu": 0.004
+      },
+      "sampling_seeds": [
+        2026101812,
+        2026101912,
+        2026102012
+      ],
+      "seeds": {
+        "address": [
+          2026110107,
+          711,
+          1,
+          1,
+          1
+        ],
+        "namespace": 711,
+        "root": 2026110107,
+        "stage": 1,
+        "streams": {
+          "predator_visits": 1655169996096219909,
+          "prey_loss": 2170811836900359475,
+          "prey_visits": 8339381254210751134,
+          "site_detection": 2914812063939804756,
+          "spread": 4972541356373729113
+        }
+      },
+      "site_count": 260,
+      "stratum": "new_master_panel"
+    },
+    {
+      "archetype": "barrier",
+      "arm": "C",
+      "bank_seed_policy": {
+        "address": [
+          2026110107,
+          711,
+          2,
+          2,
+          "row"
+        ],
+        "namespace": 711,
+        "root": 2026110107,
+        "stage": 2
+      },
+      "dataset_id": "C-map-02-case-00",
+      "map_index": 2,
+      "map_seed": 2026101803,
+      "reporting": {
+        "background": "exact",
+        "beta": 0.5,
+        "detection_sd": 0.2,
+        "h": 1.0,
+        "mu": 0.004
+      },
+      "sampling_seeds": [
+        2026101813,
+        2026101913,
+        2026102013
+      ],
+      "seeds": {
+        "address": [
+          2026110107,
+          711,
+          1,
+          2,
+          0
+        ],
+        "namespace": 711,
+        "root": 2026110107,
+        "stage": 1,
+        "streams": {
+          "predator_visits": 1291863195771919088,
+          "prey_loss": 8389000694951348723,
+          "prey_visits": 5905080614686992452,
+          "site_detection": 2467749110000996010,
+          "spread": 3294283863935404766
+        }
+      },
+      "site_count": 260,
+      "stratum": "new_master_panel"
+    },
+    {
+      "archetype": "barrier",
+      "arm": "C",
+      "bank_seed_policy": {
+        "address": [
+          2026110107,
+          711,
+          2,
+          2,
+          "row"
+        ],
+        "namespace": 711,
+        "root": 2026110107,
+        "stage": 2
+      },
+      "dataset_id": "C-map-02-case-01",
+      "map_index": 2,
+      "map_seed": 2026101803,
+      "reporting": {
+        "background": "exact",
+        "beta": 0.5,
+        "detection_sd": 0.2,
+        "h": 3.0,
+        "mu": 0.004
+      },
+      "sampling_seeds": [
+        2026101813,
+        2026101913,
+        2026102013
+      ],
+      "seeds": {
+        "address": [
+          2026110107,
+          711,
+          1,
+          2,
+          1
+        ],
+        "namespace": 711,
+        "root": 2026110107,
+        "stage": 1,
+        "streams": {
+          "predator_visits": 10247902084808398121,
+          "prey_loss": 13272756840629539471,
+          "prey_visits": 2110537199067214478,
+          "site_detection": 8846105952838637457,
+          "spread": 14047895539559243360
+        }
+      },
+      "site_count": 260,
+      "stratum": "new_master_panel"
+    }
+  ],
+  "original_source_root": "/Users/bwbrook/papers/latent-landscapes",
+  "reporting": {
+    "cell-00-rep-005": {
+      "background": "exact",
+      "beta": 0.5,
+      "detection_sd": 0.2,
+      "h": 1.0,
+      "index": 0,
+      "label": "L1",
+      "mu": 0.001
+    },
+    "cell-00-rep-006": {
+      "background": "exact",
+      "beta": 0.5,
+      "detection_sd": 0.2,
+      "h": 1.0,
+      "index": 0,
+      "label": "L1",
+      "mu": 0.001
+    },
+    "cell-01-rep-005": {
+      "background": "exact",
+      "beta": 0.5,
+      "detection_sd": 0.2,
+      "h": 3.0,
+      "index": 1,
+      "label": "L3",
+      "mu": 0.001
+    },
+    "cell-01-rep-006": {
+      "background": "exact",
+      "beta": 0.5,
+      "detection_sd": 0.2,
+      "h": 3.0,
+      "index": 1,
+      "label": "L3",
+      "mu": 0.001
+    },
+    "cell-03-rep-005": {
+      "background": "exact",
+      "beta": 0.5,
+      "detection_sd": 0.2,
+      "h": 1.0,
+      "index": 3,
+      "label": "H1",
+      "mu": 0.004
+    },
+    "cell-03-rep-006": {
+      "background": "exact",
+      "beta": 0.5,
+      "detection_sd": 0.2,
+      "h": 1.0,
+      "index": 3,
+      "label": "H1",
+      "mu": 0.004
+    },
+    "cell-04-rep-005": {
+      "background": "exact",
+      "beta": 0.5,
+      "detection_sd": 0.2,
+      "h": 3.0,
+      "index": 4,
+      "label": "H3",
+      "mu": 0.004
+    },
+    "cell-04-rep-006": {
+      "background": "exact",
+      "beta": 0.5,
+      "detection_sd": 0.2,
+      "h": 3.0,
+      "index": 4,
+      "label": "H3",
+      "mu": 0.004
+    },
+    "cell-06-rep-005": {
+      "background": "B100-A",
+      "beta": null,
+      "detection_sd": 0.2,
+      "h": 1.0,
+      "index": 6,
+      "label": "B_L1",
+      "mu": 0.001
+    },
+    "cell-06-rep-006": {
+      "background": "B100-A",
+      "beta": null,
+      "detection_sd": 0.2,
+      "h": 1.0,
+      "index": 6,
+      "label": "B_L1",
+      "mu": 0.001
+    },
+    "cell-07-rep-005": {
+      "background": "B100-A",
+      "beta": null,
+      "detection_sd": 0.2,
+      "h": 3.0,
+      "index": 7,
+      "label": "B_L3",
+      "mu": 0.001
+    },
+    "cell-07-rep-006": {
+      "background": "B100-A",
+      "beta": null,
+      "detection_sd": 0.2,
+      "h": 3.0,
+      "index": 7,
+      "label": "B_L3",
+      "mu": 0.001
+    },
+    "cell-08-rep-005": {
+      "background": "B100-A",
+      "beta": null,
+      "detection_sd": 0.2,
+      "h": 1.0,
+      "index": 8,
+      "label": "B_H1",
+      "mu": 0.004
+    },
+    "cell-08-rep-006": {
+      "background": "B100-A",
+      "beta": null,
+      "detection_sd": 0.2,
+      "h": 1.0,
+      "index": 8,
+      "label": "B_H1",
+      "mu": 0.004
+    },
+    "cell-09-rep-005": {
+      "background": "B100-A",
+      "beta": null,
+      "detection_sd": 0.2,
+      "h": 3.0,
+      "index": 9,
+      "label": "B_H3",
+      "mu": 0.004
+    },
+    "cell-09-rep-006": {
+      "background": "B100-A",
+      "beta": null,
+      "detection_sd": 0.2,
+      "h": 3.0,
+      "index": 9,
+      "label": "B_H3",
+      "mu": 0.004
+    }
+  },
+  "schema": "development-challenge-manifest-v1",
+  "selector_receipt": "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_profile_development_20261018/master-selector-three-map.json",
+  "selector_receipt_relative": "artifacts/paper1_profile_development_20261018/master-selector-three-map.json",
+  "selector_receipt_sha256": "ff66f4084676d62f533355b8e5a7f344e58d42c06673fe489ea1467b4f0586b9",
+  "source_input_sha256": {
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/arrival_bank/arrivals.npy": "168bd6ddd2aca5a0a0bbae27773a6c3b89e011e23713a6124632787b89b738dc",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs/exposure.npz": "b74004fc9ecf03499cfdc9ecca4919b0e17987eba405709f4e3f95f9bc9c0831",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal060_execution/audit-repair/public_inputs/public_inputs.npz": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-00/rep-005/evaluator.json": "8f1dca6e369f7fb25351be73dd79753eb5b2455b1d64452e67431de5054ee415",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-00/rep-005/inputs-complete.json": "640afb9d3d5f94c44f2f76ab1d0bbfbecc545b5b774c7e64ef59e9870ea6e330",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-00/rep-005/observations.npz": "a76741597fff940336612888369269a6156d7c0fe6638e902436a8447fa390fa",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-00/rep-006/evaluator.json": "0d92d78a4051eb8f38f8d5cc2c7efd5d367d4ac8bdfa4ee88b02771f8d028b15",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-00/rep-006/inputs-complete.json": "1e9644426b3c26119bd93a667523668ff69deb908377bc7b11495852801feb9f",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-00/rep-006/observations.npz": "be795b25b171f439c017d072acd436ca95e3bba20a8ca69d009d5418a7a45582",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-01/rep-005/evaluator.json": "99b4af1b51ffe95b30b1d50be2f44bb21ad84e00d50c910d5640a22357925b8e",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-01/rep-005/inputs-complete.json": "4c77a049f0c88b8716b6d1ce776cd89650ef46733de4b04bdecff637691af803",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-01/rep-005/observations.npz": "9f89c767770735bef35ba47b3c35b923dccf31f4ec777faff5bc9b618d20e7e2",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-01/rep-006/evaluator.json": "2f266992895a0f6113427e027fe192bf093ab75b3598c1e067640178431c47c8",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-01/rep-006/inputs-complete.json": "5d1b63cc7b5b199cd995765b22166aef9c5cb28435b1ebf8f1ea29e198cc6deb",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-01/rep-006/observations.npz": "3cd06fa8b3128cb1bb638c05a754459cbe86cf957970a39c61145297597fd2ec",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-03/rep-005/evaluator.json": "4c38457ac106c45fc9fb0d5c3f9129b5eb2e7498644224a63d91840dd8fde966",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-03/rep-005/inputs-complete.json": "3882561244cba2cd04ffeb2c3d4ef09f65a7c8676db6120a7af2754f100e8845",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-03/rep-005/observations.npz": "8afaadd6f1faf5c8d76a91638ce232b37cdd6268e01e5570c80ceaa8f82db501",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-03/rep-006/evaluator.json": "c26701ca9d0c656341aae0a48809d299b097f9d5d43eb4c8ffec54e42c0705ea",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-03/rep-006/inputs-complete.json": "99def81abc3e58071658109479738dbf334a5f93ed6cd3d5e710f00cb9ec77bc",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-03/rep-006/observations.npz": "e6fd5d5bf72201e49a6c43aaffc2e0b3cb26c2bcab5602144ea631116328c48e",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-04/rep-005/evaluator.json": "e61018888473cef5774695d170663682c1754f08e3dece4dbe5269d24f3f3ad5",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-04/rep-005/inputs-complete.json": "2e8463a3dfc0bd9b24d8bda68b32a42e772dca08863770b682bebb0dbfbbdfdd",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-04/rep-005/observations.npz": "3831b36001f7b21b72a894c5c2fddd81b2960c754cc26cd2f439d5487b45d0ad",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-04/rep-006/evaluator.json": "cc69b5c2f56edf3f5c71574bbdab496fcb9a722b85b6852ca3efc5f69c98e09b",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-04/rep-006/inputs-complete.json": "f5d488e269f23dd005cb83ef54631b502d73b404ef135d74f24b4bbdfb68ece9",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-04/rep-006/observations.npz": "c5607e040e46414474c5cce56b2dc226eb356d1990331ac5c9cb8903f9f31df9",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-06/rep-005/evaluator.json": "e977475f9aeba20dd167aac8c44451585f29ab6b1c6e5b194b833f963ba5a075",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-06/rep-005/inputs-complete.json": "74e723906284223ad8552f2aa29f1392d26ce09ef91c5eadd56f0739aa76cfe1",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-06/rep-005/observations.npz": "fea5b63f809c103f7af4dd5a2c685aff1960df7ad00133c0d4cf527ab22a3bc2",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-06/rep-006/evaluator.json": "a8b83d9903a09fc44e1c17983dad2b71e3e6c841b165f6e0581abe7e54e8d4ed",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-06/rep-006/inputs-complete.json": "57d7db0af01a19634cb3381a1ba9e34b89d5e8de34433e2b41c9fa4480487b92",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-06/rep-006/observations.npz": "55b5e74eafec472afdb23e159915579a4dabfabdb2586c56e69d6953c2b870c5",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-07/rep-005/evaluator.json": "71903f7ee7dbd20a79884f3afe5eec71d4744851d1de430f87553a27a4249fdd",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-07/rep-005/inputs-complete.json": "37c0fe317efcfcce656f3d10bb8c3a8a6d6d1959ad3d569aa497ab36c1d8dea2",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-07/rep-005/observations.npz": "8780712b89bdbf397bfc62b1bfd93f0f8c13f5ba120cb694f1459c4685dc8995",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-07/rep-006/evaluator.json": "6f9da21aa2dc8e07ba1d886caab1eac98dc0efa44164e31808b7aa8f4202cb25",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-07/rep-006/inputs-complete.json": "5b563fe764c3e11dc69aa0b506ebdf574a040df1aba3461b800f3ba715a31165",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-07/rep-006/observations.npz": "50c7830b2f098b4ad42a79f3348595bce427bfaad30a3ae066df4693a769203b",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-08/rep-005/evaluator.json": "17eac099217588810f52279219cf52dab357b5f72d5b30e0d28992ca3028314d",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-08/rep-005/inputs-complete.json": "7b20be0d82682a965287a7108b796ad9554c3e55cf212a53174cd746c494b94a",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-08/rep-005/observations.npz": "7c04b757965f983322869d63fb877d1220632a2fb0e5a71984be06af4cd50963",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-08/rep-006/evaluator.json": "f6242dab8ac63f219ecd3b0488719ecfda38abc943c84873e39253fabe370079",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-08/rep-006/inputs-complete.json": "24a7da4b285a061a957be559b27af58cbcaa91a9bc0b4ed35a730745f9b42c06",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-08/rep-006/observations.npz": "dabcb7904408f2a8f80b15de32a98b7a70315b7674198d2398970e18a775169e",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-005/evaluator.json": "f64347a9392ffda948dc0e19ed6bf48e4671f9cbf62a1a4fb0c2f7f79c93ce58",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-005/inputs-complete.json": "62860e7dc8c56664a23c90412e0ed7a48f9a1dfb2a3967aef516d64da2879a1b",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-005/observations.npz": "431f0c4050231d523b05e8fb410bc2843507dd82bf1181a15bf5d14ea5e87186",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-006/evaluator.json": "5b5a27951f940505d425384eda7478257e33e6d0f631d454bd3308d778f29104",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-006/inputs-complete.json": "c2959d1f12c55e276174840ed4074a2af4c567dfaf032c052babb1583be79945",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/goal062_execution/completed-20261015/snapshot/production/evaluation/cell-09/rep-006/observations.npz": "22052bdcabee890f71925888eec980cc729098f4a22f996c64cd7e6087aef3c3",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_profile_development_20261018/arrival-bank-order192.npz": "76b924609e4c538368284b06d5c08bc51c4c885740f5040ad213c1c2c7d4038b",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_profile_development_20261018/check-master-selector.py": "4f055b7e7c112c781d8354d9b744c9d246fac35ec67ee35e4a8e3541c0ada245",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_profile_development_20261018/master-selector-three-map.json": "ff66f4084676d62f533355b8e5a7f344e58d42c06673fe489ea1467b4f0586b9",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_profile_qualification_20261101/derived-banks/A/arrivals.npy": "bd4d3acde509ff96ec69b1ac4341360ad7d96ab781f2a2cfa8db943fb939c230",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_profile_qualification_20261101/derived-banks/A/compressed.npz": "9299c562e158336781f7728069724f068e13693c29b1ac80604bc66df4e70397",
+    "/Users/bwbrook/papers/latent-landscapes/artifacts/paper1_profile_qualification_20261101/derived-banks/manifest.json": "6ded188245fe491731c20bb99f5fb73f5e309f1c9bfdcf5fd8ed1d2ee1e03f17",
+    "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/adjusted_background_likelihood.py": "40723669f89f4cdc4d47f0da76f6e2f24cf527d19dd9e5a98838131b18ec2e88",
+    "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/arc2b_campaign.py": "95abe42be7044d65a965f9c5a154a8530016f30dfa9e53bdad9b488cfecee94f",
+    "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/arc3_landscapes.py": "0491b263ec73a145de321d933db7b4e9276c142e2dcc84a5f8f146615ecf8547",
+    "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/capstone_public.py": "8841e398ddd3d58c0a340b5164958254df778eadcb1b3d74a72a856a4ef30f56",
+    "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/development_challenge_data.py": "63a1cc021d280d9c55bbc1d127f8453a545ec4c25b0f3bde8631ee699fd9cf86",
+    "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/final_procedure_evaluation.py": "8c7370a7c29f99fda5b175cc3efd34276a43d947414726a045c7515fa6c3d431",
+    "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/goal001/design.py": "44d8971821cd0f2019049f9970893b4c277a1a1c25c352c2b5fe6cdda71f44db",
+    "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/goal001/landscape.py": "4d17ba892b94ed112c992812874e6a03afd63a63a34bdb4f4de83491dc778920",
+    "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/goal001/spread.py": "6a607577301e3e36e3ca85a85d6eacef00adf61417cc3fbd494296bf46b94983",
+    "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/goal006/spread.py": "3c2eacb55944891f9a20ae9f8165544a180882f54fda5e91a3f8678aeb2145fc",
+    "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/misspecification_generator.py": "e323f7554b1a6b72cfbccdba664d12a094811c12108c4537b5fad3b0519ecfbb",
+    "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/monitoring_design.py": "3aa7926892abeb2f900ebfdff9b1d5e1660fdf9fe14b539a27eaa7e7818ae26f",
+    "/Users/bwbrook/papers/latent-landscapes/src/latent_landscapes/preinvasion_campaign.py": "160e76fdb37b4a73deaa6802a61b94e1968badcc707e62478dd2f68ec3cf0351"
+  },
+  "state": "identities_frozen_no_outcomes_loaded"
+}

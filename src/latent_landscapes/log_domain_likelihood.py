@@ -170,27 +170,34 @@ def build_log_quadrature(
     )
 
 
-def _log_prey_emissions(counts: IntArray, p: float, sd: float) -> tuple[FloatArray, FloatArray]:
+def _log_prey_emissions(
+    counts: IntArray,
+    p: float,
+    sd: float,
+    observed: NDArray[np.bool_] | None = None,
+) -> tuple[FloatArray, FloatArray]:
     n, sites, occasions = counts.shape
-    log_comb = np.log(np.asarray((1.0, 2.0, 1.0), dtype=np.float64))[counts]
-    cumulative_comb = np.cumsum(log_comb, axis=2)
-    cumulative_total = np.cumsum(counts, axis=2, dtype=np.int64)
+    effective, cumulative_comb, cumulative_total, cumulative_trials = (
+        probability_likelihood._prey_observation_statistics(counts, observed)
+    )
     max_count = 2 * occasions
     total = cumulative_total[:, :, -1]
+    trials = cumulative_trials[:, :, -1]
     log_p = math.log(p)
     log_q = math.log1p(-p)
 
     if sd == 0.0:
-        alive = cumulative_comb[:, :, -1] + total * log_p + (max_count - total) * log_q
+        alive = cumulative_comb[:, :, -1] + total * log_p + (trials - total) * log_q
         events = np.full((n, sites, occasions), -math.inf, dtype=np.float64)
         for prefix in range(occasions):
-            valid = np.all(counts[:, :, prefix:] == 0, axis=2)
+            valid = np.all(effective[:, :, prefix:] == 0, axis=2)
             if prefix:
                 prefix_total = cumulative_total[:, :, prefix - 1]
+                prefix_trials = cumulative_trials[:, :, prefix - 1]
                 value = (
                     cumulative_comb[:, :, prefix - 1]
                     + prefix_total * log_p
-                    + (2 * prefix - prefix_total) * log_q
+                    + (prefix_trials - prefix_total) * log_q
                 )
                 events[:, :, prefix] = np.where(valid, value, -math.inf)
             else:
@@ -213,23 +220,24 @@ def _log_prey_emissions(counts: IntArray, p: float, sd: float) -> tuple[FloatArr
     alive = (
         cumulative_comb[:, :, -1]
         + total * log_p
-        + (max_count - total) * log_q
+        + (trials - total) * log_q
         + rising_a[total]
-        + rising_b[max_count - total]
-        - rising_d[max_count]
+        + rising_b[trials - total]
+        - rising_d[trials]
     )
     events = np.full((n, sites, occasions), -math.inf, dtype=np.float64)
     for prefix in range(occasions):
-        valid = np.all(counts[:, :, prefix:] == 0, axis=2)
+        valid = np.all(effective[:, :, prefix:] == 0, axis=2)
         if prefix:
             prefix_total = cumulative_total[:, :, prefix - 1]
+            prefix_trials = cumulative_trials[:, :, prefix - 1]
             value = (
                 cumulative_comb[:, :, prefix - 1]
                 + prefix_total * log_p
-                + (2 * prefix - prefix_total) * log_q
+                + (prefix_trials - prefix_total) * log_q
                 + rising_a[prefix_total]
-                + rising_b[2 * prefix - prefix_total]
-                - rising_d[2 * prefix]
+                + rising_b[prefix_trials - prefix_total]
+                - rising_d[prefix_trials]
             )
             events[:, :, prefix] = np.where(valid, value, -math.inf)
         else:
@@ -242,9 +250,10 @@ def _apply_initial_state(
     alive: FloatArray,
     counts: IntArray,
     initial_alive: NDArray[np.bool_],
+    observed: NDArray[np.bool_] | None = None,
 ) -> None:
     dead = ~np.broadcast_to(initial_alive[None, :], counts.shape[:2])
-    all_zero = np.all(counts == 0, axis=2)
+    all_zero = np.all(counts == 0 if observed is None else (~observed) | (counts == 0), axis=2)
     alive[dead] = np.where(all_zero[dead], 0.0, -math.inf)
     events[dead, :] = np.where(all_zero[dead, None], 0.0, -math.inf)
 
@@ -301,10 +310,17 @@ def score_observations(
         observations.predator_observed,
     )
     log_events, log_alive = _log_prey_emissions(
-        observations.prey_counts, float(detection_probability), float(detection_sd)
+        observations.prey_counts,
+        float(detection_probability),
+        float(detection_sd),
+        observations.prey_observed,
     )
     _apply_initial_state(
-        log_events, log_alive, observations.prey_counts, observations.initial_alive
+        log_events,
+        log_alive,
+        observations.prey_counts,
+        observations.initial_alive,
+        observations.prey_observed,
     )
     predator_marginal = logsumexp(
         quadrature.log_category_mass[None, :, :] + log_predator, axis=2

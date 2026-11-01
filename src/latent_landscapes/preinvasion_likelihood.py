@@ -65,6 +65,7 @@ class PreInvasionObservations:
     cohort_start: float = -60.0
     predator_emissions: FloatArray | None = None
     predator_observed: NDArray[np.bool_] | None = None
+    prey_observed: NDArray[np.bool_] | None = None
 
     def __post_init__(self) -> None:
         if tuple(self.predator_times) != DEFAULT_PREDATOR_TIMES:
@@ -87,15 +88,21 @@ class PreInvasionObservations:
             arc2b.CATEGORY_COUNT,
         ):
             raise ValueError("predator_emissions shape does not match observations")
-        if self.predator_observed is not None:
-            observed = np.asarray(self.predator_observed)
-            if observed.shape != self.predator_counts.shape:
-                raise ValueError("predator_observed must match predator_counts shape")
+        for name, counts in (
+            ("predator_observed", self.predator_counts),
+            ("prey_observed", self.prey_counts),
+        ):
+            value = getattr(self, name)
+            if value is None:
+                continue
+            observed = np.asarray(value)
+            if observed.shape != counts.shape:
+                raise ValueError(f"{name} must match its count array shape")
             if observed.dtype != np.dtype(bool):
-                raise ValueError("predator_observed must be boolean")
+                raise ValueError(f"{name} must be boolean")
             observed = np.array(observed, dtype=bool, copy=True, order="C")
             observed.setflags(write=False)
-            object.__setattr__(self, "predator_observed", observed)
+            object.__setattr__(self, name, observed)
 
 
 def prepare_observations(
@@ -109,13 +116,14 @@ def prepare_observations(
     predator_times: Sequence[float] = DEFAULT_PREDATOR_TIMES,
     cohort_start: float = -60.0,
     predator_observed: NDArray[Any] | Sequence[bool] | None = None,
+    prey_observed: NDArray[Any] | Sequence[bool] | None = None,
 ) -> PreInvasionObservations:
     """Validate and return counts with sites in deterministic identifier order.
 
-    ``predator_observed`` is an optional history-by-site-by-occasion boolean
-    mask.  False entries are unavailable visits: their count values are
-    placeholders and contribute neutral emissions.  Omitting the mask keeps
-    the historical all-visits-observed behaviour.
+    ``predator_observed`` and ``prey_observed`` are optional boolean masks
+    matching their history-by-site-by-occasion count arrays. False entries
+    are unavailable occasions: their counts contribute no emission or detection
+    trials. Omitting a mask means all occasions of that species are observed.
     """
     prey = _as_counts(prey_counts, "prey_counts", (len(tuple(prey_times)),))
     predator = _as_counts(predator_counts, "predator_counts", (len(tuple(predator_times)),))
@@ -135,6 +143,15 @@ def prepare_observations(
         predator_available = np.array(
             predator_available[:, order], dtype=bool, copy=True, order="C"
         )
+    if prey_observed is None:
+        prey_available = None
+    else:
+        prey_available = np.asarray(prey_observed)
+        if prey_available.shape != prey.shape:
+            raise ValueError("prey_observed must match prey_counts shape")
+        if prey_available.dtype != np.dtype(bool):
+            raise ValueError("prey_observed must be boolean")
+        prey_available = np.array(prey_available[:, order], dtype=bool, copy=True, order="C")
     mask = np.asarray(training_mask, dtype=bool)
     if mask.shape == prey.shape[:2]:
         if not np.all(mask == mask[0]):
@@ -171,6 +188,7 @@ def prepare_observations(
         float(cohort_start),
         predator_emissions,
         predator_available,
+        prey_available,
     )
     for array in (
         result.prey_counts,
@@ -520,28 +538,51 @@ def one_probability_shared_all_visits(
     return _shared_probability(values, float(p), float(sd), 2)
 
 
-def _prey_emissions(counts: IntArray, p: float, sd: float) -> tuple[FloatArray, FloatArray]:
+def _prey_observation_statistics(
+    counts: IntArray, observed: NDArray[np.bool_] | None
+) -> tuple[IntArray, FloatArray, IntArray, IntArray]:
+    if observed is None:
+        available = np.ones(counts.shape, dtype=bool)
+    else:
+        available = np.asarray(observed)
+        if available.shape != counts.shape or available.dtype != np.dtype(bool):
+            raise ValueError("prey_observed must be boolean and match prey_counts shape")
+    effective = np.where(available, counts, 0)
+    log_comb = np.log(np.asarray((1.0, 2.0, 1.0), dtype=np.float64))[effective]
+    return (
+        effective,
+        np.cumsum(log_comb, axis=2),
+        np.cumsum(effective, axis=2, dtype=np.int64),
+        2 * np.cumsum(available, axis=2, dtype=np.int64),
+    )
+
+
+def _prey_emissions(
+    counts: IntArray,
+    p: float,
+    sd: float,
+    observed: NDArray[np.bool_] | None = None,
+) -> tuple[FloatArray, FloatArray]:
     n, sites, occasions = counts.shape
-    log_comb = np.log(np.asarray((1.0, 2.0, 1.0), dtype=np.float64))[counts]
-    cumulative_comb = np.cumsum(log_comb, axis=2)
-    cumulative_total = np.cumsum(counts, axis=2, dtype=np.int64)
+    effective, cumulative_comb, cumulative_total, cumulative_trials = (
+        _prey_observation_statistics(counts, observed)
+    )
     total = cumulative_total[:, :, -1]
+    trials = cumulative_trials[:, :, -1]
     if sd == 0.0:
         log_p = np.log(p)
         log_q = math.log1p(-p)
-        alive = np.exp(
-            cumulative_comb[:, :, -1]
-                + total * log_p
-                + (2 * occasions - total) * log_q
-        )
+        alive = np.exp(cumulative_comb[:, :, -1] + total * log_p + (trials - total) * log_q)
         events = np.zeros((n, sites, occasions), dtype=np.float64)
         for prefix in range(occasions):
-            valid = np.all(counts[:, :, prefix:] == 0, axis=2)
+            valid = np.all(effective[:, :, prefix:] == 0, axis=2)
             if prefix:
+                prefix_total = cumulative_total[:, :, prefix - 1]
+                prefix_trials = cumulative_trials[:, :, prefix - 1]
                 events[:, :, prefix] = np.exp(
                     cumulative_comb[:, :, prefix - 1]
-                    + cumulative_total[:, :, prefix - 1] * log_p
-                    + (2 * prefix - cumulative_total[:, :, prefix - 1]) * log_q
+                    + prefix_total * log_p
+                    + (prefix_trials - prefix_total) * log_q
                 ) * valid
             else:
                 events[:, :, prefix] = valid
@@ -560,28 +601,28 @@ def _prey_emissions(counts: IntArray, p: float, sd: float) -> tuple[FloatArray, 
     rising_d = np.asarray(
         [math.fsum(math.log1p(i * inv_kappa) for i in range(k)) for k in range(max_count + 1)]
     )
-    total_all = total
     alive_log = (
         cumulative_comb[:, :, -1]
-        + total_all * math.log(p)
-        + (max_count - total_all) * math.log1p(-p)
-        + rising_a[total_all]
-        + rising_b[max_count - total_all]
-        - rising_d[max_count]
+        + total * math.log(p)
+        + (trials - total) * math.log1p(-p)
+        + rising_a[total]
+        + rising_b[trials - total]
+        - rising_d[trials]
     )
     alive = np.exp(alive_log)
     events = np.zeros((n, sites, occasions), dtype=np.float64)
     for prefix in range(occasions):
-        valid = np.all(counts[:, :, prefix:] == 0, axis=2)
+        valid = np.all(effective[:, :, prefix:] == 0, axis=2)
         if prefix:
             prefix_total = cumulative_total[:, :, prefix - 1]
+            prefix_trials = cumulative_trials[:, :, prefix - 1]
             events[:, :, prefix] = np.exp(
                 cumulative_comb[:, :, prefix - 1]
                 + prefix_total * math.log(p)
-                + (2 * prefix - prefix_total) * math.log1p(-p)
+                + (prefix_trials - prefix_total) * math.log1p(-p)
                 + rising_a[prefix_total]
-                + rising_b[2 * prefix - prefix_total]
-                - rising_d[2 * prefix]
+                + rising_b[prefix_trials - prefix_total]
+                - rising_d[prefix_trials]
             ) * valid
         else:
             events[:, :, prefix] = valid
@@ -589,12 +630,16 @@ def _prey_emissions(counts: IntArray, p: float, sd: float) -> tuple[FloatArray, 
 
 
 def _apply_initial_state(
-    events: FloatArray, alive: FloatArray, counts: IntArray, initial_alive: NDArray[np.bool_]
+    events: FloatArray,
+    alive: FloatArray,
+    counts: IntArray,
+    initial_alive: NDArray[np.bool_],
+    observed: NDArray[np.bool_] | None = None,
 ) -> None:
     """Apply the supplied known state at cohort start in place."""
     state = np.broadcast_to(initial_alive[None, :], counts.shape[:2])
     dead = ~state
-    all_zero = np.all(counts == 0, axis=2)
+    all_zero = np.all(counts == 0 if observed is None else (~observed) | (counts == 0), axis=2)
     alive[dead] = all_zero[dead].astype(np.float64)
     events[dead, :] = all_zero[dead, None].astype(np.float64)
 
@@ -764,8 +809,16 @@ def score_observations(
             observed=observations.predator_observed,
         )
     )
-    events, alive = _prey_emissions(observations.prey_counts, detection_probability, detection_sd)
-    _apply_initial_state(events, alive, observations.prey_counts, observations.initial_alive)
+    events, alive = _prey_emissions(
+        observations.prey_counts, detection_probability, detection_sd, observations.prey_observed
+    )
+    _apply_initial_state(
+        events,
+        alive,
+        observations.prey_counts,
+        observations.initial_alive,
+        observations.prey_observed,
+    )
     n, sites = observations.prey_counts.shape[:2]
     effects = len(integration.effects)
     joint = np.empty((n, effects, sites), dtype=np.float64)
@@ -840,13 +893,17 @@ def pre_only_log_likelihood(
     ):
         raise ValueError("hazards must match the observation sites")
     events, alive = _prey_emissions(
-        observations.prey_counts[:, :, :7], detection_probability, detection_sd
+        observations.prey_counts[:, :, :7],
+        detection_probability,
+        detection_sd,
+        None if observations.prey_observed is None else observations.prey_observed[:, :, :7],
     )
     _apply_initial_state(
         events,
         alive,
         observations.prey_counts[:, :, :7],
         observations.initial_alive,
+        None if observations.prey_observed is None else observations.prey_observed[:, :, :7],
     )
     start = observations.cohort_start
     times = observations.prey_times[:7]
@@ -893,8 +950,16 @@ def oracle_arrival_scores(
         raise ValueError("hazards must match observation sites")
     candidates = tuple(float(value) for value in effects)
     knots = (observations.cohort_start, *observations.prey_times)
-    events, alive = _prey_emissions(observations.prey_counts, detection_probability, detection_sd)
-    _apply_initial_state(events, alive, observations.prey_counts, observations.initial_alive)
+    events, alive = _prey_emissions(
+        observations.prey_counts, detection_probability, detection_sd, observations.prey_observed
+    )
+    _apply_initial_state(
+        events,
+        alive,
+        observations.prey_counts,
+        observations.initial_alive,
+        observations.prey_observed,
+    )
     joint = np.empty(
         (observations.prey_counts.shape[0], len(candidates), len(observations.site_ids))
     )

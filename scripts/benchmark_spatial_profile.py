@@ -402,6 +402,19 @@ def load_observations(
             ),
             dtype=bool,
         )
+    prey_observed = values.get("prey_observed")
+    if prey_observed is not None:
+        if np.asarray(prey_observed).dtype != np.dtype(bool):
+            raise ValueError("prey_observed must have boolean dtype")
+        prey_observed = np.asarray(
+            _align_site_metadata(
+                prey_observed,
+                observation_ids=ids,
+                public_ids=public_ids,
+                name="prey_observed",
+            ),
+            dtype=bool,
+        )
     prey_times = tuple(
         float(value)
         for value in np.asarray(
@@ -443,6 +456,11 @@ def load_observations(
         predator_times=predator_times,
         cohort_start=float(np.asarray(cohort_start).item()),
         predator_observed=available,
+        prey_observed=(
+            None
+            if prey_observed is None
+            else _one_history_mask(prey_observed, history, name="prey_observed")
+        ),
     )
     return observed, ids
 

@@ -395,6 +395,10 @@ def load_data(args: argparse.Namespace) -> SpatialProfileData:
 
 
 class Qualification:
+    cutoffs: tuple[float, ...] = CUTOFFS
+    refine_numerical_ties = True
+    midpoint_spacing = LOG_MAX / 34
+
     def __init__(self, args: argparse.Namespace):
         self.args = args
         self.reference = json.loads(args.reference.read_text())
@@ -543,6 +547,13 @@ class Qualification:
         self.record({"kind": "fixed_fit", "fit": fit})
         return fit
 
+    def initial_free_starts(self, family: str) -> list[np.ndarray]:
+        ref_key = "best_positive" if family == "positive_sigma" else "best_sigma_zero"
+        return [
+            parameters(self.reference["profile"][ref_key], free=True),
+            np.insert(DEFAULTS[family], -1, math.log(3.0)),
+        ]
+
     def fit_free(self, *, tight: bool = False) -> None:
         candidates = []
         available = dict(self.points[False])
@@ -553,11 +564,7 @@ class Qualification:
                 else fit
             )
         for family in FAMILIES:
-            ref_key = "best_positive" if family == "positive_sigma" else "best_sigma_zero"
-            starts = [
-                parameters(self.reference["profile"][ref_key], free=True),
-                np.insert(DEFAULTS[family], -1, math.log(3.0)),
-            ]
+            starts = self.initial_free_starts(family)
             for regime in (False, True):
                 if regime in self.free:
                     starts.append(parameters(self.free[regime][family], free=True))
@@ -618,8 +625,13 @@ class Qualification:
 
     def midpoint_mesh(self, mesh: list[float]) -> list[float]:
         pending = []
-        reference_max = max(
-            self.reference["profile"][k]["criterion"] for k in ("best_positive", "best_sigma_zero")
+        reference_max = (
+            max(
+                self.reference["profile"][k]["criterion"]
+                for k in ("best_positive", "best_sigma_zero")
+            )
+            if self.reference_points
+            else None
         )
         w = {x: self.lr(x) for x in mesh}
         for i, (a, b) in enumerate(pairwise(mesh)):
@@ -629,7 +641,7 @@ class Qualification:
             reasons = []
             if self.args.dense_baseline:
                 reasons.append("dense_B0_69_node_check")
-            if da * db < 0 or min(abs(da), abs(db)) <= 1e-4:
+            if da * db < 0 or (self.refine_numerical_ties and min(abs(da), abs(db)) <= 1e-4):
                 reasons.append("family_switch_or_tie")
             if any(
                 pa[f]["nuisance_bound_contacts"] != pb[f]["nuisance_bound_contacts"]
@@ -638,7 +650,7 @@ class Qualification:
                 reasons.append("nuisance_bound_transition")
             if any(
                 (w[a] - c) * (w[b] - c) <= 0 or min(abs(w[a] - c), abs(w[b] - c)) <= 0.25
-                for c in CUTOFFS
+                for c in self.cutoffs
             ):
                 reasons.append("cutoff_crossing_or_proximity")
             if (i > 0 and w[a] <= w[mesh[i - 1]] and w[a] <= w[b]) or (
@@ -653,11 +665,12 @@ class Qualification:
                 reasons.append("direction_disagreement")
             for x in (a, b):
                 if x in self.reference_points:
+                    assert reference_max is not None
                     ref_w = 2 * (
                         reference_max
                         - max(self.reference_points[x][f]["criterion"] for f in FAMILIES)
                     )
-                    if any((ref_w <= c) != (w[x] <= c) for c in CUTOFFS):
+                    if any((ref_w <= c) != (w[x] <= c) for c in self.cutoffs):
                         reasons.append("topology_sign_changed_vs_B0")
                         break
             if reasons:
@@ -714,11 +727,11 @@ class Qualification:
                 wx = self.lr(x)
                 if any(
                     (w_a - c) * (w_b - c) > 0 and (w_a - c) * (wx - c) < 0
-                    for c in CUTOFFS
+                    for c in self.cutoffs
                     for w_a, w_b in [(self.lr(a), self.lr(b))]
                 ):
                     new_features.append("new_pair_of_cutoff_crossings")
-                if b - a > LOG_MAX / 34 + 1e-12:
+                if b - a > self.midpoint_spacing + 1e-12:
                     new_features.append("spacing_not_yet_69_grid")
                 if new_features:
                     next_pending.extend([(a, x, new_features), (x, b, new_features)])
@@ -759,16 +772,20 @@ class Qualification:
                 )
         return {"isolated": switches, "tie_intervals": ties}
 
+    def closure_mesh(self, mesh: list[float], *, tight: bool) -> list[float]:
+        return mesh
+
     def close_profiles(
         self, mesh: list[float], *, tight: bool = False
     ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
         for iteration in range(3):
+            mesh = self.closure_mesh(mesh, tight=tight)
             before = {f: self.free[tight][f]["criterion"] for f in FAMILIES}
             levels = [
                 refine_level_set(
                     lambda x: self.lr(x, tight=tight), mesh, c, xtol=1e-5 if tight else 1e-4
                 )
-                for c in CUTOFFS
+                for c in self.cutoffs
             ]
             switches = self.switches(mesh, tight=tight)
             self.fit_free(tight=tight)

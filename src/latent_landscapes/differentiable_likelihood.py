@@ -15,6 +15,7 @@ from typing import Any
 
 import numpy as np
 from numpy.typing import NDArray
+from scipy.special import logsumexp  # type: ignore[import-untyped]
 
 from latent_landscapes import arc2b_campaign as arc2b
 from latent_landscapes import log_domain_likelihood
@@ -26,6 +27,12 @@ FloatArray = NDArray[np.float64]
 
 class LikelihoodDomainError(FloatingPointError):
     """Raised when neither a certified series nor the raw bank is available."""
+
+
+def _log_loss_values(z: FloatArray) -> FloatArray:
+    if np.any(z <= 0.0) or not np.isfinite(z).all():
+        raise FloatingPointError("loss exposure must be finite and positive")
+    return np.asarray(np.log(-np.expm1(-z)), dtype=np.float64)
 
 
 def _log_loss_derivatives(z: FloatArray) -> tuple[FloatArray, FloatArray, FloatArray, FloatArray]:
@@ -525,6 +532,146 @@ class DifferentiableSiteLikelihood:
             result[3],
         )
 
+    def _series_log_values(self, hazards: FloatArray, x: FloatArray) -> FloatArray:
+        draws, sites = hazards.shape
+        orders = self._bank.series_order + 1
+        terms = np.empty((draws, sites, orders), dtype=np.float64)
+        terms[:, :, 0] = 1.0
+        for degree in range(1, orders):
+            terms[:, :, degree] = terms[:, :, degree - 1] * x / degree
+        moments = self._bank.power_moments
+        transformed = np.einsum("bso,sco->bsc", terms, moments, optimize=True)
+        differences = np.maximum(moments[:, :, :1] - moments, 0.0)
+        differences[:, :, 0] = 0.0
+        transitioned = np.einsum("bso,sco->bsc", terms, differences, optimize=True)
+        if np.any(transformed <= 0) or not np.isfinite(transformed).all():
+            raise FloatingPointError("survival arrival transform has invalid mass")
+        if np.any(transitioned < 0) or not np.isfinite(transitioned).all():
+            raise FloatingPointError("transition arrival transform has invalid mass")
+        with np.errstate(divide="ignore"):
+            transformed = np.log(transformed) - x[:, :, None]
+            transitioned = np.log(transitioned) - x[:, :, None]
+        knots = (self._observations.cohort_start, *self._observations.prey_times)
+        result = np.full_like(hazards, -math.inf)
+        for category in range(arc2b.CATEGORY_COUNT):
+            predator = self._log_predator[:, category][None, :]
+            log_mass = np.log(self._bank.category_mass[:, category])[None, :]
+            lower, upper = 10.0 * category, 10.0 * (category + 1)
+            for occasion, (left, right) in enumerate(pairwise(knots)):
+                delta = right - left
+                if delta <= 0:
+                    continue
+                constant = predator + self._log_events[:, occasion][None, :]
+                if not np.isfinite(constant).any():
+                    continue
+                rate = left - self._observations.cohort_start
+                if category == 6 or right <= lower:
+                    value = constant + log_mass - hazards * rate + _log_loss_values(hazards * delta)
+                elif left >= upper:
+                    rate += (self.effect - 1.0) * (left - upper)
+                    value = (constant + transformed[:, :, category] - hazards * rate
+                             + _log_loss_values(hazards * self.effect * delta))
+                elif math.isclose(left, lower, abs_tol=1e-12) and math.isclose(
+                    right, upper, abs_tol=1e-12
+                ):
+                    value = constant + log_mass - hazards * rate + _log_loss_values(hazards * delta)
+                    extra = (constant + transitioned[:, :, category]
+                             - hazards * (right - self._observations.cohort_start))
+                    value = np.logaddexp(value, extra)
+                else:
+                    raise ValueError("prey calendar is not supported by the positive series")
+                result = np.logaddexp(result, value)
+            terminal = knots[-1]
+            constant = predator + self._log_alive[None, :]
+            rate = terminal - self._observations.cohort_start
+            if category == 6 or terminal <= lower:
+                value = constant + log_mass - hazards * rate
+            elif terminal >= upper:
+                rate += (self.effect - 1.0) * (terminal - upper)
+                value = constant + transformed[:, :, category] - hazards * rate
+            else:
+                raise ValueError("terminal prey time is not supported by the positive series")
+            result = np.logaddexp(result, value)
+        return result
+
+    def _raw_log_values(self, site: int, hazards: FloatArray) -> FloatArray:
+        arrivals = np.concatenate((self._bank.bank_arrivals[:, site], arc2b.PSEUDO_ARRIVALS))
+        knots = np.asarray((self._observations.cohort_start, *self._observations.prey_times))
+        result = np.full(len(hazards), -math.inf)
+        for start in range(0, len(arrivals), 8192):
+            values = arrivals[start:start + 8192]
+            categories = np.searchsorted(likelihood.DEFAULT_PREDATOR_TIMES, values, side="left")
+            predator = self._log_predator[site, categories]
+            exposure = (knots[:, None] - self._observations.cohort_start
+                        + (self.effect - 1) * np.maximum(knots[:, None] - values, 0))
+            for occasion in range(len(self._observations.prey_times)):
+                event = float(self._log_events[site, occasion])
+                delta = exposure[occasion + 1] - exposure[occasion]
+                valid = np.isfinite(predator) & (delta > 0)
+                if not math.isfinite(event) or not np.any(valid):
+                    continue
+                terms = (event + predator[None, valid]
+                         - hazards[:, None] * exposure[occasion, valid][None, :]
+                         + _log_loss_values(hazards[:, None] * delta[None, valid]))
+                result = np.logaddexp(result, logsumexp(terms, axis=1))
+            alive = float(self._log_alive[site])
+            valid = np.isfinite(predator)
+            if math.isfinite(alive) and np.any(valid):
+                terms = alive + predator[None, valid] - hazards[:, None] * exposure[-1, valid]
+                result = np.logaddexp(result, logsumexp(terms, axis=1))
+        return result - math.log(self._bank.bank_size + arc2b.CATEGORY_COUNT)
+
+    def log_values(self, eta_batch: NDArray[Any], *, chunk_size: int = 32) -> FloatArray:
+        """Evaluate exact-law log values with bounded draw and raw-arrival workspaces."""
+        points = np.asarray(eta_batch, dtype=np.float64)
+        if (
+            points.ndim != 2
+            or points.shape[1] != len(self.site_ids)
+            or not np.isfinite(points).all()
+        ):
+            raise ValueError("eta_batch must be finite with shape (draw, site)")
+        if not isinstance(chunk_size, int) or isinstance(chunk_size, bool) or chunk_size < 1:
+            raise ValueError("chunk_size must be a positive integer")
+        result = np.empty_like(points)
+        series_count = raw_count = 0
+        maximum_x = 0.0
+        for start in range(0, len(points), chunk_size):
+            with np.errstate(over="ignore"):
+                hazards = np.exp(points[start:start + chunk_size])
+                x = 10.0 * hazards * (self.effect - 1.0)
+            if not np.isfinite(hazards).all():
+                raise LikelihoodDomainError("eta implies a nonfinite site hazard")
+            series = (np.ones_like(hazards, dtype=bool) if self.effect == 1.0
+                      else x <= self._certified_max_x)
+            if not self._series_available:
+                series[:] = False
+            if np.any(~series) and not self._has_raw:
+                raise LikelihoodDomainError("positive-series domain exceeded without raw arrivals")
+            batch = np.empty_like(hazards)
+            if np.any(series):
+                safe_hazards = np.where(series, hazards, 0.001)
+                safe_x = np.where(series, x, 0.0)
+                batch[series] = self._series_log_values(safe_hazards, safe_x)[series]
+            for site in np.flatnonzero(np.any(~series, axis=0)):
+                selected = ~series[:, site]
+                batch[selected, site] = self._raw_log_values(int(site), hazards[selected, site])
+            if not np.isfinite(batch).all():
+                raise FloatingPointError("batch likelihood produced nonfinite output")
+            result[start:start + len(batch)] = batch
+            series_count += int(np.sum(series))
+            raw_count += int(np.sum(~series))
+            maximum_x = max(maximum_x, float(np.max(x)))
+        self.stats["batch_calls"] = int(self.stats.get("batch_calls", 0)) + 1
+        self.stats["batch_draws"] = int(self.stats.get("batch_draws", 0)) + len(points)
+        self.stats["batch_series_site_evaluations"] = (
+            int(self.stats.get("batch_series_site_evaluations", 0)) + series_count
+        )
+        self.stats["batch_exact_site_evaluations"] = (
+            int(self.stats.get("batch_exact_site_evaluations", 0)) + raw_count
+        )
+        self.stats["max_observed_x"] = max(float(self.stats["max_observed_x"]), maximum_x)
+        return result
+
     def evaluate(
         self, eta: NDArray[Any]
     ) -> tuple[FloatArray, FloatArray, FloatArray, FloatArray]:
@@ -640,12 +787,14 @@ def prepare_site_likelihood(
         observations.prey_counts,
         float(detection_probability),
         float(detection_sd),
+        observations.prey_observed,
     )
     log_domain_likelihood._apply_initial_state(
         log_events_3d,
         log_alive_2d,
         observations.prey_counts,
         observations.initial_alive,
+        observations.prey_observed,
     )
     log_events = log_events_3d[0]
     log_alive = log_alive_2d[0]
