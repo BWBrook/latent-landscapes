@@ -990,7 +990,8 @@ class SpatialProfileCriterion:
             raise ValueError(f"parameters must be a finite vector of length {expected}")
         if fixed_h is None:
             h_index = 2 if sigma_zero else 3
-            h = math.exp(float(point[h_index]))
+            log_h = float(point[h_index])
+            h = min(30.0, math.exp(log_h)) if 0.0 <= log_h <= math.log(30.0) else math.nan
             detection_sd = float(point[-1])
         else:
             h = float(fixed_h)

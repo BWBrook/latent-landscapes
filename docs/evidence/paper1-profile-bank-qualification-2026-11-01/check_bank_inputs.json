@@ -1,0 +1,55 @@
+{
+  "fixed_arrays_exact": true,
+  "files": {
+    "public_inputs.npz": {
+      "sha256": "f5c590d1b600c74a686a77215488844e78e19e30fdc59fe34ab44f39acebdfc2",
+      "matches_metadata": true
+    },
+    "exposure.npz": {
+      "sha256": "b74004fc9ecf03499cfdc9ecca4919b0e17987eba405709f4e3f95f9bc9c0831",
+      "matches_metadata": true
+    },
+    "seed_ledger.json": {
+      "sha256": "ead7b2705bbf5777aaeb901414dff1438a7e2dfdaab7180fdd6cb56437c12e2f",
+      "matches_metadata": true
+    }
+  },
+  "exposure": {
+    "map_a": {
+      "frozen_sha256": "5fd316b133b7791966522ebf929704323a162af122acb2281d91314b1fcc4469",
+      "reconstructed_sha256": "d7e737acd623c12f789b5724cad3a5f006b6daf345f74af9c75be695f476101c",
+      "frozen_matches_metadata": true,
+      "unequal_count": 1766,
+      "size": 6048,
+      "max_abs_difference": 8.881784197001252e-16
+    },
+    "site_a": {
+      "frozen_sha256": "ad124d8b7be1999192df4f898535c5d8c2b698d82879fa94ea23ab4b370df76b",
+      "reconstructed_sha256": "f42f10916e15ffd40dc590afef6da6b71f733431e0b88ddcac39a54c9b3b7b9e",
+      "frozen_matches_metadata": true,
+      "unequal_count": 41,
+      "size": 160,
+      "max_abs_difference": 8.881784197001252e-16
+    }
+  },
+  "frozen_site_map_identity": true,
+  "original_loader_error": "public exposure or seed ledger identity mismatch",
+  "seed_count": 393216,
+  "unique_seed_count": 393216,
+  "pairwise_seed_intersections": {
+    "B0_A": 0,
+    "B0_B": 0,
+    "A_B": 0
+  },
+  "original_rows_replayed": [
+    0,
+    1,
+    131071
+  ],
+  "original_rows_byte_equal": true,
+  "original_rows_max_abs_difference": 0.0,
+  "source_sha256": {
+    "/Users/bwbrook/papers/latent-landscapes/docs/evidence/paper1-profile-bank-qualification-2026-11-01/check_bank_inputs.py": "263d2ef9c1a2b2c754fd56d6783fbe9386895bdd3aa48e0c8c495579a294f036"
+  },
+  "interpretation": "Frozen input files and arrival-generating fixed arrays are exact; reconstructed exposure has numerical bit drift. Arrival generation uses fixed landscape/sites only."
+}

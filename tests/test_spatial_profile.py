@@ -192,6 +192,57 @@ def test_exact_zero_family_and_nuisance_derivatives() -> None:
     np.testing.assert_allclose(result.criterion_gradient, numerical, rtol=2e-5, atol=2e-7)
 
 
+@pytest.mark.parametrize("sigma_zero", [False, True])
+@pytest.mark.parametrize("h", [1.0, 30.0])
+def test_free_effect_endpoints_match_fixed_effect_and_keep_finite_gradients(
+    sigma_zero: bool, h: float
+) -> None:
+    criterion = _criterion()
+    evaluate = criterion.evaluate_sigma_zero if sigma_zero else criterion.evaluate_positive
+    core = [-1.35, 0.22] if sigma_zero else [-1.35, 0.22, math.log(0.45)]
+    free_point = np.array([*core, math.log(h), 0.18])
+    fixed_point = np.array([*core, 0.18])
+    free = evaluate(free_point, nuisance_fd=True)
+    fixed = evaluate(fixed_point, fixed_h=h, nuisance_fd=True)
+
+    assert free.success, free.message
+    assert fixed.success, fixed.message
+    assert free.h == fixed.h == h
+    assert free.criterion == fixed.criterion
+    np.testing.assert_array_equal(
+        free.criterion_gradient[: len(core)], fixed.criterion_gradient[: len(core)]
+    )
+    assert free.criterion_gradient[-1] == fixed.criterion_gradient[-1]
+    assert np.isfinite(free.criterion_gradient).all()
+    np.testing.assert_array_equal(free.parameters, free_point)
+
+
+@pytest.mark.parametrize("sigma_zero", [False, True])
+@pytest.mark.parametrize(
+    "log_h",
+    [
+        np.nextafter(0.0, -math.inf),
+        np.nextafter(math.log(30.0), math.inf),
+        -0.01,
+        math.log(30.01),
+        1000.0,
+    ],
+)
+def test_free_effect_rejects_outside_log_domain_before_transform(
+    sigma_zero: bool, log_h: float
+) -> None:
+    criterion = _criterion()
+    evaluate = criterion.evaluate_sigma_zero if sigma_zero else criterion.evaluate_positive
+    core = [-1.35, 0.22] if sigma_zero else [-1.35, 0.22, math.log(0.45)]
+    result = evaluate(np.array([*core, log_h, 0.18]), nuisance_fd=True)
+
+    assert not result.success
+    assert result.criterion == -math.inf
+    assert result.objective == math.inf
+    assert result.mode is None
+    assert "outside the fitted domain" in result.message
+
+
 def test_exact_cache_keys_and_warm_mode_branch_preserve_best_mode() -> None:
     criterion = _criterion()
     first = criterion.curves(3.0, 0.18)
