@@ -101,38 +101,32 @@ set of generating values.
 
 ## Current Scientific Boundary
 
-Goal 062 is now [approved with a B100-A amendment](docs/goals/062-final-procedure-evaluation/amendment-2026-10-11.md):
-ten cells and 5,000 independent histories, with a
-[46–57-hour estimate](docs/goals/062-final-procedure-evaluation/compute-estimate-amended-2026-10-11.md)
-and completed [independent amendment review](docs/goals/062-final-procedure-evaluation/amendment-review-2026-10-11.md).
-Implementation has passed [independent source review](docs/goals/062-final-procedure-evaluation/implementation-review-2026-10-11.md).
-[Nonproduction qualification](docs/goals/062-final-procedure-evaluation/execution.md)
-passed on Deep, including all 51 workers, and
-[independent receipt review](docs/goals/062-final-procedure-evaluation/qualification-review-2026-10-11.md)
-requires no repair or repeat qualification. Barry
-[accepted the qualified runtime and launch](docs/decisions/2026-10-13-goal062-runtime-approval.md)
-on 13 October. Production is running on Deep with 51 workers; its persistent
-72-hour deadline is 22:51 AEDT on 16 October. Reference completion and audit
-precede all 5,000 evaluation histories. Scientific results remain pending.
-The six-cell documents below remain the original proposal.
+Goal 062 is **complete and closed**. The ten-cell campaign finished on
+15 October 2026 and passed [independent closure review](docs/goals/062-final-procedure-evaluation/final-review.md)
+on 16 October. Its [completed report](docs/goals/062-final-procedure-evaluation/report.md)
+contains 5,000 histories, with 500 per cell. Exact-family threefold-effect
+declaration rates are 44.4% and 90.8% at the two background-hazard levels;
+within-1.5-fold magnitude recovery is 55.0% and 83.2%. These are conditional
+results for the registered fixed design and reference panel. The
+[execution record](docs/goals/062-final-procedure-evaluation/execution.md)
+preserves the launch, repair, completion and return history.
 
-The proposed [Goal 062 six-cell evaluation](docs/goals/062-final-procedure-evaluation/registration-2026-10-11.md)
-now specifies 500 independent histories per cell for the final procedure,
-with a [reference-inclusive compute estimate](docs/goals/062-final-procedure-evaluation/compute-estimate.md)
-and [independent design review](docs/goals/062-final-procedure-evaluation/design-review-2026-10-11.md).
-That original proposal preceded the ten-cell approval and current qualification.
+Barry selected **broader first** on 18 October: landscape generality and common
+competing background models belong in one substantial Paper 1. The
+[reviewed integrated protocol](docs/paper1-integrated-tranche-protocol-2026-10-18.md)
+defines the next design. Current numerical development has completed two
+[direct-likelihood profile meshes](docs/paper1-direct-profile-development-2026-10-31.md);
+[independent-bank and continuous-profile qualification](docs/paper1-profile-bank-qualification-2026-11-01.md)
+is in progress. Calibration, higher-accuracy integration, the broader challenge
+suite and production throughput remain to be qualified. See the
+[current handover](HANDOVER.md) for execution status.
 
-The [11 October Paper 1 evidence synthesis](docs/paper1-evidence-synthesis-2026-10-11.md)
-assesses all six charter pillars after the capstone truth reveal. Reference
-recovery and earlier known-nuisance power are well evidenced; replicated
-recovery and power of the final observed-nuisance procedure remain unmeasured.
-The synthesis recommends one bounded operating-performance panel, with null
-and positive effects, if the paper presents the final procedure as a practical
-positive-effect method, subject to prospective design and resource review.
-Numerical qualification of landscape generality and common competing-process
-model assessment also require further work or an explicit review of the paper's
-claim boundary. The full charter is not yet complete. No new experiment has
-been launched; the all-null capstone and its forecast misses remain unchanged.
+The [11 October evidence synthesis](docs/paper1-evidence-synthesis-2026-10-11.md)
+records the earlier charter assessment; Goal 062 subsequently filled its
+fixed-design operating-performance gap. The full Paper 1 charter remains
+incomplete. The original all-null capstone and its forecast misses remain
+preserved, and the broader protocol is still a development specification,
+not a registered production experiment.
 
 ### Evidence progression
 
