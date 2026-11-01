@@ -7,6 +7,23 @@ pre-execution evidence archive. Independent review and 335 focused tests
 accepted preparation. Numerical panel execution is the current task; no
 calibration or production campaign is authorised by this development result.
 
+2 November wake-up checkpoint: all six 131,072-row banks have completed;
+raw/compressed hashes and every recorded source/input binding verify.
+All 60 profile jobs were dispatched. The inspected snapshot has three
+completed parent receipts and 57 running jobs. Independent review preserves
+one dense/lean contact-gate failure despite near-identical W curves, and two
+indeterminate arm-B searches with unresolved ineligible candidate envelopes.
+The first fixed-outer integration screen passes at 32,768 draws per stream;
+this does not qualify optimized roots or aggregate panel readiness. Read the
+[interim evidence review](docs/evidence/paper1-development-challenge-2026-11-01/interim-review-2026-11-02.md).
+The running fits and their manifests remain frozen. Reporting metadata has
+been repaired in a separate jobs-summary.json; execution bindings are unchanged.
+Nectar remains at c3.3xlarge while the finite heavy work runs. Final synthesis,
+archive verification, independent final review and return to c3.large remain
+outstanding. The one scheduled wake-up has been used; no further schedule
+has been created. Runtime continuation details are in the challenge artifact
+CONTINUATION.md.
+
 # Latent Landscapes: current handover
 
 1 November 2026: the h=30 endpoint repair and bounded continuous-profile /

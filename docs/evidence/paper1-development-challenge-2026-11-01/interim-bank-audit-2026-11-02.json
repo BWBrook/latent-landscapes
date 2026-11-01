@@ -1,0 +1,74 @@
+[
+  {
+    "state": "complete",
+    "role": "A",
+    "map_index": 0,
+    "bank_size": 131072,
+    "elapsed_seconds": 1573.134741735,
+    "path": "artifacts/paper1_development_challenge_20261101/master-banks/map-00/A/manifest.json",
+    "sha256": "2850c9ee90c90b54f62ccc56110a4f202dbde5390780c56bed49d5cbf86222a0",
+    "raw_verified": true,
+    "compressed_verified": true,
+    "bindings_verified": true
+  },
+  {
+    "state": "complete",
+    "role": "B0",
+    "map_index": 0,
+    "bank_size": 131072,
+    "elapsed_seconds": 1572.776407414,
+    "path": "artifacts/paper1_development_challenge_20261101/master-banks/map-00/B0/manifest.json",
+    "sha256": "ef58ce707c24694ad31d457783854ff0efb17f9b57e9e4f4c26c6ca353ea614c",
+    "raw_verified": true,
+    "compressed_verified": true,
+    "bindings_verified": true
+  },
+  {
+    "state": "complete",
+    "role": "A",
+    "map_index": 1,
+    "bank_size": 131072,
+    "elapsed_seconds": 1591.278341855,
+    "path": "artifacts/paper1_development_challenge_20261101/master-banks/map-01/A/manifest.json",
+    "sha256": "178b0f3a192f8add2edfe9921d6c40dadb5c8e9e3a8c4778137e41d8f77d4eaa",
+    "raw_verified": true,
+    "compressed_verified": true,
+    "bindings_verified": true
+  },
+  {
+    "state": "complete",
+    "role": "B0",
+    "map_index": 1,
+    "bank_size": 131072,
+    "elapsed_seconds": 1567.273920548,
+    "path": "artifacts/paper1_development_challenge_20261101/master-banks/map-01/B0/manifest.json",
+    "sha256": "1442fca19888ec8e4c6331ada17e11bc2207d2a04bf0378850940d0ab434b067",
+    "raw_verified": true,
+    "compressed_verified": true,
+    "bindings_verified": true
+  },
+  {
+    "state": "complete",
+    "role": "A",
+    "map_index": 2,
+    "bank_size": 131072,
+    "elapsed_seconds": 1501.5600480239998,
+    "path": "artifacts/paper1_development_challenge_20261101/master-banks/map-02/A/manifest.json",
+    "sha256": "afc5292509a174ec156b28a724bc161b8817c75dd5c0bee62dae2a75922a3a43",
+    "raw_verified": true,
+    "compressed_verified": true,
+    "bindings_verified": true
+  },
+  {
+    "state": "complete",
+    "role": "B0",
+    "map_index": 2,
+    "bank_size": 131072,
+    "elapsed_seconds": 1517.0265625250001,
+    "path": "artifacts/paper1_development_challenge_20261101/master-banks/map-02/B0/manifest.json",
+    "sha256": "5ff966d8e7aa08a734f74dc7ae482a879039f6db9baf06682421eb6d41891c5e",
+    "raw_verified": true,
+    "compressed_verified": true,
+    "bindings_verified": true
+  }
+]

@@ -30,3 +30,34 @@ Nectar starts the remaining profiles only after a complete six-job bank
 ledger. A timeout or missing ledger blocks dispatch without killing jobs or
 exceeding the resource allocation. A completed failed-bank ledger allows
 the unaffected archived profiles to proceed. This is not a recurring monitor.
+
+## Reporting integration correction, 2 November 2026
+
+The first live summary call rejected the otherwise correct 60-job execution
+manifest because the builder omitted three reporting fields: site_count and
+observations_sha256 on all jobs, plus source_observations_sha256 on archived
+jobs. Independent read-only replay established that these were the only
+pre-receipt metadata omissions. A separate jobs-summary.json now copies these
+fields from the hash-bound prepared manifest and generated-C receipts. Every
+original job field remains equal, each observation hash matches its existing
+execution binding, and the reporting manifest binds the original execution
+manifest hash. The original executing jobs-profiles.json is not modified.
+The live summary call then passed its complete 60-role/38-dataset validation.
+This is a partial execution snapshot, not completed scientific evidence.
+
+The runtime builder now emits those fields for future job lists. This is
+reporting bookkeeping; no fit, selection, tolerance, bank or scientific rule
+changed after outcomes. The original builder remains in commit 65c67ab.
+
+## Finite diagnostic continuation
+
+The wake-up adds a finite downstream execution controller, recorded in
+runtime/continue_diagnostics.py. It waits for the exact 12+48 profile-ledger
+partition, checks commands and input/output bindings, reconciles the single
+completed screen, then executes remaining eligible screens and comparisons
+before producing the summary. Empty eligible sets remain valid terminal
+outcomes. Missing or inconsistent terminal evidence stops dispatch; no fit is
+killed or silently retried. The controller has a 24-hour deadline per waiting
+stage and creates no Codex wake-up or recurring schedule. Aggregate scientific
+acceptance, final archive verification and the return to c3.large still require
+review after heavy work completes.
