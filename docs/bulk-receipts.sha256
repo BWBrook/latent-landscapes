@@ -1,0 +1,18 @@
+# SHA-256 of bulk run receipts removed from Git on 2026-11-02 (tracked in history up to f88c59e).
+# Archive copy: nectar:/data/share/latent-landscapes/evidence-bulk/<path>. Verify with: shasum -a 256 -c docs/bulk-receipts.sha256
+188a6b5d14d8fb58b50d8cc6650120caa05c3d8aa0d612e59d7be20528177150  docs/evidence/paper1-profile-bank-qualification-2026-11-01/completed-profiles/B0-BH3.json
+2becccb204c4ac3af28916cb28ea0269d52807fca35edc96b7c47bd9a8f697ae  docs/evidence/paper1-profile-bank-qualification-2026-11-01/initial-execution/B0-H3-receipt.json
+71bae08140244d30ecb0c3d9e92c3fe12ecc1ce1a981b2a65c8df1e2a87571ad  docs/evidence/paper1-profile-bank-qualification-2026-11-01/completed-profiles/B0-H3.json
+cf9b97383a387205ff8ea40baa4e208e4dfe8ef4e89e3e2c98f1bb379307f7c9  docs/evidence/paper1-profile-bank-qualification-2026-11-01/completed-profiles/A-H3.json
+020be44f2cda689181f60de20389c2e15c04e37304f2605e6c2d7911c4380ea2  docs/evidence/paper1-profile-bank-qualification-2026-11-01/completed-profiles/AB-BH3.json
+4d39d452fa5f33db5492aac01078bc2aa65df017bd072786704d9099c0fa2ab0  docs/evidence/paper1-profile-bank-qualification-2026-11-01/completed-profiles/A-BH3.json
+8da1f5470890523a7f3d79ffc0914575b88da78935e2f3f60eb414b5fa0586ce  docs/evidence/paper1-profile-bank-qualification-2026-11-01/completed-profiles/B-BH3.json
+da1a80a88ccb54d055410d0f4ea7d700e50bbdadd167d25423555c52d5329749  docs/evidence/paper1-profile-bank-qualification-2026-11-01/completed-profiles/AB-H3.json
+fcf91adb85d2a729ac89fbb49e08736b2faa61254e819076b301a9bcd88879af  docs/evidence/paper1-profile-bank-qualification-2026-11-01/completed-profiles/B-H3.json
+6f9cf1682e75434d79c37e91ca99fba3ef60dc199e2590015bb4f6ea78b75fd3  docs/evidence/paper1-profile-bank-qualification-2026-11-01/initial-execution/B0-BH3-receipt.json
+0ac23e62153e3f8d21458b11305f4ea4ce4dcd61a69bc2714e1bb8055c3edc64  docs/evidence/paper1-profile-engine-2026-10-18/benchmark/B_H3-training120.json
+8a83af46a36295fe73a3840611f2b5c717b68ed4277820c0f5892b3a09317db1  docs/evidence/paper1-direct-profile-2026-10-31/benchmark/BH3-trust-full35-order192.json
+31334d5827f793e7caa07e4acf54ecfb06393057d51f6f3aa5db7428b0ca3f9b  docs/evidence/paper1-direct-profile-2026-10-31/benchmark/H3-trust-full35-order192.json
+44ddf985dda2eb06aa062c1bfe349d771ecf0e838dd9d7a7731d51b153455f6b  docs/goals/046-landscape-sampling-generality/initial-production-ensemble-check.json
+3931e811fa3af4f291d5b833663fd6ffcb8846fd43ebcbf613c062c6aec5a60b  docs/evidence/paper1-bank-review-2026-10-31/orientation/orientation_rows.csv
+febd7e686b208dc9272b9de5aadf2cda983be73cec11cf6684151fffc302003e  docs/evidence/paper1-profile-bank-qualification-2026-11-01/initial-execution/fresh-bank-2K-manifest.json

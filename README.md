@@ -455,7 +455,9 @@ artifacts/               Generated evidence packs, ignored by Git
 Generated review packs and build outputs are intentionally not committed unless
 a specific communication or provenance need requires them. A fresh clone
 contains the code and durable scientific record, not every production
-realisation.
+realisation. Bulk run receipts stay out of Git: their SHA-256 hashes are in
+`docs/bulk-receipts.sha256`, and `githooks/pre-commit` refuses staged files
+over 250 KB (enable it with `git config core.hooksPath githooks`).
 
 The active Arc 2 workflows follow `design -> likelihood -> campaign -> synthesis`;
 Arc 2B keeps its shared likelihood kernel in the campaign module. Arc 2A's

@@ -22,3 +22,22 @@ artifacts/
 
 # macOS
 .DS_Store
+
+# Bulk run receipts: keep them under artifacts/ or archive them, and record
+# hashes in docs/bulk-receipts.sha256. githooks/pre-commit refuses files >250 KB.
+docs/evidence/paper1-profile-bank-qualification-2026-11-01/completed-profiles/B0-BH3.json
+docs/evidence/paper1-profile-bank-qualification-2026-11-01/initial-execution/B0-H3-receipt.json
+docs/evidence/paper1-profile-bank-qualification-2026-11-01/completed-profiles/B0-H3.json
+docs/evidence/paper1-profile-bank-qualification-2026-11-01/completed-profiles/A-H3.json
+docs/evidence/paper1-profile-bank-qualification-2026-11-01/completed-profiles/AB-BH3.json
+docs/evidence/paper1-profile-bank-qualification-2026-11-01/completed-profiles/A-BH3.json
+docs/evidence/paper1-profile-bank-qualification-2026-11-01/completed-profiles/B-BH3.json
+docs/evidence/paper1-profile-bank-qualification-2026-11-01/completed-profiles/AB-H3.json
+docs/evidence/paper1-profile-bank-qualification-2026-11-01/completed-profiles/B-H3.json
+docs/evidence/paper1-profile-bank-qualification-2026-11-01/initial-execution/B0-BH3-receipt.json
+docs/evidence/paper1-profile-engine-2026-10-18/benchmark/B_H3-training120.json
+docs/evidence/paper1-direct-profile-2026-10-31/benchmark/BH3-trust-full35-order192.json
+docs/evidence/paper1-direct-profile-2026-10-31/benchmark/H3-trust-full35-order192.json
+docs/goals/046-landscape-sampling-generality/initial-production-ensemble-check.json
+docs/evidence/paper1-bank-review-2026-10-31/orientation/orientation_rows.csv
+docs/evidence/paper1-profile-bank-qualification-2026-11-01/initial-execution/fresh-bank-2K-manifest.json
