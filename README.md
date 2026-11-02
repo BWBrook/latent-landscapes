@@ -1,5 +1,7 @@
 # Latent Landscapes
 
+> **Status:** developed in the open as a working record. This is work in progress: contents may change, and nothing here is peer-reviewed unless stated.
+
 Latent Landscapes is a synthetic research programme for understanding when the
 parameters of spatially explicit predator-prey models can be learned from
 imperfect ecological observations.
@@ -471,3 +473,7 @@ scientific design changes; backwards compatibility is not a programme goal.
 Contributions should be narrow, state the scientific question they address,
 distinguish observation from inference, and include validation proportional to
 the claim being made.
+
+## Licence
+
+Code is released under the [MIT Licence](LICENSE). Text, figures and data created for this project are released under [CC BY-SA 4.0](LICENSE-CONTENT). Third-party material keeps its own terms where stated.
