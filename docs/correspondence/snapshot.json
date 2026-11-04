@@ -1,0 +1,72 @@
+{
+  "reviewed_at_utc": "2026-11-04T23:09:25.634713+00:00",
+  "reviewer": "Codex (GPT-6)",
+  "project": "latent-landscapes",
+  "reviewed_thread_id": 87,
+  "exporter_revision": "62c228024090dad65bc43114c246964965f19250",
+  "exporter_sha256": "66b733ab9db79560b9eee3a8cc350a318954a239b49144c0d589d7152e93380f",
+  "total_message_count": 152,
+  "retained_body_count": 30,
+  "withheld_body_count": 122,
+  "threads": [
+    {
+      "id": 21,
+      "first_message_id": 75,
+      "exported_through": 250,
+      "message_count": 22,
+      "retained_bodies": 0,
+      "source_content_sha256": "5cf6405dd928fd43fd6dcd55b9b71b2ef1e35b677dff916101a17b91af3ec572"
+    },
+    {
+      "id": 44,
+      "first_message_id": 276,
+      "exported_through": 431,
+      "message_count": 19,
+      "retained_bodies": 0,
+      "source_content_sha256": "fb82b5144c1488345af122a404a808eaa37477a555b95e4c32e8b0ae9294c8ad"
+    },
+    {
+      "id": 53,
+      "first_message_id": 468,
+      "exported_through": 1872,
+      "message_count": 72,
+      "retained_bodies": 0,
+      "source_content_sha256": "fdc282637dc4c38e662aa3ceb4789b6a164d62028230ba8dc5fe733bc58df1ab"
+    },
+    {
+      "id": 86,
+      "first_message_id": 1453,
+      "exported_through": 1876,
+      "message_count": 7,
+      "retained_bodies": 0,
+      "source_content_sha256": "dc3ce136ea013fc735317a88c5eaf44974645be9d586de689e0c6401c43c85c0"
+    },
+    {
+      "id": 87,
+      "first_message_id": 1877,
+      "exported_through": 2855,
+      "message_count": 31,
+      "retained_bodies": 30,
+      "source_content_sha256": "1c185d1c814f76dff892f9ccd7145cb9aef1610c18c6a97d0061c8d33b7e3240"
+    },
+    {
+      "id": 124,
+      "first_message_id": 2832,
+      "exported_through": 2832,
+      "message_count": 1,
+      "retained_bodies": 0,
+      "source_content_sha256": "db6e1835823f22a117f54b9ad1f3fc4ae187f9f1f9255d2e63e6fe2eafb96ee8"
+    }
+  ],
+  "sha256": {
+    "INDEX.md": "15938d0c5b492cc241575f2b08bc0ca8fe303d72f686d4c8afd7482a53f74b10",
+    "REVIEW.md": "f03c44807cc87dad39b6f150899b8ab0d250b800af255e38a6fecdde40c1d0d3",
+    "publication.toml": "813db1149ed9917d3e0a72f789423ae3612fba343cb067ea1ecbce8710821f6d",
+    "thread-0021.md": "dc9e21314c0eabd49bb3ff63f57670d879ab13e172179b1a93b291d11ab63146",
+    "thread-0044.md": "3c506f5c2e196fb714c22bd45906c551f27b1247a5f85177e352a6ab50b63dca",
+    "thread-0053.md": "4f4caaf0537ddef1901c61394b2db9e11efd250093627add5d85001dafde9478",
+    "thread-0086.md": "9cf377f9c4c821ef90fc8ffe51acee5c6dae95484c6ff39b0a5ee7b21697b336",
+    "thread-0087.md": "27a81315edca21e058750e86b92f27068e0c48a12825a824064d9a38181b8ee4",
+    "thread-0124.md": "1438900ca4cb26d06ad8b54ba14abad2ef60696dd737b5fa9a93689585802622"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "completed-development-archive-v1",
+  "verified_at_utc": "2026-11-04T23:04:29.410744+00:00",
+  "source_commit": "75e2eac627c89fa91bc5dda220245c65b80b6690",
+  "file_count": 3406,
+  "total_bytes": 2745002175,
+  "source_before_after_equal": true,
+  "archive_equal": true,
+  "archive_id": "development-challenge-20261101",
+  "manifest_sha256": "5df8591f83e970f458ed468da44522c4142f16e673fac3d6f9d4b26607e1edf7",
+  "local_json_csv_files_verified": 2182,
+  "inventory_rechecked_after_resource_return": true,
+  "summary_sha256": "9d5abf2925dca4b0ab91f82ca0db6ab2c98505aae73e4c03e7c6746c1479aa99",
+  "canonical_summary_replay_byte_identical": true,
+  "canonical_replay_sha256": {
+    "summary.json": "9d5abf2925dca4b0ab91f82ca0db6ab2c98505aae73e4c03e7c6746c1479aa99",
+    "datasets.csv": "89cc0f385eeb6d734f5aaf47a61fd41f828949ac64e785d08bad5ac16dc188be",
+    "paired_descriptives.csv": "f24b22b17e1cf1ad82eaac49edd087c504f57b054db275eda12dcb222ad32582"
+  }
+}

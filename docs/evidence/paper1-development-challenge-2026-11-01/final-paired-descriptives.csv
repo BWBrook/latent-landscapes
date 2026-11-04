@@ -1,0 +1,17 @@
+biological_history_id,dL,dU,dataset_A,dataset_B,descriptive_only,expansion_category,numerical_acceptance_gate,prediction_dU_gt_dL,prediction_slope_B_minus_A_ge_0,ridge_A_category,ridge_B_category,slope_A,slope_B,slope_B_minus_A
+cell-00-rep-005,,,cell-00-rep-005-arm-A,cell-00-rep-005-arm-B,True,A:truncated|B:unresolved,False,,,truncated,unresolved,,,
+cell-00-rep-006,,,cell-00-rep-006-arm-A,cell-00-rep-006-arm-B,True,A:truncated|B:available,False,,,truncated,tied,,,
+cell-01-rep-005,-0.038328114548524764,-0.008856935838410518,cell-01-rep-005-arm-A,cell-01-rep-005-arm-B,True,available,False,True,False,available,available,0.05453977248934425,-0.00810044882455719,-0.06264022131390144
+cell-01-rep-006,,,cell-01-rep-006-arm-A,cell-01-rep-006-arm-B,True,A:truncated|B:truncated,False,,,truncated,truncated,,,
+cell-03-rep-005,,,cell-03-rep-005-arm-A,cell-03-rep-005-arm-B,True,A:truncated|B:truncated,False,,,truncated,truncated,,,
+cell-03-rep-006,,,cell-03-rep-006-arm-A,cell-03-rep-006-arm-B,True,A:truncated|B:truncated,False,,,truncated,truncated,,,
+cell-04-rep-005,0.05341447820524625,0.01973555258463211,cell-04-rep-005-arm-A,cell-04-rep-005-arm-B,True,available,False,False,,tied,tied,,,
+cell-04-rep-006,0.015648740228679126,0.026920183859468594,cell-04-rep-006-arm-A,cell-04-rep-006-arm-B,True,available,False,True,,tied,tied,,,
+cell-06-rep-005,,,cell-06-rep-005-arm-A,cell-06-rep-005-arm-B,True,A:truncated|B:truncated,False,,,truncated,truncated,,,
+cell-06-rep-006,,,cell-06-rep-006-arm-A,cell-06-rep-006-arm-B,True,A:truncated|B:unresolved,False,,,truncated,unresolved,,,
+cell-07-rep-005,,,cell-07-rep-005-arm-A,cell-07-rep-005-arm-B,True,A:truncated|B:truncated,False,,,truncated,truncated,,,
+cell-07-rep-006,,,cell-07-rep-006-arm-A,cell-07-rep-006-arm-B,True,A:truncated|B:truncated,False,,,truncated,truncated,,,
+cell-08-rep-005,,,cell-08-rep-005-arm-A,cell-08-rep-005-arm-B,True,A:truncated|B:truncated,False,,,truncated,truncated,,,
+cell-08-rep-006,,,cell-08-rep-006-arm-A,cell-08-rep-006-arm-B,True,A:truncated|B:truncated,False,,,truncated,truncated,,,
+cell-09-rep-005,0.3386765209586473,-0.19379408660127861,cell-09-rep-005-arm-A,cell-09-rep-005-arm-B,True,available,False,False,False,available,available,0.6247468772414008,0.4814174582329309,-0.14332941900846985
+cell-09-rep-006,0.06594883246348837,0.06480234885958591,cell-09-rep-006-arm-A,cell-09-rep-006-arm-B,True,available,False,False,False,available,available,0.38121901731260727,0.34700541193126133,-0.034213605381345935

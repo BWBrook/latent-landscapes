@@ -14,6 +14,15 @@ review.
 
 ## Current Position
 
+5 November 2026: the [finite development challenge](paper1-development-challenge-results-2026-11-05.md)
+is complete, including 60 profile roles, 36 eligible integration screens and
+22 bank comparisons. It denies promotion of the spatial-profile approximation:
+two fixed-outer integration screens require repair, 21 are indeterminate and
+two unavailable; boundary-contact failures also persist. The next useful
+scientific decision is a reviewed diagnosis of family reversal and contact
+classification, not production calibration. All frozen outcomes remain in the
+record; this result does not reopen Goal 062 or invalidate its earlier scope.
+
 The [11 October charter-level synthesis](paper1-evidence-synthesis-2026-10-11.md)
 is now supplemented by the completed and audited
 [Goal 062 final-procedure evaluation](goals/062-final-procedure-evaluation/report.md).

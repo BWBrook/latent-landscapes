@@ -1,28 +1,28 @@
-## Active development challenge — 1 November 2026
+## Completed development challenge — 5 November 2026
 
-Barry authorised proceeding after Claude's review (Correspondence 2801).
-The 32 archived A/B dataset identities and six separate arm-C cases are
-fixed in `docs/paper1-development-challenge-panel-2026-11-01.md` and its
-pre-execution evidence archive. Independent review and 335 focused tests
-accepted preparation. Numerical panel execution is the current task; no
-calibration or production campaign is authorised by this development result.
+All six banks, 60 profile jobs, 36 eligible integration screens and 22 bank
+comparisons are complete. Independent final audit reconciles 60 parent and
+98 child profile receipts. Numerical readiness is denied: dense/lean outcomes
+are 24 passes, 12 contact-gate failures and two unresolved searches; banks
+have 16 passes and six contact-gate failures. Integration yields 13 pointwise
+passes, two repair-required cases, 21 cap-indeterminate screens and two
+unavailable screens. Both repairs concern cell-01-rep-006, arms A/B, and
+confirm a positive-to-zero variance-family reversal at fixed outer parameters.
 
-2 November wake-up checkpoint: all six 131,072-row banks have completed;
-raw/compressed hashes and every recorded source/input binding verify.
-All 60 profile jobs were dispatched. The inspected snapshot has three
-completed parent receipts and 57 running jobs. Independent review preserves
-one dense/lean contact-gate failure despite near-identical W curves, and two
-indeterminate arm-B searches with unresolved ineligible candidate envelopes.
-The first fixed-outer integration screen passes at 32,768 draws per stream;
-this does not qualify optimized roots or aggregate panel readiness. Read the
-[interim evidence review](docs/evidence/paper1-development-challenge-2026-11-01/interim-review-2026-11-02.md).
-The running fits and their manifests remain frozen. Reporting metadata has
-been repaired in a separate jobs-summary.json; execution bindings are unchanged.
-Nectar remains at c3.3xlarge while the finite heavy work runs. Final synthesis,
-archive verification, independent final review and return to c3.large remain
-outstanding. The one scheduled wake-up has been used; no further schedule
-has been created. Runtime continuation details are in the challenge artifact
-CONTINUATION.md.
+Read the [final report](docs/paper1-development-challenge-results-2026-11-05.md)
+and [independent review](docs/evidence/paper1-development-challenge-2026-11-01/final-independent-review.md).
+Five of 16 A/B pairs permit root-expansion contrasts (two match the predicted
+direction); three permit ridge contrasts (none match). All other categories
+and failed numerical gates remain explicit. No calibration or optimised
+importance-root movement is claimed. Goal 062 remains closed and unchanged.
+
+Bulk source/results are hash-verified in the completed project archive;
+compact tables, figures, reproduction script and claims are in the evidence
+folder. Heavy work is finished; the compute hub is back at its standing allocation
+with service health verified. No recurring monitor or new campaign runs.
+The next proposed tranche is a reviewed diagnosis of integration-family
+reversal and near-zero nuisance-contact classification; no method or frozen
+gate has been changed. Earlier checkpoints below are historical.
 
 # Latent Landscapes: current handover
 

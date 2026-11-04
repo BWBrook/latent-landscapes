@@ -121,9 +121,12 @@ defines the next design. Current numerical development has completed two
 [independent-bank and continuous-profile qualification](docs/paper1-profile-bank-qualification-2026-11-01.md)
 is complete on those two development histories: all eight profiles and all
 five bank comparisons per history pass, with independent review. This is
-bounded numerical qualification. Calibration, higher-accuracy integration,
-260-site behaviour, the broader challenge suite and production throughput
-remain to be qualified. See the
+bounded numerical qualification. The broader
+[completed development challenge](docs/paper1-development-challenge-results-2026-11-05.md)
+now includes 38 datasets and six separate 260-site cases. It denies numerical
+readiness: integration requires repair in two paired datasets, while other
+screens remain indeterminate and contact-gate failures are preserved.
+Calibration and production throughput remain unqualified. See the
 [current handover](HANDOVER.md) for execution status.
 
 The [11 October evidence synthesis](docs/paper1-evidence-synthesis-2026-10-11.md)

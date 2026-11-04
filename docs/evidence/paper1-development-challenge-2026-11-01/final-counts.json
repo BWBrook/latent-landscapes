@@ -1,0 +1,52 @@
+{
+  "bank_comparison_status_counts": {
+    "failed": 6,
+    "not_requested": 16,
+    "within_prespecified_gates": 16
+  },
+  "dataset_count": 38,
+  "dense_lean_comparison_status_counts": {
+    "failed": 12,
+    "indeterminate": 2,
+    "within_prespecified_gates": 24
+  },
+  "dense_status_counts": {
+    "indeterminate": 2,
+    "profile_numerically_resolved": 36
+  },
+  "expansion_available": 5,
+  "expansion_prediction_true": 2,
+  "integration_display_counts": {
+    "fail": 2,
+    "indeterminate": 21,
+    "pass": 13,
+    "unavailable": 2
+  },
+  "integration_screen_status_counts": {
+    "indeterminate": 23,
+    "pointwise_screen_passed": 13,
+    "repair_required": 2
+  },
+  "lean_candidate_status_counts": {
+    "indeterminate": 2,
+    "profile_numerically_resolved": 36
+  },
+  "optimized_importance_root_movement_quantified": false,
+  "paired_history_count": 16,
+  "profile_role_binding_counts": {
+    "verified": 60
+  },
+  "profile_role_count": 60,
+  "profile_status_counts": {
+    "failed": 12,
+    "indeterminate": 2,
+    "within_prespecified_gates": 24
+  },
+  "ridge_available": 3,
+  "ridge_prediction_true": 0,
+  "scientific_claim": false,
+  "separate_c_history_count": 6,
+  "source_jobs_sha256": "33d86c952a04dce9a9f71045b4b996284c9bd21468970d188237b9a2a9e8ba27",
+  "source_manifest_sha256": "f5a80802dc502305f186f7f0a599d20e674d26d7b3e1c917403969b01f2cecfa",
+  "source_summary_sha256": "9d5abf2925dca4b0ab91f82ca0db6ab2c98505aae73e4c03e7c6746c1479aa99"
+}
