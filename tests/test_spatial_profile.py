@@ -3,7 +3,7 @@ from __future__ import annotations
 import math
 from collections.abc import Callable
 from dataclasses import replace
-from typing import cast
+from typing import Any, cast
 
 import numpy as np
 import pytest
@@ -343,6 +343,106 @@ def test_newton_step_with_gain_below_roundoff_is_accepted_not_damped_into_failur
     branch = criterion._mode_branch(np.zeros(1), np.eye(1), _OffsetQuadraticEvaluator(), start)
     assert branch is not None
     np.testing.assert_allclose(branch[0], [1.0], rtol=0.0, atol=1e-12)
+
+
+def test_floored_laplace_gradient_matches_reoptimised_difference_where_floor_is_active() -> None:
+    # Locally convex site terms make I - C'diag(ell'')C nearly singular; the
+    # smooth eigenvalue floor must stay finite, continuous and differentiable.
+    data = _data(5)
+    site = np.arange(5.0)
+
+    def build(h: float, detection_sd: float, grid: np.ndarray) -> np.ndarray:
+        shifted = grid[None, :] + 0.045 * math.log(h) - 0.12 * detection_sd
+        return (
+            (0.18 + 0.025 * site)[:, None] * shifted
+            - (0.75 + 0.08 * site)[:, None] * np.exp(shifted)
+            + 0.45 * np.log1p(np.exp(3.0 * (shifted + 2.0)))
+        )
+
+    criterion = SpatialProfileCriterion(
+        data, grid=np.linspace(-12.0, 8.0, 801), curve_builder=cast(Any, build)
+    )
+    point = np.array([-3.0, 0.2, math.log(0.695), 0.18])
+    analytic = criterion.evaluate_positive(point, fixed_h=3.0, nuisance_fd=True)
+    assert analytic.success and analytic.mode is not None
+    assert analytic.mode.combined_min_eigenvalue < spatial_profile.LAPLACE_FLOOR
+    for index in range(4):
+        numerical = _central_difference(
+            lambda x: criterion.evaluate_positive(x, fixed_h=3.0).criterion, point, index, 1e-6
+        )
+        assert analytic.criterion_gradient[index] == pytest.approx(numerical, rel=1e-4, abs=1e-5)
+
+
+def test_eigenvalue_floor_is_negligible_at_ordinary_eigenvalues_and_caps_at_zero() -> None:
+    values = np.array([1e-12, 0.05, 0.89, 1.0, 3.0])
+    floored, _ = spatial_profile._floored_eigenvalues(values)
+    assert floored[0] == pytest.approx(spatial_profile.LAPLACE_FLOOR, rel=1e-9)
+    np.testing.assert_allclose(floored[2:], values[2:], rtol=2e-5, atol=0.0)
+    assert np.all(np.diff(floored) > 0.0)
+
+
+def _toy_evaluation(value: float, gradient: np.ndarray, success: bool = True) -> Any:
+    return spatial_profile.CriterionEvaluation(
+        value if success else -math.inf,
+        -value if success else math.inf,
+        gradient,
+        -gradient,
+        success,
+        "ok" if success else "failed",
+        True,
+        None,
+        np.zeros(len(gradient)),
+        1.0,
+        0.1,
+    )
+
+
+def test_trust_region_escapes_an_exact_saddle_start() -> None:
+    # f = -x^2 + y^2 - y^4/4 has a saddle at the origin and maxima at y = +/-sqrt(2).
+    def evaluate(z: np.ndarray) -> Any:
+        x, y = z
+        value = -(x**2) + y**2 - 0.25 * y**4
+        return _toy_evaluation(value, np.array([-2.0 * x, 2.0 * y - y**3]))
+
+    point, result, info = _criterion(1)._trust_region(
+        evaluate, np.zeros(2), ((-5.0, 5.0), (-5.0, 5.0)), maxiter=80, gradient_tolerance=1e-8
+    )
+    assert info.success and result.success
+    np.testing.assert_allclose(np.abs(point), [0.0, math.sqrt(2.0)], atol=1e-6)
+
+
+def test_trust_region_accepts_a_bound_maximum_with_kkt_and_survives_failed_columns() -> None:
+    calls = {"n": 0}
+
+    def evaluate(z: np.ndarray) -> Any:
+        calls["n"] += 1
+        x, y = z
+        if 0.3 < y <= 0.30002:
+            return _toy_evaluation(0.0, np.zeros(2), success=False)
+        value = -((x - 5.0) ** 2) - (y - 0.3) ** 2
+        return _toy_evaluation(value, np.array([-2.0 * (x - 5.0), -2.0 * (y - 0.3)]))
+
+    point, result, info = _criterion(1)._trust_region(
+        evaluate,
+        np.array([0.0, 0.0]),
+        ((-2.0, 1.0), (-2.0, 2.0)),
+        maxiter=80,
+        gradient_tolerance=1e-7,
+    )
+    assert info.success and result.success
+    np.testing.assert_allclose(point, [1.0, 0.3], atol=1e-5)
+
+
+def test_trust_region_surrounded_by_failures_is_not_successful() -> None:
+    def evaluate(z: np.ndarray) -> Any:
+        if np.any(z != 0.0):
+            return _toy_evaluation(0.0, np.zeros(2), success=False)
+        return _toy_evaluation(0.0, np.array([1.0, 1.0]))
+
+    _, _, info = _criterion(1)._trust_region(
+        evaluate, np.zeros(2), ((-1.0, 1.0), (-1.0, 1.0)), maxiter=20, gradient_tolerance=1e-6
+    )
+    assert not info.success
 
 
 def test_mode_iteration_limit_is_a_deterministic_failure() -> None:

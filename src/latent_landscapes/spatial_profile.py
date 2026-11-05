@@ -40,7 +40,7 @@ DEFAULT_PROFILE_H_GRID = tuple(float(value) for value in np.geomspace(1.0, 30.0,
 MEAN_DETECTION = 0.65
 DETECTION_SD_MAX = math.sqrt(MEAN_DETECTION * (1.0 - MEAN_DETECTION))
 SIGMA_MAX = 1.5
-LAPLACE_REGULARITY = 0.1
+LAPLACE_FLOOR = 0.1
 
 
 class CurveDomainError(RuntimeError):
@@ -203,6 +203,9 @@ class ModeResult:
     proposal_grid_supported: bool = False
     newton_step_inf: float = math.nan
     newton_decrement: float = math.nan
+    determinant_diagonal: FloatArray | None = field(default=None, repr=False)
+    determinant_trace: float = math.nan
+    combined_min_eigenvalue: float = math.nan
 
 
 @dataclass(frozen=True, slots=True)
@@ -249,6 +252,18 @@ class ProfileFit:
     candidates: tuple[FitCandidate, ...]
     resolved: bool
     elapsed_seconds: float
+
+
+def _floored_eigenvalues(eigenvalues: FloatArray) -> tuple[FloatArray, FloatArray]:
+    """Smoothly floor positive eigenvalues: f(x) = x + tau exp(-x / tau).
+
+    f(0) = tau caps the Laplace determinant inflation at log(1/tau) / 2 per
+    latent direction; at x >= 0.89, the range seen at ordinary fits, f
+    differs from x by less than 1.4e-5. Returns f and f'/f.
+    """
+    decay = np.exp(-eigenvalues / LAPLACE_FLOOR)
+    floored = eigenvalues + LAPLACE_FLOOR * decay
+    return floored, (1.0 - decay) / floored
 
 
 class SpatialProfileCriterion:
@@ -653,13 +668,14 @@ class SpatialProfileCriterion:
             logdet_h = float(2.0 * np.log(np.diag(hessian_factor[0])).sum())
             c_cholesky = sigma * self._k_cholesky
             combined = self._identity - c_cholesky.T @ (curvature[:, None] * c_cholesky)
-            combined_factor = cho_factor(combined, lower=True, check_finite=True)
-            logdet_combined = float(2.0 * np.log(np.diag(combined_factor[0])).sum())
-            regular = True
-            try:
-                cho_factor(combined - LAPLACE_REGULARITY * self._identity, lower=True)
-            except np.linalg.LinAlgError:
-                regular = False
+            eigenvalues, eigenvectors = np.linalg.eigh(combined)
+            if float(eigenvalues.min()) <= 0.0:
+                raise np.linalg.LinAlgError("I - C'diag(ell'')C is not positive definite")
+            floored, weights = _floored_eigenvalues(eigenvalues)
+            logdet_combined = float(np.log(floored).sum())
+            projected = c_cholesky @ eigenvectors
+            determinant_diagonal = np.einsum("ij,j,ij->i", projected, weights, projected)
+            determinant_trace = float(np.dot(weights, eigenvalues - 1.0))
         except np.linalg.LinAlgError as exc:
             self.stats["pd_failures"] = int(self.stats["pd_failures"]) + 1
             return ModeResult(
@@ -688,13 +704,8 @@ class SpatialProfileCriterion:
             proposal_eta_min >= curves.numerical_domain[0]
             and proposal_eta_max <= curves.numerical_domain[1]
         )
-        success = bool(not bound_touch and proposal_grid_supported and regular)
-        if not regular:
-            message = (
-                "Laplace approximation is irregular: smallest eigenvalue of "
-                f"I - C'diag(ell'')C is below {LAPLACE_REGULARITY:g}"
-            )
-        elif bound_touch:
+        success = bool(not bound_touch and proposal_grid_supported)
+        if bound_touch:
             message = "latent mode touched the evaluated curve-grid boundary"
         elif not proposal_grid_supported:
             message = (
@@ -724,6 +735,9 @@ class SpatialProfileCriterion:
             proposal_grid_supported,
             step_inf,
             decrement,
+            determinant_diagonal,
+            determinant_trace,
+            float(eigenvalues.min()),
         )
 
     @staticmethod
@@ -816,19 +830,23 @@ class SpatialProfileCriterion:
         du_alpha = cho_solve(hessian_factor, curvature, check_finite=True)
         du_beta = cho_solve(hessian_factor, curvature * exposure, check_finite=True)
         du_log_sigma = cho_solve(hessian_factor, 2.0 * (precision @ mode.u), check_finite=True)
-        hessian_inverse_diagonal = np.diag(mode.hessian_inverse)
+        # With floored eigenvalues f(lambda_j) of M = I - C'diag(ell'')C, the
+        # derivative of sum log f is sum_i dc_i G_ii with G = C V diag(f'/f) V'C';
+        # without the floor G = H^-1, recovering standard Laplace.
+        determinant_diagonal = mode.determinant_diagonal
+        assert determinant_diagonal is not None
         alpha_gradient = float(
-            np.sum(score) + 0.5 * np.dot(hessian_inverse_diagonal, third * (1.0 + du_alpha))
+            np.sum(score) + 0.5 * np.dot(determinant_diagonal, third * (1.0 + du_alpha))
         )
         beta_gradient = float(
             np.dot(exposure, score)
-            + 0.5 * np.dot(hessian_inverse_diagonal, third * (exposure + du_beta))
+            + 0.5 * np.dot(determinant_diagonal, third * (exposure + du_beta))
         )
         quadratic = float(mode.u @ precision @ mode.u)
         log_sigma_gradient = float(
             quadratic
-            + np.dot(hessian_inverse_diagonal, curvature)
-            + 0.5 * np.dot(hessian_inverse_diagonal, third * du_log_sigma)
+            - mode.determinant_trace
+            + 0.5 * np.dot(determinant_diagonal, third * du_log_sigma)
         )
         criterion = float(np.sum(ell) - 0.5 * quadratic - 0.5 * mode.logdet_combined)
         gradient = np.zeros(len(point), dtype=np.float64)
@@ -853,8 +871,7 @@ class SpatialProfileCriterion:
                 ):
                     du = cho_solve(hessian_factor, d_score, check_finite=True)
                     gradient[index] = float(
-                        np.sum(d_ell)
-                        + 0.5 * np.dot(hessian_inverse_diagonal, d_curvature + third * du)
+                        np.sum(d_ell) + 0.5 * np.dot(determinant_diagonal, d_curvature + third * du)
                     )
             except (CurveDomainError, FloatingPointError, ValueError) as exc:
                 return self._invalid(
@@ -1022,15 +1039,17 @@ class SpatialProfileCriterion:
         """Maximise by projected trust-region Newton with exact gradients.
 
         The Hessian is a symmetrised forward difference of the analytic
-        gradient. Negative-curvature directions are handled by an eigenvalue
-        (Levenberg) shift, so saddles are left rather than accepted.
+        gradient (retried backwards, then replaced by a diagonal curvature
+        if both differences fail). Negative-curvature directions are handled
+        by an eigenvalue shift, and a first-order stationary point is accepted
+        only after a second-order check finds no ascent direction.
         """
         lower = np.array([bound[0] for bound in bounds])
         upper = np.array([bound[1] for bound in bounds])
         x = np.clip(np.asarray(start, dtype=np.float64), lower, upper)
         current = evaluate(x)
         evaluations, radius, message = 1, 1.0, "iteration limit reached"
-        iterations = 0
+        iterations, escapes = 0, 0
         if not current.success:
             return (
                 x,
@@ -1039,35 +1058,74 @@ class SpatialProfileCriterion:
                     x=x, success=False, message="start evaluation failed", nit=0, nfev=1
                 ),
             )
-        for _ in range(maxiter):
+
+        def free_set(point: FloatArray, gradient: FloatArray) -> NDArray[np.intp]:
+            tolerance = 1e-8 * np.maximum(1.0, np.maximum(np.abs(lower), np.abs(upper)))
+            active = ((point <= lower + tolerance) & (gradient < 0.0)) | (
+                (point >= upper - tolerance) & (gradient > 0.0)
+            )
+            return np.flatnonzero(~active)
+
+        def curvature_at(
+            point: FloatArray, gradient: FloatArray, free: NDArray[np.intp]
+        ) -> tuple[FloatArray, int]:
+            hessian = np.zeros((len(point), len(point)))
+            failed = []
+            count = 0
+            for index in free:
+                delta = 1e-5 * max(1.0, abs(float(point[index])))
+                column = None
+                for signed in (delta, -delta):
+                    trial = point.copy()
+                    trial[index] += signed
+                    if not lower[index] <= trial[index] <= upper[index]:
+                        continue
+                    other = evaluate(trial)
+                    count += 1
+                    if other.success:
+                        column = (other.criterion_gradient - gradient) / signed
+                        break
+                if column is None:
+                    failed.append(index)
+                else:
+                    hessian[:, index] = column
+            curvature = -0.5 * (hessian + hessian.T)
+            if failed:
+                good = [i for i in free if i not in failed]
+                scale = max([1.0, *(abs(float(curvature[i, i])) for i in good)])
+                for index in failed:
+                    curvature[index, :] = 0.0
+                    curvature[:, index] = 0.0
+                    curvature[index, index] = scale
+            return curvature[np.ix_(free, free)], count
+
+        while iterations < maxiter:
             iterations += 1
             gradient = current.criterion_gradient
-            if self._projected_gradient_inf(-gradient, x, bounds) <= gradient_tolerance:
-                message = "projected gradient below tolerance"
-                break
-            tolerance = 1e-8 * np.maximum(1.0, np.maximum(np.abs(lower), np.abs(upper)))
-            active = ((x <= lower + tolerance) & (gradient < 0.0)) | (
-                (x >= upper - tolerance) & (gradient > 0.0)
-            )
-            free = np.flatnonzero(~active)
-            hessian = np.zeros((len(x), len(x)))
-            for index in free:
-                delta = 1e-5 * max(1.0, abs(float(x[index])))
-                if x[index] + delta > upper[index]:
-                    delta = -delta
-                shifted = x.copy()
-                shifted[index] += delta
-                other = evaluate(shifted)
-                evaluations += 1
-                if not other.success:
-                    hessian = np.full_like(hessian, np.nan)
-                    break
-                hessian[:, index] = (other.criterion_gradient - gradient) / delta
-            if not np.isfinite(hessian[np.ix_(free, free)]).all():
-                message = "Hessian difference evaluation failed"
-                break
-            curvature = -0.5 * (hessian + hessian.T)[np.ix_(free, free)]
+            free = free_set(x, gradient)
+            curvature, count = curvature_at(x, gradient, free)
+            evaluations += count
             values, vectors = np.linalg.eigh(curvature)
+            if self._projected_gradient_inf(-gradient, x, bounds) <= gradient_tolerance:
+                scale = max(1.0, float(np.max(np.abs(values)))) if len(values) else 1.0
+                if not len(values) or values.min() >= -1e-6 * scale or escapes >= 3:
+                    message = "projected gradient below tolerance; no ascent direction"
+                    break
+                escapes += 1
+                direction = np.zeros_like(x)
+                direction[free] = vectors[:, 0]
+                improved = False
+                for signed in (radius, -radius):
+                    trial = np.clip(x + signed * direction, lower, upper)
+                    candidate = evaluate(trial)
+                    evaluations += 1
+                    if candidate.success and candidate.criterion > current.criterion + 1e-10:
+                        x, current, improved = trial, candidate, True
+                        break
+                if not improved:
+                    message = "projected gradient below tolerance; saddle escape failed"
+                    break
+                continue
             projected_gradient = vectors.T @ gradient[free]
             shift = max(0.0, 1e-8 - float(values.min()))
             while True:
@@ -1079,8 +1137,9 @@ class SpatialProfileCriterion:
             step[free] = step_free
             trial = np.clip(x + step, lower, upper)
             step = trial - x
-            model = curvature
-            predicted = float(gradient[free] @ step[free] - 0.5 * step[free] @ model @ step[free])
+            predicted = float(
+                gradient[free] @ step[free] - 0.5 * step[free] @ curvature @ step[free]
+            )
             candidate = evaluate(trial)
             evaluations += 1
             ratio = (

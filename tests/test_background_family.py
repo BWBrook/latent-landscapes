@@ -51,16 +51,24 @@ def test_matched_exposure_is_exposure_only(
     assert np.allclose(lam, expected, rtol=1e-12)
 
 
-def test_signal_surface_orthogonal_unit_sd(
+def test_signal_surface_orthogonal_unit_sd_on_frame_and_bounded(
     world: tuple[FixedInputs, object, bf.FamilySurfaces],
 ) -> None:
     _, setup, surfaces = world
-    mask = setup.accepted_mask  # type: ignore[attr-defined]
-    t = surfaces.signal[mask]
+    rows, cols = setup.site_rows, setup.site_cols  # type: ignore[attr-defined]
+    t = surfaces.signal[rows, cols]
+    a = setup.exposure_score[rows, cols]  # type: ignore[attr-defined]
     assert abs(t.mean()) < 1e-10
     assert t.std(ddof=0) == pytest.approx(1.0, abs=1e-12)
-    assert abs(np.mean(t * setup.exposure_score[mask])) < 1e-10  # type: ignore[attr-defined]
-    assert 0.0 < surfaces.diagnostics["window_prevalence"] < 1.0
+    assert abs(np.mean(t * a)) < 1e-10
+    assert 0.0 < surfaces.diagnostics["window_prevalence_frame"] < 1.0
+    # Release cells (planning arrival 0) count as reached: W is monotone in A,
+    # so no small group of cells can carry extreme T values.
+    mask = setup.accepted_mask  # type: ignore[attr-defined]
+    assert np.max(np.abs(surfaces.signal[mask])) < 5.0
+    order = np.argsort(setup.exposure_score[mask])  # type: ignore[attr-defined]
+    window = surfaces.window[mask][order]
+    assert np.all(np.diff(window) >= 0.0)
 
 
 @pytest.mark.parametrize("effect", [1.0, 3.0, 10.0])

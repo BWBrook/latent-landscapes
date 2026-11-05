@@ -15,7 +15,7 @@
    "ok": 3
   }
  },
- "full_manifest_sha256": "3ee5c81121ce47dcddbf42c5588e514d1e3ca97fc025e773484ab1ff3cc49c66",
+ "full_manifest_sha256": "a31501c60b03f6a9612be5f14ff0e2a18c527dc8e2a47724d50c888e20ed57a4",
  "maps": [
   {
    "admissible": true,
@@ -25,7 +25,7 @@
     "design.json": "aaa9e37877c1c22e4f176377c76bb19ab940db88f125bf1f66a6d63da9575440",
     "exposure.npz": "b3cbc594928406f22e525aca76a5193d811b981e56e4fbef33c8f9a1ac2ab46c",
     "public_inputs.npz": "b6c92fd80aadce7a04913e30234bdfc85dedbb20ef9009045720e54e304c6858",
-    "surfaces.npz": "a83fcde06de2e47329018331842b0b65ca71dee4f33225ae1a9b348851476d0f"
+    "surfaces.npz": "545e171e9f2c854fbd38f84e373ed78a5669c883e592c0b1733d78610ba1a519"
    },
    "map_index": 0,
    "role": "qualification",
@@ -188,11 +188,20 @@
    "stage": "complete",
    "status": "ok",
    "surface_diagnostics": {
-    "corr_T_A": -6.160067312211271e-15,
-    "corr_W_A": 0.7475186895813144,
+    "corr_T_A_frame": -2.817338031603396e-16,
+    "corr_W_A_frame": 0.8101255196442942,
     "planning_arrival_finite_fraction": 0.8639219576719577,
-    "sd_before_rescaling": 0.3301127160001034,
-    "window_prevalence": 0.4451058201058201
+    "sd_before_rescaling": 0.29310217535688077,
+    "t_range_frame": [
+     -2.2685397464320873,
+     1.852589507378301
+    ],
+    "t_range_map": [
+     -2.2685397464320873,
+     1.8711714549597285
+    ],
+    "window_prevalence_frame": 0.49333333333333335,
+    "window_prevalence_map": 0.45849867724867727
    },
    "unreachable_tie_count": 823,
    "unreachable_tie_exposure_score": -1.5699246567902871,
@@ -208,7 +217,7 @@
     "design.json": "68cf23b5ace8f1a508deed343f57846a0bd4b4010ec1f6fa261aef45274fb9e1",
     "exposure.npz": "a0c5daa7aac5ebaad699a4f258b21a983ae624266460a450a39a2a3aa3964281",
     "public_inputs.npz": "4a79e474f8fb35efabcfbfbe9d90135976ebcee85c5ce132301d537c36cdb2ad",
-    "surfaces.npz": "ae55c01d9ce1e60a9f89887bd4796e6521efa2a6f9d41590dc855c218f8a7395"
+    "surfaces.npz": "8d51c342dcd73350f31fea3cb611aa690c0933a4059c3b18c9a8a652fb3af47c"
    },
    "map_index": 1,
    "role": "qualification",
@@ -371,11 +380,20 @@
    "stage": "complete",
    "status": "ok",
    "surface_diagnostics": {
-    "corr_T_A": 1.13151698475355e-15,
-    "corr_W_A": 0.747431629431703,
+    "corr_T_A_frame": 3.856234132826623e-16,
+    "corr_W_A_frame": 0.820874473365519,
     "planning_arrival_finite_fraction": 0.8639219576719577,
-    "sd_before_rescaling": 0.3315268265448326,
-    "window_prevalence": 0.4689153439153439
+    "sd_before_rescaling": 0.2855479831614386,
+    "t_range_frame": [
+     -2.39480507965933,
+     1.9662685840550194
+    ],
+    "t_range_map": [
+     -2.39480507965933,
+     1.977099287416107
+    ],
+    "window_prevalence_frame": 0.5033333333333333,
+    "window_prevalence_map": 0.48230820105820105
    },
    "unreachable_tie_count": 823,
    "unreachable_tie_exposure_score": -1.5699380364653897,
@@ -391,7 +409,7 @@
     "design.json": "a433ec39c423715ac33a2b51a1e7dd2c84c508695070056e8dcd3b68c79c604f",
     "exposure.npz": "3a4d4c874d567052cb59140c643e93ab2dc35212fd2d5f5a4ae361c2a6017b49",
     "public_inputs.npz": "2dcb985c10b067510e60d5483c2b17eec804e6cf2b88a27df43d56f8c3fe301e",
-    "surfaces.npz": "717f29169aa4dfd1b1c0903d0ea07844312b5d12d9710bfa8ce1d8e3de5df2c3"
+    "surfaces.npz": "14b7bf13297a1c69ebb949ddb8a48b5ce38a5cfdee4901b64a8d7a60f9a2399a"
    },
    "map_index": 2,
    "role": "qualification",
@@ -554,11 +572,20 @@
    "stage": "complete",
    "status": "ok",
    "surface_diagnostics": {
-    "corr_T_A": 2.3670072368926287e-15,
-    "corr_W_A": 0.7471235383370936,
+    "corr_T_A_frame": -7.067031460004598e-16,
+    "corr_W_A_frame": 0.8309420533297177,
     "planning_arrival_finite_fraction": 0.8639219576719577,
-    "sd_before_rescaling": 0.32942231990617593,
-    "window_prevalence": 0.43386243386243384
+    "sd_before_rescaling": 0.27812384376685007,
+    "t_range_frame": [
+     -2.493196588192246,
+     1.9303715503618537
+    ],
+    "t_range_map": [
+     -2.493196588192246,
+     1.9367045650993255
+    ],
+    "window_prevalence_frame": 0.49,
+    "window_prevalence_map": 0.447255291005291
    },
    "unreachable_tie_count": 823,
    "unreachable_tie_exposure_score": -1.5699332666786083,
@@ -574,7 +601,7 @@
     "design.json": "f921d52c31e5386fc95b30e932675ca08647d19262189ad04570841171dbb453",
     "exposure.npz": "20b5a54802cbb74e9bf520e6f92fe99617e9ef43f86f6b66752e831e289aa7c5",
     "public_inputs.npz": "4a136b754c77f3fd5d34e056a112a6d8ab017879e24fbba12f20724d31e89cea",
-    "surfaces.npz": "0a1bb1dcb9f80a54985db6d48ae7e60022d07189e5b62ac4f12710c8c99787c2"
+    "surfaces.npz": "dc63da67653262daca64bc9e9f58398f9dba3e931901d516f7540bdf0d7b8002"
    },
    "map_index": 0,
    "role": "qualification",
@@ -737,11 +764,20 @@
    "stage": "complete",
    "status": "ok",
    "surface_diagnostics": {
-    "corr_T_A": -5.277377594302861e-15,
-    "corr_W_A": 0.7396998983986535,
+    "corr_T_A_frame": -3.936145047262856e-16,
+    "corr_W_A_frame": 0.7685312283153403,
     "planning_arrival_finite_fraction": 0.8639219576719577,
-    "sd_before_rescaling": 0.3354159355563968,
-    "window_prevalence": 0.5395171957671958
+    "sd_before_rescaling": 0.31299981680916755,
+    "t_range_frame": [
+     -2.1492955055782077,
+     1.7249702750782319
+    ],
+    "t_range_map": [
+     -2.1492955055782077,
+     1.7274581081282252
+    ],
+    "window_prevalence_frame": 0.6033333333333334,
+    "window_prevalence_map": 0.5529100529100529
    },
    "unreachable_tie_count": 823,
    "unreachable_tie_exposure_score": -1.5699718992024656,
@@ -757,7 +793,7 @@
     "design.json": "4770fee1a04961f560463d49637453f908cb64361a0ba74f290cd70e3cfabf9d",
     "exposure.npz": "694a1d003b176770e271f912dd125e397d5049dde27f93af3f861249f923102c",
     "public_inputs.npz": "6675c074871d6afb45638dc3be1928f40ce619c1889b1f265a7b8d2b35dc108f",
-    "surfaces.npz": "d9fbd0d2154b6eb99122d35736d046856b7e4257ec5fd33eb7fb2eb2947a5aa6"
+    "surfaces.npz": "44a1ccf879fdff67a75410711c5d5bac4c625c71d647c5d05e9606f6e96a053a"
    },
    "map_index": 1,
    "role": "qualification",
@@ -920,11 +956,20 @@
    "stage": "complete",
    "status": "ok",
    "surface_diagnostics": {
-    "corr_T_A": 7.494299126014683e-15,
-    "corr_W_A": 0.7369173933626643,
+    "corr_T_A_frame": -2.1791257288722614e-16,
+    "corr_W_A_frame": 0.7643119267586701,
     "planning_arrival_finite_fraction": 0.8639219576719577,
-    "sd_before_rescaling": 0.3360817667726483,
-    "window_prevalence": 0.5530753968253969
+    "sd_before_rescaling": 0.31074802445143007,
+    "t_range_frame": [
+     -2.0952688058751097,
+     1.7724610224916542
+    ],
+    "t_range_map": [
+     -2.0952688058751097,
+     1.7807868834056226
+    ],
+    "window_prevalence_frame": 0.6333333333333333,
+    "window_prevalence_map": 0.566468253968254
    },
    "unreachable_tie_count": 823,
    "unreachable_tie_exposure_score": -1.5700331165610624,
@@ -940,7 +985,7 @@
     "design.json": "381e205055f0195d21689ab6cd759f73ea87a0fb3612aaa702fba1fb04c43f67",
     "exposure.npz": "bea4399fc1ef5368ecc127809495590a4ee0e8bc976d4c9a5b4a902a2087173a",
     "public_inputs.npz": "0abab7919b8bbc9df76847dfae8fbfe264933aa2eb6b624d1e59448cae74b8e9",
-    "surfaces.npz": "b104b4066557ede38db43df9975fd1e01f677f0bd762fa76b3b6f6debe386333"
+    "surfaces.npz": "ad3bebf95130a6c4df9cfd49c4a8de90d19ad394180be75b4a14acee22ff4714"
    },
    "map_index": 2,
    "role": "qualification",
@@ -1103,11 +1148,20 @@
    "stage": "complete",
    "status": "ok",
    "surface_diagnostics": {
-    "corr_T_A": -1.2423924323186278e-16,
-    "corr_W_A": 0.7438438790652686,
+    "corr_T_A_frame": 1.0344952740655268e-15,
+    "corr_W_A_frame": 0.7894349744055386,
     "planning_arrival_finite_fraction": 0.8639219576719577,
-    "sd_before_rescaling": 0.334050807577225,
-    "window_prevalence": 0.513723544973545
+    "sd_before_rescaling": 0.3041767123125729,
+    "t_range_frame": [
+     -2.3179145803038597,
+     1.8246119379647447
+    ],
+    "t_range_map": [
+     -2.3179145803038597,
+     1.8327540235197806
+    ],
+    "window_prevalence_frame": 0.5666666666666667,
+    "window_prevalence_map": 0.5271164021164021
    },
    "unreachable_tie_count": 823,
    "unreachable_tie_exposure_score": -1.56998324120929,
@@ -1123,7 +1177,7 @@
     "design.json": "bed3b68b1b8af9ead1a2a9e08cc40b3de431187b771d9ed67f4a9e6a01cc0c33",
     "exposure.npz": "5a5ad6ce618076f7abdcbd98675daa489a9c8c0e824a1a9765df9e4fc268effe",
     "public_inputs.npz": "4d8e3c7d9f32fc68b189bc58d12a3bfc0c6a446fe48fd75e71fed1fe18568413",
-    "surfaces.npz": "3d3f8775076e9a334737bee48fe57a5568698f6b4c41c8d57643429ecf9b42d2"
+    "surfaces.npz": "b60a0749b4b8905eec2215033a6602f22c05d687845f5991ae42889aec328e20"
    },
    "map_index": 0,
    "role": "qualification",
@@ -1286,11 +1340,20 @@
    "stage": "complete",
    "status": "ok",
    "surface_diagnostics": {
-    "corr_T_A": 1.7894361037032508e-15,
-    "corr_W_A": 0.7156076476252976,
+    "corr_T_A_frame": 2.8591782721241737e-16,
+    "corr_W_A_frame": 0.8159527059008038,
     "planning_arrival_finite_fraction": 0.8639219576719577,
-    "sd_before_rescaling": 0.31743713464572393,
-    "window_prevalence": 0.29150132275132273
+    "sd_before_rescaling": 0.2605100146544474,
+    "t_range_frame": [
+     -1.6925592362253794,
+     2.1281182978803512
+    ],
+    "t_range_map": [
+     -1.6925592362253794,
+     2.1444372465854364
+    ],
+    "window_prevalence_frame": 0.2833333333333333,
+    "window_prevalence_map": 0.3048941798941799
    },
    "unreachable_tie_count": 823,
    "unreachable_tie_exposure_score": -1.5699322678931509,
@@ -1306,7 +1369,7 @@
     "design.json": "93f2be7454abcb0fea1cacefe4c7fe7fd6a9f9e981692f150a33366909fab1f0",
     "exposure.npz": "73b13eb4f7eff6ba25453f1119986009cea6a1bde9f0ea7a4e5f80de5da3f1cd",
     "public_inputs.npz": "f3eb2ae8112c2b4b33c11cb8b02a48428f114da3397f1336c0e1df3b1d9898bb",
-    "surfaces.npz": "feb165416fe45c9e4e6984d1dfff0a93fb546a92fb837f1765f50d6b26d3d64e"
+    "surfaces.npz": "5759a6c6e7f64522f47d2e6fcb1227a74c385c44ecf84ba5d72465f424fdf46e"
    },
    "map_index": 1,
    "role": "qualification",
@@ -1469,11 +1532,20 @@
    "stage": "complete",
    "status": "ok",
    "surface_diagnostics": {
-    "corr_T_A": -4.84716617226061e-15,
-    "corr_W_A": 0.7319879683557203,
+    "corr_T_A_frame": 1.878988522125563e-16,
+    "corr_W_A_frame": 0.8144323859031203,
     "planning_arrival_finite_fraction": 0.8639219576719577,
-    "sd_before_rescaling": 0.32250475612349966,
-    "window_prevalence": 0.33895502645502645
+    "sd_before_rescaling": 0.2714151700952752,
+    "t_range_frame": [
+     -1.672616195428932,
+     1.9978430675320376
+    ],
+    "t_range_map": [
+     -1.9681419279183432,
+     2.0033365217631203
+    ],
+    "window_prevalence_frame": 0.3233333333333333,
+    "window_prevalence_map": 0.3523478835978836
    },
    "unreachable_tie_count": 823,
    "unreachable_tie_exposure_score": -1.5699393471881453,
@@ -1489,7 +1561,7 @@
     "design.json": "bbd22c4a58cec1db3a908306028c84cf20f64b784b9ac9e57405d34d20f07949",
     "exposure.npz": "0aa8a496d82e24daf6cee8d379b89253b02f4ad7c713f7bbe5643200df4feb37",
     "public_inputs.npz": "52482fc8e93efa6411fd3aa8fd1af41c01f8ebc53074a2b8a433cee0778dda70",
-    "surfaces.npz": "3e836d1b3c3e298462ffc7508457580b4d38017d3a3caa416a3291a3d1217f85"
+    "surfaces.npz": "6fc2540f191ba80205262a60cffc54eddaa81f1aaebeca4abc822432c4a3ddd3"
    },
    "map_index": 2,
    "role": "qualification",
@@ -1652,11 +1724,20 @@
    "stage": "complete",
    "status": "ok",
    "surface_diagnostics": {
-    "corr_T_A": -4.4594692430264286e-15,
-    "corr_W_A": 0.7310572072808261,
+    "corr_T_A_frame": -5.540179482691895e-16,
+    "corr_W_A_frame": 0.8137770984341101,
     "planning_arrival_finite_fraction": 0.8639219576719577,
-    "sd_before_rescaling": 0.32220098819521115,
-    "window_prevalence": 0.33564814814814814
+    "sd_before_rescaling": 0.274646754898311,
+    "t_range_frame": [
+     -2.055518753246373,
+     1.9022859251117021
+    ],
+    "t_range_map": [
+     -2.055518753246373,
+     1.9022859251117021
+    ],
+    "window_prevalence_frame": 0.33666666666666667,
+    "window_prevalence_map": 0.3490410052910053
    },
    "unreachable_tie_count": 823,
    "unreachable_tie_exposure_score": -1.5699569013907577,

@@ -68,32 +68,46 @@ class FamilySurfaces:
 
 
 def signal_window_surface(landscape: Landscape, setup: GeneratorSetup) -> FamilySurfaces:
-    """T: planning arrival-window indicator, residualised on [1, A] and unit-scaled."""
+    """T: planning invasion-reach indicator, residualised on [1, A] over the sampling frame.
+
+    W = 1{planning arrival <= WINDOW_DAYS}: sites the predator is expected to
+    reach by the end of monitoring, release cells included. Because A is the
+    rank-normal score of planning arrival, W is a threshold in A and T is the
+    part of that threshold the log-linear exposure term cannot express. The
+    regression and unit scaling use the sampling-frame sites, so T is centred,
+    unit-variance and orthogonal to A where models are fitted; the same
+    coefficients define T on every accepted cell.
+    """
     shocks = np.ones(len(passable_edges(landscape)))
     arrival = np.asarray(
         compute_contrast_spread(landscape, 1.0, edge_shocks=shocks, rho=1.0).arrival,
         dtype=np.float64,
     )
     with np.errstate(invalid="ignore"):
-        window = (np.isfinite(arrival) & (arrival > 0.0) & (arrival <= WINDOW_DAYS)).astype(
-            np.float64
-        )
+        window = (np.isfinite(arrival) & (arrival <= WINDOW_DAYS)).astype(np.float64)
     accepted = setup.accepted_mask
-    a = setup.exposure_score[accepted]
-    w = window[accepted]
-    design = np.column_stack([np.ones_like(a), a])
-    coefficients, *_ = np.linalg.lstsq(design, w, rcond=None)
-    residual = w - design @ coefficients
-    sd = float(residual.std(ddof=0))
+    rows, cols = setup.site_rows, setup.site_cols
+    a_frame = setup.exposure_score[rows, cols]
+    w_frame = window[rows, cols]
+    design = np.column_stack([np.ones_like(a_frame), a_frame])
+    coefficients, *_ = np.linalg.lstsq(design, w_frame, rcond=None)
+    residual_frame = w_frame - design @ coefficients
+    sd = float(residual_frame.std(ddof=0))
     if not sd > 1e-12:
-        raise ValueError("signal-window indicator is degenerate on this map")
-    signal = np.zeros(setup.accepted_mask.shape)
-    signal[accepted] = residual / sd
+        raise ValueError("invasion-reach indicator is degenerate on this sampling frame")
+    signal = np.zeros(accepted.shape)
+    signal[accepted] = (
+        window[accepted] - coefficients[0] - coefficients[1] * setup.exposure_score[accepted]
+    ) / sd
+    t_frame = signal[rows, cols]
     diagnostics = {
-        "window_prevalence": float(w.mean()),
+        "window_prevalence_frame": float(w_frame.mean()),
+        "window_prevalence_map": float(window[accepted].mean()),
         "sd_before_rescaling": sd,
-        "corr_T_A": float(np.corrcoef(signal[accepted], a)[0, 1]),
-        "corr_W_A": float(np.corrcoef(w, a)[0, 1]),
+        "corr_T_A_frame": float(np.corrcoef(t_frame, a_frame)[0, 1]),
+        "corr_W_A_frame": float(np.corrcoef(w_frame, a_frame)[0, 1]),
+        "t_range_map": [float(signal[accepted].min()), float(signal[accepted].max())],
+        "t_range_frame": [float(t_frame.min()), float(t_frame.max())],
         "planning_arrival_finite_fraction": float(np.isfinite(arrival[accepted]).mean()),
     }
     return FamilySurfaces(signal, window, diagnostics)

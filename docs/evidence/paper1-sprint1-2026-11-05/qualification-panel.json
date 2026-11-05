@@ -1,7 +1,7 @@
 {
  "schema": "paper1-fresh-qualification-panel-v1",
  "address_namespace": 5,
- "map_manifest_sha256": "5566e5a673f34c4c3442515e9ef00e83432543abffb5305ad6d779c9a35e374f",
+ "map_manifest_sha256": "60e1bd8a4a42dca81c42d9a12f9dfa3a64d1a7853940289cf3de743e697fb0bb",
  "counts": {
   "base": 162,
   "boundary": 18,
