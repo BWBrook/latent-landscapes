@@ -1,0 +1,248 @@
+[
+ {
+  "dataset": "cell-00-rep-005-arm-B",
+  "procedure": "repaired",
+  "status": "profile_numerically_resolved",
+  "failure": null,
+  "search_seconds": 213.20218929101247,
+  "unique_h": 14,
+  "free": {
+   "positive_sigma": {
+    "h": 1.0,
+    "criterion": -1115.4731933034814
+   },
+   "sigma_zero": {
+    "h": 1.0,
+    "criterion": -1115.4731932925429
+   }
+  },
+  "roots_3_84": [
+   2.7857634766527113
+  ],
+  "receipt_sha256": "c5b6d21224a9b8220bbb3c68999cc9561d9f3bdaf4515f14f2ee64ece2d6118c"
+ },
+ {
+  "dataset": "cell-00-rep-005-arm-B",
+  "procedure": "challenge",
+  "status": "indeterminate",
+  "failure": "unresolved candidate exceeds selected family envelope",
+  "search_seconds": 659.2363060209998,
+  "unique_h": 4,
+  "free": {},
+  "roots_3_84": [],
+  "receipt_sha256": "d247fe3f8c6c168bda140609110a5104db26005a7e3848506531022c6898d2ba"
+ },
+ {
+  "dataset": "cell-01-rep-006-arm-A",
+  "procedure": "repaired",
+  "status": "profile_numerically_resolved",
+  "failure": null,
+  "search_seconds": 348.46876441698987,
+  "unique_h": 27,
+  "free": {
+   "positive_sigma": {
+    "h": 1.9562547311298883,
+    "criterion": -1813.0899914792933
+   },
+   "sigma_zero": {
+    "h": 1.940554473734787,
+    "criterion": -1813.108501730443
+   }
+  },
+  "roots_3_84": [
+   5.5722312501743945
+  ],
+  "receipt_sha256": "3670c31edd78e5af10d9adc4345da2c44e010942ceebc8ebf42f2f7a7c8e93fa"
+ },
+ {
+  "dataset": "cell-01-rep-006-arm-A",
+  "procedure": "challenge",
+  "status": "profile_numerically_resolved",
+  "failure": null,
+  "search_seconds": 3604.813789136999,
+  "unique_h": 27,
+  "free": {
+   "positive_sigma": {
+    "h": 1.956254430173633,
+    "criterion": -1813.089991479234
+   },
+   "sigma_zero": {
+    "h": 1.94055464130774,
+    "criterion": -1813.108501730443
+   }
+  },
+  "roots_3_84": [
+   5.572231250085004
+  ],
+  "receipt_sha256": "9ddaeb1d2883e9298b73b97784711cce9a654f96f0af29be360d492374b9c789"
+ },
+ {
+  "dataset": "cell-04-rep-005-arm-A",
+  "procedure": "repaired",
+  "status": "profile_numerically_resolved",
+  "failure": null,
+  "search_seconds": 352.2684441250167,
+  "unique_h": 35,
+  "free": {
+   "positive_sigma": {
+    "h": 4.262124792000241,
+    "criterion": -1721.464854687603
+   },
+   "sigma_zero": {
+    "h": 4.262124775779792,
+    "criterion": -1721.4648546256585
+   }
+  },
+  "roots_3_84": [
+   2.3880953503408073,
+   7.516372450076196
+  ],
+  "receipt_sha256": "c9bd8b6b1d3063ae3560c1d807f72d31966c2f7c4a56ae5370f8045df9162503"
+ },
+ {
+  "dataset": "cell-04-rep-005-arm-A",
+  "procedure": "challenge",
+  "status": "profile_numerically_resolved",
+  "failure": null,
+  "search_seconds": 4710.633995941002,
+  "unique_h": 35,
+  "free": {
+   "positive_sigma": {
+    "h": 4.262124943452915,
+    "criterion": -1721.464854687603
+   },
+   "sigma_zero": {
+    "h": 4.262124977241888,
+    "criterion": -1721.4648546256585
+   }
+  },
+  "roots_3_84": [
+   2.3880953503408366,
+   7.516372450075946
+  ],
+  "receipt_sha256": "5111ddf475a6cf08aa8f22340137f38d5cccce2d6d2246c28dddd5df8936272d"
+ },
+ {
+  "dataset": "cell-06-rep-006-arm-B",
+  "procedure": "repaired",
+  "status": "profile_numerically_resolved",
+  "failure": null,
+  "search_seconds": 216.38428962498438,
+  "unique_h": 14,
+  "free": {
+   "positive_sigma": {
+    "h": 1.0,
+    "criterion": -1104.6969227299815
+   },
+   "sigma_zero": {
+    "h": 1.0,
+    "criterion": -1104.6969227163006
+   }
+  },
+  "roots_3_84": [
+   2.194944210260636
+  ],
+  "receipt_sha256": "44b272c8d4b72e68d722d24535899af4b7c6560045e9948742bd7216460d6331"
+ },
+ {
+  "dataset": "cell-06-rep-006-arm-B",
+  "procedure": "challenge",
+  "status": "indeterminate",
+  "failure": "unresolved candidate exceeds selected family envelope",
+  "search_seconds": 383.25706725300006,
+  "unique_h": 4,
+  "free": {},
+  "roots_3_84": [],
+  "receipt_sha256": "2be86f99d211b26d964b2e95e417a7b0ee4c46d8793a8d03a80dc2c21f439fb3"
+ },
+ {
+  "dataset": "cell-08-rep-006-arm-B",
+  "procedure": "repaired",
+  "status": "profile_numerically_resolved",
+  "failure": null,
+  "search_seconds": 250.04273987497436,
+  "unique_h": 15,
+  "free": {
+   "positive_sigma": {
+    "h": 1.0,
+    "criterion": -1011.6574587163961
+   },
+   "sigma_zero": {
+    "h": 1.0,
+    "criterion": -1011.657458458301
+   }
+  },
+  "roots_3_84": [
+   2.28622055615065
+  ],
+  "receipt_sha256": "547ef425b82845899bb09182f25db25f5bcc8e1bc67cb462a68a696ed2eaaff5"
+ },
+ {
+  "dataset": "cell-08-rep-006-arm-B",
+  "procedure": "challenge",
+  "status": "profile_numerically_resolved",
+  "failure": null,
+  "search_seconds": 3112.240458286,
+  "unique_h": 15,
+  "free": {
+   "positive_sigma": {
+    "h": 1.0,
+    "criterion": -1011.6574584635403
+   },
+   "sigma_zero": {
+    "h": 1.0,
+    "criterion": -1011.6574584583009
+   }
+  },
+  "roots_3_84": [
+   2.286220556643578
+  ],
+  "receipt_sha256": "9674d288eb896e5b06a8ce0dd16306098092dfea72a89a01136d3504dfdd0850"
+ },
+ {
+  "dataset": "cell-09-rep-005-arm-B",
+  "procedure": "repaired",
+  "status": "profile_numerically_resolved",
+  "failure": null,
+  "search_seconds": 403.6204383340082,
+  "unique_h": 37,
+  "free": {
+   "positive_sigma": {
+    "h": 2.3582671461084623,
+    "criterion": -1015.388928924457
+   },
+   "sigma_zero": {
+    "h": 2.1972187191821986,
+    "criterion": -1015.6918595262182
+   }
+  },
+  "roots_3_84": [
+   1.0980468378553787,
+   4.944695991576806
+  ],
+  "receipt_sha256": "0c00251e49043fcc39fff3a0efe5d5001c91e3df9170aeb2c8695319be1e3137"
+ },
+ {
+  "dataset": "cell-09-rep-005-arm-B",
+  "procedure": "challenge",
+  "status": "profile_numerically_resolved",
+  "failure": null,
+  "search_seconds": 3859.171570871,
+  "unique_h": 35,
+  "free": {
+   "positive_sigma": {
+    "h": 2.358267108850814,
+    "criterion": -1015.3889289149266
+   },
+   "sigma_zero": {
+    "h": 2.1972187243329655,
+    "criterion": -1015.6918595262184
+   }
+  },
+  "roots_3_84": [
+   1.0980468400485455,
+   4.944695982304667
+  ],
+  "receipt_sha256": "adc6c8e9c16e9ea35b60a2f99401a904989d77dd60895b210d64d21c95689ba2"
+ }
+]
