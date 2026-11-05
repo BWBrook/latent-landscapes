@@ -133,6 +133,44 @@ def test_third_derivative_implicit_term_is_required() -> None:
     assert envelope_error > 100.0 * full_error
 
 
+@pytest.mark.parametrize(
+    ("fixed_h", "point"),
+    [
+        (3.0, np.array([-1.35, 0.22, math.log(0.45), 0.18])),
+        (None, np.array([-1.35, 0.22, math.log(0.45), math.log(3.2), 0.18])),
+        (None, np.array([-1.6, -0.3, math.log(0.6), math.log(30.0), 0.07])),
+    ],
+)
+def test_implicit_nuisance_gradient_matches_full_reoptimised_difference(
+    fixed_h: float | None, point: np.ndarray
+) -> None:
+    criterion = _criterion()
+    analytic = criterion.evaluate_positive(point, fixed_h=fixed_h, nuisance_fd=True)
+    assert analytic.success, analytic.message
+    nuisance = [len(point) - 1] if fixed_h is not None else [len(point) - 2, len(point) - 1]
+    for index in nuisance:
+        step = 1e-5
+        plus, minus = point.copy(), point.copy()
+        if fixed_h is None and index == len(point) - 2 and point[index] >= math.log(30.0) - 1e-9:
+            minus[index] -= step
+            numerical = (
+                criterion.evaluate_positive(point, fixed_h=fixed_h).criterion
+                - criterion.evaluate_positive(minus, fixed_h=fixed_h).criterion
+            ) / step
+            tolerance = 1e-4
+        else:
+            plus[index] += step
+            minus[index] -= step
+            numerical = (
+                criterion.evaluate_positive(plus, fixed_h=fixed_h).criterion
+                - criterion.evaluate_positive(minus, fixed_h=fixed_h).criterion
+            ) / (2 * step)
+            tolerance = 1e-6
+        assert analytic.criterion_gradient[index] == pytest.approx(
+            numerical, rel=1e-5, abs=tolerance
+        )
+
+
 def test_exact_zero_family_and_nuisance_derivatives() -> None:
     criterion = _criterion()
     point = np.array([-1.35, 0.22, math.log(3.0), 0.18])
@@ -284,6 +322,27 @@ def test_damped_newton_leaves_indefinite_regions_and_rejects_saddles() -> None:
     np.testing.assert_allclose(branch[0], [1.0], rtol=0.0, atol=1e-8)
 
     assert criterion._mode_branch(np.zeros(1), np.eye(1), evaluator, np.zeros(1)) is None
+
+
+class _OffsetQuadraticEvaluator:
+    """Concave site curve with a large constant, so gains sit at roundoff."""
+
+    numerical_domain = (-math.inf, math.inf)
+
+    def evaluate(self, eta: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+        ell = 1500.0 + 2.0 * eta - 0.5 * eta**2
+        return ell, 2.0 - eta, -np.ones_like(eta), np.zeros_like(eta)
+
+
+def test_newton_step_with_gain_below_roundoff_is_accepted_not_damped_into_failure() -> None:
+    # Regression: a residual of order 1e-6 whose predicted gain is below
+    # floating-point resolution must still be taken, not rejected by the
+    # gain-ratio test until damping exhausts the solve.
+    criterion = _criterion(1)
+    start = np.array([1.0 + 3e-6])
+    branch = criterion._mode_branch(np.zeros(1), np.eye(1), _OffsetQuadraticEvaluator(), start)
+    assert branch is not None
+    np.testing.assert_allclose(branch[0], [1.0], rtol=0.0, atol=1e-12)
 
 
 def test_mode_iteration_limit_is_a_deterministic_failure() -> None:

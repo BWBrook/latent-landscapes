@@ -23,14 +23,14 @@ import math
 import time
 from collections import OrderedDict
 from collections.abc import Sequence
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from typing import Any, Protocol
 
 import numpy as np
 from numpy.typing import NDArray
 from scipy.interpolate import CubicSpline  # type: ignore[import-untyped]
 from scipy.linalg import cho_factor, cho_solve  # type: ignore[import-untyped]
-from scipy.optimize import OptimizeResult, minimize  # type: ignore[import-untyped]
+from scipy.optimize import OptimizeResult  # type: ignore[import-untyped]
 
 from latent_landscapes import preinvasion_likelihood as likelihood
 
@@ -39,6 +39,8 @@ DEFAULT_GRID = np.linspace(-12.0, -2.0, 161)
 DEFAULT_PROFILE_H_GRID = tuple(float(value) for value in np.geomspace(1.0, 30.0, 35))
 MEAN_DETECTION = 0.65
 DETECTION_SD_MAX = math.sqrt(MEAN_DETECTION * (1.0 - MEAN_DETECTION))
+SIGMA_MAX = 1.5
+LAPLACE_REGULARITY = 0.1
 
 
 class CurveDomainError(RuntimeError):
@@ -584,19 +586,10 @@ class SpatialProfileCriterion:
                         and positive_definite
                         and predicted <= resolution
                         and c_value >= value - resolution
-                        and score_inf <= 10.0 * self.mode_tolerance
                     ):
-                        step_inf = float(np.max(np.abs(newton)))
-                        return (
-                            u,
-                            value,
-                            score_inf,
-                            step_inf,
-                            decrement,
-                            iteration,
-                            evaluations,
-                            "damped Newton met floating-point stationarity",
-                        )
+                        # Gain is below floating-point resolution: accept the
+                        # full Newton step; the strict test above decides.
+                        ratio = 1.0
                 if ratio > 1e-4:
                     u, value = candidate, c_value
                     ell, score, curvature = c_ell, c_score, c_curvature
@@ -662,6 +655,11 @@ class SpatialProfileCriterion:
             combined = self._identity - c_cholesky.T @ (curvature[:, None] * c_cholesky)
             combined_factor = cho_factor(combined, lower=True, check_finite=True)
             logdet_combined = float(2.0 * np.log(np.diag(combined_factor[0])).sum())
+            regular = True
+            try:
+                cho_factor(combined - LAPLACE_REGULARITY * self._identity, lower=True)
+            except np.linalg.LinAlgError:
+                regular = False
         except np.linalg.LinAlgError as exc:
             self.stats["pd_failures"] = int(self.stats["pd_failures"]) + 1
             return ModeResult(
@@ -690,8 +688,13 @@ class SpatialProfileCriterion:
             proposal_eta_min >= curves.numerical_domain[0]
             and proposal_eta_max <= curves.numerical_domain[1]
         )
-        success = bool(not bound_touch and proposal_grid_supported)
-        if bound_touch:
+        success = bool(not bound_touch and proposal_grid_supported and regular)
+        if not regular:
+            message = (
+                "Laplace approximation is irregular: smallest eigenvalue of "
+                f"I - C'diag(ell'')C is below {LAPLACE_REGULARITY:g}"
+            )
+        elif bound_touch:
             message = "latent mode touched the evaluated curve-grid boundary"
         elif not proposal_grid_supported:
             message = (
@@ -844,8 +847,79 @@ class SpatialProfileCriterion:
             detection_sd,
         )
         if nuisance_fd:
-            result = self._with_nuisance_fd(result, fixed_h=fixed_h, fd_step=fd_step)
+            try:
+                for index, d_ell, d_score, d_curvature in self._site_nuisance_derivatives(
+                    point, fixed_h, mode.eta, fd_step, sigma_zero=False
+                ):
+                    du = cho_solve(hessian_factor, d_score, check_finite=True)
+                    gradient[index] = float(
+                        np.sum(d_ell)
+                        + 0.5 * np.dot(hessian_inverse_diagonal, d_curvature + third * du)
+                    )
+            except (CurveDomainError, FloatingPointError, ValueError) as exc:
+                return self._invalid(
+                    point,
+                    sigma_zero=False,
+                    h=h,
+                    detection_sd=detection_sd,
+                    message=f"nuisance derivative failed: {exc}",
+                    mode=mode,
+                )
+            result = replace(result, criterion_gradient=gradient, objective_gradient=-gradient)
         return result
+
+    def _site_nuisance_derivatives(
+        self,
+        point: FloatArray,
+        fixed_h: float | None,
+        eta: FloatArray,
+        fd_step: float,
+        *,
+        sigma_zero: bool,
+    ) -> list[tuple[int, FloatArray, FloatArray, FloatArray]]:
+        """Site-level central differences in log h and detection SD at fixed eta.
+
+        Only the site evaluator is differenced; the latent mode and Laplace
+        terms are differentiated analytically by the caller.
+        """
+        if not math.isfinite(fd_step) or fd_step <= 0.0:
+            raise ValueError("fd_step must be finite and positive")
+        bounds = self._bounds(fixed_h, sigma_zero)
+        indices = [len(point) - 1]
+        if fixed_h is None:
+            indices.insert(0, len(point) - 2)
+        rows = []
+        for index in indices:
+            lower, upper = bounds[index]
+            x = float(point[index])
+            delta = fd_step * max(1.0, abs(x))
+            plus, minus = x + delta, x - delta
+            can_plus, can_minus = plus <= upper, minus >= lower
+
+            def site(value: float, index: int = index) -> tuple[FloatArray, ...]:
+                candidate = point.copy()
+                candidate[index] = value
+                _, h, detection_sd = self._unpack(candidate, fixed_h, sigma_zero)
+                ell, score, curvature, _ = self.curves(h, detection_sd).evaluate(eta)
+                return ell, score, curvature
+
+            if can_plus and can_minus:
+                hi, lo, width = site(plus), site(minus), 2.0 * delta
+            elif can_plus:
+                hi, lo, width = site(plus), site(x), delta
+            elif can_minus:
+                hi, lo, width = site(x), site(minus), delta
+            else:
+                raise ValueError("nuisance coordinate has no admissible difference step")
+            rows.append(
+                (
+                    index,
+                    (hi[0] - lo[0]) / width,
+                    (hi[1] - lo[1]) / width,
+                    (hi[2] - lo[2]) / width,
+                )
+            )
+        return rows
 
     def evaluate_sigma_zero(
         self,
@@ -895,72 +969,27 @@ class SpatialProfileCriterion:
             detection_sd,
         )
         if nuisance_fd:
-            result = self._with_nuisance_fd(result, fixed_h=fixed_h, fd_step=fd_step)
+            try:
+                for index, d_ell, _, _ in self._site_nuisance_derivatives(
+                    point, fixed_h, eta, fd_step, sigma_zero=True
+                ):
+                    gradient[index] = float(np.sum(d_ell))
+            except (CurveDomainError, FloatingPointError, ValueError) as exc:
+                return self._invalid(
+                    point,
+                    sigma_zero=True,
+                    h=h,
+                    detection_sd=detection_sd,
+                    message=f"nuisance derivative failed: {exc}",
+                )
+            result = replace(result, criterion_gradient=gradient, objective_gradient=-gradient)
         return result
-
-    def _with_nuisance_fd(
-        self,
-        base: CriterionEvaluation,
-        *,
-        fixed_h: float | None,
-        fd_step: float,
-    ) -> CriterionEvaluation:
-        if not math.isfinite(fd_step) or fd_step <= 0.0:
-            raise ValueError("fd_step must be finite and positive")
-        gradient = base.criterion_gradient.copy()
-        indices = [len(gradient) - 1]
-        if fixed_h is None:
-            indices.insert(0, len(gradient) - 2)
-
-        def evaluate(candidate: FloatArray) -> CriterionEvaluation:
-            if base.sigma_zero:
-                return self.evaluate_sigma_zero(candidate, fixed_h=fixed_h)
-            return self.evaluate_positive(candidate, fixed_h=fixed_h)
-
-        for index in indices:
-            delta = fd_step * max(1.0, abs(float(base.parameters[index])))
-            lower, upper = self._bounds(fixed_h, base.sigma_zero)[index]
-            minus = base.parameters.copy()
-            plus = base.parameters.copy()
-            can_minus = minus[index] - delta >= lower
-            can_plus = plus[index] + delta <= upper
-            if can_minus and can_plus:
-                minus[index] -= delta
-                plus[index] += delta
-                vm = evaluate(minus).criterion
-                vp = evaluate(plus).criterion
-                value = (vp - vm) / (2.0 * delta)
-            elif can_plus:
-                plus[index] += delta
-                vp = evaluate(plus).criterion
-                value = (vp - base.criterion) / delta
-            elif can_minus:
-                minus[index] -= delta
-                vm = evaluate(minus).criterion
-                value = (base.criterion - vm) / delta
-            else:
-                value = math.nan
-            gradient[index] = value
-        success = bool(base.success and np.isfinite(gradient).all())
-        return CriterionEvaluation(
-            base.criterion,
-            base.objective,
-            gradient,
-            -gradient,
-            success,
-            "ok" if success else "nuisance finite difference failed",
-            base.sigma_zero,
-            base.mode,
-            base.parameters,
-            base.h,
-            base.detection_sd,
-        )
 
     @staticmethod
     def _bounds(fixed_h: float | None, sigma_zero: bool) -> tuple[tuple[float, float], ...]:
         common = [(-12.0, -3.0), (-2.0, 2.0)]
         if not sigma_zero:
-            common.append((math.log(1e-4), math.log(2.0)))
+            common.append((math.log(1e-4), math.log(SIGMA_MAX)))
         if fixed_h is None:
             common.append((0.0, math.log(30.0)))
         common.append((0.0, DETECTION_SD_MAX * (1.0 - 1e-10)))
@@ -981,6 +1010,104 @@ class SpatialProfileCriterion:
                 projected[index] = max(projected[index], 0.0)
         return float(np.max(np.abs(projected)))
 
+    def _trust_region(
+        self,
+        evaluate: Any,
+        start: FloatArray,
+        bounds: Sequence[tuple[float, float]],
+        *,
+        maxiter: int,
+        gradient_tolerance: float,
+    ) -> tuple[FloatArray, CriterionEvaluation, OptimizeResult]:
+        """Maximise by projected trust-region Newton with exact gradients.
+
+        The Hessian is a symmetrised forward difference of the analytic
+        gradient. Negative-curvature directions are handled by an eigenvalue
+        (Levenberg) shift, so saddles are left rather than accepted.
+        """
+        lower = np.array([bound[0] for bound in bounds])
+        upper = np.array([bound[1] for bound in bounds])
+        x = np.clip(np.asarray(start, dtype=np.float64), lower, upper)
+        current = evaluate(x)
+        evaluations, radius, message = 1, 1.0, "iteration limit reached"
+        iterations = 0
+        if not current.success:
+            return (
+                x,
+                current,
+                OptimizeResult(
+                    x=x, success=False, message="start evaluation failed", nit=0, nfev=1
+                ),
+            )
+        for _ in range(maxiter):
+            iterations += 1
+            gradient = current.criterion_gradient
+            if self._projected_gradient_inf(-gradient, x, bounds) <= gradient_tolerance:
+                message = "projected gradient below tolerance"
+                break
+            tolerance = 1e-8 * np.maximum(1.0, np.maximum(np.abs(lower), np.abs(upper)))
+            active = ((x <= lower + tolerance) & (gradient < 0.0)) | (
+                (x >= upper - tolerance) & (gradient > 0.0)
+            )
+            free = np.flatnonzero(~active)
+            hessian = np.zeros((len(x), len(x)))
+            for index in free:
+                delta = 1e-5 * max(1.0, abs(float(x[index])))
+                if x[index] + delta > upper[index]:
+                    delta = -delta
+                shifted = x.copy()
+                shifted[index] += delta
+                other = evaluate(shifted)
+                evaluations += 1
+                if not other.success:
+                    hessian = np.full_like(hessian, np.nan)
+                    break
+                hessian[:, index] = (other.criterion_gradient - gradient) / delta
+            if not np.isfinite(hessian[np.ix_(free, free)]).all():
+                message = "Hessian difference evaluation failed"
+                break
+            curvature = -0.5 * (hessian + hessian.T)[np.ix_(free, free)]
+            values, vectors = np.linalg.eigh(curvature)
+            projected_gradient = vectors.T @ gradient[free]
+            shift = max(0.0, 1e-8 - float(values.min()))
+            while True:
+                step_free = vectors @ (projected_gradient / (values + shift))
+                if np.linalg.norm(step_free) <= radius:
+                    break
+                shift = 2.0 * shift + 1e-3
+            step = np.zeros_like(x)
+            step[free] = step_free
+            trial = np.clip(x + step, lower, upper)
+            step = trial - x
+            model = curvature
+            predicted = float(gradient[free] @ step[free] - 0.5 * step[free] @ model @ step[free])
+            candidate = evaluate(trial)
+            evaluations += 1
+            ratio = (
+                (candidate.criterion - current.criterion) / predicted
+                if candidate.success and predicted > 0.0
+                else -1.0
+            )
+            if ratio > 0.1:
+                x, current = trial, candidate
+                if ratio > 0.75:
+                    radius = min(4.0, 2.0 * radius)
+            else:
+                radius /= 4.0
+                if radius < 1e-10:
+                    message = "trust region collapsed"
+                    break
+        converged = self._projected_gradient_inf(-current.criterion_gradient, x, bounds) <= (
+            gradient_tolerance
+        )
+        return (
+            x,
+            current,
+            OptimizeResult(
+                x=x, success=converged, message=message, nit=iterations, nfev=evaluations
+            ),
+        )
+
     def _fit_family(
         self,
         *,
@@ -995,146 +1122,50 @@ class SpatialProfileCriterion:
         family = "sigma_zero" if sigma_zero else "positive_sigma"
         candidates: list[FitCandidate] = []
 
-        def evaluate(
-            point: FloatArray,
-            *,
-            nuisance_fd: bool = True,
-        ) -> CriterionEvaluation:
-            if sigma_zero:
-                return self.evaluate_sigma_zero(point, fixed_h=fixed_h, nuisance_fd=nuisance_fd)
-            return self.evaluate_positive(
-                point,
-                fixed_h=fixed_h,
-                nuisance_fd=nuisance_fd,
-            )
-
-        def append_candidate(
-            point: FloatArray,
-            evaluation: CriterionEvaluation,
-            *,
-            source: str,
-            result: OptimizeResult | None = None,
-        ) -> FitCandidate:
-            projected = (
-                self._projected_gradient_inf(evaluation.objective_gradient, point, bounds)
-                if evaluation.success
-                else math.inf
-            )
-            row = FitCandidate(
-                family,
-                source,
-                point.copy(),
-                evaluation,
-                bool(result.success) if result is not None else True,
-                str(result.message) if result is not None else "retained incumbent",
-                int(result.nit) if result is not None else 0,
-                int(result.nfev) if result is not None else 1,
-                projected,
-                bool(evaluation.success and projected <= kkt_tolerance),
-            )
-            candidates.append(row)
-            return row
+        def evaluate(point: FloatArray) -> CriterionEvaluation:
+            try:
+                if sigma_zero:
+                    return self.evaluate_sigma_zero(point, fixed_h=fixed_h, nuisance_fd=True)
+                return self.evaluate_positive(point, fixed_h=fixed_h, nuisance_fd=True)
+            except (CurveDomainError, FloatingPointError, ValueError) as exc:
+                h = math.nan if fixed_h is None else float(fixed_h)
+                return self._invalid(
+                    point,
+                    sigma_zero=sigma_zero,
+                    h=h,
+                    detection_sd=float(point[-1]),
+                    message=str(exc),
+                )
 
         for start_index, raw_start in enumerate(starts):
             start = np.asarray(raw_start, dtype=np.float64)
             if start.shape != (len(bounds),):
                 raise ValueError(f"{family} start has the wrong dimension")
-            start = np.asarray(
-                [
-                    np.clip(value, lower, upper)
-                    for value, (lower, upper) in zip(start, bounds, strict=True)
-                ]
-            )
-            incumbent = evaluate(start)
-            incumbent_row = append_candidate(
+            x, evaluation, result = self._trust_region(
+                evaluate,
                 start,
-                incumbent,
-                source=f"{source_prefix}_start_{start_index}",
+                bounds,
+                maxiter=maxiter,
+                gradient_tolerance=0.1 * kkt_tolerance,
             )
-
-            def fun(point: FloatArray) -> tuple[float, FloatArray]:
-                if not np.isfinite(point).all():
-                    return 1e100, np.zeros_like(point)
-                try:
-                    value = evaluate(point)
-                except (CurveDomainError, FloatingPointError, ValueError):
-                    return 1e100, np.zeros_like(point)
-                if (
-                    not value.success
-                    or not math.isfinite(value.objective)
-                    or not np.isfinite(value.objective_gradient).all()
-                ):
-                    return 1e100, np.zeros_like(point)
-                return value.objective, value.objective_gradient
-
-            fit: OptimizeResult = minimize(
-                fun,
-                start,
-                jac=True,
-                method="L-BFGS-B",
-                bounds=bounds,
-                options={"maxiter": maxiter, "ftol": 1e-12, "gtol": 2e-5, "maxls": 30},
+            projected = (
+                self._projected_gradient_inf(evaluation.objective_gradient, x, bounds)
+                if evaluation.success
+                else math.inf
             )
-            final = evaluate(np.asarray(fit.x))
-            fit_row = append_candidate(
-                np.asarray(fit.x, dtype=np.float64),
-                final,
-                source=f"{source_prefix}_fit_{start_index}",
-                result=fit,
-            )
-            if incumbent_row.eligible or fit_row.eligible:
-                continue
-
-            fallback_start = min(
-                (incumbent_row, fit_row), key=lambda row: row.evaluation.objective
-            ).parameters
-            eligible_rows = [row for row in candidates if row.eligible]
-            if eligible_rows:
-                best_eligible = max(eligible_rows, key=lambda row: row.evaluation.criterion)
-                unresolved_value = max(
-                    incumbent_row.evaluation.criterion,
-                    fit_row.evaluation.criterion,
+            candidates.append(
+                FitCandidate(
+                    family,
+                    f"{source_prefix}_fit_{start_index}",
+                    x.copy(),
+                    evaluation,
+                    bool(result.success),
+                    str(result.message),
+                    int(result.nit),
+                    int(result.nfev),
+                    projected,
+                    bool(evaluation.success and projected <= kkt_tolerance),
                 )
-                if unresolved_value <= best_eligible.evaluation.criterion + 1e-6:
-                    continue
-
-            def scalar_fun(point: FloatArray) -> float:
-                try:
-                    value = evaluate(point, nuisance_fd=False)
-                except (CurveDomainError, FloatingPointError, ValueError):
-                    return 1e100
-                return value.objective if value.success else 1e100
-
-            fallback: OptimizeResult = minimize(
-                scalar_fun,
-                fallback_start,
-                method="Powell",
-                bounds=bounds,
-                options={"maxiter": min(maxiter, 40), "xtol": 1e-5, "ftol": 1e-9},
-            )
-            fallback_evaluation = evaluate(np.asarray(fallback.x))
-            fallback_row = append_candidate(
-                np.asarray(fallback.x, dtype=np.float64),
-                fallback_evaluation,
-                source=f"{source_prefix}_powell_{start_index}",
-                result=fallback,
-            )
-            if fallback_row.eligible:
-                continue
-            polish: OptimizeResult = minimize(
-                fun,
-                fallback.x,
-                jac=True,
-                method="L-BFGS-B",
-                bounds=bounds,
-                options={"maxiter": maxiter, "ftol": 1e-14, "gtol": 2e-5, "maxls": 40},
-            )
-            polish_evaluation = evaluate(np.asarray(polish.x))
-            append_candidate(
-                np.asarray(polish.x, dtype=np.float64),
-                polish_evaluation,
-                source=f"{source_prefix}_polish_{start_index}",
-                result=polish,
             )
         return candidates
 
