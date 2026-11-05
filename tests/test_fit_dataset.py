@@ -208,6 +208,11 @@ def test_latent_audit_skips_small_sigma_and_runs_thirteen_starts(fit: Any) -> No
     assert audit["performed"]
     assert len(audit["starts"]) == 13
     assert not audit["multimodal_latent"]
+    assert all(
+        abs(r["criterion_minus_reported"]) < 1e-6
+        for r in audit["starts"]
+        if r["converged"] and r["max_abs_du"] < 1e-6
+    )
     tiny = {"parameters": {**parameters, "log_sigma": math.log(5e-4)}, "h": 3.0}
     assert fit.latent_audit(criterion, tiny, diagnosis)["performed"] is False
 
@@ -232,6 +237,15 @@ def test_latent_audit_skips_small_sigma_and_runs_thirteen_starts(fit: Any) -> No
         (
             {"errors": [{"stage": "search", "message": "boom"}], "multimodal": True},
             "numerical_error",
+        ),
+        (
+            {
+                "errors": [
+                    {"stage": "search", "message": "oom", "execution": True},
+                    {"stage": "audit", "message": "boom", "execution": False},
+                ]
+            },
+            "execution_error",
         ),
     ],
 )
@@ -318,3 +332,21 @@ def test_audit_covers_relevant_points_and_roots(fit: Any) -> None:
     assert skipped[0]["log_h"] == 2.0 and skipped[0]["envelope_lr"] == pytest.approx(40.0)
     assert [r["kind"] for r in audit["rows"]].count("root") == 1
     assert not audit["multimodal_latent"]
+    exhaustive = fit.audit_all(search, fit.load_mode_diagnosis(), exhaustive=True)
+    assert exhaustive["audit_count"] == 6
+    assert exhaustive["skipped_beyond_lr_limit"] == 1
+    assert all(abs(r["max_criterion_gain"]) < 1e-6 for r in exhaustive["rows"])
+
+
+def test_floored_laplace_matches_production_criterion(fit: Any) -> None:
+    criterion = small_criterion()
+    params = np.array([-1.4, 0.2, math.log(0.4), 0.18])
+    evaluation = criterion.evaluate_positive(params, fixed_h=3.0)
+    assert evaluation.success and evaluation.mode is not None
+    sigma = math.exp(params[2])
+    curves = criterion.curves(3.0, 0.18)
+    eta0 = params[0] + params[1] * criterion.data.exposure
+    value = fit.floored_laplace(
+        criterion, eta0, criterion._k_inverse / sigma**2, curves, sigma, evaluation.mode.u
+    )
+    assert value == pytest.approx(evaluation.criterion, abs=1e-8)

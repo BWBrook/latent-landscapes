@@ -49,22 +49,26 @@ from latent_landscapes.spatial_profile import (
     CurveDomainError,
     FitCandidate,
     SpatialProfileCriterion,
+    _floored_eigenvalues,
 )
 
 SCHEMA = "fit-dataset-v1"
 CUTOFF_GRID = (2.71, 3.84, 5.02, 6.63, 7.88, 9.55, 12.0, 15.0)
 TIE_TOLERANCE = 1e-4
 MODE_AUDIT_SIGMA_MIN = 1e-3
-# A missed higher latent mode only raises a criterion. Locations whose envelope LR
-# exceeds the largest cutoff by this margin need a gain above 5 criterion units to
-# change any level set; the largest latent-branch discrepancy ever observed is 4.53.
+# Production audits skip locations whose envelope LR exceeds the largest cutoff by
+# this margin: a missed mode there would need a criterion gain above 5 to change
+# any level set. The margin is empirical; qualification measures it by auditing a
+# predeclared subset with no limit (--exhaustive-audit).
 MODE_AUDIT_LR_MARGIN = 10.0
+EXECUTION_ERRORS = (MemoryError, OSError)
 FAILURE_CLASSES = (
     "resolved",
     "search_unresolved",
     "multimodal_latent",
     "family_fit_failed",
     "numerical_error",
+    "execution_error",
 )
 MODE_DIAGNOSIS = ROOT / "docs/evidence/paper1-sprint1-2026-11-05/mode_diagnosis.py"
 THREAD_ENVIRONMENT = ("OPENBLAS_NUM_THREADS", "VECLIB_MAXIMUM_THREADS", "OMP_NUM_THREADS")
@@ -478,6 +482,26 @@ def load_mode_diagnosis() -> Any:
     return module
 
 
+def floored_laplace(
+    criterion: SpatialProfileCriterion,
+    eta0: np.ndarray,
+    precision: np.ndarray,
+    curves: Any,
+    sigma: float,
+    u: np.ndarray,
+) -> float:
+    """The production criterion (joint minus half the floored log-determinant) at u."""
+    ell, _, curvature, _ = curves.evaluate(eta0 + u)
+    c_cholesky = sigma * criterion._k_cholesky
+    combined = criterion._identity - c_cholesky.T @ (curvature[:, None] * c_cholesky)
+    eigenvalues = np.linalg.eigvalsh(combined)
+    if float(eigenvalues.min()) <= 0.0:
+        return -math.inf
+    floored, _ = _floored_eigenvalues(eigenvalues)
+    joint = float(np.sum(ell) - 0.5 * u @ precision @ u)
+    return joint - 0.5 * float(np.log(floored).sum())
+
+
 def latent_audit(
     criterion: SpatialProfileCriterion, row: dict[str, Any], diagnosis: Any
 ) -> dict[str, Any]:
@@ -493,6 +517,7 @@ def latent_audit(
     if reference is None:
         raise RuntimeError("reported fit has no strictly converged zero-start latent mode")
     u_ref, joint_ref = reference[0], reference[1]
+    laplace_ref = floored_laplace(criterion, eta0, precision, curves, sigma, u_ref)
     rows = []
     flagged = False
     for name, start in starts.items():
@@ -502,6 +527,7 @@ def latent_audit(
             continue
         du = float(np.max(np.abs(branch[0] - u_ref)))
         delta = float(branch[1] - joint_ref)
+        delta_laplace = floored_laplace(criterion, eta0, precision, curves, sigma, branch[0])
         higher = delta > 1e-6 and du > 1e-3
         flagged |= higher
         rows.append(
@@ -509,6 +535,7 @@ def latent_audit(
                 "start": name,
                 "converged": True,
                 "joint_minus_reported": delta,
+                "criterion_minus_reported": delta_laplace - laplace_ref,
                 "max_abs_du": du,
                 "higher_distinct_mode": higher,
             }
@@ -523,7 +550,7 @@ def latent_audit(
     }
 
 
-def audit_all(search: PanelSearch, diagnosis: Any) -> dict[str, Any]:
+def audit_all(search: PanelSearch, diagnosis: Any, *, exhaustive: bool = False) -> dict[str, Any]:
     """Audit the positive-sigma fit at every retained point, free fit and cutoff root."""
     root_x = {
         (key == "tight_level_sets", root["log_h"])
@@ -539,7 +566,7 @@ def audit_all(search: PanelSearch, diagnosis: Any) -> dict[str, Any]:
             locations.append(
                 ("root" if (tight, x) in root_x else "point", tight, x, fit["positive_sigma"])
             )
-    lr_limit = max(CUTOFF_GRID) + MODE_AUDIT_LR_MARGIN
+    lr_limit = math.inf if exhaustive else max(CUTOFF_GRID) + MODE_AUDIT_LR_MARGIN
     started, cpu = time.perf_counter(), time.process_time()
     rows = []
     for kind, regime, loc, row in locations:
@@ -558,17 +585,22 @@ def audit_all(search: PanelSearch, diagnosis: Any) -> dict[str, Any]:
             "tight": regime,
             "log_h": loc if loc is not None else math.log(row["h"]),
             "envelope_lr": lr,
-            "beyond_lr_limit": kind != "free" and lr > lr_limit,
+            "beyond_lr_limit": kind != "free" and lr > max(CUTOFF_GRID) + MODE_AUDIT_LR_MARGIN,
             "performed": audit["performed"],
             "sigma": audit["sigma"],
             "seconds": time.perf_counter() - location_started,
             "multimodal_latent": audit["multimodal_latent"],
         }
+        if audit["performed"]:
+            converged = [r for r in audit["starts"] if r["converged"]]
+            record["max_joint_gain"] = max(r["joint_minus_reported"] for r in converged)
+            record["max_criterion_gain"] = max(r["criterion_minus_reported"] for r in converged)
         if audit["multimodal_latent"]:
             record["starts"] = audit["starts"]
         rows.append(record)
     return {
         "lr_limit": lr_limit,
+        "exhaustive": exhaustive,
         "audit_count": sum(r["performed"] for r in rows),
         "skipped_beyond_lr_limit": sum(r["beyond_lr_limit"] for r in rows),
         "locations": len(rows),
@@ -590,9 +622,13 @@ def classify(
 ) -> dict[str, Any]:
     flags: list[str] = []
     messages: dict[str, str] = {}
-    if errors:
-        flags.append("numerical_error")
-        messages["numerical_error"] = "; ".join(f"{e['stage']}: {e['message']}" for e in errors)
+    for kind, group in (
+        ("execution_error", [e for e in errors if e.get("execution")]),
+        ("numerical_error", [e for e in errors if not e.get("execution")]),
+    ):
+        if group:
+            flags.append(kind)
+            messages[kind] = "; ".join(f"{e['stage']}: {e['message']}" for e in group)
     family_flag = bool(family_failures)
     if search_failure and search_failure["message"].startswith("unresolved variance family"):
         family_flag = True
@@ -614,7 +650,13 @@ def classify(
         messages["multimodal_latent"] = (
             "a strictly converged latent mode has higher joint objective"
         )
-    order = ("numerical_error", "family_fit_failed", "search_unresolved", "multimodal_latent")
+    order = (
+        "execution_error",
+        "numerical_error",
+        "family_fit_failed",
+        "search_unresolved",
+        "multimodal_latent",
+    )
     chosen = next((c for c in order if c in flags), "resolved")
     return {
         "failure_class": chosen,
@@ -651,6 +693,7 @@ class Run:
             self.errors.append(
                 {
                     "stage": name,
+                    "execution": isinstance(error, EXECUTION_ERRORS),
                     "type": type(error).__name__,
                     "message": str(error),
                     "traceback": traceback.format_exc(),
@@ -752,7 +795,9 @@ def fit_dataset(args: argparse.Namespace) -> dict[str, Any]:
     multimodal = False
     if search is not None and search.free:
         with run.stage("latent_audit"):
-            audits.update(audit_all(search, load_mode_diagnosis()))
+            audits.update(
+                audit_all(search, load_mode_diagnosis(), exhaustive=args.exhaustive_audit)
+            )
             multimodal = audits["multimodal_latent"]
     if search is not None:
         receipt["cost"] = {
@@ -788,6 +833,11 @@ def main() -> int:
     for name in ("input-dir", "observations", "arrival-bank", "compressed-bank", "output-dir"):
         parser.add_argument(f"--{name}", type=Path, required=True)
     parser.add_argument("--search", choices=("lean", "dense"), default="lean")
+    parser.add_argument(
+        "--exhaustive-audit",
+        action="store_true",
+        help="audit every location regardless of LR (qualification margin check)",
+    )
     args = parser.parse_args()
     if any(os.environ.get(n) != "1" for n in THREAD_ENVIRONMENT):
         raise ValueError("set all numerical thread environment variables to 1")

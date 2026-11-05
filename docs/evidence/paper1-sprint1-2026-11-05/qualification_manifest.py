@@ -89,6 +89,17 @@ def main() -> None:
             row["stratum"] == "base" and tuple(row["address"]) in bank_histories
         )
         row["integration_screen"] = bool(integration.get(row["dataset_id"], False))
+    # Exhaustive latent audit (no LR limit) on two base datasets per map: measures
+    # the production audit margin. Added 5 Nov 2026 after review, before any outcome.
+    audit_rng = np.random.default_rng(np.random.SeedSequence([2026110501, 6]))
+    exhaustive: set[str] = set()
+    for map_name in sorted({r["map"] for r in rows if r["stratum"] == "base"}):
+        candidates = sorted(
+            r["dataset_id"] for r in rows if r["stratum"] == "base" and r["map"] == map_name
+        )
+        exhaustive.update(audit_rng.choice(candidates, size=2, replace=False).tolist())
+    for row in rows:
+        row["exhaustive_audit"] = row["dataset_id"] in exhaustive
     counts: dict[str, int] = {}
     for row in rows:
         counts[row["stratum"]] = counts.get(row["stratum"], 0) + 1
@@ -111,6 +122,7 @@ def main() -> None:
         "base_background_balance": background_balance,
         "independent_bank_histories": len(bank_histories),
         "integration_screens": len(integration),
+        "exhaustive_audits": len(exhaustive),
         "datasets": rows,
     }
     out = HERE / "qualification-panel.json"

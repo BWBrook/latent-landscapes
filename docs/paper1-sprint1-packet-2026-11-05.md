@@ -101,25 +101,56 @@ training data, the arrival bank and the evaluator settings.
      retried backwards, then replaced by a diagonal curvature.
    - An eigenvalue shift lets it leave saddles.
    - A stationary point is accepted only after a second-order check, with up
-     to three saddle escapes.
+     to three saddle escapes. A direction whose column fell back to diagonal
+     curvature passes that check trivially; the projected-gradient test
+     still applies to it.
    - Convergence requires projected gradient ≤ 0.1 × the eligibility
      tolerance.
    - Every profile point also gets a fixed high-σ anchor start (σ = 1.2).
      Review found that the default start never visited eligible fits on the
      σ = 1.5 bound at h = 30, which were 0.3–0.8 units higher.
-7. **Contacts.** Codex's pointwise tie rule applies: where the positive and
+7. **Envelope guard.** A positive-family fit fails its dataset as
+   `search_unresolved` when any non-eligible candidate (iteration limit or
+   failed evaluation) exceeds the best eligible one by more than 1e-4. The
+   anchor start adds one candidate per point, and on a flat σ ridge it could
+   stop at the iteration limit just above the best converged fit. Review
+   found no case in about 380 fixed fits from the replays. Qualification
+   reports guard failures by the source of the offending start as a
+   separate line. If any are anchor-caused, Sprint 2 decides on a
+   continuation rule before training.
+8. **Contacts.** Codex's pointwise tie rule applies: where the positive and
    exact-zero families tie within 1e-4, the positive family's lower-σ contact
    is flagged as tied and excluded from contact summaries. Both branches, the
    tie flags and the raw envelope score are retained.
-8. **Multimodality audit.** The 13-start family is rerun at every retained
-   profile point and every cutoff root where the reported σ > 1e-3, as well
-   as at the free and h = 1 fits. A strictly converged mode with a higher
-   joint objective (by > 1e-6, with |Δu| > 1e-3) fails the dataset as
-   `multimodal_latent`. This is a frozen failure trigger, applied the same
-   way in qualification, training and validation. Review swept the
-   near-singular region of cell-00 using zero, forward and backward
-   continuation starts and found identical modes throughout, so the
-   near-singularity is a Laplace-term effect, not a mode fold.
+9. **Multimodality audit.** The 13-start family is rerun, where the reported
+   σ > 1e-3, at both free fits and at every retained profile point and
+   cutoff root whose envelope LR is at most 25 (the largest cutoff plus 10).
+   A strictly converged mode with a higher joint objective (by > 1e-6, with
+   |Δu| > 1e-3) fails the dataset as `multimodal_latent`. This is a frozen
+   failure trigger, applied the same way in qualification, training and
+   validation. Review swept the near-singular region of cell-00 using zero,
+   forward and backward continuation starts and found identical modes
+   throughout, so the near-singularity is a Laplace-term effect, not a mode
+   fold.
+   The trigger uses the joint objective, the quantity the mode solver
+   maximises, not the Laplace score. A missed mode can have a higher joint
+   value and a lower score, or the reverse, because the floored
+   log-determinant differs between modes. So the trigger is conservative in
+   one direction and blind in the other. Each audited location therefore
+   also records the largest gain of the production score over any converged
+   start (`max_criterion_gain`), which is descriptive.
+   *The LR bound was added after the first entry-point run. There, all 22
+   audited points sat on the σ = 1.5 bound at h = 20–30 with LR 36–47, and
+   one start's per-site grid search spent about 53 s per point in the
+   exact-likelihood path (log hazard above −3.75). A missed mode at LR > 25
+   would need a score gain above 5 to change any level set, and above 12.5
+   to change the free maximum. The margin of 10 is a judgement, not a
+   derived bound: the 4.53 discrepancy seen before was the old solver's
+   ridge artefact and does not bound true multimodal gains under the floored
+   score. The h = 1 null fit is also skipped when LR₁ > 25, so a strong-signal
+   dataset's declaration rests on the unaudited null; flipping it would need
+   a gain above (LR₁ − cutoff)/2 ≥ 5. Qualification measures the margin
+   (§4). Skipped locations and their LRs are recorded.*
 
 **Replay check.** Lean searches of six challenge histories were rerun with
 items 1–6 ([`replay-summary.json`](evidence/paper1-sprint1-2026-11-05/replay-summary.json)).
@@ -266,7 +297,8 @@ stopping.
 **Denominators.** Every registered dataset counts:
 - a failed fit is a non-declaration for declaration rates and noncoverage
   for interval rates;
-- execution losses (scheduler or host) are rerun, because they are not
+- execution losses (scheduler or host, and `execution_error`: memory or
+  operating-system exceptions in the entry point) are rerun, because they are not
   scientific outcomes;
 - scientific failure classes are never rerun.
 
@@ -298,6 +330,15 @@ Every dataset runs the entry point with both dense and lean searches.
   differing by more than 1e-4 relative (1e-5 absolute).
 
 Near-tangent topology differences are recorded, not failed.
+
+**Audit margin.** Two base datasets per map (18, seeded and flagged
+`exhaustive_audit` in the manifest) also run with `--exhaustive-audit`, which
+audits every location regardless of LR. The receipt gives the largest joint
+and score gains at locations the production rule would skip. A converged
+distinct mode with a score gain above 5 at a skipped location means the
+margin is too small. Training does not start until the margin is widened
+and reviewed. This set was added on 5 November, after review and before
+any qualification outcome.
 
 **Gate.** The unit is a base dataset, clustered by map: 9 maps of 18
 datasets each.
