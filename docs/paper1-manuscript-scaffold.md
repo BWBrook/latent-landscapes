@@ -43,15 +43,16 @@ and after the predator arrives at each site. Arms differ in whether the
 [C01]
 
 **Fig. 2: Hidden heterogeneity distorts impact estimates.** Signed log-error
-of h by background (dose: matched, anchor, increased; signed window
+of h by background (dose: matched, anchor, increased; signed reach-threshold
 alignment) × arm, with complete-data mechanism references.
 - If attenuation grows with residual variance and the pre/post arm limits
   it: "Unmodelled site-to-site variation in background loss makes impact look
   smaller; observing the pre-invasion period removes most of that bias."
 - If no dose gradient appears: "Within the tested range, residual variation
   in background loss did not bias impact estimates."
-- Window alignment: "Background loss concentrated where the predator arrives
-  during monitoring [inflates / deflates / does not change] estimated impact
+- Reach alignment: "Background loss elevated on the side of the invasion
+  reach the predator is expected to arrive in during monitoring
+  [inflates / deflates / does not change] estimated impact
   by X (odd contrast), beyond the effect of added variance alone (even
   departure)."
 
@@ -112,7 +113,7 @@ status below is "planned".
 |---|---|---|---|---|
 | C01 | The deterministic Laplace procedure is numerically qualified on fresh maps at 120 and 260 sites | Qualification gate failure | 162 base datasets, clustered by 9 maps | Sprint 2 qualification receipts |
 | C02 | Residual heterogeneity dose changes the signed error of h, by arm | The dose contrast's CI includes 0 in every arm | Validation maps × cells | Validation; complete-data references |
-| C03 | Signal-window alignment has a signed (odd) effect beyond its variance-matched (even) control | The odd contrast's CI includes 0 | As above | Validation |
+| C03 | Reach-threshold alignment has a signed (odd) effect beyond its variance-matched (even) control | The odd contrast's CI includes 0 | As above | Validation |
 | C04 | The A versus C paired contrasts (four endpoints) have the sign and size reported | The precision rule's interval includes 0 | Paired map-level contrasts | Validation |
 | C05 | Each family's false declaration and noncoverage meet ≤ 0.05 in the stated strata | Upper bound > 0.05 or lower bound > 0.05 | Every registered dataset | Validation |
 | C06 | Harmful confident error rates by family and background | – (descriptive with intervals) | Every dataset with a nonempty interval; failures counted separately | Validation |

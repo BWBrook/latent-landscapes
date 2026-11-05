@@ -41,6 +41,8 @@ DEFAULTS = {
     "positive_sigma": np.array([-5.5, 0.4, math.log(0.35), 0.2]),
     "sigma_zero": np.array([-5.5, 0.4, 0.2]),
 }
+# Fixed start on the high-variance branch, which neighbour starts can miss at large h.
+HIGH_SIGMA_ANCHOR = np.array([-5.5, 0.4, math.log(1.2), 0.2])
 
 
 def write_json(path: Path, data: Any) -> None:
@@ -489,6 +491,8 @@ class Qualification:
         choices += ([max(left)] if left else []) + ([min(right)] if right else [])
         starts = [parameters(available[x][family]) for x in choices]
         starts.append(DEFAULTS[family])
+        if family == "positive_sigma":
+            starts.append(HIGH_SIGMA_ANCHOR)
         unique: list[np.ndarray] = []
         for row in starts:
             if not any(np.array_equal(row, old) for old in unique):
@@ -552,6 +556,11 @@ class Qualification:
         return [
             parameters(self.reference["profile"][ref_key], free=True),
             np.insert(DEFAULTS[family], -1, math.log(3.0)),
+            *(
+                [np.insert(HIGH_SIGMA_ANCHOR, -1, math.log(3.0))]
+                if family == "positive_sigma"
+                else []
+            ),
         ]
 
     def fit_free(self, *, tight: bool = False) -> None:

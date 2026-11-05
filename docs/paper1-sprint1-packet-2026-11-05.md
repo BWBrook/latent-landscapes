@@ -73,9 +73,18 @@ training data, the arrival bank and the evaluator settings.
 2. **Laplace criterion.** Σℓ − ½uᵀQu − ½ log|I − Cᵀdiag(ℓ″)C| at the mode.
    This is standard Laplace, selected by the joint objective, with no
    clipping.
-3. **Regularity guard.** An evaluation fails if the smallest eigenvalue of
-   I − Cᵀdiag(ℓ″)C is below 0.1. Equivalently, the Laplace term may
-   contribute at most ½ log 10 ≈ 1.15 per latent direction.
+3. **Eigenvalue floor.** The log-determinant uses floored eigenvalues of
+   I − Cᵀdiag(ℓ″)C, f(x) = x + 0.1·e^(−x/0.1). These eigenvalues are always
+   positive at a converged mode, because the matrix equals CᵀHC. f(0) = 0.1
+   caps the inflation at ½ log 10 ≈ 1.15 per latent direction. At the
+   eigenvalues seen at ordinary fits (≥ 0.89), f differs from x by less than
+   1.4e-5. The exact floored gradient replaces H⁻¹ in the determinant terms
+   with C·V·diag(f′/f)·Vᵀ·Cᵀ. It is tested against re-optimised differences
+   where the floor is active.
+   *This replaces a hard guard (fail below 0.1). Review showed that guard cut
+   holes inside the domain, not only at high σ: the smallest eigenvalue is
+   non-monotone in α at σ = 1.5. It also left 0.3–0.5-unit spikes beside the
+   holes.*
 4. **Residual SD bound.** σ ≤ 1.5, changed from 2. The largest generating
    residual SD in the design is √(log 2)·√0.51·√2 = 0.84, so 1.5 is 1.78
    times that. Contacts are reported, as before. At the cell-00 h = 30
@@ -87,17 +96,30 @@ training data, the arrival bank and the evaluator settings.
    central differences at fixed η. Tests match full re-optimised
    differences, including at the h = 30 endpoint.
 6. **Outer optimiser.** Projected trust-region Newton on exact gradients,
-   with a Hessian from differences of the gradient and an eigenvalue shift to
-   leave saddles. It replaces L-BFGS, Powell and polish. Convergence requires
-   projected gradient ≤ 0.1 × the eligibility tolerance.
+   replacing L-BFGS, Powell and polish.
+   - The Hessian comes from differences of the gradient. A failed column is
+     retried backwards, then replaced by a diagonal curvature.
+   - An eigenvalue shift lets it leave saddles.
+   - A stationary point is accepted only after a second-order check, with up
+     to three saddle escapes.
+   - Convergence requires projected gradient ≤ 0.1 × the eligibility
+     tolerance.
+   - Every profile point also gets a fixed high-σ anchor start (σ = 1.2).
+     Review found that the default start never visited eligible fits on the
+     σ = 1.5 bound at h = 30, which were 0.3–0.8 units higher.
 7. **Contacts.** Codex's pointwise tie rule applies: where the positive and
    exact-zero families tie within 1e-4, the positive family's lower-σ contact
    is flagged as tied and excluded from contact summaries. Both branches, the
    tie flags and the raw envelope score are retained.
-8. **Multimodality audit.** At reported fits (free, and h = 1) with σ >
-   1e-3, the 13-start family is rerun. A strictly converged mode with a
-   higher joint objective (by > 1e-6 and |Δu| > 1e-3) fails the dataset as
-   `multimodal_latent`. It is never adopted silently.
+8. **Multimodality audit.** The 13-start family is rerun at every retained
+   profile point and every cutoff root where the reported σ > 1e-3, as well
+   as at the free and h = 1 fits. A strictly converged mode with a higher
+   joint objective (by > 1e-6, with |Δu| > 1e-3) fails the dataset as
+   `multimodal_latent`. This is a frozen failure trigger, applied the same
+   way in qualification, training and validation. Review swept the
+   near-singular region of cell-00 using zero, forward and backward
+   continuation starts and found identical modes throughout, so the
+   near-singularity is a Laplace-term effect, not a mode fold.
 
 **Replay check.** Lean searches of six challenge histories were rerun with
 items 1–6 ([`replay-summary.json`](evidence/paper1-sprint1-2026-11-05/replay-summary.json)).
@@ -124,7 +146,11 @@ status `selected_verified` for every one:
 - 9 qualification maps, 3 per archetype.
 
 Seeds are `SeedSequence(2026110501, spawn_key=(role, archetype, map))`, with
-roles development 1, qualification 2 and validation 3. The 60 validation
+roles development 1, qualification 2 and validation 3. The selector's 30-second wall-clock MILP limit made
+admissibility depend on machine load: a rerun under load 26 timed out on
+maps that had succeeded. A HiGHS time-limit is therefore an *execution*
+failure, to be rerun at lower concurrency, not a geometry failure. All maps
+reproduce byte-identically. The 60 validation
 spawn keys (20 per archetype) are committed by SHA-256
 `769daf17…cf47` and not generated. The manifests are in
 `evidence/…/maps/`. Failures would have been retained, not replaced; there
@@ -143,28 +169,32 @@ were none.
 | window_high | +1 | 1 | signed alignment |
 | temporal_trend | b100_anchor × exp(γt) | | γ = ln 1.5 / 120: 1.5-fold over the 120-day window |
 
-**Design correction (needs review).** The protocol's earlier/later
-alignment uses T = planning arrival orthogonalised against [1, A]. But A *is*
-the rank-normal score of planning arrival: the Spearman correlation is
-1.0000 on every archetype. So that T is numerical noise. Any planning-only
-timing surface is a function of A. Its linear part is absorbed by the fitted
-β·A, and only a nonlinear remainder can bias a model that includes A.
+**Design correction.** The protocol's earlier/later alignment uses T =
+planning arrival orthogonalised against [1, A]. But A *is* the rank-normal
+score of planning arrival: the Spearman correlation is 1.0000 on every
+archetype. So that T is numerical noise. Any planning-only timing surface is
+a function of A. Its linear part is absorbed by the fitted β·A, and only a
+nonlinear remainder can bias a model that includes A.
 
-The replacement asks the sharpest form of the alignment question. T is the
-standardised residual, on [1, A], of W = 1{0 < planning arrival ≤ 60}: the
-sites expected to be invaded inside the post-release survey window. These
-are the sites that carry the information about h.
-- window_high puts elevated background exactly where the impact signal is
-  measured; window_low puts it elsewhere.
-- With a = 1, each signed arm has total log-hazard variance
-  0.49 + 0.51·2 = 1.51, matching increased_heterogeneity. So the signed
-  contrasts isolate direction from added variance, and a is not tuned on
-  bias.
-- W prevalence is 0.29–0.59 and corr(W, A) is about 0.73. T keeps the
-  roughly 47% of W's variance that A cannot express.
+The replacement is a **reach-threshold alignment**:
+- W = 1{planning arrival ≤ 60}, the sites the predator is expected to reach
+  by the end of monitoring, release cells included.
+- T is W's residual on [1, A], centred and unit-scaled over the 300-site
+  sampling frame, so it is orthogonal to A where models are fitted.
+- W is a threshold in A, so T is the step that the log-linear exposure term
+  cannot express, concentrated at the edge of invasion reach. It is a
+  targeted confounding stress for h, not independent timing information.
+- window_high raises the background on the reached side of that threshold
+  (relative to the linear trend); window_low lowers it.
+- With a = 1, each signed arm has frame variance 0.49 + 0.51·2 = 1.51 in its
+  residual components, matching increased_heterogeneity.
+- W prevalence over the frame is 0.28–0.67, corr(W, A) is 0.76–0.84, and T
+  lies in [−2.7, 2.1] on every map.
 
-If review rejects this, the fallback is to drop the signed arms: four
-stationary backgrounds plus the trend.
+The first version used 1{0 < arrival ≤ 60}. Review found that the 81
+release cells then dominated T (T ≈ −4, 18–26% of its variance), so it was
+corrected before any history was generated. The reviewer advised keeping the
+arms as the most targeted confounding test in the design.
 
 **Process and observation.** These are unchanged from the protocol:
 - μ ∈ {0.001, 0.004} per day;
