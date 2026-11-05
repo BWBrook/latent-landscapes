@@ -1,0 +1,375 @@
+{
+  "audit_script_sha256": "9b667e9197190f2cc4c1ae62491011e98d3da7575e5639a8ad3e61c774d6bc8b",
+  "envelope_excess_tolerance": 0.0001,
+  "identical_outer_parameter_witness": {
+    "cold_fallback": {
+      "criterion": -1119.4812913342196,
+      "eligible": false,
+      "evaluation_success": true,
+      "family": "positive_sigma",
+      "h": 24.560192653516598,
+      "mode": {
+        "bound_touch": false,
+        "branch_count": 1,
+        "evaluations": 146,
+        "iterations": 105,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "newton_decrement": 3.0020727476886627e-06,
+        "newton_step_inf": 0.0005999825270967821,
+        "proposal_grid_supported": true,
+        "score_inf": 9.994149785530482e-09,
+        "success": true
+      },
+      "optimizer_success": true,
+      "parameters": {
+        "alpha": -10.748255244588698,
+        "beta": -0.41778436669510743,
+        "detection_sd": 0.26636642150502854,
+        "log_sigma": 0.595971908472181
+      },
+      "projected_gradient_inf": 148719747.40897208,
+      "sigma": 1.8147939016733974,
+      "source": "standard_fixed_0x1.99be871ed0638p+1_powell_1"
+    },
+    "dataset": "cell-00-rep-005-arm-B-B0",
+    "outer_parameters_exactly_equal": true,
+    "search": "dense",
+    "warm_minus_cold_criterion": -4.534121625370972,
+    "warm_polish": {
+      "criterion": -1124.0154129595905,
+      "eligible": false,
+      "evaluation_success": true,
+      "family": "positive_sigma",
+      "h": 24.560192653516598,
+      "mode": {
+        "bound_touch": false,
+        "branch_count": 2,
+        "evaluations": 2,
+        "iterations": 0,
+        "message": "Newton-first converged; valid incumbent retained",
+        "newton_decrement": 5.6156857368611535e-15,
+        "newton_step_inf": 1.1895171621727405e-14,
+        "proposal_grid_supported": true,
+        "score_inf": 7.771561172376096e-16,
+        "success": true
+      },
+      "optimizer_success": true,
+      "parameters": {
+        "alpha": -10.748255244588698,
+        "beta": -0.41778436669510743,
+        "detection_sd": 0.26636642150502854,
+        "log_sigma": 0.595971908472181
+      },
+      "projected_gradient_inf": 467.79063097346807,
+      "sigma": 1.8147939016733974,
+      "source": "standard_fixed_0x1.99be871ed0638p+1_polish_1"
+    }
+  },
+  "interpretation": "Unresolved interior-positive-sigma candidates exceed local eligible envelopes. They are not certified optima. The identical-parameter witness demonstrates recorded cold/warm latent-start sensitivity, not its fully diagnosed cause. W relative to completed points is descriptive, not an exclusion bound.",
+  "method_changed": false,
+  "new_fits_run": false,
+  "profiles": [
+    {
+      "W_relative_to_best_completed": 8.016196083341583,
+      "best_completed_criterion": -1115.4731932925488,
+      "criterion_excess_over_eligible_positive": 5.171002227146573,
+      "dataset": "cell-00-rep-005-arm-B-B0",
+      "eligible_positive": {
+        "criterion": -1124.6522935613662,
+        "eligible": true,
+        "evaluation_success": true,
+        "family": "positive_sigma",
+        "h": 24.560192653516598,
+        "mode": {
+          "bound_touch": false,
+          "branch_count": 2,
+          "evaluations": 4,
+          "iterations": 2,
+          "message": "Newton-first converged; guarded polish accepted",
+          "newton_decrement": 1.2578683499379736e-19,
+          "newton_step_inf": 5.2188579765460994e-24,
+          "proposal_grid_supported": true,
+          "score_inf": 4.718447854656915e-16,
+          "success": true
+        },
+        "optimizer_success": true,
+        "parameters": {
+          "alpha": -8.902459556932262,
+          "beta": -0.2403528672313352,
+          "detection_sd": 0.2464062169736044,
+          "log_sigma": -9.210340371976182
+        },
+        "projected_gradient_inf": 3.971081241616048e-06,
+        "sigma": 0.00010000000000000009,
+        "source": "standard_fixed_0x1.99be871ed0638p+1_fit_0"
+      },
+      "eligible_zero_criterion": -1124.6522935543408,
+      "failure": "unresolved candidate exceeds selected family envelope",
+      "failure_h": 24.560192653516598,
+      "highest_unresolved": {
+        "criterion": -1119.4812913342196,
+        "eligible": false,
+        "evaluation_success": true,
+        "family": "positive_sigma",
+        "h": 24.560192653516598,
+        "mode": {
+          "bound_touch": false,
+          "branch_count": 1,
+          "evaluations": 146,
+          "iterations": 105,
+          "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+          "newton_decrement": 3.0020727476886627e-06,
+          "newton_step_inf": 0.0005999825270967821,
+          "proposal_grid_supported": true,
+          "score_inf": 9.994149785530482e-09,
+          "success": true
+        },
+        "optimizer_success": true,
+        "parameters": {
+          "alpha": -10.748255244588698,
+          "beta": -0.41778436669510743,
+          "detection_sd": 0.26636642150502854,
+          "log_sigma": 0.595971908472181
+        },
+        "projected_gradient_inf": 148719747.40897208,
+        "sigma": 1.8147939016733974,
+        "source": "standard_fixed_0x1.99be871ed0638p+1_powell_1"
+      },
+      "receipt_relative_path": "cell-00-rep-005-arm-B-B0/dense/receipt.json",
+      "receipt_sha256": "c7bb6fe6490524bcc6ee354b678d4d53080d8570b25f53c14a056e62a102b0e9",
+      "search": "dense",
+      "stream_binding_verified": true,
+      "stream_relative_path": "cell-00-rep-005-arm-B-B0/dense/evaluations.jsonl",
+      "stream_sha256": "685447d45144c47fbefb911c50b7d76f3c16359f5c58552f86d165d9625a312e",
+      "unresolved_candidate_count": 3
+    },
+    {
+      "W_relative_to_best_completed": 7.177443411548211,
+      "best_completed_criterion": -1115.4731932925488,
+      "criterion_excess_over_eligible_positive": 5.998885555703964,
+      "dataset": "cell-00-rep-005-arm-B-B0",
+      "eligible_positive": {
+        "criterion": -1125.0608005540269,
+        "eligible": true,
+        "evaluation_success": true,
+        "family": "positive_sigma",
+        "h": 30.0,
+        "mode": {
+          "bound_touch": false,
+          "branch_count": 2,
+          "evaluations": 4,
+          "iterations": 2,
+          "message": "Newton-first converged; guarded polish accepted",
+          "newton_decrement": 1.4024882051823794e-19,
+          "newton_step_inf": 7.21115853782785e-24,
+          "proposal_grid_supported": true,
+          "score_inf": 1.2212453270876722e-15,
+          "success": true
+        },
+        "optimizer_success": true,
+        "parameters": {
+          "alpha": -9.20216662347429,
+          "beta": -0.22804310145665338,
+          "detection_sd": 0.25088163716000217,
+          "log_sigma": -9.210340371976182
+        },
+        "projected_gradient_inf": 1.142552719102241e-06,
+        "sigma": 0.00010000000000000009,
+        "source": "standard_fixed_0x1.b35a6f90bd69bp+1_fit_0"
+      },
+      "eligible_zero_criterion": -1125.060800548118,
+      "failure": "unresolved candidate exceeds selected family envelope",
+      "failure_h": 30.0,
+      "highest_unresolved": {
+        "criterion": -1119.061914998323,
+        "eligible": false,
+        "evaluation_success": true,
+        "family": "positive_sigma",
+        "h": 30.0,
+        "mode": {
+          "bound_touch": false,
+          "branch_count": 1,
+          "evaluations": 147,
+          "iterations": 106,
+          "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+          "newton_decrement": 2.8617437832134817e-06,
+          "newton_step_inf": 0.0009012590488170301,
+          "proposal_grid_supported": true,
+          "score_inf": 9.995885286162576e-09,
+          "success": true
+        },
+        "optimizer_success": true,
+        "parameters": {
+          "alpha": -10.736582678015129,
+          "beta": -0.5665188903086086,
+          "detection_sd": 0.2647691886717569,
+          "log_sigma": 0.5908914260828704
+        },
+        "projected_gradient_inf": 543837350.8221133,
+        "sigma": 1.8055972546986592,
+        "source": "standard_fixed_0x1.b35a6f90bd69bp+1_powell_1"
+      },
+      "receipt_relative_path": "cell-00-rep-005-arm-B-B0/lean/receipt.json",
+      "receipt_sha256": "d247fe3f8c6c168bda140609110a5104db26005a7e3848506531022c6898d2ba",
+      "search": "lean",
+      "stream_binding_verified": true,
+      "stream_relative_path": "cell-00-rep-005-arm-B-B0/lean/evaluations.jsonl",
+      "stream_sha256": "aa251995d774aedef765988fc7ece8bb4fb21dceeecba408b3a00481467f0254",
+      "unresolved_candidate_count": 3
+    },
+    {
+      "W_relative_to_best_completed": 23.448250238795936,
+      "best_completed_criterion": -1104.6969227163006,
+      "criterion_excess_over_eligible_positive": 2.4298422609028876,
+      "dataset": "cell-06-rep-006-arm-B-B0",
+      "eligible_positive": {
+        "criterion": -1118.8508900966015,
+        "eligible": true,
+        "evaluation_success": true,
+        "family": "positive_sigma",
+        "h": 27.144166585207554,
+        "mode": {
+          "bound_touch": false,
+          "branch_count": 2,
+          "evaluations": 4,
+          "iterations": 2,
+          "message": "Newton-first converged; guarded polish accepted",
+          "newton_decrement": 2.216949359716683e-19,
+          "newton_step_inf": 1.0192885928342695e-23,
+          "proposal_grid_supported": true,
+          "score_inf": 8.222589276130066e-16,
+          "success": true
+        },
+        "optimizer_success": true,
+        "parameters": {
+          "alpha": -8.610883426155114,
+          "beta": -0.5884397204533275,
+          "detection_sd": 0.22155083639965076,
+          "log_sigma": -9.210340371976182
+        },
+        "projected_gradient_inf": 6.633626981056295e-06,
+        "sigma": 0.00010000000000000009,
+        "source": "standard_fixed_0x1.a68c7b57c6e6ap+1_fit_0"
+      },
+      "eligible_zero_criterion": -1118.8508900926856,
+      "failure": "unresolved candidate exceeds selected family envelope",
+      "failure_h": 27.144166585207554,
+      "highest_unresolved": {
+        "criterion": -1116.4210478356986,
+        "eligible": false,
+        "evaluation_success": true,
+        "family": "positive_sigma",
+        "h": 27.144166585207554,
+        "mode": {
+          "bound_touch": false,
+          "branch_count": 2,
+          "evaluations": 2,
+          "iterations": 1,
+          "message": "Newton-first converged; guarded polish accepted",
+          "newton_decrement": 5.212716778616526e-14,
+          "newton_step_inf": 2.4325348511640716e-12,
+          "proposal_grid_supported": true,
+          "score_inf": 1.1102230246251565e-15,
+          "success": true
+        },
+        "optimizer_success": true,
+        "parameters": {
+          "alpha": -11.266295941712297,
+          "beta": -0.41140613010682786,
+          "detection_sd": 0.2547343191782484,
+          "log_sigma": 0.5725731861080089
+        },
+        "projected_gradient_inf": 878.9725149499413,
+        "sigma": 1.772822990771793,
+        "source": "standard_fixed_0x1.a68c7b57c6e6ap+1_polish_1"
+      },
+      "receipt_relative_path": "cell-06-rep-006-arm-B-B0/dense/receipt.json",
+      "receipt_sha256": "bbfa0d996674685c105a58cba083f649a9fb6b1e3ae97e1b206e6a0d82ad0e5b",
+      "search": "dense",
+      "stream_binding_verified": true,
+      "stream_relative_path": "cell-06-rep-006-arm-B-B0/dense/evaluations.jsonl",
+      "stream_sha256": "31c00a5cded983bf79472ebd052c8f51badca85db96b62611a2726d7d6f67178",
+      "unresolved_candidate_count": 3
+    },
+    {
+      "W_relative_to_best_completed": 27.314292994674815,
+      "best_completed_criterion": -1104.6969227163006,
+      "criterion_excess_over_eligible_positive": 0.928122003449289,
+      "dataset": "cell-06-rep-006-arm-B-B0",
+      "eligible_positive": {
+        "criterion": -1119.2821912170873,
+        "eligible": true,
+        "evaluation_success": true,
+        "family": "positive_sigma",
+        "h": 30.0,
+        "mode": {
+          "bound_touch": false,
+          "branch_count": 2,
+          "evaluations": 4,
+          "iterations": 2,
+          "message": "Newton-first converged; guarded polish accepted",
+          "newton_decrement": 2.576213536344417e-19,
+          "newton_step_inf": 1.6190524842443478e-23,
+          "proposal_grid_supported": true,
+          "score_inf": 1.4432899320127035e-15,
+          "success": true
+        },
+        "optimizer_success": true,
+        "parameters": {
+          "alpha": -8.761229438710194,
+          "beta": -0.586680561875338,
+          "detection_sd": 0.22531297688995255,
+          "log_sigma": -9.210340371976182
+        },
+        "projected_gradient_inf": 0.00015703903954999987,
+        "sigma": 0.00010000000000000009,
+        "source": "standard_fixed_0x1.b35a6f90bd69bp+1_fit_0"
+      },
+      "eligible_zero_criterion": -1119.282191213743,
+      "failure": "unresolved candidate exceeds selected family envelope",
+      "failure_h": 30.0,
+      "highest_unresolved": {
+        "criterion": -1118.354069213638,
+        "eligible": false,
+        "evaluation_success": true,
+        "family": "positive_sigma",
+        "h": 30.0,
+        "mode": {
+          "bound_touch": false,
+          "branch_count": 2,
+          "evaluations": 20,
+          "iterations": 10,
+          "message": "Newton-first converged; guarded polish accepted",
+          "newton_decrement": 1.294597777918606e-14,
+          "newton_step_inf": 1.5116099863708802e-13,
+          "proposal_grid_supported": true,
+          "score_inf": 6.938893903907228e-16,
+          "success": true
+        },
+        "optimizer_success": true,
+        "parameters": {
+          "alpha": -11.393768020627062,
+          "beta": -1.4398231720537547,
+          "detection_sd": 0.23941232219914235,
+          "log_sigma": 0.5388797231983485
+        },
+        "projected_gradient_inf": 424.6693034212967,
+        "sigma": 1.714085535915244,
+        "source": "standard_fixed_0x1.b35a6f90bd69bp+1_fit_1"
+      },
+      "receipt_relative_path": "cell-06-rep-006-arm-B-B0/lean/receipt.json",
+      "receipt_sha256": "2be86f99d211b26d964b2e95e417a7b0ee4c46d8793a8d03a80dc2c21f439fb3",
+      "search": "lean",
+      "stream_binding_verified": true,
+      "stream_relative_path": "cell-06-rep-006-arm-B-B0/lean/evaluations.jsonl",
+      "stream_sha256": "478df886e4dc49241b092a47545d687330ce108a1c639b9d609503dad48c5233",
+      "unresolved_candidate_count": 2
+    }
+  ],
+  "projected_gradient_gate": 0.001,
+  "schema": "unresolved-profile-readonly-audit-v1",
+  "source_sha256": {
+    "scripts/qualify_spatial_profiles.py": "cec486d9ac68a5f905184763794848fa1a11ec0224e94fec4576feaa69ee0d93",
+    "src/latent_landscapes/spatial_profile.py": "035cf32abffec4029360370390ffa000f412504e8b505dc96161305c553aaae3"
+  }
+}

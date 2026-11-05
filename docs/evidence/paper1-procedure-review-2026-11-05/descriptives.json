@@ -1,0 +1,254 @@
+{
+  "cross_tabs": {
+    "bank_status": [
+      {
+        "count": 8,
+        "free_sigma_status": "positive_unique",
+        "status": "not_requested"
+      },
+      {
+        "count": 1,
+        "free_sigma_status": "positive_unique",
+        "status": "failed"
+      },
+      {
+        "count": 13,
+        "free_sigma_status": "positive_unique",
+        "status": "within_prespecified_gates"
+      },
+      {
+        "count": 6,
+        "free_sigma_status": "tied",
+        "status": "not_requested"
+      },
+      {
+        "count": 5,
+        "free_sigma_status": "tied",
+        "status": "failed"
+      },
+      {
+        "count": 3,
+        "free_sigma_status": "tied",
+        "status": "within_prespecified_gates"
+      },
+      {
+        "count": 2,
+        "free_sigma_status": "unavailable",
+        "status": "not_requested"
+      }
+    ],
+    "dense_lean_status": [
+      {
+        "count": 1,
+        "free_sigma_status": "positive_unique",
+        "status": "failed"
+      },
+      {
+        "count": 21,
+        "free_sigma_status": "positive_unique",
+        "status": "within_prespecified_gates"
+      },
+      {
+        "count": 11,
+        "free_sigma_status": "tied",
+        "status": "failed"
+      },
+      {
+        "count": 3,
+        "free_sigma_status": "tied",
+        "status": "within_prespecified_gates"
+      },
+      {
+        "count": 2,
+        "free_sigma_status": "unavailable",
+        "status": "indeterminate"
+      }
+    ],
+    "integration_status": [
+      {
+        "count": 2,
+        "free_sigma_status": "positive_unique",
+        "status": "fail"
+      },
+      {
+        "count": 19,
+        "free_sigma_status": "positive_unique",
+        "status": "indeterminate"
+      },
+      {
+        "count": 1,
+        "free_sigma_status": "positive_unique",
+        "status": "pass"
+      },
+      {
+        "count": 2,
+        "free_sigma_status": "tied",
+        "status": "indeterminate"
+      },
+      {
+        "count": 12,
+        "free_sigma_status": "tied",
+        "status": "pass"
+      },
+      {
+        "count": 2,
+        "free_sigma_status": "unavailable",
+        "status": "unavailable"
+      }
+    ]
+  },
+  "datasets_sha256": "c025ea8a57e76fe888c55129b4e995a547c398e5dcc646ecd17c1119d640896c",
+  "paired_estimates": {
+    "1": {
+      "B_below_A": 3,
+      "B_equal_A_exactly": 2,
+      "available_pairs": 6,
+      "histories": [
+        {
+          "available_pair": false,
+          "h_A": 1.0,
+          "h_B": null,
+          "history": "cell-00-rep-005",
+          "log_error_A": 0.0,
+          "log_error_B": null
+        },
+        {
+          "available_pair": true,
+          "h_A": 2.3762136352992442,
+          "h_B": 3.154685133591588,
+          "history": "cell-00-rep-006",
+          "log_error_A": 0.8655083113048742,
+          "log_error_B": 1.1488886918343297
+        },
+        {
+          "available_pair": true,
+          "h_A": 1.218840531229946,
+          "h_B": 1.0,
+          "history": "cell-03-rep-005",
+          "log_error_A": 0.1979000226059736,
+          "log_error_B": 0.0
+        },
+        {
+          "available_pair": true,
+          "h_A": 1.2743443665924592,
+          "h_B": 1.216785339074142,
+          "history": "cell-03-rep-006",
+          "log_error_A": 0.24243182407234665,
+          "log_error_B": 0.1962124131347232
+        },
+        {
+          "available_pair": true,
+          "h_A": 1.0,
+          "h_B": 1.0,
+          "history": "cell-06-rep-005",
+          "log_error_A": 0.0,
+          "log_error_B": 0.0
+        },
+        {
+          "available_pair": false,
+          "h_A": 1.0,
+          "h_B": null,
+          "history": "cell-06-rep-006",
+          "log_error_A": 0.0,
+          "log_error_B": null
+        },
+        {
+          "available_pair": true,
+          "h_A": 1.0,
+          "h_B": 1.0,
+          "history": "cell-08-rep-005",
+          "log_error_A": 0.0,
+          "log_error_B": 0.0
+        },
+        {
+          "available_pair": true,
+          "h_A": 1.04050866371743,
+          "h_B": 1.0,
+          "history": "cell-08-rep-006",
+          "log_error_A": 0.03970969331129343,
+          "log_error_B": 0.0
+        }
+      ],
+      "mean_log_error_A_complete_pairs": 0.22425830854908133,
+      "mean_log_error_B_complete_pairs": 0.22418351749484214,
+      "unavailable_pairs": 2
+    },
+    "3": {
+      "B_below_A": 6,
+      "B_equal_A_exactly": 0,
+      "available_pairs": 8,
+      "histories": [
+        {
+          "available_pair": true,
+          "h_A": 3.0387852671024844,
+          "h_B": 3.1030361721554622,
+          "history": "cell-01-rep-005",
+          "log_error_A": 0.012845563705412465,
+          "log_error_B": 0.033768753886316394
+        },
+        {
+          "available_pair": true,
+          "h_A": 1.956254430173633,
+          "h_B": 1.408222352977987,
+          "history": "cell-01-rep-006",
+          "log_error_A": -0.4275806487388484,
+          "log_error_B": -0.7562841222513527
+        },
+        {
+          "available_pair": true,
+          "h_A": 4.262124739479188,
+          "h_B": 4.183265326756652,
+          "history": "cell-04-rep-005",
+          "log_error_A": 0.3511555124071418,
+          "log_error_B": 0.3324798315572397
+        },
+        {
+          "available_pair": true,
+          "h_A": 4.091173546352689,
+          "h_B": 4.094432002795696,
+          "history": "cell-04-rep-006",
+          "log_error_A": 0.3102195708784539,
+          "log_error_B": 0.3110157139604911
+        },
+        {
+          "available_pair": true,
+          "h_A": 1.5402956821824747,
+          "h_B": 1.104220941763278,
+          "history": "cell-07-rep-005",
+          "log_error_A": -0.6666378892552937,
+          "log_error_B": -0.9994722324274584
+        },
+        {
+          "available_pair": true,
+          "h_A": 3.9445404761478,
+          "h_B": 2.1079001856404007,
+          "history": "cell-07-rep-006",
+          "log_error_A": 0.27372017624631984,
+          "log_error_B": -0.35292000937551754
+        },
+        {
+          "available_pair": true,
+          "h_A": 3.0643063476565295,
+          "h_B": 2.3582671043624086,
+          "history": "cell-09-rep-005",
+          "log_error_A": 0.021208941128898345,
+          "log_error_B": -0.24068521715712085
+        },
+        {
+          "available_pair": true,
+          "h_A": 4.306994708901733,
+          "h_B": 4.268155298054925,
+          "history": "cell-09-rep-006",
+          "log_error_A": 0.36162808891500453,
+          "log_error_B": 0.3525694307202277
+        }
+      ],
+      "mean_log_error_A_complete_pairs": 0.02956991441088611,
+      "mean_log_error_B_complete_pairs": -0.16494098138589683,
+      "unavailable_pairs": 0
+    }
+  },
+  "post_outcome": true,
+  "schema": "procedure-review-descriptives-v1",
+  "validation_claim": false
+}

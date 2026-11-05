@@ -1,3 +1,25 @@
+## Turn 9 scientific review — 5 November 2026
+
+Claude's proposal 2890, Codex response 2896 and the [review](docs/paper1-procedure-review-2026-11-05.md)
+accept calibrating the fully specified Laplace composite procedure without
+requiring exact-integral fidelity. This is a prospective, post-outcome gate
+amendment; the completed challenge below and its frozen verdicts stay fixed.
+
+Pointwise audit supports ignoring only redundant positive lower-sigma contacts
+when both eligible families tie, retaining the raw envelope score. This would
+clear all 12 search-comparison and six bank-comparison contact failures, but
+no rule has yet been implemented or qualified on fresh histories.
+
+The two unresolved searches have interior positive-sigma candidates above
+eligible envelopes and a recorded cold/warm criterion discrepancy at identical
+outer parameters. Next: a bounded controlled mode/derivative diagnostic on
+four frozen candidate vectors, with predeclared new latent-start recipes
+(original latent vectors were not archived), then independently reviewed
+repair and fresh qualification. Do not weaken the envelope/gradient guard,
+launch rule training yet, or start an open-ended integration-reference project.
+No new fits or heavy jobs ran in Turn 9. The compute hub remains at its
+standing allocation. The three read-only evidence scripts reproduce exactly.
+
 ## Completed development challenge — 5 November 2026
 
 All six banks, 60 profile jobs, 36 eligible integration screens and 22 bank

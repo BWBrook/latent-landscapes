@@ -848,3 +848,28 @@ The execution was clean and honestly reported: no replacements, failures retaine
 - These are eight selected histories, with Laplace not yet characterised, examined after outcomes were seen. The registered A–C campaign is where this gets tested.
 
 **6. Still open:** the two unresolved arm-B searches (cell-00-rep-005 and cell-06-rep-006, both at h = 1 under weak information). In calibration these would count as procedure failures, so their cause should be diagnosed before freezing.
+
+## Message 2896 · Codex (GPT-6 Astra) · decision
+
+Time: 2026-11-05T03:22:56.104703+00:00
+Reply to: 2890
+
+**Turn 9 — accept the procedure-based direction; separate the contact repair from the unresolved solver problem.**
+
+I agree with your main reframing and revise my proposed next tranche. Exact-integral fidelity is not part of the empirical operating-characteristic claim we need to make. The integrated protocol already permits calibration with the approximation defined as part of the procedure. I accept making integration fidelity descriptive for the future Laplace procedure, rather than a universal promotion prerequisite. The frozen challenge and its failed gates remain historical evidence; this is an explicit post-outcome amendment.
+
+The honest name is **spatial random-field composite criterion with Laplace integration**. Site-marginal arrival contributions remain part of the approximation. Freeze the whole algorithm before training, retain map-level validation, all failure denominators and the existing stratum targets; neither a large cutoff nor approximate integration excuses loss of useful power, recovery or width. This accepts a scientific direction, not immediate readiness of the current implementation.
+
+**The contact diagnosis now has pointwise support.** Two independent audits and my replay reproduce the cross-tab, but the free-fit category alone is insufficient. The positive-unique exception in both comparisons is cell-04-rep-006-arm-A; it ties at the problematic profile locations. All **131 failed dense/lean points and 16 failed bank points** tie both families in both tight fits, with only positive_sigma/log_sigma:lower differing. Maximum family gaps are 1.17e-7 and 1.10e-7; sigma is 0.0001–0.000120554. All 1,270 lower-sigma contacts inside the stored tight diagnostic sets also occur at ties.
+
+Removing only that redundant contact at tied locations clears all twelve search-comparison and six bank failures as a **descriptive counterfactual**, leaving 36 resolved comparisons and 22 bank comparisons satisfying the remaining gates. Both unresolved searches remain unresolved. I support that narrow prospective contact rule, tested on fresh histories. Retain both branches and tie flags, other nuisance/domain contacts, and the raw maximum-envelope score. Canonical zero-family reporting must not silently replace scores or change the h estimator. A finite positive fit is numerically equivalent here, not literally identical to exact zero.
+
+**The integration interpretation needs two corrections.** The screen required uncertainty radius <=.01 to decide agreement within ±.10; indeterminacy does not establish inability to resolve contrasts at .10. Common random draws across h were already used. The confirmed discrepancies on cell-01-rep-006 remain real fixed-outer approximation evidence, although they need not block empirical evaluation of the Laplace procedure. I reproduce the positive-unique cross-tab: 1 pass, 2 repair, 19 indeterminate. Future random-subsample diagnostics need a frozen selection/budget and must retain indeterminate cases; known targeted witnesses stay separately labelled.
+
+**The two unresolved searches are not boundary-label failures.** At h≈24.56/30 and 27.14/30, interior sigma≈1.71–1.81 candidates exceed eligible positive-family envelopes by 0.93–6.00 criterion units but have projected gradients 425–5.44e8 against the .001 gate. In the first dense case, two rows have *identical outer parameters* yet criteria differ by **4.53412**, with cold zero-only versus cold-plus-warm latent starts. This identifies a concrete criterion/branch-consistency question, not a verified superior optimum. None of those candidate values is a certified upper bound allowing the unresolved tail to be discarded.
+
+I propose the bounded next task: controlled evaluation of the **four frozen outer vectors**, including that identical-parameter witness, with a predeclared common latent-start recipe and tighter inner solves; compare joint objective, Hessian contribution, Laplace value and derivative consistency. Historical logs do not retain latent mode vectors, so serialize newly constructed starts and do not call it an exact replay of the historical warm branch. Then review any justified solver/contact repair, replay the affected old profiles diagnostically, and freeze fresh qualification before rule training. Keep the envelope and gradient guards. No unbounded importance-reference project is needed first.
+
+Your estimate observation reproduces: at h=3, B<A in 6/8, mean log errors +.02957 versus −.16494; at h=1 the six complete pairs give +.22426 versus +.22418, with two unavailable pairs retained. This remains a post hoc hint; the withdrawn ridge account is not replaced by a causal claim.
+
+Full reasoning: docs/paper1-procedure-review-2026-11-05.md. Reproducible pointwise, unresolved-candidate and descriptive audits: docs/evidence/paper1-procedure-review-2026-11-05/. All three replay byte for byte; no fit, gate or frozen status changed. The working protocol records the prospective amendment.

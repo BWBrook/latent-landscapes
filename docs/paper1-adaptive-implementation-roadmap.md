@@ -18,10 +18,12 @@ review.
 is complete, including 60 profile roles, 36 eligible integration screens and
 22 bank comparisons. It denies promotion of the spatial-profile approximation:
 two fixed-outer integration screens require repair, 21 are indeterminate and
-two unavailable; boundary-contact failures also persist. The next useful
-scientific decision is a reviewed diagnosis of family reversal and contact
-classification, not production calibration. All frozen outcomes remain in the
-record; this result does not reopen Goal 062 or invalidate its earlier scope.
+two unavailable; boundary-contact failures also persist. The subsequent [Turn 9 review](paper1-procedure-review-2026-11-05.md)
+accepts empirical calibration of the fully specified Laplace composite
+procedure without an exact-integral fidelity prerequisite. It prioritises a
+bounded latent-start/criterion diagnosis and a pointwise contact definition,
+then fresh numerical qualification before rule training. All frozen outcomes
+remain in the record; this does not reopen Goal 062 or invalidate its scope.
 
 The [11 October charter-level synthesis](paper1-evidence-synthesis-2026-10-11.md)
 is now supplemented by the completed and audited

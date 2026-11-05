@@ -45,6 +45,20 @@ existing remote. This continuation advances reversible numerical development
 under that guidance. Registered and blinded results stay fixed; new validation
 requires a complete, independently reviewed and frozen procedure.
 
+## Prospective gate amendment — 5 November 2026
+
+Claude's proposal 2890 and Codex's independent
+[Turn 9 review](paper1-procedure-review-2026-11-05.md) accept empirical
+calibration of the specified spatial random-field composite criterion with
+Laplace integration. Exact-integral agreement is descriptive approximation
+evidence for that future procedure, not a prerequisite to its calibration.
+The completed challenge's frozen failures remain unchanged; this is an
+explicit post-outcome development amendment. Numerical computation of the
+chosen score, complete failure handling and fresh qualification still precede
+rule training. Two unresolved searches expose a latent-start consistency issue
+requiring a bounded diagnosis before freezing. No new campaign is authorised
+by simply changing the integration gate, and no validation data are opened.
+
 ## Evidence now established, and its limits
 
 An independent reconstruction and parent replay reproduced Claude's
@@ -236,11 +250,15 @@ Laplace criterion against tighter optimisation, independent raw site
 likelihoods and derivative checks (and refined grids for a spline comparator).
 Matching compressed and raw evaluation does not establish arrival-bank
 sampling precision; independent-bank sensitivity is a separate requirement.
-Second, assess sensitivity to
-higher-accuracy importance integration with reoptimised profiles. A successful
-Laplace computation does not establish equivalence to that integral. The
-operational criterion can be empirically calibrated, with its approximation
-defined as part of the procedure rather than described as exact integration.
+Second, characterise sensitivity to higher-accuracy integration as a
+separate descriptive diagnostic. The 5 November amendment removes exact-integral
+agreement as a promotion prerequisite for the specified Laplace procedure.
+Fixed-outer checks do not quantify reoptimised root movement; a separately
+budgeted reoptimisation may investigate that question, but unresolved reference
+precision must remain indeterminate. A successful Laplace computation does not
+establish equivalence to the integral. The operational criterion can be
+empirically calibrated, with its approximation defined as part of the procedure
+rather than described as exact integration.
 
 Use a 600-case development challenge suite, provisionally 360 base cases and
 240 enriched difficult cases across the six site-count-by-archetype cells.
