@@ -54,7 +54,7 @@ def prepare_target(
     if parameters.shape != (4,) or not np.all(np.isfinite(parameters)):
         raise ValueError("fixed-h positive-family parameters must have four finite coordinates")
     alpha, beta, log_sigma, detection_sd = map(float, parameters)
-    mode = criterion.mode(alpha, beta, log_sigma, h, detection_sd, mode_start=warm)
+    mode = criterion.mode(alpha, beta, log_sigma, h, detection_sd)
     if not mode.success or mode.precision is None or mode.hessian_inverse is None:
         raise RuntimeError(f"unresolved importance proposal mode: {mode.message}")
     curves = criterion.curves(h, detection_sd)

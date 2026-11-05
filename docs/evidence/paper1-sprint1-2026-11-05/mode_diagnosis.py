@@ -204,7 +204,7 @@ def main():
         "parameters": params,
         "recorded_criterion": row["criterion"],
         "recorded_mode": row["mode"],
-        "replayed_cold_criterion": cold.value,
+        "replayed_cold_criterion": cold.criterion,
         "replayed_cold_message": cold.message,
         "data_identity": identity,
         "script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),

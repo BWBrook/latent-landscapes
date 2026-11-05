@@ -191,7 +191,6 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
                 point,
                 fixed_h=h,
                 nuisance_fd=True,
-                mode_start=old.mode.u if old.mode is not None else None,
             )
         )
         if not old.success or not new.success:
