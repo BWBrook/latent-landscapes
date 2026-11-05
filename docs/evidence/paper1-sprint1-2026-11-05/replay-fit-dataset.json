@@ -1,0 +1,378 @@
+[
+ {
+  "dataset": "cell-00-rep-005-arm-B",
+  "failure_class": "resolved",
+  "all_triggered": [],
+  "search_status": "profile_numerically_resolved",
+  "free": {
+   "positive_sigma": {
+    "h": 1.0,
+    "criterion": -1115.473193303478
+   },
+   "sigma_zero": {
+    "h": 1.0,
+    "criterion": -1115.4731932925429
+   }
+  },
+  "roots_3_84": [
+   2.7857634766527113
+  ],
+  "spatial_lr1": 0.0,
+  "positive_sigma_range": [
+   0.00010000000000000009,
+   0.00010000000000000009
+  ],
+  "positive_sigma_at_upper_bound": 0,
+  "positive_bound_contacts": [
+   "log_sigma:lower"
+  ],
+  "unique_h": 70,
+  "audit": {
+   "lr_limit": 25.0,
+   "audit_count": 0,
+   "skipped_beyond_lr_limit": 0,
+   "multimodal_latent": false
+  },
+  "audit_seconds": 0.000220458023250103,
+  "criterion_stats": {
+   "curve_builds": 60528,
+   "curve_seconds": 94.7400177346426,
+   "mode_calls": 25360,
+   "mode_failures": 0,
+   "mode_iterations": 48532,
+   "mode_evaluations": 73892,
+   "pd_failures": 0,
+   "curve_cache_evictions": 60504,
+   "integration_cache_evictions": 0
+  },
+  "stages": {
+   "input_hashes": 0.1516645000083372,
+   "load": 1.1827486249967478,
+   "search_setup": 0.0028610830195248127,
+   "search": 1146.931200416002,
+   "spatial_report": 0.0010236669913865626,
+   "family_exposure": 47.64987787499558,
+   "family_constant": 118.54007312498288,
+   "latent_audit": 0.0019792920211330056
+  },
+  "peak_rss_bytes": 569769984,
+  "source": {
+   "commit": "48de534af82b658157af32ce01d18e407b3ddc3c",
+   "working_tree_changes": []
+  },
+  "receipt_sha256": "8ce863de0080159b141fd50aa25b0dc564c12cfee2bb94a787b1d4728636cf19"
+ },
+ {
+  "dataset": "cell-01-rep-006-arm-A",
+  "failure_class": "resolved",
+  "all_triggered": [],
+  "search_status": "profile_numerically_resolved",
+  "free": {
+   "positive_sigma": {
+    "h": 1.9562645393947629,
+    "criterion": -1813.0899329143085
+   },
+   "sigma_zero": {
+    "h": 1.940554473734787,
+    "criterion": -1813.108501730443
+   }
+  },
+  "roots_3_84": [
+   5.572261598398361
+  ],
+  "spatial_lr1": 1.359658719766685,
+  "positive_sigma_range": [
+   0.43336445556758313,
+   1.397916065449737
+  ],
+  "positive_sigma_at_upper_bound": 0,
+  "positive_bound_contacts": [],
+  "unique_h": 82,
+  "audit": {
+   "lr_limit": 25.0,
+   "audit_count": 166,
+   "skipped_beyond_lr_limit": 0,
+   "multimodal_latent": false
+  },
+  "audit_seconds": 192.8871006250265,
+  "criterion_stats": {
+   "curve_builds": 66312,
+   "curve_seconds": 92.61765925231157,
+   "mode_calls": 26430,
+   "mode_failures": 0,
+   "mode_iterations": 86599,
+   "mode_evaluations": 113029,
+   "pd_failures": 0,
+   "curve_cache_evictions": 66288,
+   "integration_cache_evictions": 0
+  },
+  "stages": {
+   "input_hashes": 0.1619766250369139,
+   "load": 1.0869722500210628,
+   "search_setup": 0.006658375030383468,
+   "search": 1481.8608970419737,
+   "spatial_report": 0.00102862500352785,
+   "family_exposure": 66.85881637502462,
+   "family_constant": 90.82058091694489,
+   "latent_audit": 192.88883904198883
+  },
+  "peak_rss_bytes": 580173824,
+  "source": {
+   "commit": "48de534af82b658157af32ce01d18e407b3ddc3c",
+   "working_tree_changes": []
+  },
+  "receipt_sha256": "4f3c3b0e0af9944cef843f11af1300ace0e5288c8119f383b9bfeb9daa05efda"
+ },
+ {
+  "dataset": "cell-04-rep-005-arm-A",
+  "failure_class": "resolved",
+  "all_triggered": [],
+  "search_status": "profile_numerically_resolved",
+  "free": {
+   "positive_sigma": {
+    "h": 4.262124789070844,
+    "criterion": -1721.464854687589
+   },
+   "sigma_zero": {
+    "h": 4.262124775779792,
+    "criterion": -1721.4648546256585
+   }
+  },
+  "roots_3_84": [
+   2.3880953503408073,
+   7.516372450076196
+  ],
+  "spatial_lr1": 21.519171903757524,
+  "positive_sigma_range": [
+   0.00010000000000000009,
+   1.0106289130082946
+  ],
+  "positive_sigma_at_upper_bound": 0,
+  "positive_bound_contacts": [
+   "log_sigma:lower"
+  ],
+  "unique_h": 149,
+  "audit": {
+   "lr_limit": 25.0,
+   "audit_count": 0,
+   "skipped_beyond_lr_limit": 4,
+   "multimodal_latent": false
+  },
+  "audit_seconds": 0.0004273329977877438,
+  "criterion_stats": {
+   "curve_builds": 99834,
+   "curve_seconds": 130.0865129948943,
+   "mode_calls": 47388,
+   "mode_failures": 0,
+   "mode_iterations": 87879,
+   "mode_evaluations": 135267,
+   "pd_failures": 0,
+   "curve_cache_evictions": 99810,
+   "integration_cache_evictions": 0
+  },
+  "stages": {
+   "input_hashes": 0.1618615830084309,
+   "load": 1.3513707090169191,
+   "search_setup": 0.0020452910102903843,
+   "search": 2051.041243457992,
+   "spatial_report": 0.0019044579821638763,
+   "family_exposure": 29.061732541013043,
+   "family_constant": 121.97073529200861,
+   "latent_audit": 0.0021589170210063457
+  },
+  "peak_rss_bytes": 615710720,
+  "source": {
+   "commit": "48de534af82b658157af32ce01d18e407b3ddc3c",
+   "working_tree_changes": []
+  },
+  "receipt_sha256": "45d1af200f2da2348cb08b73c088de67d32d4ef6c9536a6aa51dbae981be8639"
+ },
+ {
+  "dataset": "cell-06-rep-006-arm-B",
+  "failure_class": "resolved",
+  "all_triggered": [],
+  "search_status": "profile_numerically_resolved",
+  "free": {
+   "positive_sigma": {
+    "h": 1.0,
+    "criterion": -1104.6969227299778
+   },
+   "sigma_zero": {
+    "h": 1.0,
+    "criterion": -1104.6969227163006
+   }
+  },
+  "roots_3_84": [
+   2.194944210260636
+  ],
+  "spatial_lr1": 0.0,
+  "positive_sigma_range": [
+   0.00010000000000000009,
+   0.00010000000000000009
+  ],
+  "positive_sigma_at_upper_bound": 0,
+  "positive_bound_contacts": [
+   "log_sigma:lower"
+  ],
+  "unique_h": 69,
+  "audit": {
+   "lr_limit": 25.0,
+   "audit_count": 0,
+   "skipped_beyond_lr_limit": 2,
+   "multimodal_latent": false
+  },
+  "audit_seconds": 0.0002740829950198531,
+  "criterion_stats": {
+   "curve_builds": 57018,
+   "curve_seconds": 89.65095840586582,
+   "mode_calls": 23946,
+   "mode_failures": 0,
+   "mode_iterations": 45518,
+   "mode_evaluations": 69464,
+   "pd_failures": 0,
+   "curve_cache_evictions": 56994,
+   "integration_cache_evictions": 0
+  },
+  "stages": {
+   "input_hashes": 0.1378550420049578,
+   "load": 1.2368441249709576,
+   "search_setup": 0.003111083002295345,
+   "search": 1106.0902296249988,
+   "spatial_report": 0.0026348750106990337,
+   "family_exposure": 47.80284116597613,
+   "family_constant": 112.47041187499417,
+   "latent_audit": 0.0034960840130224824
+  },
+  "peak_rss_bytes": 568229888,
+  "source": {
+   "commit": "48de534af82b658157af32ce01d18e407b3ddc3c",
+   "working_tree_changes": []
+  },
+  "receipt_sha256": "13486caabbc085e26822f66f1b608722ba98ec624fdb598c90ece459f97f6a1f"
+ },
+ {
+  "dataset": "cell-08-rep-006-arm-B",
+  "failure_class": "resolved",
+  "all_triggered": [],
+  "search_status": "profile_numerically_resolved",
+  "free": {
+   "positive_sigma": {
+    "h": 1.0,
+    "criterion": -1011.6574587165721
+   },
+   "sigma_zero": {
+    "h": 1.0,
+    "criterion": -1011.657458458301
+   }
+  },
+  "roots_3_84": [
+   2.2862603826277317
+  ],
+  "spatial_lr1": 2.2737367544323206e-13,
+  "positive_sigma_range": [
+   0.00235890988325105,
+   1.3891849096561877
+  ],
+  "positive_sigma_at_upper_bound": 0,
+  "positive_bound_contacts": [],
+  "unique_h": 73,
+  "audit": {
+   "lr_limit": 25.0,
+   "audit_count": 141,
+   "skipped_beyond_lr_limit": 4,
+   "multimodal_latent": false
+  },
+  "audit_seconds": 164.2868157919729,
+  "criterion_stats": {
+   "curve_builds": 48896,
+   "curve_seconds": 76.01193065370899,
+   "mode_calls": 18052,
+   "mode_failures": 0,
+   "mode_iterations": 62018,
+   "mode_evaluations": 80070,
+   "pd_failures": 0,
+   "curve_cache_evictions": 48872,
+   "integration_cache_evictions": 0
+  },
+  "stages": {
+   "input_hashes": 0.14972933300305158,
+   "load": 1.145103792019654,
+   "search_setup": 0.006501291994936764,
+   "search": 1146.798496000003,
+   "spatial_report": 0.0011137910187244415,
+   "family_exposure": 82.10254720901139,
+   "family_constant": 102.73779679200379,
+   "latent_audit": 164.28866216697497
+  },
+  "peak_rss_bytes": 570310656,
+  "source": {
+   "commit": "48de534af82b658157af32ce01d18e407b3ddc3c",
+   "working_tree_changes": []
+  },
+  "receipt_sha256": "2221d488834401d5cb7d1963b0abffad7c4650abb0461f1f672031895060d0f3"
+ },
+ {
+  "dataset": "cell-09-rep-005-arm-B",
+  "failure_class": "resolved",
+  "all_triggered": [],
+  "search_status": "profile_numerically_resolved",
+  "free": {
+   "positive_sigma": {
+    "h": 2.3582796287362933,
+    "criterion": -1015.3888437500896
+   },
+   "sigma_zero": {
+    "h": 2.1972187191821986,
+    "criterion": -1015.6918595262182
+   }
+  },
+  "roots_3_84": [
+   1.0980530025598376,
+   4.944724053357
+  ],
+  "spatial_lr1": 4.77581264474361,
+  "positive_sigma_range": [
+   0.3355148292691855,
+   1.5
+  ],
+  "positive_sigma_at_upper_bound": 2,
+  "positive_bound_contacts": [
+   "log_sigma:upper"
+  ],
+  "unique_h": 104,
+  "audit": {
+   "lr_limit": 25.0,
+   "audit_count": 206,
+   "skipped_beyond_lr_limit": 4,
+   "multimodal_latent": false
+  },
+  "audit_seconds": 839.3503314590198,
+  "criterion_stats": {
+   "curve_builds": 65062,
+   "curve_seconds": 88.35037494369317,
+   "mode_calls": 23307,
+   "mode_failures": 4,
+   "mode_iterations": 93502,
+   "mode_evaluations": 116805,
+   "pd_failures": 0,
+   "curve_cache_evictions": 65038,
+   "integration_cache_evictions": 0
+  },
+  "stages": {
+   "input_hashes": 0.11127429199405015,
+   "load": 1.2087244160356931,
+   "search_setup": 0.00747358298394829,
+   "search": 1594.3258205830352,
+   "spatial_report": 0.0013739580172114074,
+   "family_exposure": 72.20084908301942,
+   "family_constant": 108.7858118750155,
+   "latent_audit": 839.3524176250212
+  },
+  "peak_rss_bytes": 570818560,
+  "source": {
+   "commit": "48de534af82b658157af32ce01d18e407b3ddc3c",
+   "working_tree_changes": []
+  },
+  "receipt_sha256": "707a89caefd60dd133cf727f7be03a83f042940bdfba2601af1cac7f2bbb91e8"
+ }
+]

@@ -360,14 +360,47 @@ denominator.
 
 ## 5. Cost
 
-Search time per lean profile on the Mac mini, single-threaded, for 120 sites
-with the old tight replay included: 213–404 s with the repaired procedure.
-The 260-site and cutoff-grid costs, and the production cost without the
-tight replay, come from the entry-point runs in §8.
+All figures are wall seconds on the Mac mini (M4, 4 performance and 6
+efficiency cores), one numerical thread per job, with six or seven jobs
+running at once, so they include contention and efficiency-core time. They
+come from the full entry point on 48de534 (§8), not from the lean 3.84-only
+search of §2.
 
-Training projection at an illustrative 6 minutes mean per dataset:
-864,000 × 0.1 h = 86,400 CPU-hours, which is 3.6 days on 1,000 cores or
-1.8 days on 2,000. The measured cluster pilot replaces this figure.
+| Dataset | Sites | Search | Exposure + constant | Latent audit | Total |
+|---|---|---|---|---|---|
+| Six challenge histories (A, B) | 120 | 1,106–2,051 s | 151–185 s | 0–839 s | 1,268–2,616 s (median ≈ 1,670 s) |
+| Arm C, connected-0 map | 260 | 3,892 s | 451 s | 710 s | 5,055 s |
+
+- The eight-cutoff search dominates. On the arm A connected-0 run, 404 s of
+  972 s of search came before the tight replay: the tight replay is more
+  than half the search.
+- The latent audit is cheap when the free fit sits at σ → 0 (it audits only
+  σ > 1e-3 within the LR bound) and costs up to 14 min when a bound branch
+  lies inside the relevance window (cell-09: 206 audits).
+- Peak memory is 0.57–0.62 GB at 120 sites and 1.22 GB at 260 sites.
+- The curve cache evicts almost every entry it builds (60,504 of 60,528 on
+  cell-00), but curve building is only 76–130 s per dataset, so enlarging the
+  cache is a minor saving.
+
+**Revised training projection.** With arm C a third of the 864,000 datasets,
+the measured mean is about (2 × 28 + 84) / 3 ≈ 47 min, or about 670,000
+CPU-hours: 28 days on 1,000 cores. The illustrative 86,400 CPU-hours were an
+eightfold underestimate. Two corrections are plausible but unmeasured:
+uncontended performance cores (perhaps 0.6 to 0.7 of these times), and a
+production search without the tight replay (roughly −40 to −45 % of the total,
+from the one arm A split above). Together they give roughly 220,000–290,000
+CPU-hours, still 9–12 days on 1,000 cores.
+
+Sprint 2 therefore has two decisions before the training campaign:
+1. **Drop the tight replay in production.** It refines the level sets, which
+   §3's rules do not need beyond the stated root tolerance. This restructures
+   `PanelSearch.run`'s replay loop, so it is a procedure change and needs
+   independent review and a qualification rerun on the changed code.
+2. **Size the campaign from the kunanyi pilot.** If measured cost on
+   compute nodes still exceeds the available allocation, reduce histories
+   per cell at h ∈ {2, 4, 5, 10} first: the h = 1 and h = 3 strata carry the
+   error-rate and power claims (§3). That reduction is an estimand-adjacent
+   design change and goes to independent review before any training outcome.
 
 ## 6. Cluster execution
 
@@ -397,4 +430,68 @@ outline.
 
 ## 8. Status and review
 
-This section is updated at the handover to Codex.
+**Complete in Sprint 1** (commits 66f1eb3 to 48de534, all pushed):
+- mode diagnosis and repair (§1–2), with the smooth eigenvalue floor
+  normalised so that f(1) = 1;
+- the tie-contact rule, now active: at every σ → 0 free fit in the replay the
+  positive and exact-zero families agree within 3e-7 and the receipts record
+  `tied: true`;
+- `scripts/fit_dataset.py`, one entry point with cutoff-indexed sets on the
+  eight-cutoff grid, three families, the bounded latent audit, a closed
+  failure-class precedence and cost receipts (18 unit tests);
+- the experiment packet (§3) and the frozen fresh qualification manifest
+  (§4, 162 base datasets on 9 maps, 18 flagged for the exhaustive audit);
+- the PBS driver and runtime scripts (§6), tested locally only;
+- the manuscript scaffold (§7).
+
+**Entry-point verification on 48de534**
+([`replay-fit-dataset.json`](evidence/paper1-sprint1-2026-11-05/replay-fit-dataset.json)):
+- All six challenge histories resolve with no multimodal flag. cell-04,
+  which failed on 7b30349 when the tight regime hit the 160-point cap, now
+  resolves within the 320-point budget (149 unique h).
+- The 3.84 roots reproduce the lean replay of §2 within 4e-5 in h:
+  2.7858; 5.5723; 2.3881 and 7.5164; 2.1949; 2.2863; 1.0981 and 4.9447.
+  The small shifts come from the floor normalisation, which moves the
+  positive family by up to 2.7e-4 where eigenvalues exceed 1.
+- cell-09 is the one dataset whose positive family reaches the σ = 1.5
+  bound (two points). Its contacts are recorded and it resolves.
+- Arm C on connected-0 (260 sites) resolves: free h = 2.81, 3.84 interval
+  [1.76, 4.46], spatial LR₁ = 17.2, 300 audits with 4 beyond the LR bound.
+- The full test suite passed (1,160 passed, 3 skipped).
+
+**Independent reviews, before any outcome.**
+1. A Claude Opus 5.5 subagent reviewed the repair and the packet. Applied in
+   66f1eb3: the hard 0.1 regularity guard became a smooth eigenvalue floor;
+   the trust region retries failed difference columns, falls back to a
+   diagonal curvature and escapes saddles; the reach surface was corrected.
+   The finding that neighbour starts missed the σ-bound branch at large h was
+   answered in 7b30349 with a fixed high-σ anchor start.
+2. A second Claude Opus 5.5 subagent reviewed the entry point and the audit
+   bound. Applied in 7fde1ed: memory and OS errors class as
+   `execution_error` and are rerun; the audit records the production-score
+   gain beside the joint gain; the justification for the LR margin of 10 was
+   withdrawn as a bound and restated as a judgement, measured by the
+   exhaustive-audit subset in qualification.
+
+**Defects found by the verification runs and fixed in 48de534.**
+- The floor f(x) = x + 0.1e^(−10x) left f(1) = 1 + 4.5e-6, putting the
+  positive family 2.7e-4 below the zero family at σ → 0 with 120 sites. That
+  exceeds the 1e-4 tie tolerance, so the tie rule had been inert since
+  66f1eb3. Dividing by f(1) is a constant shift with unchanged gradients.
+- The 160-point budget was sized for one cutoff. FitSearch now allows 320,
+  and a stabilisation failure names each unavailable cutoff's cause.
+
+The normalisation post-dates both reviews. It is a constant shift that
+restores an exact limit and is covered by tests, but it has not had
+independent review: Codex should check it in the cross-review.
+
+**Open, and handed to Sprint 2.**
+- The kunanyi pilot. Access needs Barry to open the portal window; queue,
+  quota and the compute-node smoke test follow.
+- The tight-replay decision and campaign sizing (§5).
+- Qualification on the frozen panel, including the exhaustive-audit margin
+  check and the integration characterisation (§4). It runs on the commit
+  that Sprint 2 freezes; any procedure change from the decisions above
+  happens before qualification starts, never after.
+- Reporting of the high-σ anchor when it is excluded by the envelope guard:
+  the receipts record it, but the qualification summary should count it.
