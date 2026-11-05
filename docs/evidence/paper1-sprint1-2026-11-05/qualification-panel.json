@@ -1,0 +1,4164 @@
+{
+ "schema": "paper1-fresh-qualification-panel-v1",
+ "address_namespace": 5,
+ "map_manifest_sha256": "5566e5a673f34c4c3442515e9ef00e83432543abffb5305ad6d779c9a35e374f",
+ "counts": {
+  "base": 162,
+  "boundary": 18,
+  "enriched": 18,
+  "trend": 9
+ },
+ "base_histories": 54,
+ "base_background_balance": {
+  "constant": 9,
+  "matched_exposure": 9,
+  "b100_anchor": 9,
+  "increased_heterogeneity": 9,
+  "window_low": 9,
+  "window_high": 9
+ },
+ "independent_bank_histories": 18,
+ "integration_screens": 9,
+ "datasets": [
+  {
+   "dataset_id": "q-base-connected-0-constant-mu0.001-h1-A",
+   "stratum": "base",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "constant",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "A",
+   "address": [
+    5,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-0-constant-mu0.001-h1-B",
+   "stratum": "base",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "constant",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-0-constant-mu0.001-h1-C",
+   "stratum": "base",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "constant",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "C",
+   "address": [
+    5,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-0-matched_exposure-mu0.001-h3-A",
+   "stratum": "base",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "matched_exposure",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    0,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-0-matched_exposure-mu0.001-h3-B",
+   "stratum": "base",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "matched_exposure",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "B",
+   "address": [
+    5,
+    0,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-0-matched_exposure-mu0.001-h3-C",
+   "stratum": "base",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "matched_exposure",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "C",
+   "address": [
+    5,
+    0,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-0-b100_anchor-mu0.001-h10-A",
+   "stratum": "base",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "b100_anchor",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "A",
+   "address": [
+    5,
+    0,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-0-b100_anchor-mu0.001-h10-B",
+   "stratum": "base",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "b100_anchor",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "B",
+   "address": [
+    5,
+    0,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-0-b100_anchor-mu0.001-h10-C",
+   "stratum": "base",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "b100_anchor",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "C",
+   "address": [
+    5,
+    0,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": true
+  },
+  {
+   "dataset_id": "q-base-connected-0-increased_heterogeneity-mu0.004-h1-A",
+   "stratum": "base",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "increased_heterogeneity",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "A",
+   "address": [
+    5,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-0-increased_heterogeneity-mu0.004-h1-B",
+   "stratum": "base",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "increased_heterogeneity",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-0-increased_heterogeneity-mu0.004-h1-C",
+   "stratum": "base",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "increased_heterogeneity",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "C",
+   "address": [
+    5,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-0-window_low-mu0.004-h3-A",
+   "stratum": "base",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "window_low",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    0,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-0-window_low-mu0.004-h3-B",
+   "stratum": "base",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "window_low",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "B",
+   "address": [
+    5,
+    0,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-0-window_low-mu0.004-h3-C",
+   "stratum": "base",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "window_low",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "C",
+   "address": [
+    5,
+    0,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-0-window_high-mu0.004-h10-A",
+   "stratum": "base",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "window_high",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "A",
+   "address": [
+    5,
+    0,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-0-window_high-mu0.004-h10-B",
+   "stratum": "base",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "window_high",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "B",
+   "address": [
+    5,
+    0,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-0-window_high-mu0.004-h10-C",
+   "stratum": "base",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "window_high",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "C",
+   "address": [
+    5,
+    0,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-boundary-connected-0-b100_anchor-mu0.004-h25-A",
+   "stratum": "boundary",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 25.0,
+   "arm": "A",
+   "address": [
+    5,
+    0,
+    1,
+    25,
+    1,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-boundary-connected-0-b100_anchor-mu0.004-h25-C",
+   "stratum": "boundary",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 25.0,
+   "arm": "C",
+   "address": [
+    5,
+    0,
+    1,
+    25,
+    1,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-enriched-connected-0-increased_heterogeneity-mu0.001-h1-B",
+   "stratum": "enriched",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    0,
+    0,
+    1,
+    2,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-enriched-connected-0-window_high-mu0.001-h1-B",
+   "stratum": "enriched",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "window_high",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    0,
+    0,
+    1,
+    2,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-trend-connected-0-temporal_trend-mu0.004-h3-A",
+   "stratum": "trend",
+   "map": "connected-0",
+   "archetype": "connected",
+   "background": "temporal_trend",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    0,
+    1,
+    3,
+    3,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-1-matched_exposure-mu0.001-h1-A",
+   "stratum": "base",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "matched_exposure",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "A",
+   "address": [
+    5,
+    1,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-1-matched_exposure-mu0.001-h1-B",
+   "stratum": "base",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "matched_exposure",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    1,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-1-matched_exposure-mu0.001-h1-C",
+   "stratum": "base",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "matched_exposure",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "C",
+   "address": [
+    5,
+    1,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-1-b100_anchor-mu0.001-h3-A",
+   "stratum": "base",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "b100_anchor",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    1,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-1-b100_anchor-mu0.001-h3-B",
+   "stratum": "base",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "b100_anchor",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "B",
+   "address": [
+    5,
+    1,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-1-b100_anchor-mu0.001-h3-C",
+   "stratum": "base",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "b100_anchor",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "C",
+   "address": [
+    5,
+    1,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-1-increased_heterogeneity-mu0.001-h10-A",
+   "stratum": "base",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "A",
+   "address": [
+    5,
+    1,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-1-increased_heterogeneity-mu0.001-h10-B",
+   "stratum": "base",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "B",
+   "address": [
+    5,
+    1,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-1-increased_heterogeneity-mu0.001-h10-C",
+   "stratum": "base",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "C",
+   "address": [
+    5,
+    1,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-1-window_low-mu0.004-h1-A",
+   "stratum": "base",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "window_low",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "A",
+   "address": [
+    5,
+    1,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-1-window_low-mu0.004-h1-B",
+   "stratum": "base",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "window_low",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    1,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-1-window_low-mu0.004-h1-C",
+   "stratum": "base",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "window_low",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "C",
+   "address": [
+    5,
+    1,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-1-window_high-mu0.004-h3-A",
+   "stratum": "base",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "window_high",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    1,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-1-window_high-mu0.004-h3-B",
+   "stratum": "base",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "window_high",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "B",
+   "address": [
+    5,
+    1,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-1-window_high-mu0.004-h3-C",
+   "stratum": "base",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "window_high",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "C",
+   "address": [
+    5,
+    1,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-1-constant-mu0.004-h10-A",
+   "stratum": "base",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "constant",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "A",
+   "address": [
+    5,
+    1,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-1-constant-mu0.004-h10-B",
+   "stratum": "base",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "constant",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "B",
+   "address": [
+    5,
+    1,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-1-constant-mu0.004-h10-C",
+   "stratum": "base",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "constant",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "C",
+   "address": [
+    5,
+    1,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": true
+  },
+  {
+   "dataset_id": "q-boundary-connected-1-b100_anchor-mu0.004-h25-A",
+   "stratum": "boundary",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 25.0,
+   "arm": "A",
+   "address": [
+    5,
+    1,
+    1,
+    25,
+    1,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-boundary-connected-1-b100_anchor-mu0.004-h25-C",
+   "stratum": "boundary",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 25.0,
+   "arm": "C",
+   "address": [
+    5,
+    1,
+    1,
+    25,
+    1,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-enriched-connected-1-increased_heterogeneity-mu0.001-h1-B",
+   "stratum": "enriched",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    1,
+    0,
+    1,
+    2,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-enriched-connected-1-window_high-mu0.001-h1-B",
+   "stratum": "enriched",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "window_high",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    1,
+    0,
+    1,
+    2,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-trend-connected-1-temporal_trend-mu0.004-h3-A",
+   "stratum": "trend",
+   "map": "connected-1",
+   "archetype": "connected",
+   "background": "temporal_trend",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    1,
+    1,
+    3,
+    3,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-2-b100_anchor-mu0.001-h1-A",
+   "stratum": "base",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "b100_anchor",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "A",
+   "address": [
+    5,
+    2,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-2-b100_anchor-mu0.001-h1-B",
+   "stratum": "base",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "b100_anchor",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    2,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-2-b100_anchor-mu0.001-h1-C",
+   "stratum": "base",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "b100_anchor",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "C",
+   "address": [
+    5,
+    2,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-2-increased_heterogeneity-mu0.001-h3-A",
+   "stratum": "base",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    2,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-2-increased_heterogeneity-mu0.001-h3-B",
+   "stratum": "base",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "B",
+   "address": [
+    5,
+    2,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-2-increased_heterogeneity-mu0.001-h3-C",
+   "stratum": "base",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "C",
+   "address": [
+    5,
+    2,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-2-window_low-mu0.001-h10-A",
+   "stratum": "base",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "window_low",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "A",
+   "address": [
+    5,
+    2,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-2-window_low-mu0.001-h10-B",
+   "stratum": "base",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "window_low",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "B",
+   "address": [
+    5,
+    2,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-2-window_low-mu0.001-h10-C",
+   "stratum": "base",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "window_low",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "C",
+   "address": [
+    5,
+    2,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-2-window_high-mu0.004-h1-A",
+   "stratum": "base",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "window_high",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "A",
+   "address": [
+    5,
+    2,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-2-window_high-mu0.004-h1-B",
+   "stratum": "base",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "window_high",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    2,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-2-window_high-mu0.004-h1-C",
+   "stratum": "base",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "window_high",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "C",
+   "address": [
+    5,
+    2,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-2-constant-mu0.004-h3-A",
+   "stratum": "base",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "constant",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    2,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-2-constant-mu0.004-h3-B",
+   "stratum": "base",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "constant",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "B",
+   "address": [
+    5,
+    2,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-2-constant-mu0.004-h3-C",
+   "stratum": "base",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "constant",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "C",
+   "address": [
+    5,
+    2,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-2-matched_exposure-mu0.004-h10-A",
+   "stratum": "base",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "matched_exposure",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "A",
+   "address": [
+    5,
+    2,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": true
+  },
+  {
+   "dataset_id": "q-base-connected-2-matched_exposure-mu0.004-h10-B",
+   "stratum": "base",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "matched_exposure",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "B",
+   "address": [
+    5,
+    2,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-connected-2-matched_exposure-mu0.004-h10-C",
+   "stratum": "base",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "matched_exposure",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "C",
+   "address": [
+    5,
+    2,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-boundary-connected-2-b100_anchor-mu0.004-h25-A",
+   "stratum": "boundary",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 25.0,
+   "arm": "A",
+   "address": [
+    5,
+    2,
+    1,
+    25,
+    1,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-boundary-connected-2-b100_anchor-mu0.004-h25-C",
+   "stratum": "boundary",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 25.0,
+   "arm": "C",
+   "address": [
+    5,
+    2,
+    1,
+    25,
+    1,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-enriched-connected-2-increased_heterogeneity-mu0.001-h1-B",
+   "stratum": "enriched",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    2,
+    0,
+    1,
+    2,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-enriched-connected-2-window_high-mu0.001-h1-B",
+   "stratum": "enriched",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "window_high",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    2,
+    0,
+    1,
+    2,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-trend-connected-2-temporal_trend-mu0.004-h3-A",
+   "stratum": "trend",
+   "map": "connected-2",
+   "archetype": "connected",
+   "background": "temporal_trend",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    2,
+    1,
+    3,
+    3,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-0-increased_heterogeneity-mu0.001-h1-A",
+   "stratum": "base",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "A",
+   "address": [
+    5,
+    3,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-0-increased_heterogeneity-mu0.001-h1-B",
+   "stratum": "base",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    3,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-0-increased_heterogeneity-mu0.001-h1-C",
+   "stratum": "base",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "C",
+   "address": [
+    5,
+    3,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": true
+  },
+  {
+   "dataset_id": "q-base-corridor-0-window_low-mu0.001-h3-A",
+   "stratum": "base",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "window_low",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    3,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-0-window_low-mu0.001-h3-B",
+   "stratum": "base",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "window_low",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "B",
+   "address": [
+    5,
+    3,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-0-window_low-mu0.001-h3-C",
+   "stratum": "base",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "window_low",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "C",
+   "address": [
+    5,
+    3,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-0-window_high-mu0.001-h10-A",
+   "stratum": "base",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "window_high",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "A",
+   "address": [
+    5,
+    3,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-0-window_high-mu0.001-h10-B",
+   "stratum": "base",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "window_high",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "B",
+   "address": [
+    5,
+    3,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-0-window_high-mu0.001-h10-C",
+   "stratum": "base",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "window_high",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "C",
+   "address": [
+    5,
+    3,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-0-constant-mu0.004-h1-A",
+   "stratum": "base",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "constant",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "A",
+   "address": [
+    5,
+    3,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-0-constant-mu0.004-h1-B",
+   "stratum": "base",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "constant",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    3,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-0-constant-mu0.004-h1-C",
+   "stratum": "base",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "constant",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "C",
+   "address": [
+    5,
+    3,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-0-matched_exposure-mu0.004-h3-A",
+   "stratum": "base",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "matched_exposure",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    3,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-0-matched_exposure-mu0.004-h3-B",
+   "stratum": "base",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "matched_exposure",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "B",
+   "address": [
+    5,
+    3,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-0-matched_exposure-mu0.004-h3-C",
+   "stratum": "base",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "matched_exposure",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "C",
+   "address": [
+    5,
+    3,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-0-b100_anchor-mu0.004-h10-A",
+   "stratum": "base",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "A",
+   "address": [
+    5,
+    3,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-0-b100_anchor-mu0.004-h10-B",
+   "stratum": "base",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "B",
+   "address": [
+    5,
+    3,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-0-b100_anchor-mu0.004-h10-C",
+   "stratum": "base",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "C",
+   "address": [
+    5,
+    3,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-boundary-corridor-0-b100_anchor-mu0.004-h25-A",
+   "stratum": "boundary",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 25.0,
+   "arm": "A",
+   "address": [
+    5,
+    3,
+    1,
+    25,
+    1,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-boundary-corridor-0-b100_anchor-mu0.004-h25-C",
+   "stratum": "boundary",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 25.0,
+   "arm": "C",
+   "address": [
+    5,
+    3,
+    1,
+    25,
+    1,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-enriched-corridor-0-increased_heterogeneity-mu0.001-h1-B",
+   "stratum": "enriched",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    3,
+    0,
+    1,
+    2,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-enriched-corridor-0-window_high-mu0.001-h1-B",
+   "stratum": "enriched",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "window_high",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    3,
+    0,
+    1,
+    2,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-trend-corridor-0-temporal_trend-mu0.004-h3-A",
+   "stratum": "trend",
+   "map": "corridor-0",
+   "archetype": "corridor",
+   "background": "temporal_trend",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    3,
+    1,
+    3,
+    3,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-1-window_low-mu0.001-h1-A",
+   "stratum": "base",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "window_low",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "A",
+   "address": [
+    5,
+    4,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-1-window_low-mu0.001-h1-B",
+   "stratum": "base",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "window_low",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    4,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-1-window_low-mu0.001-h1-C",
+   "stratum": "base",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "window_low",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "C",
+   "address": [
+    5,
+    4,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-1-window_high-mu0.001-h3-A",
+   "stratum": "base",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "window_high",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    4,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-1-window_high-mu0.001-h3-B",
+   "stratum": "base",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "window_high",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "B",
+   "address": [
+    5,
+    4,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-1-window_high-mu0.001-h3-C",
+   "stratum": "base",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "window_high",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "C",
+   "address": [
+    5,
+    4,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-1-constant-mu0.001-h10-A",
+   "stratum": "base",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "constant",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "A",
+   "address": [
+    5,
+    4,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-1-constant-mu0.001-h10-B",
+   "stratum": "base",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "constant",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "B",
+   "address": [
+    5,
+    4,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-1-constant-mu0.001-h10-C",
+   "stratum": "base",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "constant",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "C",
+   "address": [
+    5,
+    4,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-1-matched_exposure-mu0.004-h1-A",
+   "stratum": "base",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "matched_exposure",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "A",
+   "address": [
+    5,
+    4,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-1-matched_exposure-mu0.004-h1-B",
+   "stratum": "base",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "matched_exposure",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    4,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-1-matched_exposure-mu0.004-h1-C",
+   "stratum": "base",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "matched_exposure",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "C",
+   "address": [
+    5,
+    4,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": true
+  },
+  {
+   "dataset_id": "q-base-corridor-1-b100_anchor-mu0.004-h3-A",
+   "stratum": "base",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    4,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-1-b100_anchor-mu0.004-h3-B",
+   "stratum": "base",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "B",
+   "address": [
+    5,
+    4,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-1-b100_anchor-mu0.004-h3-C",
+   "stratum": "base",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "C",
+   "address": [
+    5,
+    4,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-1-increased_heterogeneity-mu0.004-h10-A",
+   "stratum": "base",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "increased_heterogeneity",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "A",
+   "address": [
+    5,
+    4,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-1-increased_heterogeneity-mu0.004-h10-B",
+   "stratum": "base",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "increased_heterogeneity",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "B",
+   "address": [
+    5,
+    4,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-1-increased_heterogeneity-mu0.004-h10-C",
+   "stratum": "base",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "increased_heterogeneity",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "C",
+   "address": [
+    5,
+    4,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-boundary-corridor-1-b100_anchor-mu0.004-h25-A",
+   "stratum": "boundary",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 25.0,
+   "arm": "A",
+   "address": [
+    5,
+    4,
+    1,
+    25,
+    1,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-boundary-corridor-1-b100_anchor-mu0.004-h25-C",
+   "stratum": "boundary",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 25.0,
+   "arm": "C",
+   "address": [
+    5,
+    4,
+    1,
+    25,
+    1,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-enriched-corridor-1-increased_heterogeneity-mu0.001-h1-B",
+   "stratum": "enriched",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    4,
+    0,
+    1,
+    2,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-enriched-corridor-1-window_high-mu0.001-h1-B",
+   "stratum": "enriched",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "window_high",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    4,
+    0,
+    1,
+    2,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-trend-corridor-1-temporal_trend-mu0.004-h3-A",
+   "stratum": "trend",
+   "map": "corridor-1",
+   "archetype": "corridor",
+   "background": "temporal_trend",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    4,
+    1,
+    3,
+    3,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-2-window_high-mu0.001-h1-A",
+   "stratum": "base",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "window_high",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "A",
+   "address": [
+    5,
+    5,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-2-window_high-mu0.001-h1-B",
+   "stratum": "base",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "window_high",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    5,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-2-window_high-mu0.001-h1-C",
+   "stratum": "base",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "window_high",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "C",
+   "address": [
+    5,
+    5,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-2-constant-mu0.001-h3-A",
+   "stratum": "base",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "constant",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    5,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-2-constant-mu0.001-h3-B",
+   "stratum": "base",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "constant",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "B",
+   "address": [
+    5,
+    5,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-2-constant-mu0.001-h3-C",
+   "stratum": "base",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "constant",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "C",
+   "address": [
+    5,
+    5,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-2-matched_exposure-mu0.001-h10-A",
+   "stratum": "base",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "matched_exposure",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "A",
+   "address": [
+    5,
+    5,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-2-matched_exposure-mu0.001-h10-B",
+   "stratum": "base",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "matched_exposure",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "B",
+   "address": [
+    5,
+    5,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": true
+  },
+  {
+   "dataset_id": "q-base-corridor-2-matched_exposure-mu0.001-h10-C",
+   "stratum": "base",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "matched_exposure",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "C",
+   "address": [
+    5,
+    5,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-2-b100_anchor-mu0.004-h1-A",
+   "stratum": "base",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "A",
+   "address": [
+    5,
+    5,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-2-b100_anchor-mu0.004-h1-B",
+   "stratum": "base",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    5,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-2-b100_anchor-mu0.004-h1-C",
+   "stratum": "base",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "C",
+   "address": [
+    5,
+    5,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-2-increased_heterogeneity-mu0.004-h3-A",
+   "stratum": "base",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "increased_heterogeneity",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    5,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-2-increased_heterogeneity-mu0.004-h3-B",
+   "stratum": "base",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "increased_heterogeneity",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "B",
+   "address": [
+    5,
+    5,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-2-increased_heterogeneity-mu0.004-h3-C",
+   "stratum": "base",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "increased_heterogeneity",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "C",
+   "address": [
+    5,
+    5,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-2-window_low-mu0.004-h10-A",
+   "stratum": "base",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "window_low",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "A",
+   "address": [
+    5,
+    5,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-2-window_low-mu0.004-h10-B",
+   "stratum": "base",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "window_low",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "B",
+   "address": [
+    5,
+    5,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-corridor-2-window_low-mu0.004-h10-C",
+   "stratum": "base",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "window_low",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "C",
+   "address": [
+    5,
+    5,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-boundary-corridor-2-b100_anchor-mu0.004-h25-A",
+   "stratum": "boundary",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 25.0,
+   "arm": "A",
+   "address": [
+    5,
+    5,
+    1,
+    25,
+    1,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-boundary-corridor-2-b100_anchor-mu0.004-h25-C",
+   "stratum": "boundary",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 25.0,
+   "arm": "C",
+   "address": [
+    5,
+    5,
+    1,
+    25,
+    1,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-enriched-corridor-2-increased_heterogeneity-mu0.001-h1-B",
+   "stratum": "enriched",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    5,
+    0,
+    1,
+    2,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-enriched-corridor-2-window_high-mu0.001-h1-B",
+   "stratum": "enriched",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "window_high",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    5,
+    0,
+    1,
+    2,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-trend-corridor-2-temporal_trend-mu0.004-h3-A",
+   "stratum": "trend",
+   "map": "corridor-2",
+   "archetype": "corridor",
+   "background": "temporal_trend",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    5,
+    1,
+    3,
+    3,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-0-constant-mu0.001-h1-A",
+   "stratum": "base",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "constant",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "A",
+   "address": [
+    5,
+    6,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-0-constant-mu0.001-h1-B",
+   "stratum": "base",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "constant",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    6,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-0-constant-mu0.001-h1-C",
+   "stratum": "base",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "constant",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "C",
+   "address": [
+    5,
+    6,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-0-matched_exposure-mu0.001-h3-A",
+   "stratum": "base",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "matched_exposure",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    6,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-0-matched_exposure-mu0.001-h3-B",
+   "stratum": "base",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "matched_exposure",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "B",
+   "address": [
+    5,
+    6,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-0-matched_exposure-mu0.001-h3-C",
+   "stratum": "base",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "matched_exposure",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "C",
+   "address": [
+    5,
+    6,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-0-b100_anchor-mu0.001-h10-A",
+   "stratum": "base",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "b100_anchor",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "A",
+   "address": [
+    5,
+    6,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-0-b100_anchor-mu0.001-h10-B",
+   "stratum": "base",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "b100_anchor",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "B",
+   "address": [
+    5,
+    6,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-0-b100_anchor-mu0.001-h10-C",
+   "stratum": "base",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "b100_anchor",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "C",
+   "address": [
+    5,
+    6,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-0-increased_heterogeneity-mu0.004-h1-A",
+   "stratum": "base",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "increased_heterogeneity",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "A",
+   "address": [
+    5,
+    6,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": true
+  },
+  {
+   "dataset_id": "q-base-barrier-0-increased_heterogeneity-mu0.004-h1-B",
+   "stratum": "base",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "increased_heterogeneity",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    6,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-0-increased_heterogeneity-mu0.004-h1-C",
+   "stratum": "base",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "increased_heterogeneity",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "C",
+   "address": [
+    5,
+    6,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-0-window_low-mu0.004-h3-A",
+   "stratum": "base",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "window_low",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    6,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-0-window_low-mu0.004-h3-B",
+   "stratum": "base",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "window_low",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "B",
+   "address": [
+    5,
+    6,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-0-window_low-mu0.004-h3-C",
+   "stratum": "base",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "window_low",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "C",
+   "address": [
+    5,
+    6,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-0-window_high-mu0.004-h10-A",
+   "stratum": "base",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "window_high",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "A",
+   "address": [
+    5,
+    6,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-0-window_high-mu0.004-h10-B",
+   "stratum": "base",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "window_high",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "B",
+   "address": [
+    5,
+    6,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-0-window_high-mu0.004-h10-C",
+   "stratum": "base",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "window_high",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "C",
+   "address": [
+    5,
+    6,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-boundary-barrier-0-b100_anchor-mu0.004-h25-A",
+   "stratum": "boundary",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 25.0,
+   "arm": "A",
+   "address": [
+    5,
+    6,
+    1,
+    25,
+    1,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-boundary-barrier-0-b100_anchor-mu0.004-h25-C",
+   "stratum": "boundary",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 25.0,
+   "arm": "C",
+   "address": [
+    5,
+    6,
+    1,
+    25,
+    1,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-enriched-barrier-0-increased_heterogeneity-mu0.001-h1-B",
+   "stratum": "enriched",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    6,
+    0,
+    1,
+    2,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-enriched-barrier-0-window_high-mu0.001-h1-B",
+   "stratum": "enriched",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "window_high",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    6,
+    0,
+    1,
+    2,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-trend-barrier-0-temporal_trend-mu0.004-h3-A",
+   "stratum": "trend",
+   "map": "barrier-0",
+   "archetype": "barrier",
+   "background": "temporal_trend",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    6,
+    1,
+    3,
+    3,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-1-matched_exposure-mu0.001-h1-A",
+   "stratum": "base",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "matched_exposure",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "A",
+   "address": [
+    5,
+    7,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": true
+  },
+  {
+   "dataset_id": "q-base-barrier-1-matched_exposure-mu0.001-h1-B",
+   "stratum": "base",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "matched_exposure",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    7,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-1-matched_exposure-mu0.001-h1-C",
+   "stratum": "base",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "matched_exposure",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "C",
+   "address": [
+    5,
+    7,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-1-b100_anchor-mu0.001-h3-A",
+   "stratum": "base",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "b100_anchor",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    7,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-1-b100_anchor-mu0.001-h3-B",
+   "stratum": "base",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "b100_anchor",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "B",
+   "address": [
+    5,
+    7,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-1-b100_anchor-mu0.001-h3-C",
+   "stratum": "base",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "b100_anchor",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "C",
+   "address": [
+    5,
+    7,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-1-increased_heterogeneity-mu0.001-h10-A",
+   "stratum": "base",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "A",
+   "address": [
+    5,
+    7,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-1-increased_heterogeneity-mu0.001-h10-B",
+   "stratum": "base",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "B",
+   "address": [
+    5,
+    7,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-1-increased_heterogeneity-mu0.001-h10-C",
+   "stratum": "base",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "C",
+   "address": [
+    5,
+    7,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-1-window_low-mu0.004-h1-A",
+   "stratum": "base",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "window_low",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "A",
+   "address": [
+    5,
+    7,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-1-window_low-mu0.004-h1-B",
+   "stratum": "base",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "window_low",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    7,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-1-window_low-mu0.004-h1-C",
+   "stratum": "base",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "window_low",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "C",
+   "address": [
+    5,
+    7,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-1-window_high-mu0.004-h3-A",
+   "stratum": "base",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "window_high",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    7,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-1-window_high-mu0.004-h3-B",
+   "stratum": "base",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "window_high",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "B",
+   "address": [
+    5,
+    7,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-1-window_high-mu0.004-h3-C",
+   "stratum": "base",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "window_high",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "C",
+   "address": [
+    5,
+    7,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-1-constant-mu0.004-h10-A",
+   "stratum": "base",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "constant",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "A",
+   "address": [
+    5,
+    7,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-1-constant-mu0.004-h10-B",
+   "stratum": "base",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "constant",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "B",
+   "address": [
+    5,
+    7,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-1-constant-mu0.004-h10-C",
+   "stratum": "base",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "constant",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "C",
+   "address": [
+    5,
+    7,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-boundary-barrier-1-b100_anchor-mu0.004-h25-A",
+   "stratum": "boundary",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 25.0,
+   "arm": "A",
+   "address": [
+    5,
+    7,
+    1,
+    25,
+    1,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-boundary-barrier-1-b100_anchor-mu0.004-h25-C",
+   "stratum": "boundary",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 25.0,
+   "arm": "C",
+   "address": [
+    5,
+    7,
+    1,
+    25,
+    1,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-enriched-barrier-1-increased_heterogeneity-mu0.001-h1-B",
+   "stratum": "enriched",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    7,
+    0,
+    1,
+    2,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-enriched-barrier-1-window_high-mu0.001-h1-B",
+   "stratum": "enriched",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "window_high",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    7,
+    0,
+    1,
+    2,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-trend-barrier-1-temporal_trend-mu0.004-h3-A",
+   "stratum": "trend",
+   "map": "barrier-1",
+   "archetype": "barrier",
+   "background": "temporal_trend",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    7,
+    1,
+    3,
+    3,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-2-b100_anchor-mu0.001-h1-A",
+   "stratum": "base",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "b100_anchor",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "A",
+   "address": [
+    5,
+    8,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-2-b100_anchor-mu0.001-h1-B",
+   "stratum": "base",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "b100_anchor",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    8,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-2-b100_anchor-mu0.001-h1-C",
+   "stratum": "base",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "b100_anchor",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "C",
+   "address": [
+    5,
+    8,
+    0,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-2-increased_heterogeneity-mu0.001-h3-A",
+   "stratum": "base",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    8,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-2-increased_heterogeneity-mu0.001-h3-B",
+   "stratum": "base",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "B",
+   "address": [
+    5,
+    8,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-2-increased_heterogeneity-mu0.001-h3-C",
+   "stratum": "base",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 3.0,
+   "arm": "C",
+   "address": [
+    5,
+    8,
+    0,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-2-window_low-mu0.001-h10-A",
+   "stratum": "base",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "window_low",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "A",
+   "address": [
+    5,
+    8,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-2-window_low-mu0.001-h10-B",
+   "stratum": "base",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "window_low",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "B",
+   "address": [
+    5,
+    8,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-2-window_low-mu0.001-h10-C",
+   "stratum": "base",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "window_low",
+   "mu": 0.001,
+   "h": 10.0,
+   "arm": "C",
+   "address": [
+    5,
+    8,
+    0,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": true,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-2-window_high-mu0.004-h1-A",
+   "stratum": "base",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "window_high",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "A",
+   "address": [
+    5,
+    8,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-2-window_high-mu0.004-h1-B",
+   "stratum": "base",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "window_high",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    8,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-2-window_high-mu0.004-h1-C",
+   "stratum": "base",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "window_high",
+   "mu": 0.004,
+   "h": 1.0,
+   "arm": "C",
+   "address": [
+    5,
+    8,
+    1,
+    1,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-2-constant-mu0.004-h3-A",
+   "stratum": "base",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "constant",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    8,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-2-constant-mu0.004-h3-B",
+   "stratum": "base",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "constant",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "B",
+   "address": [
+    5,
+    8,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-2-constant-mu0.004-h3-C",
+   "stratum": "base",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "constant",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "C",
+   "address": [
+    5,
+    8,
+    1,
+    3,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-2-matched_exposure-mu0.004-h10-A",
+   "stratum": "base",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "matched_exposure",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "A",
+   "address": [
+    5,
+    8,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": true
+  },
+  {
+   "dataset_id": "q-base-barrier-2-matched_exposure-mu0.004-h10-B",
+   "stratum": "base",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "matched_exposure",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "B",
+   "address": [
+    5,
+    8,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-base-barrier-2-matched_exposure-mu0.004-h10-C",
+   "stratum": "base",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "matched_exposure",
+   "mu": 0.004,
+   "h": 10.0,
+   "arm": "C",
+   "address": [
+    5,
+    8,
+    1,
+    10,
+    0,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-boundary-barrier-2-b100_anchor-mu0.004-h25-A",
+   "stratum": "boundary",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 25.0,
+   "arm": "A",
+   "address": [
+    5,
+    8,
+    1,
+    25,
+    1,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-boundary-barrier-2-b100_anchor-mu0.004-h25-C",
+   "stratum": "boundary",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "b100_anchor",
+   "mu": 0.004,
+   "h": 25.0,
+   "arm": "C",
+   "address": [
+    5,
+    8,
+    1,
+    25,
+    1,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-enriched-barrier-2-increased_heterogeneity-mu0.001-h1-B",
+   "stratum": "enriched",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "increased_heterogeneity",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    8,
+    0,
+    1,
+    2,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-enriched-barrier-2-window_high-mu0.001-h1-B",
+   "stratum": "enriched",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "window_high",
+   "mu": 0.001,
+   "h": 1.0,
+   "arm": "B",
+   "address": [
+    5,
+    8,
+    0,
+    1,
+    2,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  },
+  {
+   "dataset_id": "q-trend-barrier-2-temporal_trend-mu0.004-h3-A",
+   "stratum": "trend",
+   "map": "barrier-2",
+   "archetype": "barrier",
+   "background": "temporal_trend",
+   "mu": 0.004,
+   "h": 3.0,
+   "arm": "A",
+   "address": [
+    5,
+    8,
+    1,
+    3,
+    3,
+    0
+   ],
+   "independent_bank": false,
+   "integration_screen": false
+  }
+ ]
+}
