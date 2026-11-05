@@ -1,0 +1,21 @@
+#!/bin/bash
+# Submit from the campaign directory, for example:
+#   qsub -N ll_qual_20261106 -J 0-N -v TASKS=...,OUT=...,CHUNK=8 \
+#        -l select=1:ncpus=8:mem=12gb -l walltime=04:00:00 \
+#        -o 'logs/^array_index^.out' -e 'logs/^array_index^.err' scripts/pbs/array.pbs
+# Size ncpus, mem and walltime from the measured compute-node pilot.
+#PBS -j oe
+set -eo pipefail
+set +u
+if ! command -v apptainer > /dev/null 2>&1; then
+  if ! type module > /dev/null 2>&1; then
+    export MODULEPATH="${MODULEPATH:-/opt/ohpc/pub/moduledeps/gnu8:/opt/ohpc/pub/modulefiles:/share/apps/modules:/share/apps/eb-modules/all:/share/apps/moduledeps/rosalind/Core}"
+    . /opt/ohpc/admin/lmod/lmod/init/bash
+  fi
+  module load apptainer 2> /dev/null || module load Apptainer
+fi
+set -u
+cd "${LL_REPO:?set LL_REPO to the pinned checkout}"
+apptainer exec --bind "$HOME" "${LL_IMAGE:?set LL_IMAGE to the Python SIF}" \
+  "$LL_REPO/.venv/bin/python" scripts/pbs/campaign.py work \
+  --tasks "$TASKS" --out "$OUT" --chunk "$CHUNK" --workers "${NCPUS:-1}"

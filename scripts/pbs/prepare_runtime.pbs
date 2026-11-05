@@ -1,0 +1,23 @@
+#!/bin/bash
+# One-off runtime preparation on a compute node (outbound internet observed there).
+#   qsub -v LL_REPO=...,LL_COMMIT=...,LL_IMAGE=... -l select=1:ncpus=2:mem=8gb \
+#        -l walltime=01:00:00 scripts/pbs/prepare_runtime.pbs
+#PBS -j oe
+set -eo pipefail
+set +u
+if ! command -v apptainer > /dev/null 2>&1; then
+  if ! type module > /dev/null 2>&1; then
+    export MODULEPATH="${MODULEPATH:-/opt/ohpc/pub/moduledeps/gnu8:/opt/ohpc/pub/modulefiles:/share/apps/modules:/share/apps/eb-modules/all:/share/apps/moduledeps/rosalind/Core}"
+    . /opt/ohpc/admin/lmod/lmod/init/bash
+  fi
+  module load apptainer 2> /dev/null || module load Apptainer
+fi
+set -u
+export APPTAINER_TMPDIR="${TMPDIR:-/tmp}/apptainer-tmp" APPTAINER_CACHEDIR="${TMPDIR:-/tmp}/apptainer-cache"
+mkdir -p "$APPTAINER_TMPDIR" "$APPTAINER_CACHEDIR"
+[ -f "$LL_IMAGE" ] || apptainer pull "$LL_IMAGE" docker://ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+[ -d "$LL_REPO" ] || git clone https://github.com/BWBrook/latent-landscapes.git "$LL_REPO"
+cd "$LL_REPO" && git fetch --quiet origin && git checkout --quiet "$LL_COMMIT"
+apptainer exec --bind "$HOME" "$LL_IMAGE" uv sync --frozen --no-dev --python 3.12
+apptainer exec --bind "$HOME" "$LL_IMAGE" .venv/bin/python -c \
+  "import numpy, scipy, platform, json; print(json.dumps({'numpy': numpy.__version__, 'scipy': scipy.__version__, 'platform': platform.platform()}))"
