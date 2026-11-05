@@ -376,7 +376,8 @@ def test_floored_laplace_gradient_matches_reoptimised_difference_where_floor_is_
 def test_eigenvalue_floor_is_negligible_at_ordinary_eigenvalues_and_caps_at_zero() -> None:
     values = np.array([1e-12, 0.05, 0.89, 1.0, 3.0])
     floored, _ = spatial_profile._floored_eigenvalues(values)
-    assert floored[0] == pytest.approx(spatial_profile.LAPLACE_FLOOR, rel=1e-9)
+    assert floored[0] == pytest.approx(spatial_profile.LAPLACE_FLOOR, rel=1e-5)
+    assert floored[3] == 1.0
     np.testing.assert_allclose(floored[2:], values[2:], rtol=2e-5, atol=0.0)
     assert np.all(np.diff(floored) > 0.0)
 

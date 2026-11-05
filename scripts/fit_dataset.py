@@ -76,6 +76,9 @@ THREAD_ENVIRONMENT = ("OPENBLAS_NUM_THREADS", "VECLIB_MAXIMUM_THREADS", "OMP_NUM
 
 class FitSearch(PanelSearch):
     cutoffs = CUTOFF_GRID  # type: ignore[assignment]
+    # Each cutoff adds up to two roots and their bracket refinements; the
+    # single-cutoff budget of 160 was exhausted at eight cutoffs.
+    point_limit = 320
 
 
 def geometric_mesh() -> list[float]:

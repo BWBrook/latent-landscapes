@@ -255,15 +255,20 @@ class ProfileFit:
 
 
 def _floored_eigenvalues(eigenvalues: FloatArray) -> tuple[FloatArray, FloatArray]:
-    """Smoothly floor positive eigenvalues: f(x) = x + tau exp(-x / tau).
+    """Smoothly floor positive eigenvalues: f(x) = (x + tau exp(-x / tau)) / f1.
 
-    f(0) = tau caps the Laplace determinant inflation at log(1/tau) / 2 per
-    latent direction; at x >= 0.89, the range seen at ordinary fits, f
-    differs from x by less than 1.4e-5. Returns f and f'/f.
+    f1 = 1 + tau exp(-1 / tau) normalises f(1) = 1, so the criterion tends
+    exactly to the sigma = 0 family as sigma -> 0 (an unnormalised floor puts
+    the positive family 2.3e-6 per site below it, beyond the tie tolerance at
+    120 sites). f(0) ~ tau caps the Laplace determinant inflation at about
+    log(1/tau) / 2 per latent direction; at x >= 0.89, the range seen at
+    ordinary fits, f differs from x by less than 1.4e-5. Returns f and f'/f;
+    the normalisation is a constant and leaves f'/f unchanged.
     """
     decay = np.exp(-eigenvalues / LAPLACE_FLOOR)
-    floored = eigenvalues + LAPLACE_FLOOR * decay
-    return floored, (1.0 - decay) / floored
+    raw = eigenvalues + LAPLACE_FLOOR * decay
+    floored = raw / (1.0 + LAPLACE_FLOOR * math.exp(-1.0 / LAPLACE_FLOOR))
+    return floored, (1.0 - decay) / raw
 
 
 class SpatialProfileCriterion:

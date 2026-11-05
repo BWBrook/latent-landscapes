@@ -74,7 +74,7 @@ def summarise(receipt_path: Path) -> dict[str, Any]:
             for contact in row["positive_sigma"].get("bound_contacts", [])
         }
     )
-    level = next((lv for lv in search["level_sets"] if abs(lv["cutoff"] - 3.84) < 1e-9), None)
+    level = next((lv for lv in search.get("level_sets", []) if abs(lv["cutoff"] - 3.84) < 1e-9), None)
     audit = receipt["latent_audit"]
     return {
         "dataset": receipt_path.parent.name,
@@ -108,10 +108,14 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-root", type=Path, required=True)
     parser.add_argument("--workers", type=int, default=len(DATASETS))
+    parser.add_argument("--summarise-only", action="store_true")
     args = parser.parse_args()
     args.output_root.mkdir(parents=True, exist_ok=True)
-    with concurrent.futures.ProcessPoolExecutor(args.workers) as pool:
-        receipts = list(pool.map(run_one, DATASETS, [args.output_root] * len(DATASETS)))
+    if args.summarise_only:
+        receipts = [args.output_root / name / "receipt.json" for name in DATASETS]
+    else:
+        with concurrent.futures.ProcessPoolExecutor(args.workers) as pool:
+            receipts = list(pool.map(run_one, DATASETS, [args.output_root] * len(DATASETS)))
     summary = [summarise(path) for path in receipts]
     (HERE / "replay-fit-dataset.json").write_text(json.dumps(summary, indent=1) + "\n")
     for row in summary:

@@ -400,6 +400,7 @@ class Qualification:
     cutoffs: tuple[float, ...] = CUTOFFS
     refine_numerical_ties = True
     midpoint_spacing = LOG_MAX / 34
+    point_limit = 160
 
     def __init__(self, args: argparse.Namespace):
         self.args = args
@@ -510,7 +511,7 @@ class Qualification:
         x = float(log_h)
         if x in self.points[tight] and not refresh:
             return self.points[tight][x]
-        if x not in self.points[tight] and len(self.points[tight]) >= 160:
+        if x not in self.points[tight] and len(self.points[tight]) >= self.point_limit:
             raise RuntimeError("prespecified unique-point limit exhausted")
         h = min(30.0, math.exp(x))
         if not 0.0 <= x <= LOG_MAX:
@@ -826,8 +827,14 @@ class Qualification:
                     )
             if valid:
                 return levels, switches
+        unavailable = [
+            f"cutoff {level['cutoff']}: {level['failure']['message']}"
+            for level in levels
+            if level["status"] != "available" and level.get("failure")
+        ]
         raise RuntimeError(
             "free maximum or level-set verification did not stabilize within three passes"
+            + (f" ({'; '.join(unavailable)})" if unavailable else "")
         )
 
     def outer_diagnostic(self, row: dict[str, Any], *, step: float) -> dict[str, Any]:
