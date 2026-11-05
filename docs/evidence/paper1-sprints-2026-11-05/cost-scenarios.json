@@ -1,0 +1,56 @@
+{
+  "arm_datasets": 648000,
+  "bernoulli_illustration": {
+    "note": "Independent-history arithmetic only; actual planning retains paired covariance and map variation.",
+    "p_0_05_n_100_mcse": 0.021794494717703367,
+    "p_0_05_n_for_mcse_0_005": 1900.0,
+    "p_0_5_n_for_mcse_0_005": 10000.0
+  },
+  "biological_histories": 216000,
+  "exclusions": [
+    "queue delay",
+    "other fits and profiles",
+    "qualification",
+    "retries",
+    "cross_validation_refits",
+    "bootstrap",
+    "integration_diagnostics",
+    "io"
+  ],
+  "forecast": false,
+  "free_null_main_fit_outputs": 3888000,
+  "hypothetical_profile_cpu_hours": 86400.0,
+  "ideal_days": {
+    "1000": 3.6,
+    "2000": 1.8,
+    "40": 90.0
+  },
+  "illustrative_inputs": {
+    "archetypes": 3,
+    "backgrounds": 6,
+    "histories_per_map_cell": 100,
+    "hypothetical_spatial_profile_minutes": 8,
+    "maps_total": 30,
+    "mu_values": 2,
+    "paired_arms": 3,
+    "truths": 6
+  },
+  "observed_lean_search_only_minutes": {
+    "120": {
+      "max": 131.20333468656662,
+      "median": 62.19987800006666,
+      "min": 27.69195882303334,
+      "n": 30,
+      "scope": "Previous shared-host execution; not a PBS-host forecast."
+    },
+    "260": {
+      "max": 409.7960434902667,
+      "median": 255.03458830773332,
+      "min": 131.00385655623327,
+      "n": 6,
+      "scope": "Previous shared-host execution; not a PBS-host forecast."
+    }
+  },
+  "schema": "sprint-cost-scenarios-v1",
+  "source_datasets_sha256": "c025ea8a57e76fe888c55129b4e995a547c398e5dcc646ecd17c1119d640896c"
+}

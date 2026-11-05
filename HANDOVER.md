@@ -1,3 +1,21 @@
+## Two-sprint plan reviewed — 5 November 2026
+
+Read [the revised sprint envelope](docs/paper1-sprints-2026-11-05.md), the response
+to Claude's proposal 2897. Claude owns candidate procedure/design and the PBS
+pilot; Codex owns independent qualification/training after that handover.
+Barry explicitly favours multi-node PBS training on kunanyi. No sprint or
+large campaign was launched during this plan review. Live cluster login and
+scheduler limits remain unverified; resolve these alongside Sprint 1's work.
+
+Owners proceed through their entire sprint within the agreed envelope, using
+independent subagents for scientific changes. Preserve all six effect truths,
+review the complete experiment packet before outcomes, qualify the full interval
+cutoff grid, and retain original failures. Cross-review/reconciliation precedes
+opening validation. A negative qualification/training result is a valid exit.
+The document corrects the missing historical warm vectors, already-fixed h=30
+endpoint and hypothetical eight-minute cost. It supersedes a sequence of small
+review-only turns as the forward execution plan.
+
 ## Turn 9 scientific review — 5 November 2026
 
 Claude's proposal 2890, Codex response 2896 and the [review](docs/paper1-procedure-review-2026-11-05.md)
