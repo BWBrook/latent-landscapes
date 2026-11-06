@@ -181,8 +181,10 @@ def generate(args: argparse.Namespace) -> dict[str, Any]:
     return receipt
 
 
-def bank_seeds(record: dict[str, Any], count: int) -> np.ndarray:
-    key = [ROOT_SEED, BANK_NAMESPACE, *record["spawn_key"]]
+def bank_seeds(record: dict[str, Any], count: int, replicate: int) -> np.ndarray:
+    if count < 1 or replicate < 0:
+        raise ValueError("bank size must be positive and replicate nonnegative")
+    key = [ROOT_SEED, BANK_NAMESPACE, *record["spawn_key"], replicate]
     return np.array(
         [
             int(np.random.SeedSequence([*key, row]).generate_state(1, dtype=np.uint64)[0])
@@ -192,13 +194,40 @@ def bank_seeds(record: dict[str, Any], count: int) -> np.ndarray:
     )
 
 
+def verify_independent_banks(left_path: Path, right_path: Path) -> None:
+    left, right = (json.loads(p.read_text()) for p in (left_path, right_path))
+    if left["map_input_sha256"] != right["map_input_sha256"]:
+        raise ValueError("bank comparison requires the identical map inputs")
+    if left["bank_size"] != right["bank_size"]:
+        raise ValueError("independent bank comparison requires equal bank sizes")
+    if left["series_order"] != 192 or right["series_order"] != 192:
+        raise ValueError("independent banks must use the frozen series order 192")
+    if left["bank_replicate"] == right["bank_replicate"]:
+        raise ValueError("bank comparison repeats the same replicate")
+    seeds = []
+    for bank in (left, right):
+        if bank["schema"] != "sprint2-map-arrival-bank-v1":
+            raise ValueError("bank does not have the frozen replicate identity")
+        current = bank_seeds(bank["map"], bank["bank_size"], bank["bank_replicate"])
+        if hashlib.sha256(current.astype("<u8").tobytes()).hexdigest() != bank["seed_sha256"]:
+            raise ValueError("bank seed identity does not reconstruct")
+        for key in ("raw", "compressed"):
+            if sha256(Path(bank[key])) != bank[f"{key}_sha256"]:
+                raise ValueError("bank file hash differs from its manifest")
+        seeds.append(current)
+    if np.intersect1d(*seeds).size:
+        raise ValueError("independent banks share simulation seeds")
+    if any(left[f"{key}_sha256"] == right[f"{key}_sha256"] for key in ("raw", "compressed")):
+        raise ValueError("independent bank comparison has identical payloads")
+
+
 def build_bank(args: argparse.Namespace) -> dict[str, Any]:
     fixed, setup, _surfaces, record, _public = load_map(args.map_dir)
     if args.output_dir.exists():
         raise FileExistsError(args.output_dir)
     args.output_dir.mkdir(parents=True)
     ids = tuple(setup.site_ids)
-    seeds = bank_seeds(record, args.bank_size)
+    seeds = bank_seeds(record, args.bank_size, args.bank_replicate)
     if len(np.unique(seeds)) != len(seeds):
         raise ValueError("bank seed collision")
     arrivals = np.lib.format.open_memmap(
@@ -242,12 +271,15 @@ def build_bank(args: argparse.Namespace) -> dict[str, Any]:
         series_order=192,
     )
     manifest = {
-        "schema": "sprint1-map-arrival-bank-v1",
+        "schema": "sprint2-map-arrival-bank-v1",
         "map_dir": str(args.map_dir.resolve()),
         "map": {k: record[k] for k in ("role", "archetype", "map_index", "spawn_key")},
         "bank_size": args.bank_size,
+        "series_order": 192,
+        "bank_replicate": args.bank_replicate,
+        "seed_sha256": hashlib.sha256(seeds.astype("<u8").tobytes()).hexdigest(),
         "site_ids_sha256": hashlib.sha256("\n".join(ids).encode()).hexdigest(),
-        "seed_rule": f"SeedSequence([{ROOT_SEED}, {BANK_NAMESPACE}, *spawn_key, row])",
+        "seed_rule": f"SeedSequence([{ROOT_SEED}, {BANK_NAMESPACE}, *spawn_key, replicate, row])",
         "elapsed_seconds": time.perf_counter() - began,
         "workers": args.workers,
         "raw_sha256": sha256(args.output_dir / "arrivals.npy"),
@@ -266,6 +298,7 @@ def main() -> int:
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--build-bank", action="store_true")
     parser.add_argument("--bank-size", type=int, default=131072)
+    parser.add_argument("--bank-replicate", type=int)
     parser.add_argument("--workers", type=int, default=1)
     parser.add_argument("--address")
     parser.add_argument("--background", choices=sorted(BACKGROUNDS))
@@ -275,6 +308,8 @@ def main() -> int:
     parser.add_argument("--arm", choices=sorted(ARM_SITES))
     args = parser.parse_args()
     if args.build_bank:
+        if args.bank_replicate is None:
+            parser.error("bank generation requires an explicit --bank-replicate")
         manifest = build_bank(args)
         print(
             json.dumps({"bank_size": manifest["bank_size"], "seconds": manifest["elapsed_seconds"]})

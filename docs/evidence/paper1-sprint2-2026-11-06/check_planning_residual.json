@@ -1,0 +1,30 @@
+{
+  "geometry_only": true,
+  "qualification_outcomes": false,
+  "maps": [
+    {
+      "development_map": "connected-0",
+      "finite_frame_sites": 300,
+      "spearman_correlation": -1.0,
+      "raw_arrival_sd_days": 30.371628805489074,
+      "linear_residual_sd_days": 4.047491578356523,
+      "residual_sd_fraction": 0.13326554213730607
+    },
+    {
+      "development_map": "corridor-0",
+      "finite_frame_sites": 300,
+      "spearman_correlation": -0.9999999999999999,
+      "raw_arrival_sd_days": 28.108237454342294,
+      "linear_residual_sd_days": 5.568475118049887,
+      "residual_sd_fraction": 0.19810829928753296
+    },
+    {
+      "development_map": "barrier-0",
+      "finite_frame_sites": 300,
+      "spearman_correlation": -1.0,
+      "raw_arrival_sd_days": 73.62811332178578,
+      "linear_residual_sd_days": 20.98222229474225,
+      "residual_sd_fraction": 0.2849756886074362
+    }
+  ]
+}

@@ -148,10 +148,14 @@ def test_up_and_down_candidates_are_preserved_and_best_is_not_overwritten(
 
     q.criterion = SimpleNamespace(_fit_family=family_fit)
     monkeypatch.setattr(module.adapter, "_candidate_summary", lambda row, **kwargs: dict(row))
-    q.point(1.0, direction="up")
+    up = q.point(1.0, direction="up")
     down = q.point(1.0, refresh=True, direction="down")
     assert down["criterion"] == 10.0
-    assert len(down["candidates"]) == 4
+    new_rows = q.directional[1.0]["down"]["candidates"]
+    keys = ("family", "source", "criterion", "eligible")
+    assert [tuple(r[k] for k in keys) for r in down["candidates"]] == [
+        tuple(r[k] for k in keys) for r in up["candidates"] + new_rows
+    ]
     assert q.direction_difference(1.0) == {f: -1.0 for f in module.FAMILIES}
     assert q.directional[1.0]["down"]["selected"]["positive_sigma"]["criterion"] == 9.0
 

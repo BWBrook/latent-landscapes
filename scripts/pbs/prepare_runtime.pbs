@@ -1,6 +1,6 @@
 #!/bin/bash
 # One-off runtime preparation on a compute node (outbound internet observed there).
-#   qsub -v LL_REPO=...,LL_COMMIT=...,LL_IMAGE=... -l select=1:ncpus=2:mem=8gb \
+#   qsub -v LL_REPO=...,LL_COMMIT=...,LL_IMAGE=...,LL_IMAGE_URI=...,LL_RUNTIME_RECEIPT=... -l select=1:ncpus=2:mem=8gb \
 #        -l walltime=01:00:00 scripts/pbs/prepare_runtime.pbs
 #PBS -j oe
 set -eo pipefail
@@ -15,9 +15,60 @@ fi
 set -u
 export APPTAINER_TMPDIR="${TMPDIR:-/tmp}/apptainer-tmp" APPTAINER_CACHEDIR="${TMPDIR:-/tmp}/apptainer-cache"
 mkdir -p "$APPTAINER_TMPDIR" "$APPTAINER_CACHEDIR"
-[ -f "$LL_IMAGE" ] || apptainer pull "$LL_IMAGE" docker://ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+case "${LL_IMAGE_URI:?set a digest-pinned container URI}" in
+  docker://*@sha256:*) ;;
+  *) echo 'LL_IMAGE_URI must name a sha256 digest' >&2; exit 1 ;;
+esac
+: "${LL_RUNTIME_RECEIPT:?set the new runtime receipt path}"
+[ ! -e "$LL_IMAGE" ]
+[ ! -e "$LL_RUNTIME_RECEIPT" ]
+mkdir -p "$(dirname "$LL_IMAGE")" "$(dirname "$LL_RUNTIME_RECEIPT")"
+apptainer pull "$LL_IMAGE" "$LL_IMAGE_URI"
 [ -d "$LL_REPO" ] || git clone https://github.com/BWBrook/latent-landscapes.git "$LL_REPO"
-cd "$LL_REPO" && git fetch --quiet origin && git checkout --quiet "$LL_COMMIT"
-apptainer exec --bind "$HOME" "$LL_IMAGE" uv sync --frozen --no-dev --python 3.12
-apptainer exec --bind "$HOME" "$LL_IMAGE" .venv/bin/python -c \
-  "import numpy, scipy, platform, json; print(json.dumps({'numpy': numpy.__version__, 'scipy': scipy.__version__, 'platform': platform.platform()}))"
+cd "$LL_REPO"
+test -z "$(git status --porcelain --untracked-files=no)"
+git fetch --quiet origin
+git checkout --quiet "$LL_COMMIT"
+test "$(git rev-parse HEAD)" = "$LL_COMMIT"
+apptainer exec --bind "$HOME,$LL_REPO" "$LL_IMAGE" uv sync --frozen --no-dev --python 3.12
+apptainer exec --bind "$HOME,$LL_REPO,$(dirname "$LL_IMAGE"),$(dirname "$LL_RUNTIME_RECEIPT")" "$LL_IMAGE" .venv/bin/python - <<'PYTHON'
+import hashlib
+import importlib.metadata
+import json
+import os
+import platform
+import subprocess
+import sys
+from pathlib import Path
+
+import latent_landscapes
+import numpy
+import scipy
+
+
+def digest(path):
+    with Path(path).open("rb") as handle:
+        return hashlib.file_digest(handle, "sha256").hexdigest()
+
+
+commit = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+dirty = subprocess.check_output(["git", "status", "--porcelain", "--untracked-files=no"], text=True)
+if commit != os.environ["LL_COMMIT"] or dirty:
+    raise RuntimeError("runtime cannot verify the frozen clean source checkout")
+receipt = {
+    "schema": "sprint2-runtime-v1",
+    "oci_uri": os.environ["LL_IMAGE_URI"],
+    "sif": str(Path(os.environ["LL_IMAGE"]).resolve()),
+    "sif_sha256": digest(os.environ["LL_IMAGE"]),
+    "source_commit": commit,
+    "uv_lock_sha256": digest("uv.lock"),
+    "python_executable": sys.executable,
+    "python_version": sys.version,
+    "platform": platform.platform(),
+    "packages": {d.metadata["Name"]: d.version for d in importlib.metadata.distributions()},
+}
+with Path(os.environ["LL_RUNTIME_RECEIPT"]).open("x") as handle:
+    json.dump(receipt, handle, indent=2, sort_keys=True)
+    handle.write("\n")
+print(json.dumps({"sif_sha256": receipt["sif_sha256"], "source_commit": receipt["source_commit"]}))
+PYTHON

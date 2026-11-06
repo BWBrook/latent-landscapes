@@ -1055,6 +1055,7 @@ class SpatialProfileCriterion:
         current = evaluate(x)
         evaluations, radius, message = 1, 1.0, "iteration limit reached"
         iterations, escapes = 0, 0
+        certified = False
         if not current.success:
             return (
                 x,
@@ -1073,7 +1074,7 @@ class SpatialProfileCriterion:
 
         def curvature_at(
             point: FloatArray, gradient: FloatArray, free: NDArray[np.intp]
-        ) -> tuple[FloatArray, int]:
+        ) -> tuple[FloatArray, int, bool]:
             hessian = np.zeros((len(point), len(point)))
             failed = []
             count = 0
@@ -1102,30 +1103,41 @@ class SpatialProfileCriterion:
                     curvature[index, :] = 0.0
                     curvature[:, index] = 0.0
                     curvature[index, index] = scale
-            return curvature[np.ix_(free, free)], count
+            return curvature[np.ix_(free, free)], count, not failed
 
         while iterations < maxiter:
             iterations += 1
             gradient = current.criterion_gradient
             free = free_set(x, gradient)
-            curvature, count = curvature_at(x, gradient, free)
+            curvature, count, curvature_complete = curvature_at(x, gradient, free)
             evaluations += count
             values, vectors = np.linalg.eigh(curvature)
             if self._projected_gradient_inf(-gradient, x, bounds) <= gradient_tolerance:
+                if not curvature_complete:
+                    message = "projected gradient below tolerance; second-order check unavailable"
+                    break
                 scale = max(1.0, float(np.max(np.abs(values)))) if len(values) else 1.0
-                if not len(values) or values.min() >= -1e-6 * scale or escapes >= 3:
+                if not len(values) or values.min() >= -1e-6 * scale:
+                    certified = True
                     message = "projected gradient below tolerance; no ascent direction"
+                    break
+                if escapes >= 3:
+                    message = "projected gradient below tolerance; saddle escape limit reached"
                     break
                 escapes += 1
                 direction = np.zeros_like(x)
                 direction[free] = vectors[:, 0]
                 improved = False
-                for signed in (radius, -radius):
-                    trial = np.clip(x + signed * direction, lower, upper)
-                    candidate = evaluate(trial)
-                    evaluations += 1
-                    if candidate.success and candidate.criterion > current.criterion + 1e-10:
-                        x, current, improved = trial, candidate, True
+                for backtrack in range(13):
+                    escape_radius = radius * 0.5**backtrack
+                    for signed in (escape_radius, -escape_radius):
+                        trial = np.clip(x + signed * direction, lower, upper)
+                        candidate = evaluate(trial)
+                        evaluations += 1
+                        if candidate.success and candidate.criterion > current.criterion + 1e-10:
+                            x, current, improved = trial, candidate, True
+                            break
+                    if improved:
                         break
                 if not improved:
                     message = "projected gradient below tolerance; saddle escape failed"
@@ -1161,14 +1173,11 @@ class SpatialProfileCriterion:
                 if radius < 1e-10:
                     message = "trust region collapsed"
                     break
-        converged = self._projected_gradient_inf(-current.criterion_gradient, x, bounds) <= (
-            gradient_tolerance
-        )
         return (
             x,
             current,
             OptimizeResult(
-                x=x, success=converged, message=message, nit=iterations, nfev=evaluations
+                x=x, success=certified, message=message, nit=iterations, nfev=evaluations
             ),
         )
 
@@ -1228,7 +1237,7 @@ class SpatialProfileCriterion:
                     int(result.nit),
                     int(result.nfev),
                     projected,
-                    bool(evaluation.success and projected <= kkt_tolerance),
+                    bool(result.success and evaluation.success and projected <= kkt_tolerance),
                 )
             )
         return candidates

@@ -3,6 +3,7 @@ from __future__ import annotations
 import math
 from collections.abc import Callable
 from dataclasses import replace
+from types import SimpleNamespace
 from typing import Any, cast
 
 import numpy as np
@@ -432,6 +433,97 @@ def test_trust_region_accepts_a_bound_maximum_with_kkt_and_survives_failed_colum
     )
     assert info.success and result.success
     np.testing.assert_allclose(point, [1.0, 0.3], atol=1e-5)
+
+
+def test_trust_region_backtracks_when_full_saddle_escape_overshoots() -> None:
+    def evaluate(z: np.ndarray) -> Any:
+        x = z[0]
+        return _toy_evaluation(x**2 - x**4, np.array([2.0 * x - 4.0 * x**3]))
+
+    point, result, info = _criterion(1)._trust_region(
+        evaluate, np.zeros(1), ((-2.0, 2.0),), maxiter=80, gradient_tolerance=1e-8
+    )
+    assert info.success and result.criterion == pytest.approx(0.25)
+    np.testing.assert_allclose(np.abs(point), [math.sqrt(0.5)], atol=1e-7)
+
+
+def test_trust_region_failed_saddle_escape_is_not_successful() -> None:
+    def evaluate(z: np.ndarray) -> Any:
+        x = z[0]
+        return _toy_evaluation(x**2, np.array([2.0 * x]), success=abs(x) <= 2e-5)
+
+    _, _, info = _criterion(1)._trust_region(
+        evaluate, np.zeros(1), ((-2.0, 2.0),), maxiter=80, gradient_tolerance=1e-8
+    )
+    assert not info.success
+    assert "saddle escape failed" in info.message
+
+
+def test_trust_region_missing_curvature_cannot_certify_stationary_point() -> None:
+    def evaluate(z: np.ndarray) -> Any:
+        return _toy_evaluation(0.0, np.zeros(1), success=bool(z[0] == 0.0))
+
+    _, _, info = _criterion(1)._trust_region(
+        evaluate, np.zeros(1), ((-2.0, 2.0),), maxiter=80, gradient_tolerance=1e-8
+    )
+    assert not info.success
+    assert "second-order check unavailable" in info.message
+
+
+def test_trust_region_saddle_escape_limit_is_not_a_certificate() -> None:
+    def evaluate(z: np.ndarray) -> Any:
+        x = z[0]
+        value = math.sin(math.pi * x) ** 2 + x - math.sin(2.0 * math.pi * x) / (2.0 * math.pi)
+        gradient = math.pi * math.sin(2.0 * math.pi * x) + 1.0 - math.cos(2.0 * math.pi * x)
+        return _toy_evaluation(value, np.array([gradient]))
+
+    point, _, info = _criterion(1)._trust_region(
+        evaluate, np.zeros(1), ((-5.0, 5.0),), maxiter=80, gradient_tolerance=1e-8
+    )
+    np.testing.assert_allclose(point, [3.0], atol=1e-8)
+    assert not info.success
+    assert "saddle escape limit reached" in info.message
+
+
+def test_trust_region_iteration_limit_does_not_skip_second_order_check() -> None:
+    def evaluate(z: np.ndarray) -> Any:
+        return _toy_evaluation(-((z[0] - 0.5) ** 2), np.array([-2.0 * (z[0] - 0.5)]))
+
+    _, result, info = _criterion(1)._trust_region(
+        evaluate, np.zeros(1), ((-2.0, 2.0),), maxiter=1, gradient_tolerance=1e-8
+    )
+    assert np.max(np.abs(result.criterion_gradient)) < 1e-8
+    assert not info.success
+
+
+def test_family_rejects_stationary_candidate_without_optimizer_certificate(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    criterion = _criterion(1)
+    point = np.array([-5.5, 0.2, 0.1])
+    evaluation = _toy_evaluation(1.0, np.zeros(3))
+    monkeypatch.setattr(
+        criterion,
+        "_trust_region",
+        lambda *args, **kwargs: (
+            point,
+            evaluation,
+            SimpleNamespace(
+                success=False, message="saddle escape failed", nit=1, nfev=3
+            ),
+        ),
+    )
+    rows = criterion._fit_family(
+        fixed_h=3.0,
+        sigma_zero=True,
+        starts=[point],
+        kkt_tolerance=1e-4,
+        maxiter=80,
+        source_prefix="test",
+    )
+    assert rows[0].projected_gradient_inf == 0.0
+    assert not rows[0].eligible
+    assert criterion._best(rows, "sigma_zero") is None
 
 
 def test_trust_region_surrounded_by_failures_is_not_successful() -> None:

@@ -338,6 +338,8 @@ class PanelSearch(Qualification):
             self.result["final_retained_topology_checks"] = consistency
             if not consistency["passed"]:
                 raise RuntimeError("final retained points contradict frozen profile topology")
+        except (MemoryError, OSError):
+            raise
         except Exception as error:
             self.result["status"] = "indeterminate"
             self.result["failure"] = {"type": type(error).__name__, "message": str(error)}
@@ -395,6 +397,8 @@ class PanelSearch(Qualification):
                     "post-search points contradict frozen family ownership or topology"
                 )
             return {"status": "available", "points": rows}
+        except (MemoryError, OSError):
+            raise
         except Exception as error:
             self.result["status"] = "indeterminate"
             self.result["post_search_failure"] = {

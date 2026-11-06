@@ -1,3 +1,29 @@
+## Sprint 2 entry work — 6 November 2026
+
+Sprint 2 has started; it is not complete. Read
+[the entry decisions and execution runbook](docs/paper1-sprint2-entry-2026-11-06.md)
+and its three independent reviews. They supersede the candidate-readiness and
+qualification details in the Sprint 1 packet where explicitly stated.
+
+The normalised floor is accepted as a regularised Laplace composite criterion.
+The outer optimiser now requires a second-order certificate; execution losses
+remain retryable through all wrappers. Keep tight replay, all eight cutoffs,
+three fitted families and six training truths. The 207-case qualification
+panel has a reviewed finite-panel acceptance rule, exact common-anchor and
+gradient audits, independent bank identities and descriptive integration screens.
+No fresh qualification, training or validation outcomes have been generated.
+
+Two historical 120-site cases resolve under the repaired numerical source;
+these are diagnostics, not qualification. Their exact source patch and hashes
+are in the entry evidence directory. The other historical cases and 260-site
+case still need replay on the target. No PBS job has been submitted: the
+portal access window is pending. Once access is restored, stage the clean
+candidate, prepare/verify the pinned runtime, measure the historical compute-node
+pilot, and then run fresh qualification. Preserve every attempt and reconcile
+scientific receipts before proceeding. Training also needs the executable
+map-population uncertainty, forecast and comparator specification described in
+the entry note. Validation stays closed through cross-review/reconciliation.
+
 ## Two-sprint plan reviewed — 5 November 2026
 
 Read [the revised sprint envelope](docs/paper1-sprints-2026-11-05.md), the response

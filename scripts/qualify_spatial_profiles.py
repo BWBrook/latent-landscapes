@@ -518,16 +518,25 @@ class Qualification:
             raise ValueError("log h outside qualification domain")
         candidates = []
         for family in FAMILIES:
-            candidates.extend(
-                self.criterion._fit_family(
-                    fixed_h=h,
-                    sigma_zero=family == "sigma_zero",
-                    starts=self.neighbours(x, family, tight),
-                    kkt_tolerance=1e-4 if tight else 1e-3,
-                    maxiter=120 if tight else 80,
-                    source_prefix=f"{'tight' if tight else 'standard'}_fixed_{x.hex()}",
+            starts = self.neighbours(x, family, tight)
+            for index, start in enumerate(starts):
+                label = (
+                    "high_sigma_anchor"
+                    if (family == "positive_sigma" and np.array_equal(start, HIGH_SIGMA_ANCHOR))
+                    else "neighbour_or_default"
                 )
-            )
+                candidates.extend(
+                    self.criterion._fit_family(
+                        fixed_h=h,
+                        sigma_zero=family == "sigma_zero",
+                        starts=[start],
+                        kkt_tolerance=1e-4 if tight else 1e-3,
+                        maxiter=120 if tight else 80,
+                        source_prefix=(
+                            f"{'tight' if tight else 'standard'}_fixed_{x.hex()}_{label}_{index}"
+                        ),
+                    )
+                )
         previous = self.points[tight].get(x)
         if direction is not None:
             rows = [
@@ -878,6 +887,8 @@ class Qualification:
                     (ep.objective_gradient[indices] - em.objective_gradient[indices]) / (2 * delta)
                 )
             return {**result, **hessian_diagnostic(np.column_stack(columns), g)}
+        except (MemoryError, OSError):
+            raise
         except Exception as error:
             return {**result, "reason": str(error)}
 

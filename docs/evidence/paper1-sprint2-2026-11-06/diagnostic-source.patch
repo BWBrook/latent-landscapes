@@ -1,0 +1,327 @@
+--- a/scripts/fit_dataset.py
++++ b/scripts/fit_dataset.py
+@@ -250,7 +250,7 @@
+                     int(result.nit),
+                     int(result.nfev),
+                     projected,
+-                    bool(evaluation.success and projected <= kkt),
++                    bool(result.success and evaluation.success and projected <= kkt),
+                 )
+             )
+         return rows
+@@ -382,6 +382,9 @@
+                 {"iteration": iteration, "free_shift": shift, "envelope_violations_log_h": bad}
+             )
+             if abs(shift) <= 1e-6 and not bad:
++                unavailable = [level for level in levels if level["status"] != "available"]
++                if unavailable:
++                    raise RuntimeError(f"{self.name} has unavailable cutoff sets: {unavailable}")
+                 return [summarise_level(level) for level in levels]
+         raise RuntimeError(f"{self.name} free maximum or level sets did not stabilise")
+ 
+@@ -679,11 +682,68 @@
+     return None
+ 
+ 
++def envelope_guard_summary(events: Path) -> dict[str, Any]:
++    def finite(row: dict[str, Any]) -> bool:
++        return isinstance(row["criterion"], (int, float)) and math.isfinite(row["criterion"])
++
++    rows = []
++    if events.exists():
++        with events.open() as handle:
++            for line in handle:
++                event = json.loads(line)
++                if event.get("kind") != "unresolved_fit":
++                    continue
++                candidates = event["candidates"]
++                maxima = {
++                    family: max(
++                        (
++                            r["criterion"]
++                            for r in candidates
++                            if r["family"] == family and r["eligible"] and finite(r)
++                        ),
++                        default=None,
++                    )
++                    for family in FAMILIES
++                }
++                offending = [
++                    {
++                        "source": r["source"],
++                        "family": r["family"],
++                        "criterion": r["criterion"],
++                        "high_sigma_anchor": "high_sigma_anchor" in r["source"],
++                    }
++                    for r in candidates
++                    if not r["eligible"]
++                    and finite(r)
++                    and maxima[r["family"]] is not None
++                    and r["criterion"] > maxima[r["family"]] + TIE_TOLERANCE
++                ]
++                rows.append({"eligible_maxima": maxima, "offending_candidates": offending})
++    return {
++        "unresolved_fit_events": len(rows),
++        "anchor_guard_events": sum(
++            any(r["high_sigma_anchor"] for r in event["offending_candidates"]) for event in rows
++        ),
++        "events": rows,
++    }
++
++
+ class Run:
+     def __init__(self) -> None:
+         self.receipt: dict[str, Any] = {"schema": SCHEMA}
+         self.errors: list[dict[str, Any]] = []
+         self.stages: dict[str, dict[str, float]] = {}
++
++    def record_error(self, name: str, error: Exception) -> None:
++        self.errors.append(
++            {
++                "stage": name,
++                "execution": isinstance(error, EXECUTION_ERRORS),
++                "type": type(error).__name__,
++                "message": str(error),
++                "traceback": traceback.format_exc(),
++            }
++        )
+ 
+     @contextlib.contextmanager
+     def stage(self, name: str, *, guard: bool = True) -> Iterator[None]:
+@@ -693,15 +753,7 @@
+         except Exception as error:
+             if not guard:
+                 raise
+-            self.errors.append(
+-                {
+-                    "stage": name,
+-                    "execution": isinstance(error, EXECUTION_ERRORS),
+-                    "type": type(error).__name__,
+-                    "message": str(error),
+-                    "traceback": traceback.format_exc(),
+-                }
+-            )
++            self.record_error(name, error)
+         finally:
+             self.stages[name] = {
+                 "wall_seconds": time.perf_counter() - wall,
+@@ -718,6 +770,13 @@
+         args.compressed_bank,
+         Path(__file__),
+         MODE_DIAGNOSIS,
++        ROOT / "scripts/run_development_profile.py",
++        ROOT / "scripts/qualify_spatial_profiles.py",
++        ROOT / "scripts/profile_level_sets.py",
++        Path(adapter.__file__),
++        ROOT / "pyproject.toml",
++        ROOT / "uv.lock",
++        *sorted((ROOT / "src/latent_landscapes").rglob("*.py")),
+     ]
+     return {str(p.resolve()): adapter.sha256_file(p) for p in paths}
+ 
+@@ -736,6 +795,11 @@
+         tight_replay="always_on_inside_PanelSearch.run",
+         threads={n: os.environ.get(n) for n in THREAD_ENVIRONMENT},
+     )
++    receipt["inputs"] = {
++        name: str(getattr(args, name).resolve())
++        for name in ("input_dir", "observations", "arrival_bank", "compressed_bank")
++        if hasattr(args, name)
++    }
+     search: FitSearch | None = None
+     families: dict[str, Any] = {}
+     family_failures: list[str] = []
+@@ -788,7 +852,10 @@
+                 with run.stage(f"family_{name}", guard=False):
+                     families[name] = family.result(family.run(nodes, CUTOFF_GRID))
+             except Exception as error:
+-                family_failures.append(f"{name}: {error}")
++                if isinstance(error, EXECUTION_ERRORS):
++                    run.record_error(f"family_{name}", error)
++                else:
++                    family_failures.append(f"{name}: {error}")
+                 families[name] = {
+                     "status": "failed",
+                     "failure": {"type": type(error).__name__, "message": str(error)},
+@@ -803,6 +870,8 @@
+             )
+             multimodal = audits["multimodal_latent"]
+     if search is not None:
++        with run.stage("envelope_guard_report"):
++            receipt["envelope_guard"] = envelope_guard_summary(search.events)
+         receipt["cost"] = {
+             "criterion_stats": dict(search.criterion.stats),
+             "backend_diagnostics": dict(search.stats),
+--- a/scripts/run_development_profile.py
++++ b/scripts/run_development_profile.py
+@@ -338,6 +338,8 @@
+             self.result["final_retained_topology_checks"] = consistency
+             if not consistency["passed"]:
+                 raise RuntimeError("final retained points contradict frozen profile topology")
++        except (MemoryError, OSError):
++            raise
+         except Exception as error:
+             self.result["status"] = "indeterminate"
+             self.result["failure"] = {"type": type(error).__name__, "message": str(error)}
+@@ -395,6 +397,8 @@
+                     "post-search points contradict frozen family ownership or topology"
+                 )
+             return {"status": "available", "points": rows}
++        except (MemoryError, OSError):
++            raise
+         except Exception as error:
+             self.result["status"] = "indeterminate"
+             self.result["post_search_failure"] = {
+--- a/scripts/qualify_spatial_profiles.py
++++ b/scripts/qualify_spatial_profiles.py
+@@ -518,16 +518,25 @@
+             raise ValueError("log h outside qualification domain")
+         candidates = []
+         for family in FAMILIES:
+-            candidates.extend(
+-                self.criterion._fit_family(
+-                    fixed_h=h,
+-                    sigma_zero=family == "sigma_zero",
+-                    starts=self.neighbours(x, family, tight),
+-                    kkt_tolerance=1e-4 if tight else 1e-3,
+-                    maxiter=120 if tight else 80,
+-                    source_prefix=f"{'tight' if tight else 'standard'}_fixed_{x.hex()}",
+-                )
+-            )
++            starts = self.neighbours(x, family, tight)
++            for index, start in enumerate(starts):
++                label = (
++                    "high_sigma_anchor"
++                    if (family == "positive_sigma" and np.array_equal(start, HIGH_SIGMA_ANCHOR))
++                    else "neighbour_or_default"
++                )
++                candidates.extend(
++                    self.criterion._fit_family(
++                        fixed_h=h,
++                        sigma_zero=family == "sigma_zero",
++                        starts=[start],
++                        kkt_tolerance=1e-4 if tight else 1e-3,
++                        maxiter=120 if tight else 80,
++                        source_prefix=(
++                            f"{'tight' if tight else 'standard'}_fixed_{x.hex()}_{label}_{index}"
++                        ),
++                    )
++                )
+         previous = self.points[tight].get(x)
+         if direction is not None:
+             rows = [
+@@ -878,6 +887,8 @@
+                     (ep.objective_gradient[indices] - em.objective_gradient[indices]) / (2 * delta)
+                 )
+             return {**result, **hessian_diagnostic(np.column_stack(columns), g)}
++        except (MemoryError, OSError):
++            raise
+         except Exception as error:
+             return {**result, "reason": str(error)}
+ 
+--- a/scripts/profile_level_sets.py
++++ b/scripts/profile_level_sets.py
+@@ -135,6 +135,8 @@
+                     endpoint_residuals,
+                 )
+         current_bracket = None
++    except (MemoryError, OSError):
++        raise
+     except Exception as error:
+         result["failure"] = {
+             "type": type(error).__name__,
+--- a/src/latent_landscapes/spatial_profile.py
++++ b/src/latent_landscapes/spatial_profile.py
+@@ -1055,6 +1055,7 @@
+         current = evaluate(x)
+         evaluations, radius, message = 1, 1.0, "iteration limit reached"
+         iterations, escapes = 0, 0
++        certified = False
+         if not current.success:
+             return (
+                 x,
+@@ -1073,7 +1074,7 @@
+ 
+         def curvature_at(
+             point: FloatArray, gradient: FloatArray, free: NDArray[np.intp]
+-        ) -> tuple[FloatArray, int]:
++        ) -> tuple[FloatArray, int, bool]:
+             hessian = np.zeros((len(point), len(point)))
+             failed = []
+             count = 0
+@@ -1102,30 +1103,41 @@
+                     curvature[index, :] = 0.0
+                     curvature[:, index] = 0.0
+                     curvature[index, index] = scale
+-            return curvature[np.ix_(free, free)], count
++            return curvature[np.ix_(free, free)], count, not failed
+ 
+         while iterations < maxiter:
+             iterations += 1
+             gradient = current.criterion_gradient
+             free = free_set(x, gradient)
+-            curvature, count = curvature_at(x, gradient, free)
++            curvature, count, curvature_complete = curvature_at(x, gradient, free)
+             evaluations += count
+             values, vectors = np.linalg.eigh(curvature)
+             if self._projected_gradient_inf(-gradient, x, bounds) <= gradient_tolerance:
++                if not curvature_complete:
++                    message = "projected gradient below tolerance; second-order check unavailable"
++                    break
+                 scale = max(1.0, float(np.max(np.abs(values)))) if len(values) else 1.0
+-                if not len(values) or values.min() >= -1e-6 * scale or escapes >= 3:
++                if not len(values) or values.min() >= -1e-6 * scale:
++                    certified = True
+                     message = "projected gradient below tolerance; no ascent direction"
++                    break
++                if escapes >= 3:
++                    message = "projected gradient below tolerance; saddle escape limit reached"
+                     break
+                 escapes += 1
+                 direction = np.zeros_like(x)
+                 direction[free] = vectors[:, 0]
+                 improved = False
+-                for signed in (radius, -radius):
+-                    trial = np.clip(x + signed * direction, lower, upper)
+-                    candidate = evaluate(trial)
+-                    evaluations += 1
+-                    if candidate.success and candidate.criterion > current.criterion + 1e-10:
+-                        x, current, improved = trial, candidate, True
++                for backtrack in range(13):
++                    escape_radius = radius * 0.5**backtrack
++                    for signed in (escape_radius, -escape_radius):
++                        trial = np.clip(x + signed * direction, lower, upper)
++                        candidate = evaluate(trial)
++                        evaluations += 1
++                        if candidate.success and candidate.criterion > current.criterion + 1e-10:
++                            x, current, improved = trial, candidate, True
++                            break
++                    if improved:
+                         break
+                 if not improved:
+                     message = "projected gradient below tolerance; saddle escape failed"
+@@ -1161,14 +1173,11 @@
+                 if radius < 1e-10:
+                     message = "trust region collapsed"
+                     break
+-        converged = self._projected_gradient_inf(-current.criterion_gradient, x, bounds) <= (
+-            gradient_tolerance
+-        )
+         return (
+             x,
+             current,
+             OptimizeResult(
+-                x=x, success=converged, message=message, nit=iterations, nfev=evaluations
++                x=x, success=certified, message=message, nit=iterations, nfev=evaluations
+             ),
+         )
+ 
+@@ -1228,7 +1237,7 @@
+                     int(result.nit),
+                     int(result.nfev),
+                     projected,
+-                    bool(evaluation.success and projected <= kkt_tolerance),
++                    bool(result.success and evaluation.success and projected <= kkt_tolerance),
+                 )
+             )
+         return candidates

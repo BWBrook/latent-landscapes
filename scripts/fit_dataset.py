@@ -250,7 +250,7 @@ class ReducedFamily:
                     int(result.nit),
                     int(result.nfev),
                     projected,
-                    bool(evaluation.success and projected <= kkt),
+                    bool(result.success and evaluation.success and projected <= kkt),
                 )
             )
         return rows
@@ -382,6 +382,9 @@ class ReducedFamily:
                 {"iteration": iteration, "free_shift": shift, "envelope_violations_log_h": bad}
             )
             if abs(shift) <= 1e-6 and not bad:
+                unavailable = [level for level in levels if level["status"] != "available"]
+                if unavailable:
+                    raise RuntimeError(f"{self.name} has unavailable cutoff sets: {unavailable}")
                 return [summarise_level(level) for level in levels]
         raise RuntimeError(f"{self.name} free maximum or level sets did not stabilise")
 
@@ -400,6 +403,9 @@ class ReducedFamily:
                     "criterion": row["criterion"],
                     "w": self.w(x),
                     "eligible": row["eligible"],
+                    "family": row["family"],
+                    "parameters": row["parameters"],
+                    "source": row["source"],
                     "nuisance_bound_contacts": row["nuisance_bound_contacts"],
                 }
                 for x, row in sorted(self.points.items())
@@ -679,11 +685,68 @@ def tight_phase_seconds(events: Path) -> float | None:
     return None
 
 
+def envelope_guard_summary(events: Path) -> dict[str, Any]:
+    def finite(row: dict[str, Any]) -> bool:
+        return isinstance(row["criterion"], (int, float)) and math.isfinite(row["criterion"])
+
+    rows: list[dict[str, Any]] = []
+    if events.exists():
+        with events.open() as handle:
+            for line in handle:
+                event = json.loads(line)
+                if event.get("kind") != "unresolved_fit":
+                    continue
+                candidates = event["candidates"]
+                maxima: dict[str, Any] = {
+                    family: max(
+                        (
+                            r["criterion"]
+                            for r in candidates
+                            if r["family"] == family and r["eligible"] and finite(r)
+                        ),
+                        default=None,
+                    )
+                    for family in FAMILIES
+                }
+                offending = [
+                    {
+                        "source": r["source"],
+                        "family": r["family"],
+                        "criterion": r["criterion"],
+                        "high_sigma_anchor": "high_sigma_anchor" in r["source"],
+                    }
+                    for r in candidates
+                    if not r["eligible"]
+                    and finite(r)
+                    and maxima[r["family"]] is not None
+                    and r["criterion"] > maxima[r["family"]] + TIE_TOLERANCE
+                ]
+                rows.append({"eligible_maxima": maxima, "offending_candidates": offending})
+    return {
+        "unresolved_fit_events": len(rows),
+        "anchor_guard_events": sum(
+            any(r["high_sigma_anchor"] for r in event["offending_candidates"]) for event in rows
+        ),
+        "events": rows,
+    }
+
+
 class Run:
     def __init__(self) -> None:
         self.receipt: dict[str, Any] = {"schema": SCHEMA}
         self.errors: list[dict[str, Any]] = []
         self.stages: dict[str, dict[str, float]] = {}
+
+    def record_error(self, name: str, error: Exception) -> None:
+        self.errors.append(
+            {
+                "stage": name,
+                "execution": isinstance(error, EXECUTION_ERRORS),
+                "type": type(error).__name__,
+                "message": str(error),
+                "traceback": traceback.format_exc(),
+            }
+        )
 
     @contextlib.contextmanager
     def stage(self, name: str, *, guard: bool = True) -> Iterator[None]:
@@ -693,15 +756,7 @@ class Run:
         except Exception as error:
             if not guard:
                 raise
-            self.errors.append(
-                {
-                    "stage": name,
-                    "execution": isinstance(error, EXECUTION_ERRORS),
-                    "type": type(error).__name__,
-                    "message": str(error),
-                    "traceback": traceback.format_exc(),
-                }
-            )
+            self.record_error(name, error)
         finally:
             self.stages[name] = {
                 "wall_seconds": time.perf_counter() - wall,
@@ -718,6 +773,13 @@ def input_hashes(args: argparse.Namespace) -> dict[str, str]:
         args.compressed_bank,
         Path(__file__),
         MODE_DIAGNOSIS,
+        ROOT / "scripts/run_development_profile.py",
+        ROOT / "scripts/qualify_spatial_profiles.py",
+        ROOT / "scripts/profile_level_sets.py",
+        Path(adapter.__file__),
+        ROOT / "pyproject.toml",
+        ROOT / "uv.lock",
+        *sorted((ROOT / "src/latent_landscapes").rglob("*.py")),
     ]
     return {str(p.resolve()): adapter.sha256_file(p) for p in paths}
 
@@ -736,6 +798,10 @@ def fit_dataset(args: argparse.Namespace) -> dict[str, Any]:
         tight_replay="always_on_inside_PanelSearch.run",
         threads={n: os.environ.get(n) for n in THREAD_ENVIRONMENT},
     )
+    receipt["inputs"] = {
+        name: str(getattr(args, name).resolve())
+        for name in ("input_dir", "observations", "arrival_bank", "compressed_bank")
+    }
     search: FitSearch | None = None
     families: dict[str, Any] = {}
     family_failures: list[str] = []
@@ -788,7 +854,10 @@ def fit_dataset(args: argparse.Namespace) -> dict[str, Any]:
                 with run.stage(f"family_{name}", guard=False):
                     families[name] = family.result(family.run(nodes, CUTOFF_GRID))
             except Exception as error:
-                family_failures.append(f"{name}: {error}")
+                if isinstance(error, EXECUTION_ERRORS):
+                    run.record_error(f"family_{name}", error)
+                else:
+                    family_failures.append(f"{name}: {error}")
                 families[name] = {
                     "status": "failed",
                     "failure": {"type": type(error).__name__, "message": str(error)},
@@ -803,6 +872,8 @@ def fit_dataset(args: argparse.Namespace) -> dict[str, Any]:
             )
             multimodal = audits["multimodal_latent"]
     if search is not None:
+        with run.stage("envelope_guard_report"):
+            receipt["envelope_guard"] = envelope_guard_summary(search.events)
         receipt["cost"] = {
             "criterion_stats": dict(search.criterion.stats),
             "backend_diagnostics": dict(search.stats),

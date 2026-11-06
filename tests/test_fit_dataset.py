@@ -134,6 +134,11 @@ def test_reduced_families_are_nested_and_constant_has_zero_beta(fit: Any) -> Non
     results = {}
     for name, family in (("exposure", exposure), ("constant", constant)):
         results[name] = family.result(family.run(nodes, cutoffs))
+        for row in results[name]["profile"]:
+            original = family.points[row["log_h"]]
+            assert row["parameters"] == original["parameters"]
+            assert row["source"] == original["source"]
+            assert row["family"] == original["family"]
     assert results["constant"]["free"]["parameters"]["beta"] == 0.0
     assert all(row["w"] >= -1e-6 for r in results.values() for row in r["profile"])
     assert (
@@ -350,3 +355,124 @@ def test_floored_laplace_matches_production_criterion(fit: Any) -> None:
         criterion, eta0, criterion._k_inverse / sigma**2, curves, sigma, evaluation.mode.u
     )
     assert value == pytest.approx(evaluation.criterion, abs=1e-8)
+
+
+@pytest.mark.parametrize("error_type", [MemoryError, OSError])
+def test_search_execution_errors_escape_scientific_failure_classification(
+    fit: Any, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, error_type: type[Exception]
+) -> None:
+    search = fake_search(fit, tmp_path)
+
+    def fail(*args: Any, **kwargs: Any) -> None:
+        raise error_type("execution interrupted")
+
+    monkeypatch.setattr(search, "point", fail)
+    with pytest.raises(error_type, match="execution interrupted"):
+        search.run()
+
+
+@pytest.mark.parametrize("error_type", [MemoryError, OSError, RuntimeError])
+def test_reduced_family_execution_errors_are_retryable(
+    fit: Any, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, error_type: type[Exception]
+) -> None:
+    search = SimpleNamespace(
+        result={"status": "profile_numerically_resolved"},
+        points={False: {}, True: {}},
+        free={},
+        criterion=SimpleNamespace(stats={}),
+        stats={},
+        fixed_fit_events=0,
+        search_cost={},
+        events=tmp_path / "absent.jsonl",
+        run=lambda: None,
+        receipt=lambda: {},
+    )
+    monkeypatch.setattr(fit, "FitSearch", lambda *args: search)
+    monkeypatch.setattr(fit, "input_hashes", lambda args: {})
+    monkeypatch.setattr(fit, "load_panel_data", lambda args: (object(), {}))
+    monkeypatch.setattr(fit, "spatial_family_result", lambda search: {})
+
+    def fail(*args: Any, **kwargs: Any) -> None:
+        raise error_type("interrupted")
+
+    monkeypatch.setattr(fit.ReducedFamily, "run", fail)
+    args = SimpleNamespace(
+        output_dir=tmp_path,
+        search="lean",
+        exhaustive_audit=False,
+        input_dir=tmp_path,
+        observations=tmp_path / "observations.npz",
+        arrival_bank=tmp_path / "arrivals.npy",
+        compressed_bank=tmp_path / "compressed.npz",
+    )
+    receipt = fit.fit_dataset(args)
+    expected = "family_fit_failed" if error_type is RuntimeError else "execution_error"
+    assert receipt["failure_class"] == expected
+    assert receipt["families"]["constant"]["failure"]["type"] == error_type.__name__
+    if expected == "execution_error":
+        assert {e["stage"] for e in receipt["errors"]} == {"family_exposure", "family_constant"}
+
+
+def test_constant_family_rejects_uncertified_stationary_point(
+    fit: Any, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    family = make_family(fit, beta_free=False)
+
+    def stationary(evaluate: Any, start: np.ndarray, bounds: Any, **kwargs: Any) -> Any:
+        result = evaluate(start)
+        result = fit.dataclasses.replace(result, objective_gradient=np.zeros(len(start)))
+        return (
+            start,
+            result,
+            SimpleNamespace(success=False, message="saddle escape failed", nit=1, nfev=1),
+        )
+
+    monkeypatch.setattr(family.criterion, "_trust_region", stationary)
+    candidates = family._fit_constant(3.0, [np.array([-1.4, 0.0, 0.18])], "test", 1e-4, 10)
+    assert candidates[0].evaluation.success
+    assert candidates[0].projected_gradient_inf == 0.0
+    assert not candidates[0].eligible
+
+
+@pytest.mark.parametrize("error_type", [MemoryError, OSError])
+def test_root_callback_preserves_execution_error(fit: Any, error_type: type[Exception]) -> None:
+    def fail(x: float) -> float:
+        raise error_type("root evaluation interrupted")
+
+    with pytest.raises(error_type, match="root evaluation interrupted"):
+        fit.refine_level_set(fail, [0.0, fit.LOG_MAX], 3.84)
+
+
+def test_reduced_family_rejects_unavailable_level_set(
+    fit: Any, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    family = make_family(fit, beta_free=False)
+    monkeypatch.setattr(
+        fit,
+        "refine_level_set",
+        lambda *args, **kwargs: {"status": "unavailable", "cutoff": 3.84, "failure": "root failed"},
+    )
+    with pytest.raises(RuntimeError, match="unavailable cutoff sets"):
+        family.run([0.0, 1.2, fit.LOG_MAX], (3.84,))
+
+
+def test_envelope_guard_reports_anchor_and_retains_other_sources(fit: Any, tmp_path: Path) -> None:
+    import json
+
+    path = tmp_path / "events.jsonl"
+    rows = [
+        {"family": "positive_sigma", "eligible": True, "criterion": -10.0, "source": "best"},
+        {"family": "sigma_zero", "eligible": True, "criterion": -11.0, "source": "zero"},
+        {
+            "family": "positive_sigma",
+            "eligible": False,
+            "criterion": -9.0,
+            "source": "standard_fixed_high_sigma_anchor_2_fit_0",
+        },
+        {"family": "positive_sigma", "eligible": False, "criterion": None, "source": "invalid"},
+        {"family": "sigma_zero", "eligible": False, "criterion": -10.5, "source": "other"},
+    ]
+    path.write_text(json.dumps({"kind": "unresolved_fit", "candidates": rows}) + "\n")
+    summary = fit.envelope_guard_summary(path)
+    assert summary["unresolved_fit_events"] == summary["anchor_guard_events"] == 1
+    assert len(summary["events"][0]["offending_candidates"]) == 2

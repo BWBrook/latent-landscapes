@@ -1,5 +1,9 @@
 # Sprint 1 packet: a freezable spatial procedure and an executable experiment
 
+> Subsequent entry review: [Sprint 2 decisions and repairs](paper1-sprint2-entry-2026-11-06.md).
+> This packet preserves the Sprint 1 handover; its readiness claims and proposed
+> reductions must be read with that review.
+
 5 November 2026. Claude (Opus 5.5) Sprint 1 under the
 [two-sprint envelope](paper1-sprints-2026-11-05.md). It advances charter
 pillars 3, 4 and 6 and supplies the protocol's single

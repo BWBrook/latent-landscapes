@@ -1,9 +1,10 @@
 #!/bin/bash
 # Submit from the campaign directory, for example:
-#   qsub -N ll_qual_20261106 -J 0-N -v TASKS=...,OUT=...,CHUNK=8 \
+#   qsub -N ll_qual_20261106 -J 0-N -v TASKS=...,OUT=...,CHUNK=8,LL_WORKERS=8,LL_REPO=...,LL_IMAGE=... \
 #        -l select=1:ncpus=8:mem=12gb -l walltime=04:00:00 \
 #        -o 'logs/^array_index^.out' -e 'logs/^array_index^.err' scripts/pbs/array.pbs
 # Size ncpus, mem and walltime from the measured compute-node pilot.
+# Also export LL_DATA_ROOT and LL_WORK_ROOT for the project's scratch and work trees.
 #PBS -j oe
 set -eo pipefail
 set +u
@@ -16,6 +17,20 @@ if ! command -v apptainer > /dev/null 2>&1; then
 fi
 set -u
 cd "${LL_REPO:?set LL_REPO to the pinned checkout}"
-apptainer exec --bind "$HOME" "${LL_IMAGE:?set LL_IMAGE to the Python SIF}" \
+: "${LL_WORKERS:?set LL_WORKERS from the measured per-node allocation}"
+case "$LL_WORKERS" in
+  ''|*[!0-9]*|0) echo 'LL_WORKERS must be a positive integer' >&2; exit 1 ;;
+esac
+if [ -n "${NCPUS:-}" ] && [ "$LL_WORKERS" -gt "$NCPUS" ]; then
+  echo 'LL_WORKERS exceeds the PBS NCPUS allocation' >&2
+  exit 1
+fi
+: "${LL_DATA_ROOT:?set the project data directory}"
+: "${LL_WORK_ROOT:?set the project work directory}"
+: "${LL_IMAGE:?set LL_IMAGE to the Python SIF}"
+export APPTAINERENV_LL_EXECUTION_CONTEXT=apptainer
+export APPTAINERENV_LL_RUNTIME_SIF_SHA256="$(sha256sum "$LL_IMAGE" | awk '{print $1}')"
+mkdir -p "$OUT"
+apptainer exec --bind "$HOME,$LL_REPO,$(dirname "$TASKS"),$OUT,$LL_DATA_ROOT,$LL_WORK_ROOT,$(dirname "$LL_IMAGE")" "${LL_IMAGE:?set LL_IMAGE to the Python SIF}" \
   "$LL_REPO/.venv/bin/python" scripts/pbs/campaign.py work \
-  --tasks "$TASKS" --out "$OUT" --chunk "$CHUNK" --workers "${NCPUS:-1}"
+  --tasks "$TASKS" --out "$OUT" --chunk "$CHUNK" --workers "$LL_WORKERS"

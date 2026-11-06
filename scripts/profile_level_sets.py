@@ -135,6 +135,8 @@ def refine_level_set(
                     endpoint_residuals,
                 )
         current_bracket = None
+    except (MemoryError, OSError):
+        raise
     except Exception as error:
         result["failure"] = {
             "type": type(error).__name__,
