@@ -6,8 +6,11 @@ predeclared limited portability gate on clean candidate `99af520`. The
 measured costs, exact comparison scope and the first 260-site walltime failure.
 Target fit wall times were 4578.981 seconds (120 sites) and 33499.084 seconds
 (260 sites); the latter used 22805.725 CPU seconds. These are historical
-portability diagnostics. Fresh observation qualification and training have not
-run. Bank resources and multi-node throughput remain to be measured. This
+portability diagnostics. The first arrival-bank resource pilot is also verified (15,317.022 wall seconds;
+1.06 GB fresh single-task child peak). The remaining banks, frozen qualification
+histories and outstanding historical diagnostics are now submitted; fresh
+qualification likelihood fits and training have not run. Packed throughput and
+realised resources across geometries remain to be measured. This
 update supersedes the access/PBS status at the original stopping point below;
 the scientific gates and numerical method remain unchanged.
 

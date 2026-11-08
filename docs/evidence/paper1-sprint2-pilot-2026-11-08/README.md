@@ -47,11 +47,28 @@ retry does not erase the failed attempt or its resource use.
 The 260-site execution used 9.31 wall hours and 6.33 CPU-hours; their difference
 has not been attributed to a particular cause. These two shared-allocation
 measurements do not establish packing or multi-node scaling efficiency.
-Arrival-bank memory and runtime also remain unmeasured on the target. A single
-frozen bank-generation task is now running as a resource pilot, with one worker,
-8 GB and a 24-hour ceiling, before choosing bank concurrency. It builds
-barrier-0 replicate 0 at the frozen bank size and order. Fresh observation
-histories and rule training have not run. The [independent training-feasibility review](training-feasibility-review.md)
+The first arrival-bank resource pilot has now completed and verified; see the
+[bank resource summary](bank-summary.json) and [independent allocation review](bank-independent-review.md).
+The task used 15,317.022 wall seconds, 14,968.265 CPU seconds and a fresh
+single-task completed-child peak of 1,056,804,864 bytes. Its raw matrix is
+131072 by 300; raw and compressed hashes, frozen map and seed identities,
+category/moment invariants, task/source/runtime and retained outputs verify.
+
+The remaining 17 banks are submitted using the same frozen 18-task file in
+five allocations of four workers, four CPUs and 16 GB, with a 24-hour ceiling.
+The already completed task is verified and skipped. This margin follows the
+measured peak and the fixed dominant storage shapes; concurrent throughput
+and other geometries' realised resource use remain to be measured.
+
+The 207 frozen qualification histories are submitted concurrently in seven
+four-worker allocations of 8 GB/two hours. All task identities, qualification
+addresses, map inputs, backgrounds, truths, arms and runtime match the frozen
+panel. Five outstanding historical diagnostic replays run separately. No
+fresh qualification likelihood fits, rule training or validation are launched.
+A native scheduler dependency runs task reconciliation after all three arrays
+finish, preserves separate phase summaries, and emails the result. It neither
+changes scientific settings nor retries failures. Scheduler completion still
+requires receipt review. The [independent training-feasibility review](training-feasibility-review.md)
 identifies the executable population-uncertainty/forecast decisions still open.
 Validation remains closed.
 
@@ -88,3 +105,30 @@ and task-output corruption. Run them with:
 ```
 
 No numerical solver code changed during this pilot or its retry.
+
+## Reproduce the bank resource checks
+
+Use the frozen candidate/runtime and restore the original task and bank paths.
+The standard reconciler checks all task inputs and saved output hashes:
+
+```sh
+python scripts/pbs/campaign.py reconcile --tasks "$BANK_TASKS" --out "$BANK_RESULTS"
+sha256sum "$RAW_BANK" "$COMPRESSED_BANK"
+```
+
+At the single-bank checkpoint the full 18-task reconciliation deliberately
+returned one completed and 17 missing, with zero invalid. Compare the two
+payload hashes with `bank-summary.json`; the raw NPY file is 314,572,928 bytes.
+The independent review documents the separately reconstructed seeds, local
+compressed-array checks and the raw checks performed on the target. The raw
+matrix and its file bytes have different checksums because the NPY header is
+part of the file. Neither hash should be substituted for the other.
+
+The PBS completion job depends on all three parent arrays through `afterany`,
+then runs each phase's existing reconciler and saves its summary before the
+shared derived index is overwritten by the next phase. Any incomplete or
+invalid execution makes the completion job fail; terminal scientific failures
+in the historical diagnostics remain separately classified. There is no
+automatic retry, rule change or promotion to a scientific pass. Email uses
+`-m ae` on that final job. These are standard scheduler capabilities
+([PBS 19.2 User's Guide, sections 2.5 and 6.2](https://2019.help.altair.com/19.2/PBSProfessional/PBSUserGuide19.2.1.pdf)).

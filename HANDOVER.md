@@ -1,3 +1,25 @@
+## Bank pilot verified; next phases submitted — 8 November 2026
+
+The first frozen bank, barrier-0 replicate 0, completed in 4.25 wall hours
+and 4.16 CPU-hours, with a fresh single-task child peak of 1.06 GB. Its raw and
+compressed hashes, seeds, map/site identities, dimensions and compressed-array
+invariants verify. Read the [bank summary](docs/evidence/paper1-sprint2-pilot-2026-11-08/bank-summary.json)
+and [independent resource review](docs/evidence/paper1-sprint2-pilot-2026-11-08/bank-independent-review.md).
+Reconciliation at that checkpoint had one completed, 17 missing and no invalid
+banks. The completion email was received.
+
+The remaining 17 banks, all 207 frozen qualification histories and five
+outstanding historical diagnostic replays are now submitted in parallel under
+the same candidate/runtime. Bank allocations use four workers/16 GB/24 hours;
+history allocations four workers/8 GB/two hours; replay allocations two workers/
+8 GB/24 hours. The completed bank is verified and skipped. A native scheduler
+dependency reconciles all three phases, saves separate summaries and sends one
+normal completion email. Review original receipts after that email; no fresh
+qualification fit, rule training or validation was submitted. The source stays
+frozen at `99af520` on the target; local changes since then are evidence/docs.
+Operational job IDs and the precise resumption point remain under
+`artifacts/sprint2/pilot-20261107/PAUSED.md`. Polling is paused during compute.
+
 ## Historical compute-node pilot — 8 November 2026
 
 Both frozen historical cases, at 120 and 260 sites, pass the predeclared

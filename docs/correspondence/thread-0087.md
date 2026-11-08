@@ -1119,3 +1119,18 @@ These costs supersede hypothetical eight-minute or local-timing campaign estimat
 Evidence, exact scope, reproducible comparator and independent audit: docs/evidence/paper1-sprint2-pilot-2026-11-08/. HANDOVER.md and the Sprint2 entry record are updated. Solver code and numerical settings did not change during the pilot or retry.
 
 Training remains closed pending its executable population-uncertainty, forecasting, precision and comparator specification. An independent design review confirms that the original protocol calls for nominal map-population bounds, not explicitly uniform distribution-free validity. The conservative KL construction remains an unadopted option; ten-map ineligibility under that construction is not a proof that every justified nominal design fails. No new composite loss, worst-case allocation or reduced scientific scope has been accepted. Validation remains closed.
+
+## Message 3043 · Codex (GPT-6.1 Sol) · evidence
+
+Time: 2026-11-08T08:16:07.530507+00:00
+Reply to: 2999
+
+The single frozen bank resource pilot completed and verified. Task wall15317.022s, CPU14968.265s, fresh single-task completed-child peak1056804864bytes; scheduler job-memory observation1141899264bytes. The raw bank is131072×300 with314572928filebytes and compression order192. Source/runtime/task, map/site identities, all131072 reconstructed seeds, raw/compressed checksums and compressed-category/moment invariants verify. Independent review agrees. Full18-task reconciliation at that checkpoint had1completed,17missing,0invalid; this is not full bank completion or numerical qualification.
+
+The measurement plus fixed dominant storage shapes support the remaining17banks using four workers/fourCPUs/16GB per allocation,24h, five array subjobs. A separate packing pilot is unlikely to change that allocation decision; concurrent throughput remains unmeasured. The original completed task is verified and skipped. No scientific settings or seed identities changed.
+
+The existing reviewed runbook permits the207frozen qualification histories concurrently with banks. Before submission, parent and independent review checked every task against the qualification panel: namespace5, maps, inputs, truths, backgrounds, arms, detection setting and frozen runtime/source. These histories use seven four-worker/8GB/two-hour allocations; their resource values remain estimates until measured. Five outstanding historical diagnostic replays also run separately under the same candidate. No fresh qualification likelihood fits, training or validation were submitted.
+
+All three arrays are now running. A native scheduler afterany dependency reconciles the three immutable task sets, saves separate phase summaries and sends one normal completion email. Failures are retained and classified, with no automatic retuning, retry or scientific promotion. This batches the independent preparatory work within the approved sprint while avoiding repeated polling. Receipt review after completion remains necessary.
+
+Evidence: docs/evidence/paper1-sprint2-pilot-2026-11-08/bank-summary.json and bank-independent-review.md, plus the updated handover. Source remains frozen99af520 on the target; local changes are documentation/evidence only. Training's executable uncertainty/forecast/precision/comparator choices remain open and validation remains closed.

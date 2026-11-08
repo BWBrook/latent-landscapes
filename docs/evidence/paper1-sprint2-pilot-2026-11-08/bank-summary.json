@@ -1,0 +1,71 @@
+{
+  "bank_replicate": 0,
+  "bank_size": 131072,
+  "biological_histories_in_this_task": false,
+  "builder_elapsed_seconds": 15278.00955335237,
+  "compressed_bytes": 754118,
+  "compressed_sha256": "4c70aa5ad84168e7dabd156418a6c4f86cedd3a07f544a2c3ea24dae28ee9812",
+  "cpu_seconds": 14968.264947,
+  "extracted_pilot_task_json_sha256": "29869658574ddd74f36a7f4d0da674a40e0a3890dc9fe92c1f573f8d9f5fb89a",
+  "full_bank_tasks_jsonl_sha256": "3564b8934cfc7909ea02a6265fbd4e1bd68df75013931b8b66cf4eb3ce632ae6",
+  "manifest_sha256": "12187e983f60bce8f858d1055398fc4fde3634269c3047398ca7cdfc72ebe423",
+  "map": {
+    "archetype": "barrier",
+    "map_index": 0,
+    "role": "qualification",
+    "spawn_key": [
+      2,
+      2,
+      0
+    ]
+  },
+  "map_input_sha256": {
+    "design.json": "bed3b68b1b8af9ead1a2a9e08cc40b3de431187b771d9ed67f4a9e6a01cc0c33",
+    "exposure.npz": "5a5ad6ce618076f7abdcbd98675daa489a9c8c0e824a1a9765df9e4fc268effe",
+    "public_inputs.npz": "4d8e3c7d9f32fc68b189bc58d12a3bfc0c6a446fe48fd75e71fed1fe18568413",
+    "record.json": "ba92cdbe808d16297da3f4133fb23a089fcb3321db24c4575627942041b1c373",
+    "surfaces.npz": "b60a0749b4b8905eec2215033a6602f22c05d687845f5991ae42889aec328e20"
+  },
+  "memory_limitation": "Fresh single-task completed-child peak is not aggregate-node memory; other geometries and packed throughput are not yet measured.",
+  "next_bank_allocation": {
+    "array_subjobs": 5,
+    "completed_bank_skipped": true,
+    "cpus_per_subjob": 4,
+    "memory_gb_per_subjob": 16,
+    "new_banks": 17,
+    "walltime": "24:00:00",
+    "workers_per_subjob": 4
+  },
+  "notification_delivery_confirmed_by_user": true,
+  "outputs_verified": 6,
+  "pbs_peak_memory_kib": 1115136,
+  "phase_task_files_sha256": {
+    "banks": "3564b8934cfc7909ea02a6265fbd4e1bd68df75013931b8b66cf4eb3ce632ae6",
+    "historical": "a2c179da4b14ac0557006230b345aa367d19833d370b427ced34270eedc724df",
+    "histories": "0b7fbda2a20f968304f921b1ef2dbc7c312ebc527e208b0600975e43868ea7b5"
+  },
+  "qualification_evidence": false,
+  "raw_bytes": 314572928,
+  "raw_sha256": "a1c53dc5ec809ff263754ff32c8c8e98676e9a0a3c53853706b70ea0a75bbb0c",
+  "raw_shape": [
+    131072,
+    300
+  ],
+  "reconciliation_after_single_bank": {
+    "completed": 1,
+    "invalid": 0,
+    "missing": 17,
+    "tasks": 18
+  },
+  "schema": "sprint2-bank-resource-summary-v1",
+  "scope": "one task;17bank tasks not run;no biological histories",
+  "seed_sha256": "a6ac587a103e31f29b29882bd1492e30a48c3135c475ff77c577b516df73bb22",
+  "series_order": 192,
+  "site_ids_sha256": "798d2fe8c9d549c358f76ff34b9522140469ca7eccc0ff20aba6ba2f455f4401",
+  "source_commit": "99af5206b6a4e53f5b8e9d71cbf348f95e9ae574",
+  "status": "verified_completed",
+  "task_id": "bank-barrier-0-r0",
+  "task_receipt_sha256": "386c7149d3a492da1e00dd65163e1ab781605e529c424692247ce28c40f455d8",
+  "wall_seconds": 15317.022270724177,
+  "worker_children_peak_rss_bytes": 1056804864
+}
