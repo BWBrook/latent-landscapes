@@ -1,0 +1,42 @@
+# Independent review: what training feasibility requires
+
+7 November 2026. Read-only review of the integrated protocol, Sprint 1 packet and Sprint 2 entry amendment at the parent's request. This note supersedes any interpretation of the longer proposal as an accepted training specification. It adopts neither KL bounds, a new composite loss, worst-case history planning nor a 32,400-dataset tranche. No outcomes, fits or validation material were accessed; only this ignored note was written.
+
+## 1. What the agreed protocol requires, and what remains missing
+
+**The protocol requires nominal one-sided 95% population upper confidence bounds, not explicitly uniform distribution-free finite-sample validity.** Its target is the equally weighted map-population mean false-declaration/noncoverage rate within each declared stratum, with eligibility at <=.05 (integrated protocol, lines 313–332 and 348–359). It explicitly distinguishes selected development bounds from post-selection guarantees and uses pointwise assessments. The validation allocation uses a t-based planning formula and disclaims guaranteed realised widths (lines 421–455). None of this makes a distribution-free method mandatory. Conversely, the planning formula does not automatically approve a t confidence interval for sparse map errors.
+
+The ten-map development allocation is explicitly initial, not an assurance that training succeeds (lines 414–416). The Sprint 2 amendment explicitly calls KL an option, not an adopted rule (lines 119–128). Therefore declaring the original design mathematically incapable of meeting **its actual nominal specification** would overstate the evidence. It is incapable under the proposed KL option; feasibility under justified model-based inference remains unresolved.
+
+The missing executable decisions are:
+
+- **Population uncertainty:** choose the estimator/UCB, assumptions, nuisance treatment, zero/all-event conventions, incomplete-map handling and deterministic numeric eligibility rule. Keep all six truths and all three fitted families. Freeze separately how final validation intervals will be calculated before opening validation.
+- **Forecasts:** define response targets and loss functions, exact planning-feature calculations, model/regularisation, weighting and numerical-failure handling. Assign whole-map folds explicitly; recompute cutoffs, preprocessing and forecasts within each fold. Specify what a fold with no eligible rule reports. Preserve the total-events and archetype comparators and prohibit realised-hazard/arrival leakage.
+- **Precision:** choose executable within/between-map variance estimators, the one-sided 90% upper planning bound, paired A–C calculations, history-count iteration and near-zero handling. Preserve the existing .01 absolute-rate/.05 contrast widths, MCSE limits, minimum maps and floors. Clarify MALE denominators when estimates fail or are nonunique; do not silently introduce a penalised replacement outcome.
+- **Audit and stress:** freeze bootstrap map selection and apply the measured-cost amendment rule, including separate h=3 coverage fits. Specify the balanced temporal-stress map/cell allocation; retain its frozen formula outside stationary cutoff training. Implement the required complete-data references and reporting alongside the inferential outputs.
+
+Already specified grids, smallest-eligible ties, six-truth 200/100 proposed allocation, scientific failures as non-declaration/noncoverage, and identity-preserving execution retries need implementation, not reinvention.
+
+## 2. What ten maps cannot establish without assumptions
+
+For independent bounded map fractions with an otherwise unrestricted population, consider maps that have error probability one with probability .06 and zero otherwise. Ten maps all come from the zero-error class with probability `.94^10=.5386`, although the population mean exceeds .05. An upper bound that always certifies <=.05 on an all-zero panel cannot have uniform 95% coverage over that unrestricted class. More histories on those same maps do not reveal the missing map class. This is a counterexample in the unrestricted map-fraction model, not evidence that the registered landscape generator behaves that way.
+
+The KL construction makes this tradeoff explicit: ten all-zero maps give U=.2589; 59 maps are required for U<=.05 at zero observed errors. Ten-fold training requires at least 66 maps per archetype merely to retain 59 in every fold. At an observed mean .01, the corresponding KL minima are 122 and 136. These are method-specific feasibility calculations, **not universal sample-size requirements of the protocol**. They do not show that an ecologically supported, narrower population model must require these counts.
+
+The impossibility concerns uniform validity across arbitrary map-error distributions. Ordinary nominal or model-based intervals can be substantially tighter because their coverage rests on additional assumptions or approximations. Those assumptions must be declared and defensible; calling an interval “nominal” does not excuse an all-zero width or unexamined undercoverage.
+
+## 3. Compatible options without changing the target
+
+A beta-binomial model is one concrete candidate: history error counts are conditionally binomial within a map, map error probabilities follow a beta distribution, and their mean is the original population estimand. A logit-normal random-effects model is another. These change the uncertainty assumptions, not necessarily the target. Each must account for map heterogeneity, preserve equal-map population interpretation and avoid inappropriate pooling across backgrounds/truths. Approximate cluster-level intervals are also conceptually compatible, but ten maps and rare events warrant prospective calibration rather than a cosmetic zero-event correction.
+
+The fixed landscape generator supplies a defined population; it does **not** by itself prove beta/logit-normal error heterogeneity. Nonlinear fitting failures can produce unusual tails even when geometry looks regular. In particular, an unrestricted beta-binomial model includes a concentration-to-zero limit approaching the rare zero/one-map mixture. Merely choosing that model does not remove the ten-map issue if uniform validity over its entire parameter space is claimed. Restricting heterogeneity, borrowing strength across strata, using informative priors, or accepting a nonuniform approximation introduces substantive assumptions that must remain visible.
+
+A suitable prospective methods study would simulate count panels across plausible means, heterogeneity and map counts; refit the complete proposed interval method; check zero-event/boundary behaviour; and verify coverage with independent simulation streams and stated Monte Carlo uncertainty. Misspecification stress should include rare-map mixtures. Such calculations test the method under declared models; they do not establish that those models describe this generator. Independent developmental evidence or mechanism-based arguments must support that second step. Protected validation cannot serve as method-selection data.
+
+More development maps, a carefully justified nominal model, or a reported failure to qualify are therefore all compatible paths. None authorises replacing population means by finite-panel rates, dropping truths, or choosing whichever interval makes ten maps pass.
+
+## 4. Minimum recommendation for Claude
+
+Complete the historical resource pilot and finite-panel numerical qualification independently. Ask Claude to adjudicate a **single explicit uncertainty-method proposal** against the original nominal target: its assumptions, boundary handling, prospective coverage checks and whether the map allocation needs expansion. Do not make acceptance of KL a prerequisite.
+
+Then close the forecast, precision, bootstrap-selection and stress-allocation gaps in one compact executable addendum before training outcomes. Use measured cost to compare scientific options, not to relax nominal error or precision targets. Routine methodological selection can be independently reviewed by Claude/Codex; involve Barry when the choice changes the intended claim, scientific priorities or resource commitment materially. Until those decisions are recorded, training remains closed. The present conclusion is **an unresolved specification and feasibility decision**, not a demonstrated failure of the original nominal population-calibration design.

@@ -1,13 +1,13 @@
 {
-  "reviewed_at_utc": "2026-11-06T12:53:22.299431+00:00",
-  "reviewer": "Codex (GPT-6)",
+  "reviewed_at_utc": "2026-11-08T03:29:53.660358+00:00",
+  "reviewer": "Codex (GPT-6.1 Sol)",
   "project": "latent-landscapes",
   "reviewed_thread_id": 87,
-  "exporter_revision": "c1dcfbfe087c4bd5b29b0392bab09c7204e997cd",
+  "exporter_revision": "5ca82a5ad2114960f19ab42cc7f3ff157ac32ce8",
   "exporter_sha256": "47d42a8f9b77c78cca9c6f005e260968a6ed45f025e275f65830671be7fff417",
   "exporter_source_matches_revision": true,
-  "total_message_count": 158,
-  "retained_body_count": 36,
+  "total_message_count": 159,
+  "retained_body_count": 37,
   "withheld_body_count": 122,
   "threads": [
     {
@@ -45,10 +45,10 @@
     {
       "id": 87,
       "first_message_id": 1877,
-      "exported_through": 2916,
-      "message_count": 37,
-      "retained_bodies": 36,
-      "source_content_sha256": "036539c7db68b35ab3578ff02a7f41320e5b8a6e92f0ba3f3f4dc98b9a3fe297"
+      "exported_through": 2999,
+      "message_count": 38,
+      "retained_bodies": 37,
+      "source_content_sha256": "152ce6da28d2785deb9e7543ef3cbe29a6051abec7015ba5d49d490bd1ef3df6"
     },
     {
       "id": 124,
@@ -60,14 +60,14 @@
     }
   ],
   "sha256": {
-    "INDEX.md": "889c375a83e3c228802aba5e9c1efdf85603620d0b88ae044080595cecc2abc8",
-    "REVIEW.md": "2294d25024a471f9dd7ab4374ce11924f0ffe020ad6ce257e1a15f516658c92a",
-    "publication.toml": "5cec1c9ee8bcd16bf202f528abe4bf21026d231ef7581aa2a65bd54421049ba5",
+    "INDEX.md": "f74f50975eb47dc329c4ae7dd2df1a5fba31dd443d7de36af9cb000bfbe55356",
+    "REVIEW.md": "962f2cf924894c155fa132f491faab0c3a3be44be1bc2b8901de5e4f052cfbb1",
+    "publication.toml": "3468de7ec9d22935c762e7def0abf20b3a4c193d4597672066c34f3664ec60a7",
     "thread-0021.md": "dc9e21314c0eabd49bb3ff63f57670d879ab13e172179b1a93b291d11ab63146",
     "thread-0044.md": "3c506f5c2e196fb714c22bd45906c551f27b1247a5f85177e352a6ab50b63dca",
     "thread-0053.md": "4f4caaf0537ddef1901c61394b2db9e11efd250093627add5d85001dafde9478",
     "thread-0086.md": "9cf377f9c4c821ef90fc8ffe51acee5c6dae95484c6ff39b0a5ee7b21697b336",
-    "thread-0087.md": "e27268afbf04588590477c0440ea19c359a14544e9bcafe6e09e8bf97ef15233",
+    "thread-0087.md": "586f0a0a46adbecb75c19a735d0ef5fa5d2edc76036269e6e669f0e6a5554dd7",
     "thread-0124.md": "1438900ca4cb26d06ad8b54ba14abad2ef60696dd737b5fa9a93689585802622"
   }
 }

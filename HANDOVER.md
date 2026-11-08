@@ -1,3 +1,28 @@
+## Historical compute-node pilot — 8 November 2026
+
+Both frozen historical cases, at 120 and 260 sites, pass the predeclared
+limited portability gate on candidate `99af520`. Read the
+[pilot evidence and measured costs](docs/evidence/paper1-sprint2-pilot-2026-11-08/README.md).
+The 120-site fit took 1.27 target wall hours; the 260-site fit took 9.31 wall
+hours and 6.33 CPU-hours. The first 260-site attempt exceeded its four-hour
+limit and remains preserved; the identical-task retry resolved. Both complete
+results, all eight sets and their source/input/runtime/task identities verify.
+The matched-node comparison is limited; fresh qualification retains its
+separate exact-union anchor and gradient audits.
+
+The nine frozen qualification maps are staged and verified. The 18-bank and
+207-history plans are prepared, with observation generation still unstarted.
+One frozen bank task (barrier-0 replicate 0) is running as a resource pilot
+with one worker, 8 GB and a 24-hour ceiling. Reconcile its receipt and measure
+peak memory/runtime before choosing bank concurrency. Complete
+the remaining historical diagnostic replays and measured scaling before
+claiming campaign throughput. The reviewed qualification design remains fixed.
+Training additionally awaits the executable population-uncertainty, forecasting,
+precision and comparator specification. The protocol requires nominal population
+bounds; the optional distribution-free KL construction has not been adopted.
+Validation remains closed. Private operational receipts and the current
+resumption point are under `artifacts/sprint2/pilot-20261107/`.
+
 ## Sprint 2 entry work — 6 November 2026
 
 Sprint 2 has started; it is not complete. Read

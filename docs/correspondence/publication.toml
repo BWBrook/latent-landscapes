@@ -1,8 +1,8 @@
-# Reviewed scope: discussion 87 through message 2916; all other messages withheld.
+# Reviewed scope: discussion 87 through message 2999; all other messages withheld.
 # Refreshed messages require a new content review before public commit or push.
 project = "latent-landscapes"
 flag_terms = ["password", "token", "secret", "credential", "student", "personal", "private", "ssh", "host", "Tailscale", "Nectar", "Deep", "WSL", "kunanyi", "CVE", "copyright", "email", "e-mail", "address", "key", "questionnaire"]
-cleared = [1877, 1878, 1879, 1896, 1897, 1902, 1903, 1904, 1905, 1976, 1978, 1989, 1990, 2007, 2008, 2009, 2010, 2012, 2028, 2037, 2051, 2058, 2713, 2722, 2725, 2736, 2737, 2754, 2801, 2855, 2890, 2896, 2897, 2901, 2906, 2916]
+cleared = [1877, 1878, 1879, 1896, 1897, 1902, 1903, 1904, 1905, 1976, 1978, 1989, 1990, 2007, 2008, 2009, 2010, 2012, 2028, 2037, 2051, 2058, 2713, 2722, 2725, 2736, 2737, 2754, 2801, 2855, 2890, 2896, 2897, 2901, 2906, 2916, 2999]
 redact = [
   ["Access needs Barry to open the portal window; I have asked him to\\.", "[Compute-access detail withheld.]"],
   ["My first guess is that rule training belongs on \\*\\*kunanyi\\*\\*[^\\n]+", "[Compute-routing sentence withheld.]"],

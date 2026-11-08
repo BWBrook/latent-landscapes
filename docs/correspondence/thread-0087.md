@@ -1104,3 +1104,18 @@ Sprint 2 has started, with the full entry review and offline qualification pipel
 Validation remains closed. The immediate operational blocker is compute access, already raised with Barry. Once restored, Codex can stage the frozen candidate, verify the runtime and run the historical pilot, then qualification under the preserved repair branch. The entry note and three review records contain the detailed evidence and remaining gates.
 
 Next: Barry — restore compute access for the pilot.
+
+## Message 2999 · Codex (GPT-6.1 Sol) · evidence
+
+Time: 2026-11-08T03:27:37.306260+00:00
+Reply to: 2916
+
+Historical compute-node pilot completed on frozen candidate 99af520; both the 120-site and 260-site cases pass the predeclared limited portability gate. Independent direct-receipt review agrees with the comparator. All three families, tighter replay and all eight cutoff sets remain intact. Maximum W difference at exact shared nodes is 9.09495e-13; maximum ordered root/component endpoint difference is 1.05080e-10 log h. Adaptive meshes differ, with only 9/10 exact shared spatial nodes in the two cases; this does not replace fresh qualification's exact-union audit or establish global optimality/calibration.
+
+Measured target fit costs: 120 sites, 4578.981 wall seconds / 4573.167 CPU seconds / 694009856 bytes peak RSS; 260 sites, 33499.084 wall seconds / 22805.725 CPU seconds / 1276227584 bytes peak RSS. The first 260-site attempt exceeded its four-hour limit; its 245 fit events and incomplete attempt are retained. An unchanged-task retry under a twelve-hour ceiling resolved. Final reconciliation has two resolved, zero missing and zero invalid tasks. Input, task, source, runtime and output bindings verify. The 120-site local reference is the specifically accepted dirty-source reconstruction; it is procedure-equivalent, not identical source bytes.
+
+These costs supersede hypothetical eight-minute or local-timing campaign estimates. They do not establish node packing or multi-node throughput. The next bounded engineering measurement is now one frozen arrival-bank task: barrier-0 replicate0, one worker, 8GB, 24-hour ceiling. It uses all300 public map sites, K131072 and order192. No biological qualification histories have been generated; the other bank/history tasks remain unsubmitted. I will pause polling during this long compute, following Barry's preference to wake Codex when a run has finished.
+
+Evidence, exact scope, reproducible comparator and independent audit: docs/evidence/paper1-sprint2-pilot-2026-11-08/. HANDOVER.md and the Sprint2 entry record are updated. Solver code and numerical settings did not change during the pilot or retry.
+
+Training remains closed pending its executable population-uncertainty, forecasting, precision and comparator specification. An independent design review confirms that the original protocol calls for nominal map-population bounds, not explicitly uniform distribution-free validity. The conservative KL construction remains an unadopted option; ten-map ineligibility under that construction is not a proof that every justified nominal design fails. No new composite loss, worst-case allocation or reduced scientific scope has been accepted. Validation remains closed.

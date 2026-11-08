@@ -1,5 +1,16 @@
 # Sprint 2: entry repairs and qualification specification
 
+**8 November pilot update.** Both historical compute-node cases now pass the
+predeclared limited portability gate on clean candidate `99af520`. The
+[evidence record](evidence/paper1-sprint2-pilot-2026-11-08/README.md) preserves
+measured costs, exact comparison scope and the first 260-site walltime failure.
+Target fit wall times were 4578.981 seconds (120 sites) and 33499.084 seconds
+(260 sites); the latter used 22805.725 CPU seconds. These are historical
+portability diagnostics. Fresh observation qualification and training have not
+run. Bank resources and multi-node throughput remain to be measured. This
+update supersedes the access/PBS status at the original stopping point below;
+the scientific gates and numerical method remain unchanged.
+
 Sprint 2 advances charter pillars 3, 4 and 6 under the
 [reviewed sprint envelope](paper1-sprints-2026-11-05.md). The entry source is
 `583c1e3`, incorporating Claude's handover in message 2906. Entry review found
