@@ -1,3 +1,29 @@
+## Input batch verified; numerical qualification launched — 9 November 2026
+
+All 18 banks and 207 frozen qualification arm datasets completed with verified
+identities and no missing/invalid tasks. All five outstanding historical
+replays resolved, with all three families/eight cutoffs available and no
+trigger, latent-mode or envelope flags. Together with the earlier two-case
+pilot, the historical replay tranche is complete. These are historical
+diagnostics and input checks; fresh numerical qualification is still underway.
+
+Read the [batch evidence](docs/evidence/paper1-sprint2-pilot-2026-11-08/input-batch-summary.json)
+and [independent review](docs/evidence/paper1-sprint2-pilot-2026-11-08/input-batch-independent-review.md).
+The target producer reverified all raw bank payloads, nine independent-bank
+pairs and all history dependencies, then produced 486 tasks with zero pending:
+207 dense, 207 lean, 54 independent-bank lean and 18 exhaustive lean fits.
+
+The complete frozen fit batch is submitted in 243 two-worker allocations,
+two CPUs/8 GB/48 hours each. This follows the completed multi-node historical
+and bank measurements; the ceiling is not an ETA. One dependent job will
+reconcile all fit receipts and email completion. Training and validation
+remain closed. After that email, review scientific and execution failures
+separately, then prepare the registered exact-union, gradient and descriptive
+integration audits and final qualification reducer. A completed fit array is
+not a qualification pass. Target source/runtime remain frozen at `99af520`;
+current local changes are documentation/evidence only. Operational IDs and
+resumption details remain under artifacts/sprint2/pilot-20261107/.
+
 ## Bank pilot verified; next phases submitted — 8 November 2026
 
 The first frozen bank, barrier-0 replicate 0, completed in 4.25 wall hours

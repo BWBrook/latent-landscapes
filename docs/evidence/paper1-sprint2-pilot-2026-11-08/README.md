@@ -1,5 +1,28 @@
 # Historical compute-node portability pilot
 
+**9 November completion and launch.** All 18 banks, 207 frozen qualification
+arm datasets and five outstanding historical diagnostic fits completed with no
+missing/invalid tasks. The [batch summary](input-batch-summary.json) records
+hashes and measured costs; the [independent review](input-batch-independent-review.md)
+checked 230 task identities and 1,362 locally available output hashes, seed
+pairs, observation masks and paired biology. Target preparation additionally
+checked all raw bank payloads and nine bank pairs and produced 486 fit tasks
+with zero pending dependencies.
+
+The full frozen numerical-qualification fit batch is now submitted: 207 dense,
+207 lean, 54 independent-bank lean and 18 exhaustive lean. It uses 243
+two-worker/two-CPU/8-GB allocations with a 48-hour ceiling, retaining the entire
+tight replay and cutoff grid. The completed multi-node historical/bank runs
+and source storage dimensions support that allocation; they do not predict
+linear scaling or an exact finishing time. A dependent standard reconciler
+checks all fit attempts and sends a completion email. Execution completion
+still precedes the registered common-anchor, gradient, integration and final
+qualification checks. Training and validation remain closed.
+
+This dated update supersedes the earlier running/submitted status paragraphs
+below; the historical evidence and original bank-pilot measurements stay intact.
+
+
 Both cases pass the [predeclared limited portability gate](acceptance-review.md)
 on frozen candidate `99af5206b6a4e53f5b8e9d71cbf348f95e9ae574`. This advances
 Sprint 2's numerical/execution entry gate. The

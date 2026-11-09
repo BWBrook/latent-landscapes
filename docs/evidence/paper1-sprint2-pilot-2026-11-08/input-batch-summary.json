@@ -1,0 +1,191 @@
+{
+  "completed_pbs_allocations": {
+    "banks": {
+      "all_exit_statuses_zero": true,
+      "maximum_reported_job_memory_bytes": 4434382848,
+      "subjobs": 5,
+      "wall_times": [
+        "04:34:15",
+        "04:39:09",
+        "04:39:00",
+        "04:37:31",
+        "04:30:34"
+      ]
+    },
+    "historical": {
+      "all_exit_statuses_zero": true,
+      "maximum_reported_job_memory_bytes": 606912512,
+      "subjobs": 3,
+      "wall_times": [
+        "02:34:14",
+        "01:30:28",
+        "03:18:27"
+      ]
+    },
+    "histories": {
+      "all_exit_statuses_zero": true,
+      "maximum_reported_job_memory_bytes": 427704320,
+      "subjobs": 7,
+      "wall_times": [
+        "00:01:49",
+        "00:01:33",
+        "00:01:37",
+        "00:01:58",
+        "00:01:44",
+        "00:01:40",
+        "00:01:13"
+      ]
+    }
+  },
+  "date": "2026-11-09",
+  "full_numerical_qualification_pass": false,
+  "historical_diagnostics": [
+    {
+      "all_four_views_eight_sets_available": true,
+      "dataset": "cell-01-rep-006-arm-A",
+      "fit_cpu_seconds": 7193.934267302,
+      "fit_peak_rss_bytes": 686608384,
+      "fit_wall_seconds": 7211.339951677248,
+      "receipt_sha256": "c504ede24e948fb9112743c88f73aff3355d0a4edb0fdbca5982bedcdcbc2ecb",
+      "status": "resolved",
+      "trigger_or_latent_or_envelope_flags": false
+    },
+    {
+      "all_four_views_eight_sets_available": true,
+      "dataset": "cell-04-rep-005-arm-A",
+      "fit_cpu_seconds": 9223.359470783,
+      "fit_peak_rss_bytes": 686964736,
+      "fit_wall_seconds": 9231.783337863162,
+      "receipt_sha256": "024595bce0fe17500d8f1707f4cccea5bb072ad9671e8c33f53987cff7b9e29c",
+      "status": "resolved",
+      "trigger_or_latent_or_envelope_flags": false
+    },
+    {
+      "all_four_views_eight_sets_available": true,
+      "dataset": "cell-06-rep-006-arm-B",
+      "fit_cpu_seconds": 5036.239296848,
+      "fit_peak_rss_bytes": 686497792,
+      "fit_wall_seconds": 5047.441893907264,
+      "receipt_sha256": "cc11290aeaba333a8a186ce929563cbd4a0ad01c08a56d7d58c388b8945cc5ab",
+      "status": "resolved",
+      "trigger_or_latent_or_envelope_flags": false
+    },
+    {
+      "all_four_views_eight_sets_available": true,
+      "dataset": "cell-08-rep-006-arm-B",
+      "fit_cpu_seconds": 5403.217329127,
+      "fit_peak_rss_bytes": 686866432,
+      "fit_wall_seconds": 5407.1412621834315,
+      "receipt_sha256": "b995b014807c472bad19e0a225da0b579479da4a733d15b1c20a2ccdf0a84916",
+      "status": "resolved",
+      "trigger_or_latent_or_envelope_flags": false
+    },
+    {
+      "all_four_views_eight_sets_available": true,
+      "dataset": "cell-09-rep-005-arm-B",
+      "fit_cpu_seconds": 11877.924829024,
+      "fit_peak_rss_bytes": 686784512,
+      "fit_wall_seconds": 11880.875342816114,
+      "receipt_sha256": "c7f1115f4bb17316acf55beab8ca32f5b202be72b7f90754e14631053f11d6dc",
+      "status": "resolved",
+      "trigger_or_latent_or_envelope_flags": false
+    }
+  ],
+  "limitations": [
+    "Input and historical-diagnostic completion does not establish fresh numerical qualification or statistical calibration.",
+    "Worker child RSS is a lifetime maximum; reused history-worker values are not additive per-history memory measurements.",
+    "Target producer completed all18raw-bank and9independent-bank-pair checks and207history dependency checks before preparing486tasks."
+  ],
+  "phases": {
+    "banks": {
+      "completed": 18,
+      "execution_failure": 0,
+      "invalid": 0,
+      "maximum_worker_children_peak_rss_bytes": 1061859328,
+      "missing": 0,
+      "reconciliation_sha256": "f2bb72c2acc3dbd2adc1afa096e308c0c9403c55bab7af6d83a5ad2754cf6391",
+      "resolved": 0,
+      "scientific_failure": 0,
+      "task_wall_seconds": {
+        "max": 16745.380624704063,
+        "median": 16572.58871478308,
+        "min": 15317.022270724177
+      },
+      "tasks": 18,
+      "total_task_cpu_seconds": 295545.862618
+    },
+    "historical": {
+      "completed": 0,
+      "execution_failure": 0,
+      "invalid": 0,
+      "maximum_worker_children_peak_rss_bytes": 686964736,
+      "missing": 0,
+      "reconciliation_sha256": "ea31054327d4ce61047a7e2682af67c6ce186eb9540c51b534d39c15ec6aff67",
+      "resolved": 5,
+      "scientific_failure": 0,
+      "task_wall_seconds": {
+        "max": 11899.518451662268,
+        "median": 7226.157550973818,
+        "min": 5062.116377502214
+      },
+      "tasks": 5,
+      "total_task_cpu_seconds": 38736.132503
+    },
+    "histories": {
+      "completed": 207,
+      "execution_failure": 0,
+      "invalid": 0,
+      "maximum_worker_children_peak_rss_bytes": 102469632,
+      "missing": 0,
+      "reconciliation_sha256": "9f1fa46b2d5f787dc463bafb9e009707e19888ec011964a7bbaae1c8e11d008b",
+      "resolved": 0,
+      "scientific_failure": 0,
+      "task_wall_seconds": {
+        "max": 46.12399643287063,
+        "median": 9.801034895703197,
+        "min": 6.066967038437724
+      },
+      "tasks": 207,
+      "total_task_cpu_seconds": 554.063245
+    }
+  },
+  "qualification_fit_plan": {
+    "allocation": {
+      "array": "0-242",
+      "chunk": 2,
+      "memory_gb": 8,
+      "ncpus": 2,
+      "walltime": "48:00:00",
+      "workers": 2
+    },
+    "completion": {
+      "dependency": "afterany qualification-fit array",
+      "mail_points": "ae",
+      "memory_gb": 2,
+      "ncpus": 1,
+      "walltime": "02:00:00"
+    },
+    "pending_dependencies": 0,
+    "plan_sha256": "4f641c73d1ce36e42940a1cb418125e7ce77ba58863ae0b9ab51be251db96b95",
+    "roles": {
+      "dense": 207,
+      "exhaustive": 18,
+      "independent_bank": 54,
+      "lean": 207
+    },
+    "task_count": 486,
+    "task_file_sha256": "09a42f38f1d579119afdd3b7b53bec0a968e269fc16fc48e426310e66e86a042"
+  },
+  "schema": "sprint2-input-batch-summary-v1",
+  "source_commit": "99af5206b6a4e53f5b8e9d71cbf348f95e9ae574",
+  "target_dependency_verification": {
+    "histories": 207,
+    "independent_bank_pairs": 9,
+    "pending": 0,
+    "preparation_log_sha256": "0080bf11c862b11c6bbe2aae8bac3d3388ac19aec8774036ac87709cfa7d3cc4",
+    "prepared_tasks": 486,
+    "producer": "scripts/prepare_sprint2_campaign.py fits",
+    "raw_banks": 18,
+    "status": "passed"
+  }
+}

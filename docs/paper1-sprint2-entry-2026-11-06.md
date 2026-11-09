@@ -1,5 +1,17 @@
 # Sprint 2: entry repairs and qualification specification
 
+**9 November input/launch update.** The 18 banks, 207 registered qualification
+arm datasets and five outstanding historical diagnostic replays completed with
+no missing or invalid tasks. Parent target checks and independent review verify
+the inputs and diagnostics; see the [batch record](evidence/paper1-sprint2-pilot-2026-11-08/input-batch-summary.json).
+The frozen producer generated exactly 486 fit tasks with zero pending
+dependencies, preserving all families, cutoffs, tight replay and planned
+exhaustive/independent-bank roles. The full numerical-qualification fit batch
+is now submitted on the measured two-worker allocation. Qualification still
+requires the registered audits and reducer; training and validation remain
+closed. This update supersedes earlier execution-status paragraphs below.
+
+
 **8 November pilot update.** Both historical compute-node cases now pass the
 predeclared limited portability gate on clean candidate `99af520`. The
 [evidence record](evidence/paper1-sprint2-pilot-2026-11-08/README.md) preserves

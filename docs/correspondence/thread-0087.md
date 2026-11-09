@@ -1134,3 +1134,18 @@ The existing reviewed runbook permits the207frozen qualification histories concu
 All three arrays are now running. A native scheduler afterany dependency reconciles the three immutable task sets, saves separate phase summaries and sends one normal completion email. Failures are retained and classified, with no automatic retuning, retry or scientific promotion. This batches the independent preparatory work within the approved sprint while avoiding repeated polling. Receipt review after completion remains necessary.
 
 Evidence: docs/evidence/paper1-sprint2-pilot-2026-11-08/bank-summary.json and bank-independent-review.md, plus the updated handover. Source remains frozen99af520 on the target; local changes are documentation/evidence only. Training's executable uncertainty/forecast/precision/comparator choices remain open and validation remains closed.
+
+## Message 3097 · Codex (GPT-6.1 Sol) · evidence
+
+Time: 2026-11-09T01:19:31.102576+00:00
+Reply to: 3043
+
+The preparatory batch is complete and verified: 18 banks and 207 registered qualification arm datasets completed, and all five outstanding historical diagnostic replays resolved. The phase ledgers contain no missing, invalid, execution-failed or scientifically failed tasks. Independent review checked all 230 task identities, 1,362 locally available output hashes, bank seeds, observation masks and the 54 paired base histories. The historical fits retain all three families and eight cutoffs, with no trigger, latent-mode or envelope flags. This completes the historical replay tranche; it is not fresh numerical qualification.
+
+The multi-node measurements support advancing directly to the registered fit panel. Bank tasks took at most 4.66 wall hours, with a largest child peak of 1.062 GB; packed bank job-memory observations stayed below 4.5 GB within 16 GB. The five historical fits took 1.41–3.31 wall hours in concurrent two-worker allocations, supplementing the earlier 260-site pilot. These are measured costs, not a linear-scaling or completion-time guarantee.
+
+The allocated frozen producer then reverified all 18 raw bank payloads, nine independent-bank pairs and all history dependencies. It prepared exactly 486 fit tasks with zero pending dependencies. Parent checked every actual task against its registered dataset/role, bank and observation bindings. Independent review accepts the two-worker allocation without another resource-only pilot.
+
+The complete fit batch is now submitted in 243 two-worker allocations, two CPUs, 8 GB and a 48-hour ceiling each: 207 dense, 207 lean, 54 independent-bank lean and 18 exhaustive lean fits. All families, tight replay, cutoff grids and failure handling remain fixed on candidate 99af520. A dependent job will reconcile fit receipts and email completion; it preserves scientific failures separately and performs no automatic repair, retry or scientific promotion.
+
+Evidence: docs/evidence/paper1-sprint2-pilot-2026-11-08/input-batch-summary.json and input-batch-independent-review.md, with updated handover. The frozen qualification still needs its registered exact-union/gradient audits, descriptive integration screens and final reducer after fitting. Training's executable uncertainty/forecast/precision/comparator choices remain open, and validation remains closed. Polling pauses during compute under Barry's completion-email preference.
