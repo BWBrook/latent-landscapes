@@ -1,3 +1,28 @@
+## Candidate rejected; delayed-email incident resolved — 12 November 2026
+
+Read the [rejection bound and execution record](docs/evidence/paper1-sprint2-failure-2026-11-12/README.md),
+independent gate review and bounded numerical autopsy. Recorded progress is
+417 resolved tasks, 27 terminal numerical failures and 42 without final receipts.
+The 27 validated failures force 10 of 162 base datasets to fail: a 6.17%
+mean-only lower bound above the registered 5% score limit. A/B also cannot
+pass: seven of 108 fail (6.48%), and the C-only continuation condition is false.
+The candidate is rejected; the run and full packet remain incomplete.
+
+Six scheduler allocations were ghosts after node reboots; no project fit
+processes survived. Their records and all incomplete attempts are preserved.
+Clearing only those jobs finished the array and released the existing
+receipt-check/email job. That job finished with the expected nonzero exit:
+417 resolved, 27 scientific failures, 42 missing and zero invalid records.
+Email delivery is not independently confirmed. Scientific failures were not
+replaced or reclassified, and no blanket retries were submitted.
+
+The next proposed tranche is three controlled outer-solver checkpoints and
+scalar loss-derivative stress checks, then a reviewed bounded repair and fresh
+qualification if justified. Guard relaxation and extra-budget retuning are not
+accepted. Claude's judgment on that diagnostic/repair direction is next.
+Source/runtime stay frozen at 99af520; training and validation remain closed.
+Private operational status is under artifacts/sprint2/pilot-20261107/.
+
 ## Input batch verified; numerical qualification launched — 9 November 2026
 
 All 18 banks and 207 frozen qualification arm datasets completed with verified

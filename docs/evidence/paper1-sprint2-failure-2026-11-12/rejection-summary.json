@@ -1,0 +1,290 @@
+{
+  "AB_lower_bound": {
+    "C_only_continuation_predicate_satisfied": false,
+    "denominator": 108,
+    "forced_failures": 7,
+    "fraction": 0.06481481481481481,
+    "threshold": 0.05
+  },
+  "candidate_commit": "99af5206b6a4e53f5b8e9d71cbf348f95e9ae574",
+  "complete_qualification_report": false,
+  "complete_run": false,
+  "date": "2026-11-12",
+  "decision": "candidate_cannot_pass_registered_numerical_gate",
+  "execution_incident": {
+    "automatic_retries_started": false,
+    "compute_nodes_rebooted_after_original_start": 3,
+    "defunct_allocations_cleared_after_preservation": true,
+    "email_delivery_independently_confirmed": false,
+    "existing_receipt_email_job_finished": true,
+    "existing_receipt_email_job_unblocked_and_running": false,
+    "ghost_allocations": 6,
+    "original_fit_array_finished_after_cleanup": true,
+    "receipt_email_job_exit_status": 1,
+    "receipt_email_job_wall_seconds": 1532,
+    "surviving_project_fit_processes_on_those_nodes": 0,
+    "unfinished_attempts_preserved": 42
+  },
+  "failed_dataset_strata": {
+    "base": 10,
+    "enriched": 2,
+    "trend": 2
+  },
+  "failure_receipts": [
+    {
+      "dataset": "q-enriched-connected-1-increased_heterogeneity-mu0.001-h1-B",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "a69ba3686dc71b58ab2790aa3c19f8750344765c2921b55be96a7d77e4b030af",
+      "role": "dense",
+      "task_id": "fit-q-enriched-connected-1-increased_heterogeneity-mu0.001-h1-B-dense",
+      "task_receipt_sha256": "21e569904a8d18b79b1781eebc1acfa1fc0209507c505a995540573171e994b4"
+    },
+    {
+      "dataset": "q-enriched-connected-1-increased_heterogeneity-mu0.001-h1-B",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "bcd96f66eacaec18756630a7593e9351963ee4139e5d2514da035d23c394e8c9",
+      "role": "lean",
+      "task_id": "fit-q-enriched-connected-1-increased_heterogeneity-mu0.001-h1-B-lean",
+      "task_receipt_sha256": "b82193b116135bf77dc2aeb97e06c53d81b8d43839cc6f3b9bd84cc629e1bd93"
+    },
+    {
+      "dataset": "q-base-connected-2-window_low-mu0.001-h10-A",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "89c7061b0ac03c24a3d6334b414e1861df74bfecc04561d5eb42f6cb1efe26af",
+      "role": "dense",
+      "task_id": "fit-q-base-connected-2-window_low-mu0.001-h10-A-dense",
+      "task_receipt_sha256": "a0501669445d529db56d03973ac9cd46999f0a453ad2bf90eff72e8fd8454d68"
+    },
+    {
+      "dataset": "q-base-connected-2-window_low-mu0.001-h10-A",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "a6f90d6a30539a9237ae1ec1c24f31cfcd825261b19438eafb7bc04637f02a63",
+      "role": "lean",
+      "task_id": "fit-q-base-connected-2-window_low-mu0.001-h10-A-lean",
+      "task_receipt_sha256": "aacc148438b1d2ea7a8c9da864151cb12bf56d585b2de36f6a12df4af9b72e68"
+    },
+    {
+      "dataset": "q-base-connected-2-window_low-mu0.001-h10-B",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "4128abeccea95339f010ae6a86c18ed213e892181e37c8f425274f2b37f78cf5",
+      "role": "dense",
+      "task_id": "fit-q-base-connected-2-window_low-mu0.001-h10-B-dense",
+      "task_receipt_sha256": "a6b6880b20d6d692834182d177906717f69c011366fba84c837ccb2dd853d6be"
+    },
+    {
+      "dataset": "q-base-connected-2-window_low-mu0.001-h10-C",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "c1db4b8567520882c2dc21374ae1b7db5f109dc7e51e6cbd98fa6b48ef457a07",
+      "role": "dense",
+      "task_id": "fit-q-base-connected-2-window_low-mu0.001-h10-C-dense",
+      "task_receipt_sha256": "95e783bf192e09d86b063295de27d76d765c6d2ce94942c5aded641c6359dbd8"
+    },
+    {
+      "dataset": "q-base-connected-2-window_low-mu0.001-h10-C",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "731c484d4b5afaaa44c6b000f89305116cbfe80ff10b3d8c0fe5f05cf2583954",
+      "role": "lean",
+      "task_id": "fit-q-base-connected-2-window_low-mu0.001-h10-C-lean",
+      "task_receipt_sha256": "b3fef448f442701ab687c5eb31c63f07baf77fe51cd0d16509cc75f1ad6c7f49"
+    },
+    {
+      "dataset": "q-base-connected-2-window_high-mu0.004-h1-A",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "058b5cc553cdc1e5b123e8b22a8d55bb84d9a8a089cc455f0f9a45f292762efd",
+      "role": "dense",
+      "task_id": "fit-q-base-connected-2-window_high-mu0.004-h1-A-dense",
+      "task_receipt_sha256": "e1ed035a26a8c778b1c14f7a37aaedb2605c4c3667f5c373d2ee8d4339cf8da9"
+    },
+    {
+      "dataset": "q-base-connected-2-window_high-mu0.004-h1-A",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "36935d72b777db3736d58f6ace6c505b3e417a871540be396f6796ae78549000",
+      "role": "lean",
+      "task_id": "fit-q-base-connected-2-window_high-mu0.004-h1-A-lean",
+      "task_receipt_sha256": "3435ca627e850452f42eae4bb0a2bfd2c44a76038f644177dca0eb47ae50d0ab"
+    },
+    {
+      "dataset": "q-trend-connected-2-temporal_trend-mu0.004-h3-A",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "c2da17afee07a27a147e4fe5fa8dec7af76271feb0cd54b19229d8787ff8df6d",
+      "role": "dense",
+      "task_id": "fit-q-trend-connected-2-temporal_trend-mu0.004-h3-A-dense",
+      "task_receipt_sha256": "cca638c291a620ef77e149dc863ddd34fc03d060441c7511b2d727b7a2347b94"
+    },
+    {
+      "dataset": "q-trend-connected-2-temporal_trend-mu0.004-h3-A",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "3090f001dc584be355970a5d2db54e5e2c37f9e191a6ac6f5abfe8d9fa74e014",
+      "role": "lean",
+      "task_id": "fit-q-trend-connected-2-temporal_trend-mu0.004-h3-A-lean",
+      "task_receipt_sha256": "b1b9f9b5dbc43cf48b8f13a919a464890abb396cf055c52389b030b0112a1ed1"
+    },
+    {
+      "dataset": "q-base-corridor-0-increased_heterogeneity-mu0.001-h1-C",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "cd272fc54f42e27da0e15744af23a3db9892aa8182628f2d28a5ba24ade2f730",
+      "role": "dense",
+      "task_id": "fit-q-base-corridor-0-increased_heterogeneity-mu0.001-h1-C-dense",
+      "task_receipt_sha256": "6ccd0b9087f33bfbc2b7832996a26262b1e05e0e480b729ab18a2fabf8380958"
+    },
+    {
+      "dataset": "q-base-corridor-0-increased_heterogeneity-mu0.001-h1-C",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "70fe17fb7c36fff6117bcdc7b0920a2973b69dd0f0cb5b103cbcafde3fd85de0",
+      "role": "lean",
+      "task_id": "fit-q-base-corridor-0-increased_heterogeneity-mu0.001-h1-C-lean",
+      "task_receipt_sha256": "15da44f1621ef9a61552d339777b436428cd3541233e78164dd93de5cff2df4f"
+    },
+    {
+      "dataset": "q-base-corridor-0-increased_heterogeneity-mu0.001-h1-C",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "9d170470eade62e052fa296897ca95e580bc489c4048d95d83a26b4b220cc6ed",
+      "role": "independent_bank",
+      "task_id": "fit-q-base-corridor-0-increased_heterogeneity-mu0.001-h1-C-independent_bank",
+      "task_receipt_sha256": "ef13dcf42b61936290e7f7340257920551c356c383e72a7844b41b3a56343ddd"
+    },
+    {
+      "dataset": "q-base-corridor-0-increased_heterogeneity-mu0.001-h1-C",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "0e59c0110745c697344ae7a9191650e19e1fe68b581873495687c3f52a2dad21",
+      "role": "exhaustive",
+      "task_id": "fit-q-base-corridor-0-increased_heterogeneity-mu0.001-h1-C-exhaustive",
+      "task_receipt_sha256": "c8ebedc9bc889569d34ffde567af8f70e7a4acff5aebe8e9ed1bde29bac0380f"
+    },
+    {
+      "dataset": "q-base-corridor-1-window_low-mu0.001-h1-B",
+      "failure_class": "search_unresolved",
+      "fit_receipt_sha256": "35280ae0f8965036349fdd86bf5e4b2a9e453f699132a0c69649dc2d5a0f3ed0",
+      "role": "dense",
+      "task_id": "fit-q-base-corridor-1-window_low-mu0.001-h1-B-dense",
+      "task_receipt_sha256": "2dba57474ee7b9cd1f817022ccc28101bf0cedac10494fc1b3fbb74848619121"
+    },
+    {
+      "dataset": "q-base-corridor-1-window_low-mu0.001-h1-B",
+      "failure_class": "search_unresolved",
+      "fit_receipt_sha256": "08554e53bf1b9604d2e0d35234c6fb9d7e433de219ff53ab5d455698afafdc9c",
+      "role": "lean",
+      "task_id": "fit-q-base-corridor-1-window_low-mu0.001-h1-B-lean",
+      "task_receipt_sha256": "882397bf7138835757a351e1ebb2220188f0e9e370e65fefd919d90497bc51a7"
+    },
+    {
+      "dataset": "q-base-corridor-1-window_high-mu0.001-h3-B",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "09466d55b2b175b671f7ca89723d4e64d20ac67f8c408da526457f985662f1e2",
+      "role": "dense",
+      "task_id": "fit-q-base-corridor-1-window_high-mu0.001-h3-B-dense",
+      "task_receipt_sha256": "1d8029bf7196101127b3f0b60d5ed3a417f7b5da6491e7ff4ae5c15866062b59"
+    },
+    {
+      "dataset": "q-base-corridor-1-window_high-mu0.001-h3-B",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "6c68968e16899cf752ccc2d0a399fbf1ca07d4476592d8e0c8bc9247b3005a23",
+      "role": "lean",
+      "task_id": "fit-q-base-corridor-1-window_high-mu0.001-h3-B-lean",
+      "task_receipt_sha256": "d216e66a0e5b7d98561a45bdedd91a91e9626237f04c1df2f9410c8c552a351b"
+    },
+    {
+      "dataset": "q-base-corridor-1-b100_anchor-mu0.004-h3-A",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "6c2f0134269356b065f36a6dcf170e4a71a68370bcb927900e66dcb9a4693a47",
+      "role": "dense",
+      "task_id": "fit-q-base-corridor-1-b100_anchor-mu0.004-h3-A-dense",
+      "task_receipt_sha256": "70fa55d63a16e2155bbded192742258e04b45dd09642294918c5e38dbd5902f6"
+    },
+    {
+      "dataset": "q-base-corridor-1-b100_anchor-mu0.004-h3-A",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "9b5e987d4eba9bce8ea5441ac016e80278c9f12de8b4d64ade6ef698c58426a2",
+      "role": "lean",
+      "task_id": "fit-q-base-corridor-1-b100_anchor-mu0.004-h3-A-lean",
+      "task_receipt_sha256": "1e74ab5e6d0ffd3967c028e45c61079c3c6ef6dd744c07f6ba9c1bfe2d688111"
+    },
+    {
+      "dataset": "q-base-corridor-1-b100_anchor-mu0.004-h3-A",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "3b50ab9b162aff26efc051fa3ae9bc7bad145f520fc0446ca8ff182a58edec99",
+      "role": "independent_bank",
+      "task_id": "fit-q-base-corridor-1-b100_anchor-mu0.004-h3-A-independent_bank",
+      "task_receipt_sha256": "cf11aaa73b1bc45a7738a6cccf7d3a2bf52b73811f0ff49da14fdebf694e5589"
+    },
+    {
+      "dataset": "q-enriched-corridor-1-window_high-mu0.001-h1-B",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "ec6d76bed13c8d99a4fae6bd2890da7359b5dce7da8f8e703d8d4dba98ddc814",
+      "role": "dense",
+      "task_id": "fit-q-enriched-corridor-1-window_high-mu0.001-h1-B-dense",
+      "task_receipt_sha256": "bf906d139260d1802b90fc47bf099fc13e17b148d873e8ee92d561ff57f54475"
+    },
+    {
+      "dataset": "q-base-corridor-2-window_high-mu0.001-h1-B",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "30700983899e7f63be270fb66562b9f7f3dd8bd9f0647e43eac9f988349aa794",
+      "role": "dense",
+      "task_id": "fit-q-base-corridor-2-window_high-mu0.001-h1-B-dense",
+      "task_receipt_sha256": "5a947b1bd1d4c2088b148c588d0cb371f9fc6e51af43a997f9843360c517f184"
+    },
+    {
+      "dataset": "q-base-corridor-2-b100_anchor-mu0.004-h1-C",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "ed5695e98027098dc6ee2f0033d95cf6226935929dc31c53733670e20b368aca",
+      "role": "dense",
+      "task_id": "fit-q-base-corridor-2-b100_anchor-mu0.004-h1-C-dense",
+      "task_receipt_sha256": "7ddf10b0c38f640e7b9385783f4092c0bdb1c06a639bdf3fcc18f7aeae651028"
+    },
+    {
+      "dataset": "q-trend-barrier-1-temporal_trend-mu0.004-h3-A",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "3c7fd28faaa0a1647cb3fe20841276ad45596d3b112d6e9e1b6413adf9387ecf",
+      "role": "dense",
+      "task_id": "fit-q-trend-barrier-1-temporal_trend-mu0.004-h3-A-dense",
+      "task_receipt_sha256": "a926e152b3c0adaa7dc574bb7d88ec60a426608dcc3376150255df77afdbfc1b"
+    },
+    {
+      "dataset": "q-trend-barrier-1-temporal_trend-mu0.004-h3-A",
+      "failure_class": "family_fit_failed",
+      "fit_receipt_sha256": "40d1efe7aeea89eef37f49c609d3886fe12e7914d85392dc80d9a977068d0961",
+      "role": "lean",
+      "task_id": "fit-q-trend-barrier-1-temporal_trend-mu0.004-h3-A-lean",
+      "task_receipt_sha256": "5f5bc6869d4e1b62edae9ba32536d989670b54a0a64ce0176e1a3b0958e1b9c6"
+    }
+  ],
+  "final_reconciliation": {
+    "counts": {
+      "completed": 0,
+      "execution_failure": 0,
+      "invalid": 0,
+      "missing": 42,
+      "resolved": 417,
+      "scientific_failure": 27
+    },
+    "sha256": "082f23f9f6817cbe66fc4152451d8e75ea51cbbda04b91362dd834c54154b682",
+    "task_id_sets_match_recorded_snapshot": true
+  },
+  "forced_base_failure_arms": {
+    "A": 3,
+    "B": 4,
+    "C": 3
+  },
+  "full_base_lower_bound": {
+    "argument": "The registered finite-panel mean+nonnegative-penalty score is at least its mean; further failures cannot reduce this mean-only lower bound.",
+    "denominator": 162,
+    "forced_failures": 10,
+    "fraction": 0.06172839506172839,
+    "threshold": 0.05
+  },
+  "limits": [
+    "This is a conclusive rejection lower bound from validated failed fits, not a fabricated completed reducer report.",
+    "Unfinished execution remains incomplete; it is not assigned scientific failure or success.",
+    "The numerical gate is a fixed-panel computation criterion, not a population confidence interval or a biological finding.",
+    "Scientific failures are retained; retries cannot replace them. Repair requires recorded review and fresh qualification."
+  ],
+  "recorded_snapshot_sha256": "6a7391b259acd8b7026507fa1c75cfc0366e66a538db37effcc781e9edb3efb6",
+  "recorded_task_counts": {
+    "no_terminal_record": 42,
+    "resolved": 417,
+    "scientific_failure": 27
+  },
+  "schema": "sprint2-incomplete-qualification-rejection-v1",
+  "unique_failed_datasets": 14,
+  "verified_scientific_failure_tasks": 27
+}

@@ -1,5 +1,17 @@
 # Sprint 2: entry repairs and qualification specification
 
+**12 November rejection/incident update.** The run is incomplete, but validated
+required failures already reject the candidate under the registered gate:
+at least 10/162 base cases (6.17%) and 7/108 A/B cases (6.48%). The A/B C-only
+continuation condition also fails. See the [evidence and independent review](evidence/paper1-sprint2-failure-2026-11-12/README.md).
+Six stale scheduler entries after node reboots blocked the email job; they
+were cleared after confirming no surviving fits and preserving all attempts.
+The original array and receipt checker have finished. Reconciliation confirms
+417 resolved, 27 scientific failures, 42 missing and zero invalid records. The 42
+unfinished attempts remain incomplete; no retry or scientific repair was
+launched. A bounded outer-solver diagnostic is proposed before any reviewed
+repair/fresh qualification. Training and validation remain closed.
+
 **9 November input/launch update.** The 18 banks, 207 registered qualification
 arm datasets and five outstanding historical diagnostic replays completed with
 no missing or invalid tasks. Parent target checks and independent review verify
