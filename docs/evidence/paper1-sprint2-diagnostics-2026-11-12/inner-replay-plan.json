@@ -1,0 +1,17 @@
+{
+  "schema": "inner-trial-observational-extension-v1",
+  "reason": "Registered sweep exposed invalid inner solves; source-reviewed replay attributes one existing failure exit without changing any solver operation.",
+  "case": "enriched-collapse-1",
+  "task_record": "work/qualification-results/fit-q-enriched-connected-1-increased_heterogeneity-mu0.001-h1-B-dense/_task.json",
+  "h": 5.477225575051663,
+  "parameters": [
+    -8.76871200089982,
+    0.9662104363433778,
+    0.4054651081081644,
+    0.1909382250865868
+  ],
+  "original_outer_trace_sha256": "5e38fa2421641f8893b2a7029d8ff58dc39a2a3275763a3f735e8ce5ba15b11d",
+  "outer_iteration": 1,
+  "expected_status": "latent mode did not strictly converge",
+  "qualification_retry": false
+}

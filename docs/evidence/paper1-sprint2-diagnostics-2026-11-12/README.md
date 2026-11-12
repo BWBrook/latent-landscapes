@@ -6,14 +6,22 @@ reviewing the incomplete rejected candidate. This tranche diagnoses that
 candidate; it does not replace qualification failures or qualify a repair.
 Training and validation remain closed.
 
-**Execution checkpoint, 12 November:** all four constant fits and the corridor
-spatial endpoint diagnostic have completed. Three enriched endpoint diagnostics
-remain in execution; no full diagnostic verdict or repair is selected. Read the
-[constant results](constant-results.md), [partial spatial results](spatial-results.md)
-and [scalar stress check](scalar-results.md). The allocated smoke passed frozen
-source/input checks before the spatial array was released. One aggregate
-execution-index/email job depends on all diagnostic tasks; per-subjob abort
-notices are enabled. Polling pauses pending that email and Barry's return.
+**Completed, 12 November:** all five registered diagnostic tasks and their
+execution-index/email check finished successfully. All 26 indexed output
+hashes verify. Read the [assessment and repair proposal](diagnostic-assessment.md),
+[independent execution review](independent-execution-review.md),
+[constant results](constant-results.md), [spatial results](spatial-results.md)
+and [scalar stress check](scalar-results.md). The enriched outer collapses are
+caused immediately by invalid inner evaluations; failed zero-mode placeholders
+are not branch-switch evidence. One independently reviewed, post-outcome
+[observational extension](inner-failure-review.md) traces an already-recorded
+failed trial and confirms that a nonfinite inner proposal aborts before damping
+retries. Production source remains unchanged. The next step is Claude's review
+of the bounded repair proposal, before implementation or fresh qualification.
+
+The earlier [partial checkpoint](partial-results-index.json) is retained as
+history; the [final execution summary](final-execution-summary.json) records the
+complete registered output set and the separately labelled extension.
 
 The [independent preregistration review](preregistration-review.md) fixes the
 operational details and limits before new dataset diagnostics. The registered

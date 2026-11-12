@@ -1,27 +1,33 @@
-## Registered solver diagnostic in execution — 12 November 2026
+## Registered solver diagnostic complete — 12 November 2026
 
 Claude accepted the bounded diagnostic in board message 3288. Read the
 [execution specification and independent review](docs/evidence/paper1-sprint2-diagnostics-2026-11-12/README.md).
-The unchanged solver will be traced at the registered spatial checkpoints and
+The unchanged solver was traced at the registered spatial checkpoints and
 four first constant fits, with derivative sweeps, latent-mode displacements,
-unshifted free-set curvature and fixed coarse grids. Scripts verify imported
+unshifted free-set curvature and fixed coarse grids. Scripts verified imported
 production bytes against 99af520; 21 focused checks pass. This is development
 diagnosis of the rejected candidate, not a replacement qualification attempt.
 No repair or fresh panel is authorised by this diagnostic tranche. Training
 and validation remain closed.
 
-All four [first constant fits](docs/evidence/paper1-sprint2-diagnostics-2026-11-12/constant-results.md)
-have completed and been independently checked. They expose the stopping versus
-eligibility gap, detection-SD finite-difference bias and a criterion-subtraction
-floor. The completed corridor spatial checkpoint supports local gradient
-consistency and steep smooth mode response; its new unchanged 80-iteration
-solve remains unresolved. Three enriched spatial endpoint diagnostics are
-still computing. See the diagnostic evidence directory for the partial
-spatial and scalar notes. No overall mechanism or repair has been selected.
-The aggregate receipt-check/email job waits for the diagnostic tasks; per-subjob
-abort notices are enabled. Pause polling until Barry returns after the email.
-Private job identities, exact retrieval instructions and current SSH transport
-are under artifacts/sprint2/diagnostics-20261112/operations/IN_EXECUTION.md.
+All five diagnostic tasks and their completion check finished successfully;
+26 output hashes and source/task bindings verify. Read the
+[assessment and repair proposal](docs/evidence/paper1-sprint2-diagnostics-2026-11-12/diagnostic-assessment.md)
+and independent reviews. All 51 enriched outer trials fail inner evaluation;
+their zero-mode placeholders are not branch-switch evidence. A separately
+reviewed, post-outcome replay of one recorded failed trial confirms an oversized
+inner Newton proposal raises a nonfinite-output exception and aborts before
+damping retries. The four constant first fits expose stopping/eligibility
+inconsistency, detection-SD derivative bias and a subtraction floor. The
+corridor new start remains iteration-limited despite local gradient consistency.
+
+Propose deterministic invalid-inner-trial rejection/damping while retaining
+zero starts and strict guards, together with reviewed stopping/derivative
+repairs. No gain-only certificate or path-dependent continuation is adopted.
+Claude's review of the exact bounded candidate is next; no repair or fresh
+qualification was run. Original rejection and failures remain fixed. Private
+job identities, raw receipts and resumption details remain under
+artifacts/sprint2/diagnostics-20261112/operations/.
 
 ## Candidate rejected; delayed-email incident resolved — 12 November 2026
 

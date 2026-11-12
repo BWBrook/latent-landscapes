@@ -1,0 +1,134 @@
+{
+  "schema": "solver-diagnostic-final-execution-v1",
+  "date": "2026-11-12",
+  "candidate_commit": "99af5206b6a4e53f5b8e9d71cbf348f95e9ae574",
+  "diagnostic_plan_commit": "aa6c24b1067b84cd333c2db9aac1d4b13cb373ba",
+  "registered_execution_complete": true,
+  "original_index_sha256": "05590e40d10f6233172122e0f5668da7bc2ed0ce6dadf7d1b14cae615f056baf",
+  "task_exit_status": {
+    "0": "0",
+    "1": "0",
+    "2": "0",
+    "3": "0",
+    "4": "0"
+  },
+  "output_sha256": {
+    "constant/case-01/receipt.json": "0715ad2b2d4549477bd4d2748ac1363767fdcacde7527ed8c6cd59207cad4f83",
+    "constant/case-01/trace.jsonl": "90420c7614053e2b0d5a95efd8e224252d68c228946e947c882bf877f7bbac91",
+    "constant/case-02/receipt.json": "fff42fa8701674ef9b7399f052580fd94dda1b98c279e11d7974286ec1d9afdc",
+    "constant/case-02/trace.jsonl": "a3adffe95752a64c6654e8e95b821887cabf09f25be4e4d51304a97e0342c747",
+    "constant/case-03/receipt.json": "08479e879c236d3464f00d69bf07426719fef28c9c7760250967e465438c4efa",
+    "constant/case-03/trace.jsonl": "17b83d88a061ea651b7640ed55fca7a2eb3104ae6ed06d92f1d58e67d147f9e6",
+    "constant/case-04/receipt.json": "f3edca70631e7c0dbfebda13ada9772c307bdd77f0f7e3b565bbd3951e656a0d",
+    "constant/case-04/trace.jsonl": "3154807c763d3b0e0df551014ee45bc21038da46a048539b7cf613daf67d485f",
+    "constant/summary.json": "846d2577c19a760cbbcb82c74a3ce27380a6823cd5c303cf3f7fee902b5d57e3",
+    "spatial-0/enriched-collapse-1-archived-sweep.json": "d951cc35610f944307b4fc71c46baabc04d4da2773eae0e29527f1efe8a4ed2b",
+    "spatial-0/enriched-collapse-1-new-start-sweep.json": "c8030bc6566cb5ed146a5aedd335560a252bdc4d8ab9c5fdc5daa97a5c324ed3",
+    "spatial-0/enriched-collapse-1-trace.jsonl": "5e38fa2421641f8893b2a7029d8ff58dc39a2a3275763a3f735e8ce5ba15b11d",
+    "spatial-1/enriched-collapse-2-archived-sweep.json": "e402bebc83a95736ba4d71c9db13e94f244d13fbb69ec61ae5e31bac90469750",
+    "spatial-1/enriched-collapse-2-new-start-sweep.json": "1c40ca3b87194686879970b5f9468aa26be6a4c379233671b41425f561f83d5a",
+    "spatial-1/enriched-collapse-2-trace.jsonl": "85bfa3306bcee36c533bb382aa7f9b8934e8a76921c8b6f995e49263399a04a4",
+    "spatial-2/enriched-collapse-3-archived-sweep.json": "839a0ede9b8b72b1fa9520e8b3ca5d95c7bf665f0412193cc3e836f16d596a82",
+    "spatial-2/enriched-collapse-3-new-start-sweep.json": "9b5f16a8325fd83028747f4f8bfb248c494a836c7812e7e6ce8f3c943dcaa62e",
+    "spatial-2/enriched-collapse-3-trace.jsonl": "d7311a1d16b2e1445730f74d9f511e820dc366f0afc6269a62620aabb8b1be0e",
+    "spatial-3/corridor-envelope-1-archived-sweep.json": "074490e47d6f80c9b2d211c4b06e2837a75e59d6309e4a7aace78925850303e9",
+    "spatial-3/corridor-envelope-1-new-start-sweep.json": "58be876074dd77ec5fa059bb2f5f1424f4c36af8da0dbdfde8ffb53af8f9c255",
+    "spatial-3/corridor-envelope-1-trace.jsonl": "40f3d171b18d177d844eea5fe62693e29e27729f284334d1f2c4a27694752603",
+    "task-0.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "task-1.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "task-2.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "task-3.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "task-4.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  "completed_constant_datasets": 4,
+  "completed_spatial_endpoints": [
+    {
+      "name": "enriched-collapse-1",
+      "archived_baseline_criterion": -1084.5401174046976,
+      "archived_projected_gradient_inf": 0.0061091658502971935,
+      "new_start_result": {
+        "success": false,
+        "message": "trust region collapsed"
+      },
+      "new_start_criterion": -1084.5401174046976,
+      "new_start_projected_gradient_inf": 0.0061091658502971935,
+      "new_outer_trials": 17,
+      "invalid_outer_trials": 17,
+      "invalid_probe_sides": 23,
+      "invalid_messages": [
+        "latent mode did not strictly converge"
+      ],
+      "nonfinite_mode_sentinels_are_not_branch_evidence": true
+    },
+    {
+      "name": "enriched-collapse-2",
+      "archived_baseline_criterion": -1084.5455089070504,
+      "archived_projected_gradient_inf": 5.384204904344488,
+      "new_start_result": {
+        "success": false,
+        "message": "trust region collapsed"
+      },
+      "new_start_criterion": -1084.5455089070504,
+      "new_start_projected_gradient_inf": 5.384204904344488,
+      "new_outer_trials": 17,
+      "invalid_outer_trials": 17,
+      "invalid_probe_sides": 21,
+      "invalid_messages": [
+        "latent mode did not strictly converge"
+      ],
+      "nonfinite_mode_sentinels_are_not_branch_evidence": true
+    },
+    {
+      "name": "enriched-collapse-3",
+      "archived_baseline_criterion": -1084.5401192127956,
+      "archived_projected_gradient_inf": 0.00521201397145532,
+      "new_start_result": {
+        "success": false,
+        "message": "trust region collapsed"
+      },
+      "new_start_criterion": -1084.5401192127956,
+      "new_start_projected_gradient_inf": 0.00521201397145532,
+      "new_outer_trials": 17,
+      "invalid_outer_trials": 17,
+      "invalid_probe_sides": 24,
+      "invalid_messages": [
+        "latent mode did not strictly converge"
+      ],
+      "nonfinite_mode_sentinels_are_not_branch_evidence": true
+    },
+    {
+      "name": "corridor-envelope-1",
+      "archived_baseline_criterion": -1113.7343896488865,
+      "archived_projected_gradient_inf": 4.912651861812314,
+      "new_start_result": {
+        "success": false,
+        "message": "iteration limit reached"
+      },
+      "new_start_criterion": -1113.7342145467626,
+      "new_start_projected_gradient_inf": 1.9704819609437116,
+      "new_outer_trials": 80,
+      "invalid_outer_trials": 0,
+      "invalid_probe_sides": 0,
+      "invalid_messages": [],
+      "nonfinite_mode_sentinels_are_not_branch_evidence": true
+    }
+  ],
+  "complete_qualification_report": false,
+  "candidate_rejection_unchanged": true,
+  "production_repaired": false,
+  "training_opened": false,
+  "validation_opened": false,
+  "limits": [
+    "Execution completion is not numerical certification or qualification.",
+    "Invalid inner evaluations cannot be treated as finite differences or alternative converged latent branches.",
+    "Local quadratic gain is not a rigorous likelihood-ratio or global error bound.",
+    "The separately reviewed one-point inner trace is a post-outcome diagnostic extension, not part of the original preregistered sweep."
+  ],
+  "post_outcome_extension": {
+    "type": "single_unchanged_inner_trial_observation",
+    "replay_sha256": "e086168753e4a914c26eb2361ae28e9b41371e10c7b98413eec01b3bc36a399c",
+    "pbs_exit_status": 0,
+    "pbs_wall_seconds": 15,
+    "summary": "inner-replay-summary.json"
+  }
+}

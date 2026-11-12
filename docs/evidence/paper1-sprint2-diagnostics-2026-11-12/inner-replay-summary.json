@@ -1,0 +1,139 @@
+{
+  "schema": "inner-trial-extension-summary-v1",
+  "date": "2026-11-12",
+  "post_outcome_diagnostic_extension": true,
+  "qualification_attempt_replaced": false,
+  "production_changed": false,
+  "input_point": "First already-recorded invalid trial of enriched-collapse-1 new trace",
+  "plan_sha256": "35782afe2e8d83e8d38df4d0c65fae6abe6021de0e0f1ac9a2dc4e73b76d979d",
+  "observer_sha256": "ff77baa76135e701a9dbbfae4741cbd1f3f78a309cd9728287bce25c548065ad",
+  "replay_sha256": "e086168753e4a914c26eb2361ae28e9b41371e10c7b98413eec01b3bc36a399c",
+  "frozen_candidate": "99af5206b6a4e53f5b8e9d71cbf348f95e9ae574",
+  "evaluation": {
+    "success": false,
+    "message": "latent mode did not strictly converge",
+    "criterion": null,
+    "mode_success": false
+  },
+  "trace": [
+    {
+      "event": "exception",
+      "line": 598,
+      "source_line": "c_ell, c_score, c_curvature, _ = curves.evaluate(eta0 + candidate)",
+      "iteration": 0,
+      "damping": 0.0,
+      "value": -1087.7954261395473,
+      "predicted": 262.7727151967216,
+      "ratio": -1.0,
+      "score_inf": 0.9128722101922192,
+      "decrement": 22.924777651995687,
+      "positive_definite": true,
+      "u": {
+        "min": 0.0,
+        "max": 0.0,
+        "norm_inf": 0.0,
+        "eta_min": -9.877490050813545,
+        "eta_max": -6.290033670977397
+      },
+      "candidate": {
+        "min": -0.3686020163657126,
+        "max": 270.4515070171641,
+        "norm_inf": 270.4515070171641,
+        "eta_min": -8.185487414722818,
+        "eta_max": 261.51092544258927
+      },
+      "step": {
+        "min": -0.3686020163657126,
+        "max": 270.4515070171641,
+        "norm_inf": 270.4515070171641
+      },
+      "gradient": {
+        "min": -0.720797313236565,
+        "max": 0.9128722101922192,
+        "norm_inf": 0.9128722101922192
+      },
+      "exception_type": "FloatingPointError",
+      "exception_message": "differentiable likelihood produced nonfinite output"
+    },
+    {
+      "event": "line",
+      "line": 624,
+      "source_line": "return None",
+      "iteration": 0,
+      "damping": 0.0,
+      "value": -1087.7954261395473,
+      "predicted": 262.7727151967216,
+      "ratio": -1.0,
+      "score_inf": 0.9128722101922192,
+      "decrement": 22.924777651995687,
+      "positive_definite": true,
+      "u": {
+        "min": 0.0,
+        "max": 0.0,
+        "norm_inf": 0.0,
+        "eta_min": -9.877490050813545,
+        "eta_max": -6.290033670977397
+      },
+      "candidate": {
+        "min": -0.3686020163657126,
+        "max": 270.4515070171641,
+        "norm_inf": 270.4515070171641,
+        "eta_min": -8.185487414722818,
+        "eta_max": 261.51092544258927
+      },
+      "step": {
+        "min": -0.3686020163657126,
+        "max": 270.4515070171641,
+        "norm_inf": 270.4515070171641
+      },
+      "gradient": {
+        "min": -0.720797313236565,
+        "max": 0.9128722101922192,
+        "norm_inf": 0.9128722101922192
+      }
+    },
+    {
+      "event": "return",
+      "line": 624,
+      "source_line": "return None",
+      "iteration": 0,
+      "damping": 0.0,
+      "value": -1087.7954261395473,
+      "predicted": 262.7727151967216,
+      "ratio": -1.0,
+      "score_inf": 0.9128722101922192,
+      "decrement": 22.924777651995687,
+      "positive_definite": true,
+      "u": {
+        "min": 0.0,
+        "max": 0.0,
+        "norm_inf": 0.0,
+        "eta_min": -9.877490050813545,
+        "eta_max": -6.290033670977397
+      },
+      "candidate": {
+        "min": -0.3686020163657126,
+        "max": 270.4515070171641,
+        "norm_inf": 270.4515070171641,
+        "eta_min": -8.185487414722818,
+        "eta_max": 261.51092544258927
+      },
+      "step": {
+        "min": -0.3686020163657126,
+        "max": 270.4515070171641,
+        "norm_inf": 270.4515070171641
+      },
+      "gradient": {
+        "min": -0.720797313236565,
+        "max": 0.9128722101922192,
+        "norm_inf": 0.9128722101922192
+      },
+      "returned_none": true
+    }
+  ],
+  "limits": [
+    "One exact unchanged replay proves this exit for one previously recorded failed evaluation.",
+    "It does not prove the same exception causes all51trial failures or all16archived spatial exceptions.",
+    "No algorithmic repair or new qualification was run."
+  ]
+}
