@@ -1225,3 +1225,44 @@ Also record the curvature B at every stall and the predicted remaining gain ½g�
 **6. Requalification design.** These failures are now development data, so requalify any repaired candidate on a fresh panel drawn under the same frozen generator and the same gate. The 42 attempts with no receipt are 8.6% of tasks, which is larger than the gate itself. The next run therefore needs fit-level checkpoint and resume, or walltime sized to the observed maximum, so that operational losses do not decide or obscure the numerical verdict. Per-subjob abort email, as you proposed.
 
 Order: the section 4 test on the three checkpoints and the constant traces → choose repairs (a)–(c) → independent review → fresh panel. Training and validation stay closed.
+
+## Message 3295 · Codex (GPT-6.1 Sol) · evidence
+
+Time: 2026-11-12T03:45:30.866511+00:00
+Reply to: 3288
+
+I have accepted the section4 diagnostic and implemented its observer/sweeps against the unchanged frozen solver. Independent pre-outcome review fixes raw coordinate unit stencils, normalized nonzero new rejected-step directions, explicit unavailable bound-crossing sides, and preservation of historical endpoints versus new prescribed starts. The spatial manifest retains all3 unresolved positive candidates at enriched connected1B/sqrt30 (including the5.38/.006 pair) and the sole higher unresolved envelope candidate at corridor1windowlowB dense, using exact archived h. The third checkpoint and all4 prescribed firstconstantfits have unchanged default/start/budget/eligibility traces and a fixed13x13full-domain grid. 21focusedtests pass, including exact trajectory parity with and without observation. No new dataset diagnostic outcome has yet been generated.
+
+Two interpretation qualifications from independent review: the registered sweep signatures support mechanisms, with mixed/unresolved outcomes allowed; the archive alone does not categorically exclude curvature/scaling/step-construction effects before the solver's radius floor and floating-point limits. Also0.5g'B^-1g is a local quadratic prediction from complete unshifted positive-definite free-set curvature, not a rigorous global or LR-error bound. The proposed gain-based repair still requires scientific review after diagnosis. No eligibility/envelope/multimodality change or repair is implemented.
+
+Scalar stress testing separately confirms extreme-exposure overflow/nonfinite weaknesses in the frozen algebra; it does not establish their role in archived stalls. Test definition, independent review and source/input identity checks are being frozen in docs/evidence/paper1-sprint2-diagnostics-2026-11-12/ before target dataset execution. All runs are development diagnostics on original target inputs/runtime; no qualification failures will be replaced. Training and validation remain closed.
+
+Next: Codex — execute the registered diagnostics and return a mechanism/repair recommendation for review.
+
+## Message 3297 · Codex (GPT-6.1 Sol) · evidence
+
+Time: 2026-11-12T03:55:35.887419+00:00
+Reply to: 3295
+
+The registered diagnostic scripts/checkpoints are frozen and pushed at aa6c24b, with 21focusedtests/Ruff/gitleaks passing and no production edits. The allocated target smoke passed imported-source/input/runtime checks; all4spatialjobs then started. Rawbanks remain on target. Aggregate execution-index/completion-email dependency is registered, with per-subjob abort mail. No qualification attempt is replaced.
+
+All4prescribed firstconstantfits completed and independently verify against113frozen sourcefiles, task/inputbindings and retainedtraces. Each collapses after21–23iterations with projectedgradient1.232e-5..3.034e-5: aboveinternal1e-5 but beloweligibility1e-4. Allrecordedcurvatures are completePD; localquadraticgains at endpoints1.45e-14..3.86e-13. Finalpredicted stepgains1.42e-15..6.70e-15 are belowcriterionULP2.27e-13. DetectionSD's fixed1e-4difference matches that same stencil, but smallerstencils plateau at negative~4e-5..7e-5 rather than the reportedpositivegradient. Thus fixedFDtruncation bias and criterion-subtraction floor coexist; noise alone is insufficient. All169gridpoints percase valid, maxima belowfinal; no globalcertificate claimed.
+
+The corridor-envelope endpoint and its new80iterationtrace also finished. Archivedcriterion reproduces exactly; finecoordinateFDs approachall4reportedgradients and latentdisplacements shrink~linearlywitht. CoarseSDnonlinearity is not evidence of derivativefailure. B iscompletebutindefinite(minEig-17.68); gainunavailable. Newstartimprovescriterion1.751e-4 butstillhits80iterationlimit, projectedgradient4.913->1.970 andindefiniteB. Lastrejectionoriginprecededfinalacceptedsteps, so itsdirectionisnotassignedtothefinalendpoint. Thiscase doesnotshowpersistentgradientmismatch/nonvanishingmodejumps, butthehistoricalfailuremechanismremainsunresolved.
+
+Separatescalar54pointstress confirms extreme-exposurealgebraweaknesses withoutcausalattribution. Notes: docs/evidence/paper1-sprint2-diagnostics-2026-11-12/{constant-results.md,spatial-results.md,scalar-results.md}. Threeenrichedendpointsremaincomputing; fullmechanism/repairdecisionwaitsforthem. FollowingBarry'sstandingpreferencetopauselongcomputepolling, Iamsavingthehandoffandwaitingfortheconfiguredcompletionemail. No repair,newpanel,retuningorguardchangehasbeenmade;training/validationclosed.
+
+Next: Codex — retrieve the aggregate diagnostic index after the email, finish interpretation, then return a repair proposal for independent review.
+
+## Message 3298 · Codex (GPT-6.1 Sol) · evidence
+
+Time: 2026-11-12T03:56:00.234382+00:00
+Reply to: 3297
+
+Execution summary: four constant-fit diagnostics and the corridor spatial diagnostic are complete. The three enriched spatial endpoint diagnostics are still running. Their dependent completion/email job is 879174; the spatial array is 879173 and the completed constant job is 879171. This is a diagnostic run, not a retry of the rejected qualification candidate.
+
+Independent review confirms the constant failures combine two effects: the internal stopping target is stricter than eligibility, and the detection-SD gradient has fixed finite-difference truncation bias. At the final attempted steps, predicted gains are below the summed criterion's floating-point resolution. The corridor endpoint instead has fine-scale gradient agreement and shrinking latent displacements; its unchanged new solve still hits the iteration cap. These findings do not yet establish one mechanism across the spatial failures.
+
+The evidence notes retain the exact numbers and limits. No repair is selected or implemented, and training and validation remain closed. I am preserving this partial checkpoint and pausing polling under Barry's standing preference to return after completion email.
+
+Next: Codex — check 879174 after the email, verify the aggregate index, and finish the diagnosis before proposing a repair for independent review.

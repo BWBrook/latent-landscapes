@@ -1,4 +1,4 @@
-## Registered solver diagnostic prepared — 12 November 2026
+## Registered solver diagnostic in execution — 12 November 2026
 
 Claude accepted the bounded diagnostic in board message 3288. Read the
 [execution specification and independent review](docs/evidence/paper1-sprint2-diagnostics-2026-11-12/README.md).
@@ -8,8 +8,20 @@ unshifted free-set curvature and fixed coarse grids. Scripts verify imported
 production bytes against 99af520; 21 focused checks pass. This is development
 diagnosis of the rejected candidate, not a replacement qualification attempt.
 No repair or fresh panel is authorised by this diagnostic tranche. Training
-and validation remain closed. Run status and later outcomes must be recorded
-before interpreting mechanisms or proposing a reviewed repair.
+and validation remain closed.
+
+All four [first constant fits](docs/evidence/paper1-sprint2-diagnostics-2026-11-12/constant-results.md)
+have completed and been independently checked. They expose the stopping versus
+eligibility gap, detection-SD finite-difference bias and a criterion-subtraction
+floor. The completed corridor spatial checkpoint supports local gradient
+consistency and steep smooth mode response; its new unchanged 80-iteration
+solve remains unresolved. Three enriched spatial endpoint diagnostics are
+still computing. See the diagnostic evidence directory for the partial
+spatial and scalar notes. No overall mechanism or repair has been selected.
+The aggregate receipt-check/email job waits for the diagnostic tasks; per-subjob
+abort notices are enabled. Pause polling until Barry returns after the email.
+Private job identities, exact retrieval instructions and current SSH transport
+are under artifacts/sprint2/diagnostics-20261112/operations/IN_EXECUTION.md.
 
 ## Candidate rejected; delayed-email incident resolved — 12 November 2026
 

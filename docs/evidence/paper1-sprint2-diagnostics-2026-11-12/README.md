@@ -6,6 +6,15 @@ reviewing the incomplete rejected candidate. This tranche diagnoses that
 candidate; it does not replace qualification failures or qualify a repair.
 Training and validation remain closed.
 
+**Execution checkpoint, 12 November:** all four constant fits and the corridor
+spatial endpoint diagnostic have completed. Three enriched endpoint diagnostics
+remain in execution; no full diagnostic verdict or repair is selected. Read the
+[constant results](constant-results.md), [partial spatial results](spatial-results.md)
+and [scalar stress check](scalar-results.md). The allocated smoke passed frozen
+source/input checks before the spatial array was released. One aggregate
+execution-index/email job depends on all diagnostic tasks; per-subjob abort
+notices are enabled. Polling pauses pending that email and Barry's return.
+
 The [independent preregistration review](preregistration-review.md) fixes the
 operational details and limits before new dataset diagnostics. The registered
 mechanism signatures remain evidence for mechanisms, with mixed and unresolved
