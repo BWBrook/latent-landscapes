@@ -1,0 +1,67 @@
+{
+  "schema": "repair-constant-gradient-checkpoints-v1",
+  "board_specification": 3307,
+  "source": "Frozen original diagnostic endpoints; reference values chosen before repaired-candidate runs.",
+  "points": [
+    {
+      "dataset": "q-base-connected-2-window_high-mu0.004-h1-A",
+      "task_id": "fit-q-base-connected-2-window_high-mu0.004-h1-A-dense",
+      "task_record_sha256": "e1ed035a26a8c778b1c14f7a37aaedb2605c4c3667f5c373d2ee8d4339cf8da9",
+      "parameters_full": [
+        -5.5215518437360585,
+        0.0,
+        0.17619665343134433
+      ],
+      "fixed_h": 1.0,
+      "reference_detection_sd_derivative": -6.866684998385608e-05,
+      "reference_stencil_t": 1e-06,
+      "tolerance": 5e-06,
+      "diagnostic_receipt_sha256": "0715ad2b2d4549477bd4d2748ac1363767fdcacde7527ed8c6cd59207cad4f83"
+    },
+    {
+      "dataset": "q-trend-connected-2-temporal_trend-mu0.004-h3-A",
+      "task_id": "fit-q-trend-connected-2-temporal_trend-mu0.004-h3-A-dense",
+      "task_record_sha256": "cca638c291a620ef77e149dc863ddd34fc03d060441c7511b2d727b7a2347b94",
+      "parameters_full": [
+        -5.389314147606511,
+        0.0,
+        0.17477412267386283
+      ],
+      "fixed_h": 1.0,
+      "reference_detection_sd_derivative": -6.389200279954821e-05,
+      "reference_stencil_t": 1e-06,
+      "tolerance": 5e-06,
+      "diagnostic_receipt_sha256": "fff42fa8701674ef9b7399f052580fd94dda1b98c279e11d7974286ec1d9afdc"
+    },
+    {
+      "dataset": "q-base-corridor-1-b100_anchor-mu0.004-h3-A",
+      "task_id": "fit-q-base-corridor-1-b100_anchor-mu0.004-h3-A-dense",
+      "task_record_sha256": "70fa55d63a16e2155bbded192742258e04b45dd09642294918c5e38dbd5902f6",
+      "parameters_full": [
+        -5.291870030432212,
+        0.0,
+        0.17252334636390282
+      ],
+      "fixed_h": 1.0,
+      "reference_detection_sd_derivative": -4.092726157978177e-05,
+      "reference_stencil_t": 1e-06,
+      "tolerance": 5e-06,
+      "diagnostic_receipt_sha256": "08479e879c236d3464f00d69bf07426719fef28c9c7760250967e465438c4efa"
+    },
+    {
+      "dataset": "q-trend-barrier-1-temporal_trend-mu0.004-h3-A",
+      "task_id": "fit-q-trend-barrier-1-temporal_trend-mu0.004-h3-A-dense",
+      "task_record_sha256": "a926e152b3c0adaa7dc574bb7d88ec60a426608dcc3376150255df77afdbfc1b",
+      "parameters_full": [
+        -5.575592984671055,
+        0.0,
+        0.17453623290651446
+      ],
+      "fixed_h": 1.0,
+      "reference_detection_sd_derivative": -5.729816621169448e-05,
+      "reference_stencil_t": 1e-06,
+      "tolerance": 5e-06,
+      "diagnostic_receipt_sha256": "f3edca70631e7c0dbfebda13ada9772c307bdd77f0f7e3b565bbd3951e656a0d"
+    }
+  ]
+}
