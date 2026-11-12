@@ -5,6 +5,16 @@ advancing Paper 1's numerical qualification. The rejected `99af520` candidate
 and its failure record remain fixed; all retained panel outcomes are now
 development data. Training and validation remain closed.
 
+**Target execution checkpoint:** candidate `a77e849` passed the allocated
+endpoint/witness checks. Read the [independent point review](point-check-review.md)
+and [target summary](target-checkpoint.json). The full frozen replay and exact
+comparisons are running; no complete non-regression or qualification verdict
+exists. One launch-time container-index error was corrected while preserving
+the only valid running fit and all failed allocation evidence; the summary
+records this separately from numerical outcomes. Candidate source, inputs and
+acceptance checks stayed fixed. Aggregate completion email and per-subjob abort
+notifications are configured; polling pauses pending Barry's return.
+
 The [acceptance plan](acceptance-plan.md), [replay selection](replay-selection.json)
 and four [constant derivative references](constant-derivative-checkpoints.json)
 were frozen at `c717758` before repaired-candidate fit outcomes. Subsequent
@@ -41,7 +51,7 @@ checks before the larger replay. All new work uses a separate candidate
 checkout and output tree with original data/runtime hashes and explicit
 candidate import guards. Original attempts are never overwritten.
 
-Target execution has not started at this source-freeze checkpoint. Local
-validation includes 176 adjacent core/adapter checks, additional final focused
-repair/harness/provenance tests, Ruff and independent review. Repaired
+At the original source-freeze checkpoint target execution had not started.
+Local validation passed 176 adjacent core/adapter checks and all 24 final
+repair/harness/provenance checks, plus Ruff and independent review. Repaired
 development fits do not replace fresh qualification under the original gate.

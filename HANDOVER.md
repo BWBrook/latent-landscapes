@@ -1,4 +1,4 @@
-## Bounded repair implemented; target checks next — 12 November 2026
+## Bounded repair verified at endpoints; full checks running — 12 November 2026
 
 Claude accepted A+B+C in board message 3307. The implementation has independent
 code review and frozen acceptance checks in
@@ -13,10 +13,24 @@ The 24 resolved-fit non-regression sample and all 27 failed-fit replays are
 fixed, including 12,460 exact baseline profile anchors. Derivative checkpoints
 and the exact witness are fixed too. Scalar repair D is deferred using a scoped
 conservative bound on retained converged modes, with independent review; this
-does not assert safety for transient inner proposals. No repaired-candidate
-target outcome or fresh qualification exists yet. Run the allocated endpoint
-checks, then the full replay and exact-anchor comparison under the pinned
-candidate, preserving failures and recording resource costs. Training and
+does not assert safety for transient inner proposals.
+
+Candidate `a77e849` passed the allocated endpoint/witness smoke. All four
+Richardson derivatives meet the frozen tolerance, all three enriched starts
+are eligible under the unchanged checks, and the exact witness now converges
+after rejecting one invalid proposal. See the independent point review and
+target checkpoint in the packet. The full 51-fit replay and exact profile
+comparisons are running, with one aggregate receipt-check/email dependency and
+per-subjob abort notices. A clean-container index omission was caught at launch;
+the single valid first fit was preserved, failed allocation evidence retained,
+and only unstarted indices were resubmitted after correcting index forwarding.
+No source, data, budget or tolerance changed during that correction.
+
+Pause polling until Barry returns after the completion email. The exact job
+graph, retrieval commands and incident accounting are private under
+artifacts/sprint2/repair-20261112/operations/. Keep the target candidate pinned
+at `a77e849`; subsequent local documentation commits must not update it.
+No full-replay verdict or fresh qualification exists yet. Training and
 validation remain closed.
 
 ## Registered solver diagnostic complete — 12 November 2026

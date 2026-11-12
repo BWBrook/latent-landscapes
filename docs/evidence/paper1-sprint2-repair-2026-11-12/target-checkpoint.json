@@ -1,0 +1,105 @@
+{
+  "schema": "bounded-repair-target-checkpoint-v1",
+  "date": "2026-11-12",
+  "candidate_commit": "a77e849ce0b0381b5c378b222bacfadce9beaf96",
+  "point_receipt_sha256": "eb9fba40324461bd149592ac36d395320782681e5beb227979a7fa356fe035ed",
+  "allocated_point_checks_complete": true,
+  "constant_derivative_checks": [
+    {
+      "dataset": "q-base-connected-2-window_high-mu0.004-h1-A",
+      "detection_sd_derivative": -6.864406079998275e-05,
+      "absolute_reference_error": 2.278918387332851e-08,
+      "tolerance": 5e-06,
+      "passed": true
+    },
+    {
+      "dataset": "q-trend-connected-2-temporal_trend-mu0.004-h3-A",
+      "detection_sd_derivative": -6.375671915748171e-05,
+      "absolute_reference_error": 1.3528364206649712e-07,
+      "tolerance": 5e-06,
+      "passed": true
+    },
+    {
+      "dataset": "q-base-corridor-1-b100_anchor-mu0.004-h3-A",
+      "detection_sd_derivative": -4.110648679755968e-05,
+      "absolute_reference_error": 1.792252177779119e-07,
+      "tolerance": 5e-06,
+      "passed": true
+    },
+    {
+      "dataset": "q-trend-barrier-1-temporal_trend-mu0.004-h3-A",
+      "detection_sd_derivative": -5.7269746356780615e-05,
+      "absolute_reference_error": 2.8419854913863674e-08,
+      "tolerance": 5e-06,
+      "passed": true
+    }
+  ],
+  "enriched_development_checks": [
+    {
+      "name": "enriched-collapse-1",
+      "criterion": -1084.540107113108,
+      "projected_gradient_inf": 2.7351876218162374e-05,
+      "eligible": true,
+      "inner_terminal_reason": "converged",
+      "invalid_trial_rejections": 1
+    },
+    {
+      "name": "enriched-collapse-2",
+      "criterion": -1084.540107113101,
+      "projected_gradient_inf": 1.2886713918192072e-07,
+      "eligible": true,
+      "inner_terminal_reason": "converged",
+      "invalid_trial_rejections": 1
+    },
+    {
+      "name": "enriched-collapse-3",
+      "criterion": -1084.5401071131112,
+      "projected_gradient_inf": 3.05234723292358e-05,
+      "eligible": true,
+      "inner_terminal_reason": "converged",
+      "invalid_trial_rejections": 1
+    }
+  ],
+  "witness": {
+    "success": true,
+    "criterion": -1084.5401071131075,
+    "gradient": [
+      -4.2459406859318705e-06,
+      2.639102378521052e-06,
+      1.1490969488573861,
+      1.0928449546199204e-05
+    ],
+    "message": "ok",
+    "mode_success": true,
+    "mode_terminal_reason": "converged",
+    "invalid_trial_rejections": 1,
+    "mode_iterations": 11
+  },
+  "fixture_sha256": {
+    "docs/evidence/paper1-sprint2-repair-2026-11-12/replay-selection.json": "099f28d9a45a8a4eb12b103ddaf23714ed3ced72120bb5c9184c9c75e514dfaf",
+    "docs/evidence/paper1-sprint2-repair-2026-11-12/constant-derivative-checkpoints.json": "cab8ddc83f7358220a22e86d5aca47decf2b5d24ef12a61324d76ef3025b14a9",
+    "docs/evidence/paper1-sprint2-repair-2026-11-12/development-checkpoints.json": "822b8fd448f4b18739bc7bb034fb946b71a2290a5878f9a9e752ec49fbbe9381",
+    "docs/evidence/paper1-sprint2-diagnostics-2026-11-12/inner-replay-plan.json": "35782afe2e8d83e8d38df4d0c65fae6abe6021de0e0f1ac9a2dc4e73b76d979d"
+  },
+  "full_fit_tasks": 51,
+  "nonregression_fits": 24,
+  "development_failed_fits": 27,
+  "required_exact_anchor_locations": 12460,
+  "fit_plan_sha256": "316b78a0c0aa9331b7aae5d7cc77e1fe27a08c4d1c2ff7af2a4f584eb6354b3e",
+  "fit_taskfile_sha256": "6a31194f98fb37b13f0f0e501915dcc3f84acb1c28cc60a230ed723cabc31cc9",
+  "full_replay_complete": false,
+  "qualification_pass": false,
+  "training_opened": false,
+  "validation_opened": false,
+  "launcher_incident": {
+    "initial_failed_allocations": 50,
+    "fit_tasks_started_before_correction": 1,
+    "single_active_valid_fit_preserved": true,
+    "remaining_indices_resubmitted": "1-50",
+    "explicit_index_and_pbs_environment_forwarding_corrected": true,
+    "source_plan_inputs_and_tolerances_unchanged": true,
+    "failed_allocation_logs_and_accounting_preserved": true,
+    "preserved_first_fit_container_pbs_metadata_absent": true,
+    "native_accounting_retains_first_fit_attribution": true
+  }
+}

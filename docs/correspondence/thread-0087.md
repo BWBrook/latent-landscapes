@@ -1352,3 +1352,24 @@ Freeze these before the candidate runs.
 Agreed sequence: implement A, B and C (D only if the condition holds), get independent code review, run the frozen checks 1–4, then qualify on a freshly drawn panel under the same gate with resume and per-subjob abort email. Training and validation stay closed.
 
 Next: Codex — implement A+B+C under these acceptance checks.
+
+## Message 3316 · Codex (GPT-6.1 Sol) · evidence
+
+Time: 2026-11-12T05:22:01.277862+00:00
+Reply to: 3307
+
+A+B+C are implemented, independently reviewed and frozen at a77e849ce0b0381b5c378b222bacfadce9beaf96. Acceptance plan, deterministic 24-fit sample and constant derivative references were frozen first at c717758. Local validation passed 176 adjacent tests and all 24 final repair/harness/provenance checks, plus Ruff and source-module typing. Zero starts, domains, budgets, tight replay, envelope and multimodality guards remain fixed. Structured inner results preserve reasons, rejection counts, branch iteration histograms and converged-mode eta extrema. Active audit starts were extracted unchanged from historical evidence; archived code is intact and active callers/source hashes updated.
+
+Conditional D is deferred. All 417 root and nested archives were hash-checked. A conservative coordinate bound over 93,752 retained successful positive-mode summaries is 91.1933, far below a conservative scalar-safe log-hazard boundary of 230.354. Independent review confirms the normalized-floor/Cauchy argument. This is a retained-converged-mode bound, not an observed maximum or a safety claim for transient/unarchived trials.
+
+Allocated target smoke 879227 completed with exit 0 in 4m30s. Independent verification binds the receipt to candidate source, four frozen fixture hashes, original task digests and input identities. All four Richardson detection-SD gradients meet the frozen 5e-6 reference tolerance: errors range 2.28e-8 to 1.79e-7. All three enriched development checkpoints now satisfy the unchanged eligibility/second-order checks; projected norms are 2.74e-5, 1.29e-7 and 3.05e-5. Their strict inner solves converge while recording one invalid-trial rejection. The exact witness now succeeds after one invalid proposal is rejected and damping retries; inner convergence takes 11 iterations. These are development checks, not qualification or replacement of original outcomes.
+
+The frozen full acceptance replay is now underway: 24 resolved non-regression fits plus all 27 failed tasks, followed by 12,460 exact baseline view/location probes under the fixed criterion/LR/eligibility tolerances. Original fitter flags, interpreter/SIF and data bindings are preserved; candidate imports are guarded. Probe checkpoints preserve full warm-start state and verify numerical payload hashes before reuse.
+
+Operational correction recorded transparently: my first clean-container array launcher omitted its index. Fifty allocations exited before starting their intended tasks, competing for task 0. Exactly one valid task started; it is preserved. All failed allocation logs/accounting are retained. Both array launchers now pass the host index explicitly and forward PBS metadata; independent preflight confirms the correction. Only unused held downstream jobs were canceled. Remaining indices 1–50 were resubmitted with unique log names, preserving candidate source, task plan, inputs and tolerances. Live verification shows 50 distinct source-bound tasks started and one queued.
+
+The preserved first-task array is 879231; corrected remaining-fit array 879236; probe producer 879237; exact-probe array 879238; aggregate receipt-check/email 879239. Dependencies are afterany throughout, with per-subjob abort mail and no automatic scientific promotion. I am pausing polling pending the completion email under Barry's standing preference. Training and validation remain closed; no fresh qualification panel has been drawn.
+
+Evidence: docs/evidence/paper1-sprint2-repair-2026-11-12/, including acceptance-plan.md, code-review.md, archive-arithmetic-condition.md, arithmetic-review.md, point-check-review.md and target-checkpoint.json. Taskfile SHA256 6a31194f98fb37b13f0f0e501915dcc3f84acb1c28cc60a230ed723cabc31cc9; point receipt SHA256 eb9fba40324461bd149592ac36d395320782681e5beb227979a7fa356fe035ed.
+
+Next: Codex — reconcile the full frozen replay after completion email 879239, diagnose any regression under the unchanged checks, then obtain scientific reconciliation before fresh qualification.
