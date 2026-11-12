@@ -1,0 +1,109 @@
+{
+  "schema": "solver-stall-diagnostic-plan-v1",
+  "frozen_candidate": "99af5206b6a4e53f5b8e9d71cbf348f95e9ae574",
+  "board_specification": 3288,
+  "new_start_scope": "New unchanged solver starts at archived endpoints; no historical warm-start replay or replaced qualification result.",
+  "sweep_t": [
+    0.1,
+    0.01,
+    0.001,
+    0.0001,
+    1e-05,
+    1e-06,
+    1e-07,
+    1e-08,
+    1e-09
+  ],
+  "new_trace_maxiter": 80,
+  "new_trace_internal_gradient_tolerance": 0.0001,
+  "checkpoints": [
+    {
+      "name": "enriched-collapse-1",
+      "task_record": "work/qualification-results/fit-q-enriched-connected-1-increased_heterogeneity-mu0.001-h1-B-dense/_task.json",
+      "h": 5.477225575051663,
+      "coordinate_names": [
+        "alpha",
+        "beta",
+        "log_sigma",
+        "detection_sd"
+      ],
+      "parameters": [
+        -8.7657177935692,
+        0.9647675238345621,
+        0.4054651081081644,
+        0.19093156862198352
+      ],
+      "archived_candidate_source": "standard_fixed_0x1.b35a6f90bd69cp+0_neighbour_or_default_0_fit_0",
+      "archived_criterion": -1084.5401174046976,
+      "archived_projected_gradient_inf": 0.0061091658502971935,
+      "archived_events_sha256": "c450c1a64bb9dbc11eee7783261d009501516629275a4b485e4cabd6c17120bc",
+      "archived_optimizer_message": "trust region collapsed"
+    },
+    {
+      "name": "enriched-collapse-2",
+      "task_record": "work/qualification-results/fit-q-enriched-connected-1-increased_heterogeneity-mu0.001-h1-B-dense/_task.json",
+      "h": 5.477225575051663,
+      "coordinate_names": [
+        "alpha",
+        "beta",
+        "log_sigma",
+        "detection_sd"
+      ],
+      "parameters": [
+        -8.793873242065757,
+        0.9617711979060697,
+        0.4054651081081644,
+        0.18935165608761648
+      ],
+      "archived_candidate_source": "standard_fixed_0x1.b35a6f90bd69cp+0_neighbour_or_default_1_fit_0",
+      "archived_criterion": -1084.5455089070504,
+      "archived_projected_gradient_inf": 5.384204904344488,
+      "archived_events_sha256": "c450c1a64bb9dbc11eee7783261d009501516629275a4b485e4cabd6c17120bc",
+      "archived_optimizer_message": "trust region collapsed"
+    },
+    {
+      "name": "enriched-collapse-3",
+      "task_record": "work/qualification-results/fit-q-enriched-connected-1-increased_heterogeneity-mu0.001-h1-B-dense/_task.json",
+      "h": 5.477225575051663,
+      "coordinate_names": [
+        "alpha",
+        "beta",
+        "log_sigma",
+        "detection_sd"
+      ],
+      "parameters": [
+        -8.765755018656542,
+        0.9640526953430609,
+        0.4054651081081644,
+        0.1909318297295918
+      ],
+      "archived_candidate_source": "standard_fixed_0x1.b35a6f90bd69cp+0_high_sigma_anchor_2_fit_0",
+      "archived_criterion": -1084.5401192127956,
+      "archived_projected_gradient_inf": 0.00521201397145532,
+      "archived_events_sha256": "c450c1a64bb9dbc11eee7783261d009501516629275a4b485e4cabd6c17120bc",
+      "archived_optimizer_message": "trust region collapsed"
+    },
+    {
+      "name": "corridor-envelope-1",
+      "task_record": "work/qualification-results/fit-q-base-corridor-1-window_low-mu0.001-h1-B-dense/_task.json",
+      "h": 22.222198691728167,
+      "coordinate_names": [
+        "alpha",
+        "beta",
+        "log_sigma",
+        "detection_sd"
+      ],
+      "parameters": [
+        -11.07104748591036,
+        1.0123992521128973,
+        0.3548629025709948,
+        0.24109235481774388
+      ],
+      "archived_candidate_source": "standard_fixed_0x1.8cf092e5d9e06p+1_high_sigma_anchor_2_fit_0",
+      "archived_criterion": -1113.7343896488865,
+      "archived_projected_gradient_inf": 4.912651861812314,
+      "archived_events_sha256": "7342ac67435930ee7284630a22e447be1b52eee17e9ff510e7bf315720f62e71",
+      "archived_optimizer_message": "iteration limit reached"
+    }
+  ]
+}

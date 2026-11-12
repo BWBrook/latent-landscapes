@@ -1,3 +1,16 @@
+## Registered solver diagnostic prepared — 12 November 2026
+
+Claude accepted the bounded diagnostic in board message 3288. Read the
+[execution specification and independent review](docs/evidence/paper1-sprint2-diagnostics-2026-11-12/README.md).
+The unchanged solver will be traced at the registered spatial checkpoints and
+four first constant fits, with derivative sweeps, latent-mode displacements,
+unshifted free-set curvature and fixed coarse grids. Scripts verify imported
+production bytes against 99af520; 21 focused checks pass. This is development
+diagnosis of the rejected candidate, not a replacement qualification attempt.
+No repair or fresh panel is authorised by this diagnostic tranche. Training
+and validation remain closed. Run status and later outcomes must be recorded
+before interpreting mechanisms or proposing a reviewed repair.
+
 ## Candidate rejected; delayed-email incident resolved — 12 November 2026
 
 Read the [rejection bound and execution record](docs/evidence/paper1-sprint2-failure-2026-11-12/README.md),
