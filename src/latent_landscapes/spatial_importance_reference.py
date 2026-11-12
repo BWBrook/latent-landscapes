@@ -71,9 +71,11 @@ def prepare_target(
     diagnostics = []
     for start in starts:
         branch = criterion._mode_branch(eta0, mode.precision, curves, start)
-        if branch is None:
+        if not branch.success:
             raise RuntimeError("a deterministic importance proposal branch failed")
-        u, value, score, step, decrement, iterations, evaluations, message = branch
+        u, value, score = branch.u, branch.value, branch.score_inf
+        step, decrement = branch.step_inf, branch.decrement
+        iterations, evaluations, message = branch.iterations, branch.evaluations, branch.detail
         eta = eta0 + u
         _, _, curvature, _ = curves.evaluate(eta)
         hessian = mode.precision - np.diag(curvature)
@@ -99,6 +101,8 @@ def prepare_target(
                 "iterations": iterations,
                 "evaluations": evaluations,
                 "message": message,
+                "inner_terminal_reason": branch.terminal_reason,
+                "invalid_trial_rejections": branch.invalid_trial_rejections,
                 "duplicate": duplicate,
                 "log_laplace_mass_without_common_normalizer": log_mass,
             }

@@ -299,9 +299,9 @@ def test_small_gradient_on_near_singular_ridge_is_not_accepted_as_a_mode() -> No
 
     branch = criterion._mode_branch(np.zeros(1), np.eye(1), evaluator, start)
 
-    assert branch is not None
-    np.testing.assert_allclose(branch[0], [10.0], rtol=0.0, atol=1e-6)
-    assert branch[4] <= criterion.decrement_tolerance
+    assert branch.success
+    np.testing.assert_allclose(branch.u, [10.0], rtol=0.0, atol=1e-6)
+    assert branch.decrement <= criterion.decrement_tolerance
 
 
 class _DoubleWellEvaluator:
@@ -319,10 +319,10 @@ def test_damped_newton_leaves_indefinite_regions_and_rejects_saddles() -> None:
     evaluator = _DoubleWellEvaluator()
 
     branch = criterion._mode_branch(np.zeros(1), np.eye(1), evaluator, np.array([0.1]))
-    assert branch is not None
-    np.testing.assert_allclose(branch[0], [1.0], rtol=0.0, atol=1e-8)
+    assert branch.success
+    np.testing.assert_allclose(branch.u, [1.0], rtol=0.0, atol=1e-8)
 
-    assert criterion._mode_branch(np.zeros(1), np.eye(1), evaluator, np.zeros(1)) is None
+    assert not criterion._mode_branch(np.zeros(1), np.eye(1), evaluator, np.zeros(1)).success
 
 
 class _OffsetQuadraticEvaluator:
@@ -342,8 +342,8 @@ def test_newton_step_with_gain_below_roundoff_is_accepted_not_damped_into_failur
     criterion = _criterion(1)
     start = np.array([1.0 + 3e-6])
     branch = criterion._mode_branch(np.zeros(1), np.eye(1), _OffsetQuadraticEvaluator(), start)
-    assert branch is not None
-    np.testing.assert_allclose(branch[0], [1.0], rtol=0.0, atol=1e-12)
+    assert branch.success
+    np.testing.assert_allclose(branch.u, [1.0], rtol=0.0, atol=1e-12)
 
 
 def test_floored_laplace_gradient_matches_reoptimised_difference_where_floor_is_active() -> None:
@@ -493,7 +493,8 @@ def test_trust_region_iteration_limit_does_not_skip_second_order_check() -> None
         evaluate, np.zeros(1), ((-2.0, 2.0),), maxiter=1, gradient_tolerance=1e-8
     )
     assert np.max(np.abs(result.criterion_gradient)) < 1e-8
-    assert not info.success
+    assert info.success and info.second_order_passed
+    assert "iteration limit reached" in info.message
 
 
 def test_family_rejects_stationary_candidate_without_optimizer_certificate(
@@ -550,7 +551,7 @@ def test_mode_iteration_limit_is_a_deterministic_failure() -> None:
     first = criterion.evaluate_positive(point, fixed_h=3.0)
     second = criterion.evaluate_positive(point, fixed_h=3.0)
     assert not first.success and not second.success
-    assert first.message == second.message == "latent mode did not strictly converge"
+    assert first.message == second.message == "latent mode failed: iteration-limit"
     assert criterion.stats["mode_failures"] == 2
 
 

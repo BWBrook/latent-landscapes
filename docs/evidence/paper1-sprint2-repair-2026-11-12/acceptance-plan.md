@@ -29,6 +29,11 @@ the archive exposure query below; do not silently broaden this candidate.
    four already frozen constant endpoints, the detection-SD gradient must
    agree with the converged small-stencil values within `5e-6`. Record additional
    evaluation cost. No parameterisation or analytic-derivative change.
+
+   Operational clarification before fit outcomes: select the central or
+   second-order forward/backward base stencil using the coarse step, then use
+   that same orientation for both step sizes. Extrapolation is fourth order
+   for central stencils and third order for the one-sided boundary construction.
 3. Non-regression: select 24 of the 417 resolved tasks, two from each of the
    twelve arm-by-role strata (A/B/C times dense/lean/independent-bank/exhaustive).
    Within a stratum use ascending SHA256 of
@@ -58,6 +63,13 @@ Independent code review precedes frozen target checks. Unit tests during
 implementation verify the specified paths; they do not replace review or
 target replay. Do not tune the implementation to outcomes after freezing it.
 Record any necessary protocol clarification or diagnostic extension explicitly.
+
+The structured inner-solver result requires mechanical updates to its active
+importance-reference and latent-audit callers. Extract the currently used
+audit-start function from its historical evidence script into a current module;
+preserve every audit start, seed, threshold and selection rule, and keep the
+historical script unchanged. This is a runtime caller repair, not an audit
+amendment. Its exact diff belongs in independent review.
 
 ## Completion and next boundary
 

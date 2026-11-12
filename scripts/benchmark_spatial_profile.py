@@ -580,6 +580,8 @@ def _candidate_summary(
             "branch_count": int(mode.branch_count),
             "bound_touch": bool(mode.bound_touch),
             "proposal_grid_supported": bool(mode.proposal_grid_supported),
+            "inner_terminal_reason": mode.inner_terminal_reason,
+            "invalid_trial_rejections": int(mode.invalid_trial_rejections),
         },
     }
 

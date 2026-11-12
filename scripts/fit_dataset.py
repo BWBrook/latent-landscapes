@@ -17,7 +17,6 @@ from __future__ import annotations
 import argparse
 import contextlib
 import dataclasses
-import importlib.util
 import json
 import math
 import os
@@ -31,6 +30,7 @@ from pathlib import Path
 from typing import Any
 
 import benchmark_spatial_profile as adapter
+import mode_diagnosis
 import numpy as np
 from profile_level_sets import refine_level_set
 from qualify_spatial_profiles import (
@@ -70,7 +70,6 @@ FAILURE_CLASSES = (
     "numerical_error",
     "execution_error",
 )
-MODE_DIAGNOSIS = ROOT / "docs/evidence/paper1-sprint1-2026-11-05/mode_diagnosis.py"
 THREAD_ENVIRONMENT = ("OPENBLAS_NUM_THREADS", "VECLIB_MAXIMUM_THREADS", "OMP_NUM_THREADS")
 
 
@@ -232,7 +231,7 @@ class ReducedFamily:
         for index, start in enumerate(starts):
             reduced_start = np.delete(np.asarray(start, dtype=np.float64), 1)
             x, evaluation, result = criterion._trust_region(
-                evaluate, reduced_start, bounds, maxiter=maxiter, gradient_tolerance=0.1 * kkt
+                evaluate, reduced_start, bounds, maxiter=maxiter, gradient_tolerance=kkt
             )
             projected = (
                 criterion._projected_gradient_inf(evaluation.objective_gradient, x, bounds)
@@ -484,11 +483,7 @@ def spatial_family_result(search: PanelSearch) -> dict[str, Any]:
 
 
 def load_mode_diagnosis() -> Any:
-    spec = importlib.util.spec_from_file_location("sprint1_mode_diagnosis", MODE_DIAGNOSIS)
-    assert spec is not None and spec.loader is not None
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
+    return mode_diagnosis
 
 
 def floored_laplace(
@@ -523,20 +518,26 @@ def latent_audit(
     precision = criterion._k_inverse / sigma**2
     starts = diagnosis.starts_for(criterion, eta0, precision, curves, sigma, params, h)
     reference = criterion._mode_branch(eta0, precision, curves, np.zeros(criterion.site_count))
-    if reference is None:
+    if not reference.success:
         raise RuntimeError("reported fit has no strictly converged zero-start latent mode")
-    u_ref, joint_ref = reference[0], reference[1]
+    u_ref, joint_ref = reference.u, reference.value
     laplace_ref = floored_laplace(criterion, eta0, precision, curves, sigma, u_ref)
     rows = []
     flagged = False
     for name, start in starts.items():
         branch = criterion._mode_branch(eta0, precision, curves, start)
-        if branch is None:
-            rows.append({"start": name, "converged": False})
+        diagnostics = {
+            "inner_terminal_reason": branch.terminal_reason,
+            "invalid_trial_rejections": branch.invalid_trial_rejections,
+            "iterations": branch.iterations,
+            "evaluations": branch.evaluations,
+        }
+        if not branch.success:
+            rows.append({"start": name, "converged": False, **diagnostics})
             continue
-        du = float(np.max(np.abs(branch[0] - u_ref)))
-        delta = float(branch[1] - joint_ref)
-        delta_laplace = floored_laplace(criterion, eta0, precision, curves, sigma, branch[0])
+        du = float(np.max(np.abs(branch.u - u_ref)))
+        delta = float(branch.value - joint_ref)
+        delta_laplace = floored_laplace(criterion, eta0, precision, curves, sigma, branch.u)
         higher = delta > 1e-6 and du > 1e-3
         flagged |= higher
         rows.append(
@@ -547,6 +548,7 @@ def latent_audit(
                 "criterion_minus_reported": delta_laplace - laplace_ref,
                 "max_abs_du": du,
                 "higher_distinct_mode": higher,
+                **diagnostics,
             }
         )
     return {
@@ -772,7 +774,7 @@ def input_hashes(args: argparse.Namespace) -> dict[str, str]:
         args.arrival_bank,
         args.compressed_bank,
         Path(__file__),
-        MODE_DIAGNOSIS,
+        Path(mode_diagnosis.__file__),
         ROOT / "scripts/run_development_profile.py",
         ROOT / "scripts/qualify_spatial_profiles.py",
         ROOT / "scripts/profile_level_sets.py",

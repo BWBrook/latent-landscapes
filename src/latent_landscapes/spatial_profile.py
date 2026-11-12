@@ -206,6 +206,28 @@ class ModeResult:
     determinant_diagonal: FloatArray | None = field(default=None, repr=False)
     determinant_trace: float = math.nan
     combined_min_eigenvalue: float = math.nan
+    inner_terminal_reason: str = ""
+    invalid_trial_rejections: int = 0
+
+
+@dataclass(frozen=True, slots=True)
+class ModeBranchResult:
+    """Latent solve state and terminal diagnostics, including unsuccessful solves."""
+
+    u: FloatArray
+    value: float
+    score_inf: float
+    step_inf: float
+    decrement: float
+    iterations: int
+    evaluations: int
+    terminal_reason: str
+    invalid_trial_rejections: int
+    detail: str = ""
+
+    @property
+    def success(self) -> bool:
+        return self.terminal_reason == "converged"
 
 
 @dataclass(frozen=True, slots=True)
@@ -362,6 +384,13 @@ class SpatialProfileCriterion:
             "pd_failures": 0,
             "curve_cache_evictions": 0,
             "integration_cache_evictions": 0,
+            "mode_invalid_trial_rejections": 0,
+            "mode_branch_calls": 0,
+            "mode_branch_invalid_trial_rejections": 0,
+            "nuisance_site_evaluations": 0,
+            "nuisance_site_seconds": 0.0,
+            "nuisance_richardson_central": 0,
+            "nuisance_richardson_one_sided": 0,
         }
 
     @property
@@ -535,68 +564,101 @@ class SpatialProfileCriterion:
         precision: FloatArray,
         curves: SiteEvaluator,
         start: FloatArray,
-    ) -> tuple[FloatArray, float, float, float, float, int, int, str] | None:
-        """Maximise the joint latent objective by damped (Levenberg-Marquardt) Newton.
+    ) -> ModeBranchResult:
+        """Maximise the joint latent objective with fixed-budget damped Newton.
 
-        The iteration is a deterministic function of its inputs. It returns a
-        point only under strict convergence: a positive-definite negative
-        Hessian, gradient at most ``10 * mode_tolerance`` and Newton decrement
-        at most ``decrement_tolerance``, or a full Newton step whose predicted
-        gain is at floating-point resolution. Anything else is a failure.
+        Initial-invalid states fail. Invalid trial evaluations retain the valid
+        current state and use the same damping increase as other rejected steps.
+        Strict gradient, decrement and positive-definiteness checks are unchanged.
         """
         lower = curves.numerical_domain[0] - eta0 + 1e-10
         upper = curves.numerical_domain[1] - eta0 - 1e-10
         u = np.clip(np.asarray(start, dtype=np.float64), lower, upper)
         identity = self._identity
-        evaluations = 0
-        try:
-            ell, score, curvature, _ = curves.evaluate(eta0 + u)
-            evaluations += 1
-            value = float(np.sum(ell) - 0.5 * u @ precision @ u)
-            damping = 0.0
-            for iteration in range(self.mode_max_iterations):
-                gradient = score - precision @ u
-                hessian = precision - np.diag(curvature)
-                score_inf = float(np.max(np.abs(gradient)))
-                try:
-                    factor = cho_factor(hessian, lower=True, check_finite=True)
-                    newton = cho_solve(factor, gradient, check_finite=True)
-                    decrement = math.sqrt(max(float(gradient @ newton), 0.0))
-                    positive_definite = True
-                except np.linalg.LinAlgError:
-                    newton, decrement, positive_definite = gradient, math.inf, False
-                if (
-                    positive_definite
-                    and score_inf <= 10.0 * self.mode_tolerance
-                    and decrement <= self.decrement_tolerance
-                ):
-                    step_inf = float(np.max(np.abs(newton)))
-                    return (
-                        u,
-                        value,
-                        score_inf,
-                        step_inf,
-                        decrement,
-                        iteration,
-                        evaluations,
-                        "damped Newton converged",
+        evaluations, invalid_trials, iterations = 0, 0, 0
+        value, score_inf, step_inf, decrement = -math.inf, math.inf, math.inf, math.inf
+
+        def finish(reason: str, detail: str = "") -> ModeBranchResult:
+            self.stats["mode_branch_calls"] = int(self.stats["mode_branch_calls"]) + 1
+            self.stats["mode_branch_invalid_trial_rejections"] = (
+                int(self.stats["mode_branch_invalid_trial_rejections"]) + invalid_trials
+            )
+            reason_key = f"mode_branch_termination_{reason.replace('-', '_')}"
+            self.stats[reason_key] = int(self.stats.get(reason_key, 0)) + 1
+            if reason == "converged":
+                histogram_key = f"mode_branch_converged_iterations_{iterations}"
+                self.stats[histogram_key] = int(self.stats.get(histogram_key, 0)) + 1
+                eta = eta0 + u
+                if np.isfinite(eta).all():
+                    self.stats["mode_eta_min"] = min(
+                        float(self.stats.get("mode_eta_min", math.inf)), float(np.min(eta))
                     )
-                while True:
-                    if damping == 0.0 and positive_definite:
-                        step = newton
-                        break
-                    try:
-                        damped = cho_factor(hessian + damping * identity, lower=True)
-                        step = cho_solve(damped, gradient, check_finite=True)
-                        break
-                    except np.linalg.LinAlgError:
-                        damping = max(1e-6, 10.0 * damping)
-                predicted = float(gradient @ step - 0.5 * step @ hessian @ step)
-                candidate = u + step
-                ratio = -1.0
-                if np.all(candidate > lower) and np.all(candidate < upper):
-                    c_ell, c_score, c_curvature, _ = curves.evaluate(eta0 + candidate)
+                    self.stats["mode_eta_max"] = max(
+                        float(self.stats.get("mode_eta_max", -math.inf)), float(np.max(eta))
+                    )
+            final_score = score_inf if reason == "converged" else math.inf
+            if reason not in {"converged", "initial-invalid"}:
+                final_score = float(np.max(np.abs(score - precision @ u)))
+            return ModeBranchResult(
+                u.copy(),
+                value,
+                final_score,
+                step_inf,
+                decrement if reason == "converged" else math.inf,
+                iterations,
+                evaluations,
+                reason,
+                invalid_trials,
+                detail,
+            )
+
+        try:
+            evaluations += 1
+            ell, score, curvature, _ = curves.evaluate(eta0 + u)
+        except (CurveDomainError, FloatingPointError, ValueError) as exc:
+            return finish("initial-invalid", str(exc))
+        value = float(np.sum(ell) - 0.5 * u @ precision @ u)
+        damping = 0.0
+        for iteration in range(self.mode_max_iterations):
+            iterations = iteration
+            gradient = score - precision @ u
+            hessian = precision - np.diag(curvature)
+            score_inf = float(np.max(np.abs(gradient)))
+            try:
+                factor = cho_factor(hessian, lower=True, check_finite=True)
+                newton = cho_solve(factor, gradient, check_finite=True)
+                decrement = math.sqrt(max(float(gradient @ newton), 0.0))
+                positive_definite = True
+            except np.linalg.LinAlgError:
+                newton, decrement, positive_definite = gradient, math.inf, False
+            if (
+                positive_definite
+                and score_inf <= 10.0 * self.mode_tolerance
+                and decrement <= self.decrement_tolerance
+            ):
+                step_inf = float(np.max(np.abs(newton)))
+                return finish("converged", "damped Newton converged")
+            while True:
+                if damping == 0.0 and positive_definite:
+                    step = newton
+                    break
+                try:
+                    damped = cho_factor(hessian + damping * identity, lower=True)
+                    step = cho_solve(damped, gradient, check_finite=True)
+                    break
+                except np.linalg.LinAlgError:
+                    damping = max(1e-6, 10.0 * damping)
+            step_inf = float(np.max(np.abs(step)))
+            predicted = float(gradient @ step - 0.5 * step @ hessian @ step)
+            candidate = u + step
+            ratio = -1.0
+            if np.all(candidate > lower) and np.all(candidate < upper):
+                try:
                     evaluations += 1
+                    c_ell, c_score, c_curvature, _ = curves.evaluate(eta0 + candidate)
+                except (CurveDomainError, FloatingPointError, ValueError):
+                    invalid_trials += 1
+                else:
                     c_value = float(np.sum(c_ell) - 0.5 * candidate @ precision @ candidate)
                     if predicted > 0.0:
                         ratio = (c_value - value) / predicted
@@ -607,21 +669,22 @@ class SpatialProfileCriterion:
                         and predicted <= resolution
                         and c_value >= value - resolution
                     ):
-                        # Gain is below floating-point resolution: accept the
-                        # full Newton step; the strict test above decides.
+                        # Below resolution, take the full Newton step and let
+                        # the unchanged strict test decide at the next iterate.
                         ratio = 1.0
-                if ratio > 1e-4:
-                    u, value = candidate, c_value
-                    ell, score, curvature = c_ell, c_score, c_curvature
-                    damping = 0.0 if ratio > 0.75 else damping / 3.0
-                else:
-                    scale = float(np.max(np.abs(np.diag(hessian))))
-                    damping = max(1e-3 * max(scale, 1.0), 10.0 * damping)
-                    if damping > 1e12 * max(scale, 1.0):
-                        return None
-            return None
-        except (CurveDomainError, FloatingPointError, ValueError):
-            return None
+            else:
+                invalid_trials += 1
+            iterations = iteration + 1
+            if ratio > 1e-4:
+                u, value = candidate, c_value
+                ell, score, curvature = c_ell, c_score, c_curvature
+                damping = 0.0 if ratio > 0.75 else damping / 3.0
+            else:
+                scale = float(np.max(np.abs(np.diag(hessian))))
+                damping = max(1e-3 * max(scale, 1.0), 10.0 * damping)
+                if damping > 1e12 * max(scale, 1.0):
+                    return finish("damping-limit")
+        return finish("iteration-limit")
 
     def mode(
         self,
@@ -645,7 +708,17 @@ class SpatialProfileCriterion:
         eta0 = float(alpha) + float(beta) * self.data.exposure
         precision = self._k_inverse / (sigma * sigma)
         branch = self._mode_branch(eta0, precision, curves, np.zeros(self.site_count))
-        if branch is None:
+        self.stats["mode_iterations"] = int(self.stats["mode_iterations"]) + branch.iterations
+        self.stats["mode_evaluations"] = int(self.stats["mode_evaluations"]) + branch.evaluations
+        self.stats["mode_invalid_trial_rejections"] = (
+            int(self.stats["mode_invalid_trial_rejections"]) + branch.invalid_trial_rejections
+        )
+        reason_key = f"mode_termination_{branch.terminal_reason.replace('-', '_')}"
+        self.stats[reason_key] = int(self.stats.get(reason_key, 0)) + 1
+        if branch.success:
+            histogram_key = f"mode_converged_iterations_{branch.iterations}"
+            self.stats[histogram_key] = int(self.stats.get(histogram_key, 0)) + 1
+        if not branch.success:
             self.stats["mode_failures"] = int(self.stats["mode_failures"]) + 1
             return ModeResult(
                 np.zeros(self.site_count),
@@ -653,17 +726,20 @@ class SpatialProfileCriterion:
                 -math.inf,
                 math.inf,
                 False,
-                "latent mode did not strictly converge",
-                0,
-                0,
+                f"latent mode failed: {branch.terminal_reason}"
+                + (f": {branch.detail}" if branch.detail else ""),
+                branch.iterations,
+                branch.evaluations,
                 1,
                 None,
                 precision,
                 None,
+                inner_terminal_reason=branch.terminal_reason,
+                invalid_trial_rejections=branch.invalid_trial_rejections,
             )
-        u, value, score_inf, step_inf, decrement, iterations, evaluations, message = branch
-        self.stats["mode_iterations"] = int(self.stats["mode_iterations"]) + iterations
-        self.stats["mode_evaluations"] = int(self.stats["mode_evaluations"]) + evaluations
+        u, value, score_inf = branch.u, branch.value, branch.score_inf
+        step_inf, decrement = branch.step_inf, branch.decrement
+        iterations, evaluations, message = branch.iterations, branch.evaluations, branch.detail
         eta = eta0 + u
         _, _, curvature, _ = curves.evaluate(eta)
         hessian = precision - np.diag(curvature)
@@ -696,6 +772,8 @@ class SpatialProfileCriterion:
                 hessian,
                 precision,
                 None,
+                inner_terminal_reason=branch.terminal_reason,
+                invalid_trial_rejections=branch.invalid_trial_rejections,
             )
         logdet_c = 2.0 * self.site_count * math.log(sigma) + self._logdet_k
         bound_touch = bool(
@@ -743,6 +821,8 @@ class SpatialProfileCriterion:
             determinant_diagonal,
             determinant_trace,
             float(eigenvalues.min()),
+            branch.terminal_reason,
+            branch.invalid_trial_rejections,
         )
 
     @staticmethod
@@ -793,7 +873,7 @@ class SpatialProfileCriterion:
         fixed_h: float | None = None,
         *,
         nuisance_fd: bool = False,
-        fd_step: float = 1e-4,
+        fd_step: float = 1e-3,
     ) -> CriterionEvaluation:
         """Evaluate the positive-variance family and its analytic core gradient."""
         point, h, detection_sd = self._unpack(parameters, fixed_h, False)
@@ -899,10 +979,12 @@ class SpatialProfileCriterion:
         *,
         sigma_zero: bool,
     ) -> list[tuple[int, FloatArray, FloatArray, FloatArray]]:
-        """Site-level central differences in log h and detection SD at fixed eta.
+        """Richardson site derivatives in log h and detection SD at fixed eta.
 
-        Only the site evaluator is differenced; the latent mode and Laplace
-        terms are differentiated analytically by the caller.
+        Central base stencils give fourth-order accuracy in the interior.
+        Near a bound, second-order one-sided stencils stay in the fitted
+        domain; their Richardson remainder is third order, not fourth order.
+        The latent mode and Laplace terms are differentiated by the caller.
         """
         if not math.isfinite(fd_step) or fd_step <= 0.0:
             raise ValueError("fd_step must be finite and positive")
@@ -915,32 +997,67 @@ class SpatialProfileCriterion:
             lower, upper = bounds[index]
             x = float(point[index])
             delta = fd_step * max(1.0, abs(x))
-            plus, minus = x + delta, x - delta
-            can_plus, can_minus = plus <= upper, minus >= lower
+            central = x + delta <= upper and x - delta >= lower
+            direction = 1.0 if upper - x >= x - lower else -1.0
+            if not central:
+                room = upper - x if direction > 0 else x - lower
+                delta = min(delta, float(np.nextafter(room / 2.0, 0.0)))
+            if delta <= 0.0 or x + direction * delta == x:
+                raise ValueError("nuisance coordinate has no admissible difference step")
+            cache: dict[float, tuple[FloatArray, FloatArray, FloatArray]] = {}
 
-            def site(value: float, index: int = index) -> tuple[FloatArray, ...]:
+            def site(
+                value: float,
+                index: int = index,
+                cache: dict[float, tuple[FloatArray, FloatArray, FloatArray]] = cache,
+            ) -> tuple[FloatArray, FloatArray, FloatArray]:
+                if value in cache:
+                    return cache[value]
                 candidate = point.copy()
                 candidate[index] = value
                 _, h, detection_sd = self._unpack(candidate, fixed_h, sigma_zero)
-                ell, score, curvature, _ = self.curves(h, detection_sd).evaluate(eta)
-                return ell, score, curvature
-
-            if can_plus and can_minus:
-                hi, lo, width = site(plus), site(minus), 2.0 * delta
-            elif can_plus:
-                hi, lo, width = site(plus), site(x), delta
-            elif can_minus:
-                hi, lo, width = site(x), site(minus), delta
-            else:
-                raise ValueError("nuisance coordinate has no admissible difference step")
-            rows.append(
-                (
-                    index,
-                    (hi[0] - lo[0]) / width,
-                    (hi[1] - lo[1]) / width,
-                    (hi[2] - lo[2]) / width,
+                started = time.perf_counter()
+                self.stats["nuisance_site_evaluations"] = (
+                    int(self.stats["nuisance_site_evaluations"]) + 1
                 )
+                try:
+                    ell, score, curvature, _ = self.curves(h, detection_sd).evaluate(eta)
+                finally:
+                    self.stats["nuisance_site_seconds"] = (
+                        float(self.stats["nuisance_site_seconds"]) + time.perf_counter() - started
+                    )
+                cache[value] = ell, score, curvature
+                return cache[value]
+
+            def difference(
+                width: float,
+                central: bool = central,
+                x: float = x,
+                direction: float = direction,
+                site: Any = site,
+            ) -> tuple[FloatArray, ...]:
+                if central:
+                    hi, lo = site(x + width), site(x - width)
+                    return tuple(
+                        (high - low) / (2.0 * width) for high, low in zip(hi, lo, strict=True)
+                    )
+                base, one, two = (
+                    site(x),
+                    site(x + direction * width),
+                    site(x + 2 * direction * width),
+                )
+                return tuple(
+                    direction * (-3.0 * f0 + 4.0 * f1 - f2) / (2.0 * width)
+                    for f0, f1, f2 in zip(base, one, two, strict=True)
+                )
+
+            coarse, fine = difference(delta), difference(delta / 2.0)
+            derivatives = tuple(
+                (4.0 * half - full) / 3.0 for full, half in zip(coarse, fine, strict=True)
             )
+            key = "nuisance_richardson_central" if central else "nuisance_richardson_one_sided"
+            self.stats[key] = int(self.stats[key]) + 1
+            rows.append((index, derivatives[0], derivatives[1], derivatives[2]))
         return rows
 
     def evaluate_sigma_zero(
@@ -949,7 +1066,7 @@ class SpatialProfileCriterion:
         fixed_h: float | None = None,
         *,
         nuisance_fd: bool = False,
-        fd_step: float = 1e-4,
+        fd_step: float = 1e-3,
     ) -> CriterionEvaluation:
         """Evaluate the exact lower-dimensional sigma=0 family."""
         point, h, detection_sd = self._unpack(parameters, fixed_h, True)
@@ -1048,6 +1165,8 @@ class SpatialProfileCriterion:
         if both differences fail). Negative-curvature directions are handled
         by an eigenvalue shift, and a first-order stationary point is accepted
         only after a second-order check finds no ascent direction.
+        Returned success certifies that point, independently of whether the
+        terminal message records a stall or an exhausted iteration budget.
         """
         lower = np.array([bound[0] for bound in bounds])
         upper = np.array([bound[1] for bound in bounds])
@@ -1056,12 +1175,21 @@ class SpatialProfileCriterion:
         evaluations, radius, message = 1, 1.0, "iteration limit reached"
         iterations, escapes = 0, 0
         certified = False
+        curvature_point: FloatArray | None = None
+        curvature_complete = False
+        values = np.array([], dtype=np.float64)
         if not current.success:
             return (
                 x,
                 current,
                 OptimizeResult(
-                    x=x, success=False, message="start evaluation failed", nit=0, nfev=1
+                    x=x,
+                    success=False,
+                    message="start evaluation failed",
+                    nit=0,
+                    nfev=1,
+                    second_order_passed=False,
+                    curvature_complete=False,
                 ),
             )
 
@@ -1110,6 +1238,7 @@ class SpatialProfileCriterion:
             gradient = current.criterion_gradient
             free = free_set(x, gradient)
             curvature, count, curvature_complete = curvature_at(x, gradient, free)
+            curvature_point = x.copy()
             evaluations += count
             values, vectors = np.linalg.eigh(curvature)
             if self._projected_gradient_inf(-gradient, x, bounds) <= gradient_tolerance:
@@ -1173,11 +1302,36 @@ class SpatialProfileCriterion:
                 if radius < 1e-10:
                     message = "trust region collapsed"
                     break
+        second_order_passed = False
+        stationary = self._projected_gradient_inf(-current.criterion_gradient, x, bounds)
+        if current.success and stationary <= gradient_tolerance:
+            if curvature_point is None or not np.array_equal(curvature_point, x):
+                free = free_set(x, current.criterion_gradient)
+                curvature, count, curvature_complete = curvature_at(
+                    x, current.criterion_gradient, free
+                )
+                evaluations += count
+                values = np.linalg.eigvalsh(curvature)
+            scale = max(1.0, float(np.max(np.abs(values)))) if len(values) else 1.0
+            second_order_passed = bool(
+                curvature_complete and (not len(values) or values.min() >= -1e-6 * scale)
+            )
+        if second_order_passed and not certified:
+            message += "; returned point passes stationarity and second-order check"
+        certified = bool(
+            current.success and stationary <= gradient_tolerance and second_order_passed
+        )
         return (
             x,
             current,
             OptimizeResult(
-                x=x, success=certified, message=message, nit=iterations, nfev=evaluations
+                x=x,
+                success=certified,
+                message=message,
+                nit=iterations,
+                nfev=evaluations,
+                second_order_passed=second_order_passed,
+                curvature_complete=bool(curvature_complete),
             ),
         )
 
@@ -1219,7 +1373,7 @@ class SpatialProfileCriterion:
                 start,
                 bounds,
                 maxiter=maxiter,
-                gradient_tolerance=0.1 * kkt_tolerance,
+                gradient_tolerance=kkt_tolerance,
             )
             projected = (
                 self._projected_gradient_inf(evaluation.objective_gradient, x, bounds)

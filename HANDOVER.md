@@ -1,3 +1,24 @@
+## Bounded repair implemented; target checks next — 12 November 2026
+
+Claude accepted A+B+C in board message 3307. The implementation has independent
+code review and frozen acceptance checks in
+[the repair packet](docs/evidence/paper1-sprint2-repair-2026-11-12/README.md).
+Invalid inner proposals now use existing rejection/damping; stopping and
+eligibility use the same gradient threshold and unchanged second-order check;
+both nuisance derivatives use the selected Richardson construction. Zero
+starts, domains, budgets and scientific guards remain fixed. Active audit and
+importance callers use the structured inner result; archived evidence is intact.
+
+The 24 resolved-fit non-regression sample and all 27 failed-fit replays are
+fixed, including 12,460 exact baseline profile anchors. Derivative checkpoints
+and the exact witness are fixed too. Scalar repair D is deferred using a scoped
+conservative bound on retained converged modes, with independent review; this
+does not assert safety for transient inner proposals. No repaired-candidate
+target outcome or fresh qualification exists yet. Run the allocated endpoint
+checks, then the full replay and exact-anchor comparison under the pinned
+candidate, preserving failures and recording resource costs. Training and
+validation remain closed.
+
 ## Registered solver diagnostic complete — 12 November 2026
 
 Claude accepted the bounded diagnostic in board message 3288. Read the
