@@ -1,0 +1,87 @@
+{
+  "schema": "repair-fixed-vector-plan-v1",
+  "date": "2026-11-15",
+  "post_outcome": true,
+  "optimization_run": false,
+  "purpose": "Separate identical-vector criterion changes from optimizer endpoint selection; frozen acceptance remains failed.",
+  "sources": {
+    "baseline": "99af5206b6a4e53f5b8e9d71cbf348f95e9ae574",
+    "candidate": "a77e849ce0b0381b5c378b222bacfadce9beaf96"
+  },
+  "tasks": [
+    {
+      "task_id": "fit-q-base-corridor-0-window_high-mu0.001-h10-C-exhaustive",
+      "task_record_sha256": "5406ed5f70af6a9c3b1822d13324a9aa035e14a05a4e6ac978057a2d42d8b500",
+      "h": 30.0,
+      "vectors": [
+        {
+          "state": "baseline",
+          "parameters": [
+            -7.6873038544938534,
+            -0.22298655591097474,
+            -7.0866415338872155,
+            0.2132586969270118
+          ],
+          "stored_criterion": -1896.2767000651468,
+          "source_receipt": "artifacts/sprint2/repair-20261112/replay-scout/fit-q-base-corridor-0-window_high-mu0.001-h10-C-exhaustive/search_receipt.json",
+          "source_receipt_sha256": "2486ba36761fb0f961a09446e9b251f65ee8deae195b10e97d05900f092159f9"
+        },
+        {
+          "state": "candidate_full",
+          "parameters": [
+            -7.687303861766772,
+            -0.22298655297240366,
+            -6.041781124775699,
+            0.21325869532450978
+          ],
+          "stored_criterion": -1896.276701265026,
+          "source_receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-0-window_high-mu0.001-h10-C-exhaustive/attempt-0001/fit/search_receipt.json",
+          "source_receipt_sha256": "9a5c04ebca7f9f98e4140d36f2232ec386e48a8526f531a4976fd66feaf2b761"
+        }
+      ]
+    },
+    {
+      "task_id": "fit-q-base-corridor-0-constant-mu0.004-h1-C-independent_bank",
+      "task_record_sha256": "8929987b30cffa965ca86af6a4d429ea276baa2ef86902e459b352ff18c02254",
+      "h": 1.0,
+      "vectors": [
+        {
+          "state": "baseline",
+          "parameters": [
+            -5.422248841490678,
+            0.051648881737176244,
+            -6.826529820657198,
+            0.19330300570482983
+          ],
+          "stored_criterion": -1676.79605571835,
+          "source_receipt": "artifacts/sprint2/repair-20261112/replay-scout/fit-q-base-corridor-0-constant-mu0.004-h1-C-independent_bank/search_receipt.json",
+          "source_receipt_sha256": "731155adc0ca8d47a4999d0757d59ce4ffa6376f750a72b10450d756a0dc8aed"
+        },
+        {
+          "state": "candidate_full",
+          "parameters": [
+            -5.422248847893498,
+            0.05164888478969745,
+            -5.826675557535415,
+            0.19330300072267045
+          ],
+          "stored_criterion": -1676.7960755026131,
+          "source_receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-0-constant-mu0.004-h1-C-independent_bank/attempt-0001/fit/search_receipt.json",
+          "source_receipt_sha256": "805fe5d231ba0123dff5ddb26ed24ee5a523db4c2d4a6cea1c92f9b4daf9355d"
+        },
+        {
+          "state": "candidate_probe",
+          "parameters": [
+            -5.422246304661208,
+            0.05165389673739461,
+            -9.210340371976182,
+            0.19330295643415277
+          ],
+          "stored_criterion": -1676.7960526488484,
+          "source_receipt": "artifacts/sprint2/repair-20261112/final-20261115/selected-probes/fit-q-base-corridor-0-constant-mu0.004-h1-C-independent_bank/receipt.json",
+          "source_receipt_sha256": "f1fc675641eb515ada639b5d753c8fc1291d6fbca153930a5fbb70424c21ea60"
+        }
+      ]
+    }
+  ]
+}

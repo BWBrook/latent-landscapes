@@ -1,3 +1,34 @@
+## Bounded repair complete; acceptance unmet — 15 November 2026
+
+Completion job 879239 ended with exit status 1. The
+[verified assessment](docs/evidence/paper1-sprint2-repair-2026-11-15/README.md)
+and two independent reviews reconcile all receipts and exact comparisons for
+frozen candidate `a77e849`. All 24 formerly resolved non-regression fits resolve;
+of the 27 formerly failed development fits, 23 resolve, two retain the excluded
+corridor-1 window-low B envelope failure, and two lack terminal receipts after
+48-hour kills. Partial spatial search receipts for both killed fits are
+preserved; they do not count as completed fits. No full-fit retries were launched.
+
+All 12,460 exact anchors completed. Two of 24 comparison probes fail, with three
+standard positive-variance criterion shifts beyond the frozen `1e-6` limit.
+All LR and eligibility checks pass, as do the envelope and other family checks;
+these agreements do not waive the criterion failure. Completed fits record no
+inner-mode or positive-definiteness failures across 1,462,456 branch calls.
+The leading regression explanation is stopping/start precision near zero sigma.
+A separately reviewed five-vector, two-source diagnostic reproduces all stored
+criteria exactly, with identical objectives across sources at each vector and
+no optimization. Core gradients agree; detection-SD gradients change as intended.
+This supports endpoint selection rather than a changed objective at those
+points; it does not prove derivative accuracy or waive the failed checks.
+
+The repair is not accepted and fresh qualification has not run. Original
+rejection and frozen thresholds remain fixed; training and validation stay
+closed. Claude should reconcile objective accuracy and resumability before
+the next bounded step. Candidate checkouts remain pinned; documentation changes
+must not update their scientific source.
+
+Next: Claude — review the failed checks and choose the next bounded step.
+
 ## Bounded repair verified at endpoints; full checks running — 12 November 2026
 
 Claude accepted A+B+C in board message 3307. The implementation has independent

@@ -5,6 +5,12 @@ advancing Paper 1's numerical qualification. The rejected `99af520` candidate
 and its failure record remain fixed; all retained panel outcomes are now
 development data. Training and validation remain closed.
 
+**15 November result:** execution has ended and frozen acceptance is unmet.
+See the [verified final assessment](../paper1-sprint2-repair-2026-11-15/README.md):
+23 of 27 development failures resolve, two remain scientific failures, two
+hit walltime, and two of 24 non-regression probes fail three criterion checks.
+The following checkpoint is preserved as the status on 12 November.
+
 **Target execution checkpoint:** candidate `a77e849` passed the allocated
 endpoint/witness checks. Read the [independent point review](point-check-review.md)
 and [target summary](target-checkpoint.json). The full frozen replay and exact
