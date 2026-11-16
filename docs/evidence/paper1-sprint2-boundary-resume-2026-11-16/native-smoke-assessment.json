@@ -1,0 +1,97 @@
+{
+  "schema": "boundary-native-smoke-assessment-v1",
+  "date": "2026-11-16",
+  "candidate_commit": "432bb6e56e672f9e57f2f7bc369546023b07662e",
+  "native_jobs": {
+    "point": "880957",
+    "metadata": "880958[]",
+    "dependency": "880959"
+  },
+  "native_parent_exit_codes": [
+    0,
+    0,
+    0
+  ],
+  "status": "passed",
+  "native_afterany_and_indices_verified": true,
+  "source_sha256_bindings_checked": 110,
+  "point_receipt_sha256": "7add3fad2b1e9ce24325562ab7da0f97ec652065920eee06f5c7952630c35c20",
+  "target_smoke_sha256": "d697bc6029ee7a713260d9dda1fde80aae6278684abb157cdd69b9792489d4bf",
+  "prepared_fit_plan_sha256": "bc6fcd5b5aa0dab43a39b2834ad25ec29d07e67fb3fead8e010a55f32adbb330",
+  "prepared_fit_tasks_sha256": "be423e208438f6d20a3a961ecfcfef0ef1eadab03981d9f094a2a62834d5900c",
+  "constant_checks": [
+    {
+      "dataset": "q-base-connected-2-window_high-mu0.004-h1-A",
+      "derivative_absolute_error": 2.278918387332851e-08,
+      "tolerance": 5e-06,
+      "passed": true
+    },
+    {
+      "dataset": "q-trend-connected-2-temporal_trend-mu0.004-h3-A",
+      "derivative_absolute_error": 1.3528364206649712e-07,
+      "tolerance": 5e-06,
+      "passed": true
+    },
+    {
+      "dataset": "q-base-corridor-1-b100_anchor-mu0.004-h3-A",
+      "derivative_absolute_error": 1.792252177779119e-07,
+      "tolerance": 5e-06,
+      "passed": true
+    },
+    {
+      "dataset": "q-trend-barrier-1-temporal_trend-mu0.004-h3-A",
+      "derivative_absolute_error": 2.8419854913863674e-08,
+      "tolerance": 5e-06,
+      "passed": true
+    }
+  ],
+  "spatial_checks": [
+    {
+      "name": "enriched-collapse-1",
+      "eligible": true,
+      "optimizer_success": true,
+      "gradient_inf": 2.7351876218162374e-05,
+      "mode_terminal_reason": "converged"
+    },
+    {
+      "name": "enriched-collapse-2",
+      "eligible": true,
+      "optimizer_success": true,
+      "gradient_inf": 1.2886713918192072e-07,
+      "mode_terminal_reason": "converged"
+    },
+    {
+      "name": "enriched-collapse-3",
+      "eligible": true,
+      "optimizer_success": true,
+      "gradient_inf": 3.05234723292358e-05,
+      "mode_terminal_reason": "converged"
+    }
+  ],
+  "witness_evaluation": {
+    "success": true,
+    "criterion": -1084.5401071131075,
+    "gradient": [
+      -4.2459406859318705e-06,
+      2.639102378521052e-06,
+      1.1490969488573861,
+      1.0928449546199204e-05
+    ],
+    "message": "ok",
+    "mode_success": true,
+    "mode_terminal_reason": "converged",
+    "invalid_trial_rejections": 1,
+    "mode_iterations": 11
+  },
+  "runtime": {
+    "python": "3.12.12 (main, Feb  3 2026, 05:51:02) [GCC 12.2.0]",
+    "numpy_version": "2.5.1",
+    "scipy_version": "1.18.0",
+    "runtime_sif_sha256": "e71239ad4246ba7a1037d3dd3bc3d29667b7c3081992d95ab33d5d979e3f12ce"
+  },
+  "model_source_untouched": {
+    "original": "99af5206b6a4e53f5b8e9d71cbf348f95e9ae574",
+    "prior_repair": "a77e849ce0b0381b5c378b222bacfadce9beaf96"
+  },
+  "release_scope": "Native source/runtime/index/dependency and numerical smoke only; no acceptance or qualification result."
+}
