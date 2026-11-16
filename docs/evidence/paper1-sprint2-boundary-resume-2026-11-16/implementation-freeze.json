@@ -1,0 +1,64 @@
+{
+  "schema": "boundary-resume-prospective-source-freeze-v1",
+  "date": "2026-11-16",
+  "candidate_commit": "432bb6e56e672f9e57f2f7bc369546023b07662e",
+  "status": "awaiting_reciprocal_review_and_target_smoke",
+  "acceptance_outcomes_available": false,
+  "original_candidate": "99af5206b6a4e53f5b8e9d71cbf348f95e9ae574",
+  "prior_repair_and_historical_recovery_source": "a77e849ce0b0381b5c378b222bacfadce9beaf96",
+  "selection_sha256": "099f28d9a45a8a4eb12b103ddaf23714ed3ced72120bb5c9184c9c75e514dfaf",
+  "nonregression_count": 24,
+  "development_replay_count": 27,
+  "required_exact_anchors": 12460,
+  "tolerances": {
+    "criterion_absolute": 1e-06,
+    "profile_lr_absolute": 0.001,
+    "eligibility": "unchanged raw required-family eligibility"
+  },
+  "comparison_schema": "solver-repair-nonregression-v2",
+  "closed_positive_comparisons_duplicate_envelope_checks": true,
+  "raw_positive_optimizer_accuracy_certified": false,
+  "fifteen_november_failed_verdict_rescored": false,
+  "qualification_or_training_or_validation_opened": false,
+  "execution_budget": {
+    "max_total_segments_per_fit": 3,
+    "wall_seconds_per_segment": 172800,
+    "max_allocated_wall_seconds_per_fit": 518400,
+    "numerical_iteration_point_and_audit_budgets": "unchanged"
+  },
+  "runtime_sif_sha256": "e71239ad4246ba7a1037d3dd3bc3d29667b7c3081992d95ab33d5d979e3f12ce",
+  "source_and_test_sha256": {
+    "scripts/audit_sprint2_pair.py": "a18d8122dbbcd816e83ca74bd5c8b7cc1fc6aac88709f3b2b03ef861d1a6438a",
+    "scripts/compare_solver_repair_replay.py": "084138679efab2b1bbbd636c4a9df54ead7f1e4a1491441687848b9582d721bf",
+    "scripts/fit_dataset.py": "20bf2dc7046fba4851a462f7e83bf5fbbea280ade324d9e6c4d74aafa3776198",
+    "scripts/fit_checkpoints.py": "ccbb25ad76a7cb017ba7489bb720bb90cb8ba3c7c8b34d5b1b060ef96c2d61ff",
+    "scripts/pbs/array.pbs": "977fd34d006e84c29a351762245c26c780dc94eef9464dd52d3f48e517c2360d",
+    "scripts/pbs/campaign.py": "7c4cf820ca1cf05b1cc3f9ac1a3022da874c7b35d756e3e4bfd618fa20ce7f67",
+    "scripts/pbs/submit_fit_segments.py": "3cc13c13169d1502fbe11f7b68a298aca78b357446ae543be8ddcb8765cf8b6d",
+    "scripts/prepare_solver_repair_replay.py": "ff38ba08205593c45d912392d890e2ec8c714ec7c8d2822a4a81c6e3c3277017",
+    "scripts/qualify_spatial_profiles.py": "a0a881684a6c65b84f361713079d8861bf4d445760c3b823fbc02e3d27ae95a5",
+    "scripts/run_development_profile.py": "402d841a2e8adce873ce901fcdd33b1702996c5729a869e4705cc1e3fc60af97",
+    "scripts/resume_archived_repair.py": "c782bd61b1fcb7b669ce62cb32caa7d6ae26a1a76f90cf5629da4c4fc827c99f",
+    "src/latent_landscapes/spatial_family_reporting.py": "c50d04c8ac02b0ce26b3bf1e93afe14e42a3baad4bda945b5e6723d19c5eee48",
+    "tests/test_boundary_reporting.py": "ab3c59a568073d8cf82aa6f347b6fc3f449aec8b8e4a9c06bb35ef25eca950b2",
+    "tests/test_fit_resume.py": "1a01e3ccbb3d1f627a7f269c4477b3a44f24b96794a8210c8f16d0cf9174eded",
+    "tests/test_solver_repair_replay.py": "e7ae43f1c70f3a86495c4e199782fbe56a32aabc5067d7ea48578efc833f0e01",
+    "tests/test_pbs_campaign.py": "d242e11abbb4c8a88d5a453d0f42fe3d4b474ae266fc6323a5cdc9392d996861",
+    "tests/test_fit_segments.py": "c5b3e2491619cfb02d7edfdb538eccef00e414cfc4a0743c90854b72d0b03015",
+    "tests/test_archived_repair_resume.py": "dac727b3738ff100239b449f545a96f67973cb7a03e24625ec2263d3e33695c8"
+  },
+  "specification_sha256": {
+    "docs/evidence/paper1-sprint2-boundary-resume-2026-11-16/acceptance-deviation.md": "918caf91ec30f76e8a90efc47aae650cfcf9081e64cb999e4537190cc6914c8c",
+    "docs/evidence/paper1-sprint2-boundary-resume-2026-11-16/design-review.md": "4ec182c62421d76d0acdd1763221179f73e57d4a671de8468d66f1da862d7dfa",
+    "docs/evidence/paper1-sprint2-boundary-resume-2026-11-16/code-review.md": "c1ad77a5ef51399b80d4caa5cd6123d15c5184df8996abdbb9330d4fcd737a35",
+    "docs/evidence/paper1-sprint2-boundary-resume-2026-11-16/equivalence-normalization.json": "98d9ac9734aca1a543c81759c052cdf87f87e1ad33503dfc33021355c950ff37",
+    "docs/evidence/paper1-sprint2-boundary-resume-2026-11-16/historical-recovery-plan.md": "a60a157818b4fc9e9b0b0125659bfb2007d81ca2bbdd826456dd61b50ea80d73",
+    "docs/evidence/paper1-sprint2-boundary-resume-2026-11-16/local-validation.json": "83aac2d95f02851a19eb0b89b24dffb76d6154bb526f9321303db147f29d5ae8"
+  },
+  "pending": [
+    "Claude reciprocal review of reporting comparison and explicit equivalence projection.",
+    "Native PBS/container/dependency and resume deployment smoke.",
+    "Two separate historical recovery smoke jobs under a77 numerical source.",
+    "Prospective 51-task acceptance and exact probes, followed by scientific reconciliation before fresh qualification."
+  ]
+}

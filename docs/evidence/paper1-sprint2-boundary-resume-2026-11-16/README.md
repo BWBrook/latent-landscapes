@@ -5,6 +5,11 @@ following board message 3450. The implementation is prepared for reciprocal
 review before target acceptance execution. The failed 15 November acceptance
 verdict remains fixed; training and validation remain closed.
 
+Frozen candidate source: `432bb6e56e672f9e57f2f7bc369546023b07662e`.
+The [implementation freeze](implementation-freeze.json) binds source/test bytes,
+specifications, unchanged selection and resource limits. Later documentation
+commits must not update a pinned target checkout to a different source commit.
+
 The [declared deviation](acceptance-deviation.md) retains the same 24+27 tasks,
 12,460 exact anchors, criterion/LR tolerances, raw eligibility, numerical budgets,
 starts and scientific guards. It introduces **D_boundary**, distinct from the

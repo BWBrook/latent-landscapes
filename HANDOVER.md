@@ -2,6 +2,8 @@
 
 Board message 3450 prompted the
 [prospective boundary/resume packet](docs/evidence/paper1-sprint2-boundary-resume-2026-11-16/README.md).
+Candidate source is frozen at `432bb6e56e672f9e57f2f7bc369546023b07662e`;
+the linked implementation freeze binds the inspected files and test evidence.
 It adds a separate boundary-closed positive-family report while retaining raw
 fit state, eligibility, envelope/LR and guards. The amended comparison closes
 the positive component on both sides with consistent free normalizers; it does
