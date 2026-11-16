@@ -1,0 +1,69 @@
+{
+  "schema": "boundary-v2-launch-record-v1",
+  "date": "2026-11-16",
+  "accepted_review_message": 3491,
+  "status": "running",
+  "candidate_commit": "432bb6e56e672f9e57f2f7bc369546023b07662e",
+  "execution_harness_commit": "45a7816072af1bb65c708995c9f16b869351ddea",
+  "execution_harness_sha256": "85dd7c5d4b8859d158fb0a4d98e2e9cf92bfe16c57e60e222ed96ef20aecba1e",
+  "runtime_manifest_sha256": "d50250d81020d5ce09cb74a090d95d789ad7c94142ff69b25e262cfdd4d653e4",
+  "prepared_fit_tasks_sha256": "be423e208438f6d20a3a961ecfcfef0ef1eadab03981d9f094a2a62834d5900c",
+  "twin_plan_sha256": "09b627de8e09f26c8e0bf0da556d8aa2d2bac5b57d1d4c4b7a1096a0b9d62207",
+  "jobs": {
+    "fit_segments": [
+      "880968[]",
+      "880969[]",
+      "880970[]"
+    ],
+    "probe_producer": "880980",
+    "probes": "880981[]",
+    "historical": "880982[]",
+    "twin_controller": "880983",
+    "twin_segment_1": "880984",
+    "twin_segment_2": "880985",
+    "twin_segment_3": "880986",
+    "twin_compare": "880987",
+    "completion_email": "880988"
+  },
+  "all_dependencies": "afterany",
+  "all_registered_held_before_release": true,
+  "controller_ready_verified_before_model_release": true,
+  "distinct_fit_tasks_started": 51,
+  "source_input_runtime_checkpoint_identities_verified": 51,
+  "historical_recoveries_started": 2,
+  "first_twin_cancellation": {
+    "job": "880984",
+    "stage": "search",
+    "native_exit_status": 271,
+    "progress": {
+      "completed_real_evaluations": 20,
+      "completed_real_family_count": 1,
+      "durable_operation_count": 1,
+      "fixed_h": 2.340347319320716,
+      "last_operation_file_sha256": "d61946d20c3a293a6155c1cf33c60a8d2a6ea90174d5c366d576254302965f47",
+      "returned_candidates": 1,
+      "sigma_zero": false
+    },
+    "receipt_sha256": "c3b569a66a5998fb0446bef4c40d46132d2309d3c42e57d67765b77f5ed66afe",
+    "validated_by_native_controller_and_parent": true
+  },
+  "intentional_abort_notices_expected": 2,
+  "final_completion_job": "880988",
+  "completion_recipient_matches_previously_verified": true,
+  "completion_mail_points": "ae",
+  "source_code_unchanged_on_historical_checkouts": true,
+  "caps": {
+    "fit_total_segments": 3,
+    "fit_segment_wall_hours": 48,
+    "historical_wall_hours": 48,
+    "twin_segments": 3,
+    "twin_segment_wall_hours": 48,
+    "controller_wall_hours": 12
+  },
+  "acceptance_result_available": false,
+  "twin_equivalence_result_available": false,
+  "qualification_pass": false,
+  "training_opened": false,
+  "validation_opened": false,
+  "next_checkpoint": "Reconcile all receipts and native accounting after aggregate completion email; do not promote automatically."
+}

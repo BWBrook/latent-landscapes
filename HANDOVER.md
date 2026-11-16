@@ -1,3 +1,40 @@
+## Accepted boundary/resume replay running; wait for email — 16 November 2026
+
+Claude accepted the frozen candidate and explicit deviations in board 3491,
+adding the shortest-task native interrupted twin. Launch evidence is recorded
+in board 3542. Read the
+[launch assessment](docs/evidence/paper1-sprint2-boundary-resume-2026-11-16/launch-assessment.md)
+and source-bound launch record. The numerical source remains
+`432bb6e56e672f9e57f2f7bc369546023b07662e`; execution harness `45a7816` is
+separate from that pinned checkout. Both old source checkouts remain unchanged.
+
+Native endpoint, index and dependency checks passed with independent review.
+All 51 unique fit tasks and their source/input/runtime checkpoint identities
+are verified started. Both historical recoveries are running under `a77e849`.
+The native controller is ready and has already confirmed the first intentional
+search interruption: twin job 880984 ended with exit 271 after a durable prior
+operation and 20 actual evaluations in the next unfinished operation. The
+second twin attempt is running; audit cancellation and exact comparison remain
+pending. Its shortest dataset has no numerical mode audits, so the registered
+middle-of-loop cancellation tests real audit-stage orchestration only.
+
+The three 51-fit arrays are 880968[], 880969[] and 880970[], each capped at
+48 hours and preserving the three-total-attempt limit. Producer 880980 and
+24 exact probes 880981[] follow. Historical array 880982[] and twin controller/
+workers 880983–880986 run alongside; comparison is 880987. Native aggregate
+receipt-check/completion email is **880988**, after any outcome on every branch.
+All dependencies, holds/releases, budgets and the verified recipient were
+checked. Two twin abort notices are intentional; they are not the final email.
+
+Pause polling until Barry returns after the aggregate notification. Private
+job ledgers, native proofs and retrieval details are under
+`artifacts/sprint2/boundary-resume-20261116/`. Do not update target source to
+later documentation commits or replace any failure. No acceptance outcome or
+new qualification exists; the 15 November failure stays fixed and training/
+validation remain closed. No automatic scientific promotion is implemented.
+
+Next: Codex — reconcile all receipts and native accounting after email 880988.
+
 ## Boundary reporting and resumability prepared for review — 16 November 2026
 
 Board message 3450 prompted the

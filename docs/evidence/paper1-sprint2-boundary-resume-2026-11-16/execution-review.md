@@ -252,4 +252,87 @@ execution; actual job registration, dependency verification, two deletions and
 the final comparison remain required target evidence. A passed twin alone
 does not accept the 51-task candidate or open a fresh panel.
 
-Next: Codex — verify the complete held dependency/notification graph, then release the accepted execution branches.
+## Released launch and first native interruption
+
+The copied launch record now establishes a complete twelve-parent graph:
+
+| Branch | Native job IDs | Declared limit/dependency |
+| --- | --- | --- |
+| Fit segments | 880968[], 880969[], 880970[] | Three total 48-hour segments, sequential `afterany` |
+| Probe producer | 880980 | `afterany` the final fit array |
+| Exact probes | 880981[] | 48 hours, `afterany` the producer |
+| Historical recoveries | 880982[] | Two 48-hour cases under the original repair source |
+| Twin controller | 880983 | 12 hours; starts and proves readiness first |
+| Twin workers | 880984, 880985, 880986 | Three 48-hour attempts, sequential `afterany` |
+| Twin comparison | 880987 | `afterany` final fit array, third twin worker and controller |
+| Aggregate completion | 880988 | `afterany` probes, historical recoveries and twin comparison |
+
+I independently parsed the preserved native pre-release accounting: all twelve
+parents were user-held, all resource limits and `afterany` edges match the
+registered graph, and abort notification is configured throughout. The final
+job has both abort/end notification and the same privately verified recipient
+as the prior completion job. No recipient or infrastructure address is
+reproduced here. `released-jobs.jsonl` contains twelve distinct matching IDs.
+It shows controller release first, followed by the sealed controller-ready
+time, then release of every remaining branch. The copied ready/native records
+show the correct controller ID/name, running state, owner, registration and
+observer hash before worker release.
+
+The pre-release `execution-jobs.json` retains `released=false` as its historical
+registration state. Subsequent `release.json`, the release journal and native
+post-release listing establish the released state; that earlier field is not
+an unresolved hold. The post-release listing contains all 51 first-array
+indices, with the two historical workers, second twin worker and controller
+running at the recorded checkpoint. Later dependency holds are expected.
+
+The native launch checker records 51 distinct source-bound started tasks and
+51 validated checkpoint headers; both ID sets exactly match the frozen task
+plan. I inspected that checker's source and verified the copied membership
+and graph evidence. The individual remote checkpoint payloads were not copied
+for a fresh local rehash by this reviewer. The checker's header validation
+covers its hash, candidate/clean-source fields and expected SIF identity;
+the unchanged candidate constructs the additional input/runtime bindings.
+Two historical recovery records are reported as started under the original
+repair source and separately hashed adapter. They are not complete fits.
+
+The first intentional native deletion is independently evidenced by the
+copied sealed registration, live pause, delete intent, ready record and raw
+scheduler outputs. I rehashed each local proof/native file, verified the
+seals, reconstructed the registered twin task digest from the frozen source
+task and recorded execution context, and checked the exact ID/name/owner
+whitelist. Worker 880984 was running before deletion and finished with native
+exit **271** afterwards; controller 880983 was running with the same owner.
+The controller records successful `qdel`, and its request was made less than
+one second after the last worker heartbeat.
+
+The live proof is within search after **one durable operation and 20 actual
+family evaluations**, at fixed h approximately `2.340347319320716`, before the
+next operation could persist. This is actual interrupted numerical search
+work, not merely stage entry. The parent's native `confirmed_cancel` call
+validated the remote checkpoint and prior operation. Two explicit byte-identical
+local mirrors were then supplied: `checkpoint-identity.json` and
+`checkpoint-operation-000000.json`. I independently matched their raw hashes
+to the sealed proof, checked the header/self/identity and operation-payload
+digests, and verified operation zero's identity binding. The header's 118
+source/configuration hashes match candidate Git blobs; its five data hashes
+match the frozen source task. SIF, one-thread settings, cutoffs, lean-search
+mode and exhaustive-audit flag agree with the original arguments. The original
+remote paths remain unchanged in every sealed proof. This local mirror audit
+does not pretend to invoke the full remote-path validator offline.
+
+Checkpoint-header mirror SHA256:
+`7d8a8bb28f02bbf09be7e4167acf6506ecd626a2fc2af3c5f430ec3d9d775db0`.
+Prior-operation mirror SHA256:
+`d61946d20c3a293a6155c1cf33c60a8d2a6ea90174d5c366d576254302965f47`.
+
+First cancellation receipt SHA256:
+`c3b569a66a5998fb0446bef4c40d46132d2309d3c42e57d67765b77f5ed66afe`.
+Registration SHA256:
+`7b77f4eea7886bd0d7da293bd5025689635d75d80de6d680218c688ef7d84c03`.
+The observer remains at the reviewed source hash above. Numerical source and
+historical attempts remain unchanged. The second deletion, completed twin,
+exact three-artifact comparison, all fit/probe outcomes and historical
+recovery outcomes remain pending. Neither this launch nor the first successful
+interruption constitutes acceptance or qualification.
+
+Next: Codex — reconcile the aggregate receipts and twin/recovery evidence after completion notification.
