@@ -30,7 +30,13 @@ fi
 : "${LL_IMAGE:?set LL_IMAGE to the Python SIF}"
 export APPTAINERENV_LL_EXECUTION_CONTEXT=apptainer
 export APPTAINERENV_LL_RUNTIME_SIF_SHA256="$(sha256sum "$LL_IMAGE" | awk '{print $1}')"
+export APPTAINERENV_PYTHONPATH="$LL_REPO/scripts:$LL_REPO/src"
+export APPTAINERENV_PBS_ARRAY_INDEX="${PBS_ARRAY_INDEX:?missing PBS array index}"
+export APPTAINERENV_PBS_JOBID="${PBS_JOBID:?missing PBS job identifier}"
+extra=()
+if [ "${LL_RESUME_SEGMENTS:-0}" = 3 ]; then extra=(--retry-failed); fi
 mkdir -p "$OUT"
-apptainer exec --bind "$HOME,$LL_REPO,$(dirname "$TASKS"),$OUT,$LL_DATA_ROOT,$LL_WORK_ROOT,$(dirname "$LL_IMAGE")" "${LL_IMAGE:?set LL_IMAGE to the Python SIF}" \
-  "$LL_REPO/.venv/bin/python" scripts/pbs/campaign.py work \
-  --tasks "$TASKS" --out "$OUT" --chunk "$CHUNK" --workers "$LL_WORKERS"
+apptainer exec --cleanenv --bind "$HOME,$LL_REPO,$(dirname "$TASKS"),$OUT,$LL_DATA_ROOT,$LL_WORK_ROOT,$(dirname "$LL_IMAGE")" "${LL_IMAGE:?set LL_IMAGE to the Python SIF}" \
+  "${LL_PYTHON:-$LL_REPO/.venv/bin/python}" scripts/pbs/campaign.py work \
+  --tasks "$TASKS" --out "$OUT" --chunk "$CHUNK" --workers "$LL_WORKERS" \
+  --index "$PBS_ARRAY_INDEX" "${extra[@]}"

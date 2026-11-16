@@ -285,6 +285,7 @@ def prepare_fits(
                 replay_group=group,
                 candidate_import_root=str(ROOT.resolve()),
                 original_fit_argv=original["argv"],
+                max_segments=3,
             )
             task["argv"] = [
                 original["argv"][0],
@@ -294,6 +295,8 @@ def prepare_fits(
                 candidate_commit,
                 "--",
                 *original["argv"][2:],
+                "--checkpoint-dir",
+                "{checkpoint_dir}",
             ]
             task["input_sha256"].update(
                 {
@@ -401,7 +404,7 @@ def prepare_probes(
                 "runtime": replay["runtime"],
                 "input_sha256": inputs,
                 "result_path": "probe/receipt.json",
-                "result_schema": "solver-repair-nonregression-v1",
+                "result_schema": "solver-repair-nonregression-v2",
                 "candidate_import_root": str(ROOT.resolve()),
             }
         )
@@ -618,6 +621,10 @@ def main() -> None:
         if not Path(fit_dataset.__file__).resolve().is_relative_to(ROOT):
             raise ValueError("fit adapter is outside the candidate checkout")
         forwarded = args.fit_args[1:] if args.fit_args[:1] == ["--"] else args.fit_args
+        if "--checkpoint-dir" in forwarded:
+            checkpoint = Path(forwarded[forwarded.index("--checkpoint-dir") + 1])
+            if checkpoint.exists():
+                forwarded = [*forwarded, "--resume"]
         sys.argv = [str(Path(fit_dataset.__file__)), *forwarded]
         raise SystemExit(fit_dataset.main())
 

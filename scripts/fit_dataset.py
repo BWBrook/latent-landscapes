@@ -16,7 +16,9 @@ from __future__ import annotations
 
 import argparse
 import contextlib
+import copy
 import dataclasses
+import hashlib
 import json
 import math
 import os
@@ -32,6 +34,8 @@ from typing import Any
 import benchmark_spatial_profile as adapter
 import mode_diagnosis
 import numpy as np
+import scipy
+from fit_checkpoints import CheckpointError, FitCheckpoints, digest, scientific_payload
 from profile_level_sets import refine_level_set
 from qualify_spatial_profiles import (
     DEFAULTS,
@@ -430,12 +434,14 @@ def spatial_family_result(search: PanelSearch) -> dict[str, Any]:
                 "h": free[selected]["h"],
                 "positive_sigma": family_row(free["positive_sigma"]),
                 "sigma_zero": family_row(free["sigma_zero"]),
+                "positive_sigma_closed": free["positive_sigma_closed"],
                 **owner_contacts(free),
             },
             "null": {
                 "criterion": null["criterion"],
                 "positive_sigma": family_row(null["positive_sigma"]),
                 "sigma_zero": family_row(null["sigma_zero"]),
+                "positive_sigma_closed": null["positive_sigma_closed"],
                 **owner_contacts(null),
             },
             "lr1": 2.0 * (free["criterion"] - null["criterion"]),
@@ -447,6 +453,7 @@ def spatial_family_result(search: PanelSearch) -> dict[str, Any]:
                     "w": search.lr(x, tight=tight),
                     "criterion_positive": fit["positive_sigma"]["criterion"],
                     "criterion_zero": fit["sigma_zero"]["criterion"],
+                    "positive_sigma_closed": fit["positive_sigma_closed"],
                     **owner_contacts(fit),
                 }
                 for x, fit in sorted(search.points[tight].items())
@@ -738,6 +745,7 @@ class Run:
         self.receipt: dict[str, Any] = {"schema": SCHEMA}
         self.errors: list[dict[str, Any]] = []
         self.stages: dict[str, dict[str, float]] = {}
+        self.resumable = False
 
     def record_error(self, name: str, error: Exception) -> None:
         self.errors.append(
@@ -756,6 +764,10 @@ class Run:
         try:
             yield
         except Exception as error:
+            if isinstance(error, CheckpointError) or (
+                self.resumable and isinstance(error, EXECUTION_ERRORS)
+            ):
+                raise
             if not guard:
                 raise
             self.record_error(name, error)
@@ -776,6 +788,7 @@ def input_hashes(args: argparse.Namespace) -> dict[str, str]:
         Path(__file__),
         Path(mode_diagnosis.__file__),
         ROOT / "scripts/run_development_profile.py",
+        ROOT / "scripts/fit_checkpoints.py",
         ROOT / "scripts/qualify_spatial_profiles.py",
         ROOT / "scripts/profile_level_sets.py",
         Path(adapter.__file__),
@@ -804,14 +817,39 @@ def fit_dataset(args: argparse.Namespace) -> dict[str, Any]:
         name: str(getattr(args, name).resolve())
         for name in ("input_dir", "observations", "arrival_bank", "compressed_bank")
     }
+    checkpoints = None
+    with run.stage("input_hashes", guard=False):
+        receipt["input_sha256"] = input_hashes(args)
+    if getattr(args, "checkpoint_dir", None) is not None:
+        identity = {
+            "source": receipt["source"],
+            "input_sha256": receipt["input_sha256"],
+            "inputs": receipt["inputs"],
+            "python": sys.version,
+            "python_executable": str(Path(sys.executable).resolve()),
+            "python_executable_sha256": adapter.sha256_file(Path(sys.executable)),
+            "numpy_version": np.__version__,
+            "scipy_version": scipy.__version__,
+            "platform": platform.platform(),
+            "threads": receipt["threads"],
+            "runtime_sif_sha256": os.environ.get("LL_RUNTIME_SIF_SHA256"),
+            "search_mode": args.search,
+            "cutoffs": list(CUTOFF_GRID),
+            "exhaustive_audit": bool(args.exhaustive_audit),
+        }
+        checkpoints = FitCheckpoints(
+            args.checkpoint_dir,
+            identity,
+            resume=bool(getattr(args, "resume", False)),
+            origin={"host": receipt["host"]},
+        )
+        receipt["checkpoint_origin_host"] = checkpoints.origin["host"]
+        run.resumable = True
     search: FitSearch | None = None
     families: dict[str, Any] = {}
     family_failures: list[str] = []
     audits: dict[str, Any] = {}
-    receipt["families"] = families
-    receipt["latent_audit"] = audits
-    with run.stage("input_hashes"):
-        receipt["input_sha256"] = input_hashes(args)
+    receipt["families"], receipt["latent_audit"] = families, audits
     data = None
     with run.stage("load"):
         data, receipt["data_identity"] = load_panel_data(args)
@@ -820,16 +858,64 @@ def fit_dataset(args: argparse.Namespace) -> dict[str, Any]:
         search_dir.mkdir()
         with run.stage("search_setup"):
             search = FitSearch(data, args.search, search_dir)
+
+    def stage(name: str, function: Any) -> Any:
+        assert search is not None
+        saved = checkpoints.load("stages/" + name) if checkpoints else None
+        if saved is not None:
+            if saved["scientific_sha256"] != digest(
+                scientific_payload(saved["search_receipt"], artifact="search")
+            ):
+                raise CheckpointError("search scientific payload hash differs")
+            if saved["events_sha256"] != digest(saved["events"]):
+                raise CheckpointError("saved search event stream hash differs")
+            stream = saved["search_receipt"].get("evaluation_stream")
+            if (
+                stream is not None
+                and stream["sha256"] != hashlib.sha256(saved["events"].encode()).hexdigest()
+            ):
+                raise CheckpointError("nested search event stream hash differs")
+            search.restore_checkpoint_state(saved["state"])
+            search.events.write_text(saved["events"])
+            run.stages[name] = saved["timing"]
+            run.errors[:] = saved["errors"]
+            family_failures[:] = saved["family_failures"]
+            return copy.deepcopy(saved["result"])
+        with run.stage(name, guard=False):
+            result = function()
+        if checkpoints:
+            events = search.events.read_text() if search.events.exists() else ""
+            search_receipt = search.receipt()
+            checkpoints.save(
+                "stages/" + name,
+                {
+                    "result": result,
+                    "state": search.checkpoint_state(),
+                    "events": events,
+                    "events_sha256": digest(events),
+                    "search_receipt": search_receipt,
+                    "scientific_sha256": digest(
+                        scientific_payload(search_receipt, artifact="search")
+                    ),
+                    "timing": run.stages[name],
+                    "errors": run.errors,
+                    "family_failures": family_failures,
+                },
+            )
+        return result
+
     if search is not None:
-        with run.stage("search"):
-            search.run()
-            search_receipt = args.output_dir / "search_receipt.json"
-            write_json(search_receipt, search.receipt())
+        if checkpoints:
+            search.enable_checkpoints(checkpoints)
+        with run.stage("search", guard=False):
+            stage("search", search.run)
+            search_receipt_path = args.output_dir / "search_receipt.json"
+            write_json(search_receipt_path, search.receipt())
             receipt["search"] = {
                 "status": search.result["status"],
                 "failure": search.result.get("failure"),
-                "receipt": str(search_receipt.resolve()),
-                "receipt_sha256": adapter.sha256_file(search_receipt),
+                "receipt": str(search_receipt_path.resolve()),
+                "receipt_sha256": adapter.sha256_file(search_receipt_path),
                 "cost": search.search_cost,
                 "seconds_before_tight_phase": tight_phase_seconds(search.events),
                 "family_switches": search.result.get("family_switches"),
@@ -837,7 +923,7 @@ def fit_dataset(args: argparse.Namespace) -> dict[str, Any]:
                 "family_switch_replay_passed": search.result.get("family_switch_replay_passed"),
             }
         with run.stage("spatial_report"):
-            families["spatial"] = spatial_family_result(search)
+            families["spatial"] = stage("spatial_report", lambda: spatial_family_result(search))
         nodes = sorted(set(geometric_mesh()) | set(search.points[False]))
         seed_rows = {
             x: {**fit["sigma_zero"], "tight_converged": True}
@@ -852,30 +938,56 @@ def fit_dataset(args: argparse.Namespace) -> dict[str, Any]:
                 seed_rows=seed_rows if beta_free else None,
                 free_seeds=free_seeds,
             )
+
+            def fit_family(family: ReducedFamily = family, name: str = name) -> dict[str, Any]:
+                try:
+                    return family.result(family.run(nodes, CUTOFF_GRID))
+                except CheckpointError:
+                    raise
+                except Exception as error:
+                    if isinstance(error, EXECUTION_ERRORS):
+                        raise
+                    family_failures.append(f"{name}: {error}")
+                    return {
+                        "status": "failed",
+                        "failure": {"type": type(error).__name__, "message": str(error)},
+                        "profile_nodes": len(family.points),
+                        "fit_count": family.fit_count,
+                    }
+
             try:
                 with run.stage(f"family_{name}", guard=False):
-                    families[name] = family.result(family.run(nodes, CUTOFF_GRID))
-            except Exception as error:
-                if isinstance(error, EXECUTION_ERRORS):
-                    run.record_error(f"family_{name}", error)
-                else:
-                    family_failures.append(f"{name}: {error}")
+                    families[name] = stage(f"family_{name}", fit_family)
+            except CheckpointError:
+                raise
+            except EXECUTION_ERRORS as error:
+                if checkpoints:
+                    raise
+                run.record_error(f"family_{name}", error)
                 families[name] = {
                     "status": "failed",
                     "failure": {"type": type(error).__name__, "message": str(error)},
                     "profile_nodes": len(family.points),
                     "fit_count": family.fit_count,
                 }
+
     multimodal = False
     if search is not None and search.free:
         with run.stage("latent_audit"):
             audits.update(
-                audit_all(search, load_mode_diagnosis(), exhaustive=args.exhaustive_audit)
+                stage(
+                    "latent_audit",
+                    lambda: audit_all(
+                        search, load_mode_diagnosis(), exhaustive=args.exhaustive_audit
+                    ),
+                )
             )
             multimodal = audits["multimodal_latent"]
     if search is not None:
         with run.stage("envelope_guard_report"):
-            receipt["envelope_guard"] = envelope_guard_summary(search.events)
+            receipt["envelope_guard"] = stage(
+                "envelope_guard_report", lambda: envelope_guard_summary(search.events)
+            )
         receipt["cost"] = {
             "criterion_stats": dict(search.criterion.stats),
             "backend_diagnostics": dict(search.stats),
@@ -884,14 +996,15 @@ def fit_dataset(args: argparse.Namespace) -> dict[str, Any]:
                 k: v.get("fit_count") for k, v in families.items() if k != "spatial"
             },
         }
-    classification = classify(
-        search_status=receipt.get("search", {}).get("status"),
-        search_failure=receipt.get("search", {}).get("failure"),
-        family_failures=family_failures,
-        multimodal=multimodal,
-        errors=run.errors,
+    receipt.update(
+        classify(
+            search_status=receipt.get("search", {}).get("status"),
+            search_failure=receipt.get("search", {}).get("failure"),
+            family_failures=family_failures,
+            multimodal=multimodal,
+            errors=run.errors,
+        )
     )
-    receipt.update(classification)
     receipt["errors"] = run.errors
     receipt.setdefault("cost", {}).update(
         stages=run.stages,
@@ -900,6 +1013,11 @@ def fit_dataset(args: argparse.Namespace) -> dict[str, Any]:
         peak_rss_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
         * (1 if sys.platform == "darwin" else 1024),
     )
+    if checkpoints:
+        checkpoints.save(
+            "stages/fit_receipt",
+            {"receipt": receipt, "scientific_sha256": digest(scientific_payload(receipt))},
+        )
     write_json(args.output_dir / "receipt.json", receipt)
     return receipt
 
@@ -914,7 +1032,11 @@ def main() -> int:
         action="store_true",
         help="audit every location regardless of LR (qualification margin check)",
     )
+    parser.add_argument("--checkpoint-dir", type=Path)
+    parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
+    if args.resume and args.checkpoint_dir is None:
+        parser.error("--resume requires --checkpoint-dir")
     if any(os.environ.get(n) != "1" for n in THREAD_ENVIRONMENT):
         raise ValueError("set all numerical thread environment variables to 1")
     if args.output_dir.exists() and any(args.output_dir.iterdir()):

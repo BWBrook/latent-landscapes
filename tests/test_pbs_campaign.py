@@ -70,6 +70,28 @@ def test_execution_error_retries_without_losing_attempts(campaign, tmp_path):
     assert json.loads((out / "case/attempt-0001/_task.json").read_text()) == first
 
 
+def test_three_segment_cap_preserves_each_failed_attempt(campaign, tmp_path):
+    task = {**make_task(campaign, tmp_path, failure="execution_error"), "max_segments": 3}
+    for _ in range(3):
+        assert campaign.run_task(task, tmp_path / "out", True)["status"] == "execution_failure"
+    with pytest.raises(ValueError, match="segment budget exhausted"):
+        campaign.run_task(task, tmp_path / "out", True)
+    assert len(list((tmp_path / "out/case").glob("attempt-*/_task.json"))) == 3
+
+
+def test_killed_segment_counts_towards_cap(campaign, tmp_path):
+    task = {**make_task(campaign, tmp_path), "max_segments": 3}
+    directory = tmp_path / "out/case"
+    for index in range(1, 4):
+        attempt = directory / f"attempt-{index:04d}"
+        attempt.mkdir(parents=True)
+        (attempt / "_started.json").write_text(
+            json.dumps({"task_sha256": campaign.task_digest(task)})
+        )
+    with pytest.raises(ValueError, match="segment budget exhausted"):
+        campaign.run_task(task, tmp_path / "out", True)
+
+
 @pytest.mark.parametrize(
     "failure",
     sorted(["numerical_error", "family_fit_failed", "search_unresolved", "multimodal_latent"]),

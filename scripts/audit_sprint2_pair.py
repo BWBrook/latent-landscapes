@@ -228,6 +228,7 @@ class Probe:
                 "eligible": all(row[f]["eligible"] for f in FAMILIES),
                 "nuisance_contacts": contacts(details, name),
                 "fit": {f: fit.family_row(row[f]) for f in FAMILIES},
+                "positive_sigma_closed": copy.deepcopy(row["positive_sigma_closed"]),
             }
         view = view_of(self.evidence.receipt, name)
         original = profile_rows(view)

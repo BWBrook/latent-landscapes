@@ -1,0 +1,4342 @@
+{
+  "schema": "bounded-repair-stage-times-v1",
+  "date": "2026-11-16",
+  "source_commit": "a77e849ce0b0381b5c378b222bacfadce9beaf96",
+  "selection": "docs/evidence/paper1-sprint2-repair-2026-11-12/replay-selection.json",
+  "selection_sha256": "099f28d9a45a8a4eb12b103ddaf23714ed3ced72120bb5c9184c9c75e514dfaf",
+  "replay_summary_sha256": "7a9300b0db17c07d57d2c81a1be8b98d58aba8a71d31f0bb7fc133d290a3590b",
+  "scope": "49 terminal fit receipts only; the 2 walltime-killed fits and 24 comparison probes are excluded",
+  "units": "seconds; fractions dimensionless",
+  "tight_attribution_method": "Each fixed/free fit event receives its elapsed wall interval since the preceding event; regime is event.tight for free fits or event.fit.tight for fixed fits. Includes inter-event bookkeeping. Untagged events and final search tail remain separate. This is event-attributed wall time, not exact pure tight CPU time or guaranteed removable cost.",
+  "groups": {
+    "all_terminal": {
+      "task_count": 49,
+      "total_wall_seconds": {
+        "n": 49,
+        "minimum": 1508.115790143609,
+        "median": 41254.818511916324,
+        "maximum": 169886.4310090209,
+        "sum": 2502067.0322681232
+      },
+      "total_cpu_seconds": {
+        "n": 49,
+        "minimum": 1509.139862819,
+        "median": 41214.792148451,
+        "maximum": 169844.290641236,
+        "sum": 2500426.424664386
+      },
+      "stages": {
+        "envelope_guard_report": {
+          "wall_seconds": {
+            "n": 49,
+            "minimum": 0.003744056448340416,
+            "median": 0.05852570757269859,
+            "maximum": 0.1519597079604864,
+            "sum": 2.8018824197351933
+          },
+          "cpu_seconds": {
+            "n": 49,
+            "minimum": 0.0013772590000371565,
+            "median": 0.04766569800085563,
+            "maximum": 0.08173485600855201,
+            "sum": 2.2974907000393614
+          }
+        },
+        "family_constant": {
+          "wall_seconds": {
+            "n": 49,
+            "minimum": 458.3793126884848,
+            "median": 826.626865407452,
+            "maximum": 2522.8584928344935,
+            "sum": 53262.676199151436
+          },
+          "cpu_seconds": {
+            "n": 49,
+            "minimum": 457.9960189630001,
+            "median": 826.615818414999,
+            "maximum": 2522.4520504989996,
+            "sum": 53247.622961967994
+          }
+        },
+        "family_exposure": {
+          "wall_seconds": {
+            "n": 49,
+            "minimum": 95.01225590147078,
+            "median": 518.7392152370885,
+            "maximum": 1637.391722632572,
+            "sum": 30010.3660494464
+          },
+          "cpu_seconds": {
+            "n": 49,
+            "minimum": 94.74660509000023,
+            "median": 518.7791514120036,
+            "maximum": 1637.023566169999,
+            "sum": 29998.867185951996
+          }
+        },
+        "input_hashes": {
+          "wall_seconds": {
+            "n": 49,
+            "minimum": 1.2015102934092283,
+            "median": 1.261843666434288,
+            "maximum": 1.8376098107546568,
+            "sum": 63.10668842564337
+          },
+          "cpu_seconds": {
+            "n": 49,
+            "minimum": 1.0857345709999997,
+            "median": 1.153137869,
+            "maximum": 1.3270163089999998,
+            "sum": 56.925844027
+          }
+        },
+        "latent_audit": {
+          "wall_seconds": {
+            "n": 47,
+            "minimum": 0.0012029968202114105,
+            "median": 18419.493589852005,
+            "maximum": 78726.1374472715,
+            "sum": 995685.0929844338
+          },
+          "cpu_seconds": {
+            "n": 47,
+            "minimum": 0.0012029069994241581,
+            "median": 18410.793078804,
+            "maximum": 78708.95523281,
+            "sum": 995305.620891826
+          }
+        },
+        "load": {
+          "wall_seconds": {
+            "n": 49,
+            "minimum": 2.189935302361846,
+            "median": 2.6002499568276107,
+            "maximum": 4.088101984933019,
+            "sum": 129.18647506227717
+          },
+          "cpu_seconds": {
+            "n": 49,
+            "minimum": 2.186166263,
+            "median": 2.5932261739999998,
+            "maximum": 4.082827771,
+            "sum": 128.407187261
+          }
+        },
+        "search": {
+          "wall_seconds": {
+            "n": 49,
+            "minimum": 425.4254335127771,
+            "median": 21030.3657387048,
+            "maximum": 103203.27736639883,
+            "sum": 1422899.3754246454
+          },
+          "cpu_seconds": {
+            "n": 49,
+            "minimum": 425.076451837,
+            "median": 20992.145127929998,
+            "maximum": 103170.662244975,
+            "sum": 1421570.025340155
+          }
+        },
+        "search_setup": {
+          "wall_seconds": {
+            "n": 49,
+            "minimum": 0.0018767677247524261,
+            "median": 0.003030756488442421,
+            "maximum": 0.007138768211007118,
+            "sum": 0.18262622226029634
+          },
+          "cpu_seconds": {
+            "n": 49,
+            "minimum": 0.0018770630000002342,
+            "median": 0.0029724250000002783,
+            "maximum": 0.0071392059999997315,
+            "sum": 0.18166403599999725
+          }
+        },
+        "spatial_report": {
+          "wall_seconds": {
+            "n": 49,
+            "minimum": 1.0484829545021057e-05,
+            "median": 0.005766968941316009,
+            "maximum": 0.011376375332474709,
+            "sum": 0.2966795517131686
+          },
+          "cpu_seconds": {
+            "n": 49,
+            "minimum": 1.0411999994630605e-05,
+            "median": 0.005753864999860525,
+            "maximum": 0.011315281000861432,
+            "sum": 0.2960773900265963
+          }
+        }
+      },
+      "unallocated_wall_seconds": {
+        "n": 49,
+        "minimum": 0.050798751413822174,
+        "median": 0.09330296888947487,
+        "maximum": 5.065348559990525,
+        "sum": 13.947258764645085
+      },
+      "tight_event_attributed_seconds": {
+        "n": 49,
+        "minimum": 0.0,
+        "median": 10052.00061523728,
+        "maximum": 48593.24864146556,
+        "sum": 684675.0329031977
+      },
+      "tight_fraction_search_per_task": {
+        "n": 49,
+        "minimum": 0.0,
+        "median": 0.47949503894871387,
+        "maximum": 0.5163788910085984,
+        "sum": 22.66967389643682
+      },
+      "tight_fraction_total_per_task": {
+        "n": 49,
+        "minimum": 0.0,
+        "median": 0.2816674096734743,
+        "maximum": 0.4685610441379604,
+        "sum": 14.176091615429964
+      },
+      "pooled_tight_fraction_search": 0.4811856902999827,
+      "pooled_tight_fraction_total": 0.2736437609677227
+    },
+    "nonregression": {
+      "task_count": 24,
+      "total_wall_seconds": {
+        "n": 24,
+        "minimum": 6325.417826866731,
+        "median": 19944.923754245043,
+        "maximum": 69718.22257762589,
+        "sum": 577699.8461354484
+      },
+      "total_cpu_seconds": {
+        "n": 24,
+        "minimum": 6317.599143224,
+        "median": 19929.800722972002,
+        "maximum": 69694.03760657,
+        "sum": 577281.75614051
+      },
+      "stages": {
+        "envelope_guard_report": {
+          "wall_seconds": {
+            "n": 24,
+            "minimum": 0.03050675243139267,
+            "median": 0.04673820361495018,
+            "maximum": 0.08559917472302914,
+            "sum": 1.2345301588065922
+          },
+          "cpu_seconds": {
+            "n": 24,
+            "minimum": 0.028111100000387523,
+            "median": 0.040373367499796586,
+            "maximum": 0.078761659002339,
+            "sum": 1.0802170040096826
+          }
+        },
+        "family_constant": {
+          "wall_seconds": {
+            "n": 24,
+            "minimum": 588.9589412789792,
+            "median": 822.1400027573109,
+            "maximum": 2522.8584928344935,
+            "sum": 27856.765097773634
+          },
+          "cpu_seconds": {
+            "n": 24,
+            "minimum": 588.9169277309993,
+            "median": 821.9469618000003,
+            "maximum": 2522.4520504989996,
+            "sum": 27850.372950465993
+          }
+        },
+        "family_exposure": {
+          "wall_seconds": {
+            "n": 24,
+            "minimum": 95.01225590147078,
+            "median": 362.2369879675098,
+            "maximum": 1600.1993975229561,
+            "sum": 13261.899874548893
+          },
+          "cpu_seconds": {
+            "n": 24,
+            "minimum": 94.74660509000023,
+            "median": 362.1313120855016,
+            "maximum": 1600.1031491329995,
+            "sum": 13257.767202529994
+          }
+        },
+        "input_hashes": {
+          "wall_seconds": {
+            "n": 24,
+            "minimum": 1.2015102934092283,
+            "median": 1.2720053782686591,
+            "maximum": 1.8104728031903505,
+            "sum": 30.779601906891912
+          },
+          "cpu_seconds": {
+            "n": 24,
+            "minimum": 1.0857345709999997,
+            "median": 1.156686383,
+            "maximum": 1.1809258329999999,
+            "sum": 27.717420609999998
+          }
+        },
+        "latent_audit": {
+          "wall_seconds": {
+            "n": 24,
+            "minimum": 0.0012029968202114105,
+            "median": 1716.46550106816,
+            "maximum": 39936.37431227788,
+            "sum": 179758.41825808422
+          },
+          "cpu_seconds": {
+            "n": 24,
+            "minimum": 0.0012029069994241581,
+            "median": 1715.7561876499985,
+            "maximum": 39923.128103612005,
+            "sum": 179733.13444137998
+          }
+        },
+        "load": {
+          "wall_seconds": {
+            "n": 24,
+            "minimum": 2.189935302361846,
+            "median": 2.6805472895503044,
+            "maximum": 3.4606426917016506,
+            "sum": 64.08411942585371
+          },
+          "cpu_seconds": {
+            "n": 24,
+            "minimum": 2.186166263,
+            "median": 2.6649694230000005,
+            "maximum": 3.3968920609999995,
+            "sum": 63.574055922
+          }
+        },
+        "search": {
+          "wall_seconds": {
+            "n": 24,
+            "minimum": 5325.762987781316,
+            "median": 11751.602589480579,
+            "maximum": 38734.06814969517,
+            "sum": 356721.5810242216
+          },
+          "cpu_seconds": {
+            "n": 24,
+            "minimum": 5316.823301455,
+            "median": 11725.444222584,
+            "maximum": 38709.251775303004,
+            "sum": 356291.33737102
+          }
+        },
+        "search_setup": {
+          "wall_seconds": {
+            "n": 24,
+            "minimum": 0.0018767677247524261,
+            "median": 0.0028717536479234695,
+            "maximum": 0.006604600697755814,
+            "sum": 0.08931504748761654
+          },
+          "cpu_seconds": {
+            "n": 24,
+            "minimum": 0.0018770630000002342,
+            "median": 0.002872226999999672,
+            "maximum": 0.00660508299999929,
+            "sum": 0.08926415799999976
+          }
+        },
+        "spatial_report": {
+          "wall_seconds": {
+            "n": 24,
+            "minimum": 0.0038454094901680946,
+            "median": 0.005435622297227383,
+            "maximum": 0.010190896689891815,
+            "sum": 0.14025780116207898
+          },
+          "cpu_seconds": {
+            "n": 24,
+            "minimum": 0.003839255001366837,
+            "median": 0.005428104500424524,
+            "maximum": 0.01016918599998462,
+            "sum": 0.14003521700669808
+          }
+        }
+      },
+      "unallocated_wall_seconds": {
+        "n": 24,
+        "minimum": 0.05651393532752991,
+        "median": 0.1764661641791463,
+        "maximum": 0.4942073861602694,
+        "sum": 4.854056479874998
+      },
+      "tight_event_attributed_seconds": {
+        "n": 24,
+        "minimum": 2682.7357206754386,
+        "median": 5356.779322700575,
+        "maximum": 17534.95715664141,
+        "sum": 171493.26200607675
+      },
+      "tight_fraction_search_per_task": {
+        "n": 24,
+        "minimum": 0.45221937637413784,
+        "median": 0.4901341834664801,
+        "maximum": 0.5163788910085984,
+        "sum": 11.648574936853391
+      },
+      "tight_fraction_total_per_task": {
+        "n": 24,
+        "minimum": 0.1547215279480838,
+        "median": 0.38338943199200254,
+        "maximum": 0.4685610441379604,
+        "sum": 8.309959401560437
+      },
+      "pooled_tight_fraction_search": 0.4807535572900866,
+      "pooled_tight_fraction_total": 0.2968553015087149
+    },
+    "development_failed_replay": {
+      "task_count": 25,
+      "total_wall_seconds": {
+        "n": 25,
+        "minimum": 1508.115790143609,
+        "median": 71782.98509937711,
+        "maximum": 169886.4310090209,
+        "sum": 1924367.1861326748
+      },
+      "total_cpu_seconds": {
+        "n": 25,
+        "minimum": 1509.139862819,
+        "median": 71698.842967036,
+        "maximum": 169844.290641236,
+        "sum": 1923144.668523876
+      },
+      "stages": {
+        "envelope_guard_report": {
+          "wall_seconds": {
+            "n": 25,
+            "minimum": 0.003744056448340416,
+            "median": 0.06270940974354744,
+            "maximum": 0.1519597079604864,
+            "sum": 1.567352260928601
+          },
+          "cpu_seconds": {
+            "n": 25,
+            "minimum": 0.0013772590000371565,
+            "median": 0.05428884600405581,
+            "maximum": 0.08173485600855201,
+            "sum": 1.2172736960296788
+          }
+        },
+        "family_constant": {
+          "wall_seconds": {
+            "n": 25,
+            "minimum": 458.3793126884848,
+            "median": 911.483082300052,
+            "maximum": 1891.7814325280488,
+            "sum": 25405.911101377802
+          },
+          "cpu_seconds": {
+            "n": 25,
+            "minimum": 457.9960189630001,
+            "median": 910.849807685001,
+            "maximum": 1891.6441254600068,
+            "sum": 25397.250011502005
+          }
+        },
+        "family_exposure": {
+          "wall_seconds": {
+            "n": 25,
+            "minimum": 192.05153068900108,
+            "median": 579.517121065408,
+            "maximum": 1637.391722632572,
+            "sum": 16748.466174897505
+          },
+          "cpu_seconds": {
+            "n": 25,
+            "minimum": 191.91146460000164,
+            "median": 579.0677515589996,
+            "maximum": 1637.023566169999,
+            "sum": 16741.099983422006
+          }
+        },
+        "input_hashes": {
+          "wall_seconds": {
+            "n": 25,
+            "minimum": 1.2053698499221355,
+            "median": 1.2295793609227985,
+            "maximum": 1.8376098107546568,
+            "sum": 32.32708651875146
+          },
+          "cpu_seconds": {
+            "n": 25,
+            "minimum": 1.1375852020000004,
+            "median": 1.1461518699999997,
+            "maximum": 1.3270163089999998,
+            "sum": 29.208423417
+          }
+        },
+        "latent_audit": {
+          "wall_seconds": {
+            "n": 23,
+            "minimum": 17153.863730430137,
+            "median": 27917.54573332891,
+            "maximum": 78726.1374472715,
+            "sum": 815926.6747263495
+          },
+          "cpu_seconds": {
+            "n": 23,
+            "minimum": 17145.571437669998,
+            "median": 27900.206676912996,
+            "maximum": 78708.95523281,
+            "sum": 815572.486450446
+          }
+        },
+        "load": {
+          "wall_seconds": {
+            "n": 25,
+            "minimum": 2.2195421811193228,
+            "median": 2.378418607870117,
+            "maximum": 4.088101984933019,
+            "sum": 65.10235563642345
+          },
+          "cpu_seconds": {
+            "n": 25,
+            "minimum": 2.2141711010000003,
+            "median": 2.371349851,
+            "maximum": 4.082827771,
+            "sum": 64.833131339
+          }
+        },
+        "search": {
+          "wall_seconds": {
+            "n": 25,
+            "minimum": 425.4254335127771,
+            "median": 37826.45480218716,
+            "maximum": 103203.27736639883,
+            "sum": 1066177.7944004238
+          },
+          "cpu_seconds": {
+            "n": 25,
+            "minimum": 425.076451837,
+            "median": 37758.860356473,
+            "maximum": 103170.662244975,
+            "sum": 1065278.6879691351
+          }
+        },
+        "search_setup": {
+          "wall_seconds": {
+            "n": 25,
+            "minimum": 0.0022286102175712585,
+            "median": 0.003083430230617523,
+            "maximum": 0.007138768211007118,
+            "sum": 0.0933111747726798
+          },
+          "cpu_seconds": {
+            "n": 25,
+            "minimum": 0.002228843000000147,
+            "median": 0.003050470999999888,
+            "maximum": 0.0071392059999997315,
+            "sum": 0.09239987799999749
+          }
+        },
+        "spatial_report": {
+          "wall_seconds": {
+            "n": 25,
+            "minimum": 1.0484829545021057e-05,
+            "median": 0.007207736372947693,
+            "maximum": 0.011376375332474709,
+            "sum": 0.15642175055108964
+          },
+          "cpu_seconds": {
+            "n": 25,
+            "minimum": 1.0411999994630605e-05,
+            "median": 0.007183480000094278,
+            "maximum": 0.011315281000861432,
+            "sum": 0.1560421730198982
+          }
+        }
+      },
+      "unallocated_wall_seconds": {
+        "n": 25,
+        "minimum": 0.050798751413822174,
+        "median": 0.08661388303153217,
+        "maximum": 5.065348559990525,
+        "sum": 9.093202284770086
+      },
+      "tight_event_attributed_seconds": {
+        "n": 25,
+        "minimum": 0.0,
+        "median": 19200.02893310599,
+        "maximum": 48593.24864146556,
+        "sum": 513181.77089712094
+      },
+      "tight_fraction_search_per_task": {
+        "n": 25,
+        "minimum": 0.0,
+        "median": 0.4728205628897118,
+        "maximum": 0.5104643518128849,
+        "sum": 11.021098959583428
+      },
+      "tight_fraction_total_per_task": {
+        "n": 25,
+        "minimum": 0.0,
+        "median": 0.24717763393876688,
+        "maximum": 0.38572870678562104,
+        "sum": 5.866132213869526
+      },
+      "pooled_tight_fraction_search": 0.481330272208356,
+      "pooled_tight_fraction_total": 0.2666755983968123
+    },
+    "resolved_only": {
+      "task_count": 47,
+      "total_wall_seconds": {
+        "n": 47,
+        "minimum": 6325.417826866731,
+        "median": 42391.31516905222,
+        "maximum": 169886.4310090209,
+        "sum": 2498155.7777832313
+      },
+      "total_cpu_seconds": {
+        "n": 47,
+        "minimum": 6317.599143224,
+        "median": 42367.732999159,
+        "maximum": 169844.290641236,
+        "sum": 2496516.493046539
+      },
+      "stages": {
+        "envelope_guard_report": {
+          "wall_seconds": {
+            "n": 47,
+            "minimum": 0.03050675243139267,
+            "median": 0.06019078940153122,
+            "maximum": 0.1519597079604864,
+            "sum": 2.790012661367655
+          },
+          "cpu_seconds": {
+            "n": 47,
+            "minimum": 0.028111100000387523,
+            "median": 0.04952540999875055,
+            "maximum": 0.08173485600855201,
+            "sum": 2.2909676400395256
+          }
+        },
+        "family_constant": {
+          "wall_seconds": {
+            "n": 47,
+            "minimum": 588.9589412789792,
+            "median": 841.5593018960208,
+            "maximum": 2522.8584928344935,
+            "sum": 52337.91255836026
+          },
+          "cpu_seconds": {
+            "n": 47,
+            "minimum": 588.9169277309993,
+            "median": 841.3099036579988,
+            "maximum": 2522.4520504989996,
+            "sum": 52323.447413917
+          }
+        },
+        "family_exposure": {
+          "wall_seconds": {
+            "n": 47,
+            "minimum": 95.01225590147078,
+            "median": 516.9340299600735,
+            "maximum": 1637.391722632572,
+            "sum": 28791.476081177825
+          },
+          "cpu_seconds": {
+            "n": 47,
+            "minimum": 94.74660509000023,
+            "median": 516.9206725090007,
+            "maximum": 1637.023566169999,
+            "sum": 28780.700545763997
+          }
+        },
+        "input_hashes": {
+          "wall_seconds": {
+            "n": 47,
+            "minimum": 1.2015102934092283,
+            "median": 1.261843666434288,
+            "maximum": 1.8376098107546568,
+            "sum": 60.57442854414694
+          },
+          "cpu_seconds": {
+            "n": 47,
+            "minimum": 1.0857345709999997,
+            "median": 1.153848327,
+            "maximum": 1.3270163089999998,
+            "sum": 54.633868762999995
+          }
+        },
+        "latent_audit": {
+          "wall_seconds": {
+            "n": 47,
+            "minimum": 0.0012029968202114105,
+            "median": 18419.493589852005,
+            "maximum": 78726.1374472715,
+            "sum": 995685.0929844338
+          },
+          "cpu_seconds": {
+            "n": 47,
+            "minimum": 0.0012029069994241581,
+            "median": 18410.793078804,
+            "maximum": 78708.95523281,
+            "sum": 995305.620891826
+          }
+        },
+        "load": {
+          "wall_seconds": {
+            "n": 47,
+            "minimum": 2.189935302361846,
+            "median": 2.613682314986363,
+            "maximum": 4.088101984933019,
+            "sum": 124.50694063259289
+          },
+          "cpu_seconds": {
+            "n": 47,
+            "minimum": 2.186166263,
+            "median": 2.607186727,
+            "maximum": 4.082827771,
+            "sum": 123.740180352
+          }
+        },
+        "search": {
+          "wall_seconds": {
+            "n": 47,
+            "minimum": 5325.762987781316,
+            "median": 21664.51715437509,
+            "maximum": 103203.27736639883,
+            "sum": 1421139.5549249458
+          },
+          "cpu_seconds": {
+            "n": 47,
+            "minimum": 5316.823301455,
+            "median": 21637.851256113,
+            "maximum": 103170.662244975,
+            "sum": 1419814.04437493
+          }
+        },
+        "search_setup": {
+          "wall_seconds": {
+            "n": 47,
+            "minimum": 0.0018767677247524261,
+            "median": 0.0029725395143032074,
+            "maximum": 0.007138768211007118,
+            "sum": 0.17648363206535578
+          },
+          "cpu_seconds": {
+            "n": 47,
+            "minimum": 0.0018770630000002342,
+            "median": 0.0029503939999999673,
+            "maximum": 0.0071392059999997315,
+            "sum": 0.17553038699999757
+          }
+        },
+        "spatial_report": {
+          "wall_seconds": {
+            "n": 47,
+            "minimum": 0.0037796683609485626,
+            "median": 0.005925660952925682,
+            "maximum": 0.011376375332474709,
+            "sum": 0.29665790405124426
+          },
+          "cpu_seconds": {
+            "n": 47,
+            "minimum": 0.003772943000512896,
+            "median": 0.005914576999202836,
+            "maximum": 0.011315281000861432,
+            "sum": 0.29605587102651043
+          }
+        }
+      },
+      "unallocated_wall_seconds": {
+        "n": 47,
+        "minimum": 0.050798751413822174,
+        "median": 0.09330296888947487,
+        "maximum": 5.065348559990525,
+        "sum": 13.396710939472541
+      },
+      "tight_event_attributed_seconds": {
+        "n": 47,
+        "minimum": 2682.7357206754386,
+        "median": 10065.83858752437,
+        "maximum": 48593.24864146556,
+        "sum": 684675.0329031977
+      },
+      "tight_fraction_search_per_task": {
+        "n": 47,
+        "minimum": 0.43942547701494855,
+        "median": 0.4810571724669156,
+        "maximum": 0.5163788910085984,
+        "sum": 22.66967389643682
+      },
+      "tight_fraction_total_per_task": {
+        "n": 47,
+        "minimum": 0.11229685359562702,
+        "median": 0.28394142483801643,
+        "maximum": 0.4685610441379604,
+        "sum": 14.176091615429964
+      },
+      "pooled_tight_fraction_search": 0.48178154528344597,
+      "pooled_tight_fraction_total": 0.27407219317233783
+    }
+  },
+  "fits": [
+    {
+      "task_id": "fit-q-base-barrier-0-increased_heterogeneity-mu0.004-h1-A-exhaustive",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-barrier-0-increased_heterogeneity-mu0.004-h1-A-exhaustive/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "13113efffd1df5159ae0e5fb0842b988f5d2249c204c4fa5ee0ed3f723d6c93a",
+      "event_stream_sha256": "c4751294390a1a7a197394bf32453a8e038eaf64eea3e971ff0f5b2d3ac3d0f9",
+      "total_wall_seconds": 11676.722305579111,
+      "total_cpu_seconds": 11664.350479043,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2844229880720377,
+          "cpu_seconds": 1.1590403610000002
+        },
+        "load": {
+          "wall_seconds": 2.680606013163924,
+          "cpu_seconds": 2.677166643
+        },
+        "search_setup": {
+          "wall_seconds": 0.0018767677247524261,
+          "cpu_seconds": 0.0018770630000002342
+        },
+        "search": {
+          "wall_seconds": 7301.457616997883,
+          "cpu_seconds": 7288.700053657
+        },
+        "spatial_report": {
+          "wall_seconds": 0.0041844286024570465,
+          "cpu_seconds": 0.004185768999377615
+        },
+        "family_exposure": {
+          "wall_seconds": 279.531747860834,
+          "cpu_seconds": 279.4914693130004
+        },
+        "family_constant": {
+          "wall_seconds": 662.0503037478775,
+          "cpu_seconds": 661.9923033129999
+        },
+        "latent_audit": {
+          "wall_seconds": 3429.415174152702,
+          "cpu_seconds": 3427.902579431
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.03864475153386593,
+          "cpu_seconds": 0.031891431999611086
+        }
+      },
+      "unallocated_wall_seconds": 0.2577278707176447,
+      "search_clock_elapsed_seconds": 7301.37717903778,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 3132.3069110866636,
+          "first_tight_completion_seconds": 3164.27685235627,
+          "event_index": 64
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 3164.27685235627,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 4137.10032668151,
+          "upper_seconds": 4169.070267951116
+        },
+        "event_attributed_tight_seconds": 3499.634367801249,
+        "event_attributed_standard_seconds": 3801.728016797453,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.01479443907737732,
+        "event_counts": {
+          "tight": 77,
+          "standard": 85,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.47931154383431707,
+        "attributed_tight_fraction_total": 0.2997103361899025
+      }
+    },
+    {
+      "task_id": "fit-q-base-barrier-1-increased_heterogeneity-mu0.001-h10-A-lean",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-barrier-1-increased_heterogeneity-mu0.001-h10-A-lean/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "4ed80122eac8ca8e5c51e01d73f5a60d1d019da64b4e01cbc5778581c7b4c10b",
+      "event_stream_sha256": "bf9e9294d56a786fcb0c0c3b16927fda868b7371a01bed6b320f3017dd3e67c2",
+      "total_wall_seconds": 6612.321510907263,
+      "total_cpu_seconds": 6606.807621474,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2875669188797474,
+          "cpu_seconds": 1.1576967210000002
+        },
+        "load": {
+          "wall_seconds": 2.706228321418166,
+          "cpu_seconds": 2.702131374
+        },
+        "search_setup": {
+          "wall_seconds": 0.0020235925912857056,
+          "cpu_seconds": 0.0020233429999994
+        },
+        "search": {
+          "wall_seconds": 5525.648153832182,
+          "cpu_seconds": 5518.229307806
+        },
+        "spatial_report": {
+          "wall_seconds": 0.004924757406115532,
+          "cpu_seconds": 0.0049260019995927
+        },
+        "family_exposure": {
+          "wall_seconds": 292.13489891402423,
+          "cpu_seconds": 292.1187567729994
+        },
+        "family_constant": {
+          "wall_seconds": 790.2333992365748,
+          "cpu_seconds": 790.0773938740003
+        },
+        "latent_audit": {
+          "wall_seconds": 0.001262478530406952,
+          "cpu_seconds": 0.0012624139999388717
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.041812192648649216,
+          "cpu_seconds": 0.033896687000378734
+        }
+      },
+      "unallocated_wall_seconds": 0.26124066300690174,
+      "search_clock_elapsed_seconds": 5525.569901168346,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 2259.2044726032764,
+          "first_tight_completion_seconds": 2286.436427485198,
+          "event_index": 64
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 2286.436427485198,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 3239.1334736831486,
+          "upper_seconds": 3266.36542856507
+        },
+        "event_attributed_tight_seconds": 2717.5763672273606,
+        "event_attributed_standard_seconds": 2807.8737600352615,
+        "event_attributed_unclassified_seconds": 0.005368554964661598,
+        "unrecorded_search_tail_seconds": 0.11440535075962543,
+        "event_counts": {
+          "tight": 69,
+          "standard": 77,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.49181829491519896,
+        "attributed_tight_fraction_total": 0.4109867257278129
+      }
+    },
+    {
+      "task_id": "fit-q-base-barrier-1-window_high-mu0.004-h3-A-dense",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-barrier-1-window_high-mu0.004-h3-A-dense/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "62b78867ad950d5502eedbbea9f3ddb520c0d0aede3c4f57019daf966e311278",
+      "event_stream_sha256": "bf76d81bc3d9a9cffca55d638f8e43b74d9bab99bf3d8084235b618eaf674b83",
+      "total_wall_seconds": 61616.033506091684,
+      "total_cpu_seconds": 61585.22984233,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.8104728031903505,
+          "cpu_seconds": 1.1686530419999999
+        },
+        "load": {
+          "wall_seconds": 2.3458254151046276,
+          "cpu_seconds": 2.341817247
+        },
+        "search_setup": {
+          "wall_seconds": 0.0030763112008571625,
+          "cpu_seconds": 0.0030764059999999205
+        },
+        "search": {
+          "wall_seconds": 20400.95098294504,
+          "cpu_seconds": 20382.57997543
+        },
+        "spatial_report": {
+          "wall_seconds": 0.010190896689891815,
+          "cpu_seconds": 0.01016918599998462
+        },
+        "family_exposure": {
+          "wall_seconds": 307.5785339474678,
+          "cpu_seconds": 307.3070612590018
+        },
+        "family_constant": {
+          "wall_seconds": 966.5283150970936,
+          "cpu_seconds": 966.2667515659996
+        },
+        "latent_audit": {
+          "wall_seconds": 39936.37431227788,
+          "cpu_seconds": 39923.128103612005
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.08559917472302914,
+          "cpu_seconds": 0.078761659002339
+        }
+      },
+      "unallocated_wall_seconds": 0.34619722329080105,
+      "search_clock_elapsed_seconds": 20400.696161732078,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 9425.055922914296,
+          "first_tight_completion_seconds": 9449.519289603457,
+          "event_index": 187
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 9449.519289603457,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 10951.17687212862,
+          "upper_seconds": 10975.640238817781
+        },
+        "event_attributed_tight_seconds": 9669.260241178796,
+        "event_attributed_standard_seconds": 10731.359713399783,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.07620715349912643,
+        "event_counts": {
+          "tight": 186,
+          "standard": 224,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.47396717075354194,
+        "attributed_tight_fraction_total": 0.1569276646187042
+      }
+    },
+    {
+      "task_id": "fit-q-base-barrier-1-window_low-mu0.004-h1-A-independent_bank",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-barrier-1-window_low-mu0.004-h1-A-independent_bank/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "be1feb2c3f0838b939602dd27dcddf6c4ddbc54b770d90778b91479de1e6ccb6",
+      "event_stream_sha256": "0e4214aaf73f6b23a7805373f2b62845a0d9650ec014e205420e95b41061fe47",
+      "total_wall_seconds": 8164.066471137106,
+      "total_cpu_seconds": 8153.915269432,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2550333589315414,
+          "cpu_seconds": 1.172167521
+        },
+        "load": {
+          "wall_seconds": 3.2749943379312754,
+          "cpu_seconds": 3.271682619
+        },
+        "search_setup": {
+          "wall_seconds": 0.0019518136978149414,
+          "cpu_seconds": 0.001952123000000583
+        },
+        "search": {
+          "wall_seconds": 7128.885556930676,
+          "cpu_seconds": 7117.036364021001
+        },
+        "spatial_report": {
+          "wall_seconds": 0.0056756529957056046,
+          "cpu_seconds": 0.005656466999425902
+        },
+        "family_exposure": {
+          "wall_seconds": 281.01624570414424,
+          "cpu_seconds": 280.929385036
+        },
+        "family_constant": {
+          "wall_seconds": 749.3348248358816,
+          "cpu_seconds": 749.0809277580001
+        },
+        "latent_audit": {
+          "wall_seconds": 0.0016416944563388824,
+          "cpu_seconds": 0.0016417690003436292
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.045973245054483414,
+          "cpu_seconds": 0.0401571390002573
+        }
+      },
+      "unallocated_wall_seconds": 0.24457356333732605,
+      "search_clock_elapsed_seconds": 7128.789692647755,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 2749.53493152,
+          "first_tight_completion_seconds": 2779.280786663294,
+          "event_index": 76
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 2779.280786663294,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 4349.508905984461,
+          "upper_seconds": 4379.254761127755
+        },
+        "event_attributed_tight_seconds": 3584.3164602387697,
+        "event_attributed_standard_seconds": 3544.438987709582,
+        "event_attributed_unclassified_seconds": 0.016871657222509384,
+        "unrecorded_search_tail_seconds": 0.017373042181134224,
+        "event_counts": {
+          "tight": 89,
+          "standard": 97,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.5027945296149553,
+        "attributed_tight_fraction_total": 0.4390356782261156
+      }
+    },
+    {
+      "task_id": "fit-q-base-barrier-2-window_low-mu0.001-h10-A-independent_bank",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-barrier-2-window_low-mu0.001-h10-A-independent_bank/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "9f2ff8480496f0a01c343b80774386ea089bda9cee0f62932558b605e3a34634",
+      "event_stream_sha256": "71b60d3f306792f2ba3764a3298ff2825a5a789b02ebb4449be5a24d417c06f2",
+      "total_wall_seconds": 21008.241529187188,
+      "total_cpu_seconds": 20998.028890394,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.261843666434288,
+          "cpu_seconds": 1.177449464
+        },
+        "load": {
+          "wall_seconds": 3.143037348985672,
+          "cpu_seconds": 3.12508958
+        },
+        "search_setup": {
+          "wall_seconds": 0.002167072147130966,
+          "cpu_seconds": 0.0021586980000005696
+        },
+        "search": {
+          "wall_seconds": 8165.552004739642,
+          "cpu_seconds": 8154.870965449
+        },
+        "spatial_report": {
+          "wall_seconds": 0.004571931436657906,
+          "cpu_seconds": 0.004572928000015963
+        },
+        "family_exposure": {
+          "wall_seconds": 567.1061759162694,
+          "cpu_seconds": 567.0342440799996
+        },
+        "family_constant": {
+          "wall_seconds": 857.8961291313171,
+          "cpu_seconds": 857.7862369980012
+        },
+        "latent_audit": {
+          "wall_seconds": 11413.172706617042,
+          "cpu_seconds": 11411.58630132
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.04368114657700062,
+          "cpu_seconds": 0.036124361999100074
+        }
+      },
+      "unallocated_wall_seconds": 0.05921161733567715,
+      "search_clock_elapsed_seconds": 8165.43132273294,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 3351.1934503763914,
+          "first_tight_completion_seconds": 3379.669910280034,
+          "event_index": 71
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 3379.669910280034,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 4785.761412452906,
+          "upper_seconds": 4814.237872356549
+        },
+        "event_attributed_tight_seconds": 3957.3775490410626,
+        "event_attributed_standard_seconds": 4208.032477777451,
+        "event_attributed_unclassified_seconds": 0.004251895472407341,
+        "unrecorded_search_tail_seconds": 0.01704401895403862,
+        "event_counts": {
+          "tight": 81,
+          "standard": 89,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.48465015412272705,
+        "attributed_tight_fraction_total": 0.1883726224083532
+      }
+    },
+    {
+      "task_id": "fit-q-base-connected-1-increased_heterogeneity-mu0.001-h10-C-lean",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-connected-1-increased_heterogeneity-mu0.001-h10-C-lean/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "3259dad22c4ffe218a34c2e6a6d18dcb5c126fe604eec213c9b4a72c80604de7",
+      "event_stream_sha256": "80ec0f85b6f1acff5fa888c91f181671b74a71a1d434ceda7149af7015b1f622",
+      "total_wall_seconds": 42391.31516905222,
+      "total_cpu_seconds": 42367.732999159,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2336393538862467,
+          "cpu_seconds": 1.1381575609999999
+        },
+        "load": {
+          "wall_seconds": 2.613682314986363,
+          "cpu_seconds": 2.607186727
+        },
+        "search_setup": {
+          "wall_seconds": 0.006112772971391678,
+          "cpu_seconds": 0.006113303000000236
+        },
+        "search": {
+          "wall_seconds": 24373.36569163599,
+          "cpu_seconds": 24348.564407947
+        },
+        "spatial_report": {
+          "wall_seconds": 0.007208897965028882,
+          "cpu_seconds": 0.007187930001236964
+        },
+        "family_exposure": {
+          "wall_seconds": 1600.1993975229561,
+          "cpu_seconds": 1600.1031491329995
+        },
+        "family_constant": {
+          "wall_seconds": 2195.5388432201,
+          "cpu_seconds": 2195.40585553
+        },
+        "latent_audit": {
+          "wall_seconds": 14218.220462887082,
+          "cpu_seconds": 14217.584940145996
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.060913320165127516,
+          "cpu_seconds": 0.05440321800415404
+        }
+      },
+      "unallocated_wall_seconds": 0.06921712611801922,
+      "search_clock_elapsed_seconds": 24373.125596877886,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 9760.371735089924,
+          "first_tight_completion_seconds": 9825.638221950969,
+          "event_index": 110
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 9825.638221950969,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 14547.487374926917,
+          "upper_seconds": 14612.753861787962
+        },
+        "event_attributed_tight_seconds": 11905.054953092942,
+        "event_attributed_standard_seconds": 12468.015815188177,
+        "event_attributed_unclassified_seconds": 0.031656162813305855,
+        "unrecorded_search_tail_seconds": 0.023172433953732252,
+        "event_counts": {
+          "tight": 133,
+          "standard": 141,
+          "unclassified": 2
+        },
+        "attributed_tight_fraction_search": 0.4884500720177612,
+        "attributed_tight_fraction_total": 0.2808371220759913
+      }
+    },
+    {
+      "task_id": "fit-q-base-connected-1-matched_exposure-mu0.001-h1-A-exhaustive",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-connected-1-matched_exposure-mu0.001-h1-A-exhaustive/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "8e741c85eddccae6d1ee05def18fefd107c5f133c2c5b292e13219e5dfe42a22",
+      "event_stream_sha256": "175cc46f5e8b6b48aa7b19d2d781f6181e3bea4d82f82d6f618ab7b624d71908",
+      "total_wall_seconds": 6325.417826866731,
+      "total_cpu_seconds": 6317.599143224,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.216442259028554,
+          "cpu_seconds": 1.1632710349999997
+        },
+        "load": {
+          "wall_seconds": 2.9219368919730186,
+          "cpu_seconds": 2.8800870200000004
+        },
+        "search_setup": {
+          "wall_seconds": 0.001924825832247734,
+          "cpu_seconds": 0.001916570999999756
+        },
+        "search": {
+          "wall_seconds": 5325.762987781316,
+          "cpu_seconds": 5316.823301455
+        },
+        "spatial_report": {
+          "wall_seconds": 0.00400920957326889,
+          "cpu_seconds": 0.004002497000328731
+        },
+        "family_exposure": {
+          "wall_seconds": 303.1403653714806,
+          "cpu_seconds": 302.7693776690003
+        },
+        "family_constant": {
+          "wall_seconds": 692.277085468173,
+          "cpu_seconds": 691.4883696389998
+        },
+        "latent_audit": {
+          "wall_seconds": 0.001359790563583374,
+          "cpu_seconds": 0.0013599349995274679
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.03408426605165005,
+          "cpu_seconds": 0.0307748499999434
+        }
+      },
+      "unallocated_wall_seconds": 0.057631002739071846,
+      "search_clock_elapsed_seconds": 5325.6851120479405,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 2049.9622192569077,
+          "first_tight_completion_seconds": 2075.226703386754,
+          "event_index": 62
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 2075.226703386754,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 3250.4584086611867,
+          "upper_seconds": 3275.722892791033
+        },
+        "event_attributed_tight_seconds": 2682.7357206754386,
+        "event_attributed_standard_seconds": 2642.9375197961926,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.011871576309204102,
+        "event_counts": {
+          "tight": 73,
+          "standard": 81,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.5037353249831585,
+        "attributed_tight_fraction_total": 0.424119922842207
+      }
+    },
+    {
+      "task_id": "fit-q-base-connected-1-matched_exposure-mu0.001-h1-B-independent_bank",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-connected-1-matched_exposure-mu0.001-h1-B-independent_bank/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "cef0e9c4ee27c657d32ad81a40291809b946564bd8e391c8e457737a41133f8c",
+      "event_stream_sha256": "c0130826c467df0a05963311c1cebffbff8d75f822ed5d769a784dc58b3e50b6",
+      "total_wall_seconds": 6495.199951162562,
+      "total_cpu_seconds": 6488.511706324,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2042301231995225,
+          "cpu_seconds": 1.154332863
+        },
+        "load": {
+          "wall_seconds": 2.346606930717826,
+          "cpu_seconds": 2.3431866070000003
+        },
+        "search_setup": {
+          "wall_seconds": 0.0027101822197437286,
+          "cpu_seconds": 0.0027035309999998702
+        },
+        "search": {
+          "wall_seconds": 5496.504848397337,
+          "cpu_seconds": 5487.790250071
+        },
+        "spatial_report": {
+          "wall_seconds": 0.004179690964519978,
+          "cpu_seconds": 0.004172274999291403
+        },
+        "family_exposure": {
+          "wall_seconds": 287.97638462204486,
+          "cpu_seconds": 287.87749278499996
+        },
+        "family_constant": {
+          "wall_seconds": 707.0687022963539,
+          "cpu_seconds": 706.9264475680002
+        },
+        "latent_audit": {
+          "wall_seconds": 0.001223643310368061,
+          "cpu_seconds": 0.0012235719996169792
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.033341419883072376,
+          "cpu_seconds": 0.03102337600012106
+        }
+      },
+      "unallocated_wall_seconds": 0.057723856531083584,
+      "search_clock_elapsed_seconds": 5496.424071553163,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 2033.7078452603891,
+          "first_tight_completion_seconds": 2057.3959551751614,
+          "event_index": 61
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 2057.3959551751614,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 3439.028116378002,
+          "upper_seconds": 3462.716226292774
+        },
+        "event_attributed_tight_seconds": 2749.6984995650128,
+        "event_attributed_standard_seconds": 2746.690642990172,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.03492899797856808,
+        "event_counts": {
+          "tight": 75,
+          "standard": 83,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.5002704419762886,
+        "attributed_tight_fraction_total": 0.4233431642197328
+      }
+    },
+    {
+      "task_id": "fit-q-base-connected-1-window_low-mu0.004-h1-B-independent_bank",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-connected-1-window_low-mu0.004-h1-B-independent_bank/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "c99d2bf01c53f779b2367b89c85efde3aa3114905b1058145dfae6d884c71c55",
+      "event_stream_sha256": "80b797df12d6d243791a3681f5c7064f7e7f9fa9880dd6fc1af0e6286b2dea31",
+      "total_wall_seconds": 56231.45166978985,
+      "total_cpu_seconds": 56219.743096036,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.28058588411659,
+          "cpu_seconds": 1.1400417740000002
+        },
+        "load": {
+          "wall_seconds": 2.249845645390451,
+          "cpu_seconds": 2.2096208769999994
+        },
+        "search_setup": {
+          "wall_seconds": 0.0025148410350084305,
+          "cpu_seconds": 0.0025148640000001166
+        },
+        "search": {
+          "wall_seconds": 17481.206354456022,
+          "cpu_seconds": 17470.448177803002
+        },
+        "spatial_report": {
+          "wall_seconds": 0.004747227765619755,
+          "cpu_seconds": 0.004747937000502134
+        },
+        "family_exposure": {
+          "wall_seconds": 516.9340299600735,
+          "cpu_seconds": 516.9206725090007
+        },
+        "family_constant": {
+          "wall_seconds": 729.277082358487,
+          "cpu_seconds": 729.257067773
+        },
+        "latent_audit": {
+          "wall_seconds": 37500.20595906116,
+          "cpu_seconds": 37497.38452674
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.04569362197071314,
+          "cpu_seconds": 0.03957887399883475
+        }
+      },
+      "unallocated_wall_seconds": 0.24485673382878304,
+      "search_clock_elapsed_seconds": 17481.11092152074,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 6598.972612283193,
+          "first_tight_completion_seconds": 6620.571823837236,
+          "event_index": 74
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 6620.571823837236,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 10860.539097683504,
+          "upper_seconds": 10882.138309237547
+        },
+        "event_attributed_tight_seconds": 8700.216121088713,
+        "event_attributed_standard_seconds": 8780.874981703237,
+        "event_attributed_unclassified_seconds": 0.003136926330626011,
+        "unrecorded_search_tail_seconds": 0.016681802459061146,
+        "event_counts": {
+          "tight": 91,
+          "standard": 99,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.4976924041124872,
+        "attributed_tight_fraction_total": 0.1547215279480838
+      }
+    },
+    {
+      "task_id": "fit-q-base-connected-2-constant-mu0.004-h3-B-exhaustive",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-connected-2-constant-mu0.004-h3-B-exhaustive/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "6b1566bb91fa06c9d1c7e0a1588b217a46707cb69abf89d4df4fea98a8420524",
+      "event_stream_sha256": "9322774a6714c40907db2639fede7fefe839bc5ee85060d4e95ee8f6ec720c23",
+      "total_wall_seconds": 8829.385543577373,
+      "total_cpu_seconds": 8812.743247224,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2800165573135018,
+          "cpu_seconds": 1.1614760509999997
+        },
+        "load": {
+          "wall_seconds": 2.678943763487041,
+          "cpu_seconds": 2.6214390429999996
+        },
+        "search_setup": {
+          "wall_seconds": 0.002556237392127514,
+          "cpu_seconds": 0.0025557589999998243
+        },
+        "search": {
+          "wall_seconds": 7787.85647073295,
+          "cpu_seconds": 7769.3607004119995
+        },
+        "spatial_report": {
+          "wall_seconds": 0.006873161531984806,
+          "cpu_seconds": 0.006873792999613215
+        },
+        "family_exposure": {
+          "wall_seconds": 266.69422009121627,
+          "cpu_seconds": 266.66324913100016
+        },
+        "family_constant": {
+          "wall_seconds": 770.5537677556276,
+          "cpu_seconds": 770.5112641169999
+        },
+        "latent_audit": {
+          "wall_seconds": 0.0018278108909726143,
+          "cpu_seconds": 0.001827832998969825
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.06667148973792791,
+          "cpu_seconds": 0.04766569800085563
+        }
+      },
+      "unallocated_wall_seconds": 0.2441959772258997,
+      "search_clock_elapsed_seconds": 7787.738127595745,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 2939.811196386814,
+          "first_tight_completion_seconds": 2965.7912236088887,
+          "event_index": 94
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 2965.7912236088887,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 4821.946903986856,
+          "upper_seconds": 4847.926931208931
+        },
+        "event_attributed_tight_seconds": 4004.245392809622,
+        "event_attributed_standard_seconds": 3783.469417931512,
+        "event_attributed_unclassified_seconds": 0.004166346043348312,
+        "unrecorded_search_tail_seconds": 0.01915050856769085,
+        "event_counts": {
+          "tight": 114,
+          "standard": 122,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.514173092007374,
+        "attributed_tight_fraction_total": 0.4535134832482618
+      }
+    },
+    {
+      "task_id": "fit-q-base-connected-2-constant-mu0.004-h3-C-independent_bank",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-connected-2-constant-mu0.004-h3-C-independent_bank/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "02803bdf91a907fffbe6206a3155085ad6f007d4976dff6f75d8c94ddc48927b",
+      "event_stream_sha256": "25035df2883dc0bed8eb335adc8a677350a0fe66ee89d09c67911399c2f782c3",
+      "total_wall_seconds": 34429.96461855434,
+      "total_cpu_seconds": 34401.912135607,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.210028639063239,
+          "cpu_seconds": 1.153060452
+        },
+        "load": {
+          "wall_seconds": 2.6804885659366846,
+          "cpu_seconds": 2.6527722030000005
+        },
+        "search_setup": {
+          "wall_seconds": 0.006282815709710121,
+          "cpu_seconds": 0.006282296000000187
+        },
+        "search": {
+          "wall_seconds": 31242.090705098584,
+          "cpu_seconds": 31212.342478667
+        },
+        "spatial_report": {
+          "wall_seconds": 0.008574321866035461,
+          "cpu_seconds": 0.008574084000429139
+        },
+        "family_exposure": {
+          "wall_seconds": 660.9824956208467,
+          "cpu_seconds": 660.887545931997
+        },
+        "family_constant": {
+          "wall_seconds": 2522.8584928344935,
+          "cpu_seconds": 2522.4520504989996
+        },
+        "latent_audit": {
+          "wall_seconds": 0.0023576822131872177,
+          "cpu_seconds": 0.002357343000767287
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.06698165461421013,
+          "cpu_seconds": 0.061709456000244245
+        }
+      },
+      "unallocated_wall_seconds": 0.058211321011185646,
+      "search_clock_elapsed_seconds": 31241.672446742654,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 11561.045601706952,
+          "first_tight_completion_seconds": 11649.442595010623,
+          "event_index": 122
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 11649.442595010623,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 19592.22985173203,
+          "upper_seconds": 19680.626845035702
+        },
+        "event_attributed_tight_seconds": 16132.540171302855,
+        "event_attributed_standard_seconds": 15109.09101234749,
+        "event_attributed_unclassified_seconds": 0.009805658832192421,
+        "unrecorded_search_tail_seconds": 0.031457433477044106,
+        "event_counts": {
+          "tight": 153,
+          "standard": 161,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.5163788910085984,
+        "attributed_tight_fraction_total": 0.4685610441379604
+      }
+    },
+    {
+      "task_id": "fit-q-base-connected-2-window_high-mu0.004-h1-A-dense",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-connected-2-window_high-mu0.004-h1-A-dense/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "da1a1838720071729478f6266b3090b143c36181765542ef8f7b2a7a366bf144",
+      "event_stream_sha256": "741ffe2eaef2e212f40cff31703f1e9c9177448ce74be91ba8edc91b1d4e4388",
+      "total_wall_seconds": 169886.4310090209,
+      "total_cpu_seconds": 169844.290641236,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2085972889326513,
+          "cpu_seconds": 1.1461518699999997
+        },
+        "load": {
+          "wall_seconds": 2.263056051917374,
+          "cpu_seconds": 2.2543957860000003
+        },
+        "search_setup": {
+          "wall_seconds": 0.002660818165168166,
+          "cpu_seconds": 0.0026612599999999986
+        },
+        "search": {
+          "wall_seconds": 103203.27736639883,
+          "cpu_seconds": 103170.662244975
+        },
+        "spatial_report": {
+          "wall_seconds": 0.005766968941316009,
+          "cpu_seconds": 0.005753864999860525
+        },
+        "family_exposure": {
+          "wall_seconds": 328.50061333482154,
+          "cpu_seconds": 328.04006611098885
+        },
+        "family_constant": {
+          "wall_seconds": 655.6088909909595,
+          "cpu_seconds": 655.596438470995
+        },
+        "latent_audit": {
+          "wall_seconds": 65695.443216471,
+          "cpu_seconds": 65684.21721323601
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.06306246598251164,
+          "cpu_seconds": 0.05592000100295991
+        }
+      },
+      "unallocated_wall_seconds": 0.05777823133394122,
+      "search_clock_elapsed_seconds": 103203.01880843611,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 51595.28413469507,
+          "first_tight_completion_seconds": 51619.465629047016,
+          "event_index": 144
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 51619.465629047016,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 51583.5531793891,
+          "upper_seconds": 51607.73467374104
+        },
+        "event_attributed_tight_seconds": 48593.24864146556,
+        "event_attributed_standard_seconds": 54609.75210554642,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.018061424139887094,
+        "event_counts": {
+          "tight": 125,
+          "standard": 163,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.47085103907341713,
+        "attributed_tight_fraction_total": 0.28603372472334343
+      }
+    },
+    {
+      "task_id": "fit-q-base-connected-2-window_high-mu0.004-h1-A-lean",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-connected-2-window_high-mu0.004-h1-A-lean/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "4f83b3a07fafa9c091ac8824240d3c6845273e1d49e4a678200e1532ea10561d",
+      "event_stream_sha256": "32f13c124e52f5c27b053959ac5fbd349a60ac86fdc4dd2717f30c578f4d596b",
+      "total_wall_seconds": 85035.15129710105,
+      "total_cpu_seconds": 85017.272250445,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2053698499221355,
+          "cpu_seconds": 1.1455305890000003
+        },
+        "load": {
+          "wall_seconds": 2.27580055501312,
+          "cpu_seconds": 2.271157638
+        },
+        "search_setup": {
+          "wall_seconds": 0.003694521961733699,
+          "cpu_seconds": 0.002825363999999553
+        },
+        "search": {
+          "wall_seconds": 36057.61455051182,
+          "cpu_seconds": 36036.10392239
+        },
+        "spatial_report": {
+          "wall_seconds": 0.004023361019790173,
+          "cpu_seconds": 0.004013246994873043
+        },
+        "family_exposure": {
+          "wall_seconds": 518.7392152370885,
+          "cpu_seconds": 518.7791514120036
+        },
+        "family_constant": {
+          "wall_seconds": 598.3403011080809,
+          "cpu_seconds": 598.3739541750037
+        },
+        "latent_audit": {
+          "wall_seconds": 47856.86954706791,
+          "cpu_seconds": 47858.24293756399
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.03802729188464582,
+          "cpu_seconds": 0.031064164999406785
+        }
+      },
+      "unallocated_wall_seconds": 0.060767596354708076,
+      "search_clock_elapsed_seconds": 36057.53587617702,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 15077.177878727904,
+          "first_tight_completion_seconds": 15102.989904964808,
+          "event_index": 62
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 15102.989904964808,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 20954.54597121221,
+          "upper_seconds": 20980.357997449115
+        },
+        "event_attributed_tight_seconds": 17822.616766065126,
+        "event_attributed_standard_seconds": 18234.818137172842,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.10097293904982507,
+        "event_counts": {
+          "tight": 74,
+          "standard": 82,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.49428271602554,
+        "attributed_tight_fraction_total": 0.20959116899545893
+      }
+    },
+    {
+      "task_id": "fit-q-base-connected-2-window_low-mu0.001-h10-A-dense",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-connected-2-window_low-mu0.001-h10-A-dense/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "ecc1bffba1b18714ec95795c8464ce27c5241197b1fbd78b64a0cf23bb65f77e",
+      "event_stream_sha256": "3c74492f160d1d3d9f6a4a3dcad06727f4c69fbcf9a742aff451d57e5da31bcc",
+      "total_wall_seconds": 77808.01748841815,
+      "total_cpu_seconds": 77746.763117843,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2295793609227985,
+          "cpu_seconds": 1.142591715
+        },
+        "load": {
+          "wall_seconds": 2.378418607870117,
+          "cpu_seconds": 2.371349851
+        },
+        "search_setup": {
+          "wall_seconds": 0.00295079592615366,
+          "cpu_seconds": 0.0029503939999999673
+        },
+        "search": {
+          "wall_seconds": 48389.689039546996,
+          "cpu_seconds": 48339.238021522
+        },
+        "spatial_report": {
+          "wall_seconds": 0.007210118230432272,
+          "cpu_seconds": 0.0071897849993547425
+        },
+        "family_exposure": {
+          "wall_seconds": 397.5712167448364,
+          "cpu_seconds": 397.3614993230003
+        },
+        "family_constant": {
+          "wall_seconds": 746.730146296788,
+          "cpu_seconds": 746.6365649799991
+        },
+        "latent_audit": {
+          "wall_seconds": 28270.264467244968,
+          "cpu_seconds": 28257.608244332994
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.06677231844514608,
+          "cpu_seconds": 0.05898202800017316
+        }
+      },
+      "unallocated_wall_seconds": 0.07768738316372037,
+      "search_clock_elapsed_seconds": 48389.45202029613,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 24271.83557659923,
+          "first_tight_completion_seconds": 24300.258437250042,
+          "event_index": 151
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 24300.258437250042,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 24089.193583046086,
+          "upper_seconds": 24117.616443696897
+        },
+        "event_attributed_tight_seconds": 22092.91934948275,
+        "event_attributed_standard_seconds": 26296.46143232216,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.07123849121853709,
+        "event_counts": {
+          "tight": 131,
+          "standard": 169,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.45656477655949174,
+        "attributed_tight_fraction_total": 0.28394142483801643
+      }
+    },
+    {
+      "task_id": "fit-q-base-connected-2-window_low-mu0.001-h10-A-lean",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-connected-2-window_low-mu0.001-h10-A-lean/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "4f99bf9e50713259ee0be941f52615bdc20278d4f03b9d75fe46ebbe7e762b9b",
+      "event_stream_sha256": "a3fa4a0909b3d910714ddecc61c151b8f4521c293463584fac27e78d8ef1a7f9",
+      "total_wall_seconds": 45062.99688152713,
+      "total_cpu_seconds": 45030.209110824,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.292050973046571,
+          "cpu_seconds": 1.1582046579999998
+        },
+        "load": {
+          "wall_seconds": 2.31052049389109,
+          "cpu_seconds": 2.288290647
+        },
+        "search_setup": {
+          "wall_seconds": 0.0029318821616470814,
+          "cpu_seconds": 0.0029323119999995484
+        },
+        "search": {
+          "wall_seconds": 26630.098047162173,
+          "cpu_seconds": 26604.653542506
+        },
+        "spatial_report": {
+          "wall_seconds": 0.004898915067315102,
+          "cpu_seconds": 0.004888053001195658
+        },
+        "family_exposure": {
+          "wall_seconds": 543.2395135830157,
+          "cpu_seconds": 542.7268822769984
+        },
+        "family_constant": {
+          "wall_seconds": 731.9172990689985,
+          "cpu_seconds": 731.4337197239984
+        },
+        "latent_audit": {
+          "wall_seconds": 17153.863730430137,
+          "cpu_seconds": 17145.571437669998
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.04508072976022959,
+          "cpu_seconds": 0.03819672999816248
+        }
+      },
+      "unallocated_wall_seconds": 0.22280828887596726,
+      "search_clock_elapsed_seconds": 26630.007047563326,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 11228.499930871185,
+          "first_tight_completion_seconds": 11259.339031908195,
+          "event_index": 76
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 11259.339031908195,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 15370.66801565513,
+          "upper_seconds": 15401.50711669214
+        },
+        "event_attributed_tight_seconds": 12692.777603743598,
+        "event_attributed_standard_seconds": 13937.209437104408,
+        "event_attributed_unclassified_seconds": 0.005711433012038469,
+        "unrecorded_search_tail_seconds": 0.014295282308012247,
+        "event_counts": {
+          "tight": 89,
+          "standard": 97,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.47663440648262995,
+        "attributed_tight_fraction_total": 0.2816674096734743
+      }
+    },
+    {
+      "task_id": "fit-q-base-connected-2-window_low-mu0.001-h10-B-dense",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-connected-2-window_low-mu0.001-h10-B-dense/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "e509c68eb8912971fdfcef6763191d232983fbdf0238d470018fe9267dd731d9",
+      "event_stream_sha256": "380abe88562263d2ed99a4739198315834096b2ec8aa783ac9a8d863b7c0178c",
+      "total_wall_seconds": 60891.49015119206,
+      "total_cpu_seconds": 60822.094723191,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2172903339378536,
+          "cpu_seconds": 1.1441718980000002
+        },
+        "load": {
+          "wall_seconds": 2.4779156600125134,
+          "cpu_seconds": 2.4387181260000004
+        },
+        "search_setup": {
+          "wall_seconds": 0.0032298550941050053,
+          "cpu_seconds": 0.003229905999999616
+        },
+        "search": {
+          "wall_seconds": 32730.11432766472,
+          "cpu_seconds": 32671.406584581997
+        },
+        "spatial_report": {
+          "wall_seconds": 0.008664142806082964,
+          "cpu_seconds": 0.008640741001727292
+        },
+        "family_exposure": {
+          "wall_seconds": 352.7142398362048,
+          "cpu_seconds": 352.57368184000006
+        },
+        "family_constant": {
+          "wall_seconds": 818.6550527168438,
+          "cpu_seconds": 818.3727674900001
+        },
+        "latent_audit": {
+          "wall_seconds": 26986.141194997355,
+          "cpu_seconds": 26973.768756521
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.07162210205569863,
+          "cpu_seconds": 0.06372099600412184
+        }
+      },
+      "unallocated_wall_seconds": 0.08661388303153217,
+      "search_clock_elapsed_seconds": 32729.924033215968,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 16004.361158677842,
+          "first_tight_completion_seconds": 16034.816938983044,
+          "event_index": 156
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 16034.816938983044,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 16695.107094232924,
+          "upper_seconds": 16725.562874538125
+        },
+        "event_attributed_tight_seconds": 14939.654278507223,
+        "event_attributed_standard_seconds": 17790.247294962872,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.02245974587276578,
+        "event_counts": {
+          "tight": 141,
+          "standard": 179,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.456452458103652,
+        "attributed_tight_fraction_total": 0.24534880393651776
+      }
+    },
+    {
+      "task_id": "fit-q-base-connected-2-window_low-mu0.001-h10-C-dense",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-connected-2-window_low-mu0.001-h10-C-dense/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "c57183499913a5f2fa8857f74283bcb6f210c48c65af949d43e6a87f0d332f0d",
+      "event_stream_sha256": "67d8766da4880b9ff945be8cb56a4cef127f6862d752535134ba520053375295",
+      "total_wall_seconds": 119472.38018353097,
+      "total_cpu_seconds": 119404.821486743,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2155458971392363,
+          "cpu_seconds": 1.1424790379999998
+        },
+        "load": {
+          "wall_seconds": 2.7431555069051683,
+          "cpu_seconds": 2.7266991280000004
+        },
+        "search_setup": {
+          "wall_seconds": 0.006348044145852327,
+          "cpu_seconds": 0.006347459999999749
+        },
+        "search": {
+          "wall_seconds": 57981.5639766152,
+          "cpu_seconds": 57928.173120134
+        },
+        "spatial_report": {
+          "wall_seconds": 0.008105332963168621,
+          "cpu_seconds": 0.008086382003966719
+        },
+        "family_exposure": {
+          "wall_seconds": 1221.0521883917972,
+          "cpu_seconds": 1220.4639408769945
+        },
+        "family_constant": {
+          "wall_seconds": 1882.4320053388365,
+          "cpu_seconds": 1882.0314265530033
+        },
+        "latent_audit": {
+          "wall_seconds": 58383.22536681313,
+          "cpu_seconds": 58367.84880286
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.07175988331437111,
+          "cpu_seconds": 0.06461774998751935
+        }
+      },
+      "unallocated_wall_seconds": 0.061731707537546754,
+      "search_clock_elapsed_seconds": 57981.3991540242,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 27938.68080351781,
+          "first_tight_completion_seconds": 28001.977042452898,
+          "event_index": 162
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 28001.977042452898,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 29979.4221115713,
+          "upper_seconds": 30042.718350506388
+        },
+        "event_attributed_tight_seconds": 26522.535974234343,
+        "event_attributed_standard_seconds": 31458.798792347778,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.06438744207844138,
+        "event_counts": {
+          "tight": 147,
+          "standard": 185,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.4574318033233171,
+        "attributed_tight_fraction_total": 0.22199721754510104
+      }
+    },
+    {
+      "task_id": "fit-q-base-connected-2-window_low-mu0.001-h10-C-lean",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-connected-2-window_low-mu0.001-h10-C-lean/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "c4db2a1c15e62c68292e8dc70f59f2c84e88e1ea21927a22e7ff9d7e35a8d057",
+      "event_stream_sha256": "a3d36d942fd7df99ea6eec440f19e3fa953066ea04b41c439864d581e69c5bf6",
+      "total_wall_seconds": 94350.81818228774,
+      "total_cpu_seconds": 94299.590446909,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2129723075777292,
+          "cpu_seconds": 1.160717498
+        },
+        "load": {
+          "wall_seconds": 2.66510465182364,
+          "cpu_seconds": 2.660076593
+        },
+        "search_setup": {
+          "wall_seconds": 0.0063286274671554565,
+          "cpu_seconds": 0.0063295339999998035
+        },
+        "search": {
+          "wall_seconds": 42444.6727283597,
+          "cpu_seconds": 42421.955997013996
+        },
+        "spatial_report": {
+          "wall_seconds": 0.006219079717993736,
+          "cpu_seconds": 0.006201991993293632
+        },
+        "family_exposure": {
+          "wall_seconds": 1637.391722632572,
+          "cpu_seconds": 1637.023566169999
+        },
+        "family_constant": {
+          "wall_seconds": 1842.4993538148701,
+          "cpu_seconds": 1842.1894998870048
+        },
+        "latent_audit": {
+          "wall_seconds": 48422.23098116927,
+          "cpu_seconds": 48392.199011171004
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.07399030961096287,
+          "cpu_seconds": 0.04751811799360439
+        }
+      },
+      "unallocated_wall_seconds": 0.0587813351303339,
+      "search_clock_elapsed_seconds": 42444.52194006927,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 17641.09488068521,
+          "first_tight_completion_seconds": 17717.438626660034,
+          "event_index": 96
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 17717.438626660034,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 24727.08331340924,
+          "upper_seconds": 24803.427059384063
+        },
+        "event_attributed_tight_seconds": 21034.27179208584,
+        "event_attributed_standard_seconds": 21410.150297069922,
+        "event_attributed_unclassified_seconds": 0.06802878715097904,
+        "unrecorded_search_tail_seconds": 0.03182212635874748,
+        "event_counts": {
+          "tight": 109,
+          "standard": 117,
+          "unclassified": 2
+        },
+        "attributed_tight_fraction_search": 0.4955709436846943,
+        "attributed_tight_fraction_total": 0.22293682447403043
+      }
+    },
+    {
+      "task_id": "fit-q-base-corridor-0-constant-mu0.004-h1-C-dense",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-0-constant-mu0.004-h1-C-dense/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "38c6b74f8302c288dce17707b614a5cdb9f4e33de9c5a3fbf8df26f62d470aaa",
+      "event_stream_sha256": "85e471c675183f97c07f98ba7a7cbeb77d872bf1b733dd556549fb9b8a523611",
+      "total_wall_seconds": 31226.707004362717,
+      "total_cpu_seconds": 31215.852298369,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2511599212884903,
+          "cpu_seconds": 1.150730394
+        },
+        "load": {
+          "wall_seconds": 2.7276304364204407,
+          "cpu_seconds": 2.707684394
+        },
+        "search_setup": {
+          "wall_seconds": 0.006394447758793831,
+          "cpu_seconds": 0.006397085999999774
+        },
+        "search": {
+          "wall_seconds": 27081.294943735003,
+          "cpu_seconds": 27068.497241159
+        },
+        "spatial_report": {
+          "wall_seconds": 0.006246007978916168,
+          "cpu_seconds": 0.006236206001631217
+        },
+        "family_exposure": {
+          "wall_seconds": 705.3770750313997,
+          "cpu_seconds": 705.3601714459983
+        },
+        "family_constant": {
+          "wall_seconds": 1605.1226863134652,
+          "cpu_seconds": 1605.1021079310012
+        },
+        "latent_audit": {
+          "wall_seconds": 1830.7452728673816,
+          "cpu_seconds": 1830.6095070099982
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.0657686498016119,
+          "cpu_seconds": 0.06019229500088841
+        }
+      },
+      "unallocated_wall_seconds": 0.1098269522190094,
+      "search_clock_elapsed_seconds": 27081.00468049571,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 13350.523273298517,
+          "first_tight_completion_seconds": 13427.043204093352,
+          "event_index": 153
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 13427.043204093352,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 13653.961476402357,
+          "upper_seconds": 13730.481407197192
+        },
+        "event_attributed_tight_seconds": 12268.387275248766,
+        "event_attributed_standard_seconds": 14812.597594710067,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.01981053687632084,
+        "event_counts": {
+          "tight": 134,
+          "standard": 172,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.45302555868928707,
+        "attributed_tight_fraction_total": 0.3928812369980202
+      }
+    },
+    {
+      "task_id": "fit-q-base-corridor-0-constant-mu0.004-h1-C-independent_bank",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-0-constant-mu0.004-h1-C-independent_bank/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "2f9d98f8d126fd191c47a9e3622ba4bcf756d7623b7cc297e3eee337ed4dd994",
+      "event_stream_sha256": "a6757656d6dd579291b877a5bb93d21c72091aa39a7b0237ad87f989378278ae",
+      "total_wall_seconds": 18881.605979302898,
+      "total_cpu_seconds": 18861.57255555,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2694432772696018,
+          "cpu_seconds": 1.14911881
+        },
+        "load": {
+          "wall_seconds": 2.7417890019714832,
+          "cpu_seconds": 2.7325950750000003
+        },
+        "search_setup": {
+          "wall_seconds": 0.005935760214924812,
+          "cpu_seconds": 0.00593504999999972
+        },
+        "search": {
+          "wall_seconds": 14808.849353827536,
+          "cpu_seconds": 14789.280312985
+        },
+        "spatial_report": {
+          "wall_seconds": 0.00410858541727066,
+          "cpu_seconds": 0.004096131000551395
+        },
+        "family_exposure": {
+          "wall_seconds": 1115.3498089201748,
+          "cpu_seconds": 1114.573258856999
+        },
+        "family_constant": {
+          "wall_seconds": 1351.0880002751946,
+          "cpu_seconds": 1350.5574061099978
+        },
+        "latent_audit": {
+          "wall_seconds": 1602.1857292689383,
+          "cpu_seconds": 1600.9028682899989
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.04068763181567192,
+          "cpu_seconds": 0.037187221001659054
+        }
+      },
+      "unallocated_wall_seconds": 0.07112275436520576,
+      "search_clock_elapsed_seconds": 14808.768351217732,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 5950.796907946467,
+          "first_tight_completion_seconds": 6033.432711772621,
+          "event_index": 67
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 6033.432711772621,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 8775.335639445111,
+          "upper_seconds": 8857.971443271264
+        },
+        "event_attributed_tight_seconds": 7059.7876693457365,
+        "event_attributed_standard_seconds": 7748.962450223044,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.018231648951768875,
+        "event_counts": {
+          "tight": 80,
+          "standard": 89,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.4767302385930837,
+        "attributed_tight_fraction_total": 0.3738976269859849
+      }
+    },
+    {
+      "task_id": "fit-q-base-corridor-0-increased_heterogeneity-mu0.001-h1-C-exhaustive",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-0-increased_heterogeneity-mu0.001-h1-C-exhaustive/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "6fea50deff4f030f4de48c5d64642374c80132baf94296b4e249350588c74140",
+      "event_stream_sha256": "15153a84f9e8a11df78fe9cae5da6981e1e284de73ee97efb20404358259bb52",
+      "total_wall_seconds": 118717.04704098962,
+      "total_cpu_seconds": 118659.509106796,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2174416948109865,
+          "cpu_seconds": 1.1475919269999997
+        },
+        "load": {
+          "wall_seconds": 2.776435784995556,
+          "cpu_seconds": 2.7557946549999994
+        },
+        "search_setup": {
+          "wall_seconds": 0.006298718973994255,
+          "cpu_seconds": 0.0062996810000006676
+        },
+        "search": {
+          "wall_seconds": 89055.31972941197,
+          "cpu_seconds": 89002.19033158601
+        },
+        "spatial_report": {
+          "wall_seconds": 0.004681609570980072,
+          "cpu_seconds": 0.004667805013014004
+        },
+        "family_exposure": {
+          "wall_seconds": 1261.7657891362906,
+          "cpu_seconds": 1261.5961904680007
+        },
+        "family_constant": {
+          "wall_seconds": 1843.136514859274,
+          "cpu_seconds": 1843.2189655969996
+        },
+        "latent_audit": {
+          "wall_seconds": 26547.707648348063,
+          "cpu_seconds": 26546.239117637
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.047152865678071976,
+          "cpu_seconds": 0.03777181600162294
+        }
+      },
+      "unallocated_wall_seconds": 5.065348559990525,
+      "search_clock_elapsed_seconds": 89055.23137927055,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 34575.7443904113,
+          "first_tight_completion_seconds": 34659.98526770994,
+          "event_index": 73
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 34659.98526770994,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 54395.24611156061,
+          "upper_seconds": 54479.48698885925
+        },
+        "event_attributed_tight_seconds": 45444.33706407063,
+        "event_attributed_standard_seconds": 43610.78614529595,
+        "event_attributed_unclassified_seconds": 0.09002602472901344,
+        "unrecorded_search_tail_seconds": 0.018143879249691963,
+        "event_counts": {
+          "tight": 86,
+          "standard": 94,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.5102938520313444,
+        "attributed_tight_fraction_total": 0.38279537940646374
+      }
+    },
+    {
+      "task_id": "fit-q-base-corridor-0-increased_heterogeneity-mu0.001-h1-C-independent_bank",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-0-increased_heterogeneity-mu0.001-h1-C-independent_bank/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "b549930dafcc4fd9782fec74fd33f4b4ef94b597c801ac9b121c96ade58864c9",
+      "event_stream_sha256": "767715ba469203100541cbc5042a559d19324c6e6f95aff70820e916e9612ad0",
+      "total_wall_seconds": 118410.80404791608,
+      "total_cpu_seconds": 118327.706339991,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2875614538788795,
+          "cpu_seconds": 1.1583278730000002
+        },
+        "load": {
+          "wall_seconds": 2.7021556440740824,
+          "cpu_seconds": 2.690093536
+        },
+        "search_setup": {
+          "wall_seconds": 0.006460297852754593,
+          "cpu_seconds": 0.00646053000000002
+        },
+        "search": {
+          "wall_seconds": 88876.33351560496,
+          "cpu_seconds": 88820.436470088
+        },
+        "spatial_report": {
+          "wall_seconds": 0.0049338676035404205,
+          "cpu_seconds": 0.004901844993582927
+        },
+        "family_exposure": {
+          "wall_seconds": 1289.447778524831,
+          "cpu_seconds": 1289.4928740230098
+        },
+        "family_constant": {
+          "wall_seconds": 1891.7814325280488,
+          "cpu_seconds": 1891.6441254600068
+        },
+        "latent_audit": {
+          "wall_seconds": 26348.93258738704,
+          "cpu_seconds": 26319.845189900996
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.04538525268435478,
+          "cpu_seconds": 0.03798489300243091
+        }
+      },
+      "unallocated_wall_seconds": 0.2622373551130295,
+      "search_clock_elapsed_seconds": 88876.24899702705,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 34533.81043050438,
+          "first_tight_completion_seconds": 34619.48805370182,
+          "event_index": 73
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 34619.48805370182,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 54256.76094332524,
+          "upper_seconds": 54342.43856652267
+        },
+        "event_attributed_tight_seconds": 45368.15683582798,
+        "event_attributed_standard_seconds": 43508.035394249484,
+        "event_attributed_unclassified_seconds": 0.006207870319485664,
+        "unrecorded_search_tail_seconds": 0.05055907927453518,
+        "event_counts": {
+          "tight": 87,
+          "standard": 95,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.5104643518128849,
+        "attributed_tight_fraction_total": 0.3831420384365375
+      }
+    },
+    {
+      "task_id": "fit-q-base-corridor-0-increased_heterogeneity-mu0.001-h1-C-lean",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-0-increased_heterogeneity-mu0.001-h1-C-lean/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "bcc541fc919defac7519bda2bbd9a14785ff9d9bc4e362d3d1dfb6d6ee94123a",
+      "event_stream_sha256": "7567c4426014490321262eacff72ccd314aa50965ecc15d59357a714e9b37265",
+      "total_wall_seconds": 115695.45709646307,
+      "total_cpu_seconds": 115649.333917264,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.294727947562933,
+          "cpu_seconds": 1.1437889719999998
+        },
+        "load": {
+          "wall_seconds": 2.7149980943650007,
+          "cpu_seconds": 2.707009544
+        },
+        "search_setup": {
+          "wall_seconds": 0.007138768211007118,
+          "cpu_seconds": 0.0071392059999997315
+        },
+        "search": {
+          "wall_seconds": 87680.0413949471,
+          "cpu_seconds": 87641.70474283301
+        },
+        "spatial_report": {
+          "wall_seconds": 0.004756629467010498,
+          "cpu_seconds": 0.004757279006298631
+        },
+        "family_exposure": {
+          "wall_seconds": 1238.5757856946439,
+          "cpu_seconds": 1238.547706220008
+        },
+        "family_constant": {
+          "wall_seconds": 1815.42989272438,
+          "cpu_seconds": 1815.4104938770033
+        },
+        "latent_audit": {
+          "wall_seconds": 24956.82893156819,
+          "cpu_seconds": 24947.408913288004
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.045921310782432556,
+          "cpu_seconds": 0.03760009299730882
+        }
+      },
+      "unallocated_wall_seconds": 0.5135487783700228,
+      "search_clock_elapsed_seconds": 87679.8637220487,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 34358.27684391849,
+          "first_tight_completion_seconds": 34442.255027368665,
+          "event_index": 73
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 34442.255027368665,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 53237.608694680035,
+          "upper_seconds": 53321.58687813021
+        },
+        "event_attributed_tight_seconds": 44627.059046790004,
+        "event_attributed_standard_seconds": 43052.7467788849,
+        "event_attributed_unclassified_seconds": 0.02657301351428032,
+        "unrecorded_search_tail_seconds": 0.03132336027920246,
+        "event_counts": {
+          "tight": 86,
+          "standard": 94,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.5089772856885465,
+        "attributed_tight_fraction_total": 0.38572870678562104
+      }
+    },
+    {
+      "task_id": "fit-q-base-corridor-0-window_high-mu0.001-h10-C-exhaustive",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-0-window_high-mu0.001-h10-C-exhaustive/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "f10a9c5db1a8e122b99d25bd309b361519027d889890bd9a6fe32bc057558fc1",
+      "event_stream_sha256": "c95cd28e693c51b9254cc43ff3d9d47f64c4ff435ca91fe70e6497560c4d1a2e",
+      "total_wall_seconds": 26897.03218769096,
+      "total_cpu_seconds": 26859.488381169,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.3355817887932062,
+          "cpu_seconds": 1.1709070319999997
+        },
+        "load": {
+          "wall_seconds": 2.796012733131647,
+          "cpu_seconds": 2.766201195
+        },
+        "search_setup": {
+          "wall_seconds": 0.006467539817094803,
+          "cpu_seconds": 0.00646737200000036
+        },
+        "search": {
+          "wall_seconds": 21030.3657387048,
+          "cpu_seconds": 20992.145127929998
+        },
+        "spatial_report": {
+          "wall_seconds": 0.004630165174603462,
+          "cpu_seconds": 0.004617739003151655
+        },
+        "family_exposure": {
+          "wall_seconds": 1517.5947117693722,
+          "cpu_seconds": 1517.3175464029991
+        },
+        "family_constant": {
+          "wall_seconds": 2025.3382624685764,
+          "cpu_seconds": 2025.0006797949973
+        },
+        "latent_audit": {
+          "wall_seconds": 2319.0560705605894,
+          "cpu_seconds": 2318.642673421
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.04238859564065933,
+          "cpu_seconds": 0.03778415499982657
+        }
+      },
+      "unallocated_wall_seconds": 0.4923233650624752,
+      "search_clock_elapsed_seconds": 21030.254244416952,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 8757.495377402753,
+          "first_tight_completion_seconds": 8840.593645291403,
+          "event_index": 76
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 8840.593645291403,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 12189.66059912555,
+          "upper_seconds": 12272.7588670142
+        },
+        "event_attributed_tight_seconds": 10052.00061523728,
+        "event_attributed_standard_seconds": 10978.061680784449,
+        "event_attributed_unclassified_seconds": 0.00508824922144413,
+        "unrecorded_search_tail_seconds": 0.18686014600098133,
+        "event_counts": {
+          "tight": 88,
+          "standard": 96,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.47797808330851993,
+        "attributed_tight_fraction_total": 0.37372155206913255
+      }
+    },
+    {
+      "task_id": "fit-q-base-corridor-0-window_low-mu0.001-h3-B-dense",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-0-window_low-mu0.001-h3-B-dense/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "9ce396b8a8209140e1bad4ebe697bbe7b73d28a1593bd6c27b9e395d21b776fd",
+      "event_stream_sha256": "1883259a2db83a321614fd3a657b67c3794901f6f82b35b92162ef00c68e78ec",
+      "total_wall_seconds": 11164.076402014121,
+      "total_cpu_seconds": 11129.975071005,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2015102934092283,
+          "cpu_seconds": 1.153137869
+        },
+        "load": {
+          "wall_seconds": 2.1974543668329716,
+          "cpu_seconds": 2.1941486820000002
+        },
+        "search_setup": {
+          "wall_seconds": 0.0029725395143032074,
+          "cpu_seconds": 0.0029724250000002783
+        },
+        "search": {
+          "wall_seconds": 10247.875625971705,
+          "cpu_seconds": 10212.246148518001
+        },
+        "spatial_report": {
+          "wall_seconds": 0.007891131564974785,
+          "cpu_seconds": 0.007876462999774958
+        },
+        "family_exposure": {
+          "wall_seconds": 95.01225590147078,
+          "cpu_seconds": 94.74660509000023
+        },
+        "family_constant": {
+          "wall_seconds": 817.6531401071697,
+          "cpu_seconds": 817.2781051850016
+        },
+        "latent_audit": {
+          "wall_seconds": 0.001999974250793457,
+          "cpu_seconds": 0.0019997380004497245
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.0670377928763628,
+          "cpu_seconds": 0.060734231999958865
+        }
+      },
+      "unallocated_wall_seconds": 0.05651393532752991,
+      "search_clock_elapsed_seconds": 10247.667539268732,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 4748.256019467488,
+          "first_tight_completion_seconds": 4771.40468788147,
+          "event_index": 150
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 4771.40468788147,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 5476.262851387262,
+          "upper_seconds": 5499.411519801244
+        },
+        "event_attributed_tight_seconds": 4791.373724460602,
+        "event_attributed_standard_seconds": 5456.165515428409,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.1282993797212839,
+        "event_counts": {
+          "tight": 133,
+          "standard": 171,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.46755749111690165,
+        "attributed_tight_fraction_total": 0.42917779777968784
+      }
+    },
+    {
+      "task_id": "fit-q-base-corridor-1-b100_anchor-mu0.004-h3-A-dense",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-1-b100_anchor-mu0.004-h3-A-dense/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "30048c96d34a31e61dbb341a831e1016c152b540e5d29db257aa8bde3ebf5467",
+      "event_stream_sha256": "4d41e98bb1edd1d31209bfa62ec37e826b7f019edbecb0a1614180a4316a74ad",
+      "total_wall_seconds": 55475.324350299314,
+      "total_cpu_seconds": 55440.877443214,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2056951355189085,
+          "cpu_seconds": 1.137923711
+        },
+        "load": {
+          "wall_seconds": 2.2195421811193228,
+          "cpu_seconds": 2.2141711010000003
+        },
+        "search_setup": {
+          "wall_seconds": 0.002923613414168358,
+          "cpu_seconds": 0.002923586000000533
+        },
+        "search": {
+          "wall_seconds": 30145.696935068816,
+          "cpu_seconds": 30113.030054692
+        },
+        "spatial_report": {
+          "wall_seconds": 0.008664913475513458,
+          "cpu_seconds": 0.008643170000141254
+        },
+        "family_exposure": {
+          "wall_seconds": 465.8924806602299,
+          "cpu_seconds": 464.05489835000117
+        },
+        "family_constant": {
+          "wall_seconds": 946.6648731604218,
+          "cpu_seconds": 946.0420195890001
+        },
+        "latent_audit": {
+          "wall_seconds": 23913.498604120687,
+          "cpu_seconds": 23911.984110348996
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.07858154736459255,
+          "cpu_seconds": 0.07278611500078114
+        }
+      },
+      "unallocated_wall_seconds": 0.0560498982667923,
+      "search_clock_elapsed_seconds": 30145.459598060697,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 15609.658151781186,
+          "first_tight_completion_seconds": 15635.856200551614,
+          "event_index": 178
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 15635.856200551614,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 14509.603397509083,
+          "upper_seconds": 14535.80144627951
+        },
+        "event_attributed_tight_seconds": 13712.259414892644,
+        "event_attributed_standard_seconds": 16433.160467591137,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.03971557691693306,
+        "event_counts": {
+          "tight": 169,
+          "standard": 207,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.4548698078490989,
+        "attributed_tight_fraction_total": 0.24717763393876688
+      }
+    },
+    {
+      "task_id": "fit-q-base-corridor-1-b100_anchor-mu0.004-h3-A-independent_bank",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-1-b100_anchor-mu0.004-h3-A-independent_bank/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "55329a54a5b82c73c8dc1e9b52080196e85a24d680b3f9251b193557649ab93b",
+      "event_stream_sha256": "c6bd400d5dccc7d2fb84b9300ec56a074fda1ef997a253cf8ca25b974aa97543",
+      "total_wall_seconds": 32496.50259992294,
+      "total_cpu_seconds": 32472.776413372,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.3140564430505037,
+          "cpu_seconds": 1.165632531
+        },
+        "load": {
+          "wall_seconds": 2.4387564063072205,
+          "cpu_seconds": 2.4292959570000003
+        },
+        "search_setup": {
+          "wall_seconds": 0.003030756488442421,
+          "cpu_seconds": 0.0030242799999999903
+        },
+        "search": {
+          "wall_seconds": 11965.076993081719,
+          "cpu_seconds": 11953.479797537
+        },
+        "spatial_report": {
+          "wall_seconds": 0.00729990191757679,
+          "cpu_seconds": 0.007281733000127133
+        },
+        "family_exposure": {
+          "wall_seconds": 630.5725749973208,
+          "cpu_seconds": 630.5264254390004
+        },
+        "family_constant": {
+          "wall_seconds": 911.483082300052,
+          "cpu_seconds": 910.849807685001
+        },
+        "latent_audit": {
+          "wall_seconds": 18985.035601031035,
+          "cpu_seconds": 18971.937862783998
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.06019078940153122,
+          "cpu_seconds": 0.053647632001229795
+        }
+      },
+      "unallocated_wall_seconds": 0.5110142156481743,
+      "search_clock_elapsed_seconds": 11964.945744775236,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 5476.136004796252,
+          "first_tight_completion_seconds": 5501.360549131408,
+          "event_index": 108
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 5501.360549131408,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 6463.585195643827,
+          "upper_seconds": 6488.809739978984
+        },
+        "event_attributed_tight_seconds": 5621.103099362925,
+        "event_attributed_standard_seconds": 6343.810107398778,
+        "event_attributed_unclassified_seconds": 0.012720741331577301,
+        "unrecorded_search_tail_seconds": 0.019817272201180458,
+        "event_counts": {
+          "tight": 130,
+          "standard": 138,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.46979762543574477,
+        "attributed_tight_fraction_total": 0.17297563274936098
+      }
+    },
+    {
+      "task_id": "fit-q-base-corridor-1-b100_anchor-mu0.004-h3-A-lean",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-1-b100_anchor-mu0.004-h3-A-lean/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "afe9f141db555e31bd7383043622b557f38d7fd1c3270b2fe743d0360c324143",
+      "event_stream_sha256": "2fba34581dd9d51253380124e4faf8090055cd6790ac85752e558698cba3515c",
+      "total_wall_seconds": 31934.699425261468,
+      "total_cpu_seconds": 31912.072279521,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2255610432475805,
+          "cpu_seconds": 1.1375852020000004
+        },
+        "load": {
+          "wall_seconds": 2.2686998676508665,
+          "cpu_seconds": 2.264469728
+        },
+        "search_setup": {
+          "wall_seconds": 0.003084896132349968,
+          "cpu_seconds": 0.00308484199999981
+        },
+        "search": {
+          "wall_seconds": 11906.461385244504,
+          "cpu_seconds": 11892.169738203
+        },
+        "spatial_report": {
+          "wall_seconds": 0.007207736372947693,
+          "cpu_seconds": 0.007183480000094278
+        },
+        "family_exposure": {
+          "wall_seconds": 675.7686452325433,
+          "cpu_seconds": 675.2839157929993
+        },
+        "family_constant": {
+          "wall_seconds": 929.3424362018704,
+          "cpu_seconds": 928.0676371480004
+        },
+        "latent_audit": {
+          "wall_seconds": 18419.493589852005,
+          "cpu_seconds": 18410.793078804
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.060582321137189865,
+          "cpu_seconds": 0.05234134900092613
+        }
+      },
+      "unallocated_wall_seconds": 0.06823286600410938,
+      "search_clock_elapsed_seconds": 11906.30236323364,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 5425.598967820406,
+          "first_tight_completion_seconds": 5450.761544296518,
+          "event_index": 108
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 5450.761544296518,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 6455.540818937123,
+          "upper_seconds": 6480.703395413235
+        },
+        "event_attributed_tight_seconds": 5629.544585319236,
+        "event_attributed_standard_seconds": 6276.733762921765,
+        "event_attributed_unclassified_seconds": 0.005333302542567253,
+        "unrecorded_search_tail_seconds": 0.018681690096855164,
+        "event_counts": {
+          "tight": 129,
+          "standard": 137,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.4728205628897118,
+        "attributed_tight_fraction_total": 0.17628299895210753
+      }
+    },
+    {
+      "task_id": "fit-q-base-corridor-1-window_high-mu0.001-h3-B-dense",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-1-window_high-mu0.001-h3-B-dense/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "2616173bf44617b1371408a671a565d3c21fe79c435d1586c4427a020d0a275d",
+      "event_stream_sha256": "fe0838f2524602458133b66e1746ecb970cf8f0a4a79a79383b43b8c9f6f9dbf",
+      "total_wall_seconds": 117010.10417625122,
+      "total_cpu_seconds": 116978.055201595,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2053890246897936,
+          "cpu_seconds": 1.1439944299999998
+        },
+        "load": {
+          "wall_seconds": 2.2404262144118547,
+          "cpu_seconds": 2.2288027040000005
+        },
+        "search_setup": {
+          "wall_seconds": 0.0025288723409175873,
+          "cpu_seconds": 0.002528928999999458
+        },
+        "search": {
+          "wall_seconds": 78222.00770979188,
+          "cpu_seconds": 78197.608907874
+        },
+        "spatial_report": {
+          "wall_seconds": 0.007446102797985077,
+          "cpu_seconds": 0.007452179997926578
+        },
+        "family_exposure": {
+          "wall_seconds": 292.4950908496976,
+          "cpu_seconds": 292.4978218800097
+        },
+        "family_constant": {
+          "wall_seconds": 673.8179120644927,
+          "cpu_seconds": 673.811636857994
+        },
+        "latent_audit": {
+          "wall_seconds": 37818.14210664295,
+          "cpu_seconds": 37808.417839192
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.12872396409511566,
+          "cpu_seconds": 0.05445418300223537
+        }
+      },
+      "unallocated_wall_seconds": 0.05684272386133671,
+      "search_clock_elapsed_seconds": 78221.74830509163,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 38175.87793532945,
+          "first_tight_completion_seconds": 38208.39950391278,
+          "event_index": 137
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 38208.39950391278,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 40013.34880117886,
+          "upper_seconds": 40045.87036976218
+        },
+        "event_attributed_tight_seconds": 36358.49351730943,
+        "event_attributed_standard_seconds": 41863.237735666335,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.017052115872502327,
+        "event_counts": {
+          "tight": 113,
+          "standard": 151,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.464813102559391,
+        "attributed_tight_fraction_total": 0.31072952009805044
+      }
+    },
+    {
+      "task_id": "fit-q-base-corridor-1-window_high-mu0.001-h3-B-lean",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-1-window_high-mu0.001-h3-B-lean/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "68b12174ab48caef8a6664f212ae1db8020036c7f5de747a696bd57bd036d99f",
+      "event_stream_sha256": "646f4f225dc1ad0ab5c3fcc3958c356db34babecce976740bd31b822e9b47903",
+      "total_wall_seconds": 68088.01669525914,
+      "total_cpu_seconds": 68084.586146785,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2341063413769007,
+          "cpu_seconds": 1.1396858779999999
+        },
+        "load": {
+          "wall_seconds": 2.230632847175002,
+          "cpu_seconds": 2.2266083819999998
+        },
+        "search_setup": {
+          "wall_seconds": 0.002279631793498993,
+          "cpu_seconds": 0.002279611999999709
+        },
+        "search": {
+          "wall_seconds": 46581.733220383525,
+          "cpu_seconds": 46576.335959137
+        },
+        "spatial_report": {
+          "wall_seconds": 0.00455930270254612,
+          "cpu_seconds": 0.004559904999041464
+        },
+        "family_exposure": {
+          "wall_seconds": 508.38812448456883,
+          "cpu_seconds": 508.3944522460006
+        },
+        "family_constant": {
+          "wall_seconds": 654.1840896643698,
+          "cpu_seconds": 654.1392244649978
+        },
+        "latent_audit": {
+          "wall_seconds": 20340.12779566273,
+          "cpu_seconds": 20340.07458462
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.039945513010025024,
+          "cpu_seconds": 0.03295596400857903
+        }
+      },
+      "unallocated_wall_seconds": 0.07194142788648605,
+      "search_clock_elapsed_seconds": 46581.6599475462,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 20009.30962142907,
+          "first_tight_completion_seconds": 20041.97089218162,
+          "event_index": 67
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 20041.97089218162,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 26539.68905536458,
+          "upper_seconds": 26572.350326117128
+        },
+        "event_attributed_tight_seconds": 22799.62138284929,
+        "event_attributed_standard_seconds": 23782.00861969404,
+        "event_attributed_unclassified_seconds": 0.015768511220812798,
+        "unrecorded_search_tail_seconds": 0.014176491647958755,
+        "event_counts": {
+          "tight": 69,
+          "standard": 77,
+          "unclassified": 2
+        },
+        "attributed_tight_fraction_search": 0.4894548929454867,
+        "attributed_tight_fraction_total": 0.3348551256073933
+      }
+    },
+    {
+      "task_id": "fit-q-base-corridor-1-window_high-mu0.001-h3-C-dense",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-1-window_high-mu0.001-h3-C-dense/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "0d1afec775ed6f7a6be486dd84ef5a6bdce2f06e49b037cfbb5d8e72088575fe",
+      "event_stream_sha256": "5f94e7fbbed2a1fc8db76d603a7dfb0c68466f567063d91dd748e5591f82d015",
+      "total_wall_seconds": 69718.22257762589,
+      "total_cpu_seconds": 69694.03760657,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.298978703096509,
+          "cpu_seconds": 1.1809258329999999
+        },
+        "load": {
+          "wall_seconds": 2.877516858279705,
+          "cpu_seconds": 2.849386788
+        },
+        "search_setup": {
+          "wall_seconds": 0.006604600697755814,
+          "cpu_seconds": 0.00660508299999929
+        },
+        "search": {
+          "wall_seconds": 38734.06814969517,
+          "cpu_seconds": 38709.251775303004
+        },
+        "spatial_report": {
+          "wall_seconds": 0.007782289758324623,
+          "cpu_seconds": 0.007783118999213912
+        },
+        "family_exposure": {
+          "wall_seconds": 933.2131472490728,
+          "cpu_seconds": 933.1992504369991
+        },
+        "family_constant": {
+          "wall_seconds": 2098.3409469854087,
+          "cpu_seconds": 2098.321904546996
+        },
+        "latent_audit": {
+          "wall_seconds": 27948.229134965688,
+          "cpu_seconds": 27946.816602988998
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.07551795057952404,
+          "cpu_seconds": 0.06419183900288772
+        }
+      },
+      "unallocated_wall_seconds": 0.1047983281314373,
+      "search_clock_elapsed_seconds": 38733.732321921736,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 18734.158853460103,
+          "first_tight_completion_seconds": 18800.949164031073,
+          "event_index": 161
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 18800.949164031073,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 19932.783157890663,
+          "upper_seconds": 19999.573468461633
+        },
+        "event_attributed_tight_seconds": 17534.95715664141,
+        "event_attributed_standard_seconds": 21198.75334415771,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.021821122616529465,
+        "event_counts": {
+          "tight": 146,
+          "standard": 184,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.45270507398837284,
+        "attributed_tight_fraction_total": 0.25151182156311547
+      }
+    },
+    {
+      "task_id": "fit-q-base-corridor-1-window_low-mu0.001-h1-B-dense",
+      "group": "development_failed_replay",
+      "failure_class": "search_unresolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-1-window_low-mu0.001-h1-B-dense/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "345c25a67894cb8b1ec9a7d61ed90d7a000e4feeaf1e07572b1ef2a0126d3bc5",
+      "event_stream_sha256": "0a058bb603b6541545da21531a7c048aecb692835dabb32a56f1909b221923b2",
+      "total_wall_seconds": 2403.1386947482824,
+      "total_cpu_seconds": 2400.791755028,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2270897962152958,
+          "cpu_seconds": 1.1441423880000001
+        },
+        "load": {
+          "wall_seconds": 2.33918465860188,
+          "cpu_seconds": 2.334065276
+        },
+        "search_setup": {
+          "wall_seconds": 0.003059159964323044,
+          "cpu_seconds": 0.003050470999999888
+        },
+        "search": {
+          "wall_seconds": 1334.3950661867857,
+          "cpu_seconds": 1330.904513388
+        },
+        "spatial_report": {
+          "wall_seconds": 1.1162832379341125e-05,
+          "cpu_seconds": 1.1107000091215014e-05
+        },
+        "family_exposure": {
+          "wall_seconds": 606.7272501923144,
+          "cpu_seconds": 606.087493366
+        },
+        "family_constant": {
+          "wall_seconds": 458.3793126884848,
+          "cpu_seconds": 457.9960189630001
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.008125701919198036,
+          "cpu_seconds": 0.0051458009997986665
+        }
+      },
+      "unallocated_wall_seconds": 0.059595201164484024,
+      "search_clock_elapsed_seconds": 1334.3771332763135,
+      "tight_timing": {
+        "first_tight_transition": null,
+        "receipt_seconds_before_tight_phase_is_first_completion": null,
+        "mixed_after_tight_start_window": null,
+        "event_attributed_tight_seconds": 0.0,
+        "event_attributed_standard_seconds": 1184.5982884988189,
+        "event_attributed_unclassified_seconds": 149.35952100344002,
+        "unrecorded_search_tail_seconds": 0.4193237740546465,
+        "event_counts": {
+          "tight": 0,
+          "standard": 31,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.0,
+        "attributed_tight_fraction_total": 0.0
+      }
+    },
+    {
+      "task_id": "fit-q-base-corridor-1-window_low-mu0.001-h1-B-lean",
+      "group": "development_failed_replay",
+      "failure_class": "search_unresolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-1-window_low-mu0.001-h1-B-lean/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "5140fe51d5b6b8e84679a4c8509dbc5272d5d8e043745c2c9fdf17d4369cecdc",
+      "event_stream_sha256": "6204440b4d476b3033b447e8d69ba3fdc2e07f98115cbfb8f407be4377c91cc1",
+      "total_wall_seconds": 1508.115790143609,
+      "total_cpu_seconds": 1509.139862819,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.3051700852811337,
+          "cpu_seconds": 1.1478328759999998
+        },
+        "load": {
+          "wall_seconds": 2.3403497710824013,
+          "cpu_seconds": 2.332941633
+        },
+        "search_setup": {
+          "wall_seconds": 0.003083430230617523,
+          "cpu_seconds": 0.0030831779999997977
+        },
+        "search": {
+          "wall_seconds": 425.4254335127771,
+          "cpu_seconds": 425.076451837
+        },
+        "spatial_report": {
+          "wall_seconds": 1.0484829545021057e-05,
+          "cpu_seconds": 1.0411999994630605e-05
+        },
+        "family_exposure": {
+          "wall_seconds": 612.1627180762589,
+          "cpu_seconds": 612.079146822
+        },
+        "family_constant": {
+          "wall_seconds": 466.38432810269296,
+          "cpu_seconds": 466.179529088
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.003744056448340416,
+          "cpu_seconds": 0.0013772590000371565
+        }
+      },
+      "unallocated_wall_seconds": 0.4909526240080595,
+      "search_clock_elapsed_seconds": 425.4183690007776,
+      "tight_timing": {
+        "first_tight_transition": null,
+        "receipt_seconds_before_tight_phase_is_first_completion": null,
+        "mixed_after_tight_start_window": null,
+        "event_attributed_tight_seconds": 0.0,
+        "event_attributed_standard_seconds": 145.94831976480782,
+        "event_attributed_unclassified_seconds": 279.46564118377864,
+        "unrecorded_search_tail_seconds": 0.0044080521911382675,
+        "event_counts": {
+          "tight": 0,
+          "standard": 4,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.0,
+        "attributed_tight_fraction_total": 0.0
+      }
+    },
+    {
+      "task_id": "fit-q-base-corridor-2-constant-mu0.001-h3-B-exhaustive",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-2-constant-mu0.001-h3-B-exhaustive/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "ba68a1978509363a85e280cafee68f321801e324864cdf9f9adb94f28aedd821",
+      "event_stream_sha256": "771a7d46157bc2076e9678339b4dde2f853e0075296ab62379482fc858b731d1",
+      "total_wall_seconds": 7576.457201408222,
+      "total_cpu_seconds": 7573.610393355,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2878043856471777,
+          "cpu_seconds": 1.156166539
+        },
+        "load": {
+          "wall_seconds": 2.189935302361846,
+          "cpu_seconds": 2.186166263
+        },
+        "search_setup": {
+          "wall_seconds": 0.0024576783180236816,
+          "cpu_seconds": 0.0024576579999999737
+        },
+        "search": {
+          "wall_seconds": 6469.158853130415,
+          "cpu_seconds": 6464.478225245
+        },
+        "spatial_report": {
+          "wall_seconds": 0.005330955609679222,
+          "cpu_seconds": 0.005326287000571028
+        },
+        "family_exposure": {
+          "wall_seconds": 310.3911612443626,
+          "cpu_seconds": 310.3612821529996
+        },
+        "family_constant": {
+          "wall_seconds": 793.1119255702943,
+          "cpu_seconds": 793.111190912
+        },
+        "latent_audit": {
+          "wall_seconds": 0.0013810079544782639,
+          "cpu_seconds": 0.0013810020000164513
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.03842462599277496,
+          "cpu_seconds": 0.03645415699975274
+        }
+      },
+      "unallocated_wall_seconds": 0.26992750726640224,
+      "search_clock_elapsed_seconds": 6469.06900367327,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 2480.541066072881,
+          "first_tight_completion_seconds": 2507.2022614255548,
+          "event_index": 66
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 2507.2022614255548,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 3961.8667422477156,
+          "upper_seconds": 3988.527937600389
+        },
+        "event_attributed_tight_seconds": 3200.4535524304956,
+        "event_attributed_standard_seconds": 3268.582624623552,
+        "event_attributed_unclassified_seconds": 0.01779947057366371,
+        "unrecorded_search_tail_seconds": 0.015027148649096489,
+        "event_counts": {
+          "tight": 78,
+          "standard": 86,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.4947317072384314,
+        "attributed_tight_fraction_total": 0.422420858107089
+      }
+    },
+    {
+      "task_id": "fit-q-base-corridor-2-matched_exposure-mu0.001-h10-C-exhaustive",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-2-matched_exposure-mu0.001-h10-C-exhaustive/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "8b449c25415bb84ac3bc46cce987d5fb9561dab1171990b9bfa5194df42bb2f2",
+      "event_stream_sha256": "7b99bfbc96056eb30db1475b666d176e96dde44f8c1f2bb4459a583a0e65dc12",
+      "total_wall_seconds": 21150.077361438423,
+      "total_cpu_seconds": 21130.791828992,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2976464442908764,
+          "cpu_seconds": 1.153848327
+        },
+        "load": {
+          "wall_seconds": 2.8730336036533117,
+          "cpu_seconds": 2.845123993
+        },
+        "search_setup": {
+          "wall_seconds": 0.005928685888648033,
+          "cpu_seconds": 0.005910824999999953
+        },
+        "search": {
+          "wall_seconds": 18471.430627569556,
+          "cpu_seconds": 18451.017972046
+        },
+        "spatial_report": {
+          "wall_seconds": 0.005543718114495277,
+          "cpu_seconds": 0.0055318560007435735
+        },
+        "family_exposure": {
+          "wall_seconds": 727.2125491481274,
+          "cpu_seconds": 727.0048178399993
+        },
+        "family_constant": {
+          "wall_seconds": 1946.7057530470192,
+          "cpu_seconds": 1946.3929870850006
+        },
+        "latent_audit": {
+          "wall_seconds": 0.0017798840999603271,
+          "cpu_seconds": 0.0017794830018829089
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.0514508169144392,
+          "cpu_seconds": 0.040872941997804446
+        }
+      },
+      "unallocated_wall_seconds": 0.49304852075874805,
+      "search_clock_elapsed_seconds": 18471.332306494936,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 7528.063485627994,
+          "first_tight_completion_seconds": 7605.431030062959,
+          "event_index": 80
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 7605.431030062959,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 10865.901276431978,
+          "upper_seconds": 10943.268820866942
+        },
+        "event_attributed_tight_seconds": 9153.744955226779,
+        "event_attributed_standard_seconds": 9317.499007321894,
+        "event_attributed_unclassified_seconds": 0.06660124659538269,
+        "unrecorded_search_tail_seconds": 0.021742699667811394,
+        "event_counts": {
+          "tight": 90,
+          "standard": 98,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.49556495456519484,
+        "attributed_tight_fraction_total": 0.4327995968429039
+      }
+    },
+    {
+      "task_id": "fit-q-base-corridor-2-matched_exposure-mu0.001-h10-C-lean",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-2-matched_exposure-mu0.001-h10-C-lean/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "e501689338c1057a438aaa8ba0b039389b69e386e75f474d22b2571cd19075e9",
+      "event_stream_sha256": "fdc7609be7d3cfa9ad3eee0f46e9b9d262f2cd6cfc4fc3752fc14a5d715ce5c6",
+      "total_wall_seconds": 21208.011567217996,
+      "total_cpu_seconds": 21182.310992882,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2854249509982765,
+          "cpu_seconds": 1.1396877119999997
+        },
+        "load": {
+          "wall_seconds": 2.6002499568276107,
+          "cpu_seconds": 2.5932261739999998
+        },
+        "search_setup": {
+          "wall_seconds": 0.005618481896817684,
+          "cpu_seconds": 0.005619274999999924
+        },
+        "search": {
+          "wall_seconds": 18443.37320102402,
+          "cpu_seconds": 18418.461074816
+        },
+        "spatial_report": {
+          "wall_seconds": 0.005540288984775543,
+          "cpu_seconds": 0.00552992200027802
+        },
+        "family_exposure": {
+          "wall_seconds": 747.8272494520061,
+          "cpu_seconds": 747.3468236929984
+        },
+        "family_constant": {
+          "wall_seconds": 2012.3711539870128,
+          "cpu_seconds": 2010.4508855420027
+        },
+        "latent_audit": {
+          "wall_seconds": 0.001418527914211154,
+          "cpu_seconds": 0.001418584997736616
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.047503162175416946,
+          "cpu_seconds": 0.04058959599933587
+        }
+      },
+      "unallocated_wall_seconds": 0.4942073861602694,
+      "search_clock_elapsed_seconds": 18443.27334981016,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 7456.724542557029,
+          "first_tight_completion_seconds": 7533.401781928027,
+          "event_index": 80
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 7533.401781928027,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 10909.871567882132,
+          "upper_seconds": 10986.54880725313
+        },
+        "event_attributed_tight_seconds": 9206.337050213013,
+        "event_attributed_standard_seconds": 9236.907942605205,
+        "event_attributed_unclassified_seconds": 0.006270198849961162,
+        "unrecorded_search_tail_seconds": 0.022086793091148138,
+        "event_counts": {
+          "tight": 90,
+          "standard": 98,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.4991704496050196,
+        "attributed_tight_fraction_total": 0.43409713452078585
+      }
+    },
+    {
+      "task_id": "fit-q-base-corridor-2-window_high-mu0.001-h1-B-dense",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-2-window_high-mu0.001-h1-B-dense/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "7326a63c08d27e8183e08a712a817a5679311316b3a4181715684ccffa9e82df",
+      "event_stream_sha256": "bb1f9aea7290196343a335e0ead8d334bb5fb309e96a6c30dae1165c3dea0118",
+      "total_wall_seconds": 76260.40920367464,
+      "total_cpu_seconds": 76198.528091431,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2129821460694075,
+          "cpu_seconds": 1.1380606050000002
+        },
+        "load": {
+          "wall_seconds": 2.3213107232004404,
+          "cpu_seconds": 2.313312081
+        },
+        "search_setup": {
+          "wall_seconds": 0.003254283219575882,
+          "cpu_seconds": 0.003253753999999276
+        },
+        "search": {
+          "wall_seconds": 47469.48579677567,
+          "cpu_seconds": 47423.127808408004
+        },
+        "spatial_report": {
+          "wall_seconds": 0.0076200347393751144,
+          "cpu_seconds": 0.007619670999702066
+        },
+        "family_exposure": {
+          "wall_seconds": 192.05153068900108,
+          "cpu_seconds": 191.91146460000164
+        },
+        "family_constant": {
+          "wall_seconds": 677.5782172344625,
+          "cpu_seconds": 677.4129627029979
+        },
+        "latent_audit": {
+          "wall_seconds": 27917.54573332891,
+          "cpu_seconds": 27900.206676912996
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.1519597079604864,
+          "cpu_seconds": 0.055535858002258465
+        }
+      },
+      "unallocated_wall_seconds": 0.050798751413822174,
+      "search_clock_elapsed_seconds": 47469.21023006551,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 24168.91649173759,
+          "first_tight_completion_seconds": 24195.372230444103,
+          "event_index": 137
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 24195.372230444103,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 23273.837999621406,
+          "upper_seconds": 23300.29373832792
+        },
+        "event_attributed_tight_seconds": 20859.180348869413,
+        "event_attributed_standard_seconds": 26610.008604122326,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.02127707377076149,
+        "event_counts": {
+          "tight": 115,
+          "standard": 153,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.43942547701494855,
+        "attributed_tight_fraction_total": 0.27352568084389856
+      }
+    },
+    {
+      "task_id": "fit-q-base-corridor-2-window_high-mu0.001-h1-B-lean",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-base-corridor-2-window_high-mu0.001-h1-B-lean/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "35d775de55d6a27fe978016c033a6baa5580aa6b2337cc3a3f8937aaf645f534",
+      "event_stream_sha256": "381f30c37c9ef71aad6c73c85e4a291fd01f7c6640fd6afba030d0869c6565aa",
+      "total_wall_seconds": 38250.917777662165,
+      "total_cpu_seconds": 38237.818424159,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.280310052447021,
+          "cpu_seconds": 1.15148529
+        },
+        "load": {
+          "wall_seconds": 2.7475131023675203,
+          "cpu_seconds": 2.6801108809999996
+        },
+        "search_setup": {
+          "wall_seconds": 0.0029277820140123367,
+          "cpu_seconds": 0.002927868999999639
+        },
+        "search": {
+          "wall_seconds": 22251.826810763218,
+          "cpu_seconds": 22237.763054132
+        },
+        "spatial_report": {
+          "wall_seconds": 0.0038454094901680946,
+          "cpu_seconds": 0.003839255001366837
+        },
+        "family_exposure": {
+          "wall_seconds": 394.8840226912871,
+          "cpu_seconds": 394.8248905790024
+        },
+        "family_constant": {
+          "wall_seconds": 588.9589412789792,
+          "cpu_seconds": 588.9169277309993
+        },
+        "latent_audit": {
+          "wall_seconds": 15010.936897517182,
+          "cpu_seconds": 15010.020944615
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.03340368904173374,
+          "cpu_seconds": 0.028303222003160045
+        }
+      },
+      "unallocated_wall_seconds": 0.24310537613928318,
+      "search_clock_elapsed_seconds": 22251.618219370954,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 10151.991277021356,
+          "first_tight_completion_seconds": 10178.42705531139,
+          "event_index": 55
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 10178.42705531139,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 12073.191164059564,
+          "upper_seconds": 12099.626942349598
+        },
+        "event_attributed_tight_seconds": 10065.83858752437,
+        "event_attributed_standard_seconds": 12185.570232742466,
+        "event_attributed_unclassified_seconds": 0.003763766959309578,
+        "unrecorded_search_tail_seconds": 0.2056353371590376,
+        "event_counts": {
+          "tight": 61,
+          "standard": 69,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.45236433990053093,
+        "attributed_tight_fraction_total": 0.263152864619699
+      }
+    },
+    {
+      "task_id": "fit-q-boundary-barrier-2-b100_anchor-mu0.004-h25-A-lean",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-boundary-barrier-2-b100_anchor-mu0.004-h25-A-lean/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "80ac0f2fba51aa2d7f72f36ffb2214c775edc76483d34b90a18fbf5cc0f0fc1d",
+      "event_stream_sha256": "c3ef6d520b466fca3fbfe677f7a96caec10a823e8080d791ca146995efcc3b44",
+      "total_wall_seconds": 17878.46991906129,
+      "total_cpu_seconds": 17870.490959529,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2202820964157581,
+          "cpu_seconds": 1.159449724
+        },
+        "load": {
+          "wall_seconds": 2.2706757076084614,
+          "cpu_seconds": 2.259570824
+        },
+        "search_setup": {
+          "wall_seconds": 0.0024123042821884155,
+          "cpu_seconds": 0.0023989440000002915
+        },
+        "search": {
+          "wall_seconds": 9678.015283981338,
+          "cpu_seconds": 9668.9510273
+        },
+        "spatial_report": {
+          "wall_seconds": 0.007704576477408409,
+          "cpu_seconds": 0.007639393999852473
+        },
+        "family_exposure": {
+          "wall_seconds": 416.76894130185246,
+          "cpu_seconds": 416.1529406819991
+        },
+        "family_constant": {
+          "wall_seconds": 841.5593018960208,
+          "cpu_seconds": 841.3099036579988
+        },
+        "latent_audit": {
+          "wall_seconds": 6938.473488520831,
+          "cpu_seconds": 6938.319319177999
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.05852570757269859,
+          "cpu_seconds": 0.05183950400169124
+        }
+      },
+      "unallocated_wall_seconds": 0.09330296888947487,
+      "search_clock_elapsed_seconds": 9677.862999230623,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 3659.568515148014,
+          "first_tight_completion_seconds": 3694.0823166444898,
+          "event_index": 101
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 3694.0823166444898,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 5983.7806825861335,
+          "upper_seconds": 6018.294484082609
+        },
+        "event_attributed_tight_seconds": 4930.214660426602,
+        "event_attributed_standard_seconds": 4747.581264484674,
+        "event_attributed_unclassified_seconds": 0.00669480487704277,
+        "unrecorded_search_tail_seconds": 0.06037951447069645,
+        "event_counts": {
+          "tight": 125,
+          "standard": 133,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.5094321608828878,
+        "attributed_tight_fraction_total": 0.2757626733577581
+      }
+    },
+    {
+      "task_id": "fit-q-boundary-corridor-0-b100_anchor-mu0.004-h25-A-dense",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-boundary-corridor-0-b100_anchor-mu0.004-h25-A-dense/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "6c2acdf9c0ec88d3e3ec1d6c590906bcd737b2effbee2ed85ac50a83aa6f3fa7",
+      "event_stream_sha256": "0ebb8706582c8add6cd6b22aa7dc5903204adcf6a312ec36a07e9e16effa282f",
+      "total_wall_seconds": 26560.395894056186,
+      "total_cpu_seconds": 26518.21035177,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2745674792677164,
+          "cpu_seconds": 1.0857345709999997
+        },
+        "load": {
+          "wall_seconds": 3.4606426917016506,
+          "cpu_seconds": 3.3968920609999995
+        },
+        "search_setup": {
+          "wall_seconds": 0.0028157252818346024,
+          "cpu_seconds": 0.002816584999999705
+        },
+        "search": {
+          "wall_seconds": 11063.88100800477,
+          "cpu_seconds": 11021.10714927
+        },
+        "spatial_report": {
+          "wall_seconds": 0.005308251827955246,
+          "cpu_seconds": 0.005313458999808063
+        },
+        "family_exposure": {
+          "wall_seconds": 276.2799389883876,
+          "cpu_seconds": 276.23490487399977
+        },
+        "family_constant": {
+          "wall_seconds": 605.0168796163052,
+          "cpu_seconds": 604.9862511979991
+        },
+        "latent_audit": {
+          "wall_seconds": 14610.029339736328,
+          "cpu_seconds": 14608.904980246998
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.05639301426708698,
+          "cpu_seconds": 0.04952540999875055
+        }
+      },
+      "unallocated_wall_seconds": 0.38900054804980755,
+      "search_clock_elapsed_seconds": 11063.754926862195,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 5351.826330021024,
+          "first_tight_completion_seconds": 5379.666289296001,
+          "event_index": 147
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 5379.666289296001,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 5684.088637566194,
+          "upper_seconds": 5711.928596841171
+        },
+        "event_attributed_tight_seconds": 5003.244353381917,
+        "event_attributed_standard_seconds": 6060.484613344073,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.025960136204957962,
+        "event_counts": {
+          "tight": 127,
+          "standard": 165,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.45221937637413784,
+        "attributed_tight_fraction_total": 0.18837235609509748
+      }
+    },
+    {
+      "task_id": "fit-q-enriched-barrier-0-window_high-mu0.001-h1-B-lean",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-enriched-barrier-0-window_high-mu0.001-h1-B-lean/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "158191b4a7f63546bdbc63bc04658dfbc1a1597125c2e2e80c2f3d4317b858b9",
+      "event_stream_sha256": "7f13545f44996753bc877a3fb0a9505a9ae55c526291d36b509dccb06338c0ce",
+      "total_wall_seconds": 6807.625697165728,
+      "total_cpu_seconds": 6798.212301274,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.241084760054946,
+          "cpu_seconds": 1.1636754370000002
+        },
+        "load": {
+          "wall_seconds": 2.597498018294573,
+          "cpu_seconds": 2.5765781779999997
+        },
+        "search_setup": {
+          "wall_seconds": 0.0023960210382938385,
+          "cpu_seconds": 0.0023958490000000054
+        },
+        "search": {
+          "wall_seconds": 5772.835883310065,
+          "cpu_seconds": 5761.6109837
+        },
+        "spatial_report": {
+          "wall_seconds": 0.003988578915596008,
+          "cpu_seconds": 0.003977663999648939
+        },
+        "family_exposure": {
+          "wall_seconds": 329.58995324373245,
+          "cpu_seconds": 329.43773359200077
+        },
+        "family_constant": {
+          "wall_seconds": 701.2542948387563,
+          "cpu_seconds": 701.0841137219995
+        },
+        "latent_audit": {
+          "wall_seconds": 0.0012029968202114105,
+          "cpu_seconds": 0.0012029069994241581
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.03050675243139267,
+          "cpu_seconds": 0.028111100000387523
+        }
+      },
+      "unallocated_wall_seconds": 0.06888864561915398,
+      "search_clock_elapsed_seconds": 5772.60005713813,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 2118.2834245879203,
+          "first_tight_completion_seconds": 2149.5497802197933,
+          "event_index": 54
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 2149.5497802197933,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 3623.0502769183367,
+          "upper_seconds": 3654.3166325502098
+        },
+        "event_attributed_tight_seconds": 2913.9522698987275,
+        "event_attributed_standard_seconds": 2858.6351342089474,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.012653030455112457,
+        "event_counts": {
+          "tight": 67,
+          "standard": 75,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.5047902576059239,
+        "attributed_tight_fraction_total": 0.4280423747609855
+      }
+    },
+    {
+      "task_id": "fit-q-enriched-connected-0-increased_heterogeneity-mu0.001-h1-B-dense",
+      "group": "nonregression",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-enriched-connected-0-increased_heterogeneity-mu0.001-h1-B-dense/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "269a7b83bee17a9bbf42d15581e1966939c25c0d951122899f032c241713bc09",
+      "event_stream_sha256": "660c1b60679a71d3c7dee935c3a62770cb67f9267f1226fb415b25842078dbc9",
+      "total_wall_seconds": 16600.126464536414,
+      "total_cpu_seconds": 16592.810545639,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2115252017974854,
+          "cpu_seconds": 1.157206227
+        },
+        "load": {
+          "wall_seconds": 2.3619720973074436,
+          "cpu_seconds": 2.354191474
+        },
+        "search_setup": {
+          "wall_seconds": 0.003186248242855072,
+          "cpu_seconds": 0.0031861800000001494
+        },
+        "search": {
+          "wall_seconds": 12439.324170956388,
+          "cpu_seconds": 12429.781295898
+        },
+        "spatial_report": {
+          "wall_seconds": 0.007197665050625801,
+          "cpu_seconds": 0.00719885400030762
+        },
+        "family_exposure": {
+          "wall_seconds": 329.10456407628953,
+          "cpu_seconds": 329.10457326399955
+        },
+        "family_constant": {
+          "wall_seconds": 826.626865407452,
+          "cpu_seconds": 826.615818414999
+        },
+        "latent_audit": {
+          "wall_seconds": 3001.356254160404,
+          "cpu_seconds": 3001.313639799999
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.0635254867374897,
+          "cpu_seconds": 0.05844457999774022
+        }
+      },
+      "unallocated_wall_seconds": 0.06720323674380779,
+      "search_clock_elapsed_seconds": 12439.055731743574,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 5887.477504808456,
+          "first_tight_completion_seconds": 5913.827057318762,
+          "event_index": 146
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 5913.827057318762,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 6525.228674424812,
+          "upper_seconds": 6551.578226935118
+        },
+        "event_attributed_tight_seconds": 5710.314292019233,
+        "event_attributed_standard_seconds": 6728.721706816927,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.01973290741443634,
+        "event_counts": {
+          "tight": 129,
+          "standard": 167,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.45906332563869157,
+        "attributed_tight_fraction_total": 0.34399221621705295
+      }
+    },
+    {
+      "task_id": "fit-q-enriched-connected-1-increased_heterogeneity-mu0.001-h1-B-dense",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-enriched-connected-1-increased_heterogeneity-mu0.001-h1-B-dense/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "d40475f5b10b416bcdce2f8bf50c3fc2316e8fd9e53b995f3b03b5c519a1e6e5",
+      "event_stream_sha256": "733b4b536b822d697500185e1c4c97f8f73b2103a0eb29d48bae706cd0b8d2b3",
+      "total_wall_seconds": 71782.98509937711,
+      "total_cpu_seconds": 71698.842967036,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.297556672245264,
+          "cpu_seconds": 1.1396630489999997
+        },
+        "load": {
+          "wall_seconds": 2.2413731515407562,
+          "cpu_seconds": 2.235783874
+        },
+        "search_setup": {
+          "wall_seconds": 0.0024452097713947296,
+          "cpu_seconds": 0.00244483600000045
+        },
+        "search": {
+          "wall_seconds": 37826.45480218716,
+          "cpu_seconds": 37758.860356473
+        },
+        "spatial_report": {
+          "wall_seconds": 0.005925660952925682,
+          "cpu_seconds": 0.005914576999202836
+        },
+        "family_exposure": {
+          "wall_seconds": 341.2549588289112,
+          "cpu_seconds": 340.97820132900233
+        },
+        "family_constant": {
+          "wall_seconds": 732.2437601909041,
+          "cpu_seconds": 732.0980828429965
+        },
+        "latent_audit": {
+          "wall_seconds": 32878.95819563605,
+          "cpu_seconds": 32861.206937282
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.06206565909087658,
+          "cpu_seconds": 0.055368133005686104
+        }
+      },
+      "unallocated_wall_seconds": 0.464016180485487,
+      "search_clock_elapsed_seconds": 37826.32203400694,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 17697.38866817206,
+          "first_tight_completion_seconds": 17727.172111120075,
+          "event_index": 142
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 17727.172111120075,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 20099.149922886863,
+          "upper_seconds": 20128.933365834877
+        },
+        "event_attributed_tight_seconds": 17777.05358160287,
+        "event_attributed_standard_seconds": 20049.24837556295,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.020076841115951538,
+        "event_counts": {
+          "tight": 124,
+          "standard": 162,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.46996516250299974,
+        "attributed_tight_fraction_total": 0.24764996268951667
+      }
+    },
+    {
+      "task_id": "fit-q-enriched-connected-1-increased_heterogeneity-mu0.001-h1-B-lean",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-enriched-connected-1-increased_heterogeneity-mu0.001-h1-B-lean/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "923d565b49128b2da4ce1a0b53e6bbb92ec266fef5cd44963391c1404f3ee3e7",
+      "event_stream_sha256": "1301af2caf848686782a334d7eec5e03a4698ec101c62fa0a8f32176db5136f5",
+      "total_wall_seconds": 41254.818511916324,
+      "total_cpu_seconds": 41214.792148451,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2248599957674742,
+          "cpu_seconds": 1.1509448949999999
+        },
+        "load": {
+          "wall_seconds": 2.242500951513648,
+          "cpu_seconds": 2.2373870000000005
+        },
+        "search_setup": {
+          "wall_seconds": 0.0022466909140348434,
+          "cpu_seconds": 0.0022464700000002225
+        },
+        "search": {
+          "wall_seconds": 21664.51715437509,
+          "cpu_seconds": 21637.851256113
+        },
+        "spatial_report": {
+          "wall_seconds": 0.0037796683609485626,
+          "cpu_seconds": 0.003772943000512896
+        },
+        "family_exposure": {
+          "wall_seconds": 541.4105102922767,
+          "cpu_seconds": 540.863877415999
+        },
+        "family_constant": {
+          "wall_seconds": 658.9706038702279,
+          "cpu_seconds": 658.6907515059975
+        },
+        "latent_audit": {
+          "wall_seconds": 18386.29525820352,
+          "cpu_seconds": 18371.676650306
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.03586958907544613,
+          "cpu_seconds": 0.02863193699886324
+        }
+      },
+      "unallocated_wall_seconds": 0.11572827957570553,
+      "search_clock_elapsed_seconds": 21664.435937821865,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 8452.528382489458,
+          "first_tight_completion_seconds": 8483.516676368192,
+          "event_index": 59
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 8483.516676368192,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 13180.919261453673,
+          "upper_seconds": 13211.907555332407
+        },
+        "event_attributed_tight_seconds": 10943.004382101819,
+        "event_attributed_standard_seconds": 10721.416363466531,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.015192253515124321,
+        "event_counts": {
+          "tight": 70,
+          "standard": 78,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.5051137455647979,
+        "attributed_tight_fraction_total": 0.2652539697621253
+      }
+    },
+    {
+      "task_id": "fit-q-enriched-corridor-1-window_high-mu0.001-h1-B-dense",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-enriched-corridor-1-window_high-mu0.001-h1-B-dense/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "96aac7e5fc796b80cebe0d82a17c0bb08752174b562e5b002a1fec7343be23bf",
+      "event_stream_sha256": "0f568c069cd428546b53c803ba32ba74f34d0c73ae90911873706f32565c4137",
+      "total_wall_seconds": 61780.39331197366,
+      "total_cpu_seconds": 61678.709179603,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.413649557158351,
+          "cpu_seconds": 1.3270163089999998
+        },
+        "load": {
+          "wall_seconds": 3.582881225273013,
+          "cpu_seconds": 3.568881537
+        },
+        "search_setup": {
+          "wall_seconds": 0.0034562647342681885,
+          "cpu_seconds": 0.0034566689999993017
+        },
+        "search": {
+          "wall_seconds": 40149.45682687126,
+          "cpu_seconds": 40080.596014537005
+        },
+        "spatial_report": {
+          "wall_seconds": 0.007283160462975502,
+          "cpu_seconds": 0.00726194100570865
+        },
+        "family_exposure": {
+          "wall_seconds": 411.35621041059494,
+          "cpu_seconds": 411.1486355809975
+        },
+        "family_constant": {
+          "wall_seconds": 922.9393023960292,
+          "cpu_seconds": 922.2162098840054
+        },
+        "latent_audit": {
+          "wall_seconds": 20291.478609785438,
+          "cpu_seconds": 20256.942741175
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.06532795913517475,
+          "cpu_seconds": 0.058444786998734344
+        }
+      },
+      "unallocated_wall_seconds": 0.08976434357464314,
+      "search_clock_elapsed_seconds": 40149.31796743721,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 18694.092126375064,
+          "first_tight_completion_seconds": 18726.6409966629,
+          "event_index": 144
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 18726.6409966629,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 21422.676970774308,
+          "upper_seconds": 21455.225841062143
+        },
+        "event_attributed_tight_seconds": 19251.398782560602,
+        "event_attributed_standard_seconds": 20897.790842697024,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.12834217958152294,
+        "event_counts": {
+          "tight": 125,
+          "standard": 163,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.47949503894871387,
+        "attributed_tight_fraction_total": 0.31161016870427544
+      }
+    },
+    {
+      "task_id": "fit-q-trend-barrier-1-temporal_trend-mu0.004-h3-A-dense",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-trend-barrier-1-temporal_trend-mu0.004-h3-A-dense/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "10411dc5312435d56c5609e66eaca9ccc01395a780f723d67a043a0495dc0b55",
+      "event_stream_sha256": "7592a386d90091749fc10b41652af76ccb9d6dba5a2274c75a95f4dc6c196c2a",
+      "total_wall_seconds": 139013.04340928793,
+      "total_cpu_seconds": 138923.314368041,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.3686329945921898,
+          "cpu_seconds": 1.2954064230000002
+        },
+        "load": {
+          "wall_seconds": 3.595590217038989,
+          "cpu_seconds": 3.5661032969999997
+        },
+        "search_setup": {
+          "wall_seconds": 0.002877255901694298,
+          "cpu_seconds": 0.0028686269999997904
+        },
+        "search": {
+          "wall_seconds": 58458.66386604495,
+          "cpu_seconds": 58384.341737932
+        },
+        "spatial_report": {
+          "wall_seconds": 0.011376375332474709,
+          "cpu_seconds": 0.011315281000861432
+        },
+        "family_exposure": {
+          "wall_seconds": 622.3266184441745,
+          "cpu_seconds": 622.2289770759962
+        },
+        "family_constant": {
+          "wall_seconds": 1200.767593557015,
+          "cpu_seconds": 1199.9802894210006
+        },
+        "latent_audit": {
+          "wall_seconds": 78726.1374472715,
+          "cpu_seconds": 78708.95523281
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.08269377611577511,
+          "cpu_seconds": 0.07474025301053189
+        }
+      },
+      "unallocated_wall_seconds": 0.08671335130929947,
+      "search_clock_elapsed_seconds": 58458.28993530944,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 26517.599961282685,
+          "first_tight_completion_seconds": 26546.923814740032,
+          "event_index": 179
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 26546.923814740032,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 31911.366120569408,
+          "upper_seconds": 31940.689974026754
+        },
+        "event_attributed_tight_seconds": 28121.77966353111,
+        "event_attributed_standard_seconds": 30336.475009649992,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.035262128338217735,
+        "event_counts": {
+          "tight": 173,
+          "standard": 211,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.4810571724669156,
+        "attributed_tight_fraction_total": 0.20229597866391436
+      }
+    },
+    {
+      "task_id": "fit-q-trend-barrier-1-temporal_trend-mu0.004-h3-A-lean",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-trend-barrier-1-temporal_trend-mu0.004-h3-A-lean/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "130155a411caab24eb1c7a4c71294aede8e40bedc8e79f7d8e02e69bfd563cfe",
+      "event_stream_sha256": "a53db9dcee7bfc219d313a79c91097ead310b9d4485a7b9b2d1e2089d740e3be",
+      "total_wall_seconds": 100462.6289359387,
+      "total_cpu_seconds": 100391.360732738,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.2771627325564623,
+          "cpu_seconds": 1.2154438849999996
+        },
+        "load": {
+          "wall_seconds": 3.2196247279644012,
+          "cpu_seconds": 3.212197625
+        },
+        "search_setup": {
+          "wall_seconds": 0.0036826804280281067,
+          "cpu_seconds": 0.0036667440000002216
+        },
+        "search": {
+          "wall_seconds": 37787.9476108402,
+          "cpu_seconds": 37749.294891344
+        },
+        "spatial_report": {
+          "wall_seconds": 0.007443109527230263,
+          "cpu_seconds": 0.007414287007122766
+        },
+        "family_exposure": {
+          "wall_seconds": 800.4317758232355,
+          "cpu_seconds": 800.2593289839933
+        },
+        "family_constant": {
+          "wall_seconds": 1127.766997916624,
+          "cpu_seconds": 1127.570844449001
+        },
+        "latent_audit": {
+          "wall_seconds": 60741.848855067044,
+          "cpu_seconds": 60707.116451365
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.06270940974354744,
+          "cpu_seconds": 0.05428884600405581
+        }
+      },
+      "unallocated_wall_seconds": 0.06307363137602806,
+      "search_clock_elapsed_seconds": 37787.81547977403,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 14249.982067361474,
+          "first_tight_completion_seconds": 14278.397699154913,
+          "event_index": 107
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 14278.397699154913,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 23509.417780619115,
+          "upper_seconds": 23537.833412412554
+        },
+        "event_attributed_tight_seconds": 19200.02893310599,
+        "event_attributed_standard_seconds": 18587.75838427432,
+        "event_attributed_unclassified_seconds": 0.006832532584667206,
+        "unrecorded_search_tail_seconds": 0.021329861134290695,
+        "event_counts": {
+          "tight": 131,
+          "standard": 139,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.5081010555739277,
+        "attributed_tight_fraction_total": 0.19111613080869244
+      }
+    },
+    {
+      "task_id": "fit-q-trend-connected-2-temporal_trend-mu0.004-h3-A-dense",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-trend-connected-2-temporal_trend-mu0.004-h3-A-dense/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "0b6da475fb4b101a7856399df6ee55aa74bae9eb6cd74af8261c41fd927412a6",
+      "event_stream_sha256": "0ce1f23369fb1a68373488862f15312840b6bd88f30e177b7d6c91f3d75aaa55",
+      "total_wall_seconds": 70406.22015141696,
+      "total_cpu_seconds": 70315.626065069,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.8376098107546568,
+          "cpu_seconds": 1.26249441
+        },
+        "load": {
+          "wall_seconds": 4.088101984933019,
+          "cpu_seconds": 4.082827771
+        },
+        "search_setup": {
+          "wall_seconds": 0.005087489262223244,
+          "cpu_seconds": 0.005083390000000243
+        },
+        "search": {
+          "wall_seconds": 17832.84134202078,
+          "cpu_seconds": 17796.629652751
+        },
+        "spatial_report": {
+          "wall_seconds": 0.01033787615597248,
+          "cpu_seconds": 0.01030144200194627
+        },
+        "family_exposure": {
+          "wall_seconds": 579.517121065408,
+          "cpu_seconds": 579.0677515589996
+        },
+        "family_constant": {
+          "wall_seconds": 1185.4415552206337,
+          "cpu_seconds": 1184.0284059229998
+        },
+        "latent_audit": {
+          "wall_seconds": 50802.1088594757,
+          "cpu_seconds": 50747.831797615996
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.08886727876961231,
+          "cpu_seconds": 0.08173485600855201
+        }
+      },
+      "unallocated_wall_seconds": 0.2812691945582628,
+      "search_clock_elapsed_seconds": 17832.642670398578,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 8309.45354328677,
+          "first_tight_completion_seconds": 8345.04458280839,
+          "event_index": 189
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 8345.04458280839,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 9487.598087590188,
+          "upper_seconds": 9523.189127111807
+        },
+        "event_attributed_tight_seconds": 8250.19092480652,
+        "event_attributed_standard_seconds": 9582.42397888191,
+        "event_attributed_unclassified_seconds": 0.0,
+        "unrecorded_search_tail_seconds": 0.02776671014726162,
+        "event_counts": {
+          "tight": 188,
+          "standard": 226,
+          "unclassified": 0
+        },
+        "attributed_tight_fraction_search": 0.4626454461795213,
+        "attributed_tight_fraction_total": 0.1171798586412323
+      }
+    },
+    {
+      "task_id": "fit-q-trend-connected-2-temporal_trend-mu0.004-h3-A-lean",
+      "group": "development_failed_replay",
+      "failure_class": "resolved",
+      "receipt": "artifacts/sprint2/repair-20261112/final-20261115/fit-results/repair-fit-q-trend-connected-2-temporal_trend-mu0.004-h3-A-lean/attempt-0001/fit/receipt.json",
+      "receipt_sha256": "6fd0347d4bd9ded31f77add9617cf4831383beeeb04bbdfb41e09d1cf9cdd252",
+      "event_stream_sha256": "d0ef11bff6fcabc19c6c201578950528ddfc8bd62544367b23cb008e3400bbe7",
+      "total_wall_seconds": 49160.19239875674,
+      "total_cpu_seconds": 49123.604727931,
+      "stage_seconds": {
+        "input_hashes": {
+          "wall_seconds": 1.596427632495761,
+          "cpu_seconds": 1.1730407869999997
+        },
+        "load": {
+          "wall_seconds": 2.425819657742977,
+          "cpu_seconds": 2.422697869
+        },
+        "search_setup": {
+          "wall_seconds": 0.0022286102175712585,
+          "cpu_seconds": 0.002228843000000147
+        },
+        "search": {
+          "wall_seconds": 11358.905581815168,
+          "cpu_seconds": 11322.855851279
+        },
+        "spatial_report": {
+          "wall_seconds": 0.008196234703063965,
+          "cpu_seconds": 0.008199050000257557
+        },
+        "family_exposure": {
+          "wall_seconds": 679.1125017348677,
+          "cpu_seconds": 679.1120342600007
+        },
+        "family_constant": {
+          "wall_seconds": 1033.4161473624408,
+          "cpu_seconds": 1033.2586347629986
+        },
+        "latent_audit": {
+          "wall_seconds": 36084.49639877491,
+          "cpu_seconds": 36082.392863049
+        },
+        "envelope_guard_report": {
+          "wall_seconds": 0.06919045746326447,
+          "cpu_seconds": 0.0624441330000991
+        }
+      },
+      "unallocated_wall_seconds": 0.15990647673606873,
+      "search_clock_elapsed_seconds": 11358.745880851522,
+      "tight_timing": {
+        "first_tight_transition": {
+          "previous_event_seconds": 4597.303312132135,
+          "first_tight_completion_seconds": 4632.384386876598,
+          "event_index": 120
+        },
+        "receipt_seconds_before_tight_phase_is_first_completion": 4632.384386876598,
+        "mixed_after_tight_start_window": {
+          "lower_seconds": 6726.361493974924,
+          "upper_seconds": 6761.442568719387
+        },
+        "event_attributed_tight_seconds": 5520.534928536043,
+        "event_attributed_standard_seconds": 5838.112851642072,
+        "event_attributed_unclassified_seconds": 0.03469135984778404,
+        "unrecorded_search_tail_seconds": 0.06340931355953217,
+        "event_counts": {
+          "tight": 152,
+          "standard": 160,
+          "unclassified": 1
+        },
+        "attributed_tight_fraction_search": 0.48601623686665213,
+        "attributed_tight_fraction_total": 0.11229685359562702
+      }
+    }
+  ]
+}

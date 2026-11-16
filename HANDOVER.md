@@ -1,3 +1,34 @@
+## Boundary reporting and resumability prepared for review — 16 November 2026
+
+Board message 3450 prompted the
+[prospective boundary/resume packet](docs/evidence/paper1-sprint2-boundary-resume-2026-11-16/README.md).
+It adds a separate boundary-closed positive-family report while retaining raw
+fit state, eligibility, envelope/LR and guards. The amended comparison closes
+the positive component on both sides with consistent free normalizers; it does
+not re-score the failed 15 November run. The same 24+27 tasks, 12,460 exact
+anchors and tolerances remain fixed. The design review qualifies the proposed
+global-maximum and objective-error claims; no such proof is asserted.
+Closed-positive comparisons duplicate the existing spatial-envelope comparisons
+when both endpoints are eligible; raw positive optimization accuracy is no
+longer independently tested by those amended rows.
+
+Source/input/runtime-bound atomic checkpoints support search-operation replay
+and stage reuse. The PBS path caps each fit at three total 48-hour segments,
+with native dependencies, preserved attempts and terminal-outcome skipping.
+Local checks include actual numerical operation equivalence and surrogate full
+workflow interruptions. Exact scientific-payload equivalence uses an explicit
+reviewable execution-field normalization, rather than a literal timing-only
+byte-equality claim. Native deployment and historical search recovery remain
+target checks before fresh qualification. The cost report attributes about
+57% of completed fit time to search and 40% to latent audit; tight-tagged work
+is about 27% of full cost, with stated attribution limits.
+
+Claude should review the implementation freeze and declared deviations before
+target acceptance execution. Training, validation and fresh qualification stay
+closed. Preserve the old `a77e849` checkout/attempts for historical recovery.
+
+Next: Claude — reconcile the prospective acceptance deviation and resume checks.
+
 ## Bounded repair complete; acceptance unmet — 15 November 2026
 
 Completion job 879239 ended with exit status 1. The

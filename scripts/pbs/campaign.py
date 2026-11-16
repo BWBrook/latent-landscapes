@@ -65,6 +65,10 @@ def load_tasks(path: Path) -> list[dict]:
         if not isinstance(task["result_schema"], str) or not task["result_schema"]:
             raise ValueError("result_schema must be specified")
         runtime = task["runtime"]
+        if "max_segments" in task and (
+            not isinstance(task["max_segments"], int) or task["max_segments"] != 3
+        ):
+            raise ValueError("resumable fits require exactly three bounded segments")
         if runtime["context"] != "apptainer" or not Path(runtime["python"]).is_absolute():
             raise ValueError("runtime must specify Apptainer and an absolute Python path")
         if task["input_sha256"].get(runtime["sif"]) != runtime["sif_sha256"]:
@@ -161,12 +165,19 @@ def run_task(task: dict, out: Path, retry_failed: bool) -> dict:
     if attempts and not retry_failed and not receipt.exists():
         raise ValueError(f"unfinished attempt requires --retry-failed: {task['task_id']}")
     attempt_number = max((int(p.name.split("-")[1]) for p in attempts), default=0) + 1
+    if "max_segments" in task and attempt_number > task["max_segments"]:
+        raise ValueError(f"segment budget exhausted: {task['task_id']}")
     attempt = directory / f"attempt-{attempt_number:04d}"
     attempt.mkdir()
     (attempt / "_started.json").write_text(
         json.dumps({"task_sha256": task_digest(task), "task": task}, indent=1) + "\n"
     )
-    argv = [value.replace("{attempt_dir}", str(attempt)) for value in task["argv"]]
+    argv = [
+        value.replace("{attempt_dir}", str(attempt)).replace(
+            "{checkpoint_dir}", str(directory / "checkpoints")
+        )
+        for value in task["argv"]
+    ]
     env = {**os.environ, **dict.fromkeys(THREADS, "1"), "LL_TASK_DIR": str(attempt)}
     started, wall = time.time(), time.perf_counter()
     before = resource.getrusage(resource.RUSAGE_CHILDREN)

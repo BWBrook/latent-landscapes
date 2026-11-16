@@ -25,6 +25,54 @@ def value(criterion=0.0, eligible=True):
     }
 
 
+def test_closed_comparison_preserves_failed_raw_difference_and_eligibility():
+    old = {"positive_sigma": value(-1.0000031), "sigma_zero": value(-1.0)}
+    new = {"positive_sigma": value(-1.0000229), "sigma_zero": value(-1.0)}
+    original = copy.deepcopy((old, new))
+    assert compare.check_values("raw", old["positive_sigma"], new["positive_sigma"])[
+        "failures"
+    ] == ["criterion_shift"]
+    result = compare.check_values(
+        "closed",
+        compare.family_comparand(old, "positive_sigma"),
+        compare.family_comparand(new, "positive_sigma"),
+    )
+    assert result["failures"] == []
+    assert result["baseline_boundary_supremum"] and result["candidate_boundary_supremum"]
+    assert result["baseline_raw_criterion"] == -1.0000031
+    assert (old, new) == original
+    new["positive_sigma"]["eligible"] = False
+    failed = compare.check_values(
+        "closed",
+        compare.family_comparand(old, "positive_sigma"),
+        compare.family_comparand(new, "positive_sigma"),
+    )
+    assert "eligibility_changed" in failed["failures"]
+    assert not compare.family_comparand(new, "positive_sigma")["closure_available"]
+
+
+def test_positive_lr_uses_closed_free_normalizer_without_changing_envelope():
+    baseline, search = receipts()
+    candidate = copy.deepcopy(baseline)
+    for receipt in (baseline, candidate):
+        for regime in ("standard", "tight"):
+            view = receipt["families"]["spatial"][regime]
+            view["free"]["positive_sigma"]["criterion"] = -0.2
+            view["free"]["sigma_zero"]["criterion"] = 0.0
+    probe = {
+        "criterion": -1.0,
+        "eligible": True,
+        "fit": {"positive_sigma": value(-1.00001), "sigma_zero": value(-1.0)},
+    }
+    search["points"]["False"][0]["positive_sigma"]["criterion"] = -1.00002
+    search["points"]["False"][0]["sigma_zero"]["criterion"] = -1.0
+    result = compare.compare_anchor(baseline, search, candidate, "spatial.standard", 0.0, probe)
+    envelope, positive, zero = result["checks"]
+    assert not envelope["failures"] and not positive["failures"] and not zero["failures"]
+    assert positive["delta_profile_lr"] == 0.0
+    assert positive["baseline_raw_profile_lr"] != positive["candidate_raw_profile_lr"]
+
+
 def receipts():
     endpoint = math.log(30.0)
     levels = [
@@ -349,13 +397,15 @@ def test_fit_plan_preserves_old_data_runtime_flags_and_original_attempts(tmp_pat
     assert plan["groups"] == {"nonregression": 24, "development_failed": 27}
     for task in plan["tasks"]:
         assert task["runtime"] == runtime and task["source_commit"] == "b" * 40
-        assert task["argv"][-5:] == [
+        assert task["argv"][-7:-2] == [
             "--search",
             "dense",
             "--exhaustive-audit",
             "--output-dir",
             "{attempt_dir}/fit",
         ]
+        assert task["argv"][-2:] == ["--checkpoint-dir", "{checkpoint_dir}"]
+        assert task["max_segments"] == 3
         assert "run-fit" in task["argv"]
     assert all(campaign.sha256(path) == sha for path, sha in before.items())
     with pytest.raises(FileExistsError):

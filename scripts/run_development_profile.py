@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import hashlib
 import json
 import math
@@ -17,6 +18,7 @@ from typing import Any
 
 import benchmark_spatial_profile as adapter
 import numpy as np
+from fit_checkpoints import CheckpointError, FitCheckpoints
 from qualify_spatial_profiles import (
     DEFAULTS,
     FAMILIES,
@@ -158,11 +160,160 @@ class PanelSearch(Qualification):
         self.search_cost: dict[str, Any] = {}
         self.post_search_seconds = 0.0
         self.fixed_fit_events = 0
+        self.checkpoints: FitCheckpoints | None = None
+        self.operation_index = 0
+        self._operation_events: list[dict[str, Any]] | None = None
+
+    def enable_checkpoints(self, checkpoints: FitCheckpoints) -> None:
+        names = sorted((checkpoints.directory / "search").glob("operation-*.json"))
+        if [p.name for p in names] != [f"operation-{i:06d}.json" for i in range(len(names))]:
+            raise CheckpointError("search checkpoint operation sequence has a gap")
+        for index in range(len(names)):
+            operation = checkpoints.load(f"search/operation-{index:06d}")
+            if operation["operation_index"] != index:
+                raise CheckpointError("search checkpoint operation index differs")
+        head = checkpoints.load("search/head")
+        committed = 0 if head is None else head["count"]
+        if len(names) not in (committed, committed + 1):
+            raise CheckpointError("search checkpoint operation tail is missing")
+        if len(names) == committed + 1:
+            tail = checkpoints.load(f"search/operation-{committed:06d}")
+            if tail["operation_index"] != committed:
+                raise CheckpointError("uncommitted search operation index differs")
+            checkpoints.save("search/head", {"count": len(names)})
+        self.checkpoints = checkpoints
+        self.operation_index = 0
+        self.events.write_text("")
+
+    def checkpoint_state(self) -> dict[str, Any]:
+        return {
+            "points": {
+                str(t): [[x, fit] for x, fit in points.items()] for t, points in self.points.items()
+            },
+            "free": {str(t): fit for t, fit in self.free.items()},
+            "directional": [[x, row] for x, row in self.directional.items()],
+            "midpoint_triggers": self.midpoint_triggers,
+            "closure_history": self.closure_history,
+            "mesh": self.mesh,
+            "tight_mesh": self.tight_mesh,
+            "result": self.result,
+            "search_cost": self.search_cost,
+            "post_search_seconds": self.post_search_seconds,
+            "fixed_fit_events": self.fixed_fit_events,
+            "stats": self.stats,
+            "criterion_stats": self.criterion.stats,
+            "operation_index": getattr(self, "operation_index", 0),
+        }
+
+    def restore_checkpoint_state(self, state: dict[str, Any]) -> None:
+        self.points = {t: dict(state["points"][str(t)]) for t in (False, True)}
+        self.free = {key == "True": value for key, value in state["free"].items()}
+        self.directional = dict(state["directional"])
+        for name in (
+            "midpoint_triggers",
+            "closure_history",
+            "mesh",
+            "tight_mesh",
+            "result",
+            "search_cost",
+            "post_search_seconds",
+            "fixed_fit_events",
+        ):
+            setattr(self, name, copy.deepcopy(state[name]))
+        self.stats.clear()
+        self.stats.update(state["stats"])
+        self.criterion.stats.clear()
+        self.criterion.stats.update(state["criterion_stats"])
+        self.operation_index = state["operation_index"]
+
+    def _operation(self, key: dict[str, Any], function: Any) -> Any:
+        checkpoints = getattr(self, "checkpoints", None)
+        if checkpoints is None:
+            return function()
+        name = f"search/operation-{self.operation_index:06d}"
+        saved = checkpoints.load(name)
+        if saved is not None:
+            if saved["operation"] != key or saved["operation_index"] != self.operation_index:
+                raise CheckpointError("search operation order differs from checkpoint")
+            for event in copy.deepcopy(saved["events"]):
+                self.record(event)
+            tight = key["tight"]
+            if key["kind"] == "point":
+                x = key["log_h"]
+                self.points[tight][x] = saved["fit"]
+                if saved["directional"] is not None:
+                    self.directional[x] = saved["directional"]
+            else:
+                self.free[tight] = saved["fit"]
+            self.stats.clear()
+            self.stats.update(saved["stats"])
+            self.criterion.stats.clear()
+            self.criterion.stats.update(saved["criterion_stats"])
+            self.fixed_fit_events = saved["fixed_fit_events"]
+            result = saved["fit"] if key["kind"] == "point" else None
+        else:
+            # An incomplete write is never a checkpoint and the operation reruns.
+            self._operation_events = []
+            try:
+                result = function()
+                fit = (
+                    self.points[key["tight"]][key["log_h"]]
+                    if key["kind"] == "point"
+                    else self.free[key["tight"]]
+                )
+                checkpoints.save(
+                    name,
+                    {
+                        "operation": key,
+                        "operation_index": self.operation_index,
+                        "fit": fit,
+                        "events": self._operation_events,
+                        "directional": self.directional.get(key.get("log_h")),
+                        "stats": self.stats,
+                        "criterion_stats": self.criterion.stats,
+                        "fixed_fit_events": self.fixed_fit_events,
+                    },
+                )
+                checkpoints.save("search/head", {"count": self.operation_index + 1})
+            finally:
+                self._operation_events = None
+        self.operation_index += 1
+        return result
+
+    def point(
+        self,
+        log_h: float,
+        *,
+        tight: bool = False,
+        refresh: bool = False,
+        direction: str | None = None,
+    ) -> dict[str, Any]:
+        if log_h in self.points[tight] and not refresh:
+            return self.points[tight][log_h]
+        return self._operation(
+            {
+                "kind": "point",
+                "log_h": float(log_h),
+                "tight": tight,
+                "refresh": refresh,
+                "direction": direction,
+            },
+            lambda: super(PanelSearch, self).point(
+                log_h, tight=tight, refresh=refresh, direction=direction
+            ),
+        )
+
+    def fit_free(self, *, tight: bool = False) -> None:
+        self._operation(
+            {"kind": "free", "tight": tight}, lambda: super(PanelSearch, self).fit_free(tight=tight)
+        )
 
     def record(self, event: dict[str, Any]) -> None:
         if event["kind"] == "fixed_fit":
             self.fixed_fit_events += 1
         super().record(event)
+        if getattr(self, "_operation_events", None) is not None:
+            self._operation_events.append(copy.deepcopy(event))
 
     def initial_free_starts(self, family: str) -> list[np.ndarray]:
         return [np.insert(DEFAULTS[family], -1, x) for x in (0.0, LOG_MAX / 2, LOG_MAX)]

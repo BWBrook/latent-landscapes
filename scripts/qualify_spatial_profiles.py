@@ -23,6 +23,7 @@ from scipy.optimize import brentq  # type: ignore[import-untyped]
 
 from latent_landscapes.capstone_qualification import subset_bank, subset_observations
 from latent_landscapes.differentiable_likelihood import prepare_site_likelihood
+from latent_landscapes.spatial_family_reporting import closed_positive_family
 from latent_landscapes.spatial_profile import (
     FitCandidate,
     SpatialProfileCriterion,
@@ -118,6 +119,11 @@ def select_candidate_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
         )
     return {
         **selected,
+        "positive_sigma_closed": closed_positive_family(
+            selected["positive_sigma"],
+            selected["sigma_zero"],
+            free="log_h" in selected["positive_sigma"]["parameters"],
+        ),
         "criterion": max(maxima.values()),
         "candidates": rows,
         "unresolved_above_envelope": unresolved,

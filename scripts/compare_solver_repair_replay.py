@@ -17,7 +17,7 @@ from prepare_solver_repair_replay import imported_source_check
 
 ROOT = Path(__file__).resolve().parents[1]
 FROZEN = "99af5206b6a4e53f5b8e9d71cbf348f95e9ae574"
-SCHEMA = "solver-repair-nonregression-v1"
+SCHEMA = "solver-repair-nonregression-v2"
 CRITERION_TOLERANCE = 1e-6
 LR_TOLERANCE = 1e-3
 Json = dict[str, Any]
@@ -77,6 +77,16 @@ def check_values(label: str, left: Json, right: Json) -> Json:
         "candidate_eligible": new_eligible,
         "failures": failures,
     }
+    if "raw_criterion" in left and "raw_criterion" in right:
+        row.update(
+            baseline_raw_criterion=left["raw_criterion"],
+            candidate_raw_criterion=right["raw_criterion"],
+            baseline_boundary_supremum=left["boundary_supremum"],
+            candidate_boundary_supremum=right["boundary_supremum"],
+            comparison_definition="boundary_closed_positive_sigma",
+        )
+    if "raw_w" in left and "raw_w" in right:
+        row.update(baseline_raw_profile_lr=left["raw_w"], candidate_raw_profile_lr=right["raw_w"])
     if "w" in left and "w" in right:
         shift = finite(right["w"]) - finite(left["w"])
         row["delta_profile_lr"] = shift
@@ -94,6 +104,23 @@ def envelope(row: Json, spatial: bool) -> Json:
         if spatial
         else row
     )
+
+
+def family_comparand(fit: Json, family: str) -> Json:
+    row = dict(fit[family])
+    if family == "positive_sigma":
+        positive, zero = fit[family], fit["sigma_zero"]
+        available = eligibility(positive["eligible"]) and eligibility(zero["eligible"])
+        row.update(
+            criterion=max(finite(positive["criterion"]), finite(zero["criterion"]))
+            if available
+            else finite(positive["criterion"]),
+            raw_criterion=finite(positive["criterion"]),
+            boundary_supremum=available
+            and finite(zero["criterion"]) > finite(positive["criterion"]),
+            closure_available=available,
+        )
+    return row
 
 
 def compare_free(baseline: Json, candidate: Json) -> list[Json]:
@@ -114,8 +141,8 @@ def compare_free(baseline: Json, candidate: Json) -> list[Json]:
                     rows.append(
                         check_values(
                             f"{name}/{location}/{family}",
-                            old[location][family],
-                            new[location][family],
+                            family_comparand(old[location], family),
+                            family_comparand(new[location], family),
                         )
                     )
         shift = finite(new["lr1"]) - finite(old["lr1"])
@@ -173,18 +200,34 @@ def compare_anchor(
     checks = [check_values(f"{name}/{x.hex()}/envelope", left, right)]
     if name.startswith("spatial."):
         for family in audit.FAMILIES:
-            old_family_max = finite(audit.view_of(baseline, name)["free"][family]["criterion"])
-            new_family_max = finite(audit.view_of(candidate, name)["free"][family]["criterion"])
+            old_family_max = finite(
+                family_comparand(audit.view_of(baseline, name)["free"], family)["criterion"]
+            )
+            new_family_max = finite(
+                family_comparand(audit.view_of(candidate, name)["free"], family)["criterion"]
+            )
+            old_point = family_comparand(old["fit"], family)
+            new_point = family_comparand(probe["fit"], family)
             checks.append(
                 check_values(
                     f"{name}/{x.hex()}/{family}",
                     {
-                        **old["fit"][family],
-                        "w": 2 * (old_family_max - finite(old["fit"][family]["criterion"])),
+                        **old_point,
+                        "w": 2 * (old_family_max - finite(old_point["criterion"])),
+                        "raw_w": 2
+                        * (
+                            finite(audit.view_of(baseline, name)["free"][family]["criterion"])
+                            - finite(old["fit"][family]["criterion"])
+                        ),
                     },
                     {
-                        **probe["fit"][family],
-                        "w": 2 * (new_family_max - finite(probe["fit"][family]["criterion"])),
+                        **new_point,
+                        "w": 2 * (new_family_max - finite(new_point["criterion"])),
+                        "raw_w": 2
+                        * (
+                            finite(audit.view_of(candidate, name)["free"][family]["criterion"])
+                            - finite(probe["fit"][family]["criterion"])
+                        ),
                     },
                 )
             )
@@ -254,7 +297,9 @@ def run_probe(args: argparse.Namespace) -> Json:
             "criterion_absolute": CRITERION_TOLERANCE,
             "profile_lr_absolute": LR_TOLERANCE,
         },
-        "normalisers": "each version's original free criteria; never refitted or updated",
+        "comparison_definition": "boundary_closed_positive_sigma; raw eligibility unchanged",
+        "normalisers": "original envelope/zero free criteria; "
+        "closed positive free criteria; no refits",
         "free_checks": [],
         "anchors": [],
         "errors": [],
@@ -274,6 +319,8 @@ def run_probe(args: argparse.Namespace) -> Json:
         raise ValueError("candidate changed while loading")
     result["free_checks"] = compare_free(baseline, candidate)
     identity = {
+        "comparison_schema": SCHEMA,
+        "comparison_definition": result["comparison_definition"],
         "baseline": args.baseline_sha256,
         "baseline_search": args.baseline_search_sha256,
         "candidate": args.candidate_sha256,
