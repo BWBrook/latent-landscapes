@@ -19,8 +19,9 @@ remains in `docs/programme.md`. Provenance and legacy reuse are governed by
 - Keep methods modular and preserve independently testable scientific units.
 - Put scientific gates through independent review before acting on them. A
   change to an estimand, observation design, model comparison or inferential
-  claim needs review by the other AI collaborator (Claude or Codex) or an
-  independent subagent, recorded in the goal or on Correspondence. Bring a
+  claim needs review by an independent collaborator or subagent, preferably
+  from a different lab for consequential scientific decisions. Record the
+  review and decision with the goal or on Correspondence. Bring a
   gate to Barry only when it turns on scientific taste or priorities that only
   he can judge, with a recommendation. Registered and blinded work stays
   fixed: a change after outcomes are seen is a recorded deviation, not a
