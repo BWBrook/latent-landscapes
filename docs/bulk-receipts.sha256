@@ -25,3 +25,7 @@ febd7e686b208dc9272b9de5aadf2cda983be73cec11cf6684151fffc302003e  docs/evidence/
 # Old-panel gate reconstruction and safeguard extraction before the next qualification draw.
 68527b8cd6c5f56163247c70e9e71cd26ee2771033f4eaf887f0efe2513eeea6  artifacts/sprint2/fresh-qualification-20261121/pre-draw-evidence.tar.gz
 7fd35e5cfed09c6032b60c0fda9c733e6400360b8841faa9bddf42b08d33166c  artifacts/sprint2/fresh-qualification-20261121/pre-draw-inputs.tar.gz
+
+# Completed audit restart and independent checks on old development data.
+246a764556d17f0ad56168fd8726b60396a93a28e46254f447f18799e9eaa056  artifacts/sprint2/fresh-qualification-20261121/numerical-audit-twin.tar.gz
+17e80f369df5dacfe32e87d7c350cc6eafb8739369f36c745146928a3c307335  artifacts/sprint2/fresh-qualification-20261121/development-review-checks.tar.gz

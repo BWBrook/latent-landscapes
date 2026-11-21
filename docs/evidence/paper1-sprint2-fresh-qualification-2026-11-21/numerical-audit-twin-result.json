@@ -1,0 +1,91 @@
+{
+  "task": "fit-q-base-barrier-0-increased_heterogeneity-mu0.004-h1-A-exhaustive",
+  "scope": "development numerical-audit restart",
+  "source": "453739428d75bf3a456aebf48b282b5ebbd870ee",
+  "accepted_historical_source": "432bb6e56e672f9e57f2f7bc369546023b07662e",
+  "passed": true,
+  "jobs": {
+    "compare": {
+      "job": 882706,
+      "state": "F",
+      "exit": 0,
+      "runs": 1,
+      "cores": 1,
+      "wall_seconds": 16,
+      "ended_hobart": "2026-11-21T15:58:35+11:00"
+    },
+    "interrupt": {
+      "job": 882704,
+      "state": "F",
+      "exit": 0,
+      "runs": 1,
+      "cores": 1,
+      "wall_seconds": 7811,
+      "ended_hobart": "2026-11-21T15:07:49+11:00"
+    },
+    "reference": {
+      "job": 882703,
+      "state": "F",
+      "exit": 0,
+      "runs": 1,
+      "cores": 1,
+      "wall_seconds": 10290,
+      "ended_hobart": "2026-11-21T15:49:08+11:00"
+    },
+    "resume": {
+      "job": 882705,
+      "state": "F",
+      "exit": 0,
+      "runs": 1,
+      "cores": 1,
+      "wall_seconds": 3028,
+      "ended_hobart": "2026-11-21T15:58:18+11:00"
+    },
+    "scheduler_smoke": {
+      "job": 882707,
+      "state": "F",
+      "exit": 0,
+      "runs": 1,
+      "cores": 1,
+      "wall_seconds": 32,
+      "ended_hobart": "2026-11-21T13:05:22+11:00"
+    }
+  },
+  "twin_allocated_core_seconds": 21145,
+  "registered_debit_hours": 25,
+  "journal": {
+    "total_rows": 150,
+    "numerical_rows_zero_based": [
+      72,
+      73,
+      74,
+      75,
+      146,
+      147,
+      148,
+      149
+    ],
+    "signal_exit": -9,
+    "completed_prefix_rows": 73,
+    "actually_written_on_resume": 77,
+    "prefix_sha256": "abc4cecd25f49288ec38429ee4b714bbad609c7f8559711c0001af1f674d2066",
+    "first_row_written_on_resume": 73
+  },
+  "scientific_sha256": {
+    "events": "d54901c6ef68ac82f7071e33c12404017d09d10608ef5b423d4ff914b2f1f268",
+    "fit": "9eb0dc4a566af639712e70f3203700ae82f26623a24e32ffe398bda356f9e35a",
+    "search": "d6ac3b438ef8be1c5a59485dc571224e6bee29d38885bde8b4658e595d656acf"
+  },
+  "historical_comparison": {
+    "input_count": 123,
+    "modified_source_files": [
+      "scripts/fit_dataset.py",
+      "scripts/run_development_profile.py"
+    ],
+    "historical_and_reference_fit_sha256_after_source_comparison": "603218838a51c1e7091e7d5bc0ac5fb4c8caaf37e738524bc4fcdd1b91eb0c67",
+    "search_and_events_equal": true
+  },
+  "native_comparator_sha256": "464d8e3407a8a62b985f27984481cb1773b15ae57c632f2f08ce2f411321a8b5",
+  "registration_sha256": "7358588e6353d2b860f2c0e9d36d2b7b765219e5b7f7e5785b9c2f01d0a2f974",
+  "bulk_archive_sha256": "246a764556d17f0ad56168fd8726b60396a93a28e46254f447f18799e9eaa056"
+}

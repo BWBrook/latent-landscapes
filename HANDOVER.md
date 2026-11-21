@@ -12,10 +12,17 @@ other checks. The cap is 9,000. Boards 3621 and 3626 request reciprocal
 review of the evidence rule and budget ahead of any fresh draw.
 
 Both secondary analyses and the audit-journal candidate `4537394` are frozen.
-Development-only jobs 882703 and 882704 started with matching checkpoint
-identities. The separate resume and comparator are 882705 and 882706.
-The comparator sends the completion email. The scheduler smoke passed.
-Training and validation remain sealed. [Assessment and receipts](docs/evidence/paper1-sprint2-fresh-qualification-2026-11-21/README.md)
+Board 3631 closes the registered restart check. PBS 882703–882706 finished.
+The resumed fit preserved 73 audit rows and wrote the remaining 77. Its fit,
+search and evaluation stream matched the uninterrupted candidate, which also
+matched the accepted historical fit under the registered comparison. The
+separate scheduler smoke 882707 passed. Training and validation remain sealed.
+[Assessment and receipts](docs/evidence/paper1-sprint2-fresh-qualification-2026-11-21/README.md)
+
+Checks on the old development data found a faster value-only audit start and
+identified the evidence that skipping repeat paired probes would remove.
+Near-root membership flags give the proposed paired development run a
+specific test case. [Development findings](docs/evidence/paper1-sprint2-fresh-qualification-2026-11-21/development-review.md)
 
 Next: Claude — adjudicate the common-location rule and cost of paired checks before the fresh draw.
 
