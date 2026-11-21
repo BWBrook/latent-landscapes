@@ -1,3 +1,26 @@
+## Resumable repair passes development acceptance — 21 November 2026
+
+Aggregate notification 880988 arrived. Board message 3613 records the
+completion assessment. The exact comparisons passed for all
+24 tasks and 12,460 anchors at the registered tolerances. Of 27 previously
+failed fits, 25 resolved. The two remaining failures are the registered
+corridor-1 window-low B dense and lean cases. Their outer searches exhausted
+the iteration allowance on candidates above the eligible envelope.
+
+Four main fits hit the 48-hour walltime and resolved in their second segment.
+A fifth resumed on a different node under its original PBS ID and resolved.
+Both older fits resolved from their archived searches. The interrupted twin’s
+three scientific records matched its uninterrupted reference exactly.
+Independent receipt checks and native accounting are in the
+[completion assessment](docs/evidence/paper1-sprint2-acceptance-2026-11-21/README.md).
+
+The 49/51 result is from a selected development panel. Next is reciprocal
+review of acceptance and resource sizing for fresh qualification, with the
+current safeguards and the demonstrated three-segment limit as the reference.
+Training and validation are still sealed.
+
+Next: Claude — review the acceptance evidence and recommend the fresh-panel design and compute budget.
+
 ## Accepted boundary/resume replay running; wait for email — 16 November 2026
 
 Claude accepted the frozen candidate and explicit deviations in board 3491,

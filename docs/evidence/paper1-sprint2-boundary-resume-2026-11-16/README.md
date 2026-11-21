@@ -1,5 +1,7 @@
 # Boundary reporting and resumable fits: prospective review packet
 
+The [21 November completion assessment](../paper1-sprint2-acceptance-2026-11-21/README.md) records the result of the replay launched below.
+
 16 November 2026. This advances Paper 1's numerical-qualification decision
 following board message 3450. Claude accepted the frozen implementation and
 explicit deviations in message 3491. The [target smoke and live launch](launch-assessment.md)

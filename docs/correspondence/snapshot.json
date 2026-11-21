@@ -1,13 +1,13 @@
 {
-  "reviewed_at_utc": "2026-11-16T11:36:36.266376+00:00",
+  "reviewed_at_utc": "2026-11-20T23:59:50.232054+00:00",
   "reviewer": "Codex",
   "project": "latent-landscapes",
   "reviewed_thread_id": 87,
-  "exporter_revision": "9498524de0b6143d5526aa665fe41395f3f5dbf8",
-  "exporter_sha256": "47d42a8f9b77c78cca9c6f005e260968a6ed45f025e275f65830671be7fff417",
+  "exporter_revision": "26d5aa0b45c5a0b7674ea5f81949e9b2311283e0",
+  "exporter_sha256": "eba49e82286a01c242c00274df642ed6164d18663d83f1fd50f3ca58d591541c",
   "exporter_source_matches_revision": true,
-  "total_message_count": 175,
-  "retained_body_count": 53,
+  "total_message_count": 176,
+  "retained_body_count": 54,
   "withheld_body_count": 122,
   "threads": [
     {
@@ -45,10 +45,10 @@
     {
       "id": 87,
       "first_message_id": 1877,
-      "exported_through": 3542,
-      "message_count": 54,
-      "retained_bodies": 53,
-      "source_content_sha256": "3ccec90351aaf5d1a98c039f249ce2ac8decbe5a81c60958052feab170282721"
+      "exported_through": 3613,
+      "message_count": 55,
+      "retained_bodies": 54,
+      "source_content_sha256": "e17a763bc8562c6fa87c27b0291b5c308d005ff199ef9f5273c04d7ea5a8469e"
     },
     {
       "id": 124,
@@ -60,14 +60,14 @@
     }
   ],
   "sha256": {
-    "INDEX.md": "b69d1551f4f69d6ebc1285977d7b8538e7d31950b6a47d1b5d0656471e22a427",
-    "REVIEW.md": "b7685cabac606682d25ca83def7abf17939ecadfe10549c5fa21e32487ba65a2",
-    "publication.toml": "7d05deec0051183cf84a4d9cc4d053f434d7e1c98fc3844796129176b5e815fb",
+    "INDEX.md": "de6727f91659e3ec0289ba53136bb3b0696ff1f6144deaf4c06dfd3409535ac5",
+    "REVIEW.md": "815ef1ac593b08b316dd3611808f6f99d207b918f57a72623b50167e8c55ac9f",
+    "publication.toml": "a4516b80f47787c515a2e752fd9e8d820fd266c93b1b59c3c93bca38259b3932",
     "thread-0021.md": "dc9e21314c0eabd49bb3ff63f57670d879ab13e172179b1a93b291d11ab63146",
     "thread-0044.md": "3c506f5c2e196fb714c22bd45906c551f27b1247a5f85177e352a6ab50b63dca",
     "thread-0053.md": "4f4caaf0537ddef1901c61394b2db9e11efd250093627add5d85001dafde9478",
     "thread-0086.md": "9cf377f9c4c821ef90fc8ffe51acee5c6dae95484c6ff39b0a5ee7b21697b336",
-    "thread-0087.md": "075ed5975ee2f0c43112784572cfd14117e361826219090775e2e46985f8fcad",
+    "thread-0087.md": "df9c4452f219657f966ddf550a288f01279212638ecd14287c52fba7ce3b9b29",
     "thread-0124.md": "1438900ca4cb26d06ad8b54ba14abad2ef60696dd737b5fa9a93689585802622"
   }
 }

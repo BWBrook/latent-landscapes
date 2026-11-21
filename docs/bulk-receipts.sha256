@@ -16,3 +16,8 @@ fcf91adb85d2a729ac89fbb49e08736b2faa61254e819076b301a9bcd88879af  docs/evidence/
 44ddf985dda2eb06aa062c1bfe349d771ecf0e838dd9d7a7731d51b153455f6b  docs/goals/046-landscape-sampling-generality/initial-production-ensemble-check.json
 3931e811fa3af4f291d5b833663fd6ffcb8846fd43ebcbf613c062c6aec5a60b  docs/evidence/paper1-bank-review-2026-10-31/orientation/orientation_rows.csv
 febd7e686b208dc9272b9de5aadf2cda983be73cec11cf6684151fffc302003e  docs/evidence/paper1-profile-bank-qualification-2026-11-01/initial-execution/fresh-bank-2K-manifest.json
+
+# Frozen boundary/resume development acceptance, 21 November 2026.
+11d1d5fe426ad7794e00b9052a4d870369d783c61e1ab28df19ee396f05684c1  artifacts/sprint2/boundary-resume-20261121/evidence.tar.gz
+4215d9b488aec3484930007fb227c2af0e27235bb333b94eac43bc0db277ad41  artifacts/sprint2/boundary-resume-20261121/anchor-checkpoints.tar.gz
+9e3eab0a865307591ba78547fb6961c466283ad21d346f287565b464af754fe5  artifacts/sprint2/boundary-resume-20261121/audit-support.tar.gz
