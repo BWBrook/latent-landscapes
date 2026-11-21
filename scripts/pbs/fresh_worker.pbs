@@ -1,0 +1,29 @@
+#!/bin/bash
+#PBS -j oe
+set -eo pipefail
+set +u
+if ! command -v apptainer >/dev/null 2>&1; then
+  if ! type module >/dev/null 2>&1; then
+    export MODULEPATH="${MODULEPATH:-/opt/ohpc/pub/moduledeps/gnu8:/opt/ohpc/pub/modulefiles:/share/apps/modules:/share/apps/eb-modules/all:/share/apps/moduledeps/rosalind/Core}"
+    . /opt/ohpc/admin/lmod/lmod/init/bash
+  fi
+  module load apptainer 2>/dev/null || module load Apptainer
+fi
+set -u
+cd "${LL_REPO:?missing candidate checkout}"
+controller_sha=$(sha256sum "${LL_CONTROL:?missing controller}" | awk '{print $1}')
+actual_sif=$(sha256sum "${LL_IMAGE:?missing runtime image}" | awk '{print $1}')
+[ "$actual_sif" = "$LL_IMAGE_SHA256" ]
+[ "$controller_sha" = "$LL_CONTROL_SHA256" ]
+export APPTAINERENV_LL_EXECUTION_CONTEXT=apptainer
+export APPTAINERENV_LL_RUNTIME_SIF_SHA256="$actual_sif"
+export APPTAINERENV_PYTHONPATH="$LL_REPO/scripts:$LL_REPO/src"
+export APPTAINERENV_PBS_JOBID="${PBS_JOBID:?missing PBS job identifier}"
+export APPTAINERENV_OPENBLAS_NUM_THREADS=1 APPTAINERENV_OMP_NUM_THREADS=1
+export APPTAINERENV_MKL_NUM_THREADS=1 APPTAINERENV_VECLIB_MAXIMUM_THREADS=1
+binds="$HOME"
+if [ -n "${LL_BIND:-}" ]; then
+  binds="$binds,${LL_BIND//:/,}"
+fi
+apptainer exec --cleanenv --bind "$binds" "$LL_IMAGE" "$LL_PYTHON" "$LL_CONTROL" worker \
+  --ticket "$LL_TICKET" --sha256 "$LL_TICKET_SHA256" --candidate "$LL_REPO"

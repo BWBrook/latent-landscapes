@@ -1,0 +1,55 @@
+{
+  "original_pairs": {
+    "dense_lean": {
+      "resolved_pairs": 168,
+      "required_fresh_pairs": 207,
+      "union_nodes_by_view": {
+        "spatial.standard": 38636,
+        "spatial.tight": 38636,
+        "exposure": 48548,
+        "constant": 56145
+      },
+      "union_nodes": 181965,
+      "minimum_per_pair": 444,
+      "maximum_per_pair": 1688,
+      "extrapolated_union_nodes": 224206.875
+    },
+    "bank": {
+      "resolved_pairs": 50,
+      "required_fresh_pairs": 54,
+      "union_nodes_by_view": {
+        "spatial.standard": 7982,
+        "spatial.tight": 7982,
+        "exposure": 12378,
+        "constant": 14562
+      },
+      "union_nodes": 42904,
+      "minimum_per_pair": 273,
+      "maximum_per_pair": 1563,
+      "extrapolated_union_nodes": 46336.32
+    }
+  },
+  "accepted_rate": {
+    "replays": 24,
+    "one_side_calls": 12460,
+    "calls_by_view": {
+      "spatial.standard": 2411,
+      "spatial.tight": 2411,
+      "exposure": 3470,
+      "constant": 4168
+    },
+    "worker_wall_seconds": 542141.2316331498,
+    "worker_wall_seconds_per_call": 43.51053223380014
+  },
+  "extrapolated_one_side_calls": 541086.39,
+  "anchor_core_hours_sensitivity": 6539.710225934877,
+  "anchor_core_hours_by_view_sensitivity": 6823.8755516343435,
+  "fits_and_anchors_core_hours_by_view_sensitivity": [
+    11523.875551634344,
+    12823.875551634344
+  ],
+  "fits_and_anchors_core_hours_sensitivity": [
+    11239.710225934876,
+    12539.710225934876
+  ]
+}

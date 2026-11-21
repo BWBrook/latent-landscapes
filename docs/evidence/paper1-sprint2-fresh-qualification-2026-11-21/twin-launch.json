@@ -1,0 +1,49 @@
+{
+  "observed_utc": "2026-11-21T02:00:34Z",
+  "source": "453739428d75bf3a456aebf48b282b5ebbd870ee",
+  "registration_sha256": "7358588e6353d2b860f2c0e9d36d2b7b765219e5b7f7e5785b9c2f01d0a2f974",
+  "worst_case_core_hours": 25,
+  "jobs": {
+    "compare": {
+      "job": 882706,
+      "state": "H",
+      "cores": 1,
+      "walltime": "01:00:00",
+      "rerunnable": false,
+      "mail": "ae",
+      "dependency_only": true
+    },
+    "interrupt": {
+      "job": 882704,
+      "state": "R",
+      "cores": 1,
+      "walltime": "08:00:00",
+      "rerunnable": false,
+      "mail": "a",
+      "dependency_only": false,
+      "identity_sha256": "9b413da958e82bcb10368f9bcbacdecf0d8e8ff4445d837a2c41e5ba71251ea9",
+      "written_search_operations": 4
+    },
+    "reference": {
+      "job": 882703,
+      "state": "R",
+      "cores": 1,
+      "walltime": "08:00:00",
+      "rerunnable": false,
+      "mail": "a",
+      "dependency_only": false,
+      "identity_sha256": "9b413da958e82bcb10368f9bcbacdecf0d8e8ff4445d837a2c41e5ba71251ea9",
+      "written_search_operations": 4
+    },
+    "resume": {
+      "job": 882705,
+      "state": "H",
+      "cores": 1,
+      "walltime": "08:00:00",
+      "rerunnable": false,
+      "mail": "a",
+      "dependency_only": true
+    }
+  },
+  "passed": null
+}

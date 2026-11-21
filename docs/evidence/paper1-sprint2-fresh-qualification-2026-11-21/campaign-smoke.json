@@ -1,0 +1,23 @@
+{
+  "schema": "qualification-controller-no-draw-smoke-v1",
+  "pbs_job": 882707,
+  "source": "453739428d75bf3a456aebf48b282b5ebbd870ee",
+  "sif_sha256": "e71239ad4246ba7a1037d3dd3bc3d29667b7c3081992d95ab33d5d979e3f12ce",
+  "native_exit": 0,
+  "native_runs": 1,
+  "native_ncpus": 1,
+  "native_walltime": "00:00:32",
+  "ledger_charge_seconds": 33,
+  "requested_wall_seconds": 900,
+  "reserved_seconds": 1020,
+  "verified_worker_claim": true,
+  "log_sha256": "5b232bafb9be8cef68ea93dbcef80364e6eaf2bc6d408939907ad5829ca499be",
+  "ticket_sha256": "1251459852c3996464157d7c6d227b8114b3549088aa3f3cec04cf629782fb48",
+  "runtime_receipt_sha256": "7fa5486b968d308642bf485ff8c2a03a88fdcbedc8f6412607c0b374ae3f491a",
+  "external_max_hours": 25.0,
+  "closeout_reserved_hours": 12.0,
+  "cap_hours": 9000.0,
+  "controller_sha256": "0a345930a456d03b7ac9b0e89ad265b7b47011ea14738517a31a672aa011c702",
+  "worker_sha256": "9b756a39bd99c67630f6f1b3c58d3f735bbf94334170afd65c8bbc4851656938",
+  "panel_bound": false
+}

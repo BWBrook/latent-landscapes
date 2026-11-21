@@ -1,0 +1,31 @@
+{
+  "candidate_commit": "453739428d75bf3a456aebf48b282b5ebbd870ee",
+  "accepted_numerical_base": "432bb6e56e672f9e57f2f7bc369546023b07662e",
+  "board_messages": [
+    3617,
+    3618,
+    3621
+  ],
+  "production_changes": [
+    "scripts/fit_dataset.py",
+    "scripts/run_development_profile.py"
+  ],
+  "source_sha256": {
+    "scripts/fit_dataset.py": "a915a5ec699f5547f216ba28cccbc255b19fd4a1aa8634b18cbde344e8e4cb97",
+    "scripts/run_development_profile.py": "176b14a86b29076a5fbe031f6211f3e64099bad7a1492ea738eb29ae87b85db3",
+    "scripts/fit_checkpoints.py": "ccbb25ad76a7cb017ba7489bb720bb90cb8ba3c7c8b34d5b1b060ef96c2d61ff",
+    "scripts/summarise_sprint2_qualification.py": "4f138512341825dbe348a227a4a9ac769707e38eb091e17ea14557f536563439",
+    "scripts/pbs/numerical_audit_twin.pbs": "4bd7e622817ddcc2c98d1ea39176bab4538f9f56e0c79c4c081c896615589613",
+    "scripts/run_numerical_audit_twin.py": "2d8cc3c05672ca9af04e953ac74c461bffa34192e60f42b86b323202e1521de7",
+    "scripts/sprint2_safeguard_yield.py": "bdd39348069f8e259ef06d13e74093ee88c0dace6d5f403b107e46d6781aa288",
+    "docs/evidence/paper1-sprint2-fresh-qualification-2026-11-21/audit-restart.md": "47c8e9dc64ad2a79a852609dd416627617734dbbbad99105e9f4ea9787de5b52",
+    "docs/evidence/paper1-sprint2-fresh-qualification-2026-11-21/numerical-audit-twin-selection.json": "e27d4820720777c0a965bf06ca566110d376802a677ce2b4a4f871a872b9c44f",
+    "docs/evidence/paper1-sprint2-fresh-qualification-2026-11-21/safeguard-yield-registration.md": "ae3b30f7dd11d393ec862a37b1234dba564db3f4322a092a3752e88a1faea3e6"
+  },
+  "gate_reducer_identical_to_accepted_base": true,
+  "normalisation_identical_to_accepted_base": true,
+  "old_panel_target_result_sha256": "eeb1fa3a8ae5a639c4bce63e8b4a011b632c97418bb765059d2fe1bc10ef3cbc",
+  "old_case_census_sha256": "16aadc3ff68f8418323041b9b61e6e8bf5acc5c0e8cbb6398a3eb8e3f5cc2ed3",
+  "launch_proof": "twin-launch.json",
+  "launch_condition": "Numerical-audit twin passes under the accepted normalization. Review the prospective reducer interpretation and resource feasibility before drawing any fresh history."
+}

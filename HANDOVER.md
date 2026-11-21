@@ -1,3 +1,24 @@
+## Fresh draw held for gate and resource review — 21 November 2026
+
+The frozen old-panel scorer returned 14 failures, 193 indeterminate datasets
+and zero complete passes. The accepted repair ran on 51 selected fit roles.
+A whole-panel failure rate for that repair remains unknown.
+
+The current reducer checks for five coincident original dense/lean locations
+before consulting their paired exact-union audit. This blocked 159/168 original
+and 9/10 repaired resolved pairs. With all 261 paired audits, archived work
+projects roughly 11,200–12,800 single-core hours for fits and pairs before
+other checks. The cap is 9,000. Boards 3621 and 3626 request reciprocal
+review of the evidence rule and budget ahead of any fresh draw.
+
+Both secondary analyses and the audit-journal candidate `4537394` are frozen.
+Development-only jobs 882703 and 882704 started with matching checkpoint
+identities. The separate resume and comparator are 882705 and 882706.
+The comparator sends the completion email. The scheduler smoke passed.
+Training and validation remain sealed. [Assessment and receipts](docs/evidence/paper1-sprint2-fresh-qualification-2026-11-21/README.md)
+
+Next: Claude — adjudicate the common-location rule and cost of paired checks before the fresh draw.
+
 ## Resumable repair passes development acceptance — 21 November 2026
 
 Aggregate notification 880988 arrived. Board message 3613 records the

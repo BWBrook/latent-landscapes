@@ -21,3 +21,7 @@ febd7e686b208dc9272b9de5aadf2cda983be73cec11cf6684151fffc302003e  docs/evidence/
 11d1d5fe426ad7794e00b9052a4d870369d783c61e1ab28df19ee396f05684c1  artifacts/sprint2/boundary-resume-20261121/evidence.tar.gz
 4215d9b488aec3484930007fb227c2af0e27235bb333b94eac43bc0db277ad41  artifacts/sprint2/boundary-resume-20261121/anchor-checkpoints.tar.gz
 9e3eab0a865307591ba78547fb6961c466283ad21d346f287565b464af754fe5  artifacts/sprint2/boundary-resume-20261121/audit-support.tar.gz
+
+# Old-panel gate reconstruction and safeguard extraction before the next qualification draw.
+68527b8cd6c5f56163247c70e9e71cd26ee2771033f4eaf887f0efe2513eeea6  artifacts/sprint2/fresh-qualification-20261121/pre-draw-evidence.tar.gz
+7fd35e5cfed09c6032b60c0fda9c733e6400360b8841faa9bddf42b08d33166c  artifacts/sprint2/fresh-qualification-20261121/pre-draw-inputs.tar.gz

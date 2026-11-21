@@ -1,0 +1,27 @@
+{
+  "checkpoint_count": 12460,
+  "seconds_outside_checkpoint_intervals": 511.09346532821655,
+  "views": {
+    "constant": {
+      "count": 4168,
+      "seconds": 60471.415608644485,
+      "seconds_per_location": 14.508497027026028
+    },
+    "exposure": {
+      "count": 3470,
+      "seconds": 76131.42763876915,
+      "seconds_per_location": 21.93989269128794
+    },
+    "spatial.standard": {
+      "count": 2411,
+      "seconds": 186667.20886325836,
+      "seconds_per_location": 77.4231475998583
+    },
+    "spatial.tight": {
+      "count": 2411,
+      "seconds": 218360.08605790138,
+      "seconds_per_location": 90.56826464450492
+    }
+  },
+  "worker_count": 24
+}
