@@ -18,7 +18,7 @@ from typing import Any
 
 import benchmark_spatial_profile as adapter
 import numpy as np
-from fit_checkpoints import CheckpointError, FitCheckpoints
+from fit_checkpoints import CheckpointError, FitCheckpoints, digest
 from qualify_spatial_profiles import (
     DEFAULTS,
     FAMILIES,
@@ -409,6 +409,31 @@ class PanelSearch(Qualification):
             mesh = self.midpoint_mesh(mesh)
             self.fit_free()
             levels, switches = self.close_profiles(mesh)
+            checkpoints = getattr(self, "checkpoints", None)
+            if checkpoints is not None:
+                key = "search/standard_prefix_topology"
+                observed = {
+                    "operation_count": self.operation_index,
+                    "spatial_sha256": digest(
+                        adapter._jsonable(
+                            {
+                                "free": compact_fit(self.free[False]),
+                                "points": [
+                                    compact_fit(point)
+                                    for _, point in sorted(self.points[False].items())
+                                ],
+                            }
+                        )
+                    ),
+                    "level_sets": levels,
+                    "family_switches": switches,
+                }
+                observed_sha = digest(observed)
+                saved = checkpoints.load(key)
+                if saved is None:
+                    checkpoints.save(key, observed)
+                elif digest(saved) != observed_sha:
+                    raise CheckpointError("pre-tight topology differs on replay")
             tight_mesh = sorted(set(self.mesh) | set(self.points[False]))
             for x in tight_mesh:
                 self.point(x, tight=True)

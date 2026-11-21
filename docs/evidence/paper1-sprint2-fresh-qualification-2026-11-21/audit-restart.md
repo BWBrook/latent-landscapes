@@ -1,0 +1,17 @@
+# Numerical-audit restart registration
+
+Board 3617 accepted development source `432bb6e`. Board 3618 requires a real interrupted numerical audit before launching fresh qualification on a per-location journal. This is a prospective execution change to that source. The optimizer, model, numerical thresholds, starts, audit selection, normalisation and qualification gate keep their accepted definitions.
+
+The audit writes one atomic, source/input/runtime-bound checkpoint after each location. A row binds the ordinal and kind, regime, location, fitted parameters, envelope LR and audit mode. It includes the original audit output and the cumulative search and criterion counters. Resume reads the contiguous prefix in the original traversal order, restores its counters and recomputes the first unfinished location. A changed location or hole inside the prefix raises a checkpoint error. The runtime may rebuild its interpolation cache. The accepted scientific comparator still checks solver counters exactly. A separate observation at the end of the initial standard search retains the topology for the registered tight-replay comparison.
+
+## Selection and interruption
+
+The shortest of the 24 non-regression tasks with any completed numerical audit is the barrier-0, increased-heterogeneity, arm A exhaustive fit at μ=0.004 and h=1. Its uninterrupted worker took 12,357 seconds. It audited eight of 150 locations numerically. All six shorter tasks performed zero. The reference run and the interrupted run both use the original observations, bank, model arguments, one-core Apptainer runtime and the new clean candidate checkout. Their work directories are separate. [All 24 selection records](numerical-audit-twin-selection.json)
+
+The second numerical location is row 73, counting from zero. The worker finishes its actual numerical solve and stops at the write boundary with rows 0 through 72 durable, including numerical row 72. A separate process verifies the live stopped worker, PID, scheduler job, bound journal and computed row before sending SIGKILL. It must observe a signal-9 termination and no final fit receipt. PBS launches the resumed fit in a different job. The stored prefix must retain identical bytes, and the worker must write precisely rows 73 through 149. The timing reported by an interrupted segment covers that physical segment.
+
+## Acceptance
+
+The uninterrupted and resumed fit receipt, search receipt and evaluation stream must match under the existing 36-field equivalence specification. Both fits must resolve with all eight numerical rows at the registered locations. The uninterrupted run must also match the accepted historical task. For this additional comparison, the two source commits and input manifests are validated separately. All file hashes must match after mapping checkout roots, with the only permitted changed source bytes in `fit_dataset.py` and `run_development_profile.py`. Every other scientific field and the complete normalized historical search and event streams must agree. A mismatch holds qualification.
+
+The two primary workers and the resume request one core for at most eight hours each. The comparator reserves one core for one hour. PBS reruns are disabled. These four jobs reserve at most 25 of the 9,000 authorised core-hours. Only the comparator can certify this test. An email or a worker exit alone cannot release qualification. [Native execution and comparison](../../../scripts/run_numerical_audit_twin.py)

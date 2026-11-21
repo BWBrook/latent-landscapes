@@ -587,12 +587,33 @@ def audit_all(search: PanelSearch, diagnosis: Any, *, exhaustive: bool = False) 
     lr_limit = math.inf if exhaustive else max(CUTOFF_GRID) + MODE_AUDIT_LR_MARGIN
     started, cpu = time.perf_counter(), time.process_time()
     rows = []
-    for kind, regime, loc, row in locations:
+    checkpoints = getattr(search, "checkpoints", None)
+    saved_count = 0
+    if checkpoints is not None:
+        saved_names = sorted(p.name for p in (checkpoints.directory / "audit").glob("row-*.json"))
+        saved_count = len(saved_names)
+        if saved_count > len(locations) or saved_names != [
+            f"row-{i:06d}.json" for i in range(saved_count)
+        ]:
+            raise CheckpointError("audit checkpoint location sequence differs")
+    for index, (kind, regime, loc, row) in enumerate(locations):
         free = search.free[regime]
         fit = free if loc is None else search.points[regime][loc]
         top = max(free[f]["criterion"] for f in ("positive_sigma", "sigma_zero"))
         lr = 2.0 * (top - max(fit[f]["criterion"] for f in ("positive_sigma", "sigma_zero")))
         sigma = math.exp(row["parameters"]["log_sigma"])
+        name = f"audit/row-{index:06d}"
+        location = (index, kind, regime, loc, row["h"], row["parameters"], lr, exhaustive)
+        if index < saved_count:
+            saved = checkpoints.load(name)
+            if saved is None or saved["location_sha256"] != digest(location):
+                raise CheckpointError("audit checkpoint location identity differs")
+            rows.append(saved["row"])
+            search.criterion.stats.clear()
+            search.criterion.stats.update(saved["criterion_stats"])
+            search.stats.clear()
+            search.stats.update(saved["search_stats"])
+            continue
         location_started = time.perf_counter()
         if kind == "free" or lr <= lr_limit:
             audit = latent_audit(search.criterion, row, diagnosis)
@@ -616,6 +637,16 @@ def audit_all(search: PanelSearch, diagnosis: Any, *, exhaustive: bool = False) 
         if audit["multimodal_latent"]:
             record["starts"] = audit["starts"]
         rows.append(record)
+        if checkpoints is not None:
+            checkpoints.save(
+                name,
+                {
+                    "location_sha256": digest(location),
+                    "row": record,
+                    "criterion_stats": search.criterion.stats,
+                    "search_stats": search.stats,
+                },
+            )
     return {
         "lr_limit": lr_limit,
         "exhaustive": exhaustive,

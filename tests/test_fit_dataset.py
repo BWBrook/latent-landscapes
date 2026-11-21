@@ -222,6 +222,67 @@ def test_latent_audit_skips_small_sigma_and_runs_thirteen_starts(fit: Any) -> No
     assert fit.latent_audit(criterion, tiny, diagnosis)["performed"] is False
 
 
+def test_per_location_resume_reuses_numerical_audit_and_restores_its_counters(
+    fit: Any, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    params = {"alpha": -1.4, "beta": 0.2, "log_sigma": math.log(0.4), "detection_sd": 0.18}
+    locations = [1.0, 2.0, 3.0]
+
+    def pair(h: float) -> dict[str, Any]:
+        return {
+            "positive_sigma": {"criterion": -2.0, "parameters": params, "h": h},
+            "sigma_zero": {"criterion": -3.0},
+        }
+
+    def search(store: Any = None) -> Any:
+        return SimpleNamespace(
+            free={False: pair(locations[0])},
+            points={False: {math.log(h): pair(h) for h in locations[1:]}},
+            criterion=small_criterion(),
+            stats={},
+            result={},
+            checkpoints=store,
+        )
+
+    diagnosis = fit.load_mode_diagnosis()
+    full = search()
+    expected = fit.audit_all(full, diagnosis)
+    directory = tmp_path / "checkpoint"
+    manifest = {"fixture": "three numerical audits"}
+    partial = search(fit.FitCheckpoints(directory, manifest, resume=False))
+    original = fit.latent_audit
+    calls = []
+
+    def interrupt(criterion: Any, row: Any, diagnosis: Any) -> Any:
+        calls.append(row["h"])
+        result = original(criterion, row, diagnosis)
+        if len(calls) == 2:
+            raise SystemExit("interrupted during uncommitted numerical row")
+        return result
+
+    monkeypatch.setattr(fit, "latent_audit", interrupt)
+    with pytest.raises(SystemExit):
+        fit.audit_all(partial, diagnosis)
+    assert [p.name for p in (directory / "audit").glob("*.json")] == ["row-000000.json"]
+    resumed = search(fit.FitCheckpoints(directory, manifest, resume=True))
+    actual = fit.audit_all(resumed, diagnosis)
+    assert calls == [1.0, 2.0, 2.0, 3.0]
+
+    def scientific(data: Any, audit: Any) -> Any:
+        return fit.scientific_payload(
+            {"latent_audit": audit, "cost": {"criterion_stats": data.criterion.stats}}
+        )
+
+    assert actual["audit_count"] == 3
+    assert scientific(resumed, actual) == scientific(full, expected)
+    locations[0] = 1.5
+    with pytest.raises(fit.CheckpointError, match="location identity"):
+        fit.audit_all(search(resumed.checkpoints), diagnosis)
+    (directory / "audit/row-000001.json").unlink()
+    with pytest.raises(fit.CheckpointError, match="location sequence"):
+        fit.audit_all(search(resumed.checkpoints), diagnosis)
+
+
 @pytest.mark.parametrize(
     ("kwargs", "expected"),
     [
